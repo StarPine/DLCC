@@ -23,7 +23,7 @@ out/
 build/
 */build/
 gradle-build
-
+*/class_files.txt
 # Local configuration file (sdk path, etc)
 local.properties
 
