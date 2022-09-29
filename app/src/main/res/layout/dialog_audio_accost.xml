@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginStart="30dp"
+    android:layout_marginEnd="30dp"
+    android:background="@color/transparent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/radius_layout">
+
+        <ImageView
+            android:id="@+id/iv_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:padding="5dp"
+            android:src="@drawable/icon_close_dialog" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/iv_close"
+            android:layout_centerHorizontal="true"
+            android:text="@string/playfun_audio_chat_up"
+            android:textColor="@color/text_default"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/iv_audio_nomal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_title"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:src="@drawable/icon_audio_nomal" />
+
+        <ImageView
+            android:id="@+id/iv_audio_playable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_title"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:src="@drawable/icon_stop_audio"
+            android:visibility="gone"
+            />
+
+        <TextView
+            android:id="@+id/tv_timing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/iv_audio_nomal"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:text="@string/playfun_audio_accost_tip"
+            android:textColor="@color/gray_dark"
+            android:textSize="@dimen/text_size_small"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btn_recording"
+            style="@style/ButtonPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_below="@+id/tv_timing"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="25dp"
+            android:text="@string/playfun_audio_accost_long_click"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:visibility="visible" />
+
+        <LinearLayout
+            android:id="@+id/ll_completion"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_below="@+id/tv_timing"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="25dp"
+            android:visibility="gone"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/iv_reset"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginEnd="7dp"
+                android:src="@drawable/btn_rest_record" />
+
+            <ImageView
+                android:id="@+id/iv_ok"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginStart="7dp"
+                android:src="@drawable/btn_ok_record" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</LinearLayout>

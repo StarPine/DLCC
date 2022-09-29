@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:binding="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="com.dl.playfun.R" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.dl.playfun.ui.userdetail.photobrowse.PhotoBrowseItemViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        binding:onClickCommand="@{viewModel.itemClick}">
+
+        <com.dl.playfun.widget.videoview.SampleCoverVideo
+            android:id="@+id/videoView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="@{(viewModel.itemEntity.type == 2 &amp;&amp; viewModel.itemEntity.burnStatus == 0) ? View.VISIBLE:View.GONE}"
+            binding:playStatus="@{viewModel.playStatus}"
+            binding:position="@{viewModel.getPosition}"
+            binding:videoCompletionCommand="@{viewModel.videoCompletionCommand}"
+            binding:videoUri="@{viewModel.itemEntity.type == 2 ? viewModel.itemEntity.src:null}" />
+
+        <com.dl.playfun.widget.BurnImageView
+            android:elevation="11dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="@{viewModel.itemEntity.type == 1 ? View.VISIBLE:View.GONE}"
+            binding:addWaterMark="@{true}"
+            binding:burnCommand="@{viewModel.burnedCommand}"
+            binding:burnImgEnt="@{viewModel.itemEntity}"
+            binding:tapCommand="@{viewModel.itemClick}" />
+
+        <LinearLayout
+            android:id="@+id/ll_burned_msg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:visibility="@{(viewModel.itemEntity.isBurn == 1 &amp;&amp; viewModel.itemEntity.burnStatus == 1) ? View.VISIBLE:View.GONE}">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_burned" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="@string/playfun_photo_burned"
+                android:textColor="@color/gray_light"
+                android:textSize="@dimen/text_size_big" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:elevation="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="@{(viewModel.itemEntity.isRedPackage == 1 &amp;&amp; viewModel.itemEntity.isPay != 1)?View.VISIBLE:View.GONE}">
+
+            <ImageView
+                android:id="@+id/iv_red_package"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_pay_red_package" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="126dp">
+
+                <TextView
+                    android:id="@+id/tv_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="invisible"
+                    android:text="@string/playfun_send_red_package_look_photo"
+                    android:textColor="#F4B56F"
+                    android:textSize="@dimen/text_size_middle" />
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_1"
+                    android:layout_centerHorizontal="true">
+
+                    <TextView
+                        android:id="@+id/tv_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:drawableLeft="@drawable/ic_coin"
+                        android:drawablePadding="5dp"
+                        android:text="@{String.valueOf(viewModel.redPackagePrice)}"
+                        android:textColor="#F4B56F"
+                        android:textSize="22sp" />
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+            <Button
+                android:layout_width="112dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@+id/iv_red_package"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="18dp"
+                android:background="@drawable/button_send_red_package_background"
+                android:text="@string/playfun_send_red_package"
+                android:textColor="#A95800"
+                android:textSize="@dimen/text_size_middle"
+                binding:onClickCommand="@{viewModel.clickGiveRedPackage}" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</layout>

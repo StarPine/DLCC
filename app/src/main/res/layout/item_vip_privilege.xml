@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.dl.playfun.R" />
+
+        <variable
+            name="viewModel"
+            type="com.dl.playfun.ui.mine.vipsubscribe.VipPrivilegeItemViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/black_558"
+        android:gravity="center_vertical"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/iv_privilege_icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="10dp"
+            android:src="@drawable/default_address_user"
+            binding:imageErrorPlaceholderRes="@{R.drawable.default_avatar}"
+            binding:imagePlaceholderRes="@{R.drawable.default_avatar}"
+            binding:imageThumbPath="@{viewModel.itemEntity.img}"
+            tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
+
+        <TextView
+            android:id="@+id/tv_privilege_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/iv_privilege_icon"
+            android:text="@{viewModel.itemEntity.title}"
+            android:textColor="@color/colorPrimary"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            tools:text="免費鑽石" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/iv_privilege_icon"
+            android:layout_toEndOf="@+id/iv_privilege_icon"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@{viewModel.itemEntity.desc}"
+            android:textColor="@color/colorPrimary"
+            android:textSize="10sp"
+            tools:text="巨額鑽石免費贈送！登陸必得！ " />
+
+    </RelativeLayout>
+
+</layout>

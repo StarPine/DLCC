@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.dl.playfun.ui.mine.broadcast.mytrends.givelist.GiveListViewModel" />
+
+        <import type="me.tatarka.bindingcollectionadapter2.LayoutManagers" />
+
+        <import type="com.dl.playfun.widget.recyclerview.LineManagers" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="com.dl.playfun.ui.mine.broadcast.mytrends.givelist.GiveListFragment">
+
+        <View
+            android:id="@+id/status_bar_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/status_bar_color" />
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay"
+            app:elevation="0dp">
+
+            <com.dl.playfun.widget.BasicToolbar
+                android:id="@+id/basic_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/action_bar_height"
+                app:toolbar_title="@string/playfun_fragment_give_list_title">
+
+            </com.dl.playfun.widget.BasicToolbar>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <com.scwang.smart.refresh.layout.SmartRefreshLayout
+            android:id="@+id/refresh_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/container_background"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            binding:onLoadMoreCommand="@{viewModel.onLoadMoreCommand}"
+            binding:onRefreshCommand="@{viewModel.onRefreshCommand}">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    binding:adapter="@{viewModel.adapter}"
+                    binding:itemBinding="@{viewModel.itemBinding}"
+                    binding:items="@{viewModel.observableList}"
+                    binding:layoutManager="@{LayoutManagers.linear()}"
+                    binding:lineManager="@{LineManagers.horizontal(1,72,0)}" />
+
+                <include
+                    layout="@layout/empty_view"
+                    android:visibility="gone"
+                    app:stateModel="@{viewModel.stateModel}" />
+            </RelativeLayout>
+
+        </com.scwang.smart.refresh.layout.SmartRefreshLayout>
+    </LinearLayout>
+</layout>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.dl.playfun.R" />
+
+        <import type="android.view.View" />
+
+        <import type="com.blankj.utilcode.util.ObjectUtils" />
+
+        <variable
+            name="viewModel"
+            type="com.dl.playfun.ui.mine.wallet.diamond.recharge.DiamondRechargeItemViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/rl_layout"
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:layout_marginBottom="10dp"
+        android:background="@{viewModel.getItemBg}"
+        binding:onClickCommand="@{viewModel.itemClick}"
+        tools:background="@drawable/bg_diamond_recharge_item_recommend">
+
+        <TextView
+            android:id="@+id/tv_flag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:background="@{viewModel.getFlagBg == 1?@drawable/bg_right_top_corner2:@drawable/bg_right_top_corner}"
+            android:gravity="center"
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp"
+            android:text="@{viewModel.itemEntity.type == 1?@string/playfun_diamond_detail_item_flag:@string/playfun_diamond_detail_item_flag2}"
+            android:textColor="@{viewModel.getFlagBg == 1?@color/white:@color/toolbar_title_color}"
+            android:textSize="@dimen/text_size_1067"
+            android:visibility="@{viewModel.isShowFlag ? View.VISIBLE : View.GONE}"
+            tools:background="@drawable/bg_right_top_corner"
+            tools:text="@string/playfun_diamond_detail_item_flag2" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/tv_recharge_tips"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_diamond_head" />
+
+            <TextView
+                android:id="@+id/tv_total_revenue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:text="@{viewModel.itemEntity.giveCoinTitle}"
+                android:textColor="@{viewModel.itemEntity.type == 2?@color/white:@color/toolbar_title_color}"
+                android:textSize="@dimen/alivc_common_font_20"
+                android:textStyle="bold"
+                tools:text="9999999+" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/tv_recharge_tips"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:text="@{viewModel.getPriceText}"
+            android:textColor="@{viewModel.itemEntity.type == 2?@color/yellow_544:@color/pseekbar_process}"
+            android:textSize="@dimen/alivc_common_font_20"
+            android:textStyle="bold"
+            tools:text="$9999"
+            tools:textColor="@color/pseekbar_process" />
+
+        <TextView
+            android:id="@+id/tv_recharge_tips"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="1dp"
+            android:layout_marginRight="1dp"
+            android:layout_marginBottom="1dp"
+            android:background="@{viewModel.getTipsBg}"
+            android:padding="7dp"
+            android:paddingStart="10dp"
+            android:text="@{viewModel.itemEntity.goodsDesc}"
+            android:textColor="@color/pseekbar_process"
+            android:textSize="10.67sp"
+            android:visibility="@{!ObjectUtils.isEmpty(viewModel.itemEntity.goodsDesc)?View.VISIBLE:View.GONE}"
+            tools:background="@drawable/bg_diamond_recharge_item_tips_recommend"
+            tools:text="Get 1000 diamonds, log in the next day and get 1000 diamonds for 29 days"
+            tools:visibility="visible" />
+
+        <View
+            android:id="@+id/is_checked"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_frame_checked"
+            android:visibility="@{viewModel.itemEntity.getSelected ? View.VISIBLE : View.GONE}"
+            tools:visibility="gone" />
+
+    </RelativeLayout>
+
+</layout>

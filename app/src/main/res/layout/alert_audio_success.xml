@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/transparent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/no_vip_unlock"
+        android:layout_width="274dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="43dp"
+        android:layout_marginRight="43dp"
+        android:background="@drawable/attendance_success_back"
+        android:gravity="center"
+        android:minWidth="319dp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/iv_dialog_close"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="60dp"
+            android:layout_marginEnd="10dp"
+            android:elevation="11dp"
+            android:src="@mipmap/icon_dialog_sign_close"
+            android:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/title_img"
+            android:layout_width="98dp"
+            android:layout_height="80dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="114dp"
+            android:background="@drawable/dialog_task_integral" />
+
+        <TextView
+            android:id="@+id/title_fen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/title_img"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            tools:text="積分 +10"
+            android:textColor="#FFFD42D6"
+            android:textSize="17sp" />
+
+        <Button
+            android:id="@+id/btn_confirm"
+            style="@style/ButtonPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_below="@+id/title_fen"
+            android:layout_marginStart="27dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="27dp"
+            android:text="@string/playfun_alert_audio_btn_text" />
+
+        <TextView
+            android:id="@+id/btn_cannel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btn_confirm"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="35dp"
+            android:text="@string/playfun_daily_atendance_accept"
+            android:textColor="#ff9897b3"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+</LinearLayout>

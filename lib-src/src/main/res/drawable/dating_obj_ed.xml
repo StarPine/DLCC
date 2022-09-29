@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <!-- 矩形的圆角弧度 -->
+            <corners android:radius="10dp" />
+            <!-- 矩形的填充色 -->
+            <gradient
+                android:angle="315"
+                android:endColor="#ffa72dfe"
+                android:startColor="#FFD359FF" />
+        </shape>
+    </item>
+</layer-list>

@@ -1,0 +1,23 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        consumerProguardFiles 'lib-proguard-rules.pro'
+    }
+    lintOptions {
+        warning 'InvalidPackage'
+    }
+}
+
+dependencies {
+    api project(':AliyunSVideoBase')
+    api externalAndroidRecyclerView
+    api project(':AliyunVideoCommon')
+    api project(':AlivcMedia')
+    api 'org.jetbrains:annotations:15.0'
+}

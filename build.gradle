@@ -1,0 +1,77 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+apply from: "config/config.gradle"
+buildscript {
+
+    repositories {
+        google()
+        jcenter()
+        mavenCentral()
+        maven { url "https://repo.eclipse.org/content/repositories/paho-releases/" }
+        maven { url 'http://maven.faceunity.com/repository/maven-public/' }
+        maven { url "https://maven.google.com" }//添加这个就可以
+        maven { url "https://maven.aliyun.com/nexus/content/repositories/releases" }
+        maven { url 'https://repo1.maven.org/maven2/' }
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        maven { url 'https://maven.aliyun.com/repository/jcenter' }
+        maven { url "https://jitpack.io" }
+        maven { url "https://maven.aliyun.com/repository/public" }
+        maven { url "https://mirrors.tencent.com/nexus/repository/maven-public/" }
+        maven { url "https://plugins.gradle.org/m2/" }
+        maven { url 'http://maven.faceunity.com/repository/maven-public/' }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:4.2.2'
+        classpath 'com.google.gms:google-services:4.3.10'  // Google Services plugin
+        classpath 'com.github.kezong:fat-aar:1.3.6'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.0"
+        classpath 'com.google.firebase:firebase-crashlytics-gradle:2.7.0'
+        classpath 'com.bytedance.android:aabresguard-plugin:0.1.8'
+    }
+}
+
+allprojects {
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+        google()
+        jcenter()
+        mavenCentral()
+        maven { url "https://repo.eclipse.org/content/repositories/paho-releases/" }
+        maven {
+            url "https://maven.springframework.org/release"
+        }
+        maven {
+            url "https://maven.restlet.com"
+        }
+        maven { url 'http://maven.faceunity.com/repository/maven-public/' }
+        maven { url "https://plugins.gradle.org/m2/" }
+        maven { url "https://maven.google.com" }//添加这个就可以
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        maven { url 'https://maven.aliyun.com/repository/jcenter' }
+        maven { url 'https://jitpack.io' }
+        maven { url 'http://maven.faceunity.com/repository/maven-public/' }
+        maven { url "https://maven.aliyun.com/nexus/content/repositories/releases" }
+        maven { url 'https://repo1.maven.org/maven2/' }
+        maven { url 'https://4thline.org/m2' }
+        maven { url 'https://repo1.maven.org/maven2/' }
+        maven { url "https://maven.aliyun.com/repository/public" }
+        maven { url "https://mirrors.tencent.com/nexus/repository/maven-public/" }
+    }
+    buildDir = new File(rootDir, "gradle-build/${path.replaceAll(':', '/')}")
+    tasks.withType(Javadoc) {
+        options.addStringOption('Xdoclint:none', '-quiet')
+        options.addStringOption('encoding', 'UTF-8')
+        options.addStringOption('charset', 'UTF-8')
+    }
+}
+subprojects {
+    tasks.withType(Javadoc).all { enabled = false }
+}
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

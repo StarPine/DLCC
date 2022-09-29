@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.dl.playfun.ui.userdetail.report.ReportUserViewModel" />
+
+        <import type="android.view.View" />
+
+        <import type="me.tatarka.bindingcollectionadapter2.LayoutManagers" />
+
+        <import type="com.dl.playfun.widget.recyclerview.LineManagers" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="com.dl.playfun.ui.userdetail.report.ReportUserFragment">
+
+        <View
+            android:id="@+id/status_bar_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/status_bar_color" />
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay"
+            app:elevation="0dp">
+
+            <com.dl.playfun.widget.BasicToolbar
+                android:id="@+id/basic_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/action_bar_height"
+                app:toolbar_title="@string/playfun_report_user_title">
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp">
+
+                    <TextView
+                        style="@style/ActionBarMenu"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:text="@string/playfun_submit"
+                        binding:onClickCommand="@{viewModel.commitOnClickCommand}" />
+                </RelativeLayout>
+            </com.dl.playfun.widget.BasicToolbar>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/container_background"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <LinearLayout
+                android:id="@+id/ll_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_tip"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/playfun_report_user_reason" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rcv_radio"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:overScrollMode="never"
+                    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                    binding:adapter="@{viewModel.adapter}"
+                    binding:itemBinding="@{viewModel.reportItemViewModelItemBinding}"
+                    binding:items="@{viewModel.reportItemViewModels}"
+                    binding:layoutManager="@{LayoutManagers.linear()}"
+                    binding:lineManager="@{LineManagers.horizontal()}" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/playfun_report_user_provide"
+                    android:visibility='@{viewModel.type.equals("home")?View.VISIBLE:View.GONE}' />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/edittext_background"
+                    android:orientation="horizontal"
+                    android:padding="14dp"
+                    android:visibility='@{viewModel.type.equals("home")?View.VISIBLE:View.GONE}'>
+
+                    <com.dl.playfun.widget.picchoose.PicChooseView
+                        android:id="@+id/pic_choose_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext_background"
+                    android:orientation="horizontal"
+                    android:padding="14dp">
+
+                    <TextView
+                        style="@style/EditLabel"
+                        android:layout_width="90dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/playfun_report_user_description" />
+
+                    <EditText
+                        style="@style/EditText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="top"
+                        android:hint="@string/playfun_optional"
+                        android:inputType="text"
+                        android:maxLength="100"
+                        android:minHeight="80dp"
+                        android:text="@={viewModel.description}" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+</layout>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginStart="30dp"
+    android:layout_marginEnd="30dp"
+    android:background="@color/transparent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/radius_layout">
+
+        <ImageView
+            android:id="@+id/iv_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:padding="5dp"
+            android:src="@drawable/icon_close_dialog" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/iv_close"
+            android:layout_centerHorizontal="true"
+            android:text="@string/playfun_text_chat_up"
+            android:textColor="@color/text_default"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/et_accost"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_below="@+id/tv_title"
+            android:background="@drawable/shape_gray_radius_7"
+            android:gravity="start"
+            android:hint="@string/playfun_text_chat_up_hint"
+            android:padding="8dp"
+            android:maxLength="40"
+            android:textSize="@dimen/text_size_middle" />
+
+        <TextView
+            android:id="@+id/tv_word_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/et_accost"
+            android:layout_alignEnd="@id/et_accost"
+            android:textColor="@color/pseekbar_process_off"
+            android:textSize="@dimen/text_size_small"
+            android:layout_marginTop="7dp"
+            android:layout_marginBottom="15dp"
+            tools:text="0/40"
+            />
+        <Button
+            android:id="@+id/btn_confirm"
+            style="@style/ButtonPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_below="@+id/tv_word_count"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="25dp"
+            android:text="@string/playfun_dialog_set_withdraw_account_confirm"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+</LinearLayout>

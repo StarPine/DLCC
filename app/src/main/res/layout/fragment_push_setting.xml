@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.dl.playfun.ui.message.pushsetting.PushSettingViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="com.dl.playfun.ui.message.pushsetting.PushSettingFragment">
+
+        <View
+            android:id="@+id/status_bar_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/status_bar_color" />
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay"
+            app:elevation="0dp">
+
+            <com.dl.playfun.widget.BasicToolbar
+                android:id="@+id/basic_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/action_bar_height"
+                app:toolbar_title="@string/playfun_push_setting_title" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/container_background"
+            android:orientation="vertical"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="14.32dp"
+                android:layout_marginTop="20.96dp"
+                android:text="@string/playfun_no_open"
+                android:textColor="@color/gray_dark"
+                android:textSize="@dimen/text_size_middle" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="47.51dp"
+                android:layout_marginTop="13.97dp"
+                android:background="@drawable/edittext_background"
+                android:paddingLeft="14.32dp"
+                android:paddingRight="14.32dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/playfun_push_setting_chat"
+                    android:textColor="@color/gray_dark"
+                    android:textSize="@dimen/text_size_middle"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:thumb="@drawable/switch_thumb"
+                    app:track="@drawable/switch_track"
+                    android:checked="@={viewModel.pushSettingEntity.chat}"
+                    binding:onClickCommand="@{viewModel.switchOnClickCommand}" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="47.51dp"
+                android:background="@drawable/edittext_background"
+                android:paddingLeft="14.32dp"
+                android:paddingRight="14.32dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/playfun_push_setting_broadcast"
+                    android:textColor="@color/gray_dark"
+                    android:textSize="@dimen/text_size_middle"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:thumb="@drawable/switch_thumb"
+                    app:track="@drawable/switch_track"
+                    android:checked="@={viewModel.pushSettingEntity.sign}"
+                    binding:onClickCommand="@{viewModel.switchOnClickCommand}" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="47.51dp"
+                android:background="@drawable/edittext_background"
+                android:paddingLeft="14.32dp"
+                android:paddingRight="14.32dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/playfun_push_setting_give"
+                    android:textColor="@color/gray_dark"
+                    android:textSize="@dimen/text_size_middle"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:thumb="@drawable/switch_thumb"
+                    app:track="@drawable/switch_track"
+                    android:checked="@={viewModel.pushSettingEntity.give}"
+                    binding:onClickCommand="@{viewModel.switchOnClickCommand}" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="47.51dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/edittext_background"
+                android:paddingLeft="14.32dp"
+                android:paddingRight="14.32dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/playfun_push_setting_check"
+                    android:textColor="@color/gray_dark"
+                    android:textSize="@dimen/text_size_middle"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:thumb="@drawable/switch_thumb"
+                    app:track="@drawable/switch_track"
+                    android:checked="@={viewModel.pushSettingEntity.apply}"
+                    binding:onClickCommand="@{viewModel.switchOnClickCommand}" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="14.32dp"
+                android:layout_marginTop="20.96dp"
+                android:text="@string/playfun_open"
+                android:textColor="@color/gray_dark"
+                android:textSize="@dimen/text_size_middle" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="47.51dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/edittext_background"
+                android:paddingLeft="14.32dp"
+                android:paddingRight="14.32dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/playfun_push_setting_sound"
+                    android:textColor="@color/gray_dark"
+                    android:textSize="@dimen/text_size_middle"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:thumb="@drawable/switch_thumb"
+                    app:track="@drawable/switch_track"
+                    android:checked="@={viewModel.isSound}"
+                    binding:onClickCommand="@{viewModel.isSoundOnClickCommand}" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="47.51dp"
+                android:background="@drawable/edittext_background"
+                android:paddingLeft="14.32dp"
+                android:paddingRight="14.32dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/playfun_push_setting_shock"
+                    android:textColor="@color/gray_dark"
+                    android:textSize="@dimen/text_size_middle"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:thumb="@drawable/switch_thumb"
+                    app:track="@drawable/switch_track"
+                    android:checked="@={viewModel.isShake}"
+                    binding:onClickCommand="@{viewModel.isShakeOnClickCommand}" />
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

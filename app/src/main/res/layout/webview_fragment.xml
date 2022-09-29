@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.dl.playfun.ui.mine.webview.WebViewViewModel" />
+    </data>
+
+    <LinearLayout
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ProgressBar
+                android:id="@+id/pb_browser_progress"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:progressDrawable="@drawable/progress_gradient_bg"
+                android:visibility="gone" />
+
+            <com.dl.playfun.widget.action.StatusLayout
+                android:id="@+id/hl_browser_hint"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.dl.playfun.ui.webview.BrowserView
+                    android:id="@+id/web_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </com.dl.playfun.widget.action.StatusLayout>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

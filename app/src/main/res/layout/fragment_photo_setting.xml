@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.dl.playfun.ui.mine.photosetting.PhotoSettingViewModel" />
+
+        <import type="me.tatarka.bindingcollectionadapter2.LayoutManagers" />
+
+        <import type="com.dl.playfun.widget.recyclerview.LineManagers" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="com.dl.playfun.ui.mine.photosetting.PhotoSettingFragment">
+
+        <View
+            android:id="@+id/status_bar_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/status_bar_color" />
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay"
+            app:elevation="0dp">
+
+            <com.dl.playfun.widget.BasicToolbar
+                android:id="@+id/basic_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/action_bar_height"
+                app:toolbar_title="@{viewModel.titleText}">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp">
+
+                    <TextView
+                        android:id="@+id/tv_create"
+                        style="@style/ActionBarMenu"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:text="@{viewModel.titleBtnText}"
+                        binding:onClickCommand="@{viewModel.deleteOnClickCommand}" />
+                </RelativeLayout>
+            </com.dl.playfun.widget.BasicToolbar>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/container_background"
+            android:orientation="vertical"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/view_pager"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                app:current_item="@{viewModel.currentItem}"
+                binding:adapter="@{viewModel.adAdapter}"
+                binding:itemBinding="@{viewModel.itemBinding}"
+                binding:items="@{viewModel.items}"
+                binding:onPageSelectedCommand="@{viewModel.onPageSelectedCommand}" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@color/white"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="16dp"
+                    android:button="@drawable/chat_checkbox_selector"
+                    android:checked="@={viewModel.isBurn}"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="@string/playfun_phono_setting_reading_burn"
+                    android:textColor="@color/gray_middle"
+                    android:textSize="@dimen/text_size_big"
+                    binding:onClickCommand="@{viewModel.burnOnClickCommand}" />
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

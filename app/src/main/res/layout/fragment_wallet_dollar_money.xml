@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+
+        <import type="com.dl.playfun.R" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.dl.playfun.ui.mine.wallet.girl.TwDollarMoneyViewModel" />
+
+        <import type="me.tatarka.bindingcollectionadapter2.LayoutManagers" />
+
+        <import type="com.dl.playfun.widget.recyclerview.LineManagers" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical"
+        tools:context="com.dl.playfun.ui.mine.wallet.WalletFragment">
+
+        <View
+            android:id="@+id/status_bar_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/status_bar_color" />
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay"
+            app:elevation="0dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.dl.playfun.widget.BasicToolbar
+                    android:id="@+id/basic_toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/action_bar_height"
+                    app:toolbar_title="@string/playfun_crystal_details_text" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginEnd="14dp"
+                    android:text="@string/playfun_tw_money_text2"
+                    android:textColor="@color/purple1"
+                    android:textSize="12sp"
+                    android:visibility="@{viewModel.isShowProfitTips?View.VISIBLE:View.GONE}"
+                    binding:onClickCommand="@{viewModel.toWebViewProfitonClickCommand}" />
+            </RelativeLayout>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="141dp">
+
+                <TextView
+                    android:id="@+id/tw_diamond_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="34dp"
+                    android:layout_marginTop="18dp"
+                    android:elevation="11dp"
+                    android:text="@{viewModel.totalProfits}"
+                    android:textColor="@color/white"
+                    android:textSize="35sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tw_diamond_num"
+                    android:layout_alignStart="@+id/tw_diamond_num"
+                    android:elevation="11dp"
+                    tools:text="@string/playfun_tw_money_text"
+                    android:text="@{viewModel.currencyName}"
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/crystal_card_bg" />
+            </RelativeLayout>
+
+            <com.scwang.smart.refresh.layout.SmartRefreshLayout
+                android:id="@+id/refresh_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/task_back_group"
+                binding:onLoadMoreCommand="@{viewModel.onLoadMoreCommand}"
+                binding:onRefreshCommand="@{viewModel.onRefreshCommand}">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                        binding:adapter="@{viewModel.adapter}"
+                        binding:itemBinding="@{viewModel.itemBinding}"
+                        binding:items="@{viewModel.observableList}"
+                        binding:layoutManager="@{LayoutManagers.linear()}"
+                        binding:lineManager="@{LineManagers.horizontal(1,72,0)}" />
+
+                    <include
+                        layout="@layout/empty_view_wallet"
+                        app:stateModel="@{viewModel.stateModel}" />
+                </RelativeLayout>
+            </com.scwang.smart.refresh.layout.SmartRefreshLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="89dp"
+                android:orientation="vertical"
+                android:visibility="@{viewModel.enableWithdraw == 1?View.VISIBLE:View.GONE}"
+                >
+
+                <Button
+                    style="@style/ButtonPrimary"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="30dp"
+                    android:text="@{viewModel.withdrawString}"
+                    android:textSize="14sp"
+                    binding:onClickCommand="@{viewModel.withdrawonClickCommand}" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

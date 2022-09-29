@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="itemEntity"
+            type="com.dl.playfun.entity.CoinPusherRoomDeviceInfo" />
+        <import type="com.dl.playfun.R" />
+    </data>
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/card_radius15_with_shadow"
+            android:layout_width="163dp"
+            android:layout_height="wrap_content"
+            >
+            <androidx.appcompat.widget.AppCompatTextView
+                android:elevation="11dp"
+                binding:drawable_color="@{itemEntity.status == 1 ? @color/red_9 : @color/green_14E29A}"
+                binding:drawable_radius_leftTop="@{15}"
+                binding:drawable_radius_rightBottom="@{15}"
+                android:includeFontPadding="false"
+                android:gravity="center"
+                android:layout_width="90dp"
+                android:layout_height="24dp"
+                android:text="@{itemEntity.status == 1 ? @string/playfun_coinpusher_text_1 : @string/playfun_coinpusher_text_2}"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                tools:text="@string/playfun_coinpusher_text_1"
+                tools:background="@color/red_9"
+                />
+
+            <com.dl.playfun.widget.roundedimageview.RoundedImageView
+                android:id="@+id/img_icon"
+                android:layout_width="match_parent"
+                android:layout_height="158dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/img_pc_default_load"
+                app:riv_corner_radius="10dp"
+                binding:imageErrorPlaceholderRes="@{R.drawable.img_pc_default_load}"
+                binding:imagePath="@{itemEntity.icon}"
+                binding:imagePlaceholderRes="@{R.drawable.img_pc_default_load}"
+                binding:resizeH="@{158}"
+                binding:resizeW="@{163}" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/icon_name"
+                android:includeFontPadding="false"
+                android:layout_below="@+id/img_icon"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="9dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="G1"
+                android:text="@{itemEntity.nickname}"
+                android:textColor="#ff333333"
+                android:textSize="14sp"
+                />
+            <LinearLayout
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp"
+                android:layout_alignStart="@+id/icon_name"
+                android:layout_below="@+id/icon_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/img_start"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/img_coinpusher_currency" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:includeFontPadding="false"
+                    android:layout_marginStart="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{String.format(@string/playfun_coinpusher_text_3,itemEntity.money)}"
+                    android:textColor="@color/pseekbar_process"
+                    android:textSize="14sp"
+                    tools:text="@string/playfun_coinpusher_text_3"
+                    />
+            </LinearLayout>
+
+        </RelativeLayout>
+    </FrameLayout>
+
+</layout>

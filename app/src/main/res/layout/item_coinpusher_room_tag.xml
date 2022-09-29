@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="79dp"
+    android:layout_height="40dp"
+    xmlns:tools="http://schemas.android.com/tools">
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/img_icon"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:src="@drawable/img_coinpusher_tag_checked"
+        />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_name"
+        android:layout_marginTop="7dp"
+        android:gravity="center"
+        android:includeFontPadding="false"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Lv1"
+        android:textStyle="bold"
+        android:textColor="@color/pseekbar_process"
+        android:textSize="16sp"
+        />
+</FrameLayout>

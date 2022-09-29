@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.text.Html" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.dl.playfun.ui.mine.vipsubscribe.VipSubscribeItemViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="87dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        binding:onClickCommand="@{viewModel.itemClick}">
+
+        <RelativeLayout
+            android:id="@+id/vip_layout"
+            android:layout_width="87dp"
+            android:layout_height="110dp"
+            android:layout_marginTop="8dp"
+            android:background="@{viewModel.itemEntity.selected ? @drawable/img_vip_sub_item_bg_selected : @drawable/img_vip_sub_item_bg_normal}"
+            tools:background="@drawable/img_vip_sub_item_bg_selected">
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="57dp"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="3.5dp"
+                android:text="@{viewModel.getTitleText}"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="9dp"
+                android:visibility="@{viewModel.getTitleShow}"
+                tools:text="送6216鑽石" />
+
+            <LinearLayout
+                android:id="@+id/rl_tip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_title"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/img_vip_sub_item_recommend_select"
+                    android:scaleType="centerCrop"
+                    android:visibility="@{viewModel.isRecommendShow()}"
+                    tools:src="@drawable/img_vip_sub_item_recommend_select"
+                    tools:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/tv_tip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.itemEntity.goodsName}"
+                    android:textColor="@{viewModel.itemEntity.selected ? @color/vip_sub_color_selected_tip:@color/vip_sub_color_normal}"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    tools:text="一个月"
+                    tools:textColor="@color/vip_sub_color_normal" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/center_rl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rl_tip"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="8dp">
+
+                <TextView
+                    android:id="@+id/payPrice_left"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/payPrice"
+                    android:layout_marginBottom="7px"
+                    android:text="@{viewModel.itemEntity.symbol}"
+                    android:textAlignment="center"
+                    android:textColor="@{viewModel.itemEntity.selected ? @color/vip_sub_color_selected:@color/vip_sub_color_normal}"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    tools:textColor="@color/vip_sub_color_normal" />
+
+                <TextView
+                    android:id="@+id/payPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="3dp"
+                    android:layout_toRightOf="@+id/payPrice_left"
+                    android:text="@{viewModel.itemEntity.salePrice}"
+                    android:textColor="@{viewModel.itemEntity.selected ? @color/vip_sub_color_selected:@color/vip_sub_color_normal}"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    tools:text="3301"
+                    tools:textColor="@color/vip_sub_color_normal" />
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/center_rl"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="8dp"
+                android:text="@{viewModel.getDayPrice}"
+                android:textColor="@{viewModel.itemEntity.selected ? @color/vip_sub_color_selected:@color/vip_sub_color_normal}"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:visibility="@{viewModel.getDayPrice == null ? View.GONE:View.VISIBLE}"
+                tools:text="￥3.3/天"
+                tools:textColor="@color/vip_sub_color_normal" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</layout>

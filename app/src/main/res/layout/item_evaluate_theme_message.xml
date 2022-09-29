@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.dl.playfun.R" />
+
+        <import type="com.dl.playfun.utils.TimeUtils" />
+
+        <variable
+            name="viewModel"
+            type="com.dl.playfun.ui.message.evaluatemessage.EvaluateThemMessageItemViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        binding:onLongClickCommand="@{viewModel.itemLongClick}">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="14dp">
+
+            <com.dl.playfun.widget.roundedimageview.RoundedImageView
+                android:id="@+id/iv_avatar"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_centerVertical="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/default_avatar"
+                app:riv_oval="true"
+                binding:imageErrorPlaceholderRes="@{R.drawable.default_avatar}"
+                binding:imagePlaceholderRes="@{R.drawable.default_avatar}"
+                binding:imageThumbPath="@{viewModel.itemEntity.user.avatar}" />
+
+            <TextView
+                android:id="@+id/tv_content"
+                style="@style/MessageItem"
+                android:layout_toRightOf="@+id/iv_avatar"
+                android:background="@color/transparent"
+                android:padding="0dp"
+                app:htmlText="@{viewModel.itemEntity.content}"
+                tools:text="興 peter55566 的交流愉快嗎？趕快評價一下她吧，趕快評價一下她吧，趕快評價一下她吧" />
+
+            <TextView
+                android:id="@+id/tv_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_content"
+                android:layout_alignLeft="@id/tv_content"
+                android:layout_marginTop="10dp"
+                android:text='@{viewModel.itemEntity.createdAt != null ? TimeUtils.getFriendlyTimeSpan(viewModel.itemEntity.createdAt):""}'
+                android:textColor="@color/gray_light"
+                android:textSize="@dimen/text_size_mini"
+                tools:text="2周前" />
+        </RelativeLayout>
+
+        <Button
+            style="@style/ButtonSecondary"
+            android:layout_width="75dp"
+            android:layout_height="25dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="15dp"
+            android:text="@string/playfun_comment_now"
+            android:textColor="@color/text_7639FF"
+            android:textSize="11sp"
+            binding:onClickCommand="@{viewModel.itemClick}"
+            tools:ignore="SmallSp" />
+    </LinearLayout>
+</layout>

@@ -1,0 +1,20 @@
+rootProject.name='Friendly_CC'
+include ':app', ':mvvmhabit'
+include ':jsBridge'
+include ':lib-src'
+include ':AliyunVideoCommon'
+include ':AliyunSVideoBase'
+include ':AlivcMedia'
+include ':AliyunCrop'
+include ':QueenBeauty'
+include ':faceunity'
+include ':lib-toast'
+//include ':_demo'
+
+/*IM聊天组件*/
+include ':tuicore'
+include ':tuichat'
+//include ':tuicontact'
+include ':tuiconversation'
+include ':tuicalling'
+/*IM聊天组件*/

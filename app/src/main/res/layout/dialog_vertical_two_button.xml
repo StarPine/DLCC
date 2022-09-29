@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginStart="30dp"
+    android:layout_marginEnd="30dp"
+    android:background="@color/transparent"
+    android:gravity="center"
+    android:minWidth="300dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/radius_layout"
+        android:orientation="vertical"
+        android:paddingBottom="20dp">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/playfun_mine_trace_delike"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/tv_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:text="@string/playfun_mine_trace_delike"
+            android:textAlignment="center"
+            android:textColor="#FF90919F"
+            android:textSize="13sp" />
+
+        <Button
+            android:id="@+id/button_top"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/trace_channel2"
+            android:text="@string/playfun_task_fragment_bonus_dialog_2"
+            android:textColor="@color/purple1" />
+        <Button
+            android:id="@+id/button_below"
+            style="@style/ButtonPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:text="@string/playfun_dialog_set_withdraw_account_confirm" />
+
+    </LinearLayout>
+</LinearLayout>

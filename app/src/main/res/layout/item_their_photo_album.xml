@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.dl.playfun.R" />
+
+        <variable
+            name="viewModel"
+            type="com.dl.playfun.ui.userdetail.theirphotoalbum.TheirPhotoAlbumItemViewModel" />
+    </data>
+
+    <com.dl.playfun.widget.SquareLayout
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginBottom="7dp"
+        binding:onClickCommand="@{viewModel.itemClick}">
+
+        <com.dl.playfun.widget.roundedimageview.RoundedImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            app:riv_border_color="@{viewModel.getBorderColor}"
+            app:riv_border_width="@{viewModel.getBorderWith}"
+            app:riv_corner_radius="8dip"
+            binding:burnStatus="@{viewModel.itemEntity.burnStatus}"
+            binding:burnThumbImgPath="@{viewModel.itemEntity.src}"
+            binding:isBurn="@{viewModel.itemEntity.isBurn == 1 || (viewModel.itemEntity.isRedPackage == 1 &amp;&amp; viewModel.itemEntity.isPay == 0)}"
+            tools:src="@drawable/img_agreement_dialog_top" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:padding="3dp"
+            android:text="@{viewModel.photoShowName}"
+            android:textColor="@{viewModel.getPhotoTextColor}"
+            android:textSize="10sp" />
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:paddingStart="0dp"
+            android:paddingTop="@{viewModel.hasBorder() ? @dimen/border_with_2dp:@dimen/border_with_0dp}"
+            android:paddingEnd="@{viewModel.hasBorder() ? @dimen/border_with_2dp:@dimen/border_with_0dp}">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/photo_mark_right"
+                android:padding="3dp"
+                android:text="@string/playfun_self"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_mini"
+                android:visibility="@{viewModel.itemEntity.verificationType == 1 ? View.VISIBLE:View.GONE}" />
+        </FrameLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@{viewModel.getLeftTagBackground}"
+            android:padding="3dp"
+            android:src="@drawable/ic_hot"
+            android:visibility="@{viewModel.itemEntity.isBurn == 1 ? View.VISIBLE:View.GONE}" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@{viewModel.getLeftTagBackground}"
+            android:padding="3dp"
+            android:src="@drawable/ic_red_package"
+            android:visibility="@{viewModel.itemEntity.isRedPackage == 1 ? View.VISIBLE:View.GONE}" />
+
+        <!-- 更多数字 -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:background="@drawable/album_more_count_background"
+            android:gravity="center"
+            android:text="@{@string/playfun_user_detail_phone_list_hint(viewModel.moreCount>99?99:viewModel.moreCount)}"
+            android:textColor="@color/white"
+            android:textSize="13sp"
+            android:visibility="@{safeUnbox(viewModel.moreCount) > 0 ? View.VISIBLE:View.GONE}"
+            binding:onClickCommand="@{viewModel.morePhotoOnClickCommand}"
+            tools:visibility="gone" />
+
+        <!-- 视频播放 -->
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ic_play"
+            android:visibility="@{viewModel.itemEntity.type == 2 ? View.VISIBLE:View.GONE}" />
+
+    </com.dl.playfun.widget.SquareLayout>
+</layout>

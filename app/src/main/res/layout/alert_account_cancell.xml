@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:ignore="MissingDefaultResource">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/white_round_bg"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:gravity="center"
+            android:text="@string/playfun_account_text_cancelled"
+            android:textColor="#ff2f2f4d"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/btn_sub"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginStart="55dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="55dp"
+            android:background="@drawable/btn_setting_account_cancel"
+            android:gravity="center"
+            android:text="@string/playfun_roger"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+    </LinearLayout>
+</LinearLayout>

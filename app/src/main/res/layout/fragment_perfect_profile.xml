@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="com.dl.playfun.R" />
+
+        <variable
+            name="viewModel"
+            type="com.dl.playfun.ui.mine.profile.PerfectProfileViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <View
+            android:id="@+id/status_bar_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/status_bar_color" />
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nested_scroll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:descendantFocusability="blocksDescendants"
+            android:fillViewport="true"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="12dp"
+                    android:src="@drawable/ic_toolbar_back"
+                    binding:onClickCommand="@{viewModel.backViewClick}" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="20dp"
+                    android:includeFontPadding="false"
+                    android:text="@string/fragment_perfect_name_phone_hint"
+                    android:textColor="#ff333333"
+                    android:textSize="30sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="12dp"
+                    android:includeFontPadding="false"
+                    android:text="@string/fragment_perfect_reg_hint"
+                    android:textColor="#ff333333"
+                    android:textSize="14sp" />
+
+
+                <com.dl.playfun.widget.image.CircleImageView
+                    android:id="@+id/img_avatar"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="44dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/perfect_profile_avatar"
+                    binding:imageErrorPlaceholderRes="@{R.drawable.perfect_profile_avatar}"
+                    binding:imagePlaceholderRes="@{R.drawable.perfect_profile_avatar}"
+                    binding:imageThumbPath="@{viewModel.UserAvatar}"
+                    binding:onClickCommand="@{viewModel.avatarOnClickCommand}"
+                    tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:includeFontPadding="false"
+                    android:text="@string/playfun_perfect_tips"
+                    android:textColor="@color/text_9EA1B0"
+                    android:textSize="14sp" />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginEnd="30dp"
+                    android:background="@drawable/perfect_input_backdrop"
+                    android:gravity="center_vertical">
+
+                    <EditText
+                        android:id="@+id/edit_nickname"
+                        style="@style/EditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:hint="@string/playfun_fragment_perfect_name_hint"
+                        android:inputType="text"
+                        android:maxLength="10"
+                        android:text="@={viewModel.UserName}"
+                        android:textSize="14sp"
+                        tools:ignore="TouchTargetSizeCheck" />
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:elevation="11dp"
+                        android:clickable="true"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:layout_marginEnd="15dp"
+                        android:layout_alignParentEnd="true"
+                        android:scaleType="fitXY"
+                        binding:onClickCommand="@{viewModel.refreshOnClick}"
+                        android:src="@drawable/icon_nickname_refresh" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="80dp"
+                    android:background="@drawable/btn_perfect_profile_sub"
+                    binding:onClickCommand="@{viewModel.nextViewClick}" />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+</layout>

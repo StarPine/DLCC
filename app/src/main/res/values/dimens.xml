@@ -1,0 +1,45 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="red_dot">12dp</dimen>
+    <dimen name="dp_6">6dp</dimen>
+    <dimen name="dp_18">18dp</dimen>
+    <dimen name="dp_20">20dp</dimen>
+    <dimen name="dp_22">22dp</dimen>
+    <dimen name="dp_23">23dp</dimen>
+    <dimen name="dp_25">25dp</dimen>
+    <dimen name="dp_45">45dp</dimen>
+    <dimen name="dp_145">145dp</dimen>
+    <dimen name="action_bar_height">44dp</dimen>
+    <dimen name="tab_bar_height">30dp</dimen>
+
+    <dimen name="text_size_mini">11.18sp</dimen>
+    <dimen name="text_size_small">11.87sp</dimen>
+    <dimen name="text_size_small_9">9sp</dimen>
+    <dimen name="text_size_middle">13sp</dimen>
+    <dimen name="text_size_middle2">15sp</dimen>
+    <dimen name="text_size_big">16sp</dimen>
+    <dimen name="text_size_big_22">22sp</dimen>
+    <dimen name="text_size_small_12">12sp</dimen>
+    <dimen name="text_size_small_14">14sp</dimen>
+    <dimen name="text_size_toolbar_title">18sp</dimen>
+    <dimen name="text_size_42">14.67sp</dimen>
+    <dimen name="text_size_1067">10.67sp</dimen>
+    <dimen name="profile_item_height">56dp</dimen>
+    <dimen name="text_size_14">14sp</dimen>
+
+    <dimen name="border_with_2dp">2dp</dimen>
+    <dimen name="border_with_0dp">0dp</dimen>
+    <dimen name="home_bottom_nav_height">51dp</dimen>
+
+    <!-- dp and sp values, must be defind in this file! -->
+    <!-- view size,you can add if there is no one -->
+    <dimen name="px_20">8.5333dp</dimen>
+    <dimen name="px_40">17.0667dp</dimen>
+    <dimen name="px_42">17.9200dp</dimen>
+    <dimen name="px_45">19.2000dp</dimen>
+    <dimen name="px_48">20.4800dp</dimen>
+    <dimen name="px_69">29.4400dp</dimen>
+    <dimen name="px_130">55.4667dp</dimen>
+    <dimen name="px_177">75.5200dp</dimen>
+    <dimen name="px_180">76.8000dp</dimen>
+</resources>

@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.dl.playfun.R" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.dl.playfun.ui.message.coinredpackagedetail.CoinRedPackageDetailViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="com.dl.playfun.ui.message.coinredpackagedetail.CoinRedPackageDetailFragment">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/container_background"
+            android:fillViewport="true">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/iv_top"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/redpackage_detail_top" />
+
+                <com.dl.playfun.widget.roundedimageview.RoundedImageView
+                    android:id="@+id/iv_avatar"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_below="@id/iv_top"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="-50dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/default_avatar"
+                    app:riv_corner_radius="8dip"
+                    binding:imageErrorPlaceholderRes="@{R.drawable.default_avatar}"
+                    binding:imagePath="@{viewModel.redpackageDetail.user.avatar}"
+                    binding:imagePlaceholderRes="@{R.drawable.default_avatar}"
+                    binding:resizeH="@{70}"
+                    binding:resizeW="@{70}"
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/iv_avatar"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp">
+
+                    <TextView
+                        android:id="@+id/tv_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="@{@string/playfun_chat_redpackage_detail_name(viewModel.redpackageDetail.user.nickname)}"
+                        android:textSize="@dimen/text_size_big" />
+
+                    <TextView
+                        android:id="@+id/tv_desc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_name"
+                        android:text="@{@string/playfun_chat_redpackage_detail_desc(viewModel.redpackageDetail.desc)}"
+                        android:textColor="@color/red_7c"
+                        android:textSize="@dimen/text_size_middle" />
+
+                    <TextView
+                        android:id="@+id/tv_coin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_desc"
+                        android:layout_marginTop="30dp"
+                        android:drawableLeft="@drawable/ic_coin_big"
+                        android:drawablePadding="10dp"
+                        android:text="@{String.valueOf(viewModel.redpackageDetail.money)}"
+                        android:textSize="46dp" />
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="2px"
+                        android:layout_marginTop="30dp"
+                        android:src="@color/divider" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="40dp"
+                        android:text="@{viewModel.statusText}"
+                        android:textColor="@color/green"
+                        android:textSize="@dimen/text_size_big"
+                        android:textStyle="bold"
+                        android:visibility="@{(viewModel.isSender || (!viewModel.isSender &amp;&amp; viewModel.redpackageDetail.status != 0)) ? View.VISIBLE:View.GONE}" />
+
+                    <Button
+                        style="@style/ButtonPrimary"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="40dp"
+                        android:text="@string/playfun_receive"
+                        android:visibility="@{(!viewModel.isSender &amp;&amp; viewModel.redpackageDetail.status == 0) ? View.VISIBLE:View.GONE}"
+                        binding:onClickCommand="@{viewModel.receiveOnClickCommand}" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:gravity="center"
+                        android:text="@{viewModel.tipText}"
+                        android:textColor="@color/gray_light"
+                        android:textSize="@dimen/text_size_middle"
+                        android:visibility="@{(viewModel.isSender || (!viewModel.isSender &amp;&amp; viewModel.redpackageDetail.status == 1)) ? View.VISIBLE:View.GONE}" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        android:drawableRight="@drawable/ic_arrow_right_blue"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:text="@string/playfun_contact_customer"
+                        android:textColor="@color/blue"
+                        binding:onClickCommand="@{viewModel.linkServiceOnClickCommand}" />
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <include
+            layout="@layout/empty_view"
+            app:stateModel="@{viewModel.stateModel}" />
+
+        <View
+            android:id="@+id/status_bar_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/transparent" />
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/status_bar_view"
+            android:background="@color/transparent"
+            android:theme="@style/AppTheme.AppBarOverlay"
+            app:elevation="0dp">
+
+            <com.dl.playfun.widget.BasicToolbar
+                android:id="@+id/basic_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/action_bar_height"
+                app:toolbar_title="@string/playfun_red_package_detail" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+    </RelativeLayout>
+</layout>

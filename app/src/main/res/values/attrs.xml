@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="dlpickerview">
+        <attr name="dlwheelview_gravity">
+            <enum name="center" value="17"/>
+            <enum name="left" value="3"/>
+            <enum name="right" value="5"/>
+        </attr>
+        <attr name="dlwheelview_textSize" format="dimension"/>
+        <attr name="dlwheelview_textColorOut" format="color"/>
+        <attr name="dlwheelview_textColorCenter" format="color"/>
+        <attr name="dlwheelview_dividerColor" format="color"/>
+        <attr name="dlwheelview_dividerWidth" format="dimension"/>
+        <attr name="dlwheelview_lineSpacingMultiplier" format="float"/>
+    </declare-styleable>
+
+    <declare-styleable name="ImageGridView">
+        <attr name="ngv_singleImageSize" format="dimension" />
+        <attr name="ngv_singleImageRatio" format="float" />
+        <attr name="ngv_gridSpacing" format="dimension" />
+        <attr name="ngv_maxSize" format="integer" />
+        <attr name="ngv_mode" format="enum">
+            <enum name="fill" value="0" />
+            <enum name="grid" value="1" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="BasicToolbar">
+        <attr name="toolbar_title" format="string" />
+        <attr name="toolbar_title_color" format="color" />
+        <attr name="boolbar_back_image" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="RoundProcess">
+        <attr name="roundColor" format="color" />
+        <attr name="roundProgressColor" format="color" />
+        <attr name="textColor" format="color" />
+        <attr name="textSize" format="dimension" />
+        <attr name="roundMaxProgress" format="float" />
+    </declare-styleable>
+
+    <attr name="htmlText" format="reference" />
+
+    <attr name="burnThumbImgPath" format="string" />
+    <attr name="burnImgPath" format="string" />
+    <attr name="isBurn" format="boolean" />
+    <attr name="burnStatus" format="integer" />
+
+    <attr name="addWaterMark" format="boolean" />
+    <attr name="imagePath" format="reference" />
+    <attr name="imageThumbPath" format="reference" />
+    <attr name="imagePlaceholderRes" format="reference" />
+    <attr name="imageErrorPlaceholderRes" format="reference" />
+    <attr name="LocalImagePath" format="reference" />
+
+    <attr name="icon_src" format="reference" />
+
+    <attr name="current_item" format="reference" />
+
+    <attr name="round_progress" format="reference" />
+    <attr name="round_max_progress" format="reference" />
+
+    <attr name="videoUri" format="reference" />
+    <attr name="playStatus" format="integer" />
+
+    <attr name="onLongTouchCommand" format="reference" />
+    <attr name="burnId" format="reference" />
+    <attr name="burnCommand" format="reference" />
+    <attr name="tapCommand" format="reference" />
+
+    <attr name="burnImgEnt" format="reference" />
+    <attr name="videoCompletionCommand" format="reference" />
+
+    <declare-styleable name="FolderTextView">
+        <attr name="foldText" format="string" />
+        <attr name="unFoldText" format="string" />
+        <attr name="foldLine" format="integer" />
+        <attr name="tailTextColor" format="color" />
+        <attr name="canFoldAgain" format="boolean" />
+    </declare-styleable>
+    <!--文字模糊自定义属性-->
+    <attr name="tracVipTextMF" format="reference" />
+    <attr name="traceIsVip" format="boolean" />
+    <attr name="mh_width" format="integer" />
+    <attr name="mh_height" format="integer" />
+    <attr name="mh_textview" format="reference" />
+    <attr name="animateImage" format="boolean" />
+    <attr name="textTypeDinBold" format="boolean" />
+    <!--==================APP更新弹窗==================-->
+    <declare-styleable name="UpdateAppNumberProgressBar">
+        <attr name="progress_current" format="integer" />
+        <attr name="progress_max" format="integer" />
+
+        <attr name="progress_unreached_color" format="color" />
+        <attr name="progress_reached_color" format="color" />
+
+        <attr name="progress_reached_bar_height" format="dimension" />
+        <attr name="progress_unreached_bar_height" format="dimension" />
+
+        <attr name="progress_text_size" format="dimension" />
+        <attr name="progress_text_color" format="color" />
+
+        <attr name="progress_text_offset" format="dimension" />
+
+        <attr name="progress_text_visibility" format="enum">
+            <enum name="visible" value="0" />
+            <enum name="invisible" value="1" />
+        </attr>
+    </declare-styleable>
+    <!--==================APP更新弹窗==================-->
+
+    <declare-styleable name="QuSnap">
+        <attr name="qusnap_background_color" format="reference"/>
+        <attr name="qusnap_tint_color" format="reference"/>
+        <attr name="qusnap_timeline_backgound_color" format="reference"/>
+        <attr name="qusnap_timeline_del_backgound_color" format="reference"/>
+        <attr name="qusnap_back_icon" format="reference"/>
+        <attr name="qusnap_back_icon_disable" format="reference"/>
+        <attr name="qusnap_beauty_icon" format="reference"/>
+        <attr name="qusnap_beauty_icon_visibility" format="integer">
+            <enum name="visible" value="0"/>
+            <enum name="invisible" value="1"/>
+            <enum name="gone" value="2"/>
+        </attr>
+        <attr name="qusnap_switch_camera_icon" format="reference"/>
+        <attr name="qusnap_switch_camera_icon_visibility" format="integer">
+            <enum name="visible" value="0"/>
+            <enum name="invisible" value="1"/>
+            <enum name="gone" value="2"/>
+        </attr>
+        <attr name="qusnap_switch_light_icon" format="reference"/>
+        <attr name="qusnap_switch_light_icon_disable" format="reference"/>
+        <attr name="qusnap_switch_light_icon_visibility" format="integer">
+            <enum name="visible" value="0"/>
+            <enum name="invisible" value="1"/>
+            <enum name="gone" value="2"/>
+        </attr>
+        <attr name="qusnap_gallery_icon" format="reference"/>
+        <attr name="qusnap_gallery_icon_disable" format="reference"/>
+        <attr name="qusnap_gallery_icon_visibility" format="integer">
+            <enum name="visible" value="0"/>
+            <enum name="invisible" value="1"/>
+            <enum name="gone" value="2"/>
+        </attr>
+        <attr name="qusnap_record_icon" format="reference"/>
+        <attr name="qusnap_record_icon_visibility" format="integer">
+            <enum name="visible" value="0"/>
+            <enum name="invisible" value="1"/>
+            <enum name="gone" value="2"/>
+        </attr>
+        <attr name="qusnap_delete_icon" format="reference"/>
+        <attr name="qusnap_delete_icon_visibility" format="integer">
+            <enum name="visible" value="0"/>
+            <enum name="invisible" value="1"/>
+            <enum name="gone" value="2"/>
+        </attr>
+        <attr name="qusnap_complete_icon" format="reference"/>
+        <attr name="qusnap_complete_icon_visibility" format="integer">
+            <enum name="visible" value="0"/>
+            <enum name="invisible" value="1"/>
+            <enum name="gone" value="2"/>
+        </attr>
+        <attr name="qusnap_time_txt_color" format="reference"/>
+        <attr name="qusnap_time_txt_size" format="dimension"/>
+        <attr name="qusnap_time_txt_visibility" format="integer">
+            <enum name="visible" value="0"/>
+            <enum name="invisible" value="1"/>
+            <enum name="gone" value="2"/>
+        </attr>
+        <attr name="qusnap_time_line_pos_y" format="dimension"/>
+        <attr name="qusnap_crop_sweep_left" format="reference"/>
+        <attr name="qusnap_crop_sweep_right" format="reference"/>
+        <attr name="qusnap_crop_seek_frame" format="reference"/>
+        <attr name="qusnap_crop_seek_padding_color" format="reference"/>
+        <attr name="qusnap_crop_icon_transform" format="reference"/>
+        <attr name="qusnap_crop_icon_transform_visibility" format="integer">
+            <enum name="visible" value="0"/>
+            <enum name="invisible" value="1"/>
+            <enum name="gone" value="2"/>
+        </attr>
+        <attr name="qusnap_crop_time_txt_color" format="reference"/>
+        <attr name="qusnap_crop_time_txt_size" format="dimension"/>
+        <attr name="qusnap_crop_txt_visibility" format="integer">
+            <enum name="visible" value="0"/>
+            <enum name="invisible" value="1"/>
+            <enum name="gone" value="2"/>
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="CustomImageView">
+        <attr name="min_scale_factor" format="float"/>
+        <attr name="max_scale_factor" format="float"/>
+        <attr name="can_back_translate" format="boolean"/>
+        <attr name="can_back_rotate" format="boolean"/>
+        <attr name="can_back_scale" format="boolean"/>
+        <attr name="animator_time" format="integer"/>
+    </declare-styleable>
+    <!--    单次播放搭讪成功-->
+    <attr name="accountCollect" format="boolean"/>
+</resources>

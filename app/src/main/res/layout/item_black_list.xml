@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.dl.playfun.R" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.dl.playfun.ui.mine.blacklist.BlackListItemViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="14dp"
+        binding:onClickCommand="@{viewModel.itemClick}">
+
+        <com.dl.playfun.widget.roundedimageview.RoundedImageView
+            android:id="@+id/iv_avatar"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/default_avatar"
+            app:riv_corner_radius="8dip"
+            binding:imageErrorPlaceholderRes="@{R.drawable.default_avatar}"
+            binding:imagePlaceholderRes="@{R.drawable.default_avatar}"
+            binding:imageThumbPath="@{viewModel.itemEntity.user.avatar}"
+            binding:resizeH="@{50}"
+            binding:resizeW="@{50}" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/iv_avatar"
+            android:text="@{viewModel.itemEntity.user.nickname}"
+            android:textColor="@color/gray_dark"
+            android:textSize="@dimen/text_size_big"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/iv_is_real"
+            android:layout_width="31dp"
+            android:layout_height="13dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="6dp"
+            android:layout_toRightOf="@+id/tv_name"
+            android:src="@drawable/ic_real_man"
+            android:visibility="@{viewModel.isRealManVisible()}"
+            tools:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/iv_goddess"
+            android:layout_width="31dp"
+            android:layout_height="13dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="6dp"
+            android:layout_toRightOf="@+id/iv_is_real"
+            android:src="@drawable/ic_goddess"
+            android:visibility="@{viewModel.isGoddessVisible()}"
+            tools:src="@drawable/ic_goddess" />
+
+        <ImageView
+            android:id="@+id/is_vip"
+            android:layout_width="31dp"
+            android:layout_height="13dp"
+            android:layout_alignBottom="@+id/tv_name"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="7dp"
+            android:layout_toRightOf="@+id/iv_goddess"
+            android:src="@drawable/ic_vip"
+            android:visibility="@{viewModel.isVipVisible()}" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:text="@{safeUnbox(viewModel.isCancel)?@string/playfun_add_block:@string/playfun_cancel_block}"
+            android:textColor="@color/purple"
+            android:textSize="@dimen/text_size_big"
+            binding:onClickCommand="@{viewModel.delBlackClick}" />
+    </RelativeLayout>
+</layout>

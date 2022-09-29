@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+        <import type="com.dl.playfun.R" />
+
+        <import type="me.tatarka.bindingcollectionadapter2.LayoutManagers" />
+
+        <variable
+            name="viewModel"
+            type="com.dl.playfun.ui.message.chatdetail.ChatDetailViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.message.chatdetail.ChatDetailFragment">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/container_background"
+            android:orientation="vertical">
+
+        <View
+            android:id="@+id/status_bar_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/status_bar_color" />
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/top_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay"
+            app:elevation="0dp">
+
+
+            <com.dl.playfun.widget.BasicToolbar
+                android:id="@+id/basic_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                app:toolbar_title="某某莫">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/transparent"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp">
+
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:paddingStart="30dp"
+                            android:src="@{viewModel.onLineDrawables(viewModel.tagEntitys)}"
+                            android:visibility="@{viewModel.tagEntitys.isOnline == 1? View.VISIBLE:View.GONE}" />
+
+                        <ImageView
+                            android:layout_width="14dp"
+                            android:layout_height="9dp"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginBottom="4dp"
+                            android:layout_toStartOf="@+id/tag_title"
+                            android:src="@drawable/tag_invite"
+                            android:visibility="@{viewModel.isTagShow?View.VISIBLE:View.GONE}" />
+
+                    <TextView
+                        android:id="@+id/tag_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="17dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="15dp"
+                        android:gravity="center"
+                        android:text="@string/playfun_chat_detail_tool_bar_title"
+                        android:textColor="#B35EDF"
+                        android:textSize="10sp"
+                        android:visibility="@{viewModel.isTagShow?View.VISIBLE:View.GONE}" />
+
+                    <ImageView
+                        android:id="@+id/iv_notepad"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="20dp"
+                        android:layout_toStartOf="@+id/iv_setting"
+                        android:src="@drawable/icon_notepad"
+                        android:visibility="gone"
+                        binding:onClickCommand="@{viewModel.noteOnClickCommand}" />
+
+                    <ImageView
+                        android:id="@+id/iv_setting"
+                        android:visibility="gone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_toolbar_more"
+                        binding:onClickCommand="@{viewModel.moreOnClickCommand}" />
+
+                </RelativeLayout>
+            </com.dl.playfun.widget.BasicToolbar>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/TopWarn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/playfun_chat_detail_warn" />
+
+
+            <com.tencent.qcloud.tuikit.tuichat.ui.view.ChatView
+                android:id="@+id/chat_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_layout"
+            android:clickable="true"
+            binding:onClickCommand="@{viewModel.callVideoClick}"
+            android:layout_width="72dp"
+            android:layout_height="87dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="25dp"
+            android:layout_marginBottom="135dp"
+            android:visibility="@{viewModel.isShoweCallingVideo?View.VISIBLE:View.GONE}">
+
+            <View
+                android:id="@+id/img_call_layout"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                binding:drawable_color="@{@color/purple_text}"
+                binding:drawable_cornersRadius="@{50}" />
+
+            <com.dl.playfun.widget.image.CircleImageView
+                android:id="@+id/img_face_avatar"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="1dp"
+                android:layout_marginBottom="1dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/default_avatar"
+                app:riv_corner_radius="8dp"
+                binding:imageErrorPlaceholderRes="@{R.drawable.default_avatar}"
+                binding:imagePlaceholderRes="@{R.drawable.default_avatar}"
+                tools:ignore="MissingConstraints" />
+
+            <ImageView
+                android:id="@+id/gif_call_video"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:layout_alignParentBottom="true"
+                android:src="@drawable/logo_call_video" />
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/iv_close"
+            android:layout_alignTop="@+id/rl_layout"
+            android:layout_alignEnd="@+id/rl_layout"
+            android:layout_marginTop="-10dp"
+            android:layout_marginEnd="-10dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/icon_close"
+            binding:onClickCommand="@{viewModel.closeOnClick}"
+            />
+
+        <com.opensource.svgaplayer.SVGAImageView
+            android:id="@+id/gift_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            app:autoPlay="true" />
+
+        <FrameLayout
+            android:layout_width="36dp"
+            android:layout_height="56dp"
+            android:layout_marginTop="@dimen/dp_145"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="13dp"
+            android:visibility="@{viewModel.isHideExchangeRules?View.GONE:View.VISIBLE}"
+            binding:onClickCommand="@{viewModel.crystalOnClick}"
+            >
+
+            <com.opensource.svgaplayer.SVGAImageView
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                app:source="floating.svga"
+                app:autoPlay="true"/>
+        </FrameLayout>
+    </RelativeLayout>
+
+</layout>

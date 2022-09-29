@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 按压状态 -->
+    <item android:state_pressed="true" android:drawable="@drawable/img_coinpusher_playing_coin_up"/>
+
+    <!-- 默认状态 -->
+    <item android:drawable="@drawable/img_coinpusher_playing_coin"/>
+</selector>

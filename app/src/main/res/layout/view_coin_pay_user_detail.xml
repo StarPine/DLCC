@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="0dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="320dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="42dp"
+                    android:background="#F1EEFC">
+
+                    <TextView
+                        android:id="@+id/left_one"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:text="@string/playfun_dialog_coin_usable_balance"
+                        android:textColor="@color/gray_light"
+                        android:textSize="12.57sp" />
+
+                    <TextView
+                        android:id="@+id/tv_balance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="5dp"
+                        android:layout_toRightOf="@+id/left_one"
+                        android:text="0个"
+                        android:textColor="@color/purple"
+                        android:textSize="12.57sp" />
+
+                    <ImageView
+                        android:id="@+id/iv_refresh"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@+id/tv_balance"
+                        android:padding="5dp"
+                        android:src="@drawable/ic_refresh" />
+
+                    <ImageView
+                        android:id="@+id/close"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="15dp"
+                        android:src="@drawable/ic_close_x" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="20dp">
+
+                    <LinearLayout
+                        android:id="@+id/tv_pay_name_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="20dp"
+                        android:orientation="horizontal">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="5dp"
+                                android:text="@string/playfun_dialog_coin_pay_user_detail_title"
+                                android:textColor="@color/gray_middle"
+                                android:textSize="@dimen/text_size_big" />
+
+                            <ImageView
+                                android:id="@+id/user_detail_min"
+                                android:layout_width="22dp"
+                                android:layout_height="22dp"
+                                android:layout_centerVertical="true"
+                                android:layout_gravity="center"
+                                android:layout_marginRight="5dp"
+                                android:layout_toLeftOf="@+id/user_detail_num"
+                                android:background="@drawable/ic_user_detail_min_no" />
+
+                            <TextView
+                                android:id="@+id/user_detail_num"
+                                android:layout_width="62dp"
+                                android:layout_height="32dp"
+                                android:layout_centerVertical="true"
+                                android:layout_gravity="center"
+                                android:layout_marginRight="5dp"
+                                android:layout_toLeftOf="@+id/user_detail_max"
+                                android:background="@drawable/ic_user_detail_num"
+                                android:text="1"
+                                android:textAlignment="center"
+                                android:textColor="@color/black"
+                                android:textSize="20sp" />
+
+                            <ImageView
+                                android:id="@+id/user_detail_max"
+                                android:layout_width="22dp"
+                                android:layout_height="22dp"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_user_detail_max" />
+                        </RelativeLayout>
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tv_pay_price_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_pay_name_title"
+                        android:layout_marginTop="40dp"
+                        android:text="@string/playfun_dialog_coin_pay_number"
+                        android:textColor="@color/gray_middle"
+                        android:textSize="@dimen/text_size_big" />
+
+                    <TextView
+                        android:id="@+id/tv_pay_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBaseline="@+id/tv_pay_price_title"
+                        android:layout_toLeftOf="@+id/tv_price_unit"
+                        android:text=""
+                        android:textColor="@color/purple"
+                        android:textSize="32sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_price_unit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBaseline="@+id/tv_pay_price"
+                        android:layout_alignParentRight="true"
+                        android:text="@string/playfun_element"
+                        android:textColor="@color/purple"
+                        android:textSize="@dimen/text_size_big" />
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:orientation="horizontal"
+                    android:padding="20dp">
+
+                    <Button
+                        android:id="@+id/btn_recharge"
+                        style="@style/ButtonSecondary"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/playfun_dialong_coin_rechaege_top_up" />
+
+                    <Button
+                        android:id="@+id/btn_pay"
+                        style="@style/ButtonPrimary"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="2"
+                        android:text="@string/playfun_confirm_pay" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_loading"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:visibility="gone">
+
+                <ProgressBar
+                    style="?android:attr/progressBarStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.dl.playfun.ui.mine.trace.list.TraceListViewModel" />
+
+        <import type="me.tatarka.bindingcollectionadapter2.LayoutManagers" />
+
+        <import type="com.dl.playfun.widget.recyclerview.LineManagers" />
+    </data>
+
+    <com.scwang.smart.refresh.layout.SmartRefreshLayout
+        android:id="@+id/refresh_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        binding:onLoadMoreCommand="@{viewModel.onLoadMoreCommand}"
+        binding:onRefreshCommand="@{viewModel.onRefreshCommand}">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:overScrollMode="never"
+                binding:adapter="@{viewModel.adapter}"
+                binding:itemBinding="@{viewModel.itemBinding}"
+                binding:items="@{viewModel.observableList}"
+                binding:layoutManager="@{LayoutManagers.linear()}"
+                binding:lineManager="@{LineManagers.horizontal(1,104,0)}" />
+
+            <include
+                layout="@layout/trace_empty_view"
+                android:visibility="gone"
+                app:stateModel="@{viewModel.stateModel}" />
+        </RelativeLayout>
+
+    </com.scwang.smart.refresh.layout.SmartRefreshLayout>
+
+</layout>

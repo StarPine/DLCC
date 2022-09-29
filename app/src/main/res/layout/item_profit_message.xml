@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.dl.playfun.R" />
+
+        <import type="com.dl.playfun.utils.TimeUtils" />
+
+        <variable
+            name="viewModel"
+            type="com.dl.playfun.ui.message.profitmessage.ProfitMessageItemViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="16dp"
+        binding:onClickCommand="@{viewModel.itemClick}"
+        binding:onLongClickCommand="@{viewModel.itemLongClick}">
+
+        <com.dl.playfun.widget.roundedimageview.RoundedImageView
+            android:id="@+id/iv_avatar"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/default_avatar"
+            app:riv_oval="true"
+            binding:imageErrorPlaceholderRes="@{R.drawable.default_avatar}"
+            binding:imagePlaceholderRes="@{R.drawable.default_avatar}"
+            binding:imageThumbPath="@{viewModel.itemEntity.user.avatar}" />
+
+        <TextView
+            android:id="@+id/tv_content"
+            style="@style/MessageItem"
+            android:layout_toRightOf="@+id/iv_avatar"
+            app:htmlText="@{viewModel.itemEntity.content}"
+            tools:text="@string/playfun_message_hint_all" />
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_content"
+            android:layout_alignLeft="@id/tv_content"
+            android:layout_marginTop="10dp"
+            android:text='@{viewModel.itemEntity.createdAt != null ? TimeUtils.getFriendlyTimeSpan(viewModel.itemEntity.createdAt):""}'
+            android:textColor="@color/gray_light"
+            android:textSize="@dimen/text_size_mini" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/tv_time"
+            android:layout_alignParentRight="true"
+            android:drawableRight="@drawable/ic_arrow_right"
+            android:text="@string/playfun_go_see"
+            android:textColor="@color/gray_light"
+            android:textSize="@dimen/text_size_mini" />
+    </RelativeLayout>
+</layout>

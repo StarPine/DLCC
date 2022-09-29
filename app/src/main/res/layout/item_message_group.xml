@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.dl.playfun.utils.TimeUtils" />
+
+        <import type="com.dl.playfun.ui.message.systemmessagegroup.SystemMessageGroupItemViewModel" />
+
+        <variable
+            name="viewModel"
+            type="com.dl.playfun.ui.message.systemmessagegroup.SystemMessageGroupItemViewModel" />
+
+        <import type="me.goldze.mvvmhabit.utils.StringUtils" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        binding:onClickCommand="@{viewModel.itemClick}">
+
+        <ImageView
+            android:id="@+id/iv_icon"
+            android:layout_width="47.51dp"
+            android:layout_height="47.51dp"
+            android:layout_marginLeft="14dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginBottom="14dp"
+            android:src="@drawable/icon_msg_like"
+            app:icon_src="@{viewModel.modIcon}" />
+
+        <TextView
+            android:id="@+id/tv_msg_count"
+            android:layout_width="wrap_content"
+            android:layout_height="16dp"
+            android:layout_marginLeft="45dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/badge_background"
+            android:gravity="center"
+            android:minWidth="16dp"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:text="@{String.valueOf(viewModel.unreadCount)}"
+            android:textColor="@color/white"
+            android:textSize="10dp"
+            android:visibility="@{viewModel.unreadCount == 0 ? View.GONE:View.VISIBLE}" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/iv_icon"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginRight="14dp"
+            android:layout_toRightOf="@+id/iv_icon"
+            android:ellipsize="end"
+            android:lines="1"
+            android:text="@{viewModel.titleName}"
+            android:textColor="@color/text_5b"
+            android:textSize="@dimen/text_size_42"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/tv_title"
+            android:layout_alignBottom="@+id/iv_icon"
+            android:layout_marginRight="14dp"
+            android:layout_marginBottom="2dp"
+            android:layout_toRightOf="@+id/iv_icon"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textColor="@color/gray_light"
+            android:textSize="@dimen/text_size_middle"
+            app:htmlText="@{viewModel.itemEntity.content}" />
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/tv_title"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="14dp"
+            android:text='@{viewModel.itemEntity.createdAt != null ? TimeUtils.getFriendlyTimeSpan(viewModel.itemEntity.createdAt):""}'
+            android:textColor="@color/text_b4"
+            android:textSize="@dimen/text_size_mini" />
+    </RelativeLayout>
+</layout>

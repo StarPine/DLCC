@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginStart="30dp"
+    android:layout_marginEnd="30dp"
+    android:background="@color/transparent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="280dp"
+        android:background="@drawable/radius_layout"
+        android:orientation="vertical"
+        android:paddingBottom="20dp">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="@string/playfun_mine_trace_delike"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:gravity="center_horizontal"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:textColor="@color/text_default"
+            android:textSize="16sp"
+            tools:text="@string/playfun_duplicate_nickname_tips"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:layout_marginLeft="30dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="30dp"
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp">
+
+            <Button
+                android:id="@+id/confirm"
+                style="@style/ButtonPrimary"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:text="@string/playfun_dialog_set_withdraw_account_confirm"
+                android:textSize="14sp"
+                android:layout_marginBottom="15dp"
+                android:textStyle="normal" />
+
+            <Button
+                android:id="@+id/cannel"
+                style="@style/ButtonPrimaryNomal"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:scaleType="centerCrop"
+                android:text="@string/playfun_cancel"
+                android:textColor="@color/purple1"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</LinearLayout>

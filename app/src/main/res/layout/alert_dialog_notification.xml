@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginLeft="30dp"
+    android:layout_marginRight="30dp"
+    android:background="@color/transparent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/playfun_persession_text_notice_title"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/playfun_persession_text_notice_content"
+                android:textColor="@color/black"
+                android:textSize="15dp" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="10dp">
+
+                <ImageView
+                    android:id="@+id/notification_cannle"
+                    android:layout_width="80dp"
+                    android:layout_height="33dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="120dp"
+                    android:layout_toLeftOf="@+id/notification_ok"
+                    android:background="@drawable/notification_cannle" />
+
+                <ImageView
+                    android:id="@+id/notification_ok"
+                    android:layout_width="83dp"
+                    android:layout_height="33dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/notification_ok" />
+            </RelativeLayout>
+
+        </LinearLayout>
+    </FrameLayout>
+</LinearLayout>

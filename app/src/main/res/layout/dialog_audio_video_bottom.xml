@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/dialog_audio_video_backdrop"
+        android:minHeight="150dp"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:id="@+id/video_layout"
+            android:layout_width="match_parent"
+            android:layout_height="58dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="21dp"
+                    android:layout_height="21dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/img_im_msgdetail_video_call" />
+
+                <TextView
+                    android:layout_marginStart="4dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/playfun_message_deatail_call_video"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/video_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textColor="#FF828282"
+                    android:textSize="13sp" />
+            </LinearLayout>
+        </FrameLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#FFF1F1F1" />
+
+        <FrameLayout
+            android:id="@+id/audio_layout"
+            android:layout_width="match_parent"
+            android:layout_height="58dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="21dp"
+                    android:layout_height="21dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/img_im_msgdetail_audio_call" />
+
+                <TextView
+                    android:layout_marginStart="4dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/playfun_message_deatail_call_audio"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/audio_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textColor="#FF828282"
+                    android:textSize="13sp" />
+            </LinearLayout>
+        </FrameLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:background="#FFF1F1F1" />
+
+        <FrameLayout
+            android:id="@+id/cancel_layout"
+            android:layout_width="match_parent"
+            android:layout_height="58dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/playfun_cancel"
+                android:textColor="@color/black"
+                android:textSize="13sp" />
+        </FrameLayout>
+    </LinearLayout>
+</LinearLayout>

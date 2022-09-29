@@ -1,0 +1,21 @@
+apply plugin: "com.bytedance.android.aabResGuard"
+aabResGuard {
+   // mappingFile = file("mapping.txt").toPath() // Mapping file used for incremental obfuscation
+    whiteList = [ //白名单规则
+                  "*.R.raw.*",
+                  "*.R.drawable.*","*.R.*",
+            "*.appsflyer.*","*.google.*","*.facebook.*"
+    ]
+    obfuscatedBundleFileName = "duplicated-app.aab" // 混淆文件名，必须以“.aab”结尾
+    mergeDuplicatedRes = false // 是否允许合并重复资源
+    enableFilterFiles = false // 是否允许过滤文件
+    filterList = [
+//            // 文件过滤规则
+//                   "*/arm64-v8a/*",
+//                   "*/armeabi-v7a*",
+//                   "META-INF/*"
+    ]
+    enableFilterStrings = false // 过滤器字符串的切换
+    unusedStringPath = file("unused.txt").toPath() // 此文件中的字符串将被过滤
+    languageWhiteList = ["zh","en","zh-rCN","zh-rHK","zh-rMO","zh-rSG","zh-rTW"] // 保留 en,en-xx,zh,zh-xx 等。删除其他。
+}

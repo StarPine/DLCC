@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="29dp"
+    android:layout_marginTop="14dp"
+    android:background="@color/white"
+    android:paddingStart="19dp"
+    android:paddingEnd="19dp">
+
+    <ImageView
+        android:id="@+id/img_zs"
+        android:layout_width="21dp"
+        android:layout_height="21dp"
+        android:layout_alignParentStart="true"
+        android:layout_centerInParent="true"
+        android:src="@drawable/ic_coin"/>
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="10dp"
+        android:layout_toEndOf="@+id/img_zs"
+        android:ellipsize="end"
+        android:lines="1"
+        android:maxLength="16"
+        android:text=""
+        android:textColor="@color/gray_dark"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_price"
+        android:layout_width="110dp"
+        android:layout_height="29dp"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/pay_price_bg"
+        android:gravity="center"
+        android:text="0"
+        android:textColor="@color/purple"
+        android:textSize="17dp" />
+
+</RelativeLayout>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.dl.playfun.R" />
+
+        <variable
+            name="viewModel"
+            type="com.dl.playfun.ui.mine.level.LevelEquityItemViewModel" />
+    </data>
+
+    <RelativeLayout
+        binding:drawable_color="@{viewModel.checkCurrent?@color/red_yin1:@color/transparent}"
+        android:layout_width="match_parent"
+        android:layout_height="83dp">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/icon_img"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="21dp"
+            android:src="@drawable/level_equity_message"
+            binding:imageErrorPlaceholderRes="@{R.drawable.default_avatar}"
+            binding:imagePlaceholderRes="@{R.drawable.default_avatar}"
+            binding:imageThumbPath="@{viewModel.levelInfoData.levelIcon}" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/icon_img"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@+id/icon_img"
+            android:includeFontPadding="false"
+            android:text="@{viewModel.levelInfoData.levelName}"
+            android:textColor="@android:color/black"
+            android:textSize="13sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/icon_img"
+            android:layout_alignStart="@+id/icon_img"
+            android:layout_marginTop="5dp"
+            android:includeFontPadding="false"
+            android:text="@{String.format(@string/fragment_level_text6,viewModel.levelInfoData.fromCharmValue)}"
+            android:textColor="#ff828282"
+            android:textSize="13sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="135dp"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp">
+
+                <View
+                    android:layout_width="4dp"
+                    android:layout_height="4dp"
+                    android:layout_gravity="center|start"
+                    binding:drawable_color="@{@color/play_chat_gray_3}"
+                    binding:drawable_cornersRadius="@{50}"
+                    tools:background="#9897B3" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="7dp"
+                    android:includeFontPadding="false"
+                    android:text="@{viewModel.getChatMessage}"
+                    android:textColor="@color/black"
+                    android:textSize="11sp" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <View
+                    android:layout_width="4dp"
+                    android:layout_height="4dp"
+                    android:layout_gravity="center|start"
+                    binding:drawable_color="@{@color/play_chat_gray_3}"
+                    binding:drawable_cornersRadius="@{50}"
+                    tools:background="#9897B3" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="7dp"
+                    android:includeFontPadding="false"
+                    android:text="@{viewModel.getAudioMessage}"
+                    android:textColor="@color/black"
+                    android:textSize="11sp" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <View
+                    android:layout_width="4dp"
+                    android:layout_height="4dp"
+                    android:layout_gravity="center|start"
+                    binding:drawable_color="@{@color/play_chat_gray_3}"
+                    binding:drawable_cornersRadius="@{50}"
+                    tools:background="#9897B3" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="7dp"
+                    android:includeFontPadding="false"
+                    android:text="@{viewModel.getVideoMessage}"
+                    android:textColor="@color/black"
+                    android:textSize="11sp" />
+            </FrameLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</layout>

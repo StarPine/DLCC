@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/pop_container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/transparent"
+    android:maxHeight="320dp"
+    android:padding="16dp">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="320dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="0dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="42dp"
+                    android:background="#F1EEFC">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="14.67dp"
+                        android:text="@string/playfun_txt_exchange_game_coin"
+                        android:textColor="@color/purple"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="5dp"
+                        android:layout_toStartOf="@+id/tv_balance"
+                        android:text="@string/playfun_coin_balance"
+                        android:textColor="@color/gray_light"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:id="@+id/tv_balance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="4dp"
+                        android:layout_toLeftOf="@+id/iv_divider"
+                        android:text="@string/playfun_x_coin"
+                        android:textColor="@color/purple"
+                        android:textSize="13sp" />
+
+                    <ImageView
+                        android:id="@+id/iv_divider"
+                        android:layout_width="1dp"
+                        android:layout_height="12dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="5dp"
+                        android:layout_toStartOf="@+id/iv_refresh"
+                        android:src="#FFB5B8BF" />
+
+                    <ImageView
+                        android:id="@+id/iv_refresh"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="5dp"
+                        android:src="@drawable/ic_refresh" />
+                </RelativeLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="230dp"
+                    android:paddingBottom="10dp"
+                    android:scrollbars="vertical" />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="24dp">
+                    <ImageView
+                        android:layout_width="11dp"
+                        android:layout_height="11dp"
+                        android:layout_centerInParent="true"
+                        android:layout_marginEnd="5dp"
+                        android:layout_toStartOf="@+id/title1"
+                        android:src="@mipmap/dialog_exchange_jingao"/>
+                    <TextView
+                        android:id="@+id/title1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="@string/playfun_dialog_exchange_integral_total_text2"
+                        android:textColor="#ff90919f"
+                        android:textSize="11sp"
+                        />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_loading"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="42dp"
+                android:visibility="gone">
+
+                <ProgressBar
+                    style="?android:attr/progressBarStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true" />
+            </RelativeLayout>
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

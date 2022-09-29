@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.dl.playfun.R" />
+
+        <variable
+            name="viewModel"
+            type="com.dl.playfun.kl.viewmodel.AudioCallChatingItemViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="6dp"
+        android:background="@drawable/call_audio_chating_item_backdrop"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="7dp"
+        android:paddingTop="3dp"
+        android:paddingEnd="7dp"
+        android:paddingBottom="3dp"
+        binding:onClickCommand="@{viewModel.sendGiftBagOnClick}">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="12sp"
+            binding:text="@{viewModel.itemText}"
+            tools:text="dddddddddddddddddddddddddddddddddddddd" />
+
+        <ImageView
+            android:layout_width="17dp"
+            android:layout_height="17dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="6dp"
+            android:visibility="@{viewModel.imgPath==null?View.GONE:View.VISIBLE}"
+            binding:imagePath="@{viewModel.imgPath}"
+            tools:src="@drawable/ic_vip"
+            tools:visibility="gone" />
+    </LinearLayout>
+</layout>

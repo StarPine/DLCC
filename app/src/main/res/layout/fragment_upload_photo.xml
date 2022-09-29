@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.dl.playfun.ui.certification.uploadphoto.UploadPhotoViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="com.dl.playfun.ui.certification.uploadphoto.UploadPhotoFragment">
+
+        <View
+            android:id="@+id/status_bar_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/status_bar_color" />
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay"
+            app:elevation="0dp">
+
+            <com.dl.playfun.widget.BasicToolbar
+                android:id="@+id/basic_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/action_bar_height"
+                app:toolbar_title="@string/playfun_fragment_certification_female_title" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/container_background"
+            android:orientation="vertical"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="16dp">
+
+                <CheckBox
+                    android:layout_width="86dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/certification_checkbok_background"
+                    android:button="@null"
+                    android:checked="true"
+                    android:clickable="false"
+                    android:gravity="center"
+                    android:text="@string/playfun_mine_upload_photo"
+                    android:textColor="@drawable/online_checkbok_text_color"
+                    android:textSize="@dimen/text_size_middle"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="3dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:background="@color/divider" />
+
+                <CheckBox
+                    android:layout_width="86dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/certification_checkbok_background"
+                    android:button="@null"
+                    android:clickable="false"
+                    android:gravity="center"
+                    android:paddingRight="10dp"
+                    android:paddingTop="2dp"
+                    android:paddingLeft="10dp"
+                    android:text="@string/playfun_fragment_face_recognition"
+                    android:textColor="@drawable/online_checkbok_text_color"
+                    android:textSize="@dimen/text_size_middle"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="3dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:background="@color/divider" />
+
+                <CheckBox
+                    android:layout_width="86dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/certification_checkbok_background"
+                    android:button="@null"
+                    android:clickable="false"
+                    android:gravity="center"
+                    android:text="@string/playfun_fragment_face_recognition_finish"
+                    android:textColor="@drawable/online_checkbok_text_color"
+                    android:textSize="@dimen/text_size_middle"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/playfun_your_photo"
+                    android:textSize="@dimen/text_size_big"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:lineSpacingExtra="4dp"
+                    android:text="@string/playfun_upload_photo_explain"
+                    android:textColor="@color/gray_middle"
+                    android:textSize="@dimen/text_size_middle" />
+
+                <com.dl.playfun.widget.picchoose.PicChooseView
+                    android:id="@+id/pic_choose_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:scrollbars="none" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="14dp"
+                android:layout_marginRight="20dp"
+                android:gravity="center"
+                android:lineSpacingExtra="4dp"
+                android:text="@string/playfun_cert_upload_photo_tip"
+                android:textColor="@color/gray_middle"
+                android:textSize="@dimen/text_size_small" />
+
+            <Button
+                style="@style/ButtonPrimary"
+                android:layout_width="220dp"
+                android:layout_height="42dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="30dp"
+                android:text="@string/playfun_next_step"
+                binding:onClickCommand="@{viewModel.nextOnClickCommand}" />
+        </LinearLayout>
+    </LinearLayout>
+</layout>

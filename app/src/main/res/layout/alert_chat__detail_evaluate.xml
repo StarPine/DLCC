@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="355dp"
+            android:layout_marginStart="33dp"
+            android:layout_marginEnd="33dp">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/chat__detail_evaluate_img"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcv_evaluate"
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:layout_marginStart="11dp"
+                android:layout_marginTop="101dp"
+                android:layout_marginEnd="20dp"/>
+            <Button
+                android:id="@+id/btn_submit"
+                style="@style/ButtonPrimary"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="254dp"
+                android:layout_marginEnd="19dp"
+                android:text="@string/playfun_chat_detail_evaluate_btn"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/btn_submit"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="22dp"
+                android:text="@string/playfun_chat_detail_evaluate_txt"
+                android:textColor="#ffff3939"
+                android:textSize="12sp"
+                />
+        </RelativeLayout>
+        <ImageView
+            android:id="@+id/iv_dialog_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="28dp"
+            android:contentDescription="TODO"
+            android:src="@drawable/ic_dialog_close" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,1223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.dl.playfun.R" />
+
+        <import type="android.view.View" />
+
+        <import type="com.dl.playfun.utils.SystemDictUtils" />
+
+        <import type="com.blankj.utilcode.util.StringUtils" />
+
+        <variable
+            name="viewModel"
+            type="com.dl.playfun.ui.mine.MineViewModel" />
+
+        <import type="me.tatarka.bindingcollectionadapter2.LayoutManagers" />
+
+        <import type="com.dl.playfun.widget.recyclerview.LineManagers" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:context="com.dl.playfun.ui.mine.MineFragment">
+
+            <RelativeLayout
+                android:id="@+id/layout_title"
+                android:layout_width="match_parent"
+                android:layout_height="84dp"
+                android:background="@color/white"
+                android:clickable="true"
+                android:elevation="50dp"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginBottom="7dp"
+                    android:orientation="horizontal">
+
+                    <com.dl.playfun.widget.image.CircleImageView
+                        android:id="@+id/min_user_img"
+                        android:layout_width="29dp"
+                        android:layout_height="29dp"
+                        android:clickable="true"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/default_address_user"
+                        app:riv_corner_radius="8dp"
+                        binding:imageErrorPlaceholderRes="@{R.drawable.default_avatar}"
+                        binding:imagePlaceholderRes="@{R.drawable.default_avatar}"
+                        binding:imageThumbPath="@{viewModel.userInfoEntity.avatar}"
+                        binding:resizeH="@{29}"
+                        binding:resizeW="@{29}"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="13dp"
+                        android:layout_toEndOf="@+id/min_user_img"
+                        android:ellipsize="end"
+                        android:includeFontPadding="false"
+                        android:lines="1"
+                        android:text="@{viewModel.userInfoEntity.nickname}"
+                        android:textColor="#FF333333"
+                        android:textSize="19sp"
+                        tools:text="艾希lovexi666" />
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/appbar_layout"
+                android:layout_width="match_parent"
+                android:layout_height="442dp"
+                android:background="@color/white"
+                android:maxHeight="442dp"
+                android:orientation="vertical"
+                android:theme="@style/AppTheme.AppBarOverlay"
+                app:elevation="0dp">
+
+                <com.google.android.material.appbar.CollapsingToolbarLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/radius_layout_mine"
+                    android:fitsSystemWindows="true"
+                    app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            app:layout_collapseMode="parallax"
+                            app:layout_collapseParallaxMultiplier="0.2">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="360dp"
+                                android:layout_alignParentTop="true"
+                                android:elevation="9dp"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/default_avatar"
+                                binding:imageErrorPlaceholderRes="@{R.drawable.default_avatar}"
+                                binding:imagePlaceholderRes="@{R.drawable.default_avatar}"
+                                binding:imageThumbPath="@{viewModel.userInfoEntity.avatar}" />
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/radius_layout_mine"
+                                android:elevation="99dp"
+                                android:scaleType="fitXY"
+                                android:src="@{viewModel.userInfoEntity.sex==1?@drawable/mine_default_back_img_male:@drawable/mine_default_back_img}"
+                                tools:src="@drawable/mine_default_back_img_male" />
+                        </FrameLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <FrameLayout
+                                android:id="@+id/me_avatar"
+                                android:layout_width="69dp"
+                                android:layout_height="69dp"
+                                android:layout_above="@+id/list_profile_layout"
+                                android:layout_marginStart="24dp"
+                                android:layout_marginBottom="13dp"
+                                binding:onClickCommand="@{viewModel.avatarOnClickCommand}">
+
+                                <ImageView
+                                    android:layout_width="69dp"
+                                    android:layout_height="69dp"
+                                    android:background="@drawable/circle_white" />
+
+                                <com.dl.playfun.widget.image.CircleImageView
+                                    android:layout_width="67dp"
+                                    android:layout_height="67dp"
+                                    android:layout_marginStart="1dp"
+                                    android:layout_marginTop="1dp"
+                                    android:clickable="true"
+                                    android:scaleType="centerCrop"
+                                    android:src="@drawable/default_address_user"
+                                    app:riv_corner_radius="8dp"
+                                    binding:imageErrorPlaceholderRes="@{R.drawable.default_avatar}"
+                                    binding:imagePlaceholderRes="@{R.drawable.default_avatar}"
+                                    binding:imageThumbPath="@{viewModel.userInfoEntity.avatar}"
+                                    binding:onClickCommand="@{viewModel.avatarOnClickCommand}"
+                                    tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
+                            </FrameLayout>
+
+                            <TextView
+                                android:id="@+id/tv_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignTop="@+id/me_avatar"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginTop="1dp"
+                                android:layout_toEndOf="@+id/me_avatar"
+                                android:ellipsize="end"
+                                android:includeFontPadding="false"
+                                android:lines="1"
+                                android:maxWidth="129dp"
+                                android:text="@{viewModel.userInfoEntity.nickname}"
+                                android:textColor="@color/white"
+                                android:textSize="19sp"
+                                tools:text="艾希lovexi666" />
+
+                            <ImageView
+                                android:layout_width="31dp"
+                                android:layout_height="13dp"
+                                android:layout_alignTop="@+id/tv_title"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="5dp"
+                                android:layout_toEndOf="@+id/tv_title"
+                                android:src="@drawable/ic_vip"
+                                android:visibility="@{(viewModel.userInfoEntity.sex == 1 &amp;&amp; viewModel.userInfoEntity.isVip == 1) ? View.VISIBLE:View.GONE}" />
+
+                            <LinearLayout
+                                android:id="@+id/ll_tag_group"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/tv_title"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_toEndOf="@+id/me_avatar"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    style="@style/MineTagPrimary"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="21dp"
+                                    android:layout_marginEnd="6dp"
+                                    android:visibility="@{StringUtils.isEmpty(viewModel.userInfoEntity.constellation)?View.GONE:View.VISIBLE}"
+                                    android:text="@{viewModel.userInfoEntity.constellation}"
+                                    tools:text="星座" />
+
+                                <TextView
+                                    style="@style/MineTagPrimary"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="21dp"
+                                    android:layout_marginEnd="6dp"
+                                    android:text="@{@string/playfun_mine_age(viewModel.userInfoEntity.age)}" />
+                            </LinearLayout>
+
+                            <TextView
+                                style="@style/MineTagPrimary"
+                                android:layout_width="wrap_content"
+                                android:layout_height="21dp"
+                                android:layout_below="@+id/ll_tag_group"
+                                android:layout_alignStart="@+id/ll_tag_group"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginEnd="6dp"
+                                android:text="@{SystemDictUtils.getOccupationById(safeUnbox(viewModel.userInfoEntity.occupationId))}" />
+
+                            <LinearLayout
+                                android:id="@+id/list_profile_layout"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="18dp"
+                                    android:gravity="center_horizontal"
+                                    android:layout_marginRight="10dp"
+                                    android:layout_marginLeft="10dp"
+                                    >
+
+                                    <RelativeLayout
+                                        android:id="@+id/profile_layout"
+                                        android:layout_width="0dp"
+                                        android:layout_weight="1"
+                                        android:layout_height="60dp"
+                                        android:elevation="1dp"
+                                        binding:onClickCommand="@{viewModel.editProfileOnClickCommand}">
+
+                                        <ImageView
+                                            android:id="@+id/user_profile_img"
+                                            android:layout_width="22dp"
+                                            android:layout_height="22dp"
+                                            android:layout_centerHorizontal="true"
+                                            android:layout_marginBottom="9dp"
+                                            android:layout_above="@+id/user_profile"
+                                            android:src="@drawable/ic_mine_profile" />
+                                        <TextView
+                                            android:id="@+id/user_profile"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_centerHorizontal="true"
+                                            android:layout_alignParentBottom="true"
+                                            android:text="@string/playfun_mine_profile"
+                                            android:textColor="@color/white"
+                                            android:textSize="12dp" />
+                                        <TextView
+                                            android:layout_width="9dp"
+                                            android:layout_height="9dp"
+                                            android:layout_marginTop="-5dp"
+                                            android:layout_marginRight="-5dp"
+                                            android:layout_alignEnd="@+id/user_profile_img"
+                                            android:layout_alignTop="@+id/user_profile_img"
+                                            android:background="@drawable/mine_radius"
+                                            android:textColor="@color/white"
+                                            android:visibility="@{viewModel.localUserDataEntity.isPerfect?View.GONE:View.VISIBLE}"
+                                            tools:visibility="visible" />
+
+                                    </RelativeLayout>
+
+                                    <RelativeLayout
+                                        android:id="@+id/mine_wallet_layout"
+                                        android:layout_width="0dp"
+                                        android:layout_weight="1"
+                                        android:layout_height="60dp"
+                                        android:elevation="1dp"
+                                        binding:onClickCommand="@{viewModel.walletOnClickCommand}">
+
+                                        <ImageView
+                                            android:layout_width="22dp"
+                                            android:layout_height="22dp"
+                                            android:layout_centerInParent="true"
+                                            android:layout_marginBottom="9dp"
+                                            android:layout_above="@+id/mine_wallet"
+                                            android:src="@drawable/ic_mine_wallet" />
+                                        <TextView
+                                            android:id="@+id/mine_wallet"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_alignParentBottom="true"
+                                            android:layout_centerInParent="true"
+                                            android:text="@string/playfun_mine_wallet"
+                                            android:textColor="@color/white"
+                                            android:textSize="12sp" />
+                                    </RelativeLayout>
+
+                                    <RelativeLayout
+                                        android:id="@+id/mine_my_likes_layout"
+                                        android:layout_width="0dp"
+                                        android:layout_weight="1"
+                                        android:layout_height="60dp"
+                                        android:elevation="1dp"
+                                        binding:onClickCommand="@{viewModel.fondOnClickCommand}">
+
+                                        <ImageView
+                                            android:layout_width="22dp"
+                                            android:layout_height="22dp"
+                                            android:layout_centerInParent="true"
+                                            android:layout_marginBottom="9dp"
+                                            android:layout_above="@+id/mine_my_likes"
+                                            android:src="@drawable/ic_mine_like" />
+                                        <TextView
+                                            android:id="@+id/mine_my_likes"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_centerHorizontal="true"
+                                            android:layout_alignParentBottom="true"
+                                            android:text="@string/playfun_mine_my_likes"
+                                            android:textColor="@color/white"
+                                            android:textSize="12sp" />
+                                    </RelativeLayout>
+
+                                    <RelativeLayout
+                                        android:layout_width="0dp"
+                                        android:layout_weight="1"
+                                        android:layout_height="60dp"
+                                        android:elevation="1dp"
+                                        binding:onClickCommand="@{viewModel.traceOnClickCommand}">
+
+                                        <TextView
+                                            android:id="@+id/trace_num"
+                                            android:layout_width="23dp"
+                                            android:layout_height="23dp"
+                                            android:layout_above="@+id/trace_text_tv_img"
+                                            android:layout_marginStart="-10dp"
+                                            android:layout_marginBottom="-9dp"
+                                            android:layout_toEndOf="@+id/trace_text_tv_img"
+                                            android:background="@drawable/mine_radius"
+                                            android:elevation="10dp"
+                                            android:gravity="center"
+                                            android:padding="1dp"
+                                            android:text="99+"
+                                            android:textColor="@color/white"
+                                            android:textSize="10sp"
+                                            android:visibility="gone"
+                                            tools:visibility="visible" />
+
+                                        <ImageView
+                                            android:id="@+id/trace_text_tv_img"
+                                            android:layout_width="22dp"
+                                            android:layout_height="22dp"
+                                            android:layout_above="@+id/trace_text_tv"
+                                            android:layout_centerInParent="true"
+                                            android:layout_marginBottom="9dp"
+                                            android:src="@drawable/ic_mine_visitors" />
+
+                                        <TextView
+                                            android:id="@+id/trace_text_tv"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_alignParentBottom="true"
+                                            android:layout_centerInParent="true"
+                                            android:text="@{viewModel.userInfoEntity.sex==1?@string/playfun_mine_my_visitors_man:@string/playfun_mine_my_visitors_many}"
+                                            android:textColor="@color/white"
+                                            android:textSize="12sp"
+                                            tools:hint="@string/playfun_mine_my_visitors_man" />
+                                    </RelativeLayout>
+
+                                </LinearLayout>
+
+                                <RelativeLayout
+                                    android:id="@+id/vip_layout_div"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="108dp"
+                                    android:layout_marginStart="18dp"
+                                    android:layout_marginEnd="18dp"
+                                    android:clickable="true"
+                                    android:visibility="@{safeUnbox(viewModel.sex) == 1 ? View.VISIBLE:View.GONE}">
+
+                                    <ImageView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:adjustViewBounds="true"
+                                        android:scaleType="fitCenter"
+                                        android:src="@drawable/mine_vip" />
+
+                                    <RelativeLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="13dp">
+
+                                        <ImageView
+                                            android:id="@+id/mine_vip_icon_text"
+                                            android:layout_width="19dp"
+                                            android:layout_height="19dp"
+                                            android:layout_marginStart="13dp"
+                                            android:src="@drawable/mine_vip_text" />
+
+                                        <TextView
+                                            android:id="@+id/mine_vip_hint"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_centerInParent="true"
+                                            android:layout_marginStart="5dp"
+                                            android:layout_toEndOf="@+id/mine_vip_icon_text"
+                                            android:includeFontPadding="false"
+                                            android:text="@string/playfun_mine_vip_hint"
+                                            android:textColor="#ff6b3f24"
+                                            android:textSize="13sp" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_alignParentRight="true"
+                                            android:layout_centerInParent="true"
+                                            android:layout_marginStart="24dp"
+                                            android:layout_toEndOf="@+id/mine_vip_hint"
+                                            android:includeFontPadding="false"
+                                            android:text="@{viewModel.userInfoEntity.isVip == 1 ? String.format(@string/playfun_end_time,viewModel.userInfoEntity.endTime):@string/playfun_upgrade_vip}"
+                                            android:textColor="@color/white"
+                                            android:textSize="10sp"
+                                            android:visibility="@{viewModel.userInfoEntity.isVip == 1 ? View.VISIBLE:View.GONE}"
+                                            tools:text="expire:2021-09-01" />
+                                    </RelativeLayout>
+
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="26dp"
+                                        android:layout_alignParentRight="true"
+                                        android:layout_marginTop="10dp"
+                                        android:layout_marginRight="30dp"
+                                        android:background="@drawable/mine_vip_button_bg"
+                                        android:gravity="center"
+                                        android:paddingStart="16dp"
+                                        android:paddingEnd="16dp"
+                                        android:text="@string/playfun_buy_vip"
+                                        android:textColor="@color/white"
+                                        android:textSize="11sp"
+                                        android:visibility="@{viewModel.userInfoEntity.isVip == 1 ? View.GONE:View.VISIBLE}"
+                                        binding:onClickCommand="@{viewModel.memberOnClickCommand}" />
+                                </RelativeLayout>
+                            </LinearLayout>
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="30dp"
+                                android:layout_alignParentBottom="true"
+                                android:background="@drawable/radius_layout_mine"
+                                android:elevation="99dp"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/mine_default_back_img2" />
+                        </RelativeLayout>
+                    </RelativeLayout>
+                </com.google.android.material.appbar.CollapsingToolbarLayout>
+            </com.google.android.material.appbar.AppBarLayout>
+
+            <com.scwang.smart.refresh.layout.SmartRefreshLayout
+                android:id="@+id/refresh_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                binding:onLoadMoreCommand="@{viewModel.onLoadMoreCommand}"
+                binding:onRefreshCommand="@{viewModel.onRefreshCommand}"
+                tools:visibility="visible">
+
+                <androidx.core.widget.NestedScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fillViewport="true"
+                    android:scrollbars="none">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:paddingBottom="@dimen/home_bottom_nav_height">
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="11dp"
+                            android:background="@color/white" />
+                        <RelativeLayout
+                            style="@style/ProfileItem"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/profile_item_height"
+                            android:visibility="gone"
+                            binding:onClickCommand="@{viewModel.shopOnClickCommand}">
+
+                            <ImageView
+                                android:id="@+id/mine_item_shop"
+                                android:layout_width="19dp"
+                                android:layout_height="19dp"
+                                android:layout_alignParentStart="true"
+                                android:layout_centerInParent="true"
+                                android:src="@drawable/icon_shop" />
+
+                            <TextView
+                                style="@style/ProfileItemTitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_toEndOf="@+id/mine_item_shop"
+                                android:text="@string/playfun_mine_shop"
+                                android:textSize="12sp" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:src="@drawable/ic_arrow_right" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            style="@style/ProfileItem"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/profile_item_height"
+                            binding:onClickCommand="@{viewModel.certificationOnClickCommand}">
+
+                            <ImageView
+                                android:id="@+id/mine_item_1"
+                                android:layout_width="19dp"
+                                android:layout_height="19dp"
+                                android:layout_alignParentStart="true"
+                                android:layout_centerInParent="true"
+                                android:src="@mipmap/ic_mine_item_img_1" />
+
+                            <TextView
+                                style="@style/ProfileItemTitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_toEndOf="@+id/mine_item_1"
+                                android:text="@string/playfun_mine_certification_center"
+                                android:textSize="12sp" />
+
+                            <ImageView
+                                android:id="@+id/iv_arrow_right"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:src="@drawable/ic_arrow_right" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_toLeftOf="@+id/iv_arrow_right"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:id="@+id/iv_real_man"
+                                    android:layout_width="31dp"
+                                    android:layout_height="13dp"
+                                    android:layout_marginRight="8dp"
+                                    android:src="@drawable/ic_real_man"
+                                    android:visibility="@{viewModel.userInfoEntity.certification == 1 ? View.VISIBLE:View.GONE}" />
+
+                                <ImageView
+                                    android:id="@+id/iv_goddess"
+                                    android:layout_width="31dp"
+                                    android:layout_height="13dp"
+                                    android:layout_marginRight="8dp"
+                                    android:src="@drawable/ic_goddess"
+                                    android:visibility="@{(viewModel.userInfoEntity.sex == 0 &amp;&amp; viewModel.userInfoEntity.isVip == 1) ? View.VISIBLE:View.GONE}" />
+
+                            </LinearLayout>
+
+                        </RelativeLayout>
+                        <RelativeLayout
+                            style="@style/ProfileItem"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/profile_item_height"
+                            android:visibility="@{StringUtils.isEmpty(viewModel.userInfoEntity.inviteUrl) ? View.GONE:View.VISIBLE}"
+                            binding:onClickCommand="@{viewModel.invitationCodeOnClickCommand}">
+
+                            <ImageView
+                                android:id="@+id/mine_item_3"
+                                android:layout_width="19dp"
+                                android:layout_height="19dp"
+                                android:layout_alignParentStart="true"
+                                android:layout_centerInParent="true"
+                                android:src="@mipmap/ic_mine_item_img_3" />
+                            <TextView
+                                style="@style/ProfileItemTitle"
+                                android:layout_toEndOf="@+id/mine_item_3"
+                                android:layout_marginStart="8dp"
+                                android:textSize="13sp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/playfun_mine_apply_invitation_code" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:layout_marginEnd="5dp"
+                                android:layout_toStartOf="@+id/invitation_code_right_img"
+                                android:gravity="center"
+                                android:visibility="@{viewModel.userInfoEntity.sex==1 ? View.VISIBLE:View.GONE}"
+                                android:text="@string/mine_fragment_invitation_code_title"
+                                android:textColor="@color/purple1"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/invitation_code_right_img"
+                                style="@style/ProfileItemSubTitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                        </RelativeLayout>
+                        <TextView
+                            android:id="@+id/tv_tip"
+                            style="@style/TopWarn"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@{viewModel.banner.text}"
+                            android:visibility="@{viewModel.banner == null ? View.GONE:View.VISIBLE}"
+                            binding:onClickCommand="@{viewModel.bannerOnClickCommand}" />
+                        <RelativeLayout
+                            style="@style/ProfileItem"
+                            android:layout_marginTop="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/profile_item_height"
+                            android:visibility="@{viewModel.getLevelViewShow(viewModel.userInfoEntity.isLevel)}"
+                            binding:onClickCommand="@{viewModel.levelEquityOnClickCommand}">
+
+                            <ImageView
+                                android:id="@+id/mine_item_level"
+                                android:layout_width="19dp"
+                                android:layout_height="19dp"
+                                android:layout_alignParentStart="true"
+                                android:layout_centerInParent="true"
+                                android:src="@mipmap/ic_mine_item_img_level" />
+
+                            <TextView
+                                style="@style/ProfileItemTitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_toEndOf="@+id/mine_item_level"
+                                android:text="@string/fragment_level_title"
+                                android:textSize="13sp" />
+
+                            <TextView
+                                style="@style/ProfileItemSubTitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                        </RelativeLayout>
+                        <RelativeLayout
+                            style="@style/ProfileItem"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/profile_item_height"
+                            android:visibility="@{viewModel.userInfoEntity.anchor == 0?View.GONE:View.VISIBLE}"
+                            binding:onClickCommand="@{viewModel.anchorCenterOnClickCommand}">
+
+                            <ImageView
+                                android:id="@+id/mine_item_anchor_center"
+                                android:layout_width="19dp"
+                                android:layout_height="19dp"
+                                android:layout_alignParentStart="true"
+                                android:layout_centerInParent="true"
+                                android:src="@drawable/icon_anchor_center" />
+
+                            <TextView
+                                style="@style/ProfileItemTitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_toEndOf="@+id/mine_item_anchor_center"
+                                android:text="@string/playfun_mine_title_anchor_center"
+                                android:textSize="13sp" />
+
+                            <TextView
+                                style="@style/ProfileItemSubTitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            style="@style/ProfileItem"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/profile_item_height"
+                            binding:onClickCommand="@{viewModel.tapeAudioOnClickCommand}">
+
+                            <ImageView
+                                android:id="@+id/mine_item_4"
+                                android:layout_width="19dp"
+                                android:layout_height="19dp"
+                                android:layout_alignParentStart="true"
+                                android:layout_centerInParent="true"
+                                android:src="@mipmap/ic_mine_item_img_4" />
+
+                            <TextView
+                                style="@style/ProfileItemTitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_toEndOf="@+id/mine_item_4"
+                                android:text="@string/playfun_mine_my_adoui"
+                                android:textSize="13sp" />
+
+                            <RelativeLayout
+                                android:layout_width="159dp"
+                                android:layout_height="40dp"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerInParent="true"
+                                android:visibility="@{viewModel.getSoundStatusShow3(viewModel.userInfoEntity.soundStatus)}">
+
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:src="@drawable/mine_audio_layout_img" />
+
+                                <ImageView
+                                    android:id="@+id/audio_waves"
+                                    android:layout_width="29dp"
+                                    android:layout_height="29dp"
+                                    android:layout_marginStart="11dp"
+                                    android:layout_marginTop="6dp"
+                                    android:src="@drawable/audio_waves_stop" />
+
+                                <TextView
+                                    android:id="@+id/audio_time"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="44dp"
+                                    android:layout_marginTop="13dp"
+                                    android:includeFontPadding="false"
+                                    android:text="@{String.valueOf(viewModel.userInfoEntity.soundTime)}"
+                                    android:textColor="#FFA72DFE"
+                                    android:textSize="13sp"
+                                    tools:text="14" />
+
+                                <ImageView
+                                    android:layout_width="5dp"
+                                    android:layout_height="3dp"
+                                    android:layout_marginTop="14dp"
+                                    android:layout_toEndOf="@+id/audio_time"
+                                    android:src="@drawable/icon_mine_audio_dian" />
+
+                                <ImageView
+                                    android:id="@+id/audio_stop"
+                                    android:layout_width="29dp"
+                                    android:layout_height="29dp"
+                                    android:layout_centerInParent="true"
+                                    android:layout_marginEnd="5dp"
+                                    android:layout_toStartOf="@+id/audio_remove"
+                                    android:src="@drawable/mine_audio_start_img" />
+
+                                <ImageView
+                                    android:id="@+id/audio_remove"
+                                    android:layout_width="29dp"
+                                    android:layout_height="29dp"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_centerInParent="true"
+                                    android:layout_marginEnd="6dp"
+                                    android:src="@drawable/mine_audio_remove_img"
+                                    binding:onClickCommand="@{viewModel.removeAudio}" />
+                            </RelativeLayout>
+
+                            <TextView
+                                style="@style/ProfileItemSubTitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/playfun_mine_audio_text1"
+                                android:visibility="@{viewModel.getIsSound(viewModel.userInfoEntity.isSound)}"
+                                tools:visibility="gone" />
+
+                            <TextView
+                                style="@style/ProfileItemSubTitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/playfun_mine_audio_text4"
+                                android:textColor="@color/empty_list_hint"
+                                android:visibility="@{viewModel.getSoundStatusShow(viewModel.userInfoEntity.soundStatus)}" />
+
+                            <TextView
+                                style="@style/ProfileItemSubTitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/playfun_mine_audio_text5"
+                                android:textColor="@color/red"
+                                android:visibility="@{viewModel.getSoundStatusShow2(viewModel.userInfoEntity.soundStatus)}" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            style="@style/ProfileItem"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/profile_item_height"
+                            android:visibility="@{viewModel.userInfoEntity.isAnchor == 0?View.GONE:View.VISIBLE}"
+                            binding:onClickCommand="@{viewModel.exclusiveOnClickCommand}">
+
+                            <ImageView
+                                android:id="@+id/mine_item_exclusive_call"
+                                android:layout_width="19dp"
+                                android:layout_height="19dp"
+                                android:layout_alignParentStart="true"
+                                android:layout_centerInParent="true"
+                                android:src="@drawable/icon_exclusive_call" />
+
+                            <TextView
+                                style="@style/ProfileItemTitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_toEndOf="@+id/mine_item_exclusive_call"
+                                android:text="@string/playfun_mine_title_btn_exclusive"
+                                android:textSize="13sp" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:src="@drawable/ic_arrow_right" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            style="@style/ProfileItem"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/profile_item_height"
+                            binding:onClickCommand="@{viewModel.broadcastOnClickCommand}">
+
+                            <ImageView
+                                android:id="@+id/mine_item_5"
+                                android:layout_width="19dp"
+                                android:layout_height="19dp"
+                                android:layout_alignParentStart="true"
+                                android:layout_centerInParent="true"
+                                android:src="@mipmap/ic_mine_item_img_5" />
+
+                            <TextView
+                                style="@style/ProfileItemTitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_toEndOf="@+id/mine_item_5"
+                                android:text="@string/playfun_mine_my_borcast"
+                                android:textSize="13sp" />
+
+                            <TextView
+                                style="@style/ProfileItemSubTitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            style="@style/ProfileItem"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/profile_item_height"
+                            binding:onClickCommand="@{viewModel.evaluateOnClickCommand}">
+
+                            <ImageView
+                                android:id="@+id/mine_item_6"
+                                android:layout_width="19dp"
+                                android:layout_height="19dp"
+                                android:layout_alignParentStart="true"
+                                android:layout_centerInParent="true"
+                                android:src="@mipmap/ic_mine_item_img_6" />
+
+                            <TextView
+                                style="@style/ProfileItemTitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_toEndOf="@+id/mine_item_6"
+                                android:text="@string/playfun_mine_title_btn_my_evaluation"
+                                android:textSize="13sp" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:src="@drawable/ic_arrow_right" />
+
+                        </RelativeLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/edittext_background"
+                            android:clipToPadding="false"
+                            android:orientation="vertical">
+
+                            <RelativeLayout
+                                style="@style/ProfileItem"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/profile_item_height">
+
+                                <ImageView
+                                    android:id="@+id/mine_item_7"
+                                    android:layout_width="19dp"
+                                    android:layout_height="19dp"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_centerInParent="true"
+                                    android:src="@mipmap/ic_mine_item_img_7" />
+
+                                <TextView
+                                    style="@style/ProfileItemTitle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="8dp"
+                                    android:layout_toEndOf="@+id/mine_item_7"
+                                    android:text="@string/playfun_mine_my_album"
+                                    android:textSize="13sp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentRight="true"
+                                    android:layout_centerVertical="true"
+                                    android:text="@{safeUnbox(viewModel.sex) == 1?@string/playfun_mine_upload_photo:@string/playfun_mine_upload_photo_or_video}"
+                                    android:textColor="@color/purple"
+                                    android:textSize="@dimen/text_size_mini"
+                                    binding:onClickCommand="@{viewModel.albumOnClickCommand}" />
+                            </RelativeLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="190dp"
+                                android:background="@color/white"
+                                android:clipToPadding="false"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:visibility="@{viewModel.observableList.size() > 0?View.GONE:View.VISIBLE}">
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="15dp"
+                                    android:src="@drawable/ic_photo_empty" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="10dp"
+                                    android:text="@{@string/playfun_mine_upload_first_pic_sub(viewModel.sex == 1 ? @string/playfun_lady:@string/playfun_man)}"
+                                    android:textColor="@color/gray_light"
+                                    android:textSize="@dimen/text_size_mini" />
+
+                                <Button
+                                    android:id="@+id/tv_1"
+                                    style="@style/ButtonPrimary"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="35dp"
+                                    android:layout_marginTop="10dp"
+                                    android:paddingStart="15dp"
+                                    android:paddingEnd="15dp"
+                                    android:text="@string/playfun_mine_upload_first_pic"
+                                    android:textSize="@dimen/text_size_middle"
+                                    binding:onClickCommand="@{viewModel.albumOnClickCommand}" />
+
+                            </LinearLayout>
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/recycler_view"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/tv_upload_photo"
+                                android:padding="12dp"
+                                android:scrollbars="none"
+                                android:visibility="@{viewModel.observableList.size() > 0?View.VISIBLE:View.GONE}"
+                                binding:adapter="@{viewModel.adapter}"
+                                binding:itemBinding="@{viewModel.itemBinding}"
+                                binding:items="@{viewModel.observableList}"
+                                binding:layoutManager="@{LayoutManagers.grid(4)}" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="right"
+                                android:padding="10dp"
+                                android:text="@string/playfun_mine_set_redpackage_photo"
+                                android:textColor="@color/purple"
+                                android:textSize="@dimen/text_size_mini"
+                                android:visibility="@{safeUnbox(viewModel.sex) != 1 ? View.VISIBLE:View.GONE}"
+                                binding:onClickCommand="@{viewModel.redPackagePhotoOnClickCommand}" />
+                        </LinearLayout>
+
+                        <RelativeLayout
+                            style="@style/ProfileItem"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/profile_item_height"
+                            binding:onClickCommand="@{viewModel.privacyOnClickCommand}">
+
+                            <ImageView
+                                android:id="@+id/mine_item_8"
+                                android:layout_width="19dp"
+                                android:layout_height="19dp"
+                                android:layout_alignParentStart="true"
+                                android:layout_centerInParent="true"
+                                android:src="@drawable/ic_mine_photo_setting" />
+
+                            <TextView
+                                style="@style/ProfileItemTitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_toEndOf="@+id/mine_item_8"
+                                android:text="@string/playfun_mine_album_privacy"
+                                android:textSize="13sp" />
+
+                            <TextView
+                                style="@style/ProfileItemSubTitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            style="@style/ProfileItem"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/profile_item_height"
+                            android:visibility="@{viewModel.userInfoEntity.burnCount > 0 ? View.VISIBLE:View.GONE}">
+
+                            <ImageView
+                                android:id="@+id/mine_item_9"
+                                android:layout_width="19dp"
+                                android:layout_height="19dp"
+                                android:layout_alignParentStart="true"
+                                android:layout_centerInParent="true"
+                                android:src="@drawable/ic_mine_fire" />
+
+                            <TextView
+                                android:id="@+id/tv_burn_title"
+                                style="@style/ProfileItemTitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_toEndOf="@+id/mine_item_9"
+                                android:text="@string/playfun_mine_burn"
+                                android:textSize="13sp" />
+
+                            <TextView
+                                android:id="@+id/tv_burn_button"
+                                style="@style/ButtonSecondary"
+                                android:layout_width="wrap_content"
+                                android:layout_height="25dp"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:gravity="center"
+                                android:paddingStart="10dp"
+                                android:paddingEnd="10dp"
+                                android:text="@string/playfun_mine_burn_recover"
+                                android:textColor="@color/text_7639FF"
+                                android:textSize="@dimen/text_size_mini"
+                                binding:onClickCommand="@{viewModel.burnRecoverOnClickCommand}" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_toLeftOf="@+id/tv_burn_button"
+                                android:layout_toRightOf="@+id/tv_burn_title"
+                                android:text="@{@string/playfun_mine_burn_total(viewModel.userInfoEntity.burnCount)}"
+                                android:textColor="@color/gray_middle"
+                                android:textSize="@dimen/text_size_mini"
+                                tools:text="long long longlong long long longlong long long longlong long long longlong " />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            style="@style/ProfileItem"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/profile_item_height">
+
+                            <ImageView
+                                android:id="@+id/iv_video_switch"
+                                android:layout_width="19dp"
+                                android:layout_height="19dp"
+                                android:layout_alignParentStart="true"
+                                android:layout_centerInParent="true"
+                                android:src="@drawable/icon_video_switch" />
+
+                            <TextView
+                                style="@style/ProfileItemTitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_toEndOf="@+id/iv_video_switch"
+                                android:text="@string/playfun_mine_allow_video"
+                                android:textSize="13sp" />
+
+                            <Switch
+                                android:id="@+id/sh_video"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_alignParentRight="true"
+                                android:thumb="@drawable/switch_thumb"
+                                android:track="@drawable/switch_track"/>
+
+                        </RelativeLayout>
+                        <RelativeLayout
+                            style="@style/ProfileItem"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/profile_item_height">
+
+                            <ImageView
+                                android:id="@+id/iv_audio_switch"
+                                android:layout_width="19dp"
+                                android:layout_height="19dp"
+                                android:layout_alignParentStart="true"
+                                android:layout_centerInParent="true"
+                                android:src="@drawable/icon_audio_switch" />
+
+                            <TextView
+                                style="@style/ProfileItemTitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_toEndOf="@+id/iv_audio_switch"
+                                android:text="@string/playfun_mine_allow_audio"
+                                android:textSize="13sp" />
+
+                            <Switch
+                                android:id="@+id/sh_audio"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_alignParentRight="true"
+                                android:thumb="@drawable/switch_thumb"
+                                android:track="@drawable/switch_track" />
+
+                        </RelativeLayout>
+                        <RelativeLayout
+                            style="@style/ProfileItem"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/profile_item_height"
+                            binding:onClickCommand="@{viewModel.settingOnClickCommand}">
+
+                            <ImageView
+                                android:id="@+id/mine_item_10"
+                                android:layout_width="19dp"
+                                android:layout_height="19dp"
+                                android:layout_alignParentStart="true"
+                                android:layout_centerInParent="true"
+                                android:src="@mipmap/ic_mine_item_img_8" />
+
+                            <TextView
+                                style="@style/ProfileItemTitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_toEndOf="@+id/mine_item_10"
+                                android:text="@string/playfun_mine_me_setting"
+                                android:textSize="13sp" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            style="@style/ProfileItem"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/profile_item_height"
+                            android:layout_marginTop="10dp"
+                            binding:onClickCommand="@{viewModel.serviceOnClickCommand}">
+
+                            <ImageView
+                                android:id="@+id/mine_item_11"
+                                android:layout_width="19dp"
+                                android:layout_height="19dp"
+                                android:layout_alignParentStart="true"
+                                android:layout_centerInParent="true"
+                                android:src="@mipmap/ic_mine_item_img_9" />
+
+                            <TextView
+                                style="@style/ProfileItemTitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_toEndOf="@+id/mine_item_11"
+                                android:text="@string/playfun_mine_need_help"
+                                android:textSize="13sp" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            style="@style/ProfileItem"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/profile_item_height"
+                            android:visibility="gone"
+                            binding:onClickCommand="@{viewModel.complaintOnClickCommand}">
+
+                            <TextView
+                                style="@style/ProfileItemTitleNormal"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/playfun_mine_complaint_service" />
+
+                            <TextView
+                                style="@style/ProfileItemSubTitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="" />
+                        </RelativeLayout>
+
+                    </LinearLayout>
+                </androidx.core.widget.NestedScrollView>
+            </com.scwang.smart.refresh.layout.SmartRefreshLayout>
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </RelativeLayout>
+</layout>

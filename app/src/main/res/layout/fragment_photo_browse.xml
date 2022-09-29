@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.dl.playfun.ui.userdetail.photobrowse.PhotoBrowseViewModel" />
+
+        <import type="me.tatarka.bindingcollectionadapter2.LayoutManagers" />
+
+        <import type="com.dl.playfun.widget.recyclerview.LineManagers" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.dl.playfun.ui.userdetail.photobrowse.PhotoBrowseFragment">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay"
+            app:elevation="0dp">
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/vp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/black"
+                app:current_item="@{viewModel.currentItem}"
+                binding:adapter="@{viewModel.adAdapter}"
+                binding:itemBinding="@{viewModel.itemBinding}"
+                binding:items="@{viewModel.items}"
+                binding:onPageSelectedCommand="@{viewModel.onPageSelectedCommand}">
+
+            </androidx.viewpager.widget.ViewPager>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/photo_browse_page_background"
+                android:paddingLeft="16dp"
+                android:paddingTop="5dp"
+                android:paddingRight="16dp"
+                android:paddingBottom="5dp"
+                android:text="@{viewModel.pageText}"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_middle" />
+        </RelativeLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

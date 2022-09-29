@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.dl.playfun.ui.mine.setting.SettingViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="com.dl.playfun.ui.mine.setting.SettingFragment">
+
+        <View
+            android:id="@+id/status_bar_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/status_bar_color" />
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay"
+            app:elevation="0dp">
+
+            <com.dl.playfun.widget.BasicToolbar
+                android:id="@+id/basic_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/action_bar_height"
+                app:toolbar_title="@string/playfun_mine_setting" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/container_background"
+            android:fillViewport="true"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical"
+                android:paddingBottom="30dp">
+
+                <RelativeLayout
+                    style="@style/ProfileItem"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/profile_item_height"
+                    android:background="@color/white"
+                    binding:onClickCommand="@{viewModel.pushSettingOnClickCommand}">
+
+                    <TextView
+                        style="@style/ProfileItemTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/playfun_push_setting_title" />
+
+                    <TextView
+                        style="@style/ProfileItemSubTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    style="@style/ProfileItem"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/profile_item_height"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/white"
+                    android:visibility="visible"
+                    binding:onClickCommand="@{viewModel.bindingCommunityAccount}"
+                    tools:visibility="visible">
+
+                    <TextView
+                        style="@style/ProfileItemTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/playfun_binding_community_account" />
+
+                    <TextView
+                        style="@style/ProfileItemSubTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    style="@style/ProfileItem"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/profile_item_height"
+                    android:layout_marginTop="10dp"
+                    android:visibility="gone"
+                    binding:onClickCommand="@{viewModel.bindMobileOnClickCommand}">
+
+                    <TextView
+                        style="@style/ProfileItemTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/playfun_phone" />
+
+                    <TextView
+                        style="@style/ProfileItemSubTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{@string/playfun_visible_to_oneself(viewModel.privacyEntity.phone)}"
+                        tools:text="@string/playfun_visible_to_oneself" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    style="@style/ProfileItem"
+                    android:background="@color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/profile_item_height"
+                    android:layout_marginTop="10dp"
+                    binding:onClickCommand="@{viewModel.clearCacheOnClickCommand}">
+
+                    <TextView
+                        style="@style/ProfileItemTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/playfun_setting_clear_catck" />
+
+                    <TextView
+                        style="@style/ProfileItemSubTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{viewModel.cacheSize}" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:visibility="gone"
+                    style="@style/ProfileItem"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/profile_item_height"
+                    android:background="@color/white"
+                    binding:onClickCommand="@{viewModel.settintAppLockOnClickCommand}">
+
+                    <TextView
+                        style="@style/ProfileItemTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/playfun_set_app_unlock" />
+
+                    <TextView
+                        style="@style/ProfileItemSubTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    style="@style/ProfileItem"
+                    android:visibility="@{viewModel.showUrl?View.VISIBLE:View.GONE}"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/profile_item_height"
+                    android:layout_marginTop="10dp"
+                    binding:onClickCommand="@{viewModel.termsOfServiceOnClickCommand}">
+
+                    <TextView
+                        style="@style/ProfileItemTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/playfun_setting_terms_of_service" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    style="@style/ProfileItem"
+                    android:visibility="@{viewModel.showUrl2?View.VISIBLE:View.GONE}"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/profile_item_height"
+                    android:background="@color/white"
+                    binding:onClickCommand="@{viewModel.privacyPolicyPasswordOnClickCommand}">
+
+                    <TextView
+                        style="@style/ProfileItemTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/playfun_user_privacy_policy" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    style="@style/ProfileItem"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/profile_item_height"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    binding:onClickCommand="@{viewModel.logoutOnClickCommand}">
+
+                    <TextView
+                        style="@style/ProfileItemTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/playfun_setting_sign_out" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/trtc_speed"
+                    style="@style/ProfileItem"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/profile_item_height"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:visibility="gone">
+
+                    <TextView
+                        style="@style/ProfileItemTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="TRTC测速" />
+                </RelativeLayout>
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+</layout>

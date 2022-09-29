@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            tools:background="@color/white"
+            binding:drawable_color="@{@color/white}"
+            binding:drawable_cornersRadius="@{15}"
+            android:layout_marginStart="27dp"
+            android:layout_marginEnd="27dp"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/img_close"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="15dp"
+                android:elevation="1dp"
+                android:src="@drawable/radio_publish_close" />
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:textColor="#ff42435e"
+                android:textStyle="bold"
+                android:textSize="18sp" />
+            <TextView
+                android:includeFontPadding="false"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/tv_title"
+                android:id="@+id/tv_title2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="#ff9896b4"
+                android:textSize="14sp"
+                />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcv_list"
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:layout_below="@+id/tv_title2"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="20dp"
+                tools:layoutManager="GridLayoutManager"
+                tools:listitem="@layout/item_coinpusher_conver_capsule_detail"
+                tools:spanCount="3" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_sub"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_below="@+id/rcv_list"
+                android:layout_marginStart="23dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="23dp"
+                android:layout_marginBottom="30dp"
+                android:background="@drawable/img_coinpusher_btn"
+                android:gravity="center"
+                android:text="@string/playfun_purchase_text"
+                android:textColor="#ff333333"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+    </FrameLayout>
+</layout>

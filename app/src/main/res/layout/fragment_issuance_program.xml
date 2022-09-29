@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.dl.playfun.ui.radio.issuanceprogram.IssuanceProgramViewModel" />
+
+        <import type="android.view.View" />
+
+        <import type="com.dl.playfun.R" />
+
+        <import type="me.tatarka.bindingcollectionadapter2.LayoutManagers" />
+
+        <import type="com.dl.playfun.widget.recyclerview.LineManagers" />
+
+        <import type="androidx.recyclerview.widget.LinearLayoutManager" />
+
+        <import type="com.dl.playfun.utils.SystemDictUtils" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/task_back_group"
+        android:orientation="vertical"
+        tools:context="com.dl.playfun.com.dl.playfun.ui.radio.issuanceprogram.IssuanceProgramFragment">
+
+        <View
+            android:id="@+id/status_bar_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/status_bar_color" />
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay"
+            app:elevation="0dp">
+
+            <com.dl.playfun.widget.BasicToolbar
+                android:id="@+id/basic_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/action_bar_height"
+                app:toolbar_title="@string/playfun_fragment_issuance_program_title" />
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:background="@color/white"
+                    android:nestedScrollingEnabled="false"
+                    android:visibility="@{viewModel.moolCheck?View.VISIBLE:View.GONE}"
+                    binding:adapter="@{viewModel.objAdapter}"
+                    binding:itemBinding="@{viewModel.objItemBinding}"
+                    binding:items="@{viewModel.objItems}"
+                    binding:layoutManager="@{LayoutManagers.linear(LinearLayoutManager.HORIZONTAL,false)}" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginTop="11dp"
+                    android:alpha="10"
+                    android:background="#EAEAED"
+                    android:visibility="@{viewModel.moolCheck?View.GONE:View.VISIBLE}" />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="275dp"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginTop="14dp"
+                    android:layout_marginEnd="14dp"
+                    android:layout_marginBottom="14dp"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="0dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/dating_content">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="14dp"
+                            android:layout_marginTop="14dp"
+                            android:layout_marginEnd="14dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/check_dating"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:includeFontPadding="false"
+                                android:lineHeight="15dp"
+                                android:text="@{viewModel.selThemeItemName}"
+                                android:textColor="#ffa72dfe"
+                                android:textSize="13sp"
+                                tools:text="#想戀愛" />
+
+                            <EditText
+                                android:id="@+id/post_content"
+                                style="@style/EditText"
+                                android:layout_width="match_parent"
+                                android:layout_height="115dp"
+                                android:layout_marginTop="7dp"
+                                android:gravity="start|top"
+                                android:hint="@string/playfun_issuance_hint_text"
+                                android:includeFontPadding="false"
+                                android:inputType="textMultiLine"
+                                android:lineHeight="15dp"
+                                android:lineSpacingExtra="15dp"
+                                android:maxLength="120"
+                                android:singleLine="false"
+                                android:text="@{viewModel.programDesc}" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/tv_size"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginTop="130dp"
+                            android:layout_marginEnd="12dp"
+                            android:text='@{viewModel.programDesc.length()+"/120"}'
+                            android:textColor="@color/gray"
+                            android:textSize="@dimen/text_size_mini" />
+
+                        <ImageView
+                            android:layout_width="81dp"
+                            android:layout_height="81dp"
+                            android:layout_above="@+id/bottom_hint"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginBottom="10dp"
+                            android:background="@drawable/add_pic_bg"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/ic_add_pic"
+                            android:visibility="@{viewModel.selectMediaPath!=null?View.GONE:View.VISIBLE}"
+                            binding:onClickCommand="@{viewModel.toClipImageVideoView}" />
+
+                        <ImageView
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_above="@+id/MediaPath"
+                            android:layout_alignEnd="@+id/MediaPath"
+                            android:layout_marginEnd="2dp"
+                            android:layout_marginBottom="-17dp"
+                            android:elevation="11dp"
+                            android:src="@drawable/select_meideo_close"
+                            android:visibility="@{viewModel.selectMediaPath==null?View.GONE:View.VISIBLE}"
+                            binding:onClickCommand="@{viewModel.removeMediaPath}" />
+
+                        <ImageView
+                            android:id="@+id/MediaPath"
+                            android:layout_width="81dp"
+                            android:layout_height="81dp"
+                            android:layout_above="@+id/bottom_hint"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginBottom="10dp"
+                            android:scaleType="centerInside"
+                            android:visibility="@{viewModel.selectMediaPath==null?View.GONE:View.VISIBLE}"
+                            binding:imageErrorPlaceholderRes="@{R.drawable.clop_img_video_loadding}"
+                            binding:imagePlaceholderRes="@{R.drawable.clop_img_video_loadding}"
+                            binding:imageThumbPath='@{viewModel.selectMediaPath}'
+                            binding:resizeH="@{81}"
+                            binding:resizeW="@{81}"
+                            />
+
+                        <TextView
+                            android:id="@+id/bottom_hint"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginStart="14dp"
+                            android:layout_marginBottom="16dp"
+                            android:drawableLeft="@drawable/ic_tip"
+                            android:drawablePadding="5dp"
+                            android:text="@string/playfun_fragment_issuance_program_explain"
+                            android:textSize="@dimen/text_size_mini" />
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:background="@color/task_back_group"
+                android:orientation="vertical">
+
+                <Button
+                    style="@style/ButtonPrimary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="10dp"
+                    android:text="@string/playfun_issuance"
+                    app:onClickCommand="@{viewModel.issuanceClickCommand}" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:padding="10dp"
+                    android:text="@{viewModel.sex==0?@string/playfun_female_free_issuance:(@string/playfun_member_free_not_member_need_pay+viewModel.configManager.topicalMoney+@string/playfun_element)}" />
+
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+</layout>

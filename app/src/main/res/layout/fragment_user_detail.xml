@@ -1,0 +1,949 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.dl.playfun.utils.SystemDictUtils" />
+
+        <import type="com.blankj.utilcode.util.StringUtils" />
+
+        <import type="com.blankj.utilcode.util.ObjectUtils" />
+
+        <import type="com.dl.playfun.R" />
+
+        <variable
+            name="viewModel"
+            type="com.dl.playfun.ui.userdetail.detail.UserDetailViewModel" />
+
+        <import type="me.tatarka.bindingcollectionadapter2.LayoutManagers" />
+
+        <import type="com.dl.playfun.widget.recyclerview.LineManagers" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/bottom_layout"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/layout_title"
+                android:layout_width="match_parent"
+                android:layout_height="84dp"
+                android:background="@color/white"
+                android:clickable="true"
+                android:elevation="50dp"
+                android:minHeight="84dp"
+                android:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/black_back"
+                    android:layout_width="19dp"
+                    android:layout_height="19dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginBottom="12dp"
+                    android:src="@drawable/ic_toolbar_back" />
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="29dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginBottom="7dp"
+                    android:clickable="true">
+
+                    <com.dl.playfun.widget.image.CircleImageView
+                        android:id="@+id/min_user_img"
+                        android:layout_width="29dp"
+                        android:layout_height="29dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/default_address_user"
+                        app:riv_corner_radius="8dp"
+                        binding:imageErrorPlaceholderRes="@{R.drawable.default_avatar}"
+                        binding:imagePlaceholderRes="@{R.drawable.default_avatar}"
+                        binding:imageThumbPath="@{viewModel.detailEntity.avatar}"
+                        binding:resizeH="@{29}"
+                        binding:resizeW="@{29}" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginStart="13dp"
+                        android:layout_toEndOf="@+id/min_user_img"
+                        android:ellipsize="end"
+                        android:includeFontPadding="false"
+                        android:lines="1"
+                        android:maxWidth="109dp"
+                        android:maxLength="6"
+                        android:text="@{viewModel.detailEntity.nickname}"
+                        android:textColor="#FF333333"
+                        android:textSize="17sp"
+                        tools:text="艾希lovexi666" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="19dp"
+                    android:layout_height="19dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginEnd="13dp"
+                    android:layout_marginBottom="12dp"
+                    android:src="@drawable/ic_toolbar_more"
+                    binding:onClickCommand="@{viewModel.moreOnClickCommand}" />
+            </RelativeLayout>
+
+            <com.scwang.smart.refresh.layout.SmartRefreshLayout
+                android:id="@+id/refresh_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                binding:onRefreshCommand="@{viewModel.onRefreshCommand}">
+
+                <androidx.core.widget.NestedScrollView
+                    android:id="@+id/nested_scroll"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scrollbars="none">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <com.google.android.material.appbar.AppBarLayout
+                            android:id="@+id/appbar_layout"
+                            android:layout_width="match_parent"
+                            android:layout_height="360dp"
+                            android:orientation="vertical"
+                            android:theme="@style/AppTheme.AppBarOverlay"
+                            app:elevation="0dp">
+
+                            <com.google.android.material.appbar.CollapsingToolbarLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:fitsSystemWindows="true"
+                                app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent">
+
+                                    <FrameLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        app:layout_collapseMode="parallax"
+                                        app:layout_collapseParallaxMultiplier="0.2">
+
+                                        <ImageView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="360dp"
+                                            android:layout_alignParentTop="true"
+                                            android:elevation="9dp"
+                                            android:scaleType="centerCrop"
+                                            android:src="@drawable/default_avatar"
+                                            binding:imageErrorPlaceholderRes="@{R.drawable.default_avatar}"
+                                            binding:imagePlaceholderRes="@{R.drawable.default_avatar}"
+                                            binding:imageThumbPath="@{viewModel.detailEntity.avatar}" />
+
+                                        <ImageView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:background="@drawable/radius_layout_mine"
+                                            android:elevation="99dp"
+                                            android:scaleType="fitXY"
+                                            android:src="@{viewModel.detailEntity.sex==1?@drawable/user_detail_default_back_img_male:@drawable/user_detail_default_back_img}"
+                                            tools:src="@drawable/user_detail_default_back_img_male" />
+                                    </FrameLayout>
+
+                                    <RelativeLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent">
+
+                                        <ImageView
+                                            android:id="@+id/iv_back"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="6dp"
+                                            android:layout_marginTop="36dp"
+                                            android:elevation="15dp"
+                                            android:padding="10dp"
+                                            android:src="@drawable/ic_toolbar_back_white" />
+
+                                        <ImageView
+                                            android:id="@+id/iv_online"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="46dp"
+                                            android:layout_toRightOf="@+id/iv_back"
+                                            android:elevation="15dp"
+                                            android:src="@{viewModel.onLineDrawables(viewModel.detailEntity)}"
+                                            android:visibility="@{viewModel.detailEntity.isOnline == 1? View.VISIBLE:View.GONE}" />
+
+
+                                        <ImageView
+                                            android:layout_width="20dp"
+                                            android:layout_height="20dp"
+                                            android:layout_alignParentEnd="true"
+                                            android:layout_marginTop="46dp"
+                                            android:layout_marginEnd="15dp"
+                                            android:elevation="15dp"
+                                            android:src="@drawable/ic_toolbar_more_white"
+                                            binding:onClickCommand="@{viewModel.moreOnClickCommand}" />
+
+                                        <FrameLayout
+                                            android:id="@+id/me_avatar"
+                                            android:layout_width="69dp"
+                                            android:layout_height="69dp"
+                                            android:layout_marginStart="24dp"
+                                            android:layout_marginTop="243dp">
+
+                                            <ImageView
+                                                android:layout_width="69dp"
+                                                android:layout_height="69dp"
+                                                android:background="@drawable/circle_white" />
+
+                                            <com.dl.playfun.widget.image.CircleImageView
+                                                android:layout_width="67dp"
+                                                android:layout_height="67dp"
+                                                android:layout_marginStart="1dp"
+                                                android:layout_marginTop="1dp"
+                                                android:clickable="true"
+                                                android:scaleType="centerCrop"
+                                                android:src="@drawable/default_address_user"
+                                                app:riv_corner_radius="8dp"
+                                                binding:imageErrorPlaceholderRes="@{R.drawable.default_avatar}"
+                                                binding:imagePlaceholderRes="@{R.drawable.default_avatar}"
+                                                binding:imageThumbPath="@{viewModel.detailEntity.avatar}"
+                                                binding:resizeH="@{67}"
+                                                binding:resizeW="@{67}"
+                                                tools:ignore="MissingConstraints" />
+                                        </FrameLayout>
+
+                                        <RelativeLayout
+                                            android:layout_width="67dp"
+                                            android:layout_height="24dp"
+                                            android:layout_below="@+id/me_avatar"
+                                            android:layout_marginStart="24dp"
+                                            android:layout_marginTop="-19dp"
+                                            android:visibility="@{viewModel.getSoundShow(viewModel.detailEntity.soundStatus)}">
+
+                                            <ImageView
+                                                android:layout_width="match_parent"
+                                                android:layout_height="match_parent"
+                                                android:src="@drawable/user_detail_audio_layout" />
+
+                                            <ImageView
+                                                android:id="@+id/audio_start"
+                                                android:layout_width="29dp"
+                                                android:layout_height="29dp"
+                                                android:layout_marginStart="5dp"
+                                                android:layout_marginTop="2dp"
+                                                android:src="@drawable/mine_audio_start_img" />
+
+                                            <TextView
+                                                android:id="@+id/audio_time"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_alignParentStart="true"
+                                                android:layout_centerInParent="true"
+                                                android:layout_marginStart="37dp"
+                                                android:includeFontPadding="false"
+                                                android:text="@{String.valueOf(viewModel.detailEntity.soundTime)}"
+                                                android:textColor="#FFA72DFE"
+                                                android:textSize="13sp"
+                                                tools:text="14" />
+
+                                            <ImageView
+                                                android:layout_width="5dp"
+                                                android:layout_height="3dp"
+                                                android:layout_marginTop="5dp"
+                                                android:layout_toEndOf="@+id/audio_time"
+                                                android:src="@drawable/icon_mine_audio_dian" />
+                                        </RelativeLayout>
+
+                                        <RelativeLayout
+                                            android:id="@+id/tv_title_layout"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_alignTop="@+id/me_avatar"
+                                            android:layout_marginTop="6dp"
+                                            android:layout_toEndOf="@+id/me_avatar">
+
+                                            <TextView
+                                                android:id="@+id/tv_title"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginStart="16dp"
+                                                android:ellipsize="end"
+                                                android:includeFontPadding="false"
+                                                android:lines="1"
+                                                android:maxWidth="109dp"
+                                                android:text="@{viewModel.detailEntity.nickname}"
+                                                android:textColor="@color/white"
+                                                android:textSize="19sp"
+                                                tools:text="艾希lovexi666" />
+
+                                            <ImageView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_centerInParent="true"
+                                                android:layout_marginStart="5dp"
+                                                android:layout_toEndOf="@+id/tv_title"
+                                                android:src="@drawable/ic_vip"
+                                                android:visibility="@{(viewModel.detailEntity.sex == 1 &amp;&amp; viewModel.detailEntity.isVip == 1) ? View.VISIBLE:View.GONE}" />
+
+                                        </RelativeLayout>
+
+                                        <LinearLayout
+                                            android:id="@+id/ll_tag_group"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_below="@+id/tv_title_layout"
+                                            android:layout_marginStart="16dp"
+                                            android:layout_marginTop="10dp"
+                                            android:layout_toEndOf="@+id/me_avatar"
+                                            android:orientation="horizontal">
+
+                                            <TextView
+                                                style="@style/MineTagPrimary"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="21dp"
+                                                android:layout_marginEnd="6dp"
+                                                android:text="@{StringUtils.isEmpty(viewModel.detailEntity.city) ? @string/playfun_unknown_region : viewModel.detailEntity.city}"
+                                                tools:text="城市" />
+
+
+                                            <TextView
+                                                style="@style/MineTagPrimary"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="21dp"
+                                                android:layout_marginEnd="6dp"
+                                                android:text="@{@string/playfun_mine_age(viewModel.detailEntity.age)}"
+                                                android:visibility="@{viewModel.detailEntity.age == null ? View.GONE : View.VISIBLE}"
+                                                tools:text="26" />
+                                        </LinearLayout>
+
+                                        <TextView
+                                            style="@style/MineTagPrimary"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="21dp"
+                                            android:layout_below="@+id/ll_tag_group"
+                                            android:layout_alignStart="@+id/ll_tag_group"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_marginEnd="6dp"
+                                            android:text="@{SystemDictUtils.getOccupationById(safeUnbox(viewModel.detailEntity.occupationId))}" />
+                                    </RelativeLayout>
+                                </RelativeLayout>
+                            </com.google.android.material.appbar.CollapsingToolbarLayout>
+                        </com.google.android.material.appbar.AppBarLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="-28dp"
+                            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+                            <RelativeLayout
+                                android:id="@+id/zuizong"
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginEnd="24dp"
+                                android:elevation="20dp"
+                                android:visibility="@{viewModel.detailEntity.collect?View.INVISIBLE:View.VISIBLE}">
+
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:src="@drawable/icon_user_detail_like"
+                                    android:visibility="@{viewModel.detailEntity.collect?View.GONE:View.VISIBLE}"
+                                    binding:onClickCommand="@{viewModel.collectOnClickCommand}" />
+
+                            </RelativeLayout>
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_below="@+id/zuizong"
+                                android:layout_marginTop="-35dp"
+                                android:visibility="@{viewModel.detailEntity.blacklistStatus == 0 ? View.VISIBLE : View.GONE}"
+                                app:cardCornerRadius="20dp"
+                                app:cardElevation="0dp">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginTop="22dp"
+                                    android:background="@color/container_background"
+                                    android:orientation="vertical">
+
+                                    <RelativeLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginBottom="10dp"
+                                        android:background="@color/white"
+                                        android:paddingStart="14dp"
+                                        android:paddingEnd="14dp"
+                                        android:paddingBottom="14dp"
+                                        android:visibility="@{(viewModel.detailEntity.topicalId > 0 || (viewModel.detailEntity.sex == 1 &amp;&amp; viewModel.detailEntity.isVip == 1) || (viewModel.detailEntity.sex == 0 &amp;&amp; viewModel.detailEntity.isVip == 1) || viewModel.detailEntity.certification == 1) &amp;&amp; !viewModel.userDisable ? View.VISIBLE:View.GONE}">
+
+                                        <LinearLayout
+                                            android:id="@+id/ll_tags"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="vertical">
+
+                                            <LinearLayout
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:visibility="@{viewModel.detailEntity.certification == 1 ? View.VISIBLE:View.GONE}">
+
+                                                <ImageView
+                                                    android:layout_width="31dp"
+                                                    android:layout_height="13dp"
+                                                    android:layout_gravity="center"
+                                                    android:layout_marginRight="5dp"
+                                                    android:src="@drawable/ic_real_man" />
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="@string/playfun_user_detail_face_verification_pass"
+                                                    android:textColor="#7C8698"
+                                                    android:textSize="@dimen/text_size_small"
+                                                    tools:text="他通過臉部辨識認證真實性" />
+                                            </LinearLayout>
+
+                                            <LinearLayout
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginTop="10dp"
+                                                android:visibility="@{(viewModel.detailEntity.sex == 0 &amp;&amp; viewModel.detailEntity.isVip == 1) ? View.VISIBLE:View.GONE}">
+
+                                                <ImageView
+                                                    android:layout_width="31dp"
+                                                    android:layout_height="13dp"
+                                                    android:layout_gravity="center"
+                                                    android:layout_marginRight="5dp"
+                                                    android:src="@drawable/ic_goddess" />
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="@string/playfun_user_detail_is_goddess"
+                                                    android:textColor="#7C8698"
+                                                    android:textSize="@dimen/text_size_small"
+                                                    tools:text="她已獲得女神認證" />
+                                            </LinearLayout>
+
+                                            <LinearLayout
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginTop="10dp"
+                                                android:visibility="@{(viewModel.detailEntity.sex == 1 &amp;&amp; viewModel.detailEntity.isVip == 1) ? View.VISIBLE:View.GONE}">
+
+                                                <ImageView
+                                                    android:layout_width="31dp"
+                                                    android:layout_height="13dp"
+                                                    android:layout_gravity="center"
+                                                    android:layout_marginRight="5dp"
+                                                    android:src="@drawable/ic_is_vip" />
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="@string/playfun_user_detail_paying_user"
+                                                    android:textColor="#7C8698"
+                                                    android:textSize="@dimen/text_size_small" />
+
+                                            </LinearLayout>
+
+
+                                        </LinearLayout>
+
+                                    </RelativeLayout>
+
+                                    <RelativeLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:visibility="@{viewModel.userDisable ? View.GONE:View.VISIBLE}">
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="vertical"
+                                            android:visibility="@{(viewModel.detailEntity.albumType == 3 &amp;&amp; viewModel.detailEntity.albumApply != 1) ? View.GONE:View.VISIBLE}">
+
+                                            <RelativeLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:background="@color/white"
+                                                android:minHeight="41dp"
+                                                binding:onClickCommand="@{viewModel.userDynamicOnClickCommand}">
+
+                                                <ImageView
+                                                    android:id="@+id/iv_feeling"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_alignParentTop="true"
+                                                    android:layout_marginStart="14dp"
+                                                    android:layout_marginTop="15dp"
+                                                    android:layout_marginEnd="15dp"
+                                                    android:src="@drawable/icon_user_detail_feeling" />
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_alignTop="@+id/iv_feeling"
+                                                    android:layout_toEndOf="@+id/iv_feeling"
+                                                    android:text="@string/playfun_user_detail_evaluation_hint3"
+                                                    android:textColor="#FFBFBFBF"
+                                                    android:textSize="12sp"
+                                                    android:visibility="@{ObjectUtils.isEmpty(viewModel.detailEntity.news) ? View.VISIBLE:View.GONE}" />
+
+                                                <LinearLayout
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_alignTop="@+id/iv_feeling"
+                                                    android:layout_toEndOf="@+id/iv_feeling"
+                                                    android:orientation="horizontal"
+                                                    android:visibility="@{ObjectUtils.isEmpty(viewModel.detailEntity.news) ? View.GONE:View.VISIBLE}"
+                                                    tools:visibility="gone">
+
+                                                    <com.dl.playfun.widget.roundedimageview.RoundedImageView
+                                                        android:layout_width="75dp"
+                                                        android:layout_height="75dp"
+                                                        android:layout_centerVertical="true"
+                                                        android:layout_gravity="start"
+                                                        android:layout_marginRight="6dp"
+                                                        android:scaleType="centerCrop"
+                                                        android:visibility="@{StringUtils.isEmpty(viewModel.dynamicPic1) ? View.GONE:View.VISIBLE}"
+                                                        app:riv_corner_radius="8dip"
+                                                        binding:imageErrorPlaceholderRes="@{R.drawable.default_placeholder_img}"
+                                                        binding:imageThumbPath="@{viewModel.dynamicPic1}"
+                                                        binding:resizeH="@{78}"
+                                                        binding:resizeW="@{78}" />
+
+                                                    <com.dl.playfun.widget.roundedimageview.RoundedImageView
+                                                        android:layout_width="75dp"
+                                                        android:layout_height="75dp"
+                                                        android:layout_centerVertical="true"
+                                                        android:layout_gravity="start"
+                                                        android:layout_marginRight="10dp"
+                                                        android:scaleType="centerCrop"
+                                                        android:visibility="@{StringUtils.isEmpty(viewModel.dynamicPic2) ? View.GONE:View.VISIBLE}"
+                                                        app:riv_corner_radius="8dip"
+                                                        binding:imageErrorPlaceholderRes="@{R.drawable.default_placeholder_img}"
+                                                        binding:imageThumbPath="@{viewModel.dynamicPic2}"
+                                                        binding:resizeH="@{78}"
+                                                        binding:resizeW="@{78}" />
+
+                                                    <com.dl.playfun.widget.roundedimageview.RoundedImageView
+                                                        android:layout_width="75dp"
+                                                        android:layout_height="75dp"
+                                                        android:layout_centerVertical="true"
+                                                        android:layout_gravity="start"
+                                                        android:layout_marginRight="6dp"
+                                                        android:scaleType="centerCrop"
+                                                        android:visibility="@{StringUtils.isEmpty(viewModel.dynamicPic3) ? View.GONE:View.VISIBLE}"
+                                                        app:riv_corner_radius="8dip"
+                                                        binding:imageErrorPlaceholderRes="@{R.drawable.default_placeholder_img}"
+                                                        binding:imageThumbPath="@{viewModel.dynamicPic3}"
+                                                        binding:resizeH="@{78}"
+                                                        binding:resizeW="@{78}" />
+
+                                                    <RelativeLayout
+                                                        android:layout_width="75dp"
+                                                        android:layout_height="75dp"
+                                                        android:layout_centerVertical="true"
+                                                        android:layout_gravity="start">
+
+                                                        <com.dl.playfun.widget.roundedimageview.RoundedImageView
+                                                            android:layout_width="75dp"
+                                                            android:layout_height="75dp"
+                                                            android:scaleType="centerCrop"
+                                                            android:visibility="@{StringUtils.isEmpty(viewModel.dynamicPic4) ? View.GONE:View.VISIBLE}"
+                                                            app:riv_corner_radius="8dip"
+                                                            binding:imageErrorPlaceholderRes="@{R.drawable.default_placeholder_img}"
+                                                            binding:imageThumbPath="@{viewModel.dynamicPic4}"
+                                                            binding:resizeH="@{78}"
+                                                            binding:resizeW="@{78}" />
+                                                        <!-- 更多数字 -->
+                                                        <TextView
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="match_parent"
+                                                            android:layout_centerInParent="true"
+                                                            android:background="@drawable/album_more_count_background"
+                                                            android:elevation="11dp"
+                                                            android:gravity="center"
+                                                            android:text="@{@string/playfun_user_detail_phone_list_hint((viewModel.detailEntity.newsNumber-4)>99?99:(viewModel.detailEntity.newsNumber-4))}"
+                                                            android:textColor="@color/white"
+                                                            android:textSize="13sp"
+                                                            android:visibility="@{safeUnbox(viewModel.detailEntity.newsNumber-4) > 1 ? View.VISIBLE:View.GONE}"
+                                                            binding:onClickCommand="@{viewModel.userDynamicOnClickCommand}"
+                                                            tools:visibility="gone" />
+                                                    </RelativeLayout>
+                                                </LinearLayout>
+
+                                            </RelativeLayout>
+
+                                            <RelativeLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:background="@color/white"
+                                                android:minHeight="41dp">
+
+                                                <ImageView
+                                                    android:id="@+id/iv_photo"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_alignParentTop="true"
+                                                    android:layout_marginStart="14dp"
+                                                    android:layout_marginTop="18dp"
+                                                    android:layout_marginEnd="15dp"
+                                                    android:src="@drawable/icon_user_detail_photo" />
+
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_alignTop="@+id/iv_photo"
+                                                    android:layout_toEndOf="@+id/iv_photo"
+                                                    android:text="@{viewModel.detailEntity.getSex() == 0? @string/playfun_he_not_uploaded_photo_girl:@string/playfun_he_not_uploaded_photo(viewModel.sexName)}"
+                                                    android:textColor="@color/gray_light"
+                                                    android:textSize="12sp"
+                                                    android:visibility="@{viewModel.detailEntity.album.size()>0?View.GONE:View.VISIBLE}"
+                                                    tools:text="@string/playfun_he_not_uploaded_photo_girl" />
+
+                                                <androidx.recyclerview.widget.RecyclerView
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_alignTop="@+id/iv_photo"
+                                                    android:layout_toEndOf="@+id/iv_photo"
+                                                    android:background="@color/white"
+                                                    android:scrollbars="none"
+                                                    binding:adapter="@{viewModel.adapter}"
+                                                    binding:itemBinding="@{viewModel.itemBinding}"
+                                                    binding:items="@{viewModel.observableList}"
+                                                    binding:layoutManager="@{LayoutManagers.grid(4)}"
+                                                    tools:visibility="gone" />
+
+                                                <LinearLayout
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_alignTop="@+id/iv_photo"
+                                                    android:layout_toEndOf="@+id/iv_photo"
+                                                    android:background="@color/white"
+                                                    android:clickable="true"
+                                                    android:gravity="center"
+                                                    android:orientation="vertical"
+                                                    android:padding="20dp"
+                                                    android:visibility="@{viewModel.detailEntity.albumType == 2 ? View.VISIBLE:View.GONE}"
+                                                    tools:visibility="gone">
+
+                                                    <ImageView
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content"
+                                                        android:src="@drawable/ic_photo_lock" />
+
+                                                    <TextView
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content"
+                                                        android:layout_marginTop="10dp"
+                                                        android:text="@{@string/playfun_user_detail_album_lock(viewModel.sexName)}"
+                                                        android:textColor="@color/gray_middle"
+                                                        android:textSize="@dimen/text_size_middle"
+                                                        tools:text="ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd" />
+
+                                                    <TextView
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content"
+                                                        android:layout_marginTop="5dp"
+                                                        android:text="@{viewModel.albumNumberText}"
+                                                        android:textColor="@color/gray_middle"
+                                                        android:textSize="@dimen/text_size_small"
+                                                        tools:text="ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd" />
+
+                                                    <Button
+                                                        style="@style/ButtonPrimary"
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="40dp"
+                                                        android:layout_marginTop="20dp"
+                                                        android:paddingStart="30dp"
+                                                        android:paddingEnd="30dp"
+                                                        android:text="@{viewModel.unLockAlbumText}"
+                                                        android:textSize="13sp"
+                                                        binding:onClickCommand="@{viewModel.applyCheckAlbumOnClickCommand}" />
+
+                                                </LinearLayout>
+
+                                            </RelativeLayout>
+
+                                            <RelativeLayout
+                                                android:id="@+id/evaluation"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:background="@color/white"
+                                                android:minHeight="41dp">
+
+                                                <ImageView
+                                                    android:id="@+id/iv_evaluation"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_alignParentTop="true"
+                                                    android:layout_marginStart="14dp"
+                                                    android:layout_marginTop="18dp"
+                                                    android:layout_marginEnd="15dp"
+                                                    android:layout_marginBottom="23dp"
+                                                    android:src="@drawable/icon_user_detail_evaluation" />
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_alignTop="@+id/iv_evaluation"
+                                                    android:layout_marginTop="1dp"
+                                                    android:layout_toEndOf="@+id/iv_evaluation"
+                                                    android:text="@string/playfun_user_detail_evaluation_empty"
+                                                    android:textColor="#FFBFBFBF"
+                                                    android:textSize="12sp"
+                                                    android:visibility="@{viewModel.isUserTagShow?View.GONE:View.VISIBLE}" />
+
+                                                <com.dl.playfun.widget.custom.FlowLayout
+                                                    android:id="@+id/flow_layout"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_alignTop="@+id/iv_evaluation"
+                                                    android:layout_marginTop="-1dp"
+                                                    android:layout_toEndOf="@+id/iv_evaluation"
+                                                    android:background="@color/white"
+                                                    android:minHeight="30dp"
+                                                    android:scrollbars="none"
+                                                    android:visibility="@{viewModel.isUserTagShow?View.VISIBLE:View.GONE}"
+                                                    tools:visibility="gone" />
+                                            </RelativeLayout>
+
+                                            <LinearLayout
+                                                android:id="@+id/ll_content"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginTop="10dp"
+                                                android:background="@color/white"
+                                                android:orientation="vertical"
+                                                android:padding="15dp"
+                                                android:visibility="@{!viewModel.personalInfoIsEmpty(viewModel.detailEntity) ? View.VISIBLE:View.GONE}">
+
+                                                <TextView
+                                                    style="@style/LabelContent"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_marginBottom="16dp"
+                                                    android:text="@string/playfun_user_detail"
+                                                    android:textSize="16sp"
+                                                    android:textStyle="bold" />
+
+                                                <LinearLayout
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:gravity="center_vertical"
+                                                    android:minHeight="30dp"
+                                                    android:orientation="horizontal"
+                                                    android:paddingEnd="14dp"
+                                                    android:visibility="@{viewModel.detailEntity.height > 0 ? View.VISIBLE:View.GONE}">
+
+                                                    <ImageView
+                                                        android:layout_width="18dp"
+                                                        android:layout_height="18dp"
+                                                        android:src="@drawable/ic_user_detail_height" />
+
+                                                    <TextView
+                                                        style="@style/LabelContent"
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content"
+                                                        android:layout_marginStart="48dp"
+                                                        android:text="@{SystemDictUtils.getHeightById(viewModel.detailEntity.height)}"
+                                                        tools:text="176CM" />
+                                                </LinearLayout>
+
+                                                <LinearLayout
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:gravity="center_vertical"
+                                                    android:minHeight="30dp"
+                                                    android:orientation="horizontal"
+                                                    android:paddingEnd="14dp"
+                                                    android:visibility="@{viewModel.detailEntity.weight > 0 ? View.VISIBLE:View.GONE}">
+
+                                                    <ImageView
+                                                        android:layout_width="18dp"
+                                                        android:layout_height="18dp"
+                                                        android:src="@drawable/ic_user_detail_weight" />
+
+                                                    <TextView
+                                                        style="@style/LabelContent"
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content"
+                                                        android:layout_marginStart="48dp"
+                                                        android:text="@{SystemDictUtils.getWidthById(viewModel.detailEntity.weight)}"
+                                                        tools:text="76KG" />
+                                                </LinearLayout>
+
+                                                <LinearLayout
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:gravity="center_vertical"
+                                                    android:orientation="horizontal"
+                                                    android:paddingEnd="14dp"
+                                                    android:visibility="@{StringUtils.isEmpty(viewModel.detailEntity.desc) ? View.GONE:View.VISIBLE}">
+
+                                                    <ImageView
+                                                        android:layout_width="18dp"
+                                                        android:layout_height="18dp"
+                                                        android:src="@drawable/ic_user_detail_self_intro" />
+
+                                                    <TextView
+                                                        style="@style/LabelContent"
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content"
+                                                        android:layout_marginStart="48dp"
+                                                        android:paddingTop="10dp"
+                                                        android:paddingBottom="10dp"
+                                                        android:text="@{viewModel.detailEntity.desc}" />
+                                                </LinearLayout>
+                                            </LinearLayout>
+                                        </LinearLayout>
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:layout_marginTop="10dp"
+                                            android:layout_marginBottom="10dp"
+                                            android:background="@color/white"
+                                            android:gravity="center"
+                                            android:orientation="vertical"
+                                            android:padding="16dp"
+                                            android:visibility="@{(viewModel.detailEntity.albumType == 3 &amp;&amp; viewModel.detailEntity.albumApply != 1) ? View.VISIBLE:View.GONE}"
+                                            tools:visibility="gone">
+
+                                            <ImageView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:src="@drawable/ic_profile_lock" />
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginTop="20dp"
+                                                android:text="@{viewModel.detailEntity.albumApply == 0 ? @string/playfun_user_detail_profile_lock_sended:@string/playfun_user_detail_profile_lock(viewModel.sexNameSheAndHis,viewModel.sexNameSheAndHis)}"
+                                                android:textColor="@color/gray_middle"
+                                                android:textSize="@dimen/text_size_middle" />
+
+                                            <Button
+                                                style="@style/ButtonPrimary"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="40dp"
+                                                android:layout_marginTop="20dp"
+                                                android:paddingStart="20dp"
+                                                android:paddingEnd="20dp"
+                                                android:text="@string/playfun_user_detail_btn_apply_check"
+                                                android:visibility="@{viewModel.detailEntity.albumApply != 0 ? View.VISIBLE:View.GONE}"
+                                                binding:onClickCommand="@{viewModel.applyCheckDetailOnClickCommand}" />
+
+                                        </LinearLayout>
+
+                                    </RelativeLayout>
+
+                                    <RelativeLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginTop="10dp"
+                                        android:background="@color/white"
+                                        android:visibility="@{viewModel.userDisable ? View.VISIBLE:View.GONE}">
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_centerInParent="true"
+                                            android:drawableTop="@drawable/ic_user_disable"
+                                            android:drawablePadding="10dp"
+                                            android:gravity="center"
+                                            android:text="@string/playfun_user_detail_user_disable"
+                                            android:textColor="@color/gray_light"
+                                            android:textSize="@dimen/text_size_middle" />
+
+                                    </RelativeLayout>
+                                </LinearLayout>
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_below="@+id/zuizong"
+                                android:layout_marginTop="-19dp"
+                                android:visibility="@{viewModel.detailEntity.blacklistStatus == 0 ? View.GONE : View.VISIBLE}"
+                                app:cardCornerRadius="20dp"
+                                app:cardElevation="0dp"
+                                tools:visibility="gone">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="120dp"
+                                    android:background="@color/white"
+                                    android:gravity="center_horizontal"
+                                    android:orientation="vertical">
+
+                                    <ImageView
+                                        android:layout_width="50dp"
+                                        android:layout_height="52dp"
+                                        android:src="@drawable/user_detail_block_data" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="11dp"
+                                        android:gravity="center_horizontal"
+                                        android:text="@{viewModel.detailEntity.blacklistStatus != 2 ? @string/playfun_blocked_each_other : @string/playfun_block_each_other}"
+                                        android:textColor="@color/gray_middle"
+                                        android:textSize="@dimen/text_size_42" />
+
+                                </LinearLayout>
+
+                            </androidx.cardview.widget.CardView>
+                        </RelativeLayout>
+                    </LinearLayout>
+                </androidx.core.widget.NestedScrollView>
+            </com.scwang.smart.refresh.layout.SmartRefreshLayout>
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/bottom_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/bottom_navigation_backgroup_user_detail"
+            android:visibility="@{viewModel.detailEntity.blacklistStatus == 0 ? View.VISIBLE : View.GONE}">
+
+            <include
+                android:id="@+id/detail_bottom_toolbar"
+                layout="@layout/view_user_detail_bottom_toolbar"
+                app:viewModel="@{viewModel}" />
+        </FrameLayout>
+
+        <include
+            layout="@layout/empty_view_user_detail"
+            android:visibility="gone"
+            app:stateModel="@{viewModel.stateModel}" />
+    </RelativeLayout>
+</layout>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.dl.playfun.ui.mine.broadcast.mytrends.HeadItemViewModel" />
+
+        <import type="com.dl.playfun.R" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <com.dl.playfun.widget.SquareLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:padding="2dp">
+
+        <com.dl.playfun.widget.roundedimageview.RoundedImageView
+            android:id="@+id/iv_avatar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="5dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/default_avatar"
+            app:riv_oval="true"
+            binding:imageErrorPlaceholderRes="@{R.drawable.default_avatar}"
+            binding:imagePlaceholderRes="@{R.drawable.default_avatar}"
+            binding:imageThumbPath="@{viewModel.path}"
+            binding:onClickCommand="@{viewModel.itemClick}" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:layout_margin="5dp"
+            android:background="@drawable/head_more_count_bg"
+            android:gravity="center"
+            android:text='@{String.format("+%s",viewModel.moreCount > 999 ? 999:viewModel.moreCount)}'
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_middle"
+            android:visibility="@{safeUnbox(viewModel.moreCount) > 0 ? View.VISIBLE:View.GONE}"
+            binding:onClickCommand="@{viewModel.morePhotoOnClickCommand}" />
+
+    </com.dl.playfun.widget.SquareLayout>
+</layout>

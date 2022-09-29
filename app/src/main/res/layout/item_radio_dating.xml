@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:binding="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="com.dl.playfun.R" />
+
+        <variable
+            name="viewModel"
+            type="com.dl.playfun.ui.radio.issuanceprogram.RadioDatingItemViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_marginEnd="10dp"
+        android:gravity="center"
+        android:background="@{viewModel.itemEntity.select?@drawable/dating_obj_ed:@drawable/dating_obj_no}"
+        binding:onClickCommand="@{viewModel.itemDatingClick}">
+
+        <ImageView
+            android:id="@+id/dating_img"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="11dp"
+            android:scaleType="centerCrop"
+            binding:LocalImagePath="@{viewModel.itemEntity.iconChecked}"
+            binding:imageErrorPlaceholderRes="@{R.drawable.default_placeholder_img}"
+            binding:imagePlaceholderRes="@{R.drawable.default_placeholder_img}"
+            binding:resizeH="@{24}"
+            binding:resizeW="@{24}"
+            />
+
+    </RelativeLayout>
+</layout>

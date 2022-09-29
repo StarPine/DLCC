@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?><!--视频通话礼物发送动画-->
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <alpha
+        android:fromAlpha="0"
+        android:toAlpha="1"
+        android:startOffset="300"
+        android:duration="500"
+        />
+    <!--平移动画标签-->
+    <translate
+        android:startOffset="1000"
+        android:duration="1500"
+        android:fromXDelta="43%p"
+        android:fromYDelta="85.76%p"
+        android:toXDelta="5%p"
+        android:toYDelta="5.67%p" />
+
+    <!--缩放动画标签-->
+    <scale
+        android:startOffset="1000"
+        android:duration="1500"
+        android:fromXScale="1.0"
+        android:fromYScale="1.0"
+        android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+        android:pivotX="7%p"
+        android:pivotY="8%p"
+        android:toXScale="0.4"
+        android:toYScale="0.4" />
+    <alpha
+        android:fromAlpha="1"
+        android:toAlpha="0"
+        android:startOffset="2400"
+        android:duration="500"
+        />
+
+</set>

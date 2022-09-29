@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.dl.playfun.ui.mine.broadcast.mytrends.TrendItemViewModel" />
+
+        <import type="me.tatarka.bindingcollectionadapter2.LayoutManagers" />
+
+        <import type="com.dl.playfun.widget.recyclerview.LineManagers" />
+
+        <variable
+            name="adapter"
+            type="com.dl.playfun.ui.mine.broadcast.mytrends.HeadRecyclerViewAdapter" />
+
+        <variable
+            name="ivadapter"
+            type="com.dl.playfun.ui.mine.broadcast.mytrends.ImageRecyclerViewAdapter" />
+
+        <variable
+            name="commentadapter"
+            type="com.dl.playfun.ui.mine.broadcast.mytrends.CommentRecyclerViewAdapter" />
+
+        <import type="android.view.View" />
+
+        <import type="com.dl.playfun.R" />
+
+        <import type="com.dl.playfun.utils.TimeUtils" />
+
+        <import type="com.dl.playfun.utils.ListUtils" />
+
+        <import type="com.blankj.utilcode.util.StringUtils" />
+
+        <import type="com.dl.playfun.utils.StringUtil" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="80dp"
+                android:gravity="center_vertical"
+                binding:onClickCommand="@{viewModel.avatarClick}">
+
+                <com.dl.playfun.widget.image.CircleImageView
+                    android:id="@+id/user_img"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    binding:resizeH="@{60}"
+                    binding:resizeW="@{60}"
+                    android:layout_marginStart="14dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="10dp"
+                    android:clickable="true"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/default_address_user"
+                    app:riv_corner_radius="8dp"
+                    binding:imageErrorPlaceholderRes="@{R.drawable.default_avatar}"
+                    binding:imagePlaceholderRes="@{R.drawable.default_avatar}"
+                    binding:imageThumbPath="@{viewModel.newsEntityObservableField.user.avatar}"
+                    binding:onClickCommand="@{viewModel.avatarClick}"
+                    tools:ignore="MissingConstraints" />
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@+id/user_img"
+                    android:layout_marginStart="9dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_toEndOf="@+id/user_img"
+                    android:includeFontPadding="false"
+                    android:singleLine="true"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    binding:text="@{viewModel.newsEntityObservableField.user.nickname}"
+                    tools:text="Anthony" />
+
+                <TextView
+                    android:id="@+id/tv_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_name"
+                    android:layout_alignStart="@+id/tv_name"
+                    android:layout_marginTop="10dp"
+                    android:includeFontPadding="false"
+                    android:text="@{TimeUtils.getFriendlyTimeSpan(viewModel.newsEntityObservableField.createdAt)}"
+                    android:textColor="#FF9EA1B0"
+                    android:textSize="12sp"
+                    tools:text="27分鐘前" />
+
+                <ImageView
+                    android:id="@+id/certification"
+                    android:layout_width="31dp"
+                    android:layout_height="13dp"
+                    android:layout_alignTop="@+id/tv_name"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="7dp"
+                    android:layout_toEndOf="@id/tv_name"
+                    android:src="@drawable/ic_real_man"
+                    android:visibility="@{viewModel.isRealManVisible}" />
+
+                <ImageView
+                    android:id="@+id/iv_vip"
+                    android:layout_width="31dp"
+                    android:layout_height="13dp"
+                    android:layout_alignTop="@+id/certification"
+                    android:layout_marginStart="7dp"
+                    android:layout_toEndOf="@id/certification"
+                    android:src="@{viewModel.newsEntityObservableField.user.sex==1?@drawable/ic_vip:@drawable/ic_goddess}"
+                    android:visibility="@{viewModel.newsEntityObservableField.user.isVip==1?View.VISIBLE:View.GONE}"
+                    tools:src="@drawable/ic_vip" />
+
+                <com.dl.playfun.widget.roundedimageview.RoundedImageView
+                    android:layout_width="31dp"
+                    android:layout_height="13dp"
+                    android:layout_alignTop="@+id/tv_name"
+                    android:layout_marginStart="7dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_toEndOf="@+id/iv_vip"
+                    binding:imagePath="@{viewModel.gameUrl()}"
+                    tools:src="@drawable/ic_vip"
+                    />
+
+
+            </RelativeLayout>
+
+
+            <ImageView
+                android:id="@+id/iv_more"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="29dp"
+                android:layout_marginEnd="14dp"
+                android:src="@drawable/icon_radio_item_more"
+                binding:onClickCommand="@{viewModel.moreClick}" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="16.76dp"
+                android:layout_below="@+id/iv_more"
+                android:layout_alignEnd="@+id/iv_more"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/radio_item_like_button_bg"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:text="@string/playfun_my_issuance"
+                android:textColor="#636363"
+                android:textSize="@dimen/text_size_1067"
+                android:visibility="@{viewModel.newsEntityObservableField.user.id!=viewModel.userId||viewModel.isSelf?View.GONE:View.VISIBLE}"
+                app:layout_constraintTop_toBottomOf="@id/iv_more" />
+        </RelativeLayout>
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="331dp"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginEnd="14dp"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="0dp"
+            >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <com.dl.playfun.widget.videoview.SampleCoverVideo
+                    android:visibility="@{StringUtils.isEmpty(viewModel.newsEntityObservableField.video)?View.GONE:View.VISIBLE}"
+                    android:id="@+id/video_item_player"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    binding:videoUrl="@{viewModel.newsEntityObservableField.video}"
+                    binding:position="@{viewModel.getPosition}"
+                    binding:imageRes="@{R.drawable.radio_dating_img_default}"
+                    binding:isVideoPlayer="@{StringUtils.isEmpty(viewModel.newsEntityObservableField.video)?false:true}"/>
+
+                <com.dl.playfun.widget.roundedimageview.RoundedImageView
+                    android:id="@+id/round_image_view_item"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/radio_dating_img_default"
+                    android:visibility="@{StringUtils.isEmpty(viewModel.newsEntityObservableField.video)?View.VISIBLE:View.GONE}"
+                    binding:addWaterMark="@{true}"
+                    binding:imageErrorPlaceholderRes="@{R.drawable.radio_dating_img_default}"
+                    binding:imagePath='@{ListUtils.isEmpty(viewModel.newsEntityObservableField.images)?viewModel.newsEntityObservableField.user.avatar:viewModel.newsEntityObservableField.images.get(0)}'
+                    binding:imagePlaceholderRes="@{R.drawable.radio_dating_img_default}"
+                    binding:onClickCommand="@{viewModel.imageClick}" />
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <RelativeLayout
+            binding:onClickCommand="@{viewModel.detailClick}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="14dp">
+            <LinearLayout
+                android:id="@+id/content_text_layout"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/dating_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:includeFontPadding="false"
+                    android:text='@{"#"+StringUtil.getDatingObjItem(viewModel.newsEntityObservableField.newsType)}'
+                    android:textColor="#ffa72dfe"
+                    android:textSize="12sp"
+                    tools:text="#想戀愛" />
+
+                <com.dl.playfun.widget.FolderTextView
+                    android:clickable="true"
+                    android:id="@+id/content_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:includeFontPadding="false"
+                    android:lineSpacingExtra="4dp"
+                    android:textColor="#FF333333"
+                    android:textSize="12sp"
+                    android:visibility="@{StringUtils.isEmpty(viewModel.newsEntityObservableField.content)?View.GONE:View.VISIBLE}"
+                    app:tailTextColor="@color/purple"
+                    binding:text='@{StringUtils.isEmpty(viewModel.newsEntityObservableField.content)?"":viewModel.newsEntityObservableField.content}'
+                    tools:hint="asdadasdasd" />
+            </LinearLayout>
+
+
+            <RelativeLayout
+                android:clickable="true"
+                android:id="@+id/tv_like_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/content_text_layout"
+                binding:onClickCommand="@{viewModel.likeClick}"
+                android:layout_marginTop="24dp">
+
+                <ImageView
+                    android:id="@+id/tv_like_img"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:src="@{viewModel.newsEntityObservableField.isGive==1?@drawable/ic_like_purple:@drawable/ic_activity_like}"
+                    tools:src="@drawable/ic_like_purple" />
+
+                <TextView
+                    android:id="@+id/tv_like_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginStart="4dp"
+                    android:layout_toEndOf="@+id/tv_like_img"
+                    android:text='@{String.valueOf(viewModel.newsEntityObservableField.broadcast.giveCount)}'
+                    android:textColor="@{viewModel.newsEntityObservableField.isGive==1?@color/purple:@color/gray_dark}"
+                    android:textSize="12sp"
+                    tools:text="10" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:clickable="true"
+                android:id="@+id/tv_msg_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/tv_like_layout"
+                android:layout_marginStart="34dp"
+                android:layout_toEndOf="@+id/tv_like_layout"
+                binding:onClickCommand="@{viewModel.commentClick}">
+
+                <ImageView
+                    android:id="@+id/tv_msg__img"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:src="@{viewModel.newsEntityObservableField.broadcast.isComment==0?@drawable/ic_activity_comment:@drawable/ic_activity_comment_disable}"
+                    tools:src="@drawable/ic_activity_comment" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginStart="4dp"
+                    android:layout_toEndOf="@id/tv_msg__img"
+                    android:text='@{String.valueOf(viewModel.newsEntityObservableField.commentNumber)}'
+                    android:textColor="@{viewModel.newsEntityObservableField.broadcast.isComment==0?@color/gray_dark:@color/gray_middle}"
+                    android:textSize="12sp"
+                    tools:text="20"
+                    tools:textColor="@color/gray_middle" />
+
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="24dp"
+            android:background="#FFE6E6E6" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="15dp"
+            android:orientation="horizontal"
+            android:visibility="gone"> <!-- 非详情页，不显示评论 -->
+            <!--            android:visibility="@{viewModel.isShowComment?View.VISIBLE:View.GONE}"-->
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_activity_comment" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:nestedScrollingEnabled="false"
+                binding:adapter="@{commentadapter}"
+                binding:itemBinding="@{viewModel.commentItemBinding}"
+                binding:items="@{viewModel.commentItemList}"
+                binding:layoutManager="@{LayoutManagers.linear()}" />
+        </LinearLayout>
+    </LinearLayout>
+</layout>

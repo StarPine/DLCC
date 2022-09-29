@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="com.dl.playfun.R" />
+
+        <import type="android.text.Html" />
+        <variable
+            name="viewModel"
+            type="com.dl.playfun.ui.mine.wallet.girl.TwDollarMoneyItemViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="14dp"
+        binding:onClickCommand="@{viewModel.itemClick}">
+
+        <com.dl.playfun.widget.roundedimageview.RoundedImageView
+            android:id="@+id/iv_avatar"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/default_avatar"
+            app:riv_corner_radius="4dip"
+            binding:imageErrorPlaceholderRes="@{R.drawable.default_avatar}"
+            binding:imagePlaceholderRes="@{R.drawable.default_avatar}"
+            binding:imageThumbPath="@{viewModel.itemEntity.fromUserInfo.avatar}"
+            binding:resizeH="@{48}"
+            binding:resizeW="@{48}"
+            />
+
+        <TextView
+            android:id="@+id/tv_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="12dp"
+            android:layout_toLeftOf="@+id/tv_money"
+            android:layout_toRightOf="@+id/iv_avatar"
+            android:textColor="@color/gray_dark"
+            android:textSize="@dimen/text_size_middle"
+            app:htmlText="@{viewModel.itemEntity.message}" />
+
+        <TextView
+            android:id="@+id/tv_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="28dp"
+            android:text='@{viewModel.getMoneyItemText}'
+            android:textColor="@{viewModel.itemEntity.totalAmount.floatValue() > 0.0f ? @color/green:@color/red_7c}"
+            android:textSize="@dimen/text_size_mini" />
+    </RelativeLayout>
+</layout>

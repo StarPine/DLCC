@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:binding="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.dl.playfun.R" />
+
+        <variable
+            name="viewModel"
+            type="com.dl.playfun.ui.mine.setredpackagevideo.SetRedPackageVideoItemViewModel" />
+    </data>
+
+    <com.dl.playfun.widget.SquareLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="1dp"
+        binding:onClickCommand="@{viewModel.itemClick}">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            binding:imageErrorPlaceholderRes="@{R.drawable.default_placeholder_img}"
+            binding:imagePlaceholderRes="@{R.drawable.default_placeholder_img}"
+            binding:imageThumbPath="@{viewModel.itemEntity.src}" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="#78FFFFFF"
+            android:visibility="@{viewModel.itemEntity.verificationType == 1 ? View.GONE:View.VISIBLE}" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="#98000000"
+            android:gravity="center"
+            android:padding="3dp"
+            android:text="@{viewModel.photoShowName}"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_small" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ic_play" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@android:color/transparent"
+            android:button="@null"
+            android:checked="@{viewModel.itemEntity.isRedPackage == 1}"
+            android:clickable="false"
+            android:drawableStart="@drawable/checkbox_button"
+            android:padding="4dp"
+            android:visibility="@{viewModel.itemEntity.verificationType == 1 ? View.VISIBLE:View.GONE}" />
+
+    </com.dl.playfun.widget.SquareLayout>
+</layout>

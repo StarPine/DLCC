@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.dl.playfun.ui.mine.wallet.cash.CashViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/container_background"
+        tools:context="com.dl.playfun.ui.mine.wallet.cash.CashFragment">
+
+        <View
+            android:id="@+id/status_bar_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/status_bar_color" />
+
+        <com.scwang.smart.refresh.layout.SmartRefreshLayout
+            android:id="@+id/refresh_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/status_bar_view"
+            binding:onLoadMoreCommand="@{viewModel.onLoadMoreCommand}"
+            binding:onRefreshCommand="@{viewModel.onRefreshCommand}">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="14.32dp"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/playfun_you_receive_red_envelope_on_that_chat" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingTop="52dp"
+                    android:paddingBottom="52dp">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/playfun_fragment_cash_total_account"
+                            android:textColor="@color/gray_dark"
+                            android:textSize="@dimen/text_size_big" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text='@{String.format("%s元",viewModel.cashWalletEntity.totalAccount)}'
+                            android:textColor="@color/gray_dark"
+                            android:textSize="26sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/playfun_fragment_cash_usable_withdraw"
+                            android:textColor="@color/gray_dark"
+                            android:textSize="@dimen/text_size_big" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text='@{String.format("%s元",viewModel.cashWalletEntity.canAccount)}'
+                            android:textColor="@color/gray_dark"
+                            android:textSize="26sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginRight="14dp"
+                    android:src="@color/divider" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@color/white"
+                    android:paddingLeft="14dp"
+                    android:paddingRight="14dp">
+
+                    <TextView
+                        style="@style/EditLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="@string/playfun_fragment_cash_withdraw_account" />
+
+                    <TextView
+                        style="@style/ProfileItemSubTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:drawableRight="@drawable/ic_arrow_right"
+                        android:text="@string/playfun_fragment_cash_withdraw_account_bind" />
+                </RelativeLayout>
+            </LinearLayout>
+        </com.scwang.smart.refresh.layout.SmartRefreshLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:clipToPadding="false"
+            android:padding="20dp">
+
+            <Button
+                android:id="@+id/btn_withdraw"
+                style="@style/ButtonPrimary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/playfun_withdraw" />
+        </FrameLayout>
+    </RelativeLayout>
+</layout>

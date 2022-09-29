@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="com.dl.playfun.R" />
+        <variable
+            name="itemEntity"
+            type="com.dl.playfun.entity.CoinPusherRoomHistoryEntity" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_icon"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginStart="15dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/playfun_loading_logo_200"
+            binding:imageErrorPlaceholderRes="@{R.drawable.playfun_loading_logo_200_error}"
+            binding:imagePath="@{itemEntity.icon}"
+            binding:imagePlaceholderRes="@{R.drawable.playfun_loading_logo_200}"
+            binding:resizeH="@{75}"
+            binding:resizeW="@{75}" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:includeFontPadding="false"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/img_icon"
+            android:text="@{itemEntity.name}"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            />
+        <TextView
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/tv_name"
+            android:layout_alignStart="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{String.format(@string/playfun_mine_trace_man_hint,itemEntity.quantity)}"
+            android:textColor="#A2A1BA"
+            android:textSize="13sp"
+            />
+        <View
+            android:layout_below="@+id/img_icon"
+            android:layout_marginStart="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/text_default"
+            android:alpha="0.1"
+            />
+    </RelativeLayout>
+</layout>

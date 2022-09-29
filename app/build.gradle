@@ -1,0 +1,288 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.firebase.crashlytics'
+apply from: 'aab_res_guard.gradle'
+
+android {
+    packagingOptions {
+        exclude('META-INF/LICENSE')
+        exclude('META-INF/beans.xml')
+    }
+
+    signingConfigs {
+        playChatRelease {
+            storeFile file('../../keystore/PlayChat.jks')
+            storePassword 'playchat'
+            keyAlias 'playchat'
+            keyPassword 'playchat'
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+        playChatDebug {
+            storeFile file('../../keystore/starpine.jks')
+            storePassword 'starpine'
+            keyAlias 'starpine'
+            keyPassword 'starpine'
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+    }
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+
+        manifestPlaceholders = [mapsApiKey: "AIzaSyB0KW8QXuw7RNRAEeF2sUaFSWoqO0kUf_o"]
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField "String", "BUILD_TIME", "\"${releaseTime()}\""
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath true
+            }
+        }
+
+        ndk {
+            //设置支持的SO库架构
+            abiFilters "armeabi-v7a", "arm64-v8a"
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility rootProject.ext.android.sourceCompatibility
+        targetCompatibility rootProject.ext.android.targetCompatibility
+    }
+
+    buildTypes {
+        debug {
+            zipAlignEnabled = true //是否开启zip压缩
+            minifyEnabled true   //是否代码混淆
+            multiDexEnabled true //防止方法数量超过65536导致错误
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.playChatDebug
+        }
+        release {
+            zipAlignEnabled = true //是否开启zip压缩
+            minifyEnabled true   //是否代码混淆
+            multiDexEnabled true //防止方法数量超过65536导致错误
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.playChatRelease
+        }
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+        //源代码和资源没有更改，那么就不需要对该模块进行 Lint 分析任务
+    }
+
+    dataBinding { enabled = true }
+
+    flavorDimensions "playfun"
+    //定义的配置 最终会在Build Variants里面呈现出来
+    productFlavors {
+        // 对外
+        open {
+            dimension "playfun"
+            // 服务端接口HOST
+            buildConfigField "String", "DEFAULT_API_URL", "\"http://config.play-chat.net/\""
+            applicationId "com.suzaku.friendly.cc"
+            manifestPlaceholders = [package_name: applicationId]
+            //正式包配置
+            signingConfig signingConfigs.playChatRelease
+            // 腾讯IM FCM离线推送ID
+            buildConfigField "int", "GOOGLE_FCM_PUSH_BUZID", "17321"
+            // Bugly App Id
+            buildConfigField "String", "BUGLY_APP_ID", "\"f208faedec\""
+            //客服id聊天
+            buildConfigField "String", "CHAT_SERVICE_USER_ID_SEND", "\"administrator\""
+            // 图片HOST
+            buildConfigField "String", "IMAGE_BASE_URL", "\"https://img.play-chat.net/\""
+            //H5网页地址
+            buildConfigField "String", "WEB_BASE_URL", "\"https://m.play-chat.net/\""
+            // Ali OSS BucketName
+            buildConfigField "String", "BUCKET_NAME", "\"joymask\""
+            //app名字
+            resValue "string", "app_name", "聊玩"
+            //Facebook APPID
+            resValue "string", "facebook_app_id", "5173832349346696"
+            resValue "string", "facebook_app_token", "c5725141441c9d4a5bf4abc6a502b3e3"
+            //AppsFlorid-AppId
+            resValue "string", "app_flyer", "J4YbG6jNVHaFWuAeixmCuC"
+            resValue "string", "app_flyer_invite_pathPrefix", "X5VR"
+            resValue "string", "app_flyer_invite_onelink", "playchat.onelink.me"
+            //facebook 登录key
+            resValue "string", "fb_login_protocol_scheme", "fb5173832349346696"
+            //Google公钥
+            resValue "string", "google_public_key", "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAozfhLY9JLc+toLyhl/ZM/GbIEdNmqnrcLogdWs0rAOj+d8SXGBXWgtKBRgXGVKXxdf3jsmMJPO40Eow+AokHiNTBm/l8HBEadHkdcFPhnKzdvDs0ZsUpWdUYAJ+f7gcWwqfhuRSGUHkbGHrdDCXCJMBcfVGHaJM4lZ9wwH47Otvm88/F8DSKrXSZD/Xazqun0A/NyTsKP61jeGpUX67Ay0GolFewgt5pax5Qxh97O+YXDdxxO9iNSkAjnrAheF/JTm1+0mP/MdQ3u+hvOL7QacOZcnmKhJN3E+E0ZHRTXJi5eygDof1vqjiDJVhW3SnDmpktCYtd/1ANU0iUsaOTKwIDAQAB"
+//                 版本
+            versionCode 28
+            // 版本名
+            versionName "1.4.61"
+        }
+        // 内部调试
+        internal {
+            dimension "playfun"
+            resConfigs "zh", "en", "zh-rCN", "zh-rHK", "zh-rMO", "zh-rSG", "zh-rTW"
+            // 服务端接口HOST
+            buildConfigField "String", "DEFAULT_API_URL", "\"http://t-config.play-chat.net/\""
+            applicationId "com.test.demo.chat"
+            manifestPlaceholders = [package_name: applicationId]
+            //测试包配置
+            signingConfig signingConfigs.playChatDebug
+            //客服id聊天
+            buildConfigField "String", "CHAT_SERVICE_USER_ID_SEND", "\"administrator\""
+            //buildConfigField "int", "IM_APP_KEY", "1400369342"
+            // 腾讯IM FCM离线推送ID
+            //buildConfigField "int", "GOOGLE_FCM_PUSH_BUZID", "13127"17321
+            buildConfigField "int", "GOOGLE_FCM_PUSH_BUZID", "18414"
+            //客服id聊天
+            buildConfigField "String", "CHAT_SERVICE_USER_ID_SEND", "\"administrator\""
+            // 图片HOST
+            buildConfigField "String", "IMAGE_BASE_URL", "\"https://img.joy-mask.com/\""
+            //H5网页地址
+            buildConfigField "String", "WEB_BASE_URL", "\"http://web-playfun.joy-mask.com/\""
+            // Ali OSS BucketName
+            buildConfigField "String", "BUCKET_NAME", "\"joymask\""
+            //app名字
+            resValue "string", "app_name", "PlayChat-beta"
+            //Facebook APPID
+            resValue "string", "facebook_app_id", "5173832349346696"
+            resValue "string", "facebook_app_token", "c5725141441c9d4a5bf4abc6a502b3e3"
+            //AppsFlorid-AppId
+            resValue "string", "app_flyer", "J4YbG6jNVHaFWuAeixmCuC"
+            //AppsFlorid-AppInviteOneLink
+            resValue "string", "app_flyer_invite_pathPrefix", "X5VR"
+            resValue "string", "app_flyer_invite_onelink", "/X5VR"
+            //facebook 登录key
+            resValue "string", "fb_login_protocol_scheme", "fb5173832349346696"
+            //Google公钥
+            resValue "string", "google_public_key", "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAozfhLY9JLc+toLyhl/ZM/GbIEdNmqnrcLogdWs0rAOj+d8SXGBXWgtKBRgXGVKXxdf3jsmMJPO40Eow+AokHiNTBm/l8HBEadHkdcFPhnKzdvDs0ZsUpWdUYAJ+f7gcWwqfhuRSGUHkbGHrdDCXCJMBcfVGHaJM4lZ9wwH47Otvm88/F8DSKrXSZD/Xazqun0A/NyTsKP61jeGpUX67Ay0GolFewgt5pax5Qxh97O+YXDdxxO9iNSkAjnrAheF/JTm1+0mP/MdQ3u+hvOL7QacOZcnmKhJN3E+E0ZHRTXJi5eygDof1vqjiDJVhW3SnDmpktCYtd/1ANU0iUsaOTKwIDAQAB"
+            // 版本号
+            versionCode 22
+            // 版本名
+            versionName "1.4.6-beta"
+        }
+    }
+
+    //模块化设计方案 sourceSets配置
+    sourceSets {
+        main {
+            java.srcDirs = ['src/main/java']
+            res.srcDirs = ['src/main/res']
+            assets.srcDirs = ['src/main/assets']
+        }
+    }
+
+    //条件判断-是打apk包
+    if (!rootProject.ext.BuildSdkPlayfun) {
+        android.applicationVariants.all {
+            variant ->
+                variant.outputs.all {
+                    //在这里修改apk文件名
+                    outputFileName = "${rootProject.name}-${variant.name}-v${variant.versionName}-${releaseTime()}.apk"
+                }
+                //删除多余的特效资源
+                variant.mergeAssetsProvider.configure {
+                    doLast {
+                        delete(fileTree(dir: outputDir, includes: ['model/ai_human_processor.bundle',
+                                                                   'model/ai_face_processor.bundle',
+                                                                   'model/ai_human_processor_mb_fast.bundle',
+                                                                   'model/ai_hand_processor.bundle',
+                                                                   'model/ai_hairseg.bundle',
+                                                                   'model/ai_bgseg_green.bundle',
+                                                                   'graphics/controller.bundle',
+                                                                   'graphics/fuzzytoonfilter.bundle',
+                                                                   'graphics/fxaa.bundle',
+                                                                   'graphics/controller_cpp.bundle',
+                                                                   'graphics/face_makeup.bundle',
+                                                                   'graphics/body_slim.bundle',
+                                                                   'graphics/tongue.bundle']))
+                    }
+                }
+        }
+    }
+}
+
+static def releaseTime() {
+    return new Date().format("yyyy-MM-dd_HH-mm", TimeZone.getTimeZone("GMT+08:00"))
+}
+//判断当前是否是正式打包环境
+boolean isReleaseBuildType() {
+    for (String s : gradle.startParameter.taskNames) {
+        if (s.contains("Release") | s.contains("release")) {
+            return true
+        }
+    }
+    return false
+}
+
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+//条件判断-不是打apk包
+if (rootProject.ext.BuildSdkPlayfun) {
+    afterEvaluate {
+        android.libraryVariants.all { variant ->
+            File outputFile = variant.outputs.first().outputFile
+            if (outputFile.isFile()) {
+                outputFile.delete();
+            }
+            tasks.named("assemble${variant.name.capitalize()}").configure {
+                doLast {
+                    copy {
+                        from outputFile
+                        into "../app/libs"
+                        rename outputFile.name, "playfun-lib-1.5.7.aar"
+                    }
+                }
+            }
+        }
+    }
+
+    fataar {
+        transitive = true
+    }
+}
+
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    //日志打印
+    implementation('com.github.ihsanbal:LoggingInterceptor:3.0.0') {
+        exclude group: 'org.json', module: 'json'
+    }
+    implementation platform('com.google.firebase:firebase-bom:28.0.1')
+    if (rootProject.ext.BuildSdkPlayfun) {
+        embed(name: 'picture_library-v2.6.0', ext: 'aar')
+        embed(name: 'ucrop-v2.6.0', ext: 'aar')
+        embed(name: 'refresh-footer-classics-2.0.3', ext: 'aar')
+        embed(name: 'refresh-drawable-paint-2.0.3', ext: 'aar')
+
+        projectID.each { k, v -> embed project(":${k}") }
+
+        debugImplementation 'com.facebook.stetho:stetho:1.5.1'
+        debugImplementation 'com.facebook.stetho:stetho-okhttp3:1.5.1'
+        debugImplementation 'com.facebook.stetho:stetho-urlconnection:1.5.1'
+    } else {
+        implementation(name: 'picture_library-v2.6.0', ext: 'aar')
+        implementation(name: 'ucrop-v2.6.0', ext: 'aar')
+        implementation(name: 'refresh-footer-classics-2.0.3', ext: 'aar')
+        implementation(name: 'refresh-drawable-paint-2.0.3', ext: 'aar')
+
+        projectID.each { k, v -> implementation project(":${k}") }
+        debugImplementation 'com.facebook.stetho:stetho:1.5.1'
+        debugImplementation 'com.facebook.stetho:stetho-okhttp3:1.5.1'
+        debugImplementation 'com.facebook.stetho:stetho-urlconnection:1.5.1'
+    }
+    //mqtt
+    implementation 'org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.1.0'
+    implementation 'org.eclipse.paho:org.eclipse.paho.android.service:1.1.1'
+    dependenciesID.each { k, v -> implementation v }
+    annotationProcessor rootProject.ext.dependencies["glide-compiler"]
+}

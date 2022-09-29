@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="50dp" />
+            <size
+                android:width="9dp"
+                android:height="9dp" />
+            <stroke
+                android:width="2dp"
+                android:color="@color/pseekbar_process_off2" />
+        </shape>
+    </item>
+</layer-list>

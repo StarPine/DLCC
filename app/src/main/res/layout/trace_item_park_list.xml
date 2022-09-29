@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.dl.playfun.R" />
+
+        <import type="com.dl.playfun.utils.SystemDictUtils" />
+
+        <import type="com.blankj.utilcode.util.StringUtils" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.dl.playfun.ui.mine.likelist.LikeItemViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingLeft="13.6dp"
+        android:paddingTop="17.46dp"
+        android:paddingRight="8dp"
+        android:paddingBottom="17.46dp"
+        binding:onClickCommand="@{viewModel.UserOnClickCommand}">
+
+        <com.dl.playfun.widget.image.CircleImageView
+            android:id="@+id/iv_avatar"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/default_avatar"
+            app:riv_corner_radius="8dp"
+            binding:imageErrorPlaceholderRes="@{R.drawable.default_avatar}"
+            binding:imagePlaceholderRes="@{R.drawable.default_avatar}"
+            binding:imageThumbPath="@{viewModel.itemEntity.avatar}" />
+
+        <RelativeLayout
+            android:id="@+id/rl_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="14dp"
+            android:layout_toRightOf="@+id/iv_avatar">
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:gravity="center_vertical"
+                android:maxLength="12"
+                android:singleLine="true"
+                android:text="@{viewModel.itemEntity.nickname}"
+                android:textColor="@color/toolbar_title_color"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                tools:text="艾希lovexi666" />
+
+            <ImageView
+                android:id="@+id/iv_real_man"
+                android:layout_width="31dp"
+                android:layout_height="13dp"
+                android:layout_alignBottom="@+id/tv_name"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="7dp"
+                android:layout_toRightOf="@+id/tv_name"
+                android:src="@drawable/ic_real_man"
+                android:visibility="@{viewModel.isRealManVisible()}" />
+
+            <ImageView
+                android:id="@+id/iv_goddess"
+                android:layout_width="31dp"
+                android:layout_height="13dp"
+                android:layout_alignBottom="@+id/tv_name"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="7dp"
+                android:layout_toRightOf="@+id/iv_real_man"
+                android:src="@drawable/ic_goddess"
+                android:visibility="@{viewModel.isGoddessVisible()}" />
+
+            <ImageView
+                android:id="@+id/is_vip"
+                android:layout_width="31dp"
+                android:layout_height="13dp"
+                android:layout_alignBottom="@+id/tv_name"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="7dp"
+                android:layout_toRightOf="@+id/iv_goddess"
+                android:src="@drawable/ic_vip"
+                android:visibility="@{viewModel.isVipVisible()}" />
+            <ImageView
+                android:layout_width="31dp"
+                android:layout_height="13dp"
+                android:layout_alignBottom="@+id/tv_name"
+                android:layout_centerVertical="true"
+                android:scaleType="fitCenter"
+                android:layout_marginLeft="7dp"
+                android:layout_toRightOf="@+id/is_vip"
+                binding:imagePath="@{viewModel.gameUrl()}" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:padding="10dp"
+            binding:onClickCommand="@{viewModel.traceOnClickCommand}">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/mine_trace_live"
+                android:visibility="@{viewModel.traceLive}" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/mine_trace_live2"
+                android:visibility="@{viewModel.traceLive2}" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/mine_trace_live3"
+                android:visibility="@{viewModel.traceLive3}" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_tag_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rl_name"
+            android:layout_alignLeft="@+id/rl_name"
+            android:layout_marginTop="9dp"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/TagPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{StringUtils.isEmpty(viewModel.itemEntity.city) ? @string/playfun_unknown_region : viewModel.itemEntity.city}"
+                android:textColor="#827692"
+                android:visibility="gone"
+                tools:text="台北市" />
+
+            <TextView
+                style="@style/TagPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:text="@{viewModel.ageAndConstellation}"
+                android:visibility="@{viewModel.isEmpty(viewModel.ageAndConstellation)? View.GONE :View.VISIBLE}"
+
+                android:textColor="#827692"
+                tools:text="年龄和星座" />
+        </LinearLayout>
+    </RelativeLayout>
+</layout>

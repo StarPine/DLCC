@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:binding="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="com.dl.playfun.R" />
+
+        <variable
+            name="viewModel"
+            type="com.dl.playfun.ui.mine.level.LevelEquityItemTitleViewModel" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:layout_gravity="center"
+            android:scaleType="fitXY"
+            android:src="@drawable/default_load_img_purl"
+            binding:imageErrorPlaceholderRes="@{R.drawable.default_load_img_purl}"
+            binding:imagePlaceholderRes="@{R.drawable.default_load_img_purl}"
+            binding:imageThumbPath="@{viewModel.levelInfoData.levelImage}"
+            binding:resizeH="@{110}"
+            binding:resizeW="@{110}"
+            />
+    </FrameLayout>
+</layout>

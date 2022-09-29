@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout
+        android:id="@+id/fl_layout"
+        android:alpha="49"
+        android:layout_gravity="center"
+        android:layout_width="115dp"
+        android:layout_height="115dp">
+        <com.dl.playfun.widget.progress.MPCircleProgressBar
+            android:id="@+id/progress"
+            android:layout_gravity="center"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            app:txtWidth="40sp"
+            app:width="4dp"
+            />
+    </FrameLayout>
+</FrameLayout>

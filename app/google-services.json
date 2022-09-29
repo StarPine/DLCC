@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1089653328554",
+    "project_id": "playchat-14d3a",
+    "storage_bucket": "playchat-14d3a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1089653328554:android:ccb1a9b25bc0cac73a1ed3",
+        "android_client_info": {
+          "package_name": "com.test.demo.chat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1089653328554-ioi4q2b6a9jv148persiv6glb37vdltj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.test.demo.chat",
+            "certificate_hash": "5d6aabfe7305f1fc2befa116935ed73454997c25"
+          }
+        },
+        {
+          "client_id": "1089653328554-db1s2tgphaq4s8dgj6b6ts3ovkefs96f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_JFDeJCMG0renY2IeMKYS2XNDN6J0NGA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1089653328554-db1s2tgphaq4s8dgj6b6ts3ovkefs96f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

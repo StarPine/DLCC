@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:binding="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="com.dl.playfun.R" />
+        <variable
+            name="viewModel"
+            type="com.dl.playfun.ui.home.HomeMainBannerItemViewModel" />
+    </data>
+
+    <FrameLayout
+        binding:onClickCommand="@{viewModel.clickBanner}"
+        android:layout_marginStart="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+            <androidx.appcompat.widget.AppCompatImageView
+                binding:resizeH="@{85}"
+                binding:resizeW="@{110}"
+                android:scaleType="fitXY"
+                android:layout_width="85dp"
+                android:layout_height="110dp"
+                binding:imageErrorPlaceholderRes="@{R.drawable.img_pc_default_load}"
+                binding:imagePlaceholderRes="@{R.drawable.img_pc_default_load}"
+                binding:imagePath="@{viewModel.itemEntity.img}"
+                />
+    </FrameLayout>
+</layout>

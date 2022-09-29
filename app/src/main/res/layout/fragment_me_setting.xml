@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.dl.playfun.ui.mine.setting.MeSettingViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.mine.setting.SettingFragment">
+
+        <View
+            android:id="@+id/status_bar_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/status_bar_color" />
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay"
+            app:elevation="0dp">
+
+            <com.dl.playfun.widget.BasicToolbar
+                android:id="@+id/basic_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/action_bar_height"
+                app:toolbar_title="@string/playfun_mine_me_setting" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/container_background"
+            android:fillViewport="true"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical"
+                android:paddingBottom="30dp">
+
+                <RelativeLayout
+                    style="@style/ProfileItem"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/profile_item_height"
+                    binding:onClickCommand="@{viewModel.facebeauty}">
+                    <ImageView
+                        android:id="@+id/face_beauty"
+                        android:layout_width="19dp"
+                        android:layout_height="19dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/icon_beauty"/>
+                    <TextView
+                        style="@style/ProfileItemTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_toEndOf="@+id/face_beauty"
+                        android:text="@string/playfun_mine_face_beauty"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        style="@style/ProfileItemTitleNormal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true" />
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    style="@style/ProfileItem"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/profile_item_height"
+                    android:layout_marginTop="10dp"
+                    binding:onClickCommand="@{viewModel.blacklistOnClickCommand}">
+
+                    <TextView
+                        style="@style/ProfileItemTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_mine_block"
+                        android:drawablePadding="8dp"
+                        android:text="@string/playfun_mine_blacklist"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        style="@style/ProfileItemSubTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </RelativeLayout>
+                <RelativeLayout
+                    style="@style/ProfileItem"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/profile_item_height"
+                    binding:onClickCommand="@{viewModel.privacySettingOnClickCommand}">
+
+                    <TextView
+                        style="@style/ProfileItemTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_mine_privacy"
+                        android:drawablePadding="8dp"
+                        android:text="@string/playfun_setting_privacy_setting"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        style="@style/ProfileItemSubTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="" />
+
+                    <TextView
+                        style="@style/ProfileItemSubTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/playfun_mine_setting_desc" />
+                </RelativeLayout>
+                <RelativeLayout
+                    style="@style/ProfileItem"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/profile_item_height"
+                    binding:onClickCommand="@{viewModel.settingOnClickCommand}">
+
+                    <ImageView
+                        android:id="@+id/mine_setting"
+                        android:layout_width="19dp"
+                        android:layout_height="19dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/ic_mine_setting" />
+
+                    <TextView
+                        style="@style/ProfileItemTitle"
+                        android:layout_toEndOf="@+id/mine_setting"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="@string/playfun_mine_setting"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        style="@style/ProfileItemSubTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="" />
+
+                </RelativeLayout>
+                <RelativeLayout
+                    style="@style/ProfileItem"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/profile_item_height"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    binding:onClickCommand="@{viewModel.versionOnClickCommand}">
+                    <ImageView
+                        android:id="@+id/setting_version"
+                        android:layout_width="19dp"
+                        android:layout_height="19dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/icon_setting_version"/>
+                    <TextView
+                        style="@style/ProfileItemTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_toEndOf="@+id/setting_version"
+                        android:text="@string/playfun_mine_current_version"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        style="@style/ProfileItemTitleNormal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="@{viewModel.currentVersion}" />
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+</layout>

@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.dl.playfun.ui.mine.profile.EditProfileViewModel" />
+
+        <import type="com.dl.playfun.R" />
+
+        <import type="android.view.View" />
+
+        <!--        <import type="com.dl.playfun.utils.StringUtil" />-->
+        <import type="com.dl.playfun.utils.SystemDictUtils" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical"
+        tools:context=".ui.mine.profile.EditProfileFragment">
+
+        <View
+            android:id="@+id/status_bar_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/status_bar_color" />
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay"
+            app:elevation="0dp">
+
+            <com.dl.playfun.widget.BasicToolbar
+                android:id="@+id/basic_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/action_bar_height"
+                app:toolbar_title="@string/playfun_fragment_edit_profile_title">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp">
+
+                    <TextView
+                        style="@style/ActionBarMenu"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:text="@string/playfun_save"
+                        binding:onClickCommand="@{viewModel.clickSave}" />
+                </RelativeLayout>
+            </com.dl.playfun.widget.BasicToolbar>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/container_background"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingBottom="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="39dp"
+                    android:background="@color/white"
+                    android:gravity="bottom"
+                    android:paddingLeft="15dp"
+                    android:paddingBottom="2dp"
+                    android:text="@string/playfun_fragment_edit_profile_basic"
+                    android:textColor="@color/gray_light"
+                    android:textSize="@dimen/text_size_42" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:background="@drawable/edittext_background"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="14dp"
+                    android:paddingRight="14dp"
+                    app:onClickCommand="@{viewModel.uploadAvatarOnClickCommand}">
+
+                    <ImageView
+                        android:id="@+id/tv_tag"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/edit_profile_avatar" />
+
+                    <TextView
+                        android:id="@+id/tv_tag1"
+                        style="@style/EditLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="60dp"
+                        android:text="*"
+                        android:textColor="@color/purple" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical">
+
+                        <com.dl.playfun.widget.image.CircleImageView
+                            android:id="@+id/iv_avatar"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/default_avatar"
+                            binding:imageErrorPlaceholderRes="@{R.drawable.default_avatar}"
+                            binding:imagePlaceholderRes="@{R.drawable.default_avatar}"
+                            binding:imageThumbPath="@{viewModel.userDataEntity.avatar}" />
+
+                    </LinearLayout>
+
+
+                    <TextView
+                        android:id="@+id/tv_uploading_head"
+                        style="@style/ProfileItemSubTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="32dp"
+                        android:layout_centerVertical="true"
+                        android:gravity="center"
+                        android:text="@string/playfun_fragment_edit_profile_updata_head" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@drawable/edittext_background"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="14dp"
+                    android:paddingRight="14dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/edit_profile_nike_name" />
+
+                    <TextView
+                        style="@style/EditLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="60dp"
+                        android:text="*"
+                        android:textColor="@color/purple" />
+
+                    <EditText
+                        android:id="@+id/edt_nickname"
+                        style="@style/EditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:hint="@string/playfun_name_number_too_long2"
+                        android:inputType="text"
+                        android:maxLength="10"
+                        android:text="@={viewModel.userDataEntity.nickname}" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@drawable/edittext_background"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="14dp"
+                    android:paddingRight="14dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/edit_profile_birthday" />
+
+                    <TextView
+                        style="@style/EditLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="60dp"
+                        android:text="*"
+                        android:textColor="@color/purple" />
+
+                    <TextView
+                        android:id="@+id/tv_brithday"
+                        style="@style/EditText"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:hint="@string/playfun_please_choose"
+                        android:text="@{viewModel.userDataEntity.birthday}"
+                        app:onClickCommand="@{viewModel.chooseBirthday}" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@drawable/edittext_background"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="14dp"
+                    android:paddingRight="14dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/edit_profile_profession" />
+
+                    <TextView
+                        style="@style/EditLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="60dp"
+                        android:text="*"
+                        android:textColor="@color/purple" />
+
+                    <TextView
+                        style="@style/EditText"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:hint="@string/playfun_please_choose"
+                        android:text='@{SystemDictUtils.getOccupationById(safeUnbox(viewModel.userDataEntity.occupationId))}'
+                        app:onClickCommand="@{viewModel.chooseOccupation}" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="7dp"
+                    android:background="@color/window_background" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:background="@color/status_bar_color"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="15dp"
+                    android:text="@string/playfun_more_information_optional"
+                    android:textColor="@color/gray_middle"
+                    android:textSize="@dimen/text_size_42" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@drawable/edittext_background"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="14dp"
+                    android:paddingRight="14dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="65dp"
+                        android:src="@drawable/edit_profile_height" />
+
+                    <TextView
+                        android:id="@+id/tv_height"
+                        style="@style/EditText"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:hint="@string/playfun_please_choose"
+                        android:text='@{SystemDictUtils.getHeightById(viewModel.userDataEntity.height)}'
+                        app:onClickCommand="@{viewModel.chooseHeight}" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@drawable/edittext_background"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="14dp"
+                    android:paddingRight="14dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="65dp"
+                        android:src="@drawable/edit_profile_weight" />
+
+                    <TextView
+                        android:id="@+id/tv_weight"
+                        style="@style/EditText"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:hint="@string/playfun_please_choose"
+                        android:text='@{SystemDictUtils.getWidthById(viewModel.userDataEntity.weight)}'
+                        app:onClickCommand="@{viewModel.chooseWeight}" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="134dp"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:paddingLeft="14dp"
+                    android:paddingRight="14dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="65dp"
+                        android:src="@drawable/edit_profile_self" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <EditText
+                            style="@style/EditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="start"
+                            android:hint="@string/playfun_fragment_edit_profile_self_explain_hint"
+                            android:inputType="textMultiLine"
+                            android:maxLength="120"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="17dp"
+                            android:singleLine="false"
+                            android:text="@={viewModel.userDataEntity.desc}" />
+
+                        <TextView
+                            android:id="@+id/tv_size"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:text='@{viewModel.userDataEntity.desc.length()+"/120"}'
+                            android:textColor="@color/gray"
+                            android:textSize="@dimen/text_size_mini" />
+                    </RelativeLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+</layout>

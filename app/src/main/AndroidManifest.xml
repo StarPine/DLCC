@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.dl.playfun">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.READ_LOGS"
+        tools:ignore="ProtectedPermissions" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <!--删除相关请求安装权限&#45;&#45;迎合谷歌政策-->
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" tools:node="remove" />
+
+    <uses-permission android:name="android.permission.BROADCAST_STICKY" />
+    <!--在播放时有特殊设置的需要声明一个相应的WAKE_LOCK权限-->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="com.android.vending.BILLING" />
+
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.WRITE_GSERVICES" />
+    <!--声明有使用广告ID-->
+    <uses-permission android:name="com.google.android.gms.permission.AD_ID"/>
+
+    <supports-screens
+        android:largeScreens="true"
+        android:largestWidthLimitDp="600"
+        android:normalScreens="true"
+        android:smallScreens="true"
+        android:xlargeScreens="false" />
+
+    <application
+        android:name=".app.AppContext"
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name_release"
+        android:largeHeap="true"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:requestLegacyExternalStorage="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:replace="android:allowBackup, android:label"
+        tools:targetApi="n">
+
+        <meta-data
+            android:name="com.dl.playfun.widget.glide.GlideCache"
+            android:value="AppGlideModule" />
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/fb_login_protocol_scheme" />
+        <meta-data android:name="com.facebook.sdk.ClientToken" android:value="@string/facebook_app_token"/>
+
+        <activity
+            android:exported="true"
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name" />
+        <activity
+            android:name="com.facebook.CustomTabActivity"
+            android:exported="true">
+            <intent-filter><action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="@string/fb_login_protocol_scheme" />
+            </intent-filter>
+        </activity>
+        <!--mqtt新增服务-->
+        <service android:name="org.eclipse.paho.android.service.MqttService" />
+        <!--  appsflyer引流统计  android:exported="true" true上报 false不上报  -->
+        <receiver
+            android:name="com.appsflyer.SingleInstallBroadcastReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.android.vending.INSTALL_REFERRER" />
+            </intent-filter>
+        </receiver>
+
+
+        <!-- 内容提供器 -用来安装APK -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${package_name}.widget.dialog.version.UpdateFileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <!-- 适配华为（huawei）刘海屏 -->
+        <meta-data
+            android:name="android.notch_support"
+            android:value="true" /> <!-- 适配小米（xiaomi）刘海屏 -->
+        <meta-data
+            android:name="notch.config"
+            android:value="portrait|landscape" />
+
+        <meta-data
+            android:name="com.google.android.gms.wallet.api.enabled"
+            android:value="true" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="${mapsApiKey}" />
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@mipmap/ic_launcher" />
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/addressTEXT" /> <!-- [END fcm_default_icon] -->
+
+        <service
+            android:name=".service.GoogleFCMMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <activity
+            android:name=".ui.MainContainerActivity"
+            android:requestLegacyExternalStorage="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan|adjustResize|stateHidden"
+            android:exported="true"><!--" adjustResize|stateHidden"-->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="@string/app_flyer_invite_onelink"
+                    android:pathPrefix="/X5VR"
+                    android:scheme="https" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.dl.playfun.kl.view.DialingAudioActivity"
+            android:launchMode="singleTop"
+            android:exported="true"
+            android:requestLegacyExternalStorage="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan|adjustResize|stateHidden"><!--" adjustResize|stateHidden"-->
+        </activity>
+
+        <activity
+            android:name=".ui.base.OtherFragmentActivity"
+            android:requestLegacyExternalStorage="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan|adjustResize|stateHidden"
+            android:exported="true"/>
+        <activity
+            android:name="com.dl.playfun.kl.view.CallingVideoActivity"
+            android:launchMode="singleTop"
+            android:exported="true"
+            android:requestLegacyExternalStorage="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan|adjustResize|stateHidden"><!--" adjustResize|stateHidden"-->
+        </activity>
+
+        <!-- 快照页面 -->
+        <activity android:name=".ui.message.mediagallery.SnapshotPhotoActivity"
+            android:requestLegacyExternalStorage="true"
+            android:screenOrientation="portrait"
+            android:launchMode="singleTop"
+            android:exported="true"
+            android:theme="@style/AppTheme.NoActionBar"
+            />
+        <!--视频设置页面-->
+        <activity android:name=".ui.message.mediagallery.MediaGalleryVideoSettingActivity"
+            android:requestLegacyExternalStorage="true"
+            android:screenOrientation="portrait"
+            android:launchMode="singleTop"
+            android:exported="true"
+            android:theme="@style/AppTheme.NoActionBar"
+            />
+        <activity android:name=".ui.message.mediagallery.video.MediaGalleryVideoPayActivity"
+            android:requestLegacyExternalStorage="true"
+            android:screenOrientation="portrait"
+            android:launchMode="singleTop"
+            android:exported="true"
+            android:theme="@style/AppTheme.NoActionBar"
+            />
+
+        <!-- IM快照 or 普通照片查看-->
+        <activity android:name=".ui.message.mediagallery.photo.MediaGalleryPhotoPayActivity"
+            android:requestLegacyExternalStorage="true"
+            android:screenOrientation="portrait"
+            android:launchMode="singleTop"
+            android:exported="true"
+            android:theme="@style/AppTheme.NoActionBar"
+            />
+
+        <activity
+            android:name="com.dl.playfun.kl.view.AudioCallChatingActivity"
+            android:launchMode="singleTop"
+            android:exported="true"
+            android:requestLegacyExternalStorage="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan|adjustResize|stateHidden" /><!--" adjustResize|stateHidden"-->
+        <activity
+            android:name="com.dl.playfun.kl.view.VideoPresetActivity"
+            android:launchMode="singleTop"
+            android:exported="true"
+            android:requestLegacyExternalStorage="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan|adjustResize|stateHidden" /><!--" adjustResize|stateHidden"-->
+        <activity
+            android:name=".ui.message.chatdetail.notepad.NotepadActivity"
+            android:launchMode="singleTop"
+            android:exported="true"
+            android:requestLegacyExternalStorage="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan|adjustResize|stateHidden" />
+
+        <activity
+            android:name=".ui.mine.wallet.diamond.recharge.DiamondRechargeActivity"
+            android:launchMode="singleTop"
+            android:exported="true"
+            android:requestLegacyExternalStorage="true"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|adjustResize|stateHidden" />
+
+        <activity
+            android:name=".ui.mine.exclusive.ExclusiveCallActivity"
+            android:launchMode="singleTop"
+            android:exported="true"
+            android:requestLegacyExternalStorage="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan|adjustResize|stateHidden" />
+
+        <activity
+            android:name=".ui.mine.wallet.recharge.RechargeActivity"
+            android:launchMode="singleTop"
+            android:requestLegacyExternalStorage="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan|adjustResize|stateHidden" />
+
+        <activity android:name=".ui.coinpusher.CoinPusherGameActivity"
+            android:launchMode="singleTop"
+            android:requestLegacyExternalStorage="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan|adjustResize|stateHidden"/>
+
+
+        <activity android:name="com.dl.playfun.api.login.email.LoginEmailMangerActivity"
+            android:launchMode="singleTop"
+            android:exported="true"
+            android:requestLegacyExternalStorage="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/dialog_activity_style"/>
+        <activity android:name="com.dl.playfun.ui.mine.account.bind.EmailMangerBindActivity"
+            android:launchMode="singleTop"
+            android:exported="true"
+            android:requestLegacyExternalStorage="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/dialog_activity_style"/>
+
+    </application>
+
+</manifest>

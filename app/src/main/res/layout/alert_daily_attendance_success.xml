@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tootls="http://schemas.android.com/tools"
+    android:background="@color/transparent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:background="@drawable/attendance_success_back"
+        android:layout_width="match_parent"
+        android:layout_marginStart="43dp"
+        android:layout_marginEnd="43dp"
+        android:layout_height="403dp"
+        android:id="@+id/no_vip_unlock"
+        android:layout_marginLeft="43dp"
+        android:layout_marginRight="43dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/iv_dialog_close"
+            android:layout_width="31dp"
+            android:layout_height="31dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="52dp"
+            android:layout_marginEnd="5dp"
+            android:elevation="11dp"
+            android:src="@mipmap/icon_dialog_sign_close"
+            android:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/title_img"
+            android:layout_width="98dp"
+            android:layout_height="78dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="146dp"
+            android:src="@drawable/dialog_task_integral" />
+
+        <TextView
+            android:id="@+id/title_fen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/title_img"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="19dp"
+            android:includeFontPadding="false"
+            tootls:text="積分 +10"
+            android:textColor="#FFFD42D6"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/content_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/title_fen"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="@string/playfun_daily_atendance_vip_hint"
+            android:textColor="#ff9b9ca8"
+            android:textSize="13sp" />
+
+        <Button
+            android:id="@+id/btn_confirm"
+            style="@style/ButtonPrimary"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginStart="19dp"
+            android:layout_marginEnd="19dp"
+            android:layout_marginBottom="29dp"
+            android:text="@string/playfun_daily_atendance_accept" />
+    </RelativeLayout>
+</RelativeLayout>

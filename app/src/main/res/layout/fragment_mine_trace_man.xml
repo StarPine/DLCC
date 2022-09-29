@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.dl.playfun.ui.mine.trace.man.TraeManViewModel" />
+
+        <import type="android.view.View" />
+
+        <import type="me.tatarka.bindingcollectionadapter2.LayoutManagers" />
+
+        <import type="com.dl.playfun.widget.recyclerview.LineManagers" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="com.dl.playfun.ui.mine.blacklist.BlacklistFragment">
+
+        <View
+            android:id="@+id/status_bar_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/status_bar_color" />
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay"
+            app:elevation="0dp">
+
+            <com.dl.playfun.widget.BasicToolbar
+                android:id="@+id/basic_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/action_bar_height"
+                app:toolbar_title="@string/playfun_mine_trace_man_title" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:gravity="center_vertical"
+            android:paddingStart="16dp"
+            android:textSize="18sp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.scwang.smart.refresh.layout.SmartRefreshLayout
+                android:id="@+id/refresh_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/btn_confirm"
+                android:background="@color/container_background"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                binding:onLoadMoreCommand="@{viewModel.onLoadMoreCommand}"
+                binding:onRefreshCommand="@{viewModel.onRefreshCommand}">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:orientation="vertical">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recycler_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        binding:adapter="@{viewModel.adapter}"
+                        binding:itemBinding="@{viewModel.itemBinding}"
+                        binding:items="@{viewModel.observableList}"
+                        binding:layoutManager="@{LayoutManagers.linear()}"
+                        binding:lineManager="@{LineManagers.horizontal(1,72,0)}" />
+
+                    <include
+                        layout="@layout/trace_empty_view"
+                        app:stateModel="@{viewModel.stateModel}" />
+                </RelativeLayout>
+            </com.scwang.smart.refresh.layout.SmartRefreshLayout>
+
+            <RelativeLayout
+                android:id="@+id/btn_confirm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="10dp"
+                android:paddingBottom="20dp">
+
+                <RelativeLayout
+                    android:id="@+id/bottom_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="43dp"
+                    android:layout_marginStart="38dp"
+                    android:layout_marginEnd="38dp"
+                    android:gravity="center"
+                    android:background="@drawable/button_purple_background"
+                    binding:onClickCommand="@{viewModel.AlertVipOnClickCommand}">
+
+                    <ImageView
+                        android:id="@+id/img_lock"
+                        android:layout_width="23dp"
+                        android:layout_height="23dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/trace_male_unlock" />
+
+                    <TextView
+                        android:id="@+id/confirm"
+                        android:layout_toRightOf="@+id/img_lock"
+                        android:layout_centerVertical="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{String.format(@string/playfun_visitor_total_count,viewModel.totalCount)}"
+                        android:textColor="@color/white"
+                        android:textSize="12sp" />
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_below="@+id/bottom_layout"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:layout_marginTop="13dp"
+                    android:clickable="true"
+                    android:elevation="20dp"
+                    android:text="@string/playfun_mine_trace_man_title4"
+                    android:textColor="#ff9494a5"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </LinearLayout>
+</layout>

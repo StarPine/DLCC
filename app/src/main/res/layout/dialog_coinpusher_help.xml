@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <FrameLayout
+        android:layout_gravity="bottom"
+        android:layout_width="match_parent"
+        android:layout_height="334dp">
+        <RelativeLayout
+            android:orientation="vertical"
+            binding:drawable_color="@{@color/white}"
+            binding:drawable_radius_leftTop="@{20}"
+            binding:drawable_radius_rightTop="@{20}"
+            android:layout_width="match_parent"
+            android:layout_height="334dp">
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/img_close"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="15dp"
+                android:elevation="1dp"
+                android:src="@drawable/radio_publish_close" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:textStyle="bold"
+                android:textColor="#43435E"
+                android:textSize="18sp" />
+            <WebView
+                android:layout_marginTop="10dp"
+                android:id="@+id/web_view"
+                android:layout_below="@+id/tv_title"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fillViewport="true"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        </RelativeLayout>
+    </FrameLayout>
+</layout>

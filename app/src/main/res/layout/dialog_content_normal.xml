@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="47dp"
+        android:background="@drawable/edittext_background">
+
+        <TextView
+            android:id="@+id/tv_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:padding="15dp"
+            android:text="@string/playfun_cancel"
+            android:textColor="@color/purple"
+            android:textSize="@dimen/text_size_mini" />
+
+        <TextView
+            android:id="@+id/tv_dialog_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/playfun_dialog_content_normal_title"
+            android:textColor="@color/text_default"
+            android:textSize="@dimen/text_size_middle" />
+
+        <TextView
+            android:id="@+id/tv_confirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:padding="15dp"
+            android:text="@string/playfun_confirm"
+            android:textColor="@color/purple"
+            android:textSize="@dimen/text_size_mini" />
+
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recy_dialog"
+        android:layout_width="match_parent"
+        android:layout_height="229dp"
+        android:background="@drawable/edittext_background" />
+</LinearLayout>

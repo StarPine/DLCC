@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="com.dl.playfun.R" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        tools:background="@color/coffee">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:layout_alignParentBottom="true"
+            android:background="@drawable/bg_dialog_white_top_radius_10"
+            android:gravity="center_horizontal"
+            android:minHeight="320dp">
+
+            <ImageView
+                android:id="@+id/iv_close"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_margin="20dp"
+                android:scaleX="2"
+                android:scaleY="2"
+                android:src="@drawable/icon_close_dialog" />
+
+            <View
+                android:id="@+id/img_call_layout"
+                android:layout_width="102dp"
+                android:layout_height="102dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="29dp"
+                android:background="@drawable/button_purple_background3" />
+
+            <com.dl.playfun.widget.image.CircleImageView
+                android:id="@+id/iv_user_head"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/default_avatar"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/iv_user_head"
+                android:layout_marginTop="15dp"
+                android:text="@string/playfun_dialog_title_tips"
+                android:textAlignment="center"
+                android:textColor="@color/balck_35e"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_title"
+                android:layout_marginTop="20dp"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/ll_not_happy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:layout_marginEnd="50dp"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/icon_not_happy" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="@string/playfun_evaluation_not_happy" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_happy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/icon_happy" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="@string/playfun_evaluation_happy" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+</layout>

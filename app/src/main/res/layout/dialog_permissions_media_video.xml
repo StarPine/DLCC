@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minWidth="300dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="33dp"
+        android:layout_marginEnd="33dp"
+        android:background="@drawable/edit_white_background"
+        android:clipToPadding="false"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <ImageView
+            android:layout_width="69dp"
+            android:layout_height="69dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="19dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/permissions_audio_img" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="25dp"
+            android:gravity="center"
+            android:text="@string/playfun_permissions_audio_txt"
+            android:textColor="@color/gray_middle"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btn_confirm"
+            style="@style/ButtonPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="21dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="@string/playfun_confirm"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_42" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/iv_dialog_close"
+        android:layout_width="39dp"
+        android:layout_height="39dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="28dp"
+        android:src="@drawable/ic_dialog_close" />
+</LinearLayout>

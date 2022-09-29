@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rl_layout"
+    android:layout_width="115dp"
+    android:layout_height="65dp"
+    android:layout_marginStart="14dp"
+    android:layout_marginBottom="10dp"
+    android:background="@drawable/task_exchange_dialog_item_no">
+    <TextView
+        android:id="@+id/title1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        tools:text="800積分"
+        android:textColor="#ffffffff"
+        android:textSize="17sp"
+        />
+    <TextView
+        android:id="@+id/title2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title1"
+        android:layout_marginTop="3dp"
+        android:gravity="center"
+        tools:text="80鑽石兌換"
+        android:textColor="#ffffffff"
+        android:textSize="11sp"
+        />
+
+</RelativeLayout>

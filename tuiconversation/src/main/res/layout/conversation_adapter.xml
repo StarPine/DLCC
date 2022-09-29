@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_left"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFFFFF"
+    android:orientation="horizontal"
+    android:paddingLeft="15dp"
+    android:paddingTop="12dp">
+    <CheckBox
+        android:id="@+id/select_checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_gravity="center_vertical"
+        android:layout_marginRight="6.23dp"
+        android:button="@drawable/chat_checkbox_selector"
+        android:visibility="gone" />
+    <com.tencent.qcloud.tuikit.tuiconversation.ui.view.ConversationIconView
+        android:id="@+id/conversation_icon"
+        android:layout_width="@dimen/conversation_avatar_width"
+        android:layout_height="@dimen/conversation_avatar_height"
+        android:clickable="true" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="62.3dp"
+        android:paddingLeft="11.43dp"
+        android:paddingTop="1.37dp">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/conversation_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:ellipsize="end"
+                android:gravity="top|left"
+                android:includeFontPadding="false"
+                android:maxWidth="109dp"
+                android:singleLine="true"
+                android:text=""
+                android:textColor="#2F2F4D"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                tools:text="艾希lovexi666" />
+
+            <ImageView
+                android:id="@+id/certification"
+                android:layout_width="31dp"
+                android:layout_height="13dp"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="7dp"
+                android:layout_marginLeft="7dp"
+                android:layout_toEndOf="@id/conversation_title"
+                android:layout_toRightOf="@id/conversation_title"
+                android:src="@drawable/ic_real_man"
+                android:visibility="gone"
+                tools:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/iv_vip"
+                android:layout_width="31dp"
+                android:layout_height="13dp"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="7dp"
+                android:layout_marginLeft="7dp"
+                android:layout_toEndOf="@id/certification"
+                android:layout_toRightOf="@id/certification"
+                android:visibility="gone"
+                tools:src="@drawable/ic_vip"
+                tools:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/iv_game_icon"
+                android:layout_width="31dp"
+                android:layout_height="13dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="7dp"
+                android:layout_toRightOf="@+id/iv_vip"
+                />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/conversation_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="18.11dp"
+            android:textColor="#9EA1B0"
+            android:textSize="12sp"
+            tools:text="昨天 12:11" />
+
+        <TextView
+            android:id="@+id/conversation_last_msg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/view_line"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="18.11dp"
+            android:layout_marginBottom="15.54dp"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textColor="#7f2F2F4D"
+            android:textSize="14sp"
+            tools:text="传了一则讯息给你!" />
+
+        <ImageView
+            android:id="@+id/not_disturb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/view_line"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="15.54dp"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:src="@drawable/ic_disturb"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/conversation_unread"
+            android:layout_width="wrap_content"
+            android:layout_height="16dp"
+            android:layout_above="@+id/view_line"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="18.11dp"
+            android:layout_marginBottom="15.54dp"
+            android:background="@drawable/custom_badge_background_white_border"
+            android:gravity="center"
+            android:minWidth="16dp"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:textColor="@color/white"
+            tools:text="99+"
+            android:textSize="10dp" />
+        <TextView
+            android:id="@+id/conversation_at_msg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/view_line"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="15.54dp"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textColor="@color/list_bottom_text_bg"
+            android:textSize="12.86sp"
+            android:visibility="gone"/>
+
+        <View
+            android:id="@+id/view_line"
+            android:layout_width="match_parent"
+            android:layout_height="0.3dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="12dp"
+            android:background="@color/split_lint_color" />
+    </RelativeLayout>
+
+</LinearLayout>

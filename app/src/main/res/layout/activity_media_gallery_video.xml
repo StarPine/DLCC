@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="videoViewModel"
+            type="com.dl.playfun.ui.message.mediagallery.video.MediaGalleryVideoPayViewModel" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:background="@color/black"
+            android:splitMotionEvents="false"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <View
+                android:id="@+id/status_bar_view"
+                android:background="@color/black"
+                android:layout_width="match_parent"
+                android:layout_height="0dp" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/img_back"
+                android:elevation="999dp"
+                android:layout_below="@+id/status_bar_view"
+                android:layout_width="19dp"
+                android:layout_height="19dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="12dp"
+                android:src="@drawable/ic_toolbar_back"
+                android:tint="@color/white"
+                binding:onClickCommand="@{videoViewModel.onBackViewClick}"
+                />
+
+            <com.dl.playfun.widget.videoview.SampleCoverVideo
+                android:id="@+id/video_player"
+                android:layout_width="match_parent"
+                android:layout_height="360dp"
+                android:layout_above="@+id/fl_layout_bottom"
+                android:layout_below="@+id/img_back"
+                binding:playStatus="@{1}"
+                binding:position="@{1}"
+                binding:isLocalFile="@{videoViewModel.isLocalSrc}"
+                binding:videoUri="@{videoViewModel.srcPath}" />
+
+            <LinearLayout
+                android:splitMotionEvents="false"
+                tools:visibility="invisible"
+                android:id="@+id/fl_layout_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="86dp"
+                android:layout_alignParentBottom="true"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:visibility="@{videoViewModel.evaluationState ? View.VISIBLE : View.INVISIBLE}">
+
+                <LinearLayout
+                    android:id="@+id/ll_no_like"
+                    android:layout_width="144dp"
+                    android:layout_height="38dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    binding:drawable_color="@{@color/black}"
+                    binding:drawable_cornersRadius="@{22}"
+                    binding:drawable_stroke_color="@{@color/purple_text}"
+                    binding:drawable_stroke_width="@{1}">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_gravity="center"
+                        android:rotationX="180"
+                        android:src="@drawable/img_give_like" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="10dp"
+                        android:includeFontPadding="false"
+                        android:text="@string/playfun_text_dislike"
+                        android:textColor="#ffffffff"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_like"
+                    android:layout_width="144dp"
+                    android:layout_height="38dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_marginStart="28dp"
+                    android:orientation="horizontal"
+                    binding:drawable_cornersRadius="@{22}"
+                    binding:drawable_gradient_endColor="@{@color/playfun_shape_radius_end_color}"
+                    binding:drawable_gradient_startColor="@{@color/playfun_shape_radius_start_color}">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/img_give_like" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="10dp"
+                        android:includeFontPadding="false"
+                        android:text="@string/playfun_text_like"
+                        android:textColor="#ffffffff"
+                        android:textSize="15sp" />
+                </LinearLayout>
+            </LinearLayout>
+            <FrameLayout
+                android:id="@+id/process_layout"
+                android:elevation="999dp"
+                android:clickable="false"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+                <FrameLayout
+                    android:id="@+id/fl_layout"
+                    android:alpha="49"
+                    android:layout_gravity="center"
+                    android:layout_width="115dp"
+                    android:layout_height="115dp"
+                    tools:ignore="UselessParent">
+                    <com.dl.playfun.widget.progress.MPCircleProgressBar
+                        android:id="@+id/mp_progress"
+                        android:layout_gravity="center"
+                        android:layout_width="72dp"
+                        android:layout_height="72dp"
+                        app:txtWidth="40sp"
+                        app:width="4dp"
+                        />
+                </FrameLayout>
+            </FrameLayout>
+        </RelativeLayout>
+    </FrameLayout>
+</layout>

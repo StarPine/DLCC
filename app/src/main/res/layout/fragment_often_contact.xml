@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.dl.playfun.ui.message.contact.OftenContactViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="MissingDefaultResource">
+        <com.tencent.qcloud.tuikit.tuiconversation.ui.view.ConversationLayout
+            android:id="@+id/conversation_layout_contact"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            android:layout_marginBottom="@dimen/home_bottom_nav_height" />
+        <RelativeLayout
+            android:id="@+id/rl_empty_layout"
+            android:elevation="11dp"
+            android:clickable="true"
+            android:background="@color/white"
+            android:visibility="visible"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_centerInParent="true"
+                android:id="@+id/iv_empty"
+                android:layout_width="218dp"
+                android:layout_height="191dp"
+                android:src="@drawable/message_conversation_empty"
+                />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_marginTop="31dp"
+                android:layout_below="@+id/iv_empty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/playfun_contact_empty_text"
+                android:textColor="#ffbfbfbf"
+                android:textSize="16sp"
+                />
+        </RelativeLayout>
+    </RelativeLayout>
+</layout>

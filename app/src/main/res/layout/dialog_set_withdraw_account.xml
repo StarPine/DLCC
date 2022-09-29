@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/white_round_bg"
+        android:clipToPadding="false"
+        android:orientation="vertical"
+        android:padding="15dp">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="@string/playfun_dialog_set_withdraw_account_title"
+            android:textColor="@color/text_default"
+            android:textSize="@dimen/text_size_big"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="21dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/edt_account"
+                style="@style/EditText"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:background="@drawable/edit_grey_background"
+                android:hint="@string/playfun_dialog_set_withdraw_account_act_hint"
+                android:inputType="text"
+                android:maxLength="32"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:textColorHint="@color/gray_middle"
+                android:textCursorDrawable="@null"
+                android:textSize="@dimen/text_size_14" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/edt_name"
+                style="@style/EditText"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:background="@drawable/edit_grey_background"
+                android:hint="@string/playfun_dialog_set_withdraw_account_name_hint"
+                android:inputType="text"
+                android:maxLength="10"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:textColorHint="@color/gray_middle"
+                android:textCursorDrawable="@null"
+                android:textSize="@dimen/text_size_14" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_confirm"
+            style="@style/ButtonPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="20dp"
+            android:text="@string/playfun_dialog_set_withdraw_account_confirm"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_42" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/iv_dialog_close"
+        android:layout_width="39dp"
+        android:layout_height="39dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="28dp"
+        android:src="@drawable/ic_dialog_close" />
+</LinearLayout>

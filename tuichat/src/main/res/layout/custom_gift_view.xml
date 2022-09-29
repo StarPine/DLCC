@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/custom_gift_layout_max"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/custom_gift_layout"
+        android:layout_width="192dp"
+        android:layout_height="91dp"
+        android:background="@drawable/custom_left_gift_backdrop">
+
+        <ImageView
+            android:id="@+id/gift_img"
+            android:layout_width="69dp"
+            android:layout_height="69dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="13dp"
+            android:layout_marginLeft="13dp"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:id="@+id/gift_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
+            android:layout_marginLeft="14dp"
+            android:layout_marginTop="30dp"
+            android:layout_toEndOf="@id/gift_img"
+            android:layout_toRightOf="@id/gift_img"
+            android:includeFontPadding="false"
+            android:text="@string/custom_gift_right_title"
+            android:textColor="#ff333333"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/gift_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/gift_title"
+            android:layout_alignStart="@+id/gift_title"
+            android:layout_alignLeft="@+id/gift_title"
+            android:layout_marginTop="6dp"
+            android:includeFontPadding="false"
+            tools:text="[比心吖]  x99"
+            android:textColor="#ff9897b3"
+            android:textSize="12sp" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/custom_gift_hint_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/custom_text_backdrop_layout"
+        android:includeFontPadding="false"
+        android:paddingStart="5dp"
+        android:paddingTop="1dp"
+        android:paddingEnd="5dp"
+        android:paddingBottom="1dp"
+        android:textSize="11sp"
+        android:visibility="gone"
+        android:gravity="center_vertical"
+        tools:text="@string/custom_message_txt2_test2"
+        tools:visibility="gone"
+        />
+</LinearLayout>

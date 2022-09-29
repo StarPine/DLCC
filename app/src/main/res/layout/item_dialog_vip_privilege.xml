@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/transparent"
+    android:gravity="center_vertical"
+    android:padding="10dp">
+
+    <ImageView
+        android:id="@+id/iv_privilege_icon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="10dp"
+        android:src="@drawable/default_address_user" />
+
+    <TextView
+        android:id="@+id/tv_privilege_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/iv_privilege_icon"
+        android:textColor="@color/coffee_11d"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        tools:text="免費鑽石" />
+
+    <TextView
+        android:id="@+id/tv__privilege_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/iv_privilege_icon"
+        android:layout_toEndOf="@+id/iv_privilege_icon"
+        android:textColor="@color/coffee_11d"
+        android:textSize="@dimen/text_size_1067"
+        android:ellipsize="end"
+        android:maxLines="1"
+        tools:text="巨額鑽石免費贈送！登陸必得！ " />
+
+</RelativeLayout>

@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.dl.playfun.ui.mine.exclusive.ExclusiveCallViewModel" />
+
+        <import type="android.view.View" />
+
+        <import type="com.dl.playfun.R" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/window_background">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <View
+                android:id="@+id/status_bar_view"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@color/white" />
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/top_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/AppTheme.AppBarOverlay"
+                app:elevation="0dp">
+
+                <com.dl.playfun.widget.BasicToolbar
+                    android:id="@+id/basic_toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    app:toolbar_title="@string/playfun_mine_title_my_exclusive">
+
+                </com.dl.playfun.widget.BasicToolbar>
+            </com.google.android.material.appbar.AppBarLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/bg_white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:src="@drawable/icon_tips" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:maxWidth="400dp"
+                    android:text="@string/playfun_my_exclusive_tips_content"
+                    android:textColor="@color/yellow_714" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:layout_toStartOf="@+id/user_avatar">
+
+                    <TextView
+                        android:id="@+id/tv_text_chat_up_hint"
+                        onClickCommand="@{viewModel.editTextAccostOnClick}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:background="@drawable/custom_right_gift_backdrop"
+                        android:drawablePadding="10dp"
+                        android:padding="10dp"
+                        android:text="@string/playfun_text_chat_up"
+                        android:textColor="@color/white"
+                        android:visibility="@{viewModel.textContent == null?View.VISIBLE:View.GONE}"
+                        app:drawableStartCompat="@drawable/icon_text"
+                        tools:visibility="gone"
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_text_chat_up"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:background="@drawable/custom_right_gift_backdrop"
+                        android:padding="10dp"
+                        android:text="@{viewModel.textContent}"
+                        android:textColor="@color/white"
+                        android:visibility="@{viewModel.textContent != null?View.VISIBLE:View.GONE}"
+                        android:maxWidth="@dimen/chat_message_content_max_width"
+                        tools:visibility="visible"
+                        tools:text="好的搭讪语"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_text_chat_up"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal"
+                        android:visibility="@{viewModel.textContent != null?View.VISIBLE:View.GONE}"
+                        tools:visibility="visible"
+                        >
+
+                        <ImageView
+                            android:id="@+id/iv_del_text_chat_up"
+                            onClickCommand="@{viewModel.delTextAccostOnClick}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="20dp"
+                            android:src="@drawable/btn_del_exclusive_call" />
+
+                        <ImageView
+                            android:id="@+id/iv_edit_text_chat_up"
+                            onClickCommand="@{viewModel.editTextAccostOnClick}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/btn_edit_exclusive_call" />
+                    </LinearLayout>
+                </RelativeLayout>
+
+
+                <com.dl.playfun.widget.image.CircleImageView
+                    android:id="@+id/user_avatar"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="10dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/default_avatar"
+                    binding:imageErrorPlaceholderRes="@{R.drawable.default_avatar}"
+                    binding:imagePlaceholderRes="@{R.drawable.default_avatar}"
+                    binding:imageThumbPath="@{viewModel.avatar}"
+                    />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:layout_toStartOf="@+id/user_avatar2">
+
+                    <TextView
+                        android:id="@+id/tv_audio_chat_up_hint"
+                        onClickCommand="@{viewModel.editAudioAccostOnClick}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:background="@drawable/custom_right_gift_backdrop"
+                        android:drawablePadding="10dp"
+                        android:padding="10dp"
+                        android:text="@string/playfun_audio_chat_up"
+                        android:textColor="@color/white"
+                        android:visibility="@{viewModel.audioContent == null?View.VISIBLE:View.GONE}"
+                        app:drawableStartCompat="@drawable/icon_audio" />
+
+                    <RelativeLayout
+                        android:id="@+id/ll_audio_chat_up"
+                        android:layout_width="140dp"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:layout_alignParentEnd="true"
+                        android:background="@drawable/custom_right_gift_backdrop"
+                        onClickCommand="@{viewModel.audioPlayOnClick}"
+                        android:visibility="@{viewModel.audioContent != null?View.VISIBLE:View.GONE}">
+
+                        <TextView
+                            android:id="@+id/tv_audio_seconds"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toStartOf="@+id/iv_second"
+                            android:layout_centerVertical="true"
+                            android:text="@{viewModel.audioSecond}"
+                            android:textColor="@color/white" />
+
+                        <ImageView
+                            android:id="@+id/iv_second"
+                            android:layout_width="5dp"
+                            android:layout_height="3dp"
+                            android:layout_marginEnd="3dp"
+                            android:layout_marginTop="2dp"
+                            android:layout_alignTop="@+id/tv_audio_seconds"
+                            android:layout_toStartOf="@+id/iv_anim"
+                            android:src="@drawable/icon_second" />
+
+                        <ImageView
+                            android:id="@+id/iv_anim"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="10dp"
+                            android:src="@drawable/icon_anim_voiceprint" />
+
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/ll_audio_chat_up"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal"
+                        android:visibility="@{viewModel.audioContent != null?View.VISIBLE:View.GONE}">
+
+                        <ImageView
+                            android:id="@+id/iv_del_audio_chat_up"
+                            onClickCommand="@{viewModel.delAudioAccostOnClick}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="20dp"
+                            android:src="@drawable/btn_del_exclusive_call" />
+
+                        <ImageView
+                            android:id="@+id/iv_edit_audio_chat_up"
+                            onClickCommand="@{viewModel.editAudioAccostOnClick}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/btn_edit_exclusive_call" />
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <com.dl.playfun.widget.image.CircleImageView
+                    android:id="@+id/user_avatar2"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="10dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/default_avatar"
+                    binding:imageErrorPlaceholderRes="@{R.drawable.default_avatar}"
+                    binding:imagePlaceholderRes="@{R.drawable.default_avatar}"
+                    binding:imageThumbPath="@{viewModel.avatar}"
+                    />
+
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</layout>

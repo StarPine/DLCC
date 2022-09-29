@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/navigation_bar_color"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/input_title_line_color" />
+
+    <com.tencent.qcloud.tuikit.tuichat.ui.view.input.ReplyPreviewBar
+        android:id="@+id/reply_preview_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="5dp"
+        android:visibility="gone"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:minHeight="57dp"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <ImageView
+            android:id="@+id/voice_input_switch"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_margin="5dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/action_audio_selector" />
+
+        <com.tencent.qcloud.tuikit.tuichat.ui.view.input.TIMMentionEditText
+            android:id="@+id/chat_message_input"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/msg_editor_border"
+            android:maxHeight="120dp"
+            android:minHeight="30dp"
+            android:paddingLeft="14dp"
+            android:paddingTop="5dp"
+            android:paddingEnd="5dp"
+            android:paddingRight="5dp"
+            android:paddingBottom="5dp"
+            android:textCursorDrawable="@drawable/my_cursor" />
+
+        <Button
+            android:id="@+id/chat_voice_input"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/voice_btn_selector"
+            android:text="@string/hold_say"
+            android:textColor="@color/text_color_gray"
+            android:visibility="gone" />
+        <ImageView
+            android:id="@+id/send_btn_display"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/icon_send_normal"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:visibility="visible" />
+        <ImageView
+            android:id="@+id/send_btn"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/icon_send_usable"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/face_btn"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/custom_im_face" />
+
+        <ImageView
+            android:id="@+id/phone_video_btn"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="70dp"
+            android:layout_marginLeft="70dp"
+            android:layout_toEndOf="@+id/face_btn"
+            android:layout_toRightOf="@+id/face_btn"
+            android:src="@drawable/custom_im_phone_video" />
+
+
+        <ImageView
+            android:id="@+id/call_phone_video_btn"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="70dp"
+            android:layout_marginLeft="70dp"
+            android:layout_toEndOf="@+id/phone_video_btn"
+            android:layout_toRightOf="@+id/phone_video_btn"
+            android:src="@drawable/custom_call_play" />
+
+
+        <ImageView
+            android:id="@+id/gift_btn"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="80dp"
+            android:layout_marginLeft="80dp"
+            android:layout_toEndOf="@+id/call_phone_video_btn"
+            android:layout_toRightOf="@+id/call_phone_video_btn"
+            android:src="@drawable/custom_im_gift" />
+
+        <TextView
+            android:id="@+id/tv_profit_tip"
+            android:layout_width="wrap_content"
+            android:layout_height="10dp"
+            android:layout_marginStart="-3dp"
+            android:layout_marginLeft="-3dp"
+            android:layout_marginTop="2dp"
+            android:layout_toEndOf="@+id/call_phone_video_btn"
+            android:layout_toRightOf="@+id/call_phone_video_btn"
+            android:background="@drawable/custom_circle_red2"
+            android:gravity="center"
+            android:paddingRight="3dp"
+            android:paddingLeft="3dp"
+            android:textSize="6sp"
+            android:textColor="@color/white"
+            android:visibility="gone"
+            tools:visibility="visible"
+            tools:text="收入新台幣399鑽石/分鐘" />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/more_groups"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+</LinearLayout>

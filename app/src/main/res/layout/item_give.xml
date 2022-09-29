@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.dl.playfun.ui.mine.broadcast.mytrends.givelist.GiveListItemViewModel" />
+
+        <import type="android.view.View" />
+
+        <import type="com.dl.playfun.R" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="13.97dp"
+        binding:onClickCommand="@{viewModel.itemClick}">
+
+        <com.dl.playfun.widget.roundedimageview.RoundedImageView
+            android:id="@+id/iv_avatar"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/default_avatar"
+            app:riv_corner_radius="8dip"
+            binding:imageErrorPlaceholderRes="@{R.drawable.default_avatar}"
+            binding:imagePlaceholderRes="@{R.drawable.default_avatar}"
+            binding:imageThumbPath="@{viewModel.baseUserBeanEntityObservableField.avatar}"
+            binding:resizeH="@{40}"
+            binding:resizeW="@{40}"
+            />
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/iv_avatar"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/iv_avatar"
+            android:singleLine="true"
+            android:text="@={viewModel.baseUserBeanEntityObservableField.nickname}"
+            android:textColor="@color/text_5b"
+            android:textSize="@dimen/text_size_big"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/certification"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/tv_name"
+            android:src="@drawable/ic_real_man"
+            android:visibility="@{viewModel.baseUserBeanEntityObservableField.isVip != 1 &amp;&amp; viewModel.baseUserBeanEntityObservableField.certification==1?View.VISIBLE:View.GONE}" />
+
+        <ImageView
+            android:id="@+id/iv_vip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="8dp"
+            android:layout_toRightOf="@+id/tv_name"
+            android:src="@{viewModel.baseUserBeanEntityObservableField.sex==1?@drawable/ic_vip:@drawable/ic_goddess}"
+            android:visibility="@{viewModel.baseUserBeanEntityObservableField.isVip==1?View.VISIBLE:View.GONE}" />
+    </RelativeLayout>
+</layout>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingRight="10dp">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="108dp"
+            android:layout_height="178dp"
+            android:layout_margin="10dp"
+            android:background="@color/white"
+            android:padding="10.48dp"
+            android:paddingRight="10.48dp"
+            app:cardCornerRadius="5dp"
+            app:cardElevation="5dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_activity"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:drawableTop="@drawable/ic_radio_publish_activity"
+                    android:drawablePadding="10.48dp"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="@string/playfun_fragment_issuance_program_title"
+                    android:textColor="@color/gray_dark"
+                    android:textSize="@dimen/text_size_middle" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:layout_marginLeft="10.48dp"
+                    android:layout_marginRight="10.48dp"
+                    android:background="@color/divider" />
+
+                <TextView
+                    android:id="@+id/tv_dynamic"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:drawableTop="@drawable/ic_radio_publish_dynamic"
+                    android:drawablePadding="10.48dp"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="@string/playfun_issuance_tends"
+                    android:textColor="@color/gray_dark"
+                    android:textSize="@dimen/text_size_middle" />
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+</layout>

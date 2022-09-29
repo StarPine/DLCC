@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.dl.playfun.ui.message.chatmessage.ChatMessageViewModel" />
+
+        <variable
+            name="viewModel"
+            type="com.dl.playfun.ui.message.chatmessage.ChatMessageViewModel" />
+
+        <import type="android.view.View" />
+        <import type="me.tatarka.bindingcollectionadapter2.LayoutManagers" />
+
+        <import type="com.dl.playfun.widget.recyclerview.LineManagers" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="com.dl.playfun.ui.message.chatmessage.ChatMessageFragment">
+        <LinearLayout
+            android:id="@+id/item_left"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/message_chat_border_layout"
+            android:orientation="horizontal"
+            android:paddingLeft="15dp"
+            android:paddingTop="12dp"
+            android:visibility="gone"
+            binding:onClickCommand="@{viewModel.traceOnClickCommand}">
+
+            <RelativeLayout
+                android:layout_width="57dp"
+                android:layout_height="57dp">
+                <ImageView
+                    android:layout_width="57dp"
+                    android:layout_height="57dp"
+                    android:elevation="11dp"
+                    android:src="@drawable/message_chat_border_img"/>
+                <com.dl.playfun.widget.image.CircleImageView
+                    android:layout_width="51dp"
+                    android:layout_height="51dp"
+                    android:layout_centerInParent="true"
+                    android:clickable="true"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/message_chat_border_img_2"
+                    tools:ignore="MissingConstraints" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="62.3dp"
+                android:paddingLeft="11.43dp"
+                android:paddingTop="1.37dp">
+
+                <TextView
+                    android:id="@+id/conversation_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:ellipsize="end"
+                    android:gravity="top|left"
+                    android:includeFontPadding="false"
+                    android:singleLine="true"
+                    android:text="@string/playfun_char_message_text3"
+                    android:textColor="#2F2F4D"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/conversation_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="18.11dp"
+                    android:textColor="#9EA1B0"
+                    android:textSize="12sp"
+                    android:visibility="gone"
+                    tools:text="昨天 12:11" />
+
+                <TextView
+                    android:id="@+id/conversation_last_msg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/view_line"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginRight="18.11dp"
+                    android:layout_marginBottom="15.54dp"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:textColor="#7f2F2F4D"
+                    android:textSize="14sp"
+                    tools:text="@string/playfun_char_message_text2" />
+
+
+                <com.tencent.qcloud.tuicore.component.UnreadCountTextView
+                    android:id="@+id/conversation_unread"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/view_line"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginRight="18.11dp"
+                    android:layout_marginBottom="15.54dp"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:text="@{viewModel.NewNumberText}"
+                    android:textColor="#fff"
+                    android:textSize="10sp"
+                    android:visibility="@{viewModel.NewNumberText==null?View.GONE:View.VISIBLE}" />
+
+                <View
+                    android:id="@+id/view_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.3dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginTop="12dp"
+                    android:background="@color/split_lint_color" />
+            </RelativeLayout>
+        </LinearLayout>
+        <com.tencent.qcloud.tuikit.tuiconversation.ui.view.ConversationLayout
+            android:id="@+id/conversation_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/home_bottom_nav_height" />
+    </LinearLayout>
+</layout>

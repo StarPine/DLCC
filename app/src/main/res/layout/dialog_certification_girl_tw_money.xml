@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@color/transparent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_marginStart="33dp"
+        android:layout_marginEnd="33dp"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@drawable/edit_white_background"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="29dp"
+            android:text="@string/playfun_toast_certification"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/btn_confirm"
+            style="@style/ButtonPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_below="@+id/iv_top_view"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="22dp"
+            android:text="@string/playfun_mine_trace_delike_confirm" />
+    </LinearLayout>
+</LinearLayout>

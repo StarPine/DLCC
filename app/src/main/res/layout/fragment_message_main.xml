@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+        <import type="android.graphics.Typeface" />
+        <variable
+            name="viewModel"
+            type="com.dl.playfun.ui.message.MessageMainViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical"
+        tools:context="com.dl.playfun.ui.message.MessageMainFragment">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="90dp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/img_bar_background"
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/img_main_bar_backdrop" />
+            <View
+                android:id="@+id/status_bar_view"
+                android:layout_width="match_parent"
+                android:layout_height="0dp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/action_bar_height"
+                android:layout_below="@+id/status_bar_view"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+                <RelativeLayout
+                    android:id="@+id/rl_tab_message"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    binding:onClickCommand="@{viewModel.toLeftTabClickCommand}">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_message_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerInParent="true"
+                        android:layout_marginStart="15dp"
+                        android:text="@string/playfun_tab_message_1"
+                        android:textColor="@{viewModel.tabSelected ? @color/play_chat_purple_1 : @color/black}"
+                        android:textSize="16sp"
+                        binding:isBold="@{viewModel.tabSelected}" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_message_hint"
+                        android:layout_width="wrap_content"
+                        android:layout_height="16dp"
+                        android:layout_marginStart="-4dp"
+                        android:layout_toEndOf="@+id/tv_message_text"
+                        android:background="@drawable/badge_background_white_border"
+                        android:gravity="center"
+                        android:minWidth="16dp"
+                        android:paddingStart="2dp"
+                        android:paddingEnd="2dp"
+                        android:text="@{viewModel.addString(viewModel.chatMessageCount)}"
+                        android:textColor="@color/white"
+                        android:textSize="11sp"
+                        android:visibility="@{viewModel.chatMessageCount > 0 ? View.VISIBLE:View.INVISIBLE}"
+                        tools:ignore="RelativeOverlap,SmallSp" />
+                    <View
+                        android:visibility="@{viewModel.tabSelected ? View.VISIBLE : View.GONE}"
+                        binding:drawable_color="@{@color/purple_text}"
+                        binding:drawable_cornersRadius="@{2}"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerInParent="true"
+                        android:layout_width="19dp"
+                        android:layout_height="3dp"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_toEndOf="@+id/rl_tab_message"
+                    android:paddingEnd="5dp"
+                    binding:onClickCommand="@{viewModel.toRightTabClickCommand}">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_message_contact"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerInParent="true"
+                        android:layout_marginStart="15dp"
+                        android:text="@string/playfun_tab_message_3"
+                        android:textColor="@{!viewModel.tabSelected ? @color/play_chat_purple_1 : @color/black}"
+                        android:textSize="16sp"
+                        binding:isBold="@{!viewModel.tabSelected}" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="16dp"
+                        android:layout_marginStart="-4dp"
+                        android:layout_toEndOf="@+id/tv_message_contact"
+                        android:background="@drawable/badge_background_white_border"
+                        android:gravity="center"
+                        android:minWidth="16dp"
+                        android:paddingStart="2dp"
+                        android:paddingEnd="2dp"
+                        android:text="@{viewModel.addString(viewModel.chatMessageContactCount)}"
+                        android:textColor="@color/white"
+                        android:textSize="11sp"
+                        android:visibility="@{viewModel.chatMessageContactCount > 0 ? View.VISIBLE:View.INVISIBLE}" />
+                    <View
+                        android:visibility="@{!viewModel.tabSelected ? View.VISIBLE : View.GONE}"
+                        binding:drawable_color="@{@color/purple_text}"
+                        binding:drawable_cornersRadius="@{2}"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerInParent="true"
+                        android:layout_width="19dp"
+                        android:layout_height="3dp"/>
+                </RelativeLayout>
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_notify"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_centerVertical="true"
+                    android:layout_toStartOf="@+id/iv_notify_setting"
+                    android:src="@drawable/icon_message_notify"
+                    binding:onClickCommand="@{viewModel.toMessageTabClickCommand}" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_notify_setting"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="10dp"
+                    android:src="@drawable/icon_setting"
+                    binding:onClickCommand="@{viewModel.pushSettingOnClickCommand}" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="16dp"
+                    android:layout_marginStart="-10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_toEndOf="@+id/iv_notify"
+                    android:background="@drawable/badge_background_white_border"
+                    android:gravity="center"
+                    android:minWidth="16dp"
+                    android:paddingLeft="2dp"
+                    android:paddingRight="2dp"
+                    android:text="@{viewModel.addString(viewModel.systemMessageCount)}"
+                    android:textColor="@color/white"
+                    android:textSize="11sp"
+                    android:visibility="@{viewModel.systemMessageCount > 0 ? View.VISIBLE:View.INVISIBLE}"
+                    tools:ignore="RelativeOverlap,SmallSp" />
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/view_pager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </RelativeLayout>
+    </LinearLayout>
+</layout>

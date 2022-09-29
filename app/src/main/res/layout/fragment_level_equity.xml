@@ -1,0 +1,694 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.dl.playfun.R" />
+
+        <import type="android.text.Html" />
+
+        <import type="android.view.View" />
+
+        <import type="me.tatarka.bindingcollectionadapter2.LayoutManagers" />
+
+        <import type="com.dl.playfun.widget.recyclerview.LineManagers" />
+
+        <import type="androidx.recyclerview.widget.LinearLayoutManager" />
+
+        <variable
+            name="viewModel"
+            type="com.dl.playfun.ui.mine.level.LevelEquityViewModel" />
+
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/tool_bar_title_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#211E4E"
+            android:elevation="50dp"
+            android:paddingBottom="12dp"
+            android:visibility="gone">
+
+            <View
+                android:id="@+id/status_bar_view_tool"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:background="@color/transparent" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/back_view_tool"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_below="@+id/status_bar_view_tool"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="12dp"
+                android:src="@drawable/ic_toolbar_back_white"
+                binding:onClickCommand="@{viewModel.backView}" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/status_bar_view_tool"
+                android:layout_alignTop="@+id/back_view_tool"
+                android:layout_centerInParent="true"
+                android:text="@string/fragment_level_title"
+                android:textColor="#fff1f2f9"
+                android:textSize="18sp" />
+        </RelativeLayout>
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="320dp"
+            android:maxHeight="320dp"
+            android:background="@drawable/level_equity_top_backdrop"
+            android:orientation="vertical"
+            android:theme="@style/AppTheme.AppBarOverlay">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/radius_layout_mine"
+                android:fitsSystemWindows="true"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+                <LinearLayout
+                    app:contentInsetStart="0dp"
+                    app:layout_collapseMode="pin"
+                    app:layout_collapseParallaxMultiplier="0.2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:id="@+id/tool_bar_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="12dp">
+
+                        <View
+                            android:id="@+id/status_bar_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:background="@color/transparent"
+                            tools:layout_height="46dp" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/back_view"
+                            binding:onClickCommand="@{viewModel.backView}"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_below="@+id/status_bar_view"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="12dp"
+                            android:src="@drawable/ic_toolbar_back_white" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/status_bar_view"
+                            android:layout_alignTop="@+id/back_view"
+                            android:layout_centerInParent="true"
+                            android:text="@string/fragment_level_title"
+                            android:textColor="#fff1f2f9"
+                            android:textSize="18sp" />
+                    </RelativeLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        binding:adapter="@{viewModel.adapterTitle}"
+                        android:layout_marginTop="7dp"
+                        binding:itemBinding="@{viewModel.itemBindingTitle}"
+                        binding:items="@{viewModel.observableListTitle}"
+                        binding:layoutManager="@{LayoutManagers.linear(LinearLayoutManager.HORIZONTAL,false)}"
+                        tools:layoutManager="LinearLayoutManager"
+                        tools:listitem="@layout/item_level_equity_title"
+                        tools:spanCount="6"
+                        tools:layout_height="30dp" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rcv_banner"
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="9dp"
+                        android:layout_height="110dp"
+                        android:nestedScrollingEnabled="false"
+                        binding:itemBinding="@{viewModel.itemBindingBanner}"
+                        binding:items="@{viewModel.observableListBanner}"
+                        binding:layoutManager="@{LayoutManagers.linear(LinearLayoutManager.HORIZONTAL,false)}" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:gravity="center"
+                        android:includeFontPadding="false"
+                        android:text="@{viewModel.currentTextHint!=null?Html.fromHtml(viewModel.currentTextHint):null}"
+                        android:textColor="#ffffffff"
+                        android:textSize="16sp" />
+                </LinearLayout>
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="-23dp"
+            binding:drawable_color="@{@color/white}"
+            binding:drawable_radius_leftTop="@{21}"
+            binding:drawable_radius_rightTop="@{21}"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            tools:background="@color/white">
+
+            <LinearLayout
+                android:id="@+id/tab_layout"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:layout_marginStart="100dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="100dp"
+                android:orientation="horizontal">
+
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    binding:onClickCommand="@{viewModel.leftTabLayoutOnClickCommand}">
+
+                    <TextView
+                        android:id="@+id/tv_left_level"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:includeFontPadding="false"
+                        android:text="@string/fragment_level_text4"
+                        android:textColor="@{viewModel.tabLayoutState ? @color/purple_text:@color/play_chat_gray_3}"
+                        android:textSize="18sp" />
+
+                    <View
+                        android:id="@+id/tv_left_line"
+                        android:layout_width="15dp"
+                        android:layout_height="1dp"
+                        android:layout_gravity="bottom|center"
+                        android:background="@{viewModel.tabLayoutState ? @color/purple_text:@color/play_chat_gray_3}"
+                        android:visibility="@{viewModel.tabLayoutState ? View.VISIBLE:View.GONE}" />
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="20dp"
+                    android:layout_weight="1"
+                    binding:onClickCommand="@{viewModel.rightTabLayoutOnClickCommand}">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:includeFontPadding="false"
+                        android:text="@string/fragment_level_text5"
+                        android:textColor="@{!viewModel.tabLayoutState ? @color/purple_text:@color/play_chat_gray_3}"
+                        android:textSize="18sp" />
+
+                    <View
+                        android:layout_width="15dp"
+                        android:layout_height="1dp"
+                        android:layout_gravity="bottom|center"
+                        android:background="@{!viewModel.tabLayoutState ? @color/purple_text:@color/play_chat_gray_3}"
+                        android:visibility="@{!viewModel.tabLayoutState ? View.VISIBLE:View.GONE}" />
+                </FrameLayout>
+            </LinearLayout>
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/tv_bottom"
+                android:layout_below="@+id/tab_layout"
+                android:fillViewport="true"
+                android:paddingTop="14dp"
+                android:paddingBottom="14dp"
+                android:scrollbars="none">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:visibility="@{viewModel.tabLayoutState?View.VISIBLE:View.GONE}"
+                        tools:visibility="visible">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/hint_tv"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_marginTop="14dp"
+                            android:background="#FFF8F3"
+                            android:gravity="center"
+                            android:text="@{viewModel.hintTv}"
+                            android:visibility="@{viewModel.hintTv==null?View.GONE:View.VISIBLE}"
+                            android:textColor="#FFA714" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="60dp"
+                                android:layout_marginTop="21dp">
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:id="@+id/icon_message"
+                                    android:layout_width="32dp"
+                                    android:layout_height="32dp"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_centerInParent="true"
+                                    android:layout_marginStart="15dp"
+                                    android:src="@drawable/level_equity_message" />
+
+                                <TextView
+                                    android:id="@+id/tv_message"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="15dp"
+                                    android:layout_marginTop="12dp"
+                                    android:layout_toEndOf="@+id/icon_message"
+                                    android:includeFontPadding="false"
+                                    android:text="@{viewModel.Tv_ChatCoins}"
+                                    android:textColor="#ff333333"
+                                    android:textSize="13sp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/tv_message"
+                                    android:layout_alignStart="@+id/tv_message"
+                                    android:layout_marginTop="10dp"
+                                    android:includeFontPadding="false"
+                                    android:text="@{viewModel.Tv_ChatProfits}"
+                                    android:textColor="#ff828282"
+                                    android:textSize="13sp" />
+
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:layout_width="60dp"
+                                    android:layout_height="25dp"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_centerInParent="true"
+                                    android:layout_marginEnd="15dp"
+                                    android:background="@drawable/level_equity_btn_sub"
+                                    android:enabled="@{viewModel.clickChatSubDisplay}"
+                                    binding:onClickCommand="@{viewModel.clickChatSub}"
+                                    android:gravity="center"
+                                    android:text="@string/playfun_dialog_set_withdraw_account_confirm"
+                                    android:textColor="@color/white"
+                                    android:textSize="14sp" />
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingTop="1dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="15dp"
+                                    android:includeFontPadding="false"
+                                    android:text="@{viewModel.Tv_ChatInterval}"
+                                    android:textColor="#ff333333"
+                                    android:textSize="11sp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="5dp"
+                                    android:layout_toStartOf="@+id/tv_chat_money"
+                                    android:includeFontPadding="false"
+                                    android:text="@string/fragment_level_text8"
+                                    android:textColor="#ff333333"
+                                    android:textSize="11sp" />
+
+                                <TextView
+                                    android:id="@+id/tv_chat_money"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_marginEnd="17dp"
+                                    android:includeFontPadding="false"
+                                    android:text="@{viewModel.Tv_ChatMoney}"
+                                    android:textColor="#ffff1579"
+                                    android:textSize="11sp" />
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <com.dl.playfun.widget.custom.PCustomSeekbar
+                                    android:id="@+id/seekbar_message"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="70dp"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginTop="29dp"
+                                    android:layout_marginEnd="10dp"
+                                    app:imgSpotHeight="9dp"
+                                    app:imgSpotOffSrc="@drawable/pseekbar_spot_off"
+                                    app:imgSpotOnHeight="9dp"
+                                    app:imgSpotOnSrc="@drawable/pseekbar_spot"
+                                    app:imgSpotOnWidth="9dp"
+                                    app:imgSpotSrc="@drawable/pseekbar_spot_on"
+                                    app:imgSpotWidth="9dp"
+                                    app:imgThumbHeight="17dp"
+                                    app:imgThumbWidth="17dp"
+                                    app:thumbSrc="@drawable/pseekbar_thumb" />
+
+                                <androidx.appcompat.widget.AppCompatSeekBar
+                                    android:id="@+id/seekbar_message_view"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="7dp"
+                                    android:layout_marginTop="42dp"
+                                    android:max="0"
+                                    android:progress="0"
+                                    android:progressDrawable="@color/transparent"
+                                    android:thumb="@drawable/pseekbar_thumb"
+                                     />
+                            </RelativeLayout>
+                        </LinearLayout>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginBottom="8dp"
+                            android:background="#EAEAED" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="60dp">
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:id="@+id/icon_audio"
+                                    android:layout_width="32dp"
+                                    android:layout_height="32dp"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_centerInParent="true"
+                                    android:layout_marginStart="15dp"
+                                    android:src="@drawable/level_equity_audio" />
+
+                                <TextView
+                                    android:id="@+id/tv_audio"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="15dp"
+                                    android:layout_marginTop="12dp"
+                                    android:layout_toEndOf="@+id/icon_audio"
+                                    android:includeFontPadding="false"
+                                    android:text="@{viewModel.Tv_VoiceCoins}"
+                                    android:textColor="#ff333333"
+                                    android:textSize="13sp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/tv_audio"
+                                    android:layout_alignStart="@+id/tv_audio"
+                                    android:layout_marginTop="10dp"
+                                    android:includeFontPadding="false"
+                                    android:text="@{viewModel.Tv_VoiceProfits}"
+                                    android:textColor="#ff828282"
+                                    android:textSize="13sp" />
+
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:layout_width="60dp"
+                                    android:layout_height="25dp"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_centerInParent="true"
+                                    android:layout_marginEnd="15dp"
+                                    android:background="@drawable/level_equity_btn_sub"
+                                    android:enabled="@{viewModel.clickAudioSubDisplay}"
+                                    binding:onClickCommand="@{viewModel.clickAudiotSub}"
+                                    android:gravity="center"
+                                    android:text="@string/playfun_dialog_set_withdraw_account_confirm"
+                                    android:textColor="@color/white"
+                                    android:textSize="14sp" />
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingTop="1dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="15dp"
+                                    android:includeFontPadding="false"
+                                    android:text="@{viewModel.Tv_VoiceInterval}"
+                                    android:textColor="#ff333333"
+                                    android:textSize="11sp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="5dp"
+                                    android:layout_toStartOf="@+id/tv_audio_money"
+                                    android:includeFontPadding="false"
+                                    android:text="@string/fragment_level_text8"
+                                    android:textColor="#ff333333"
+                                    android:textSize="11sp" />
+
+                                <TextView
+                                    android:id="@+id/tv_audio_money"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_marginEnd="17dp"
+                                    android:includeFontPadding="false"
+                                    android:text="@{viewModel.Tv_VoiceMoney}"
+                                    android:textColor="#ffff1579"
+                                    android:textSize="11sp" />
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <com.dl.playfun.widget.custom.PCustomSeekbar
+                                    android:id="@+id/seekbar_audio"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="70dp"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginTop="29dp"
+                                    android:layout_marginEnd="10dp"
+                                    app:imgSpotHeight="9dp"
+                                    app:imgSpotOffSrc="@drawable/pseekbar_spot_off"
+                                    app:imgSpotOnHeight="9dp"
+                                    app:imgSpotOnSrc="@drawable/pseekbar_spot"
+                                    app:imgSpotOnWidth="9dp"
+                                    app:imgSpotSrc="@drawable/pseekbar_spot_on"
+                                    app:imgSpotWidth="9dp"
+                                    app:imgThumbHeight="17dp"
+                                    app:imgThumbWidth="17dp"
+                                    app:thumbSrc="@drawable/pseekbar_thumb" />
+
+                                <androidx.appcompat.widget.AppCompatSeekBar
+                                    android:id="@+id/seekbar_audio_view"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="7dp"
+                                    android:layout_marginTop="42dp"
+                                    android:max="0"
+                                    android:progress="0"
+                                    android:progressDrawable="@color/transparent"
+                                    android:thumb="@drawable/pseekbar_thumb"
+                                     />
+                            </RelativeLayout>
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginBottom="8dp"
+                            android:background="#EAEAED" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="60dp">
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:id="@+id/icon_video"
+                                    android:layout_width="32dp"
+                                    android:layout_height="32dp"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_centerInParent="true"
+                                    android:layout_marginStart="15dp"
+                                    android:src="@drawable/level_equity_video" />
+
+                                <TextView
+                                    android:id="@+id/tv_video"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="15dp"
+                                    android:layout_marginTop="12dp"
+                                    android:layout_toEndOf="@+id/icon_video"
+                                    android:includeFontPadding="false"
+                                    android:text="@{viewModel.Tv_VideoCoins}"
+                                    android:textColor="#ff333333"
+                                    android:textSize="13sp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/tv_video"
+                                    android:layout_alignStart="@+id/tv_video"
+                                    android:layout_marginTop="10dp"
+                                    android:includeFontPadding="false"
+                                    android:text="@{viewModel.Tv_VideoProfits}"
+                                    android:textColor="#ff828282"
+                                    android:textSize="13sp" />
+
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:layout_width="60dp"
+                                    android:layout_height="25dp"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_centerInParent="true"
+                                    android:layout_marginEnd="15dp"
+                                    android:background="@drawable/level_equity_btn_sub"
+                                    android:enabled="@{viewModel.clickVideoSubDisplay}"
+                                    binding:onClickCommand="@{viewModel.clickVideoSub}"
+                                    android:gravity="center"
+                                    android:text="@string/playfun_dialog_set_withdraw_account_confirm"
+                                    android:textColor="@color/white"
+                                    android:textSize="14sp" />
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingTop="1dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="15dp"
+                                    android:includeFontPadding="false"
+                                    android:text="@{viewModel.Tv_VideoInterval}"
+                                    android:textColor="#ff333333"
+                                    android:textSize="11sp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="5dp"
+                                    android:layout_toStartOf="@+id/tv_video_money"
+                                    android:includeFontPadding="false"
+                                    android:text="@string/fragment_level_text8"
+                                    android:textColor="#ff333333"
+                                    android:textSize="11sp" />
+
+                                <TextView
+                                    android:id="@+id/tv_video_money"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_marginEnd="17dp"
+                                    android:includeFontPadding="false"
+                                    android:text="@{viewModel.Tv_VideoMoney}"
+                                    android:textColor="#ffff1579"
+                                    android:textSize="11sp" />
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <com.dl.playfun.widget.custom.PCustomSeekbar
+                                    android:id="@+id/seekbar_video"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="70dp"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginTop="29dp"
+                                    android:layout_marginEnd="10dp"
+                                    app:imgSpotHeight="9dp"
+                                    app:imgSpotOffSrc="@drawable/pseekbar_spot_off"
+                                    app:imgSpotOnHeight="9dp"
+                                    app:imgSpotOnSrc="@drawable/pseekbar_spot"
+                                    app:imgSpotOnWidth="9dp"
+                                    app:imgSpotSrc="@drawable/pseekbar_spot_on"
+                                    app:imgSpotWidth="9dp"
+                                    app:imgThumbHeight="17dp"
+                                    app:imgThumbWidth="17dp"
+                                    app:thumbSrc="@drawable/pseekbar_thumb" />
+
+                                <androidx.appcompat.widget.AppCompatSeekBar
+                                    android:id="@+id/seekbar_video_view"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="7dp"
+                                    android:layout_marginTop="42dp"
+                                    android:max="0"
+                                    android:progress="0"
+                                    android:progressDrawable="@color/transparent"
+                                    android:thumb="@drawable/pseekbar_thumb"
+                                     />
+                            </RelativeLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        tools:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:visibility="@{viewModel.tabLayoutState?View.GONE:View.VISIBLE}"
+                        binding:adapter="@{viewModel.adapter}"
+                        binding:itemBinding="@{viewModel.itemBinding}"
+                        binding:items="@{viewModel.observableList}"
+                        binding:layoutManager="@{LayoutManagers.linear()}"
+                        binding:lineManager="@{LineManagers.horizontal(1,72,0)}"
+                        tools:itemCount="6"
+                        tools:listitem="@layout/item_level_equity_detail" />
+                </FrameLayout>
+            </androidx.core.widget.NestedScrollView>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="30dp"
+                android:gravity="center"
+                android:text="@string/fragment_level_text3"
+                android:textSize="11sp" />
+
+        </RelativeLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

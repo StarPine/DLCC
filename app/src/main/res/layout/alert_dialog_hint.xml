@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginLeft="30dp"
+    android:layout_marginRight="30dp"
+    android:background="@color/transparent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="201dp"
+        android:background="@drawable/radius_layout"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="24dp"
+            android:text="@string/playfun_register_alert_hint"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/btn_confirm"
+            style="@style/ButtonPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_below="@+id/iv_top_view"
+            android:layout_marginLeft="42dp"
+            android:layout_marginTop="59dp"
+            android:layout_marginRight="42dp"
+            android:text="@string/playfun_reg_user_dating_ok" />
+    </LinearLayout>
+</LinearLayout>

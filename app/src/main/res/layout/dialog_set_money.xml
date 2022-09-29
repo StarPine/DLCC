@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/white_round_bg"
+        android:orientation="vertical"
+        android:padding="36dp">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:text="@string/playfun_set_view_amount"
+            android:textColor="@color/gray_middle"
+            android:textSize="@dimen/text_size_middle"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="21dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/playfun_amount"
+                android:textColor="@color/gray_light"
+                android:textSize="@dimen/text_size_middle" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/search_bar_background"
+                android:orientation="horizontal"
+                android:paddingRight="10dp">
+
+                <EditText
+                    android:id="@+id/edt_money"
+                    android:layout_width="0dp"
+                    android:layout_height="42dp"
+                    android:layout_weight="1"
+                    android:background="@color/transparent"
+                    android:gravity="center_vertical"
+                    android:hint="@string/playfun_please_input"
+                    android:inputType="number"
+                    android:maxLength="3"
+                    android:textCursorDrawable="@null"
+                    android:textSize="@dimen/text_size_middle" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/playfun_tab_wallet_2"
+                    android:textColor="@color/gray_light"
+                    android:textSize="@dimen/text_size_middle" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_confirm"
+            style="@style/ButtonPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_marginTop="30dp"
+            android:text="@string/playfun_confirm"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_42" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/iv_dialog_close"
+        android:layout_width="39dp"
+        android:layout_height="39dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="28dp"
+        android:src="@drawable/ic_dialog_close" />
+</LinearLayout>

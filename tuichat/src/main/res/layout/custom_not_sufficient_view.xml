@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="horizontal">
+
+    <RelativeLayout
+        android:id="@+id/custom_layout"
+        android:layout_width="235dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dp">
+
+        <LinearLayout
+            android:id="@+id/error_hint_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/custom_im_send_error" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                android:includeFontPadding="false"
+                android:text="@string/custom_send_error_message"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/male_hint_layout"
+            android:layout_width="match_parent"
+            android:layout_height="71dp"
+            android:layout_below="@+id/error_hint_layout"
+            android:layout_marginTop="11dp"
+            android:background="@drawable/custom_text_backdrop_layout"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="@string/custom_send_error_message_txt1"
+                android:textColor="#ff828282"
+                android:textSize="11sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:autoLink="all"
+                android:gravity="center"
+                android:text="@string/custom_send_error_message_txt2"
+                android:textColor="#A72DFE"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+    </RelativeLayout>
+</LinearLayout>

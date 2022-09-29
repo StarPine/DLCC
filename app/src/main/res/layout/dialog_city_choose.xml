@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:binding="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            binding:drawable_color="@{@color/white}"
+            binding:drawable_radius_leftTop="@{20}"
+            binding:drawable_radius_rightTop="@{20}"
+            android:layout_width="match_parent"
+            android:layout_height="300dp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/btn_cancel"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="19dp"
+                android:includeFontPadding="false"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/playfun_cancel"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_title"
+                android:layout_alignParentTop="true"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="14dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:includeFontPadding="false"
+                android:text="@string/playfun_dialog_choose_city"
+                android:textColor="#ff282828"
+                android:textSize="17sp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/btn_confirm"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="14dp"
+                android:layout_alignParentEnd="true"
+                android:includeFontPadding="false"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/playfun_face_detect_dialog_btn_sure"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <View
+                android:id="@+id/v_line"
+                android:layout_below="@+id/tv_title"
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:src="@color/divider" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/v_line"
+                android:scrollbars="vertical" />
+        </RelativeLayout>
+    </LinearLayout>
+</layout>

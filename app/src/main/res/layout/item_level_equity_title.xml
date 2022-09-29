@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:binding="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.dl.playfun.ui.mine.level.LevelEquityItemTitleViewModel" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="13dp"
+        android:paddingTop="7dp"
+        android:paddingEnd="13dp"
+        android:paddingBottom="7dp"
+        binding:onClickCommand="@{viewModel.itemClick}">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:includeFontPadding="false"
+            android:text="@{viewModel.levelInfoData.levelName}"
+            android:textColor="@{viewModel.checkCurrent?@color/white:@color/white_yin1}"
+            android:textSize="16sp" />
+    </FrameLayout>
+</layout>

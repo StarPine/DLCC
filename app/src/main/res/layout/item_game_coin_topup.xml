@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="88dp"
+    android:background="@color/chat_background_color"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="85dp"
+        android:layout_marginTop="3dp"
+        android:background="@drawable/bg_topup_item" />
+
+    <ImageView
+        android:id="@+id/game_big_img"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginLeft="14dp"
+        android:layout_marginTop="25dp"
+        android:src="@drawable/icon_game_coins_big" />
+
+    <TextView
+        android:id="@+id/tv_goods_label"
+        android:layout_marginLeft="68dp"
+        android:layout_marginTop="18dp"
+        android:visibility="gone"
+        android:text="-"
+        android:textSize="15sp"
+        android:textColor="#BF9E63"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/tv_goods_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="68dp"
+        android:layout_marginTop="31dp"
+        android:text="-"
+        tools:text="24,950,000"
+        android:textColor="#EF5345"
+        android:textSize="23sp" />
+
+    <ImageView
+        android:id="@+id/img_first"
+        android:layout_width="90dp"
+        android:layout_height="25dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="17dp"
+        android:src="@drawable/logo_first_topup"
+        android:visibility="visible" />
+
+    <TextView
+        android:id="@+id/tv_pay_price"
+        android:layout_width="86dp"
+        android:layout_height="34dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="19dp"
+        android:background="@drawable/bg_topup_item_price"
+        android:gravity="center"
+        android:text="--"
+        android:textColor="#AB4535"
+        android:textSize="15sp" />
+
+</RelativeLayout>

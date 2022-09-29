@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_gravity="center"
+    android:background="@color/transparent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <androidx.cardview.widget.CardView
+        android:layout_marginStart="33dp"
+        android:layout_marginEnd="33dp"
+        app:cardElevation="0dp"
+        app:cardCornerRadius="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingBottom="27dp">
+            <RelativeLayout
+                android:orientation="horizontal"
+                android:layout_marginTop="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/playfun_mine_setting_account_pwd_hint"
+                    android:textColor="#ff333333"
+                    android:textSize="18sp" />
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/img_close"
+                    android:layout_width="@dimen/dp_20"
+                    android:layout_height="@dimen/dp_20"
+                    android:layout_marginEnd="15dp"
+                    android:layout_centerInParent="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_gravity="right"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/radio_publish_close"/>
+            </RelativeLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_45"
+                android:layout_marginStart="@dimen/dp_18"
+                android:layout_marginTop="@dimen/dp_25"
+                android:layout_marginEnd="@dimen/dp_18"
+                android:background="@drawable/shape_radius_6"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/dp_22"
+                    android:layout_height="@dimen/dp_22"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="6dp"
+                    android:src="@mipmap/icon_email" />
+
+                <EditText
+                    android:id="@+id/edt_email"
+                    style="@style/EditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="8dp"
+                    android:hint="@string/playfun_dialog_set_withdraw_account_name_hint"
+                    android:inputType="text"
+                    android:maxLength="10"
+                    android:textSize="14sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginTop="@dimen/dp_20"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_45"
+                android:layout_marginStart="@dimen/dp_18"
+                android:layout_marginEnd="@dimen/dp_18"
+                android:background="@drawable/shape_radius_6"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/edit_code"
+                    style="@style/EditText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_weight="1"
+                    android:hint="@string/playfun_mine_setting_account_bindEmail_hint1"
+                    android:inputType="text"
+                    android:maxLength="10"
+                    android:textSize="14sp" />
+
+                <Button
+                    android:id="@+id/btn_code"
+                    android:stateListAnimator="@null"
+                    android:layout_width="80dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/login_email_btn_sub"
+                    android:textColor="@color/white"
+                    android:text="獲取" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginTop="@dimen/dp_20"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_45"
+                android:layout_marginStart="@dimen/dp_18"
+                android:layout_marginEnd="@dimen/dp_18"
+                android:background="@drawable/shape_radius_6"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="@dimen/dp_22"
+                    android:layout_height="@dimen/dp_22"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="6dp"
+                    android:src="@mipmap/icon_email_pwd" />
+
+                <com.dl.playfun.widget.custom.PasswordEditText
+                    android:id="@+id/edit_email_pwd"
+                    style="@style/EditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="@dimen/dp_20"
+                    android:hint="@string/playfun_mine_setting_account_pwd_hint1"
+                    android:imeOptions="actionDone"
+                    android:inputType="textPassword"
+                    android:text=""
+                    app:imgHeight="20dp"
+                    app:imgResOffImg="@drawable/password_off_ic"
+                    app:imgResOnImg="@drawable/password_on_ic"
+                    app:imgWidth="20dp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_45"
+                android:layout_marginStart="@dimen/dp_18"
+                android:layout_marginTop="@dimen/dp_20"
+                android:layout_marginEnd="@dimen/dp_18"
+                android:background="@drawable/shape_radius_6"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="@dimen/dp_22"
+                    android:layout_height="@dimen/dp_22"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="6dp"
+                    android:src="@mipmap/icon_email_pwd2" />
+
+                <com.dl.playfun.widget.custom.PasswordEditText
+                    android:id="@+id/edit_email_pwd2"
+                    style="@style/EditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="@dimen/dp_20"
+                    android:hint="@string/playfun_mine_setting_account_pwd_hint2"
+                    android:imeOptions="actionDone"
+                    android:inputType="textPassword"
+                    android:text=""
+                    app:imgHeight="20dp"
+                    app:imgResOffImg="@drawable/password_off_ic"
+                    app:imgResOnImg="@drawable/password_on_ic"
+                    app:imgWidth="20dp" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_submit"
+                android:background="@drawable/login_email_btn_sub"
+                android:stateListAnimator="@null"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginStart="@dimen/dp_20"
+                android:layout_marginTop="@dimen/dp_20"
+                android:layout_marginEnd="@dimen/dp_20"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:text="@string/playfun_confirm"
+                />
+            <TextView
+                android:layout_marginTop="@dimen/dp_10"
+                android:layout_marginEnd="@dimen/dp_20"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="忘記密碼 >"
+                android:gravity="end"
+                android:textColor="#ff9f77f7"
+                android:textSize="13sp"
+                />
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

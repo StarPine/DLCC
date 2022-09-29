@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.dl.playfun.ui.mine.privacysetting.PrivacySettingViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="com.dl.playfun.ui.mine.privacysetting.PrivacySettingFragment">
+
+        <View
+            android:id="@+id/status_bar_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/status_bar_color" />
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay"
+            app:elevation="0dp">
+
+            <com.dl.playfun.widget.BasicToolbar
+                android:id="@+id/basic_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/action_bar_height"
+                app:toolbar_title="@string/playfun_setting_privacy_setting" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/container_background"
+            android:fillViewport="true"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingBottom="30dp">
+
+                <TextView
+                    android:id="@+id/tv_tip"
+                    style="@style/TopWarn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="7sp"
+                    android:textSize="8sp"
+                    android:text="@string/playfun_privacy_setting_top_tip" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="14.32dp"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/playfun_stealth" />
+
+                <RelativeLayout
+                    style="@style/ProfileItem"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/profile_item_height">
+
+                    <TextView
+                        style="@style/ProfileItemTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="15sp"
+                        android:text="@string/playfun_hide_park_list" />
+
+                    <Switch
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:thumb="@drawable/switch_thumb"
+                        android:track="@drawable/switch_track"
+                        android:switchMinWidth="10dp"
+                        android:checked="@={viewModel.privacyEntity.home}"
+                        binding:onClickCommand="@{viewModel.switchOnClickCommand}"
+                        tools:checked="false"
+                        />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    style="@style/ProfileItem"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/profile_item_height">
+
+                    <TextView
+                        style="@style/ProfileItemTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:text="@string/playfun_hide_park_list_3km" />
+
+                    <Switch
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:thumb="@drawable/switch_thumb"
+                        android:track="@drawable/switch_track"
+                        android:checked="@={viewModel.privacyEntity.nearby}"
+                        binding:onClickCommand="@{viewModel.switchOnClickCommand}" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="14.32dp"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/playfun_hidden_distance_online_time" />
+
+                <RelativeLayout
+                    style="@style/ProfileItem"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/profile_item_height">
+
+                    <TextView
+                        style="@style/ProfileItemTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/playfun_hide_distance_others" />
+
+                    <Switch
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:thumb="@drawable/switch_thumb"
+                        android:track="@drawable/switch_track"
+                        android:checked="@={viewModel.privacyEntity.distance}"
+                        binding:onClickCommand="@{viewModel.switchOnClickCommand}" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    style="@style/ProfileItem"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/profile_item_height">
+
+                    <TextView
+                        style="@style/ProfileItemTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/playfun_hide_online_time_other" />
+
+                    <Switch
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:thumb="@drawable/switch_thumb"
+                        android:track="@drawable/switch_track"
+                        android:checked="@={viewModel.privacyEntity.onlineIme}"
+                        binding:onClickCommand="@{viewModel.switchOnClickCommand}" />
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+</layout>

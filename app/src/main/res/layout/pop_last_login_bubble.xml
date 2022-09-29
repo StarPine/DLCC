@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.dl.playfun.ui.message.chatdetail.ChatDetailViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:background="@drawable/bg_last_login_bubble"
+            android:textSize="13dp"
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:paddingStart="5dp"
+            android:paddingBottom="15dp"
+            android:text="@string/playfun_last_login"/>
+
+
+    </LinearLayout>
+</layout>

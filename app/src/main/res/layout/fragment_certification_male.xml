@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.dl.playfun.ui.certification.certificationmale.CertificationMaleViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/container_background"
+        android:orientation="vertical"
+        tools:context="com.dl.playfun.ui.certification.certificationmale.CertificationMaleFragment">
+
+        <View
+            android:id="@+id/status_bar_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/status_bar_color" />
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay"
+            app:elevation="0dp">
+
+            <com.dl.playfun.widget.BasicToolbar
+                android:id="@+id/basic_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/action_bar_height"
+                app:toolbar_title="@string/playfun_fragment_certification_female_title" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/container_background"
+            android:orientation="vertical"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:padding="30dp"
+                android:visibility="@{safeUnbox(viewModel.faceCertification) ? View.GONE:View.VISIBLE}">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/ic_auth_face_male" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="30dp"
+                    android:text="@string/playfun_fragment_certification_male_one"
+                    android:textColor="@color/gray_dark"
+                    android:textSize="@dimen/text_size_big"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/btn_start"
+                    style="@style/ButtonGreen"
+                    android:layout_width="220dp"
+                    android:layout_height="42dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="30dp"
+                    android:drawableLeft="@drawable/ic_btn_male"
+                    android:paddingLeft="65dp"
+                    android:paddingRight="65dp"
+                    android:text="@string/playfun_start_certification"
+                    android:textSize="14.67dp"
+                    binding:onClickCommand="@{viewModel.startOnClickCommand}" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:padding="30dp"
+                android:visibility="@{safeUnbox(viewModel.faceCertification) ? View.VISIBLE:View.GONE}">
+
+                <ImageView
+                    android:id="@+id/iv_avatar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/ic_auth_face_male" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignRight="@id/iv_avatar"
+                    android:layout_alignBottom="@+id/iv_avatar"
+                    android:src="@drawable/ic_face_valid" />
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/iv_avatar"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="30dp"
+                    android:text="@string/playfun_completed_real_person_certification"
+                    android:textColor="@color/gray_dark"
+                    android:textSize="@dimen/text_size_big"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_subtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_title"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:text="@string/playfun_free_repor_sign_up"
+                    android:visibility="gone"
+                    android:textColor="@color/gray_light"
+                    android:textSize="@dimen/text_size_small" />
+
+                <Button
+                    android:id="@+id/btn_update"
+                    style="@style/ButtonGreen"
+                    android:layout_width="220dp"
+                    android:layout_height="42dp"
+                    android:layout_below="@id/tv_subtitle"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="30dp"
+                    android:text="@string/playfun_update_face_record"
+                    binding:onClickCommand="@{viewModel.startOnClickCommand}" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/btn_update"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/playfun_look_better_tell_me"
+                    android:textColor="@color/gray_light"
+                    android:textSize="@dimen/text_size_small" />
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

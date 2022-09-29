@@ -1,0 +1,43 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
+    defaultConfig {
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility  rootProject.ext.android.sourceCompatibility
+        targetCompatibility  rootProject.ext.android.targetCompatibility
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+        //源代码和资源没有更改，那么就不需要对该模块进行 Lint 分析任务
+        checkDependencies true
+    }
+}
+
+dependencies {
+    configurations.all {
+        resolutionStrategy.cacheChangingModulesFor 0,'seconds'
+        resolutionStrategy.cacheDynamicVersionsFor 0,'seconds'
+    }
+    implementation externalAndroidAppCompatV7
+    implementation externalAndroidRecyclerView
+    api 'com.faceunity:core:8.1.0'
+    api 'com.faceunity:model:8.1.0'
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
+    implementation 'com.tencent:mmkv-static:1.1.2'
+    implementation 'com.google.code.gson:gson:2.8.7'
+    implementation 'com.blankj:utilcode:1.28.4'
+
+    api project(":lib-src")
+}

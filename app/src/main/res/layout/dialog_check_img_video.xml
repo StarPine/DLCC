@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:binding="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="vertical">
+
+        <LinearLayout
+            binding:drawable_color="@{@color/white}"
+            binding:drawable_cornersRadius="@{14}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
+            android:layout_marginEnd="14dp"
+            android:layout_marginBottom="34dp"
+            android:orientation="vertical">
+            <LinearLayout
+                android:orientation="vertical"
+                android:id="@+id/coin_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_photo_coin"
+                    android:layout_width="match_parent"
+                    android:layout_height="58dp"
+                    android:gravity="center"
+                    android:text="@string/playfun_message_deatail_check_img_coin"
+                    android:textColor="@color/black"
+                    android:textSize="13sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#FFF1F1F1" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_video_coin"
+                    android:layout_width="match_parent"
+                    android:layout_height="58dp"
+                    android:gravity="center"
+                    android:text="@string/playfun_message_deatail_check_video_coin"
+                    android:textColor="@color/black"
+                    android:textSize="13sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#FFF1F1F1" />
+            </LinearLayout>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_photo"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:gravity="center"
+                android:text="@string/playfun_message_deatail_check_img"
+                android:textColor="@color/black"
+                android:textSize="13sp" />
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#FFF1F1F1" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_video"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:gravity="center"
+                android:text="@string/playfun_message_deatail_check_video"
+                android:textColor="@color/black"
+                android:textSize="13sp" />
+        </LinearLayout>
+    </LinearLayout>
+</layout>

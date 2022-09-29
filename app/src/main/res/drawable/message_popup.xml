@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?><!-- 按钮正常的时候的背景 -->
+<!-- shape的默认形状是rectangle，还有oval(椭圆),line（线）,ring（圆环），我就用过rectangle,其他的大家可以试一试 -->
+
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:angle="270"
+                android:endColor="#BE171436"
+                android:startColor="#BE171436" />
+            <corners android:radius="17dp" />
+        </shape>
+    </item>
+</layer-list>

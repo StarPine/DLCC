@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.dl.playfun.ui.login.LoginViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.login.login.LoginFragment">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/login_backdrop_img" />
+
+        <ImageView
+            android:id="@+id/title_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="80dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/login_text" />
+
+        <ImageView
+            android:id="@+id/login_button"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_above="@+id/ll_hint"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginBottom="75dp"
+            android:src="@drawable/login_facebook_bg" />
+
+        <LinearLayout
+            android:id="@+id/ll_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/auth_login_layout"
+            android:layout_centerInParent="true"
+            android:layout_marginBottom="30dp"
+            android:gravity="center_horizontal">
+
+            <View
+                android:layout_width="40dp"
+                android:layout_height="1dp"
+                android:layout_gravity="center"
+                android:background="#E0E0E0" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:text="@string/register_bom_title2"
+                android:textColor="#E0E0E0" />
+
+            <View
+                android:layout_width="40dp"
+                android:layout_height="1dp"
+                android:layout_gravity="center"
+                android:background="#E0E0E0" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/auth_login_layout"
+            android:layout_above="@+id/bottom_layout"
+            android:layout_marginBottom="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/iv_google_login"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="@drawable/login_google_bg_min"
+                android:orientation="vertical" />
+
+            <ImageView
+                android:id="@+id/iv_phone_login"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginStart="40dp"
+                android:background="@drawable/login_in_moblie2"
+                binding:onClickCommand="@{viewModel.registerOnClickCommand}" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/bottom_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="34dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@null"
+                android:checked="@={viewModel.agree}"
+                android:drawableStart="@drawable/checkbox_button_login"
+                android:padding="10dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/agree"
+                android:textColor="@color/pseekbar_process_off2"
+                android:textSize="@dimen/text_size_middle2" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="@string/terms_of_service"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_middle2"
+                binding:onClickCommand="@{viewModel.termsOfServiceOnClickCommand}" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/and"
+                android:textColor="@color/pseekbar_process_off2"
+                android:textSize="@dimen/text_size_middle2" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:paddingEnd="0dp"
+                android:paddingRight="0dp"
+                android:text="@string/privacy_policy"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_middle2"
+                binding:onClickCommand="@{viewModel.usageSpecificationOnClickCommand}" />
+        </LinearLayout>
+    </RelativeLayout>
+</layout>

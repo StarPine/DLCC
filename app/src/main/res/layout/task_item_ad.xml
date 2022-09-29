@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:binding="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="com.dl.playfun.R" />
+
+        <variable
+            name="viewModel"
+            type="com.dl.playfun.ui.task.TaskCenterADItemViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="161dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="10dp"
+        binding:onClickCommand="@{viewModel.toWebBindingCommand}"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="77dp"
+            android:scaleType="centerCrop"
+            binding:imageErrorPlaceholderRes="@{R.drawable.default_avatar}"
+            binding:imagePath="@{viewModel.itemEntity.img}"
+            binding:imagePlaceholderRes="@{R.drawable.default_avatar}" />
+    </RelativeLayout>
+</layout>

@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.dl.playfun.R" />
+
+        <variable
+            name="viewModel"
+            type="com.dl.playfun.ui.mine.profile.PerfectProfileViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <View
+            android:id="@+id/status_bar_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp" />
+
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nested_scroll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:descendantFocusability="blocksDescendants"
+            android:fillViewport="true"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="12dp"
+                    android:src="@drawable/ic_toolbar_back"
+                    binding:onClickCommand="@{viewModel.backViewClick}" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="18dp"
+                        android:includeFontPadding="false"
+                        android:text="@string/fragment_perfect_sex_birther_hint"
+                        android:textColor="#ff333333"
+                        android:textSize="30sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="12dp"
+                        android:includeFontPadding="false"
+                        android:text="@string/fragment_perfect_reg_hint3"
+                        android:textColor="#ff333333"
+                        android:textSize="14sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="26dp"
+                        android:layout_marginEnd="20dp"
+                        android:orientation="horizontal">
+
+                        <RelativeLayout
+                            android:id="@+id/male_layout"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            binding:onClickCommand="@{viewModel.chooseMaleClick}">
+
+                            <ImageView
+                                android:id="@+id/male_icon"
+                                android:layout_width="110dp"
+                                android:layout_height="110dp"
+                                android:layout_centerHorizontal="true"
+                                android:alpha="0.5"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/icon_male" />
+
+                            <ImageView
+                                android:id="@+id/male_icon_check"
+                                android:layout_width="22dp"
+                                android:layout_height="22dp"
+                                android:layout_alignEnd="@+id/male_icon"
+                                android:layout_alignBottom="@+id/male_icon"
+                                android:src="@drawable/icon_check_red_box"
+                                android:visibility="gone"
+                                tools:visibility="visible" />
+
+                            <TextView
+                                android:id="@+id/male_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/male_icon"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="9dp"
+                                android:text="@string/playfun_fragment_perfect_sex_male"
+                                android:textColor="@color/black"
+                                android:textSize="18sp" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/girl_layout"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            binding:onClickCommand="@{viewModel.chooseGirlClick}">
+
+                            <ImageView
+                                android:id="@+id/female_icon"
+                                android:layout_width="110dp"
+                                android:layout_height="110dp"
+                                android:layout_centerHorizontal="true"
+                                android:alpha="0.5"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/icon_girl" />
+
+                            <ImageView
+                                android:id="@+id/female_icon_check"
+                                android:layout_width="22dp"
+                                android:layout_height="22dp"
+                                android:layout_alignEnd="@+id/female_icon"
+                                android:layout_alignBottom="@+id/female_icon"
+                                android:src="@drawable/icon_check_red_box"
+                                android:visibility="gone"
+                                tools:visibility="visible" />
+
+                            <TextView
+                                android:id="@+id/female_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/female_icon"
+                                android:layout_centerInParent="true"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="9dp"
+                                android:includeFontPadding="false"
+                                android:text="@string/playfun_fragment_perfect_sex_female"
+                                android:textColor="@color/black"
+                                android:textSize="18sp" />
+                        </RelativeLayout>
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="27dp"
+                        android:includeFontPadding="false"
+                        android:text="@string/fragment_perfect_hint"
+                        android:textColor="#ff333333"
+                        android:textSize="14sp" />
+
+                    <RelativeLayout
+                        onClickCommand="@{viewModel.chooseAge}"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="40dp"
+                        android:layout_marginEnd="30dp"
+                        android:background="@drawable/perfect_input_backdrop"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:includeFontPadding="false"
+                            android:text="@string/playfun_perfect_tips_age"
+                            android:textColor="@color/gray_light"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginEnd="10dp"
+                            android:drawablePadding="5dp"
+                            android:text="@{viewModel.userAge}"
+                            android:textColor="@color/gray_light"
+                            android:textSize="14sp"
+                            app:drawableEndCompat="@drawable/ic_arrow_right" />
+
+                    </RelativeLayout>
+
+                    <EditText
+                        android:id="@+id/value"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="30dp"
+                        android:background="@drawable/perfect_input_backdrop"
+                        android:gravity="center_vertical"
+                        android:hint="@string/playfun_code_tips"
+                        android:maxLength="6"
+                        android:paddingStart="10dp"
+                        android:text="@={viewModel.invitationCode}"
+                        android:textColorHint="@color/gray_light"
+                        android:textColor="@color/gray_light2"
+                        android:textSize="14sp" />
+
+                    <View
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="40dp"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginBottom="20dp"
+                        android:background="@drawable/btn_perfect_profile_sub"
+                        binding:onClickCommand="@{viewModel.submitClick}" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </LinearLayout>
+</layout>

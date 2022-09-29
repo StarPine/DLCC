@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.dl.playfun.ui.message.chatdetail.ChatDetailViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_chat_more_menu"
+        android:orientation="vertical">
+        <LinearLayout
+            android:id="@+id/ll_menu_contact"
+            android:paddingStart="15dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:orientation="horizontal"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            tools:ignore="RtlSymmetry">
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/img_contact"
+                android:src="@drawable/img_contact_checked"
+                android:layout_width="24dp"
+                android:layout_height="24dp"/>
+            <TextView
+                android:includeFontPadding="false"
+                android:layout_marginStart="15dp"
+                android:id="@+id/tv_contact"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="@color/toolbar_title_color"
+                android:textSize="@dimen/text_size_big"
+                android:text="@string/playfun_tab_message_3" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/gray2" />
+
+        <LinearLayout
+            android:id="@+id/ll_menu_track"
+            android:paddingStart="15dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:orientation="horizontal"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            tools:ignore="RtlSymmetry">
+            <androidx.appcompat.widget.AppCompatImageView
+                android:src="@drawable/icon_track"
+                android:layout_width="24dp"
+                android:layout_height="24dp"/>
+            <TextView
+                android:includeFontPadding="false"
+                android:layout_marginStart="15dp"
+                android:id="@+id/tv_menu_track"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="@color/toolbar_title_color"
+                android:textSize="@dimen/text_size_big"
+                android:text="@string/playfun_mine_my_likes" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/gray2" />
+        <LinearLayout
+            android:id="@+id/ll_menu_blockade"
+            android:paddingStart="15dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:orientation="horizontal"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            tools:ignore="RtlSymmetry">
+            <androidx.appcompat.widget.AppCompatImageView
+                android:src="@drawable/icon_blockade"
+                android:layout_width="24dp"
+                android:layout_height="24dp"/>
+            <TextView
+                android:includeFontPadding="false"
+                android:layout_marginStart="15dp"
+                android:id="@+id/tv_menu_blockade"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="@color/toolbar_title_color"
+                android:textSize="@dimen/text_size_big"
+                android:text="@string/playfun_add_block" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/gray2" />
+        <LinearLayout
+            android:id="@+id/ll_menu_report"
+            android:paddingStart="15dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:orientation="horizontal"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            tools:ignore="RtlSymmetry">
+            <androidx.appcompat.widget.AppCompatImageView
+                android:src="@drawable/icon_report"
+                android:layout_width="24dp"
+                android:layout_height="24dp"/>
+            <TextView
+                android:includeFontPadding="false"
+                android:layout_marginStart="15dp"
+                android:id="@+id/tv_menu_report"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="@color/toolbar_title_color"
+                android:textSize="@dimen/text_size_big"
+                android:text="@string/playfun_report"
+                tools:ignore="DuplicateIds" />
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

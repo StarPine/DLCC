@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:binding="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.dl.playfun.ui.userdetail.report.ReportItemViewModel" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/white"
+        android:paddingLeft="14dp"
+        android:paddingRight="14dp"
+        binding:onClickCommand="@{viewModel.itemClick}">
+
+        <TextView
+            style="@style/EditLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@{viewModel.configItemEntityObservableField.name}" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:button="@drawable/radiobox_button"
+            android:checked="@{viewModel.configItemEntityObservableField.isChoose}"
+            binding:onClickCommand="@{viewModel.itemClick}" />
+    </RelativeLayout>
+</layout>

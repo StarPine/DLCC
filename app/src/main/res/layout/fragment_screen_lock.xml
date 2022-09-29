@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.dl.playfun.ui.mine.creenlock.ScreenLockViewModel" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="com.dl.playfun.ui.mine.creenlock.ScreenLockFragment">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:background="@color/white" />
+
+        <RelativeLayout
+            android:id="@+id/basic_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/action_bar_height"
+            android:background="@color/white">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:text="@string/playfun_cancel"
+                android:textColor="@color/purple"
+                android:textSize="@dimen/text_size_middle"
+                binding:onClickCommand="@{viewModel.cancelClickCommand}" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@{viewModel.title}"
+                android:textColor="@color/gray_dark"
+                android:textSize="@dimen/text_size_big"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <LinearLayout
+                android:id="@+id/llayout_tag"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="20dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_graphical_password" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/llayout_tag"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="60dp"
+                    android:text="@string/playfun_please_draw"
+                    android:textColor="@color/gray_dark"
+                    android:textSize="@dimen/text_size_middle" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="5dp"
+                    android:text="@{viewModel.passwordExplain}"
+                    android:textColor="@{viewModel.colorval}"
+                    android:textSize="@dimen/text_size_small"
+                    android:visibility="@{viewModel.isExplainVisibility?View.VISIBLE:View.INVISIBLE}" />
+
+                <com.dl.playfun.widget.NineGridLockView
+                    android:id="@+id/lock"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp" />
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+    </LinearLayout>
+</layout>
