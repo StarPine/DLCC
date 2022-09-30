@@ -440,6 +440,9 @@ public class MainViewModel extends BaseViewModel<AppRepository> {
                     @Override
                     public void onSuccess(BaseDataResponse baseDataResponse) {
                         String data = (String) baseDataResponse.getData();
+                        if (data == null) {
+                            return;
+                        }
                         String[] split = data.split(",");
                         List<String> config = Arrays.asList(split);
                         model.saveSensitiveWords(config);
@@ -529,6 +532,9 @@ public class MainViewModel extends BaseViewModel<AppRepository> {
                         nextGiveCoin = dayRewardInfoEntity.getNext();
                         nextVideoCard = dayRewardInfoEntity.getNextCard();
                         List<DayRewardInfoEntity.NowBean> now = dayRewardInfoEntity.getNow();
+                        if (now == null) {
+                            return;
+                        }
                         for (DayRewardInfoEntity.NowBean nowBean : now) {
                             String type = nowBean.getType();
                             if (type.equals("video_card")){

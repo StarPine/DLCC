@@ -551,15 +551,10 @@ public class HomeAccostDialog extends BaseDialog {
             @Override
             public void onTick(long millisUntilFinished) {
                 String time = TimeUtils.getFormatTime((int) millisUntilFinished / 1000);
-                String hintText = StringUtils.getString(R.string.playfun_text_accost_error3);
                 exp_time.setTextColor(ColorUtils.getColor(R.color.white));
                 exp_time.setText(time);
                 exp_time.setVisibility(View.VISIBLE);
-                Drawable.ConstantState constantState = btn_submit.getDrawable().getCurrent().getConstantState();
-                if (!constantState.equals(mContext.getResources().getDrawable(R.drawable.btn_accost_nomal).getConstantState())){
-                    btn_submit.setImageResource(R.drawable.btn_accost_nomal);
-                }
-                //RxBus.getDefault().post(new CountDownTimerEvent((millisUntilFinished / 1000) + "s後自動拒絕"));
+                btn_submit.setImageResource(R.drawable.btn_accost_nomal);
             }
 
             @Override
