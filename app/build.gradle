@@ -10,15 +10,15 @@ android {
     }
 
     signingConfigs {
-        playChatRelease {
-            storeFile file('../../keystore/PlayChat.jks')
-            storePassword 'playchat'
-            keyAlias 'playchat'
-            keyPassword 'playchat'
+        release {
+            storeFile file('../../keystore/starpine.jks')
+            storePassword 'starpine'
+            keyAlias 'starpine'
+            keyPassword 'starpine'
             v1SigningEnabled true
             v2SigningEnabled true
         }
-        playChatDebug {
+        debug {
             storeFile file('../../keystore/starpine.jks')
             storePassword 'starpine'
             keyAlias 'starpine'
@@ -61,14 +61,14 @@ android {
             minifyEnabled true   //是否代码混淆
             multiDexEnabled true //防止方法数量超过65536导致错误
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.playChatDebug
+            signingConfig signingConfigs.debug
         }
         release {
             zipAlignEnabled = true //是否开启zip压缩
             minifyEnabled true   //是否代码混淆
             multiDexEnabled true //防止方法数量超过65536导致错误
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.playChatRelease
+            signingConfig signingConfigs.release
         }
     }
 
@@ -80,18 +80,15 @@ android {
 
     dataBinding { enabled = true }
 
-    flavorDimensions "playfun"
-    //定义的配置 最终会在Build Variants里面呈现出来
+    flavorDimensions "friendly"
     productFlavors {
         // 对外
         open {
-            dimension "playfun"
+            dimension "friendly"
             // 服务端接口HOST
             buildConfigField "String", "DEFAULT_API_URL", "\"http://config.play-chat.net/\""
             applicationId "com.suzaku.friendly.cc"
             manifestPlaceholders = [package_name: applicationId]
-            //正式包配置
-            signingConfig signingConfigs.playChatRelease
             // 腾讯IM FCM离线推送ID
             buildConfigField "int", "GOOGLE_FCM_PUSH_BUZID", "17321"
             // Bugly App Id
@@ -124,19 +121,14 @@ android {
         }
         // 内部调试
         internal {
-            dimension "playfun"
+            dimension "friendly"
             resConfigs "zh", "en", "zh-rCN", "zh-rHK", "zh-rMO", "zh-rSG", "zh-rTW"
             // 服务端接口HOST
             buildConfigField "String", "DEFAULT_API_URL", "\"http://t-config.play-chat.net/\""
             applicationId "com.test.demo.chat"
             manifestPlaceholders = [package_name: applicationId]
-            //测试包配置
-            signingConfig signingConfigs.playChatDebug
             //客服id聊天
             buildConfigField "String", "CHAT_SERVICE_USER_ID_SEND", "\"administrator\""
-            //buildConfigField "int", "IM_APP_KEY", "1400369342"
-            // 腾讯IM FCM离线推送ID
-            //buildConfigField "int", "GOOGLE_FCM_PUSH_BUZID", "13127"17321
             buildConfigField "int", "GOOGLE_FCM_PUSH_BUZID", "18414"
             //客服id聊天
             buildConfigField "String", "CHAT_SERVICE_USER_ID_SEND", "\"administrator\""
@@ -286,3 +278,4 @@ dependencies {
     dependenciesID.each { k, v -> implementation v }
     annotationProcessor rootProject.ext.dependencies["glide-compiler"]
 }
+
