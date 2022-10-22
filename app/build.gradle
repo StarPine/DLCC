@@ -57,9 +57,7 @@ android {
 
     buildTypes {
         debug {
-            zipAlignEnabled = true //是否开启zip压缩
-            minifyEnabled true   //是否代码混淆
-            multiDexEnabled true //防止方法数量超过65536导致错误
+            minifyEnabled false   //是否代码混淆
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.debug
         }
@@ -87,7 +85,7 @@ android {
             dimension "friendly"
             // 服务端接口HOST
             buildConfigField "String", "DEFAULT_API_URL", "\"http://config.play-chat.net/\""
-            applicationId "com.suzaku.friendly.cc"
+            applicationId "com.crab.friendlycc"
             manifestPlaceholders = [package_name: applicationId]
             // 腾讯IM FCM离线推送ID
             buildConfigField "int", "GOOGLE_FCM_PUSH_BUZID", "17321"
@@ -122,10 +120,10 @@ android {
         // 内部调试
         internal {
             dimension "friendly"
-            resConfigs "zh", "en", "zh-rCN", "zh-rHK", "zh-rMO", "zh-rSG", "zh-rTW"
+            resConfigs "zh", "en"
             // 服务端接口HOST
             buildConfigField "String", "DEFAULT_API_URL", "\"http://t-config.play-chat.net/\""
-            applicationId "com.test.demo.chat"
+            applicationId "com.friendly.test"
             manifestPlaceholders = [package_name: applicationId]
             //客服id聊天
             buildConfigField "String", "CHAT_SERVICE_USER_ID_SEND", "\"administrator\""
@@ -139,7 +137,7 @@ android {
             // Ali OSS BucketName
             buildConfigField "String", "BUCKET_NAME", "\"joymask\""
             //app名字
-            resValue "string", "app_name", "PlayChat-beta"
+            resValue "string", "app_name", "FriendlyCC-beta"
             //Facebook APPID
             resValue "string", "facebook_app_id", "5173832349346696"
             resValue "string", "facebook_app_token", "c5725141441c9d4a5bf4abc6a502b3e3"
@@ -153,9 +151,9 @@ android {
             //Google公钥
             resValue "string", "google_public_key", "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAozfhLY9JLc+toLyhl/ZM/GbIEdNmqnrcLogdWs0rAOj+d8SXGBXWgtKBRgXGVKXxdf3jsmMJPO40Eow+AokHiNTBm/l8HBEadHkdcFPhnKzdvDs0ZsUpWdUYAJ+f7gcWwqfhuRSGUHkbGHrdDCXCJMBcfVGHaJM4lZ9wwH47Otvm88/F8DSKrXSZD/Xazqun0A/NyTsKP61jeGpUX67Ay0GolFewgt5pax5Qxh97O+YXDdxxO9iNSkAjnrAheF/JTm1+0mP/MdQ3u+hvOL7QacOZcnmKhJN3E+E0ZHRTXJi5eygDof1vqjiDJVhW3SnDmpktCYtd/1ANU0iUsaOTKwIDAQAB"
             // 版本号
-            versionCode 22
+            versionCode 30
             // 版本名
-            versionName "1.4.6-beta"
+            versionName "1.4.62"
         }
     }
 

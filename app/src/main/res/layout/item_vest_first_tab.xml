@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="com.dl.playfun.R" />
+        <import type="android.view.View" />
+        <variable
+            name="viewModel"
+            type="com.dl.playfun.ui.vest.first.VestFirstTabItemViewModel" />
+    </data>
+
+    <RelativeLayout
+        binding:onClickCommand="@{viewModel.itemClick}"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <com.dl.playfun.widget.roundedimageview.RoundedImageView
+            android:id="@+id/round_image_view_item"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            app:riv_corner_radius="10dp"
+            android:src="@drawable/radio_dating_img_default"
+            binding:imageErrorPlaceholderRes="@{R.drawable.radio_dating_img_default}"
+            binding:imagePlaceholderRes="@{R.drawable.radio_dating_img_default}"
+            binding:imagePath="@{viewModel.itemData.avatar}" />
+
+        <LinearLayout
+            android:id="@+id/ll_head"
+            android:orientation="horizontal"
+            android:layout_below="@+id/round_image_view_item"
+            android:layout_width="wrap_content"
+            android:gravity="center"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/iv_real_man"
+                android:layout_width="31dp"
+                android:layout_height="13dp"
+                android:visibility="@{viewModel.itemData.isVip == 1?View.VISIBLE:View.GONE}"
+                android:src="@drawable/ic_real_man"/>
+            <TextView
+                android:id="@+id/tv_nickname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:text='@{viewModel.itemData.nickname}'
+                android:textStyle="bold"
+                android:textSize="16sp"
+                tools:text="dddg"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_head2"
+            android:orientation="horizontal"
+            android:layout_below="@+id/ll_head"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="5dp"
+            android:gravity="center"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:includeFontPadding="false"
+                android:text="@{String.valueOf(viewModel.itemData.age)}"
+                android:textColor="#FF827692"
+                android:textSize="12sp"
+                tools:text="19" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.itemData.city}"
+                android:includeFontPadding="false"
+                android:layout_marginLeft="5dp"
+                android:textColor="#FF827692"
+                android:textSize="12sp"
+                tools:text="城市" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:text='@{viewModel.onlineStatus}'
+                android:textColor="@{viewModel.onLineColor(viewModel.itemData)}"
+                android:textSize="@dimen/text_size_small"
+                app:isBold="@{viewModel.itemData.isOnline == 1 ? true:false}"
+                tools:text="在线"
+                tools:textColor="@color/green"
+                tools:textStyle="bold" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</layout>

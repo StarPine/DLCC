@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="android.view.View" />
+
+        <import type="com.dl.playfun.R" />
+        <variable
+            name="viewModel"
+            type="com.dl.playfun.ui.vest.second.VestSecondHeadItemViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_marginStart="10dp"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/rl_layout"
+            android:layout_width="wrap_content"
+            android:background="@drawable/shape_item_image_bg"
+            android:layout_height="wrap_content">
+
+            <com.dl.playfun.widget.image.CircleImageView
+                android:id="@+id/user_img"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerInParent="true"
+                binding:resizeH="@{50}"
+                binding:resizeW="@{50}"
+                android:scaleType="centerCrop"
+                android:src="@drawable/default_avatar"
+                app:riv_corner_radius="8dp"
+                binding:imageErrorPlaceholderRes="@{R.drawable.default_avatar}"
+                binding:imagePath='@{viewModel.adUserItemEntity.avatar}'
+                binding:imagePlaceholderRes="@{R.drawable.default_avatar}"
+                binding:onClickCommand="@{viewModel.itemClick}" />
+
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/user_img"
+            android:text="@{viewModel.adUserItemEntity.nickname}"
+            android:textSize="11sp"
+            tools:text="昵称"
+            />
+    </LinearLayout>
+</layout>

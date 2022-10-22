@@ -54,6 +54,8 @@ import com.dl.playfun.ui.mine.vipsubscribe.VipSubscribeFragment;
 import com.dl.playfun.ui.radio.radiohome.RadioFragment;
 import com.dl.playfun.ui.task.TaskCenterFragment;
 import com.dl.playfun.ui.userdetail.detail.UserDetailFragment;
+import com.dl.playfun.ui.vest.first.VestFirstFragment;
+import com.dl.playfun.ui.vest.second.VestSecondFragment;
 import com.dl.playfun.utils.ImmersionBarUtils;
 import com.dl.playfun.utils.StringUtil;
 import com.dl.playfun.widget.coinrechargesheet.CoinRechargeSheetView;
@@ -649,8 +651,10 @@ public class MainFragment extends BaseFragment<FragmentMainBinding, MainViewMode
     }
 
     private void initView() {
-        mFragments[FIRST] = new HomeMainFragment();
-        mFragments[SECOND] = new RadioFragment();
+//        mFragments[FIRST] = new HomeMainFragment();
+        mFragments[FIRST] = new VestFirstFragment();
+//        mFragments[SECOND] = new RadioFragment();
+        mFragments[SECOND] = new VestSecondFragment();
         mFragments[THIRD] = new TaskCenterFragment();
         mFragments[FOURTH] = new MessageMainFragment();
         mFragments[FIFTH] = new MineFragment();

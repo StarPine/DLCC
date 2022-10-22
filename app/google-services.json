@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:1089653328554:android:ccb1a9b25bc0cac73a1ed3",
         "android_client_info": {
-          "package_name": "com.test.demo.chat"
+          "package_name": "com.friendly.test"
         }
       },
       "oauth_client": [
@@ -17,7 +17,7 @@
           "client_id": "1089653328554-ioi4q2b6a9jv148persiv6glb37vdltj.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.test.demo.chat",
+            "package_name": "com.friendly.test",
             "certificate_hash": "5d6aabfe7305f1fc2befa116935ed73454997c25"
           }
         },

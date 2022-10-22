@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.dl.playfun.R" />
+
+        <import type="android.view.View" />
+
+        <import type="com.dl.playfun.utils.SystemDictUtils" />
+
+        <variable
+            name="viewModel"
+            type="com.dl.playfun.ui.vest.second.VestSecondViewModel" />
+
+        <import type="me.tatarka.bindingcollectionadapter2.LayoutManagers" />
+
+        <import type="com.dl.playfun.widget.recyclerview.LineManagers" />
+
+        <import type="androidx.recyclerview.widget.LinearLayoutManager" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical"
+        tools:context="com.dl.playfun.ui.radio.radiohome.RadioFragment">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+<!--            <View-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="300dp"-->
+<!--                android:background="@drawable/img_main_bar_backdrop" />-->
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white" />
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/status_bar_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/transparent" />
+
+        <RelativeLayout
+            android:id="@+id/rl_title_layout"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_below="@+id/status_bar_view"
+            android:elevation="22dp">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleY="2"
+                android:scaleX="2"
+                android:src="@drawable/logo_radio_head"
+                android:layout_centerInParent="true"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerInParent="true"
+                android:layout_marginEnd="15dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/radio_post_news"
+                binding:onClickCommand="@{viewModel.publishOnClickCommand}" />
+        </RelativeLayout>
+
+        <com.scwang.smart.refresh.layout.SmartRefreshLayout
+            android:id="@+id/refresh_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/rl_title_layout"
+            android:layout_marginBottom="50dp"
+            android:elevation="30dp"
+            binding:onLoadMoreCommand="@{viewModel.onLoadMoreCommand}"
+            binding:onRefreshCommand="@{viewModel.onRefreshCommand}">
+
+            <androidx.coordinatorlayout.widget.CoordinatorLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.appbar.AppBarLayout
+                    android:id="@+id/app_bar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/transparent"
+                    app:elevation="0dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginBottom="10dp"
+                        app:layout_scrollFlags="scroll">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginBottom="10dp"
+                            android:text="畅聊"/>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            >
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/rcv_aduser"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                binding:adapter="@{viewModel.headAdapter}"
+                                binding:itemBinding="@{viewModel.headItemLayout}"
+                                binding:items="@{viewModel.headItemList}"
+                                binding:layoutManager="@{LayoutManagers.linear(LinearLayoutManager.HORIZONTAL,false)}"
+                                tools:itemCount="8"
+                                tools:orientation="horizontal"
+                                tools:layoutManager="LinearLayoutManager"
+                                tools:listitem="@layout/item_vest_second_head"
+                                />
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                </com.google.android.material.appbar.AppBarLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rcv_radio"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:overScrollMode="never"
+                    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                    binding:adapter="@{viewModel.adapter}"
+                    binding:itemBinding="@{viewModel.itemLayout}"
+                    binding:items="@{viewModel.itemList}"
+                    binding:layoutManager="@{LayoutManagers.linear()}"
+                    tools:itemCount="5"
+                    tools:layoutManager="LinearLayoutManager"
+                    tools:listitem="@layout/item_vest_second_trend"/>
+            </androidx.coordinatorlayout.widget.CoordinatorLayout>
+        </com.scwang.smart.refresh.layout.SmartRefreshLayout>
+    </RelativeLayout>
+
+</layout>
