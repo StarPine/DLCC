@@ -70,7 +70,7 @@ public class MainContainerActivity extends MySupportActivity {
             LocaleManager.setLocal(this);
         }
         super.onConfigurationChanged(newConfig);
-            LocaleManager.setLocal(this);
+        LocaleManager.setLocal(this);
     }
     @Override
     protected void onRestart() {
@@ -173,6 +173,9 @@ public class MainContainerActivity extends MySupportActivity {
     private void registerRxBus() {
         RxBus.getDefault().toObservable(UserDisableEvent.class)
                 .subscribe(event -> {
+                    if(this.isFinishing() || this.isDestroyed()){
+                        return;
+                    }
                     if (userDisableDialog == null) {
                         userDisableDialog = MVDialog.getInstance(MainContainerActivity.this)
                                 .setTitele(getString(R.string.playfun_dialog_user_disable_title))
@@ -184,6 +187,9 @@ public class MainContainerActivity extends MySupportActivity {
                                     startWithPopTo(new LoginFragment(), MainContainerActivity.class, true);
                                 })
                                 .chooseType(MVDialog.TypeEnum.CENTERWARNED);
+                    }
+                    if(this.isFinishing() || this.isDestroyed()){
+                        return;
                     }
                     if (!userDisableDialog.isShowing()) {
                         userDisableDialog.show();
@@ -198,7 +204,7 @@ public class MainContainerActivity extends MySupportActivity {
                     if (AppConfig.userClickOut) {
                         return;
                     }
-                    if(this.isFinishing()){
+                    if(this.isFinishing() || this.isDestroyed()){
                         return;
                     }
                     ConfigManager.getInstance().getAppRepository().logout();
@@ -224,17 +230,14 @@ public class MainContainerActivity extends MySupportActivity {
                                 })
                                 .chooseType(MVDialog.TypeEnum.CENTERWARNED);
                     }
+                    if(this.isFinishing() || this.isDestroyed()){
+                        return;
+                    }
                     if (!loginExpiredDialog.isShowing()) {
                         loginExpiredDialog.show();
                     }
                 });
         RxSubscriptions.add(loginExpiredRe);
-
-//        RxBus.getDefault().toObservable(UMengCustomEvent.class)
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe(event -> {
-//                    MobclickAgent.onEvent(MainContainerActivity.this, event.getEventId());
-//                });
     }
 
     @Override

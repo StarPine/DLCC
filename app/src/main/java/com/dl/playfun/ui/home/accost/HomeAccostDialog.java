@@ -107,7 +107,7 @@ public class HomeAccostDialog extends BaseDialog {
     private void initView() {
         //读取本地冷却时间
         if(ConfigManager.getInstance().getAppRepository().readUserData() != null)
-        changeDownTime = readKeyValue(ConfigManager.getInstance().getAppRepository().readUserData().getId() + "_homeAccost");
+            changeDownTime = readKeyValue(ConfigManager.getInstance().getAppRepository().readUserData().getId() + "_homeAccost");
 
         LayoutInflater inflater = LayoutInflater.from(mContext);
         rootView = inflater.inflate(R.layout.dialog_home_accost_list, null);
@@ -217,9 +217,9 @@ public class HomeAccostDialog extends BaseDialog {
 
         btn_submit = rootView.findViewById(R.id.btn_submit);
         Glide.with(getContext()).asGif().load(R.drawable.btn_gif_accost)
-                    .error(R.drawable.btn_gif_accost)
-                    .placeholder(R.drawable.btn_gif_accost)
-                    .into(btn_submit);
+                .error(R.drawable.btn_gif_accost)
+                .placeholder(R.drawable.btn_gif_accost)
+                .into(btn_submit);
 
         btn_submit.setOnClickListener(new View.OnClickListener() {
             @Override

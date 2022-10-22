@@ -423,3 +423,8 @@
 -keep class com.facebook.**{*;}
 -keep class com.appsflyer.**{*;}
 -keep class com.faceunity.**{*;}
+
+#推幣機不參與混淆
+-keep class com.wangsu.**{*;}
+-keep class de.tavendo.autobahn.**{*;}
+-keep class org.webrtc.**{*;}

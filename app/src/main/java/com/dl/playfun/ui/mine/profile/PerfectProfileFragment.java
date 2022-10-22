@@ -74,14 +74,10 @@ public class PerfectProfileFragment extends BaseFragment<FragmentPerfectProfileB
         viewModel.uc.verifyAvatar.observe(this, new Observer() {
             @Override
             public void onChanged(Object o) {
-                if (AppConfig.overseasUserEntity != null) {
-                    saveOverseas();
-                } else {
-                    Bundle bundle = new Bundle();
-                    bundle.putString("avatar", viewModel.UserAvatar.get());
-                    bundle.putString("name", viewModel.UserName.get());
-                    viewModel.start(RegisterSexFragment.class.getCanonicalName(), bundle);
-                }
+                Bundle bundle = new Bundle();
+                bundle.putString("avatar", viewModel.UserAvatar.get());
+                bundle.putString("name", viewModel.UserName.get());
+                viewModel.start(RegisterSexFragment.class.getCanonicalName(), bundle);
             }
         });
         viewModel.uc.nicknameDuplicate.observe(this, name -> {

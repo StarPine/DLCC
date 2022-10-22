@@ -47,6 +47,7 @@ import com.tencent.imsdk.v2.V2TIMManager;
 import com.tencent.imsdk.v2.V2TIMMessage;
 import com.tencent.qcloud.tuicore.Status;
 import com.tencent.qcloud.tuicore.custom.CustomConstants;
+import com.tencent.qcloud.tuicore.custom.CustomConvertUtils;
 import com.tencent.qcloud.tuicore.custom.entity.VideoEvaluationEntity;
 import com.tencent.qcloud.tuicore.custom.entity.VideoPushEntity;
 import com.tencent.qcloud.tuikit.tuichat.bean.message.TUIMessageBean;
@@ -440,9 +441,7 @@ public class MainViewModel extends BaseViewModel<AppRepository> {
                     @Override
                     public void onSuccess(BaseDataResponse baseDataResponse) {
                         String data = (String) baseDataResponse.getData();
-                        if (data == null) {
-                            return;
-                        }
+                        if (data == null)return;
                         String[] split = data.split(",");
                         List<String> config = Arrays.asList(split);
                         model.saveSensitiveWords(config);

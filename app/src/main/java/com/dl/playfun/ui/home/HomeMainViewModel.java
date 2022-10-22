@@ -95,7 +95,6 @@ public class HomeMainViewModel extends BaseParkViewModel<AppRepository> {
 
     public int lastTabClickIdx = -1;
     public String accostKey = "";
-    public boolean isShowedAccost = true;//今日是否显示过奖励
 
 
     public Integer userSex = null;
@@ -196,12 +195,7 @@ public class HomeMainViewModel extends BaseParkViewModel<AppRepository> {
         list_chooseCityItem.addAll(model.readCityConfig());
         //一键搭讪
         accostKey =  StringUtil.getDailyFlag("dailyAccost");
-        String value = model.readKeyValue(accostKey);
-        if (value == null){
-            isShowedAccost = false;
-        }else {
-            isShowedAccost = true;
-        }
+
     }
 
     public void titleRcvItemClick(int idx, int checkType) {
@@ -309,7 +303,8 @@ public class HomeMainViewModel extends BaseParkViewModel<AppRepository> {
     }
 
     private void showDailyAccost() {
-        if (!isShowedAccost) {
+        String value = model.readKeyValue(accostKey);
+        if (value == null) {
             model.putKeyValue(accostKey, "true");
             uc.clickAccountDialog.setValue("0");
         }
@@ -369,14 +364,14 @@ public class HomeMainViewModel extends BaseParkViewModel<AppRepository> {
             observableList.clear();
         }
         model.homeList(cityId.get(),
-                        type.get(),
-                        online.get() ? 1 : 0,
-                        gender.get()? 1 : 0,
-                        null,
-                        lng.get(),
-                        lat.get(),
-                        page
-                )
+                type.get(),
+                online.get() ? 1 : 0,
+                gender.get()? 1 : 0,
+                null,
+                lng.get(),
+                lat.get(),
+                page
+        )
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(this)
@@ -410,12 +405,12 @@ public class HomeMainViewModel extends BaseParkViewModel<AppRepository> {
     }
 
     /**
-    * @Desc TODO(获取首页广告位)
-    * @author 彭石林
-    * @parame []
-    * @return void
-    * @Date 2022/7/25
-    */
+     * @Desc TODO(获取首页广告位)
+     * @author 彭石林
+     * @parame []
+     * @return void
+     * @Date 2022/7/25
+     */
     public void getAdListBannber(){
         model.getMainAdBannerList(1)
                 .doOnSubscribe(this)
