@@ -1,8 +1,8 @@
 {
   "project_info": {
-    "project_number": "1089653328554",
-    "project_id": "playchat-14d3a",
-    "storage_bucket": "playchat-14d3a.appspot.com"
+    "project_number": "3454566465446",
+    "project_id": "adgag-45sde5",
+    "storage_bucket": "adgag-45sde5.appspot.com"
   },
   "client": [
     {
@@ -14,7 +14,7 @@
       },
       "oauth_client": [
         {
-          "client_id": "1089653328554-ioi4q2b6a9jv148persiv6glb37vdltj.apps.googleusercontent.com",
+          "client_id": "46484616865-ioi4q2b6a9jv148persiv6glb37vdltj.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.friendly.test",

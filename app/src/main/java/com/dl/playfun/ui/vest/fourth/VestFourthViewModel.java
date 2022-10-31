@@ -1,4 +1,4 @@
-package com.dl.playfun.ui.mine;
+package com.dl.playfun.ui.vest.fourth;
 
 import android.app.Application;
 import android.os.Bundle;
@@ -9,6 +9,7 @@ import androidx.databinding.ObservableField;
 
 import com.blankj.utilcode.util.ObjectUtils;
 import com.blankj.utilcode.util.StringUtils;
+import com.dl.playfun.R;
 import com.dl.playfun.app.AppConfig;
 import com.dl.playfun.app.AppContext;
 import com.dl.playfun.app.AppsFlyerEvent;
@@ -27,14 +28,15 @@ import com.dl.playfun.entity.UserDataEntity;
 import com.dl.playfun.entity.UserInfoEntity;
 import com.dl.playfun.event.AvatarChangeEvent;
 import com.dl.playfun.event.FaceCertificationEvent;
+import com.dl.playfun.event.MineInfoChangeEvent;
 import com.dl.playfun.event.MyPhotoAlbumChangeEvent;
 import com.dl.playfun.event.ProfileChangeEvent;
 import com.dl.playfun.event.RefreshUserDataEvent;
 import com.dl.playfun.event.TraceEmptyEvent;
-import com.dl.playfun.event.MineInfoChangeEvent;
 import com.dl.playfun.helper.JumpHelper;
 import com.dl.playfun.manager.ConfigManager;
 import com.dl.playfun.ui.certification.certificationfemale.CertificationFemaleFragment;
+import com.dl.playfun.ui.certification.certificationmale.CertificationMaleFragment;
 import com.dl.playfun.ui.mine.audio.TapeAudioFragment;
 import com.dl.playfun.ui.mine.broadcast.BroadcastFragment;
 import com.dl.playfun.ui.mine.exclusive.ExclusiveCallActivity;
@@ -50,12 +52,10 @@ import com.dl.playfun.ui.mine.trace.man.TraceManFragment;
 import com.dl.playfun.ui.mine.vipsubscribe.VipSubscribeFragment;
 import com.dl.playfun.ui.mine.wallet.WalletFragment;
 import com.dl.playfun.ui.mine.webview.WebViewFragment;
+import com.dl.playfun.ui.viewmodel.BaseMyPhotoAlbumViewModel;
 import com.dl.playfun.utils.ChatUtils;
 import com.dl.playfun.utils.ExceptionReportUtils;
 import com.dl.playfun.utils.FileUploadUtils;
-import com.dl.playfun.R;
-import com.dl.playfun.ui.certification.certificationmale.CertificationMaleFragment;
-import com.dl.playfun.ui.viewmodel.BaseMyPhotoAlbumViewModel;
 import com.tencent.qcloud.tuikit.tuichat.component.AudioPlayer;
 
 import java.util.List;
@@ -77,7 +77,7 @@ import me.goldze.mvvmhabit.utils.ToastUtils;
 /**
  * @author wulei
  */
-public class MineViewModel extends BaseMyPhotoAlbumViewModel<AppRepository> {
+public class VestFourthViewModel extends BaseMyPhotoAlbumViewModel<AppRepository> {
 
     public final String ALLOW_TYPE_VIDEO = "video";
     public final String ALLOW_TYPE_AUDIO = "audio";
@@ -233,7 +233,7 @@ public class MineViewModel extends BaseMyPhotoAlbumViewModel<AppRepository> {
     public BindingCommand serviceOnClickCommand = new BindingCommand(() -> {
         try {
             AppContext.instance().logEvent(AppsFlyerEvent.Contact_Us);
-            ChatUtils.chatUser(AppConfig.CHAT_SERVICE_USER_ID_SEND, 0,StringUtils.getString(R.string.playfun_chat_service_name), MineViewModel.this);
+            ChatUtils.chatUser(AppConfig.CHAT_SERVICE_USER_ID_SEND, 0,StringUtils.getString(R.string.playfun_chat_service_name), VestFourthViewModel.this);
         } catch (Exception e) {
             ExceptionReportUtils.report(e);
         }
@@ -294,7 +294,7 @@ public class MineViewModel extends BaseMyPhotoAlbumViewModel<AppRepository> {
     //请求谁看过我、粉丝间隔时间
     private Long intervalTime = null;
 
-    public MineViewModel(@NonNull Application application, AppRepository repository) {
+    public VestFourthViewModel(@NonNull Application application, AppRepository repository) {
         super(application, repository);
         sex.set(model.readUserData().getSex());
     }
@@ -366,7 +366,7 @@ public class MineViewModel extends BaseMyPhotoAlbumViewModel<AppRepository> {
                         photoEntityList.clear();
                         for (AlbumPhotoEntity datum : event.getPhotos()) {
                             photoEntityList.add(datum);
-                            MyPhotoAlbumItemViewModel itemViewModel = new MyPhotoAlbumItemViewModel(MineViewModel.this, datum);
+                            MyPhotoAlbumItemViewModel itemViewModel = new MyPhotoAlbumItemViewModel(VestFourthViewModel.this, datum);
                             observableList.add(itemViewModel);
                         }
                     } else if (event.getType() == MyPhotoAlbumChangeEvent.TYPE_CANCEL_RED_PACKAGE) {
@@ -504,7 +504,7 @@ public class MineViewModel extends BaseMyPhotoAlbumViewModel<AppRepository> {
     //删除录音文件
     public void removeSound(){
         model.removeUserSound()
-                .doOnSubscribe(MineViewModel.this)
+                .doOnSubscribe(VestFourthViewModel.this)
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(disposable -> showHUD())
@@ -578,7 +578,7 @@ public class MineViewModel extends BaseMyPhotoAlbumViewModel<AppRepository> {
         model.updateAvatar(avatar)
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
-                .doOnSubscribe(MineViewModel.this)
+                .doOnSubscribe(VestFourthViewModel.this)
                 .subscribe(new BaseObserver<BaseResponse>() {
                     @Override
                     public void onSuccess(BaseResponse response) {
