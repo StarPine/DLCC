@@ -5,7 +5,6 @@
     <color name="colorPrimaryDark">#FFFFFF</color>
     <color name="colorAccent">#B35EDF</color>
     <color name="transparent">#00000000</color>
-    <color name="transparentyin">#80B4B9BC</color>
     <color name="ic_default_bg_color">#33000000</color>
     <color name="text_yellow">#FFB400</color>
     <color name="yellow_617">#FFE617</color>
@@ -16,20 +15,17 @@
     <color name="container_background">#F8F8F8</color>
     <color name="status_bar_color">#FFFFFF</color>
     <color name="purple">#A72DFE</color>
-    <color name="dark_purple">#582197</color>
     <color name="divider">#DADADA</color>
     <color name="divider_f8">#F8F8F8</color>
     <color name="hud_background">#96000000</color>
     <color name="black_558">#424558</color>
     <color name="black_848">#353848</color>
     <color name="black_434">#43435E</color>
-    <color name="view_bar_color">#F8F8F8</color>
 
     <color name="gray_dark">#4F4F4F</color>
     <color name="balck_35e">#42435E</color>
     <color name="gray_middle">#828282</color>
     <color name="gray2">#F1F1F1</color>
-    <color name="gray3">#66F1F1F1</color>
     <color name="gray_light">#BFBFBF</color>
     <color name="gray_light2">#90919F</color>
     <color name="text_default">#2F2F4D</color>
@@ -40,24 +36,18 @@
     <color name="green2">#2FDDA7</color>
     <color name="green_14E29A">#14E29A</color>
     <color name="blue">#49AAE1</color>
-    <color name="blue_light">#E6F4FC</color>
     <color name="red_8">#ffff3939</color>
-    <color name="red_10">#EF5345</color>
     <color name="red_7c">#FE5E7C</color>
     <color name="red_7d">#FF0000</color>
     <color name="red_E944C4">#E944C4</color>
     <color name="red_9">#FF2869</color>
 
-    <color name="red_light">#FBEBEE</color>
     <color name="brown">#827692</color>
     <color name="brown_light">#EEEBF5</color>
 
     <color name="btn_green">#49C7AE</color>
-    <color name="btn_green_light">#E4FCF7</color>
     <color name="pink">#F479BB</color>
-    <color name="pink_light">#FEEEF7</color>
 
-    <color name="eee">#EEEFF1</color>
     <color name="addressTEXT">#856198</color>
     <color name="toolbar_title_color">#333333</color>
     <color name="text_9EA1B0">#9EA1B0</color>
@@ -66,14 +56,10 @@
     <color name="vip_sub_color_selected">#FFD1521C</color>
     <color name="vip_sub_color_selected_tip">#FF53371B</color>
 
-    <color name="message_hint_tag_text">#B1AFCD</color>
-    <color name="message_hint_tag">#5C587D</color>
-
     <color name="empty_list_hint">#ffbfbfbf</color>
 
     <color name="task_check_yin">#FF9494A5</color>
     <color name="task_xuxian">#FFE0E0E0</color>
-    <color name="x_line">#EBEBEE</color>
     <color name="task_back_group">#FFF8F8F8</color>
 
     <color name="common_accent_color">#5A8DDF</color>
@@ -85,7 +71,6 @@
     <color name="black30">#4D000000</color>
 
     <color name="purple1">#FFA72DFE</color>
-    <color name="purple2">#8815DA</color>
     <color name="coffee">#B95541</color>
     <color name="coffee2">#6A2D02</color>
     <color name="vip_buy">#ffc4611d</color>
@@ -105,17 +90,12 @@
     <color name="navigation_checked">#000000</color>
     <color name="navigation_checkno">#696E7C</color>
 
-    <color name="accost_down_time">#FFFF63BF</color>
-
-    <color name="call_message_deatail_hint">#FFFF8EA8</color>
     <color name="call_message_deatail_hint1">#FFFFF300</color>
     <color name="call_message_deatail_hint2">#FF3DFFF0</color>
 
     <color name="accost_down_time_change">#FF333333</color>
     <color name="purple_text">#BE63FF</color>
-    <color name="plafun_purple_text">#9F77F7</color>
     <color name="play_chat_purple_1">#BE63FF</color>
-    <color name="play_chat_gray_2">#F4F4F4</color>
     <color name="play_chat_gray_3">#9897B3</color>
     <color name="common_button_disable_color">#BBBBBB</color>
 
@@ -123,8 +103,6 @@
     <color name="pseekbar_process_off">#9896B4</color>
     <color name="pseekbar_process_off2">#F1F2F9</color>
 
-    <color name="task_money_cnt_yellow">#ffdd4a</color>
-    <color name="task_tag">#ff6859eb</color>
     <color name="huise">#FF787995</color>
     <color name="black31">#FF2F2F4D</color>
     <color name="black32">#332F2F4D</color>

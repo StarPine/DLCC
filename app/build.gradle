@@ -86,23 +86,17 @@ android {
             // 服务端接口HOST
             buildConfigField "String", "DEFAULT_API_URL", "\"http://config.play-chat.net/\""
             applicationId "com.fine.friendlycc"
-            manifestPlaceholders = [package_name: applicationId]
             // 腾讯IM FCM离线推送ID
             buildConfigField "int", "GOOGLE_FCM_PUSH_BUZID", "17321"
-            // Bugly App Id
-            buildConfigField "String", "BUGLY_APP_ID", "\"f208faedec\""
             //客服id聊天
             buildConfigField "String", "CHAT_SERVICE_USER_ID_SEND", "\"administrator\""
             // 图片HOST
             buildConfigField "String", "IMAGE_BASE_URL", "\"https://img.play-chat.net/\""
-            //H5网页地址
-            buildConfigField "String", "WEB_BASE_URL", "\"https://m.play-chat.net/\""
             // Ali OSS BucketName
             buildConfigField "String", "BUCKET_NAME", "\"joymask\""
             //app名字
-            resValue "string", "app_name", "聊玩"
+            resValue "string", "app_name", "Friendly CC"
             //Facebook APPID
-            resValue "string", "facebook_app_id", "5173832349346696"
             resValue "string", "facebook_app_token", "c5725141441c9d4a5bf4abc6a502b3e3"
             //AppsFlorid-AppId
             resValue "string", "app_flyer", "J4YbG6jNVHaFWuAeixmCuC"
@@ -112,7 +106,7 @@ android {
             resValue "string", "fb_login_protocol_scheme", "fb5173832349346696"
             //Google公钥
             resValue "string", "google_public_key", "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAozfhLY9JLc+toLyhl/ZM/GbIEdNmqnrcLogdWs0rAOj+d8SXGBXWgtKBRgXGVKXxdf3jsmMJPO40Eow+AokHiNTBm/l8HBEadHkdcFPhnKzdvDs0ZsUpWdUYAJ+f7gcWwqfhuRSGUHkbGHrdDCXCJMBcfVGHaJM4lZ9wwH47Otvm88/F8DSKrXSZD/Xazqun0A/NyTsKP61jeGpUX67Ay0GolFewgt5pax5Qxh97O+YXDdxxO9iNSkAjnrAheF/JTm1+0mP/MdQ3u+hvOL7QacOZcnmKhJN3E+E0ZHRTXJi5eygDof1vqjiDJVhW3SnDmpktCYtd/1ANU0iUsaOTKwIDAQAB"
-//                 版本
+            //版本
             versionCode 28
             // 版本名
             versionName "1.4.61"
@@ -124,7 +118,6 @@ android {
             // 服务端接口HOST
             buildConfigField "String", "DEFAULT_API_URL", "\"http://t-config.play-chat.net/\""
             applicationId "com.friendly.test"
-            manifestPlaceholders = [package_name: applicationId]
             //客服id聊天
             buildConfigField "String", "CHAT_SERVICE_USER_ID_SEND", "\"administrator\""
             buildConfigField "int", "GOOGLE_FCM_PUSH_BUZID", "18414"
@@ -132,14 +125,11 @@ android {
             buildConfigField "String", "CHAT_SERVICE_USER_ID_SEND", "\"administrator\""
             // 图片HOST
             buildConfigField "String", "IMAGE_BASE_URL", "\"https://img.joy-mask.com/\""
-            //H5网页地址
-            buildConfigField "String", "WEB_BASE_URL", "\"http://web-playfun.joy-mask.com/\""
             // Ali OSS BucketName
             buildConfigField "String", "BUCKET_NAME", "\"joymask\""
             //app名字
             resValue "string", "app_name", "FriendlyCC-beta"
             //Facebook APPID
-            resValue "string", "facebook_app_id", "5173832349346696"
             resValue "string", "facebook_app_token", "c5725141441c9d4a5bf4abc6a502b3e3"
             //AppsFlorid-AppId
             resValue "string", "app_flyer", "J4YbG6jNVHaFWuAeixmCuC"

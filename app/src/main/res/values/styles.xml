@@ -40,8 +40,6 @@
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-
     <style name="popup_window_anim" parent="android:Animation">
         <item name="android:windowEnterAnimation">@anim/pop_enter_anim</item>
         <item name="android:windowExitAnimation">@anim/pop_exit_anim</item>
@@ -119,13 +117,6 @@
         <item name="picture.folder_checked_dot">@drawable/picture_orange_oval</item>
     </style>
 
-    <style name="ActionBarTitle">
-        <item name="android:textColor">@color/toolbar_title_color</item>
-        <item name="android:textSize">@dimen/text_size_toolbar_title</item>
-        <item name="android:gravity">center</item>
-        <item name="android:textStyle">bold</item>
-    </style>
-
     <style name="ActionBarMenu">
         <item name="android:textColor">@color/purple</item>
         <item name="android:textSize">@dimen/text_size_middle</item>
@@ -183,20 +174,6 @@
         <item name="android:textSize">@dimen/text_size_big</item>
     </style>
 
-    <style name="ButtonDoingTsak" parent="Widget.AppCompat.Button.Borderless">
-        <item name="android:outlineSpotShadowColor" tools:targetApi="p">@color/white</item>
-        <item name="android:paddingLeft">5dp</item>
-        <item name="android:paddingRight">5dp</item>
-        <item name="android:paddingStart">5dp</item>
-        <item name="android:paddingEnd">5dp</item>
-        <item name="android:elevation">12dp</item>
-        <item name="android:stateListAnimator">@null</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="android:background">@drawable/button_purple_background1</item>
-        <item name="android:textSize">@dimen/text_size_big</item>
-    </style>
-
     <!--    <style name="ButtonPrimaryFillet" parent="ButtonBase">-->
     <!--        <item name="android:textColor">@color/white</item>-->
     <!--        <item name="android:background">@drawable/button_primary_fillet_background</item>-->
@@ -210,10 +187,6 @@
     <style name="ButtonSecondary" parent="ButtonBase">
         <item name="android:textColor">@color/purple</item>
         <item name="android:background">@drawable/button_secondary_background</item>
-    </style>
-
-    <style name="ButtonSecondaryGray" parent="ButtonSecondary">
-        <item name="android:background">@drawable/button_secondary_gray_background</item>
     </style>
 
     <!--    <style name="ButtonSecondaryFillet" parent="ButtonBase">-->
@@ -255,32 +228,9 @@
         <item name="android:gravity">center</item>
     </style>
 
-    <style name="MessageHintTag">
-        <item name="android:textColor">@color/message_hint_tag_text</item>
-        <item name="android:background">@color/message_hint_tag</item>
-        <item name="android:textSize">13sp</item>
-        <item name="android:gravity">center</item>
-        <item name="android:paddingLeft">8dp</item>
-        <item name="android:paddingRight">8dp</item>
-    </style>
-
     <style name="MineTagPrimary">
         <item name="android:textColor">@color/white</item>
         <item name="android:background">@drawable/tag_background_mine</item>
-        <item name="android:textSize">@dimen/text_size_small</item>
-        <item name="android:gravity">center</item>
-    </style>
-
-    <style name="TagRed">
-        <item name="android:textColor">@color/red_7c</item>
-        <item name="android:background">@drawable/tag_background_red</item>
-        <item name="android:textSize">@dimen/text_size_small</item>
-        <item name="android:gravity">center</item>
-    </style>
-
-    <style name="TagBlue">
-        <item name="android:textColor">@color/blue</item>
-        <item name="android:background">@drawable/tag_background_blue</item>
         <item name="android:textSize">@dimen/text_size_small</item>
         <item name="android:gravity">center</item>
     </style>
@@ -392,13 +342,6 @@
         <item name="android:windowExitAnimation">@null</item>
     </style>
 
-    <style name="ProfileTabItem">
-        <item name="android:background">@drawable/profile_tab_bg</item>
-        <item name="android:gravity">center</item>
-        <item name="android:textColor">@drawable/profile_tab_bg_text_color</item>
-        <item name="android:textSize">17sp</item>
-    </style>
-
     <style name="TabItem" parent="ButtonPrimary">
         <item name="android:paddingStart">19dp</item>
         <item name="android:paddingEnd">19dp</item>
@@ -479,8 +422,6 @@
         <attr name="imgSpotOnHeight" format="dimension" />
         <attr name="imgSpotOffSrc" format="reference" />
     </declare-styleable>
-
-    <style name="PCustomSeekBar" parent="android:Widget"></style>
 
     <declare-styleable name="MisterPBannerLayout">
         <attr name="interval" format="integer" />

@@ -54,11 +54,6 @@ public class AppConfig {
      */
     public static final String DEFAULT_API_URL = BuildConfig.DEFAULT_API_URL;
 
-    /**
-     * H5 WEB 端HOST
-     */
-    public static final String WEB_BASE_URL = BuildConfig.WEB_BASE_URL;
-
     public static final String IMAGE_BASE_URL = BuildConfig.IMAGE_BASE_URL;
     // 访问的endpoint地址
     public static final String OSS_ENDPOINT = "https://oss-ap-southeast-1.aliyuncs.com";
@@ -80,12 +75,9 @@ public class AppConfig {
      * 隐私政策url
      */
     public static final String PRIVACY_POLICY_URL = "https://sites.google.com/view/playchat-privacy-agreement";
-//
-//    public static final String BUCKET_NAME = "jmasktest";
+
     //新IM 发送图片oss文件夹定义
     public static String OSS_CUSTOM_FILE_NAME_CHAT = "chat";
-    //兑换记录
-    public static final String ExchangeRecord_URL = BuildConfig.WEB_BASE_URL + "ExchangeRule";
     //H5充值网址
     public static final String  PAY_RECHARGE_URL = "/recharge/recharge.html";
     /**

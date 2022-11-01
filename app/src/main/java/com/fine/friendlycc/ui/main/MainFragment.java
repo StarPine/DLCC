@@ -649,10 +649,11 @@ public class MainFragment extends BaseFragment<FragmentMainBinding, MainViewMode
     }
 
     private void initView() {
-//        mFragments[FIRST] = new HomeMainFragment();
         mFragments[FIRST] = new VestFirstFragment();
-//        mFragments[SECOND] = new RadioFragment();
         mFragments[SECOND] = new VestSecondFragment();
+
+//        mFragments[FIRST] = new HomeMainFragment();
+//        mFragments[SECOND] = new RadioFragment();
         mFragments[THIRD] = new TaskCenterFragment();
         mFragments[FOURTH] = new MessageMainFragment();
         mFragments[FIFTH] = new MineFragment();
