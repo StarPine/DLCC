@@ -7,19 +7,19 @@
 
         <variable
             name="viewModel"
-            type="com.dl.playfun.ui.mine.broadcast.mytrends.HeadItemViewModel" />
+            type="com.fine.friendlycc.ui.mine.broadcast.mytrends.HeadItemViewModel" />
 
-        <import type="com.dl.playfun.R" />
+        <import type="com.fine.friendlycc.R" />
 
         <import type="android.view.View" />
     </data>
 
-    <com.dl.playfun.widget.SquareLayout
+    <com.fine.friendlycc.widget.SquareLayout
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:padding="2dp">
 
-        <com.dl.playfun.widget.roundedimageview.RoundedImageView
+        <com.fine.friendlycc.widget.roundedimageview.RoundedImageView
             android:id="@+id/iv_avatar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -45,5 +45,5 @@
             android:visibility="@{safeUnbox(viewModel.moreCount) > 0 ? View.VISIBLE:View.GONE}"
             binding:onClickCommand="@{viewModel.morePhotoOnClickCommand}" />
 
-    </com.dl.playfun.widget.SquareLayout>
+    </com.fine.friendlycc.widget.SquareLayout>
 </layout>

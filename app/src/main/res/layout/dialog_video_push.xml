@@ -39,7 +39,7 @@
             android:orientation="horizontal"
             android:padding="1dp">
 
-            <com.dl.playfun.widget.image.CircleImageView
+            <com.fine.friendlycc.widget.image.CircleImageView
                 android:id="@+id/iv_user_head"
                 android:layout_width="70dp"
                 android:layout_height="70dp"

@@ -8,7 +8,7 @@
         <import type="android.view.View" />
         <variable
             name="viewModel"
-            type="com.dl.playfun.ui.message.mediagallery.SnapshotPhotoViewModel" />
+            type="com.fine.friendlycc.ui.message.mediagallery.SnapshotPhotoViewModel" />
     </data>
 
     <LinearLayout

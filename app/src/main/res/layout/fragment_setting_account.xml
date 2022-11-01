@@ -8,7 +8,7 @@
         <import type="android.view.View" />
         <variable
             name="viewModel"
-            type="com.dl.playfun.ui.mine.setting.account.CommunityAccountModel" />
+            type="com.fine.friendlycc.ui.mine.setting.account.CommunityAccountModel" />
     </data>
 
     <LinearLayout
@@ -29,7 +29,7 @@
             android:theme="@style/AppTheme.AppBarOverlay"
             app:elevation="0dp">
 
-            <com.dl.playfun.widget.BasicToolbar
+            <com.fine.friendlycc.widget.BasicToolbar
                 android:id="@+id/basic_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/action_bar_height"

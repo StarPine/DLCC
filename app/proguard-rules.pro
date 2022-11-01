@@ -25,12 +25,12 @@
 -packageobfuscationdictionary fl-proguard.txt
 #------------------------------------------主项目混淆规则----------------------------------------------
 #实体类不参与混淆
--keep class com.dl.playfun.entity.** { *; }
--keep class com.dl.playfun.widget.** { *; }
--keep class com.dl.playfun.data.** { *; }
--keep class com.dl.playfun.app.** { *; }
--keep class com.dl.playfun.viewmodel.** { *; }
--keep class com.dl.playfun.ui.** { *; }
+-keep class com.fine.friendlycc.entity.** { *; }
+-keep class com.fine.friendlycc.widget.** { *; }
+-keep class com.fine.friendlycc.data.** { *; }
+-keep class com.fine.friendlycc.app.** { *; }
+-keep class com.fine.friendlycc.viewmodel.** { *; }
+-keep class com.fine.friendlycc.ui.** { *; }
 #腾讯
 -keep class com.tencent.** { *; }
 

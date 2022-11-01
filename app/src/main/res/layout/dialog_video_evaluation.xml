@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <import type="com.dl.playfun.R" />
+        <import type="com.fine.friendlycc.R" />
     </data>
 
     <RelativeLayout
@@ -38,7 +38,7 @@
                 android:layout_marginTop="29dp"
                 android:background="@drawable/button_purple_background3" />
 
-            <com.dl.playfun.widget.image.CircleImageView
+            <com.fine.friendlycc.widget.image.CircleImageView
                 android:id="@+id/iv_user_head"
                 android:layout_width="100dp"
                 android:layout_height="100dp"

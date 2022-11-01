@@ -7,7 +7,7 @@
     <data>
         <variable
             name="gameViewModel"
-            type="com.dl.playfun.ui.coinpusher.CoinPusherGameViewModel" />
+            type="com.fine.friendlycc.ui.coinpusher.CoinPusherGameViewModel" />
     </data>
 
     <RelativeLayout

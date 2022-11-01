@@ -5,21 +5,21 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <import type="com.dl.playfun.utils.SystemDictUtils" />
+        <import type="com.fine.friendlycc.utils.SystemDictUtils" />
         <import type="android.view.View" />
 
-        <import type="com.dl.playfun.R" />
+        <import type="com.fine.friendlycc.R" />
 
         <import type="com.blankj.utilcode.util.StringUtils" />
 
         <import type="me.tatarka.bindingcollectionadapter2.LayoutManagers" />
 
-        <import type="com.dl.playfun.widget.recyclerview.LineManagers" />
+        <import type="com.fine.friendlycc.widget.recyclerview.LineManagers" />
 
         <import type="androidx.recyclerview.widget.LinearLayoutManager" />
         <variable
             name="viewModel"
-            type="com.dl.playfun.kl.viewmodel.VideoCallViewModel" />
+            type="com.fine.friendlycc.kl.viewmodel.VideoCallViewModel" />
 
     </data>
 
@@ -48,7 +48,7 @@
                 android:layout_marginTop="42dp"
                 android:background="@drawable/call_video_tip_img_backdrop">
 
-                <com.dl.playfun.widget.image.CircleImageView
+                <com.fine.friendlycc.widget.image.CircleImageView
                     android:id="@+id/iv_avatar"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
@@ -254,7 +254,7 @@
                 android:layout_marginTop="42dp"
                 android:background="@drawable/call_video_tip_img_backdrop2">
 
-                <com.dl.playfun.widget.image.CircleImageView
+                <com.fine.friendlycc.widget.image.CircleImageView
                     android:id="@+id/iv_avatars"
                     android:layout_width="35dp"
                     android:layout_height="35dp"

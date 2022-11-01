@@ -4,11 +4,11 @@
 
     <data>
 
-        <import type="com.dl.playfun.R" />
+        <import type="com.fine.friendlycc.R" />
 
         <variable
             name="viewModel"
-            type="com.dl.playfun.ui.task.TaskCenterADItemViewModel" />
+            type="com.fine.friendlycc.ui.task.TaskCenterADItemViewModel" />
     </data>
 
     <RelativeLayout

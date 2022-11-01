@@ -10,17 +10,17 @@
 
         <variable
             name="viewModel"
-            type="com.dl.playfun.ui.userdetail.photobrowse.PhotoBrowseViewModel" />
+            type="com.fine.friendlycc.ui.userdetail.photobrowse.PhotoBrowseViewModel" />
 
         <import type="me.tatarka.bindingcollectionadapter2.LayoutManagers" />
 
-        <import type="com.dl.playfun.widget.recyclerview.LineManagers" />
+        <import type="com.fine.friendlycc.widget.recyclerview.LineManagers" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.dl.playfun.ui.userdetail.photobrowse.PhotoBrowseFragment">
+        tools:context="com.fine.friendlycc.ui.userdetail.photobrowse.PhotoBrowseFragment">
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"

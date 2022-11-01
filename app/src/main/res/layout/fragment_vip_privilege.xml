@@ -7,13 +7,13 @@
 
         <variable
             name="viewModel"
-            type="com.dl.playfun.ui.mine.vipprivilege.VipPrivilegeViewModel" />
+            type="com.fine.friendlycc.ui.mine.vipprivilege.VipPrivilegeViewModel" />
 
         <import type="android.view.View" />
 
         <import type="me.tatarka.bindingcollectionadapter2.LayoutManagers" />
 
-        <import type="com.dl.playfun.widget.recyclerview.LineManagers" />
+        <import type="com.fine.friendlycc.widget.recyclerview.LineManagers" />
 
         <import type="androidx.recyclerview.widget.LinearLayoutManager" />
     </data>
@@ -22,7 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context="com.dl.playfun.ui.mine.vipprivilege.VipPrivilegeFragment">
+        tools:context="com.fine.friendlycc.ui.mine.vipprivilege.VipPrivilegeFragment">
 
         <View
             android:id="@+id/status_bar_view"
@@ -36,7 +36,7 @@
             android:theme="@style/AppTheme.AppBarOverlay"
             app:elevation="0dp">
 
-            <com.dl.playfun.widget.BasicToolbar
+            <com.fine.friendlycc.widget.BasicToolbar
                 android:id="@+id/basic_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/action_bar_height"

@@ -8,20 +8,20 @@
 
         <import type="android.view.View" />
 
-        <import type="com.dl.playfun.R" />
+        <import type="com.fine.friendlycc.R" />
 
         <variable
             name="viewModel"
-            type="com.dl.playfun.ui.userdetail.theirphotoalbum.TheirPhotoAlbumItemViewModel" />
+            type="com.fine.friendlycc.ui.userdetail.theirphotoalbum.TheirPhotoAlbumItemViewModel" />
     </data>
 
-    <com.dl.playfun.widget.SquareLayout
+    <com.fine.friendlycc.widget.SquareLayout
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:layout_marginBottom="7dp"
         binding:onClickCommand="@{viewModel.itemClick}">
 
-        <com.dl.playfun.widget.roundedimageview.RoundedImageView
+        <com.fine.friendlycc.widget.roundedimageview.RoundedImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
@@ -102,5 +102,5 @@
             android:src="@drawable/ic_play"
             android:visibility="@{viewModel.itemEntity.type == 2 ? View.VISIBLE:View.GONE}" />
 
-    </com.dl.playfun.widget.SquareLayout>
+    </com.fine.friendlycc.widget.SquareLayout>
 </layout>

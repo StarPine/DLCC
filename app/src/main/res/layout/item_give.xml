@@ -7,11 +7,11 @@
 
         <variable
             name="viewModel"
-            type="com.dl.playfun.ui.mine.broadcast.mytrends.givelist.GiveListItemViewModel" />
+            type="com.fine.friendlycc.ui.mine.broadcast.mytrends.givelist.GiveListItemViewModel" />
 
         <import type="android.view.View" />
 
-        <import type="com.dl.playfun.R" />
+        <import type="com.fine.friendlycc.R" />
 
     </data>
 
@@ -22,7 +22,7 @@
         android:padding="13.97dp"
         binding:onClickCommand="@{viewModel.itemClick}">
 
-        <com.dl.playfun.widget.roundedimageview.RoundedImageView
+        <com.fine.friendlycc.widget.roundedimageview.RoundedImageView
             android:id="@+id/iv_avatar"
             android:layout_width="40dp"
             android:layout_height="40dp"

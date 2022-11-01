@@ -7,13 +7,13 @@
     <data>
 
         <import type="android.view.View" />
-        <import type="com.dl.playfun.R" />
+        <import type="com.fine.friendlycc.R" />
 
         <import type="me.tatarka.bindingcollectionadapter2.LayoutManagers" />
 
         <variable
             name="viewModel"
-            type="com.dl.playfun.ui.message.chatdetail.ChatDetailViewModel" />
+            type="com.fine.friendlycc.ui.message.chatdetail.ChatDetailViewModel" />
     </data>
 
     <RelativeLayout
@@ -41,7 +41,7 @@
             app:elevation="0dp">
 
 
-            <com.dl.playfun.widget.BasicToolbar
+            <com.fine.friendlycc.widget.BasicToolbar
                 android:id="@+id/basic_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
@@ -107,7 +107,7 @@
                         binding:onClickCommand="@{viewModel.moreOnClickCommand}" />
 
                 </RelativeLayout>
-            </com.dl.playfun.widget.BasicToolbar>
+            </com.fine.friendlycc.widget.BasicToolbar>
         </com.google.android.material.appbar.AppBarLayout>
 
         <LinearLayout
@@ -149,7 +149,7 @@
                 binding:drawable_color="@{@color/purple_text}"
                 binding:drawable_cornersRadius="@{50}" />
 
-            <com.dl.playfun.widget.image.CircleImageView
+            <com.fine.friendlycc.widget.image.CircleImageView
                 android:id="@+id/img_face_avatar"
                 android:layout_width="70dp"
                 android:layout_height="70dp"

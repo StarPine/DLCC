@@ -6,7 +6,7 @@
 
     <data>
 
-        <import type="com.dl.playfun.R" />
+        <import type="com.fine.friendlycc.R" />
 
         <import type="android.text.Html" />
 
@@ -14,13 +14,13 @@
 
         <import type="me.tatarka.bindingcollectionadapter2.LayoutManagers" />
 
-        <import type="com.dl.playfun.widget.recyclerview.LineManagers" />
+        <import type="com.fine.friendlycc.widget.recyclerview.LineManagers" />
 
         <import type="androidx.recyclerview.widget.LinearLayoutManager" />
 
         <variable
             name="viewModel"
-            type="com.dl.playfun.ui.mine.level.LevelEquityViewModel" />
+            type="com.fine.friendlycc.ui.mine.level.LevelEquityViewModel" />
 
     </data>
 
@@ -358,7 +358,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content">
 
-                                <com.dl.playfun.widget.custom.PCustomSeekbar
+                                <com.fine.friendlycc.widget.custom.PCustomSeekbar
                                     android:id="@+id/seekbar_message"
                                     android:layout_width="match_parent"
                                     android:layout_height="70dp"
@@ -493,7 +493,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content">
 
-                                <com.dl.playfun.widget.custom.PCustomSeekbar
+                                <com.fine.friendlycc.widget.custom.PCustomSeekbar
                                     android:id="@+id/seekbar_audio"
                                     android:layout_width="match_parent"
                                     android:layout_height="70dp"
@@ -629,7 +629,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content">
 
-                                <com.dl.playfun.widget.custom.PCustomSeekbar
+                                <com.fine.friendlycc.widget.custom.PCustomSeekbar
                                     android:id="@+id/seekbar_video"
                                     android:layout_width="match_parent"
                                     android:layout_height="70dp"

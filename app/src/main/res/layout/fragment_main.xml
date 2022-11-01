@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <import type="com.dl.playfun.R" />
+        <import type="com.fine.friendlycc.R" />
         <import type="android.view.View" />
         <variable
             name="viewModel"
-            type="com.dl.playfun.ui.main.MainViewModel" />
+            type="com.fine.friendlycc.ui.main.MainViewModel" />
 
     </data>
 

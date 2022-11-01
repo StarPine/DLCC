@@ -85,7 +85,7 @@ android {
             dimension "friendly"
             // 服务端接口HOST
             buildConfigField "String", "DEFAULT_API_URL", "\"http://config.play-chat.net/\""
-            applicationId "com.crab.friendlycc"
+            applicationId "com.fine.friendlycc"
             manifestPlaceholders = [package_name: applicationId]
             // 腾讯IM FCM离线推送ID
             buildConfigField "int", "GOOGLE_FCM_PUSH_BUZID", "17321"

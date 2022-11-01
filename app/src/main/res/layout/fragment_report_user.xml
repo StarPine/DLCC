@@ -8,20 +8,20 @@
 
         <variable
             name="viewModel"
-            type="com.dl.playfun.ui.userdetail.report.ReportUserViewModel" />
+            type="com.fine.friendlycc.ui.userdetail.report.ReportUserViewModel" />
 
         <import type="android.view.View" />
 
         <import type="me.tatarka.bindingcollectionadapter2.LayoutManagers" />
 
-        <import type="com.dl.playfun.widget.recyclerview.LineManagers" />
+        <import type="com.fine.friendlycc.widget.recyclerview.LineManagers" />
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context="com.dl.playfun.ui.userdetail.report.ReportUserFragment">
+        tools:context="com.fine.friendlycc.ui.userdetail.report.ReportUserFragment">
 
         <View
             android:id="@+id/status_bar_view"
@@ -35,7 +35,7 @@
             android:theme="@style/AppTheme.AppBarOverlay"
             app:elevation="0dp">
 
-            <com.dl.playfun.widget.BasicToolbar
+            <com.fine.friendlycc.widget.BasicToolbar
                 android:id="@+id/basic_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/action_bar_height"
@@ -59,7 +59,7 @@
                         android:text="@string/playfun_submit"
                         binding:onClickCommand="@{viewModel.commitOnClickCommand}" />
                 </RelativeLayout>
-            </com.dl.playfun.widget.BasicToolbar>
+            </com.fine.friendlycc.widget.BasicToolbar>
         </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.core.widget.NestedScrollView
@@ -112,7 +112,7 @@
                     android:padding="14dp"
                     android:visibility='@{viewModel.type.equals("home")?View.VISIBLE:View.GONE}'>
 
-                    <com.dl.playfun.widget.picchoose.PicChooseView
+                    <com.fine.friendlycc.widget.picchoose.PicChooseView
                         android:id="@+id/pic_choose_view"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />

@@ -7,10 +7,10 @@
     <data>
         <import type="android.view.View" />
 
-        <import type="com.dl.playfun.R" />
+        <import type="com.fine.friendlycc.R" />
         <variable
             name="viewModel"
-            type="com.dl.playfun.ui.vest.second.VestSecondHeadItemViewModel" />
+            type="com.fine.friendlycc.ui.vest.second.VestSecondHeadItemViewModel" />
     </data>
 
     <LinearLayout
@@ -26,7 +26,7 @@
             android:background="@drawable/shape_item_image_bg"
             android:layout_height="wrap_content">
 
-            <com.dl.playfun.widget.image.CircleImageView
+            <com.fine.friendlycc.widget.image.CircleImageView
                 android:id="@+id/user_img"
                 android:layout_width="50dp"
                 android:layout_height="50dp"

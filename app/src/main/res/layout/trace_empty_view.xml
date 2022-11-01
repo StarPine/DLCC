@@ -9,7 +9,7 @@
 
         <variable
             name="stateModel"
-            type="com.dl.playfun.viewmodel.StateModel" />
+            type="com.fine.friendlycc.viewmodel.StateModel" />
     </data>
 
     <RelativeLayout

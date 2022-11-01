@@ -8,18 +8,18 @@
 
         <variable
             name="viewModel"
-            type="com.dl.playfun.ui.mine.photosetting.PhotoSettingViewModel" />
+            type="com.fine.friendlycc.ui.mine.photosetting.PhotoSettingViewModel" />
 
         <import type="me.tatarka.bindingcollectionadapter2.LayoutManagers" />
 
-        <import type="com.dl.playfun.widget.recyclerview.LineManagers" />
+        <import type="com.fine.friendlycc.widget.recyclerview.LineManagers" />
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context="com.dl.playfun.ui.mine.photosetting.PhotoSettingFragment">
+        tools:context="com.fine.friendlycc.ui.mine.photosetting.PhotoSettingFragment">
 
         <View
             android:id="@+id/status_bar_view"
@@ -33,7 +33,7 @@
             android:theme="@style/AppTheme.AppBarOverlay"
             app:elevation="0dp">
 
-            <com.dl.playfun.widget.BasicToolbar
+            <com.fine.friendlycc.widget.BasicToolbar
                 android:id="@+id/basic_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/action_bar_height"
@@ -57,7 +57,7 @@
                         android:text="@{viewModel.titleBtnText}"
                         binding:onClickCommand="@{viewModel.deleteOnClickCommand}" />
                 </RelativeLayout>
-            </com.dl.playfun.widget.BasicToolbar>
+            </com.fine.friendlycc.widget.BasicToolbar>
 
         </com.google.android.material.appbar.AppBarLayout>
 

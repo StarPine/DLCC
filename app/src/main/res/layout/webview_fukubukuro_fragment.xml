@@ -5,7 +5,7 @@
 
         <variable
             name="viewModel"
-            type="com.dl.playfun.ui.task.webview.FukubuViewModel" />
+            type="com.fine.friendlycc.ui.task.webview.FukubuViewModel" />
     </data>
 
     <LinearLayout
@@ -27,16 +27,16 @@
                 android:progressDrawable="@drawable/progress_gradient_bg"
                 android:visibility="gone" />
 
-            <com.dl.playfun.widget.action.StatusLayout
+            <com.fine.friendlycc.widget.action.StatusLayout
                 android:id="@+id/hl_browser_hint"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <com.dl.playfun.ui.webview.BrowserView
+                <com.fine.friendlycc.ui.webview.BrowserView
                     android:id="@+id/web_view"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
-            </com.dl.playfun.widget.action.StatusLayout>
+            </com.fine.friendlycc.widget.action.StatusLayout>
         </LinearLayout>
     </LinearLayout>
 </layout>

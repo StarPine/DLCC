@@ -4,14 +4,14 @@
     xmlns:binding="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <import type="com.dl.playfun.utils.SystemDictUtils" />
+        <import type="com.fine.friendlycc.utils.SystemDictUtils" />
         <import type="android.view.View" />
 
-        <import type="com.dl.playfun.R" />
+        <import type="com.fine.friendlycc.R" />
 
         <variable
             name="viewModel"
-            type="com.dl.playfun.kl.viewmodel.AudioCallingViewModel2" />
+            type="com.fine.friendlycc.kl.viewmodel.AudioCallingViewModel2" />
     </data>
 
     <FrameLayout
@@ -37,7 +37,7 @@
                 android:onClick="@{viewModel.closeOnclick}"
                 android:src="@drawable/icon_call_close" />
 
-            <com.dl.playfun.widget.image.CircleImageView
+            <com.fine.friendlycc.widget.image.CircleImageView
                 android:layout_width="173dp"
                 android:layout_height="173dp"
                 android:layout_gravity="center_horizontal"

@@ -8,17 +8,17 @@
 
         <variable
             name="viewModel"
-            type="com.dl.playfun.ui.ranklisk.ranklist.RankListViewModel" />
+            type="com.fine.friendlycc.ui.ranklisk.ranklist.RankListViewModel" />
 
         <import type="android.view.View" />
 
-        <import type="com.dl.playfun.R" />
+        <import type="com.fine.friendlycc.R" />
 
         <import type="me.tatarka.bindingcollectionadapter2.LayoutManagers" />
 
-        <import type="com.dl.playfun.widget.recyclerview.LineManagers" />
+        <import type="com.fine.friendlycc.widget.recyclerview.LineManagers" />
 
-        <import type="com.dl.playfun.utils.SystemDictUtils" />
+        <import type="com.fine.friendlycc.utils.SystemDictUtils" />
     </data>
 
     <RelativeLayout

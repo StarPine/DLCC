@@ -8,35 +8,35 @@
 
         <variable
             name="viewModel"
-            type="com.dl.playfun.ui.mine.broadcast.mytrends.TrendItemViewModel" />
+            type="com.fine.friendlycc.ui.mine.broadcast.mytrends.TrendItemViewModel" />
 
         <import type="me.tatarka.bindingcollectionadapter2.LayoutManagers" />
 
-        <import type="com.dl.playfun.widget.recyclerview.LineManagers" />
+        <import type="com.fine.friendlycc.widget.recyclerview.LineManagers" />
 
         <variable
             name="adapter"
-            type="com.dl.playfun.ui.mine.broadcast.mytrends.HeadRecyclerViewAdapter" />
+            type="com.fine.friendlycc.ui.mine.broadcast.mytrends.HeadRecyclerViewAdapter" />
 
         <variable
             name="ivadapter"
-            type="com.dl.playfun.ui.mine.broadcast.mytrends.ImageRecyclerViewAdapter" />
+            type="com.fine.friendlycc.ui.mine.broadcast.mytrends.ImageRecyclerViewAdapter" />
 
         <variable
             name="commentadapter"
-            type="com.dl.playfun.ui.mine.broadcast.mytrends.CommentRecyclerViewAdapter" />
+            type="com.fine.friendlycc.ui.mine.broadcast.mytrends.CommentRecyclerViewAdapter" />
 
         <import type="android.view.View" />
 
-        <import type="com.dl.playfun.R" />
+        <import type="com.fine.friendlycc.R" />
 
-        <import type="com.dl.playfun.utils.TimeUtils" />
+        <import type="com.fine.friendlycc.utils.TimeUtils" />
 
-        <import type="com.dl.playfun.utils.ListUtils" />
+        <import type="com.fine.friendlycc.utils.ListUtils" />
 
         <import type="com.blankj.utilcode.util.StringUtils" />
 
-        <import type="com.dl.playfun.utils.StringUtil" />
+        <import type="com.fine.friendlycc.utils.StringUtil" />
     </data>
 
     <LinearLayout
@@ -56,7 +56,7 @@
                 android:gravity="center_vertical"
                 binding:onClickCommand="@{viewModel.avatarClick}">
 
-                <com.dl.playfun.widget.image.CircleImageView
+                <com.fine.friendlycc.widget.image.CircleImageView
                     android:id="@+id/user_img"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
@@ -126,7 +126,7 @@
                     android:visibility="@{viewModel.newsEntityObservableField.user.isVip==1?View.VISIBLE:View.GONE}"
                     tools:src="@drawable/ic_vip" />
 
-                <com.dl.playfun.widget.roundedimageview.RoundedImageView
+                <com.fine.friendlycc.widget.roundedimageview.RoundedImageView
                     android:layout_width="31dp"
                     android:layout_height="13dp"
                     android:layout_alignTop="@+id/tv_name"
@@ -181,7 +181,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-                <com.dl.playfun.widget.videoview.SampleCoverVideo
+                <com.fine.friendlycc.widget.videoview.SampleCoverVideo
                     android:visibility="@{StringUtils.isEmpty(viewModel.newsEntityObservableField.video)?View.GONE:View.VISIBLE}"
                     android:id="@+id/video_item_player"
                     android:layout_width="match_parent"
@@ -191,7 +191,7 @@
                     binding:imageRes="@{R.drawable.radio_dating_img_default}"
                     binding:isVideoPlayer="@{StringUtils.isEmpty(viewModel.newsEntityObservableField.video)?false:true}"/>
 
-                <com.dl.playfun.widget.roundedimageview.RoundedImageView
+                <com.fine.friendlycc.widget.roundedimageview.RoundedImageView
                     android:id="@+id/round_image_view_item"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -229,7 +229,7 @@
                     android:textSize="12sp"
                     tools:text="#想戀愛" />
 
-                <com.dl.playfun.widget.FolderTextView
+                <com.fine.friendlycc.widget.FolderTextView
                     android:clickable="true"
                     android:id="@+id/content_text"
                     android:layout_width="match_parent"

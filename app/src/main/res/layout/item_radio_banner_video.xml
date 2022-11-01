@@ -7,10 +7,10 @@
     <data>
         <import type="android.view.View" />
 
-        <import type="com.dl.playfun.R" />
+        <import type="com.fine.friendlycc.R" />
         <variable
             name="viewModel"
-            type="com.dl.playfun.ui.radio.radiohome.item.RadioItemBannerVideoViewModel" />
+            type="com.fine.friendlycc.ui.radio.radiohome.item.RadioItemBannerVideoViewModel" />
     </data>
 
         <RelativeLayout
@@ -23,7 +23,7 @@
             android:layout_width="160dp"
             android:layout_height="190dp">
 
-            <com.dl.playfun.widget.roundedimageview.RoundedImageView
+            <com.fine.friendlycc.widget.roundedimageview.RoundedImageView
                 android:id="@+id/img_user_avatar"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

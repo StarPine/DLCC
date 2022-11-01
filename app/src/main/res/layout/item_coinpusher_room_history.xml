@@ -4,10 +4,10 @@
     xmlns:binding="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <import type="com.dl.playfun.R" />
+        <import type="com.fine.friendlycc.R" />
         <variable
             name="itemEntity"
-            type="com.dl.playfun.entity.CoinPusherRoomHistoryEntity" />
+            type="com.fine.friendlycc.entity.CoinPusherRoomHistoryEntity" />
     </data>
 
     <RelativeLayout

@@ -6,14 +6,14 @@
 
         <import type="android.view.View" />
 
-        <import type="com.dl.playfun.R" />
+        <import type="com.fine.friendlycc.R" />
 
         <variable
             name="viewModel"
-            type="com.dl.playfun.ui.mine.setredpackagevideo.SetRedPackageVideoItemViewModel" />
+            type="com.fine.friendlycc.ui.mine.setredpackagevideo.SetRedPackageVideoItemViewModel" />
     </data>
 
-    <com.dl.playfun.widget.SquareLayout
+    <com.fine.friendlycc.widget.SquareLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="1dp"
@@ -62,5 +62,5 @@
             android:padding="4dp"
             android:visibility="@{viewModel.itemEntity.verificationType == 1 ? View.VISIBLE:View.GONE}" />
 
-    </com.dl.playfun.widget.SquareLayout>
+    </com.fine.friendlycc.widget.SquareLayout>
 </layout>

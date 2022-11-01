@@ -7,13 +7,13 @@
 
         <import type="android.view.View" />
 
-        <import type="com.dl.playfun.utils.TimeUtils" />
+        <import type="com.fine.friendlycc.utils.TimeUtils" />
 
-        <import type="com.dl.playfun.ui.message.systemmessagegroup.SystemMessageGroupItemViewModel" />
+        <import type="com.fine.friendlycc.ui.message.systemmessagegroup.SystemMessageGroupItemViewModel" />
 
         <variable
             name="viewModel"
-            type="com.dl.playfun.ui.message.systemmessagegroup.SystemMessageGroupItemViewModel" />
+            type="com.fine.friendlycc.ui.message.systemmessagegroup.SystemMessageGroupItemViewModel" />
 
         <import type="me.goldze.mvvmhabit.utils.StringUtils" />
     </data>

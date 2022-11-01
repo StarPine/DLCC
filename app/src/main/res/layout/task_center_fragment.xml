@@ -4,13 +4,13 @@
     xmlns:binding="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
     <data>
-        <import type="com.dl.playfun.R" />
+        <import type="com.fine.friendlycc.R" />
         <import type="android.view.View" />
         <import type="com.blankj.utilcode.util.StringUtils" />
 
         <variable
             name="viewModel"
-            type="com.dl.playfun.ui.task.TaskCenterViewModel" />
+            type="com.fine.friendlycc.ui.task.TaskCenterViewModel" />
         <import type="me.tatarka.bindingcollectionadapter2.LayoutManagers" />
 
     </data>

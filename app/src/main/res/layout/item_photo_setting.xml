@@ -7,18 +7,18 @@
 
         <import type="android.view.View" />
 
-        <import type="com.dl.playfun.R" />
+        <import type="com.fine.friendlycc.R" />
 
         <variable
             name="viewModel"
-            type="com.dl.playfun.ui.mine.photosetting.PhotoSettingItemViewModel" />
+            type="com.fine.friendlycc.ui.mine.photosetting.PhotoSettingItemViewModel" />
     </data>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.dl.playfun.widget.videoview.SampleCoverVideo
+        <com.fine.friendlycc.widget.videoview.SampleCoverVideo
             android:id="@+id/videoView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

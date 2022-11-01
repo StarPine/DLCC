@@ -11,7 +11,7 @@
 
         <variable
             name="viewModel"
-            type="com.dl.playfun.ui.mine.vipsubscribe.VipSubscribeItemViewModel" />
+            type="com.fine.friendlycc.ui.mine.vipsubscribe.VipSubscribeItemViewModel" />
     </data>
 
     <RelativeLayout

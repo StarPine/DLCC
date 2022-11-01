@@ -8,7 +8,7 @@
 
         <variable
             name="viewModel"
-            type="com.dl.playfun.ui.mine.trace.TraceViewModel" />
+            type="com.fine.friendlycc.ui.mine.trace.TraceViewModel" />
     </data>
 
     <LinearLayout
@@ -30,7 +30,7 @@
             app:elevation="0dp">
 
 
-            <com.dl.playfun.widget.BasicToolbar
+            <com.fine.friendlycc.widget.BasicToolbar
                 android:id="@+id/basic_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="55dp">
@@ -43,7 +43,7 @@
                     android:paddingRight="10dp">
 
                 </RelativeLayout>
-            </com.dl.playfun.widget.BasicToolbar>
+            </com.fine.friendlycc.widget.BasicToolbar>
         </com.google.android.material.appbar.AppBarLayout>
 
         <com.google.android.material.tabs.TabLayout

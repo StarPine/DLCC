@@ -6,21 +6,21 @@
 
     <data>
 
-        <import type="com.dl.playfun.R" />
+        <import type="com.fine.friendlycc.R" />
 
         <import type="android.view.View" />
 
-        <import type="com.dl.playfun.utils.SystemDictUtils" />
+        <import type="com.fine.friendlycc.utils.SystemDictUtils" />
 
         <import type="com.blankj.utilcode.util.StringUtils" />
 
         <variable
             name="viewModel"
-            type="com.dl.playfun.ui.mine.MineViewModel" />
+            type="com.fine.friendlycc.ui.mine.MineViewModel" />
 
         <import type="me.tatarka.bindingcollectionadapter2.LayoutManagers" />
 
-        <import type="com.dl.playfun.widget.recyclerview.LineManagers" />
+        <import type="com.fine.friendlycc.widget.recyclerview.LineManagers" />
     </data>
 
     <RelativeLayout
@@ -31,7 +31,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            tools:context="com.dl.playfun.ui.mine.MineFragment">
+            tools:context="com.fine.friendlycc.ui.mine.MineFragment">
 
             <RelativeLayout
                 android:id="@+id/layout_title"
@@ -50,7 +50,7 @@
                     android:layout_marginBottom="7dp"
                     android:orientation="horizontal">
 
-                    <com.dl.playfun.widget.image.CircleImageView
+                    <com.fine.friendlycc.widget.image.CircleImageView
                         android:id="@+id/min_user_img"
                         android:layout_width="29dp"
                         android:layout_height="29dp"
@@ -149,7 +149,7 @@
                                     android:layout_height="69dp"
                                     android:background="@drawable/circle_white" />
 
-                                <com.dl.playfun.widget.image.CircleImageView
+                                <com.fine.friendlycc.widget.image.CircleImageView
                                     android:layout_width="67dp"
                                     android:layout_height="67dp"
                                     android:layout_marginStart="1dp"

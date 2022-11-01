@@ -6,11 +6,11 @@
 
     <data>
 
-        <import type="com.dl.playfun.R" />
+        <import type="com.fine.friendlycc.R" />
 
         <variable
             name="viewModel"
-            type="com.dl.playfun.ui.mine.profile.PerfectProfileViewModel" />
+            type="com.fine.friendlycc.ui.mine.profile.PerfectProfileViewModel" />
     </data>
 
     <LinearLayout

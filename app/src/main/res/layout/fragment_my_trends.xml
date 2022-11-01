@@ -8,11 +8,11 @@
 
         <variable
             name="viewModel"
-            type="com.dl.playfun.ui.mine.broadcast.mytrends.MyTrendsViewModel" />
+            type="com.fine.friendlycc.ui.mine.broadcast.mytrends.MyTrendsViewModel" />
 
         <import type="me.tatarka.bindingcollectionadapter2.LayoutManagers" />
 
-        <import type="com.dl.playfun.widget.recyclerview.LineManagers" />
+        <import type="com.fine.friendlycc.widget.recyclerview.LineManagers" />
 
         <import type="android.view.View" />
     </data>

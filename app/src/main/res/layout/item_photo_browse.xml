@@ -4,13 +4,13 @@
 
     <data>
 
-        <import type="com.dl.playfun.R" />
+        <import type="com.fine.friendlycc.R" />
 
         <import type="android.view.View" />
 
         <variable
             name="viewModel"
-            type="com.dl.playfun.ui.userdetail.photobrowse.PhotoBrowseItemViewModel" />
+            type="com.fine.friendlycc.ui.userdetail.photobrowse.PhotoBrowseItemViewModel" />
     </data>
 
     <RelativeLayout
@@ -18,7 +18,7 @@
         android:layout_height="match_parent"
         binding:onClickCommand="@{viewModel.itemClick}">
 
-        <com.dl.playfun.widget.videoview.SampleCoverVideo
+        <com.fine.friendlycc.widget.videoview.SampleCoverVideo
             android:id="@+id/videoView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -28,7 +28,7 @@
             binding:videoCompletionCommand="@{viewModel.videoCompletionCommand}"
             binding:videoUri="@{viewModel.itemEntity.type == 2 ? viewModel.itemEntity.src:null}" />
 
-        <com.dl.playfun.widget.BurnImageView
+        <com.fine.friendlycc.widget.BurnImageView
             android:elevation="11dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

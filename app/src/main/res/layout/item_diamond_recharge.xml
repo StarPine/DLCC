@@ -5,7 +5,7 @@
 
     <data>
 
-        <import type="com.dl.playfun.R" />
+        <import type="com.fine.friendlycc.R" />
 
         <import type="android.view.View" />
 
@@ -13,7 +13,7 @@
 
         <variable
             name="viewModel"
-            type="com.dl.playfun.ui.mine.wallet.diamond.recharge.DiamondRechargeItemViewModel" />
+            type="com.fine.friendlycc.ui.mine.wallet.diamond.recharge.DiamondRechargeItemViewModel" />
     </data>
 
     <RelativeLayout

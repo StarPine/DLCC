@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.dl.playfun">
+    package="com.fine.friendlycc">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -45,7 +45,7 @@
         android:xlargeScreens="false" />
 
     <application
-        android:name=".app.AppContext"
+        android:name="com.fine.friendlycc.app.AppContext"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -59,7 +59,7 @@
         tools:targetApi="n">
 
         <meta-data
-            android:name="com.dl.playfun.widget.glide.GlideCache"
+            android:name="com.fine.friendlycc.widget.glide.GlideCache"
             android:value="AppGlideModule" />
 
         <meta-data
@@ -131,7 +131,7 @@
             android:resource="@color/addressTEXT" /> <!-- [END fcm_default_icon] -->
 
         <service
-            android:name=".service.GoogleFCMMessagingService"
+            android:name="com.fine.friendlycc.service.GoogleFCMMessagingService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
@@ -139,7 +139,7 @@
         </service>
 
         <activity
-            android:name=".ui.MainContainerActivity"
+            android:name="com.fine.friendlycc.ui.MainContainerActivity"
             android:requestLegacyExternalStorage="true"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
@@ -163,7 +163,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.dl.playfun.kl.view.DialingAudioActivity"
+            android:name="com.fine.friendlycc.kl.view.DialingAudioActivity"
             android:launchMode="singleTop"
             android:exported="true"
             android:requestLegacyExternalStorage="true"
@@ -173,14 +173,14 @@
         </activity>
 
         <activity
-            android:name=".ui.base.OtherFragmentActivity"
+            android:name="com.fine.friendlycc.ui.base.OtherFragmentActivity"
             android:requestLegacyExternalStorage="true"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan|adjustResize|stateHidden"
             android:exported="true"/>
         <activity
-            android:name="com.dl.playfun.kl.view.CallingVideoActivity"
+            android:name="com.fine.friendlycc.kl.view.CallingVideoActivity"
             android:launchMode="singleTop"
             android:exported="true"
             android:requestLegacyExternalStorage="true"
@@ -190,7 +190,7 @@
         </activity>
 
         <!-- 快照页面 -->
-        <activity android:name=".ui.message.mediagallery.SnapshotPhotoActivity"
+        <activity android:name="com.fine.friendlycc.ui.message.mediagallery.SnapshotPhotoActivity"
             android:requestLegacyExternalStorage="true"
             android:screenOrientation="portrait"
             android:launchMode="singleTop"
@@ -198,14 +198,14 @@
             android:theme="@style/AppTheme.NoActionBar"
             />
         <!--视频设置页面-->
-        <activity android:name=".ui.message.mediagallery.MediaGalleryVideoSettingActivity"
+        <activity android:name="com.fine.friendlycc.ui.message.mediagallery.MediaGalleryVideoSettingActivity"
             android:requestLegacyExternalStorage="true"
             android:screenOrientation="portrait"
             android:launchMode="singleTop"
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar"
             />
-        <activity android:name=".ui.message.mediagallery.video.MediaGalleryVideoPayActivity"
+        <activity android:name="com.fine.friendlycc.ui.message.mediagallery.video.MediaGalleryVideoPayActivity"
             android:requestLegacyExternalStorage="true"
             android:screenOrientation="portrait"
             android:launchMode="singleTop"
@@ -214,7 +214,7 @@
             />
 
         <!-- IM快照 or 普通照片查看-->
-        <activity android:name=".ui.message.mediagallery.photo.MediaGalleryPhotoPayActivity"
+        <activity android:name="com.fine.friendlycc.ui.message.mediagallery.photo.MediaGalleryPhotoPayActivity"
             android:requestLegacyExternalStorage="true"
             android:screenOrientation="portrait"
             android:launchMode="singleTop"
@@ -223,7 +223,7 @@
             />
 
         <activity
-            android:name="com.dl.playfun.kl.view.AudioCallChatingActivity"
+            android:name="com.fine.friendlycc.kl.view.AudioCallChatingActivity"
             android:launchMode="singleTop"
             android:exported="true"
             android:requestLegacyExternalStorage="true"
@@ -231,7 +231,7 @@
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan|adjustResize|stateHidden" /><!--" adjustResize|stateHidden"-->
         <activity
-            android:name="com.dl.playfun.kl.view.VideoPresetActivity"
+            android:name="com.fine.friendlycc.kl.view.VideoPresetActivity"
             android:launchMode="singleTop"
             android:exported="true"
             android:requestLegacyExternalStorage="true"
@@ -239,7 +239,7 @@
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan|adjustResize|stateHidden" /><!--" adjustResize|stateHidden"-->
         <activity
-            android:name=".ui.message.chatdetail.notepad.NotepadActivity"
+            android:name="com.fine.friendlycc.ui.message.chatdetail.notepad.NotepadActivity"
             android:launchMode="singleTop"
             android:exported="true"
             android:requestLegacyExternalStorage="true"
@@ -248,7 +248,7 @@
             android:windowSoftInputMode="adjustPan|adjustResize|stateHidden" />
 
         <activity
-            android:name=".ui.mine.wallet.diamond.recharge.DiamondRechargeActivity"
+            android:name="com.fine.friendlycc.ui.mine.wallet.diamond.recharge.DiamondRechargeActivity"
             android:launchMode="singleTop"
             android:exported="true"
             android:requestLegacyExternalStorage="true"
@@ -257,7 +257,7 @@
             android:windowSoftInputMode="adjustPan|adjustResize|stateHidden" />
 
         <activity
-            android:name=".ui.mine.exclusive.ExclusiveCallActivity"
+            android:name="com.fine.friendlycc.ui.mine.exclusive.ExclusiveCallActivity"
             android:launchMode="singleTop"
             android:exported="true"
             android:requestLegacyExternalStorage="true"
@@ -273,7 +273,7 @@
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan|adjustResize|stateHidden" />
 
-        <activity android:name=".ui.coinpusher.CoinPusherGameActivity"
+        <activity android:name="com.fine.friendlycc.ui.coinpusher.CoinPusherGameActivity"
             android:launchMode="singleTop"
             android:requestLegacyExternalStorage="true"
             android:screenOrientation="portrait"
@@ -281,13 +281,13 @@
             android:windowSoftInputMode="adjustPan|adjustResize|stateHidden"/>
 
 
-        <activity android:name="com.dl.playfun.api.login.email.LoginEmailMangerActivity"
+        <activity android:name="com.fine.friendlycc.api.login.email.LoginEmailMangerActivity"
             android:launchMode="singleTop"
             android:exported="true"
             android:requestLegacyExternalStorage="true"
             android:screenOrientation="portrait"
             android:theme="@style/dialog_activity_style"/>
-        <activity android:name="com.dl.playfun.ui.mine.account.bind.EmailMangerBindActivity"
+        <activity android:name="com.fine.friendlycc.ui.mine.account.bind.EmailMangerBindActivity"
             android:launchMode="singleTop"
             android:exported="true"
             android:requestLegacyExternalStorage="true"

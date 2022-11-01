@@ -8,14 +8,14 @@
 
         <variable
             name="viewModel"
-            type="com.dl.playfun.ui.mine.profile.EditProfileViewModel" />
+            type="com.fine.friendlycc.ui.mine.profile.EditProfileViewModel" />
 
-        <import type="com.dl.playfun.R" />
+        <import type="com.fine.friendlycc.R" />
 
         <import type="android.view.View" />
 
         <!--        <import type="com.dl.playfun.utils.StringUtil" />-->
-        <import type="com.dl.playfun.utils.SystemDictUtils" />
+        <import type="com.fine.friendlycc.utils.SystemDictUtils" />
 
     </data>
 
@@ -39,7 +39,7 @@
             android:theme="@style/AppTheme.AppBarOverlay"
             app:elevation="0dp">
 
-            <com.dl.playfun.widget.BasicToolbar
+            <com.fine.friendlycc.widget.BasicToolbar
                 android:id="@+id/basic_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/action_bar_height"
@@ -62,7 +62,7 @@
                         android:text="@string/playfun_save"
                         binding:onClickCommand="@{viewModel.clickSave}" />
                 </RelativeLayout>
-            </com.dl.playfun.widget.BasicToolbar>
+            </com.fine.friendlycc.widget.BasicToolbar>
 
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -120,7 +120,7 @@
                         android:layout_weight="1"
                         android:gravity="center_vertical">
 
-                        <com.dl.playfun.widget.image.CircleImageView
+                        <com.fine.friendlycc.widget.image.CircleImageView
                             android:id="@+id/iv_avatar"
                             android:layout_width="40dp"
                             android:layout_height="40dp"

@@ -5,11 +5,11 @@
 
     <data>
 
-        <import type="com.dl.playfun.R" />
+        <import type="com.fine.friendlycc.R" />
 
         <variable
             name="viewModel"
-            type="com.dl.playfun.ui.mine.vipsubscribe.VipPrivilegeItemViewModel" />
+            type="com.fine.friendlycc.ui.mine.vipsubscribe.VipPrivilegeItemViewModel" />
     </data>
 
     <RelativeLayout

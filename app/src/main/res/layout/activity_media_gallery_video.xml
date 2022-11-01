@@ -8,7 +8,7 @@
         <import type="android.view.View" />
         <variable
             name="videoViewModel"
-            type="com.dl.playfun.ui.message.mediagallery.video.MediaGalleryVideoPayViewModel" />
+            type="com.fine.friendlycc.ui.message.mediagallery.video.MediaGalleryVideoPayViewModel" />
     </data>
 
     <FrameLayout
@@ -39,7 +39,7 @@
                 binding:onClickCommand="@{videoViewModel.onBackViewClick}"
                 />
 
-            <com.dl.playfun.widget.videoview.SampleCoverVideo
+            <com.fine.friendlycc.widget.videoview.SampleCoverVideo
                 android:id="@+id/video_player"
                 android:layout_width="match_parent"
                 android:layout_height="360dp"
@@ -135,7 +135,7 @@
                     android:layout_width="115dp"
                     android:layout_height="115dp"
                     tools:ignore="UselessParent">
-                    <com.dl.playfun.widget.progress.MPCircleProgressBar
+                    <com.fine.friendlycc.widget.progress.MPCircleProgressBar
                         android:id="@+id/mp_progress"
                         android:layout_gravity="center"
                         android:layout_width="72dp"

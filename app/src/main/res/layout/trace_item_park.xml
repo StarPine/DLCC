@@ -6,9 +6,9 @@
 
     <data>
 
-        <import type="com.dl.playfun.R" />
+        <import type="com.fine.friendlycc.R" />
 
-        <import type="com.dl.playfun.utils.SystemDictUtils" />
+        <import type="com.fine.friendlycc.utils.SystemDictUtils" />
 
         <import type="com.blankj.utilcode.util.StringUtils" />
 
@@ -18,7 +18,7 @@
 
         <variable
             name="viewModel"
-            type="com.dl.playfun.ui.mine.trace.TraceItemViewModel" />
+            type="com.fine.friendlycc.ui.mine.trace.TraceItemViewModel" />
     </data>
 
     <RelativeLayout
@@ -31,7 +31,7 @@
         android:paddingBottom="17.46dp"
         binding:onClickCommand="@{viewModel.UserOnClickCommand}">
 
-        <com.dl.playfun.widget.image.CircleImageView
+        <com.fine.friendlycc.widget.image.CircleImageView
             android:id="@+id/iv_avatar"
             android:layout_width="76dp"
             android:layout_height="76dp"

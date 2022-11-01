@@ -7,9 +7,9 @@
 
     <data>
 
-        <import type="com.dl.playfun.R" />
+        <import type="com.fine.friendlycc.R" />
 
-        <import type="com.dl.playfun.utils.SystemDictUtils" />
+        <import type="com.fine.friendlycc.utils.SystemDictUtils" />
 
         <import type="android.view.View" />
 
@@ -18,7 +18,7 @@
 
         <variable
             name="viewModel"
-            type="com.dl.playfun.ui.viewmodel.BaseParkItemViewModel" />
+            type="com.fine.friendlycc.ui.viewmodel.BaseParkItemViewModel" />
     </data>
 
     <RelativeLayout
@@ -35,7 +35,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp">
 
-            <com.dl.playfun.widget.image.CircleImageView
+            <com.fine.friendlycc.widget.image.CircleImageView
                 android:id="@+id/iv_avatar"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.dl.playfun.ui.message.chatdetail.notepad.NotepadViewModel" />
+            type="com.fine.friendlycc.ui.message.chatdetail.notepad.NotepadViewModel" />
     </data>
 
     <LinearLayout
@@ -28,7 +28,7 @@
             android:theme="@style/AppTheme.AppBarOverlay"
             app:elevation="0dp">
 
-            <com.dl.playfun.widget.BasicToolbar
+            <com.fine.friendlycc.widget.BasicToolbar
                 android:id="@+id/basic_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
@@ -55,7 +55,7 @@
 
                 </RelativeLayout>
 
-            </com.dl.playfun.widget.BasicToolbar>
+            </com.fine.friendlycc.widget.BasicToolbar>
         </com.google.android.material.appbar.AppBarLayout>
 
         <RelativeLayout

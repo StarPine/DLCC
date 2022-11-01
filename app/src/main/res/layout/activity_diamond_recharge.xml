@@ -8,19 +8,19 @@
 
         <import type="android.view.View" />
 
-        <import type="com.dl.playfun.R" />
+        <import type="com.fine.friendlycc.R" />
 
         <import type="com.blankj.utilcode.util.ObjectUtils" />
 
         <import type="me.tatarka.bindingcollectionadapter2.LayoutManagers" />
 
-        <import type="com.dl.playfun.widget.recyclerview.LineManagers" />
+        <import type="com.fine.friendlycc.widget.recyclerview.LineManagers" />
 
         <import type="androidx.recyclerview.widget.LinearLayoutManager" />
 
         <variable
             name="viewModel"
-            type="com.dl.playfun.ui.mine.wallet.diamond.recharge.DiamondRechargeViewModel" />
+            type="com.fine.friendlycc.ui.mine.wallet.diamond.recharge.DiamondRechargeViewModel" />
     </data>
 
     <RelativeLayout
@@ -60,7 +60,7 @@
             android:theme="@style/AppTheme.AppBarOverlay"
             app:elevation="0dp">
 
-            <com.dl.playfun.widget.BasicToolbar
+            <com.fine.friendlycc.widget.BasicToolbar
                 android:id="@+id/basic_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
@@ -89,7 +89,7 @@
 
                 </RelativeLayout>
 
-            </com.dl.playfun.widget.BasicToolbar>
+            </com.fine.friendlycc.widget.BasicToolbar>
 
         </com.google.android.material.appbar.AppBarLayout>
 

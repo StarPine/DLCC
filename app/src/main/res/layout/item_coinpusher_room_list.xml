@@ -7,8 +7,8 @@
     <data>
         <variable
             name="itemEntity"
-            type="com.dl.playfun.entity.CoinPusherRoomDeviceInfo" />
-        <import type="com.dl.playfun.R" />
+            type="com.fine.friendlycc.entity.CoinPusherRoomDeviceInfo" />
+        <import type="com.fine.friendlycc.R" />
     </data>
     <FrameLayout
         android:layout_width="wrap_content"
@@ -39,7 +39,7 @@
                 tools:background="@color/red_9"
                 />
 
-            <com.dl.playfun.widget.roundedimageview.RoundedImageView
+            <com.fine.friendlycc.widget.roundedimageview.RoundedImageView
                 android:id="@+id/img_icon"
                 android:layout_width="match_parent"
                 android:layout_height="158dp"

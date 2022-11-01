@@ -6,19 +6,19 @@
 
     <data>
 
-        <import type="com.dl.playfun.R" />
+        <import type="com.fine.friendlycc.R" />
 
         <import type="android.view.View" />
 
-        <import type="com.dl.playfun.utils.SystemDictUtils" />
+        <import type="com.fine.friendlycc.utils.SystemDictUtils" />
 
         <variable
             name="viewModel"
-            type="com.dl.playfun.ui.radio.radiohome.RadioViewModel" />
+            type="com.fine.friendlycc.ui.radio.radiohome.RadioViewModel" />
 
         <import type="me.tatarka.bindingcollectionadapter2.LayoutManagers" />
 
-        <import type="com.dl.playfun.widget.recyclerview.LineManagers" />
+        <import type="com.fine.friendlycc.widget.recyclerview.LineManagers" />
 
         <import type="androidx.recyclerview.widget.LinearLayoutManager" />
     </data>
@@ -28,7 +28,7 @@
         android:layout_height="match_parent"
         android:background="@color/white"
         android:orientation="vertical"
-        tools:context="com.dl.playfun.ui.radio.radiohome.RadioFragment">
+        tools:context="com.fine.friendlycc.ui.radio.radiohome.RadioFragment">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -110,7 +110,7 @@
                             android:layout_height="wrap_content"
                             >
 
-                            <com.dl.playfun.widget.recyclerview.banner.BannerRecyclerView
+                            <com.fine.friendlycc.widget.recyclerview.banner.BannerRecyclerView
                                 android:id="@+id/rcv_aduser"
                                 android:layout_width="match_parent"
                                 android:layout_height="260dp"

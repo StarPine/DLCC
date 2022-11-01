@@ -6,13 +6,13 @@
 
     <data>
 
-        <import type="com.dl.playfun.R" />
+        <import type="com.fine.friendlycc.R" />
 
         <import type="android.view.View" />
 
         <variable
             name="viewModel"
-            type="com.dl.playfun.ui.task.TaskCenterItemViewModel" />
+            type="com.fine.friendlycc.ui.task.TaskCenterItemViewModel" />
     </data>
 
     <RelativeLayout
@@ -28,7 +28,7 @@
                     android:visibility="@{viewModel.newsTitleShow}"
                     binding:animateImage="@{viewModel.newsTitleAnimate}" />-->
 
-        <com.dl.playfun.widget.image.CircleImageView
+        <com.fine.friendlycc.widget.image.CircleImageView
             android:id="@+id/iv_avatar"
             android:layout_width="48dp"
             android:layout_height="48dp"

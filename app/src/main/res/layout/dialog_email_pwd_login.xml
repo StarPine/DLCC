@@ -69,7 +69,7 @@
                     android:layout_marginStart="6dp"
                     android:src="@mipmap/icon_email_pwd" />
 
-                <com.dl.playfun.widget.custom.PasswordEditText
+                <com.fine.friendlycc.widget.custom.PasswordEditText
                     android:id="@+id/edit_email_pwd"
                     style="@style/EditText"
                     android:layout_width="match_parent"

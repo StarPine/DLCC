@@ -8,7 +8,7 @@
         <import type="android.view.View" />
         <variable
             name="photoViewModel"
-            type="com.dl.playfun.ui.message.mediagallery.photo.MediaGalleryPhotoPayViewModel" />
+            type="com.fine.friendlycc.ui.message.mediagallery.photo.MediaGalleryPhotoPayViewModel" />
     </data>
     <RelativeLayout
         android:splitMotionEvents="false"
@@ -229,7 +229,7 @@
                 android:layout_width="115dp"
                 android:layout_height="115dp"
                 tools:ignore="UselessParent">
-                <com.dl.playfun.widget.progress.MPCircleProgressBar
+                <com.fine.friendlycc.widget.progress.MPCircleProgressBar
                     android:id="@+id/mp_progress"
                     android:layout_gravity="center"
                     android:layout_width="72dp"

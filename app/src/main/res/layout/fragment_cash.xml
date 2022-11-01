@@ -7,14 +7,14 @@
 
         <variable
             name="viewModel"
-            type="com.dl.playfun.ui.mine.wallet.cash.CashViewModel" />
+            type="com.fine.friendlycc.ui.mine.wallet.cash.CashViewModel" />
     </data>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/container_background"
-        tools:context="com.dl.playfun.ui.mine.wallet.cash.CashFragment">
+        tools:context="com.fine.friendlycc.ui.mine.wallet.cash.CashFragment">
 
         <View
             android:id="@+id/status_bar_view"

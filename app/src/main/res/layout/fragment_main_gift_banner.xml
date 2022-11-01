@@ -34,7 +34,7 @@
             android:gravity="center"
             android:orientation="vertical">
 
-            <com.dl.playfun.widget.image.CircleImageView
+            <com.fine.friendlycc.widget.image.CircleImageView
                 android:id="@+id/left_user_img"
                 android:layout_width="46dp"
                 android:layout_height="46dp"
@@ -114,7 +114,7 @@
             android:gravity="center"
             android:orientation="vertical">
 
-            <com.dl.playfun.widget.image.CircleImageView
+            <com.fine.friendlycc.widget.image.CircleImageView
                 android:id="@+id/right_user_img"
                 android:layout_width="46dp"
                 android:layout_height="46dp"

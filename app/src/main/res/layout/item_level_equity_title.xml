@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.dl.playfun.ui.mine.level.LevelEquityItemTitleViewModel" />
+            type="com.fine.friendlycc.ui.mine.level.LevelEquityItemTitleViewModel" />
     </data>
 
     <FrameLayout

@@ -8,14 +8,14 @@
 
         <variable
             name="viewModel"
-            type="com.dl.playfun.ui.userdetail.locationmaps.LocationMapsViewModel" />
+            type="com.fine.friendlycc.ui.userdetail.locationmaps.LocationMapsViewModel" />
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context="com.dl.playfun.ui.userdetail.report.ReportUserFragment">
+        tools:context="com.fine.friendlycc.ui.userdetail.report.ReportUserFragment">
 
         <View
             android:id="@+id/status_bar_view"
@@ -29,13 +29,13 @@
             android:theme="@style/AppTheme.AppBarOverlay"
             app:elevation="0dp">
 
-            <com.dl.playfun.widget.BasicToolbar
+            <com.fine.friendlycc.widget.BasicToolbar
                 android:id="@+id/basic_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/action_bar_height"
                 app:toolbar_title="@string/playfun_chat_action_location">
 
-            </com.dl.playfun.widget.BasicToolbar>
+            </com.fine.friendlycc.widget.BasicToolbar>
 
         </com.google.android.material.appbar.AppBarLayout>
 

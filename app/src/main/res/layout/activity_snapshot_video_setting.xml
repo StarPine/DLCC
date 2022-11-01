@@ -8,7 +8,7 @@
         <import type="android.view.View" />
         <variable
             name="viewModel"
-            type="com.dl.playfun.ui.message.mediagallery.MediaGalleryVideoSettingViewModel" />
+            type="com.fine.friendlycc.ui.message.mediagallery.MediaGalleryVideoSettingViewModel" />
     </data>
 
     <LinearLayout
@@ -58,7 +58,7 @@
 <!--                android:layout_width="match_parent"-->
 <!--                android:layout_height="match_parent"-->
 <!--                android:layout_above="@+id/fl_layout_bottom" />-->
-            <com.dl.playfun.widget.videoview.SampleCoverVideo
+            <com.fine.friendlycc.widget.videoview.SampleCoverVideo
                 android:id="@+id/video_player"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

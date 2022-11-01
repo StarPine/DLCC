@@ -11,7 +11,7 @@
 
         <variable
             name="viewModel"
-            type="com.dl.playfun.ui.userdetail.detail.UserDetailViewModel" />
+            type="com.fine.friendlycc.ui.userdetail.detail.UserDetailViewModel" />
     </data>
 
     <LinearLayout
@@ -30,7 +30,7 @@
             android:gravity="center"
             android:orientation="horizontal">
 
-            <com.dl.playfun.widget.DrawableCenterTextView
+            <com.fine.friendlycc.widget.DrawableCenterTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawableStart="@drawable/ic_toolbar_evaluate"
@@ -47,7 +47,7 @@
             android:gravity="center"
             android:orientation="horizontal">
 
-            <com.dl.playfun.widget.DrawableCenterTextView
+            <com.fine.friendlycc.widget.DrawableCenterTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawableStart="@{viewModel.detailEntity.isAccost == 0?@drawable/ic_user_detail_accost:@drawable/ic_user_detail_send_message}"
@@ -65,7 +65,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="horizontal">
-            <com.dl.playfun.widget.DrawableCenterTextView
+            <com.fine.friendlycc.widget.DrawableCenterTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawableStart="@drawable/ic_user_detail_audio"
@@ -81,7 +81,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="horizontal">
-            <com.dl.playfun.widget.DrawableCenterTextView
+            <com.fine.friendlycc.widget.DrawableCenterTextView
                 android:id="@+id/dt_social_account"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

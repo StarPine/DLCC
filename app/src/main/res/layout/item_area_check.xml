@@ -5,10 +5,10 @@
     xmlns:binding="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <import type="com.dl.playfun.R" />
+        <import type="com.fine.friendlycc.R" />
         <variable
             name="viewModel"
-            type="com.dl.playfun.ui.login.choose.ItemChooseAreaViewModel" />
+            type="com.fine.friendlycc.ui.login.choose.ItemChooseAreaViewModel" />
     </data>
 
     <RelativeLayout

@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.dl.playfun.ui.message.chatdetail.ChatDetailViewModel" />
+            type="com.fine.friendlycc.ui.message.chatdetail.ChatDetailViewModel" />
     </data>
 
     <LinearLayout

@@ -6,13 +6,13 @@
 
     <data>
 
-        <import type="com.dl.playfun.R" />
+        <import type="com.fine.friendlycc.R" />
 
-        <import type="com.dl.playfun.utils.TimeUtils" />
+        <import type="com.fine.friendlycc.utils.TimeUtils" />
 
         <variable
             name="viewModel"
-            type="com.dl.playfun.ui.message.profitmessage.ProfitMessageItemViewModel" />
+            type="com.fine.friendlycc.ui.message.profitmessage.ProfitMessageItemViewModel" />
     </data>
 
     <RelativeLayout
@@ -23,7 +23,7 @@
         binding:onClickCommand="@{viewModel.itemClick}"
         binding:onLongClickCommand="@{viewModel.itemLongClick}">
 
-        <com.dl.playfun.widget.roundedimageview.RoundedImageView
+        <com.fine.friendlycc.widget.roundedimageview.RoundedImageView
             android:id="@+id/iv_avatar"
             android:layout_width="48dp"
             android:layout_height="48dp"

@@ -6,21 +6,21 @@
 
     <data>
 
-        <import type="com.dl.playfun.R" />
+        <import type="com.fine.friendlycc.R" />
 
         <import type="android.view.View" />
 
-        <import type="com.dl.playfun.utils.SystemDictUtils" />
+        <import type="com.fine.friendlycc.utils.SystemDictUtils" />
 
         <import type="com.blankj.utilcode.util.StringUtils" />
 
         <variable
             name="viewModel"
-            type="com.dl.playfun.ui.vest.fourth.VestFourthViewModel" />
+            type="com.fine.friendlycc.ui.vest.fourth.VestFourthViewModel" />
 
         <import type="me.tatarka.bindingcollectionadapter2.LayoutManagers" />
 
-        <import type="com.dl.playfun.widget.recyclerview.LineManagers" />
+        <import type="com.fine.friendlycc.widget.recyclerview.LineManagers" />
     </data>
 
     <RelativeLayout

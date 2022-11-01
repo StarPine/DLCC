@@ -5,12 +5,12 @@
 
     <data>
 
-        <import type="com.dl.playfun.R" />
+        <import type="com.fine.friendlycc.R" />
 
         <import type="android.text.Html" />
         <variable
             name="viewModel"
-            type="com.dl.playfun.ui.mine.wallet.girl.TwDollarMoneyItemViewModel" />
+            type="com.fine.friendlycc.ui.mine.wallet.girl.TwDollarMoneyItemViewModel" />
     </data>
 
     <RelativeLayout
@@ -20,7 +20,7 @@
         android:padding="14dp"
         binding:onClickCommand="@{viewModel.itemClick}">
 
-        <com.dl.playfun.widget.roundedimageview.RoundedImageView
+        <com.fine.friendlycc.widget.roundedimageview.RoundedImageView
             android:id="@+id/iv_avatar"
             android:layout_width="48dp"
             android:layout_height="48dp"

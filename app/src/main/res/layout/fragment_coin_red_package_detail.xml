@@ -6,20 +6,20 @@
 
     <data>
 
-        <import type="com.dl.playfun.R" />
+        <import type="com.fine.friendlycc.R" />
 
         <import type="android.view.View" />
 
         <variable
             name="viewModel"
-            type="com.dl.playfun.ui.message.coinredpackagedetail.CoinRedPackageDetailViewModel" />
+            type="com.fine.friendlycc.ui.message.coinredpackagedetail.CoinRedPackageDetailViewModel" />
     </data>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context="com.dl.playfun.ui.message.coinredpackagedetail.CoinRedPackageDetailFragment">
+        tools:context="com.fine.friendlycc.ui.message.coinredpackagedetail.CoinRedPackageDetailFragment">
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
@@ -39,7 +39,7 @@
                     android:adjustViewBounds="true"
                     android:src="@drawable/redpackage_detail_top" />
 
-                <com.dl.playfun.widget.roundedimageview.RoundedImageView
+                <com.fine.friendlycc.widget.roundedimageview.RoundedImageView
                     android:id="@+id/iv_avatar"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
@@ -162,7 +162,7 @@
             android:theme="@style/AppTheme.AppBarOverlay"
             app:elevation="0dp">
 
-            <com.dl.playfun.widget.BasicToolbar
+            <com.fine.friendlycc.widget.BasicToolbar
                 android:id="@+id/basic_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/action_bar_height"

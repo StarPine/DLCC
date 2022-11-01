@@ -19,7 +19,7 @@
         android:theme="@style/AppTheme.AppBarOverlay"
         app:elevation="0dp">
 
-        <com.dl.playfun.widget.BasicToolbar
+        <com.fine.friendlycc.widget.BasicToolbar
             android:id="@+id/basic_toolbar"
             android:layout_width="match_parent"
             android:layout_height="@dimen/action_bar_height"

@@ -5,13 +5,13 @@
 
     <data>
 
-        <import type="com.dl.playfun.R" />
+        <import type="com.fine.friendlycc.R" />
 
-        <import type="com.dl.playfun.utils.TimeUtils" />
+        <import type="com.fine.friendlycc.utils.TimeUtils" />
 
         <variable
             name="viewModel"
-            type="com.dl.playfun.ui.mine.wallet.coin.CoinItemViewModel" />
+            type="com.fine.friendlycc.ui.mine.wallet.coin.CoinItemViewModel" />
     </data>
 
     <RelativeLayout
@@ -20,7 +20,7 @@
         android:background="@color/white"
         android:padding="14dp">
 
-        <com.dl.playfun.widget.roundedimageview.RoundedImageView
+        <com.fine.friendlycc.widget.roundedimageview.RoundedImageView
             android:id="@+id/iv_avatar"
             android:layout_width="48dp"
             android:layout_height="48dp"

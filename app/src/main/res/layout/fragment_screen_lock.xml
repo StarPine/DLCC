@@ -8,7 +8,7 @@
 
         <variable
             name="viewModel"
-            type="com.dl.playfun.ui.mine.creenlock.ScreenLockViewModel" />
+            type="com.fine.friendlycc.ui.mine.creenlock.ScreenLockViewModel" />
 
         <import type="android.view.View" />
     </data>
@@ -17,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context="com.dl.playfun.ui.mine.creenlock.ScreenLockFragment">
+        tools:context="com.fine.friendlycc.ui.mine.creenlock.ScreenLockFragment">
 
         <View
             android:layout_width="match_parent"
@@ -96,7 +96,7 @@
                     android:textSize="@dimen/text_size_small"
                     android:visibility="@{viewModel.isExplainVisibility?View.VISIBLE:View.INVISIBLE}" />
 
-                <com.dl.playfun.widget.NineGridLockView
+                <com.fine.friendlycc.widget.NineGridLockView
                     android:id="@+id/lock"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

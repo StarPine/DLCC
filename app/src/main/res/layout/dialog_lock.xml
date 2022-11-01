@@ -44,7 +44,7 @@
             android:layout_marginTop="5dp"
             android:textSize="@dimen/text_size_small" />
 
-        <com.dl.playfun.widget.NineGridLockView
+        <com.fine.friendlycc.widget.NineGridLockView
             android:id="@+id/lock"
             android:layout_width="match_parent"
             android:layout_height="380dp"

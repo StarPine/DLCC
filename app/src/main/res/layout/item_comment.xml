@@ -7,9 +7,9 @@
 
         <variable
             name="viewModel"
-            type="com.dl.playfun.ui.mine.broadcast.mytrends.CommentItemViewModel" />
+            type="com.fine.friendlycc.ui.mine.broadcast.mytrends.CommentItemViewModel" />
 
-        <import type="com.dl.playfun.R" />
+        <import type="com.fine.friendlycc.R" />
 
         <import type="android.view.View" />
     </data>

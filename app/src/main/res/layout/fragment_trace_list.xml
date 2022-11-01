@@ -7,11 +7,11 @@
 
         <variable
             name="viewModel"
-            type="com.dl.playfun.ui.mine.trace.list.TraceListViewModel" />
+            type="com.fine.friendlycc.ui.mine.trace.list.TraceListViewModel" />
 
         <import type="me.tatarka.bindingcollectionadapter2.LayoutManagers" />
 
-        <import type="com.dl.playfun.widget.recyclerview.LineManagers" />
+        <import type="com.fine.friendlycc.widget.recyclerview.LineManagers" />
     </data>
 
     <com.scwang.smart.refresh.layout.SmartRefreshLayout

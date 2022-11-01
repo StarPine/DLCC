@@ -6,19 +6,19 @@
 
     <data>
 
-        <import type="com.dl.playfun.R" />
+        <import type="com.fine.friendlycc.R" />
 
         <import type="android.view.View" />
 
-        <import type="com.dl.playfun.utils.SystemDictUtils" />
+        <import type="com.fine.friendlycc.utils.SystemDictUtils" />
 
         <variable
             name="viewModel"
-            type="com.dl.playfun.ui.home.HomeMainViewModel" />
+            type="com.fine.friendlycc.ui.home.HomeMainViewModel" />
 
         <import type="me.tatarka.bindingcollectionadapter2.LayoutManagers" />
 
-        <import type="com.dl.playfun.widget.recyclerview.LineManagers" />
+        <import type="com.fine.friendlycc.widget.recyclerview.LineManagers" />
 
         <import type="androidx.recyclerview.widget.LinearLayoutManager" />
     </data>
@@ -66,7 +66,7 @@
             binding:drawable_radius_leftTop="@{20}"
             binding:drawable_radius_rightTop="@{20}"
             android:orientation="vertical"
-            tools:context="com.dl.playfun.ui.home.HomeMainFragment">
+            tools:context="com.fine.friendlycc.ui.home.HomeMainFragment">
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -192,7 +192,7 @@
         </LinearLayout>
 
 
-        <com.dl.playfun.widget.image.HomeShareImageView
+        <com.fine.friendlycc.widget.image.HomeShareImageView
             tools:visibility="visible"
             android:id="@+id/iv_accost"
             android:layout_width="58dp"

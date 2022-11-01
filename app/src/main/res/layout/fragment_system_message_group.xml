@@ -6,15 +6,15 @@
 
     <data>
 
-        <import type="com.dl.playfun.ui.message.systemmessagegroup.SystemMessageGroupViewModel" />
+        <import type="com.fine.friendlycc.ui.message.systemmessagegroup.SystemMessageGroupViewModel" />
 
         <variable
             name="viewModel"
-            type="com.dl.playfun.ui.message.systemmessagegroup.SystemMessageGroupViewModel" />
+            type="com.fine.friendlycc.ui.message.systemmessagegroup.SystemMessageGroupViewModel" />
 
         <import type="me.tatarka.bindingcollectionadapter2.LayoutManagers" />
 
-        <import type="com.dl.playfun.widget.recyclerview.LineManagers" />
+        <import type="com.fine.friendlycc.widget.recyclerview.LineManagers" />
     </data>
 
     <LinearLayout
@@ -34,7 +34,7 @@
             android:theme="@style/AppTheme.AppBarOverlay"
             app:elevation="0dp">
 
-            <com.dl.playfun.widget.BasicToolbar
+            <com.fine.friendlycc.widget.BasicToolbar
                 android:id="@+id/basic_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"

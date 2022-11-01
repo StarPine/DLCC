@@ -8,11 +8,11 @@
 
         <variable
             name="viewModel"
-            type="com.dl.playfun.ui.mine.exclusive.ExclusiveCallViewModel" />
+            type="com.fine.friendlycc.ui.mine.exclusive.ExclusiveCallViewModel" />
 
         <import type="android.view.View" />
 
-        <import type="com.dl.playfun.R" />
+        <import type="com.fine.friendlycc.R" />
 
     </data>
 
@@ -38,13 +38,13 @@
                 android:theme="@style/AppTheme.AppBarOverlay"
                 app:elevation="0dp">
 
-                <com.dl.playfun.widget.BasicToolbar
+                <com.fine.friendlycc.widget.BasicToolbar
                     android:id="@+id/basic_toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     app:toolbar_title="@string/playfun_mine_title_my_exclusive">
 
-                </com.dl.playfun.widget.BasicToolbar>
+                </com.fine.friendlycc.widget.BasicToolbar>
             </com.google.android.material.appbar.AppBarLayout>
 
             <LinearLayout
@@ -145,7 +145,7 @@
                 </RelativeLayout>
 
 
-                <com.dl.playfun.widget.image.CircleImageView
+                <com.fine.friendlycc.widget.image.CircleImageView
                     android:id="@+id/user_avatar"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
@@ -253,7 +253,7 @@
                     </LinearLayout>
                 </RelativeLayout>
 
-                <com.dl.playfun.widget.image.CircleImageView
+                <com.fine.friendlycc.widget.image.CircleImageView
                     android:id="@+id/user_avatar2"
                     android:layout_width="40dp"
                     android:layout_height="40dp"

@@ -8,11 +8,11 @@
 
         <variable
             name="viewModel"
-            type="com.dl.playfun.ui.mine.broadcast.myall.MyAllBroadcastViewModel" />
+            type="com.fine.friendlycc.ui.mine.broadcast.myall.MyAllBroadcastViewModel" />
 
         <import type="me.tatarka.bindingcollectionadapter2.LayoutManagers" />
 
-        <import type="com.dl.playfun.widget.recyclerview.LineManagers" />
+        <import type="com.fine.friendlycc.widget.recyclerview.LineManagers" />
 
         <import type="android.view.View" />
     </data>
@@ -21,7 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/container_background"
-        tools:context="com.dl.playfun.ui.mine.broadcast.myall.MyAllBroadcastFragment">
+        tools:context="com.fine.friendlycc.ui.mine.broadcast.myall.MyAllBroadcastFragment">
 
         <com.scwang.smart.refresh.layout.SmartRefreshLayout
             android:id="@+id/refresh_layout"

@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <import type="com.dl.playfun.R" />
+        <import type="com.fine.friendlycc.R" />
 
         <variable
             name="viewModel"
-            type="com.dl.playfun.ui.mine.profile.PerfectProfileViewModel" />
+            type="com.fine.friendlycc.ui.mine.profile.PerfectProfileViewModel" />
     </data>
 
     <LinearLayout
@@ -64,7 +64,7 @@
                     android:textSize="14sp" />
 
 
-                <com.dl.playfun.widget.image.CircleImageView
+                <com.fine.friendlycc.widget.image.CircleImageView
                     android:id="@+id/img_avatar"
                     android:layout_width="150dp"
                     android:layout_height="150dp"

@@ -7,11 +7,11 @@
 
         <import type="android.view.View" />
 
-        <import type="com.dl.playfun.R" />
+        <import type="com.fine.friendlycc.R" />
 
         <variable
             name="viewModel"
-            type="com.dl.playfun.kl.viewmodel.AudioCallChatingItemViewModel" />
+            type="com.fine.friendlycc.kl.viewmodel.AudioCallChatingItemViewModel" />
     </data>
 
     <LinearLayout

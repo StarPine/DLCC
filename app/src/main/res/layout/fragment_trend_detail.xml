@@ -8,33 +8,33 @@
 
         <variable
             name="viewModel"
-            type="com.dl.playfun.ui.mine.broadcast.mytrends.trenddetail.TrendDetailViewModel" />
+            type="com.fine.friendlycc.ui.mine.broadcast.mytrends.trenddetail.TrendDetailViewModel" />
 
         <import type="me.tatarka.bindingcollectionadapter2.LayoutManagers" />
 
-        <import type="com.dl.playfun.widget.recyclerview.LineManagers" />
+        <import type="com.fine.friendlycc.widget.recyclerview.LineManagers" />
 
-        <import type="com.dl.playfun.utils.StringUtil" />
+        <import type="com.fine.friendlycc.utils.StringUtil" />
 
         <variable
             name="adapter"
-            type="com.dl.playfun.ui.mine.broadcast.mytrends.HeadRecyclerViewAdapter" />
+            type="com.fine.friendlycc.ui.mine.broadcast.mytrends.HeadRecyclerViewAdapter" />
 
         <variable
             name="ivadapter"
-            type="com.dl.playfun.ui.mine.broadcast.mytrends.ImageRecyclerViewAdapter" />
+            type="com.fine.friendlycc.ui.mine.broadcast.mytrends.ImageRecyclerViewAdapter" />
 
         <variable
             name="commentadapter"
-            type="com.dl.playfun.ui.mine.broadcast.mytrends.CommentRecyclerViewAdapter" />
+            type="com.fine.friendlycc.ui.mine.broadcast.mytrends.CommentRecyclerViewAdapter" />
 
         <import type="android.view.View" />
 
-        <import type="com.dl.playfun.R" />
+        <import type="com.fine.friendlycc.R" />
 
-        <import type="com.dl.playfun.utils.ListUtils" />
+        <import type="com.fine.friendlycc.utils.ListUtils" />
 
-        <import type="com.dl.playfun.utils.TimeUtils" />
+        <import type="com.fine.friendlycc.utils.TimeUtils" />
 
         <import type="com.blankj.utilcode.util.StringUtils" />
     </data>
@@ -44,7 +44,7 @@
         android:layout_height="match_parent"
         android:background="@color/white"
         android:orientation="vertical"
-        tools:context="com.dl.playfun.com.dl.playfun.ui.mine.broadcast.mytrends.trenddetail.TrendDetailFragment">
+        tools:context="com.fine.friendlycc.com.dl.playfun.ui.mine.broadcast.mytrends.trenddetail.TrendDetailFragment">
 
         <View
             android:id="@+id/status_bar_view"
@@ -58,13 +58,13 @@
             android:theme="@style/AppTheme.AppBarOverlay"
             app:elevation="0dp">
 
-            <com.dl.playfun.widget.BasicToolbar
+            <com.fine.friendlycc.widget.BasicToolbar
                 android:id="@+id/basic_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/action_bar_height"
                 app:toolbar_title="@{viewModel.isSelf ? @string/playfun_trend_detail_title:@string/playfun_trend_detail_title_other}">
 
-            </com.dl.playfun.widget.BasicToolbar>
+            </com.fine.friendlycc.widget.BasicToolbar>
 
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -78,7 +78,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <com.dl.playfun.widget.image.CircleImageView
+                <com.fine.friendlycc.widget.image.CircleImageView
                     android:id="@+id/user_img"
                     android:layout_width="34dp"
                     android:layout_height="34dp"
@@ -195,7 +195,7 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
-                    <com.dl.playfun.widget.videoview.SampleCoverVideo
+                    <com.fine.friendlycc.widget.videoview.SampleCoverVideo
                         android:id="@+id/detail_video_player"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -205,7 +205,7 @@
                         binding:isVideoPlayer="@{StringUtils.isEmpty(viewModel.newsEntityObservableField.video)?false:true}"
                         binding:videoUrl="@{viewModel.newsEntityObservableField.video}"/>
 
-                    <com.dl.playfun.widget.roundedimageview.RoundedImageView
+                    <com.fine.friendlycc.widget.roundedimageview.RoundedImageView
                         android:id="@+id/detail_img"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -237,7 +237,7 @@
                     android:textSize="12sp"
                     tools:text="#想戀愛" />
 
-                <com.dl.playfun.widget.FolderTextView
+                <com.fine.friendlycc.widget.FolderTextView
                     android:id="@+id/content_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

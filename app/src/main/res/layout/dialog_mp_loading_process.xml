@@ -10,7 +10,7 @@
         android:layout_gravity="center"
         android:layout_width="115dp"
         android:layout_height="115dp">
-        <com.dl.playfun.widget.progress.MPCircleProgressBar
+        <com.fine.friendlycc.widget.progress.MPCircleProgressBar
             android:id="@+id/progress"
             android:layout_gravity="center"
             android:layout_width="72dp"

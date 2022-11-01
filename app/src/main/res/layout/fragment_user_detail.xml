@@ -8,21 +8,21 @@
 
         <import type="android.view.View" />
 
-        <import type="com.dl.playfun.utils.SystemDictUtils" />
+        <import type="com.fine.friendlycc.utils.SystemDictUtils" />
 
         <import type="com.blankj.utilcode.util.StringUtils" />
 
         <import type="com.blankj.utilcode.util.ObjectUtils" />
 
-        <import type="com.dl.playfun.R" />
+        <import type="com.fine.friendlycc.R" />
 
         <variable
             name="viewModel"
-            type="com.dl.playfun.ui.userdetail.detail.UserDetailViewModel" />
+            type="com.fine.friendlycc.ui.userdetail.detail.UserDetailViewModel" />
 
         <import type="me.tatarka.bindingcollectionadapter2.LayoutManagers" />
 
-        <import type="com.dl.playfun.widget.recyclerview.LineManagers" />
+        <import type="com.fine.friendlycc.widget.recyclerview.LineManagers" />
     </data>
 
     <RelativeLayout
@@ -63,7 +63,7 @@
                     android:layout_marginBottom="7dp"
                     android:clickable="true">
 
-                    <com.dl.playfun.widget.image.CircleImageView
+                    <com.fine.friendlycc.widget.image.CircleImageView
                         android:id="@+id/min_user_img"
                         android:layout_width="29dp"
                         android:layout_height="29dp"
@@ -214,7 +214,7 @@
                                                 android:layout_height="69dp"
                                                 android:background="@drawable/circle_white" />
 
-                                            <com.dl.playfun.widget.image.CircleImageView
+                                            <com.fine.friendlycc.widget.image.CircleImageView
                                                 android:layout_width="67dp"
                                                 android:layout_height="67dp"
                                                 android:layout_marginStart="1dp"
@@ -522,7 +522,7 @@
                                                     android:visibility="@{ObjectUtils.isEmpty(viewModel.detailEntity.news) ? View.GONE:View.VISIBLE}"
                                                     tools:visibility="gone">
 
-                                                    <com.dl.playfun.widget.roundedimageview.RoundedImageView
+                                                    <com.fine.friendlycc.widget.roundedimageview.RoundedImageView
                                                         android:layout_width="75dp"
                                                         android:layout_height="75dp"
                                                         android:layout_centerVertical="true"
@@ -536,7 +536,7 @@
                                                         binding:resizeH="@{78}"
                                                         binding:resizeW="@{78}" />
 
-                                                    <com.dl.playfun.widget.roundedimageview.RoundedImageView
+                                                    <com.fine.friendlycc.widget.roundedimageview.RoundedImageView
                                                         android:layout_width="75dp"
                                                         android:layout_height="75dp"
                                                         android:layout_centerVertical="true"
@@ -550,7 +550,7 @@
                                                         binding:resizeH="@{78}"
                                                         binding:resizeW="@{78}" />
 
-                                                    <com.dl.playfun.widget.roundedimageview.RoundedImageView
+                                                    <com.fine.friendlycc.widget.roundedimageview.RoundedImageView
                                                         android:layout_width="75dp"
                                                         android:layout_height="75dp"
                                                         android:layout_centerVertical="true"
@@ -570,7 +570,7 @@
                                                         android:layout_centerVertical="true"
                                                         android:layout_gravity="start">
 
-                                                        <com.dl.playfun.widget.roundedimageview.RoundedImageView
+                                                        <com.fine.friendlycc.widget.roundedimageview.RoundedImageView
                                                             android:layout_width="75dp"
                                                             android:layout_height="75dp"
                                                             android:scaleType="centerCrop"
@@ -720,7 +720,7 @@
                                                     android:textSize="12sp"
                                                     android:visibility="@{viewModel.isUserTagShow?View.GONE:View.VISIBLE}" />
 
-                                                <com.dl.playfun.widget.custom.FlowLayout
+                                                <com.fine.friendlycc.widget.custom.FlowLayout
                                                     android:id="@+id/flow_layout"
                                                     android:layout_width="match_parent"
                                                     android:layout_height="wrap_content"

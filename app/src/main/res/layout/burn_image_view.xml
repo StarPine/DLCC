@@ -42,7 +42,7 @@
 
     </LinearLayout>
 
-    <com.dl.playfun.widget.RoundProcess
+    <com.fine.friendlycc.widget.RoundProcess
         android:id="@+id/round_process"
         android:layout_width="36dp"
         android:layout_height="36dp"

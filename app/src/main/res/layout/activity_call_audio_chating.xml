@@ -7,14 +7,14 @@
     <data>
 
         <import type="android.view.View" />
-        <import type="com.dl.playfun.R" />
+        <import type="com.fine.friendlycc.R" />
         <variable
             name="viewModel"
-            type="com.dl.playfun.kl.viewmodel.AudioCallChatingViewModel" />
+            type="com.fine.friendlycc.kl.viewmodel.AudioCallChatingViewModel" />
 
         <import type="me.tatarka.bindingcollectionadapter2.LayoutManagers" />
 
-        <import type="com.dl.playfun.widget.recyclerview.LineManagers" />
+        <import type="com.fine.friendlycc.widget.recyclerview.LineManagers" />
         <import type="androidx.recyclerview.widget.LinearLayoutManager" />
     </data>
 
@@ -91,7 +91,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <com.dl.playfun.widget.image.CircleImageView
+                <com.fine.friendlycc.widget.image.CircleImageView
                     android:id="@+id/cimg_avatar_left"
                     android:layout_width="90dp"
                     android:layout_height="90dp"
@@ -115,7 +115,7 @@
                         app:autoPlay="true"/>
                 </FrameLayout>
 
-                <com.dl.playfun.widget.image.CircleImageView
+                <com.fine.friendlycc.widget.image.CircleImageView
                     android:id="@+id/cimg_avatar_right"
                     android:layout_width="90dp"
                     android:layout_height="90dp"
