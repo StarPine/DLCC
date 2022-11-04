@@ -9,12 +9,22 @@ import com.fine.friendlycc.entity.ConfigItemEntity;
  */
 public class CityChangeEvent {
     private ConfigItemEntity cityEntity;
+    private int index;
 
     public CityChangeEvent() {
     }
 
-    public CityChangeEvent(ConfigItemEntity cityEntity) {
+    public CityChangeEvent(ConfigItemEntity cityEntity, int index) {
         this.cityEntity = cityEntity;
+        this.index = index;
+    }
+
+    public int getIndex() {
+        return index;
+    }
+
+    public void setIndex(int index) {
+        this.index = index;
     }
 
     public ConfigItemEntity getCityEntity() {

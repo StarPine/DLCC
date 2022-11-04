@@ -54,7 +54,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="6dp"
             android:layout_toRightOf="@+id/tv_name"
-            android:src="@drawable/ic_real_man"
+            android:src="@drawable/ic_real_people"
             android:visibility="@{viewModel.isRealManVisible()}"
             tools:visibility="gone" />
 
@@ -65,9 +65,9 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="6dp"
             android:layout_toRightOf="@+id/iv_is_real"
-            android:src="@drawable/ic_goddess"
+            android:src="@drawable/ic_good_goddess"
             android:visibility="@{viewModel.isGoddessVisible()}"
-            tools:src="@drawable/ic_goddess" />
+            tools:src="@drawable/ic_good_goddess" />
 
         <ImageView
             android:id="@+id/is_vip"

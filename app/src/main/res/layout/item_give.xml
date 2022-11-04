@@ -57,7 +57,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="5dp"
             android:layout_toRightOf="@+id/tv_name"
-            android:src="@drawable/ic_real_man"
+            android:src="@drawable/ic_real_people"
             android:visibility="@{viewModel.baseUserBeanEntityObservableField.isVip != 1 &amp;&amp; viewModel.baseUserBeanEntityObservableField.certification==1?View.VISIBLE:View.GONE}" />
 
         <ImageView
@@ -68,7 +68,7 @@
             android:layout_marginLeft="5dp"
             android:layout_marginTop="8dp"
             android:layout_toRightOf="@+id/tv_name"
-            android:src="@{viewModel.baseUserBeanEntityObservableField.sex==1?@drawable/ic_vip:@drawable/ic_goddess}"
+            android:src="@{viewModel.baseUserBeanEntityObservableField.sex==1?@drawable/ic_vip:@drawable/ic_good_goddess}"
             android:visibility="@{viewModel.baseUserBeanEntityObservableField.isVip==1?View.VISIBLE:View.GONE}" />
     </RelativeLayout>
 </layout>

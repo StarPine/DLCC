@@ -112,7 +112,7 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginStart="7dp"
                     android:layout_toEndOf="@id/tv_name"
-                    android:src="@drawable/ic_real_man"
+                    android:src="@drawable/ic_real_people"
                     android:visibility="@{viewModel.isRealManVisible}" />
 
                 <ImageView
@@ -122,7 +122,7 @@
                     android:layout_alignTop="@+id/certification"
                     android:layout_marginStart="7dp"
                     android:layout_toEndOf="@id/certification"
-                    android:src="@{viewModel.newsEntityObservableField.user.sex==1?@drawable/ic_vip:@drawable/ic_goddess}"
+                    android:src="@{viewModel.newsEntityObservableField.user.sex==1?@drawable/ic_vip:@drawable/ic_good_goddess}"
                     android:visibility="@{viewModel.newsEntityObservableField.user.isVip==1?View.VISIBLE:View.GONE}"
                     tools:src="@drawable/ic_vip" />
 

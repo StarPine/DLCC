@@ -321,15 +321,15 @@ public class AudioCallingViewModel2 extends BaseViewModel<AppRepository> impleme
                         return AppContext.instance().getDrawable(R.drawable.ic_vip);
                     }else {
                         if(userProfileInfo.getCertification()==1){
-                            return AppContext.instance().getDrawable(R.drawable.ic_real_man);
+                            return AppContext.instance().getDrawable(R.drawable.ic_real_people);
                         }
                     }
                 } else {//女生
                     if(userProfileInfo.getIsVip()==1){
-                        return AppContext.instance().getDrawable(R.drawable.ic_goddess);
+                        return AppContext.instance().getDrawable(R.drawable.ic_good_goddess);
                     }else {
                         if(userProfileInfo.getCertification()==1){
-                            return  AppContext.instance().getDrawable(R.drawable.ic_real_man);
+                            return  AppContext.instance().getDrawable(R.drawable.ic_real_people);
                         }
                     }
                 }

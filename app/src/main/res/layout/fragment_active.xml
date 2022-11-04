@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.fine.friendlycc.ui.home.active.HomeFristTabViewModel" />
+
+        <import type="me.tatarka.bindingcollectionadapter2.LayoutManagers" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.scwang.smart.refresh.layout.SmartRefreshLayout
+            android:id="@+id/refresh_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="50dp"
+            android:background="@color/white"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            app:onLoadMoreCommand="@{viewModel.onLoadMoreCommand}"
+            app:onRefreshCommand="@{viewModel.onRefreshCommand}">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rcv_layout"
+                    app:adapter="@{viewModel.adapter}"
+                    app:itemBinding="@{viewModel.itemBinding}"
+                    app:items="@{viewModel.observableList}"
+                    app:gridList="@{viewModel.observableList}"
+                    app:gridLayoutManager="@{LayoutManagers.grid(2)}"
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+
+                <include
+                    layout="@layout/empty_view"
+                    app:stateModel="@{viewModel.stateModel}" />
+
+            </RelativeLayout>
+        </com.scwang.smart.refresh.layout.SmartRefreshLayout>
+
+    </LinearLayout>
+</layout>

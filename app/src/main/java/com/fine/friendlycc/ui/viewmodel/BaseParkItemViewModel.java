@@ -1,5 +1,6 @@
 package com.fine.friendlycc.ui.viewmodel;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 
@@ -11,6 +12,7 @@ import com.fine.friendlycc.R;
 import com.fine.friendlycc.app.AppContext;
 import com.fine.friendlycc.app.AppsFlyerEvent;
 import com.fine.friendlycc.entity.AdItemEntity;
+import com.fine.friendlycc.entity.CallingInfoEntity;
 import com.fine.friendlycc.entity.ParkItemEntity;
 import com.fine.friendlycc.manager.ConfigManager;
 import com.fine.friendlycc.ui.mine.wallet.diamond.recharge.DiamondRechargeActivity;
@@ -242,6 +244,29 @@ public class BaseParkItemViewModel extends MultiItemViewModel<BaseParkViewModel>
         }
         int occupationId = Objects.requireNonNull(itemEntity.get()).getOccupationId();
         return SystemDictUtils.getOccupationByIdOnNull(occupationId);
+    }
+
+    public Drawable getVipGodsImg(ParkItemEntity itemEntity) {
+        if (itemEntity != null) {
+            if (itemEntity.getSex() == 1) {
+                if (itemEntity.getIsVip() == 1) {
+                    return AppContext.instance().getDrawable(R.drawable.ic_vip);
+                } else {
+                    if (itemEntity.getCertification() == 1) {
+                        return AppContext.instance().getDrawable(R.drawable.ic_real_people);
+                    }
+                }
+            } else {//女生
+                if (itemEntity.getIsVip() == 1) {
+                    return AppContext.instance().getDrawable(R.drawable.ic_good_goddess);
+                } else {
+                    if (itemEntity.getCertification() == 1) {
+                        return AppContext.instance().getDrawable(R.drawable.ic_real_people);
+                    }
+                }
+            }
+        }
+        return null;
     }
 
 }

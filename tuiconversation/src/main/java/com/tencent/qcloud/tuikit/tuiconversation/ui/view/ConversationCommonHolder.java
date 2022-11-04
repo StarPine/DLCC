@@ -18,12 +18,9 @@ import com.tencent.imsdk.v2.V2TIMManager;
 import com.tencent.imsdk.v2.V2TIMMessage;
 import com.tencent.imsdk.v2.V2TIMUserFullInfo;
 import com.tencent.imsdk.v2.V2TIMValueCallback;
-import com.tencent.qcloud.tuicore.TUIConstants;
-import com.tencent.qcloud.tuicore.TUICore;
 import com.tencent.qcloud.tuicore.component.UnreadCountTextView;
 import com.tencent.qcloud.tuicore.util.ConfigManagerUtil;
 import com.tencent.qcloud.tuicore.util.DateTimeUtil;
-import com.tencent.qcloud.tuikit.tuichat.util.TUIChatUtils;
 import com.tencent.qcloud.tuikit.tuiconversation.R;
 import com.tencent.qcloud.tuikit.tuiconversation.TUIConversationService;
 import com.tencent.qcloud.tuikit.tuiconversation.bean.ConversationInfo;
@@ -273,11 +270,11 @@ public class ConversationCommonHolder extends ConversationBaseHolder {
                         iv_vip.setVisibility(View.VISIBLE);
                         certification.setVisibility(View.GONE);
                     } else if (level == 2) { //真人
-                        certification.setImageResource(R.drawable.ic_real_man);
+                        certification.setImageResource(R.drawable.ic_real_people);
                         iv_vip.setVisibility(View.GONE);
                         certification.setVisibility(View.VISIBLE);
                     } else if (level == 3 || level == 5) {
-                        iv_vip.setImageResource(R.drawable.ic_goddess);
+                        iv_vip.setImageResource(R.drawable.ic_good_goddess);
                         certification.setVisibility(View.GONE);
                         iv_vip.setVisibility(View.VISIBLE);
                     } else if (level == 4) {//真人加VIP只显示VIP

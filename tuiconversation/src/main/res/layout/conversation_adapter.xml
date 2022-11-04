@@ -58,7 +58,7 @@
                 android:layout_marginLeft="7dp"
                 android:layout_toEndOf="@id/conversation_title"
                 android:layout_toRightOf="@id/conversation_title"
-                android:src="@drawable/ic_real_man"
+                android:src="@drawable/ic_real_people"
                 android:visibility="gone"
                 tools:visibility="visible" />
 

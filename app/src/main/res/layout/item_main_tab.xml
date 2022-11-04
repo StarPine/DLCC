@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:binding="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingStart="15dp"
+    android:paddingEnd="15dp">
 
-    <data>
-        <variable
-            name="viewModel"
-            type="com.fine.friendlycc.ui.home.HomeMainTabItemViewModel" />
-    </data>
-
-    <FrameLayout
-        binding:onClickCommand="@{viewModel.itemClick}"
-        android:paddingStart="15dp"
-        android:paddingEnd="15dp"
+    <ImageView
+        android:id="@+id/iv_tab_item_bg"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:src="@drawable/item_checked_basemap"
+        android:visibility="gone" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text='@{String.valueOf(viewModel.itemMap.get("text"))}'
-            android:textColor="@{viewModel.checked?@color/black:@color/gift_left_txt_color}"
-            android:textStyle="bold"
-            android:textSize="18sp" />
-    </FrameLayout>
-</layout>
+    <TextView
+        android:id="@+id/tab_item_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="3dp"
+        android:gravity="bottom"
+        tools:text="@string/playfun_tab_male_3"
+        tools:textColor="@color/toolbar_title_color"
+        tools:textSize="18sp" />
+</FrameLayout>

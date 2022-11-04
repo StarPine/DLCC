@@ -74,7 +74,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="7dp"
                 android:layout_toRightOf="@+id/tv_name"
-                android:src="@drawable/ic_real_man"
+                android:src="@drawable/ic_real_people"
                 android:visibility="@{viewModel.isRealManVisible()}" />
 
             <ImageView
@@ -85,7 +85,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="7dp"
                 android:layout_toRightOf="@+id/iv_real_man"
-                android:src="@drawable/ic_goddess"
+                android:src="@drawable/ic_good_goddess"
                 android:visibility="@{viewModel.isGoddessVisible()}" />
 
             <ImageView

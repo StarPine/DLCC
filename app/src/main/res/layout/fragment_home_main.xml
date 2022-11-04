@@ -24,16 +24,16 @@
     </data>
 
     <RelativeLayout
-        android:background="@color/status_bar_color"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/status_bar_color">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/img_bar_background"
             android:layout_width="match_parent"
             android:layout_height="210dp"
             android:scaleType="fitXY"
-            android:src="@drawable/img_main_bar_backdrop" />
+            android:src="@drawable/top_bar_bg" />
 
         <View
             android:id="@+id/status_bar_view"
@@ -57,95 +57,85 @@
             tools:layout_height="110dp"
             tools:listitem="@layout/item_main_banner"
             tools:visibility="visible" />
+
         <LinearLayout
-            android:layout_below="@+id/rcv_banner"
-            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_below="@+id/rcv_banner"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical"
             binding:drawable_color="@{@color/white}"
             binding:drawable_radius_leftTop="@{20}"
             binding:drawable_radius_rightTop="@{20}"
-            android:orientation="vertical"
             tools:context="com.fine.friendlycc.ui.home.HomeMainFragment">
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="20dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:paddingBottom="10dp"
-                tools:background="@color/white"
-                >
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/iv_search"
-                    android:layout_marginStart="5dp"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/ic_search"
-                    binding:onClickCommand="@{viewModel.searchOnClickCommand}"
-                    android:contentDescription="TODO" />
+                android:gravity="center_vertical"
+                tools:background="@color/white">
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tab_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layoutRes="@{@layout/item_main_tab}"
+                    app:tabIndicatorFullWidth="false"
+                    app:tabIndicatorHeight="0dp"
+                    app:tabMode="scrollable"
+                    app:tabNameList="@{viewModel.tabList}"
+                    app:tabPaddingEnd="0dp"
+                    app:tabPaddingStart="0dp"
+                    app:tabRippleColor="@color/transparent" />
 
                 <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_search"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_toStartOf="@+id/iv_gender"
+                    android:layout_centerVertical="true"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_search"
+                    binding:onClickCommand="@{viewModel.searchOnClickCommand}" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_gender"
                     android:layout_width="21dp"
                     android:layout_height="21dp"
-                    android:layout_marginStart="18dp"
-                    android:layout_toEndOf="@+id/iv_search"
+                    android:layout_marginEnd="20dp"
+                    android:layout_toStartOf="@+id/ll_area"
+                    android:layout_centerVertical="true"
                     android:scaleType="fitXY"
                     android:src="@{safeUnbox(viewModel.gender) ? @drawable/ic_head_male : @drawable/ic_head_female}"
                     binding:onClickCommand="@{viewModel.genderOnClickCommand}"
                     tools:src="@drawable/ic_head_male" />
+
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_alignParentEnd="true"
-                    binding:onClickCommand="@{viewModel.regionOnClickCommand}"
+                    android:id="@+id/ll_area"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="15dp"
+                    android:orientation="horizontal"
+                    binding:onClickCommand="@{viewModel.regionOnClickCommand}">
+
                     <TextView
-                        android:text="@{viewModel.regionTitle}"
-                        android:includeFontPadding="false"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:includeFontPadding="false"
+                        android:text="@{viewModel.regionTitle}"
                         android:textColor="#ff333333"
-                        android:textSize="18sp"
-                        />
+                        android:textSize="18sp" />
+
                     <androidx.appcompat.widget.AppCompatImageView
                         android:layout_width="22dp"
                         android:layout_height="22dp"
                         android:scaleType="fitXY"
-                        android:src="@drawable/arrow_right_black"/>
+                        android:src="@drawable/arrow_right_black" />
                 </LinearLayout>
 
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/img_online"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignTop="@+id/rcv_table"
-                    android:layout_marginEnd="5dp"
-                    android:scaleType="fitXY"
-                    android:src="@{safeUnbox(viewModel.online)?@drawable/img_toolbar_online : @drawable/img_toolbar_noline}"
-                    binding:onClickCommand="@{viewModel.onlineOnCheckedChangeCommand}"
-                    tools:src="@drawable/img_toolbar_online" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rcv_table"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/iv_search"
-                    android:layout_marginTop="26dp"
-                    android:layout_toStartOf="@+id/img_online"
-                    android:nestedScrollingEnabled="false"
-                    binding:adapter="@{viewModel.adapterTab}"
-                    binding:itemBinding="@{viewModel.itemTabBinding}"
-                    binding:items="@{viewModel.observableListTab}"
-                    binding:layoutManager="@{LayoutManagers.linear(LinearLayoutManager.HORIZONTAL,false)}"
-                    tools:ignore="SpeakableTextPresentCheck"
-                    tools:itemCount="6"
-                    tools:layoutManager="LinearLayoutManager"
-                    tools:layout_height="40dp"
-                    tools:listitem="@layout/item_main_tab" />
             </RelativeLayout>
 
 
@@ -158,52 +148,27 @@
                 android:visibility="@{viewModel.locationService?View.GONE:View.VISIBLE}"
                 app:drawableRightCompat="@drawable/ic_arrow_right_golden"
                 tools:ignore="TextContrastCheck" />
-            <com.scwang.smart.refresh.layout.SmartRefreshLayout
-                android:id="@+id/refresh_layout"
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/view_pager"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="50dp"
-                android:background="@color/white"
-                app:layout_behavior="@string/appbar_scrolling_view_behavior"
-                binding:onLoadMoreCommand="@{viewModel.onLoadMoreCommand}"
-                binding:onRefreshCommand="@{viewModel.onRefreshCommand}">
+                android:layout_height="match_parent" />
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    >
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rcv_layout"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        app:layoutManager="LinearLayoutManager"
-                        binding:adapter="@{viewModel.adapter}"
-                        binding:itemBinding="@{viewModel.itemBinding}"
-                        binding:items="@{viewModel.observableList}"
-                        binding:lineManager="@{LineManagers.horizontal(1,104,0)}" />
-
-                    <include
-                        layout="@layout/empty_view"
-                        app:stateModel="@{viewModel.stateModel}" />
-
-                </RelativeLayout>
-            </com.scwang.smart.refresh.layout.SmartRefreshLayout>
         </LinearLayout>
 
 
         <com.fine.friendlycc.widget.image.HomeShareImageView
-            tools:visibility="visible"
             android:id="@+id/iv_accost"
             android:layout_width="58dp"
             android:layout_height="58dp"
             android:layout_marginStart="288dp"
             android:layout_marginTop="430dp"
-            android:elevation="50dp"
             android:clickable="true"
+            android:elevation="50dp"
             android:scaleType="centerCrop"
             android:src="@drawable/nearby_accost_tip_img"
-            binding:onClickCommand="@{viewModel.toTaskClickCommand}" />
+            binding:onClickCommand="@{viewModel.toTaskClickCommand}"
+            tools:visibility="visible" />
     </RelativeLayout>
 
 </layout>

@@ -185,7 +185,7 @@ public class MessageTextHolder extends MessageContentHolder {
                             } else {//女性用户
                                 if (isVip == 1) {
                                     ImageView ic_vip = itemView.findViewById(R.id.iv_vip);
-                                    ic_vip.setImageResource(R.drawable.ic_goddess);
+                                    ic_vip.setImageResource(R.drawable.ic_good_goddess);
                                     itemView.findViewById(R.id.iv_vip).setVisibility(View.VISIBLE);
                                 }else{
                                     itemView.findViewById(R.id.iv_vip).setVisibility(View.GONE);

@@ -1,20 +1,18 @@
 package com.fine.friendlycc.ui.home;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.viewpager2.widget.ViewPager2;
 
-import com.airbnb.lottie.LottieAnimationView;
 import com.blankj.utilcode.util.IntentUtils;
 import com.blankj.utilcode.util.StringUtils;
 import com.bumptech.glide.Glide;
@@ -28,20 +26,23 @@ import com.fine.friendlycc.databinding.FragmentHomeMainBinding;
 import com.fine.friendlycc.entity.CoinPusherDataInfoEntity;
 import com.fine.friendlycc.entity.ConfigItemEntity;
 import com.fine.friendlycc.entity.GoodsEntity;
+import com.fine.friendlycc.event.CityChangeEvent;
 import com.fine.friendlycc.event.LocationChangeEvent;
 import com.fine.friendlycc.kl.view.VideoPresetActivity;
 import com.fine.friendlycc.manager.ConfigManager;
 import com.fine.friendlycc.manager.LocationManager;
-import com.fine.friendlycc.ui.base.BaseRefreshFragment;
+import com.fine.friendlycc.ui.base.BaseFragment;
 import com.fine.friendlycc.ui.coinpusher.CoinPusherGameActivity;
 import com.fine.friendlycc.ui.coinpusher.dialog.CoinPusherDialogAdapter;
 import com.fine.friendlycc.ui.coinpusher.dialog.CoinPusherRoomListDialog;
 import com.fine.friendlycc.ui.dialog.CityChooseDialog;
 import com.fine.friendlycc.ui.home.accost.HomeAccostDialog;
+import com.fine.friendlycc.ui.home.active.HomeFristTabFragment;
 import com.fine.friendlycc.utils.AutoSizeUtils;
 import com.fine.friendlycc.utils.ImmersionBarUtils;
-import com.fine.friendlycc.viewadapter.CustomRefreshHeader;
 import com.fine.friendlycc.widget.coinrechargesheet.CoinRechargeSheetView;
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 
 import java.util.List;
 
@@ -50,11 +51,13 @@ import me.goldze.mvvmhabit.bus.RxBus;
 /**
  * @author wulei
  */
-public class HomeMainFragment extends BaseRefreshFragment<FragmentHomeMainBinding, HomeMainViewModel> {
+public class HomeMainFragment extends BaseFragment<FragmentHomeMainBinding, HomeMainViewModel> {
 
     private List<ConfigItemEntity> citys;
 
     private CityChooseDialog cityChooseDialog;
+    private final BaseFragment[] mFragments = new BaseFragment[2];
+    private int currIndex = -1;
 
     //充值弹窗
     private CoinRechargeSheetView coinRechargeSheetView;
@@ -79,7 +82,7 @@ public class HomeMainFragment extends BaseRefreshFragment<FragmentHomeMainBindin
     @Override
     public void initData() {
         super.initData();
-        binding.refreshLayout.setRefreshHeader(new CustomRefreshHeader(getContext()));
+        initViewPager2();
         Glide.with(getContext()).asGif().load(R.drawable.nearby_accost_tip_img)
                 .error(R.drawable.nearby_accost_tip_img)
                 .placeholder(R.drawable.nearby_accost_tip_img)
@@ -97,8 +100,6 @@ public class HomeMainFragment extends BaseRefreshFragment<FragmentHomeMainBindin
                 return false;
             }
         };
-        binding.rcvTable.setLayoutManager(layoutManager);
-
         binding.tvLocationWarn.setOnClickListener(view -> {
             Intent intent = IntentUtils.getLaunchAppDetailsSettingsIntent(mActivity.getPackageName());
             startActivity(intent);
@@ -106,6 +107,44 @@ public class HomeMainFragment extends BaseRefreshFragment<FragmentHomeMainBindin
 
         //展示首页广告位
         viewModel.getAdListBannber();
+
+    }
+
+    private void initViewPager2(){
+        mFragments[0] = new HomeFristTabFragment();
+        Bundle bundle = new Bundle();
+        bundle.putInt("index", 0);
+        mFragments[0].setArguments(bundle);
+
+        mFragments[1] = new HomeFristTabFragment();
+        Bundle bundle2 = new Bundle();
+        bundle.putInt("index", 1);
+        mFragments[1].setArguments(bundle2);
+
+//        mFragments[1] = new HomeVipFragment();
+
+        HomePagerAdapter fragmentAdapter = new HomePagerAdapter(this);
+        fragmentAdapter.setFragmentList(mFragments);
+
+        binding.viewPager.setOffscreenPageLimit(1);
+        binding.viewPager.setAdapter(fragmentAdapter);
+        TabLayoutMediator mediator = new TabLayoutMediator(binding.tabTitle, binding.viewPager, new TabLayoutMediator.TabConfigurationStrategy() {
+            @Override
+            public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
+//                tab.setText(tabs[position]);
+
+            }
+        });
+        mediator.attach();
+
+        binding.viewPager.setCurrentItem(0, false);
+        binding.viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageSelected(int position) {
+                currIndex = position;
+            }
+        });
+
     }
 
     //充值弹窗
@@ -146,6 +185,7 @@ public class HomeMainFragment extends BaseRefreshFragment<FragmentHomeMainBindin
             });
             coinersDialog.show();
         });
+
         //选择城市
         viewModel.uc.clickRegion.observe(this, unused -> {
             if(cityChooseDialog==null){
@@ -154,17 +194,14 @@ public class HomeMainFragment extends BaseRefreshFragment<FragmentHomeMainBindin
             cityChooseDialog.show();
             cityChooseDialog.setCityChooseDialogListener((dialog1, itemEntity) -> {
                 if(itemEntity!=null){
-                    if(itemEntity.getId()!=null && itemEntity.getId()==-1){
-                        viewModel.cityId.set(null);
-                    }else{
-                        viewModel.cityId.set(itemEntity.getId());
-                    }
+
                     viewModel.regionTitle.set(itemEntity.getName());
                 }else{
                     viewModel.cityId.set(null);
                     viewModel.regionTitle.set(StringUtils.getString(R.string.playfun_tab_female_1));
                 }
-                binding.refreshLayout.autoRefresh();
+                RxBus.getDefault().post(new CityChangeEvent(itemEntity , currIndex));
+//                binding.refreshLayout.autoRefresh();
                 dialog1.dismiss();
 
             } );
@@ -220,27 +257,27 @@ public class HomeMainFragment extends BaseRefreshFragment<FragmentHomeMainBindin
         viewModel.uc.loadLoteAnime.observe(this, new Observer<Integer>() {
             @Override
             public void onChanged(Integer position) {
-                LinearLayoutManager layoutManager = (LinearLayoutManager) binding.rcvLayout.getLayoutManager();
-                final View child = layoutManager.findViewByPosition(position);
-                if (child != null) {
-                    LottieAnimationView itemLottie = child.findViewById(R.id.item_lottie);
-                    if (itemLottie != null) {
-                        itemLottie.setImageAssetsFolder("images/");
-                        itemLottie.addAnimatorListener(new AnimatorListenerAdapter() {
-
-                            @Override
-                            public void onAnimationEnd(Animator animation) {
-                                itemLottie.removeAnimatorListener(this);
-                                itemLottie.setVisibility(View.GONE);
-                            }
-                        });
-                        if (!itemLottie.isAnimating()) {
-                            itemLottie.setVisibility(View.VISIBLE);
-                            itemLottie.setAnimation(R.raw.accost_animation);
-                            itemLottie.playAnimation();
-                        }
-                    }
-                }
+//                LinearLayoutManager layoutManager = (LinearLayoutManager) binding.rcvLayout.getLayoutManager();
+//                final View child = layoutManager.findViewByPosition(position);
+//                if (child != null) {
+//                    LottieAnimationView itemLottie = child.findViewById(R.id.item_lottie);
+//                    if (itemLottie != null) {
+//                        itemLottie.setImageAssetsFolder("images/");
+//                        itemLottie.addAnimatorListener(new AnimatorListenerAdapter() {
+//
+//                            @Override
+//                            public void onAnimationEnd(Animator animation) {
+//                                itemLottie.removeAnimatorListener(this);
+//                                itemLottie.setVisibility(View.GONE);
+//                            }
+//                        });
+//                        if (!itemLottie.isAnimating()) {
+//                            itemLottie.setVisibility(View.VISIBLE);
+//                            itemLottie.setAnimation(R.raw.accost_animation);
+//                            itemLottie.playAnimation();
+//                        }
+//                    }
+//                }
             }
         });
     }

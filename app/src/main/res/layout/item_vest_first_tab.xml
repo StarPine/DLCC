@@ -45,7 +45,7 @@
                 android:layout_width="31dp"
                 android:layout_height="13dp"
                 android:visibility="@{viewModel.itemData.isVip == 1?View.VISIBLE:View.GONE}"
-                android:src="@drawable/ic_real_man"/>
+                android:src="@drawable/ic_real_people"/>
             <TextView
                 android:id="@+id/tv_nickname"
                 android:layout_width="wrap_content"

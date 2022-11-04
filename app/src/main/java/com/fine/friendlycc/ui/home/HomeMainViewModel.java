@@ -30,13 +30,16 @@ import com.fine.friendlycc.entity.UserDataEntity;
 import com.fine.friendlycc.event.AddBlackListEvent;
 import com.fine.friendlycc.event.CityChangeEvent;
 import com.fine.friendlycc.event.DailyAccostEvent;
+import com.fine.friendlycc.event.GenderToggleEvent;
 import com.fine.friendlycc.event.LoadEvent;
 import com.fine.friendlycc.event.LocationChangeEvent;
 import com.fine.friendlycc.manager.ConfigManager;
+import com.fine.friendlycc.ui.base.BaseFragment;
 import com.fine.friendlycc.ui.home.search.SearchFragment;
 import com.fine.friendlycc.ui.viewmodel.BaseParkItemViewModel;
 import com.fine.friendlycc.ui.viewmodel.BaseParkViewModel;
 import com.fine.friendlycc.utils.StringUtil;
+import com.fine.friendlycc.viewmodel.BaseViewModel;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -55,14 +58,11 @@ import me.tatarka.bindingcollectionadapter2.ItemBinding;
 /**
  * @author wulei
  */
-public class HomeMainViewModel extends BaseParkViewModel<AppRepository> {
+public class HomeMainViewModel extends BaseViewModel<AppRepository> {
     //控制banner是否显示
     public ObservableBoolean rcvBannerDisplay = new ObservableBoolean(true);
+    public ObservableList<String> tabList = new ObservableArrayList<>();
 
-
-    public BindingRecyclerViewAdapter<HomeMainTabItemViewModel> adapterTab = new BindingRecyclerViewAdapter<>();
-    public ObservableList<HomeMainTabItemViewModel> observableListTab = new ObservableArrayList<>();
-    public ItemBinding<HomeMainTabItemViewModel> itemTabBinding = ItemBinding.of(BR.viewModel, R.layout.item_main_tab);
 
     public BindingRecyclerViewAdapter<HomeMainBannerItemViewModel> adapterBanner = new BindingRecyclerViewAdapter<>();
     public ObservableList<HomeMainBannerItemViewModel> observableBanner = new ObservableArrayList<>();
@@ -84,99 +84,50 @@ public class HomeMainViewModel extends BaseParkViewModel<AppRepository> {
 
 
     public UIChangeObservable uc = new UIChangeObservable();
+    public int currIndex;
 
     //订阅者
-    private Disposable mSubscription;
-    private Disposable mLocationSubscription;
-    private Disposable mCitySubscription;
     private Disposable dailyAccostSubscription;
     private Disposable mAddBlackListSubscription;
 
     public int lastTabClickIdx = -1;
     public String accostKey = "";
 
-
-    public Integer userSex = null;
     //搜索按钮的点击事件
     public BindingCommand searchOnClickCommand = new BindingCommand(() -> {
         AppContext.instance().logEvent(AppsFlyerEvent.Nearby_Search);
         start(SearchFragment.class.getCanonicalName());
-    }
-    );
-    public BindingCommand toTaskClickCommand = new BindingCommand(() -> {
-        uc.clickAccountDialog.setValue("0");
-        AppContext.instance().logEvent(AppsFlyerEvent.homepage_batch_accost);
-//        uc.starActivity.call();
     });
 
-    public BindingCommand regionOnClickCommand = new BindingCommand(() -> uc.clickRegion.call());
-    /**
-     * 在线优先改变
-     */
-    public BindingCommand onlineOnCheckedChangeCommand = new BindingCommand<>(() -> {
-        online.set(!online.get());
-        if (online.get()) {
-            AppContext.instance().logEvent(AppsFlyerEvent.Nearby_Online_First);
-        }
-        startRefresh();
-    });
+
     /**
      * 点击性别
      */
     public BindingCommand genderOnClickCommand = new BindingCommand(() -> {
-        observableListTab.clear();
         AppContext.instance().logEvent(AppsFlyerEvent.Nearby_Change_gender);
-        gender.set(Boolean.FALSE.equals(gender.get()));
-        initGenderTab();
-        startRefresh();
+        gender.set(!gender.get());
+        RxBus.getDefault().post(new GenderToggleEvent(gender.get(), currIndex));
+        setTabList();
     });
 
-    public void initGenderTab() {
-        List<HomeMainTabItemViewModel> listData = new ArrayList<>();
-        if(Boolean.TRUE.equals(gender.get())){
-            Map<String,Object> map3 = new HashMap<>();
-            map3.put("type",5);
-            //审核坏境=收益开关
-            if(!ConfigManager.getInstance().getTipMoneyShowFlag()){
-                map3.put("text",StringUtils.getString(R.string.playfun_tab_male_3));
-            }else{
-                map3.put("text",StringUtils.getString(R.string.playfun_tab_male_3_audit));
-            }
-            HomeMainTabItemViewModel homeMainItemViewModel3 = new HomeMainTabItemViewModel(this,map3,true);
-            listData.add(homeMainItemViewModel3);
-            Map<String,Object> map1 = new HashMap<>();
-            map1.put("type",1);
-            map1.put("text",StringUtils.getString(R.string.playfun_tab_male_1));
-            HomeMainTabItemViewModel homeMainItemViewModel1 = new HomeMainTabItemViewModel(this,map1,false);
-            lastTabClickIdx = 0;
-            type.set(5);
-            listData.add(homeMainItemViewModel1);
-            Map<String,Object> map2 = new HashMap<>();
-            map2.put("type",4);
-            map2.put("text",StringUtils.getString(R.string.playfun_tab_male_2));
-            HomeMainTabItemViewModel homeMainItemViewModel2 = new HomeMainTabItemViewModel(this,map2,false);
-            listData.add(homeMainItemViewModel2);
-        }else{
-            Map<String,Object> map1 = new HashMap<>();
-            map1.put("type",3);
-            map1.put("text",StringUtils.getString(R.string.playfun_tab_male_3));
-            HomeMainTabItemViewModel homeMainItemViewModel1 = new HomeMainTabItemViewModel(this,map1,true);
-            lastTabClickIdx = 0;
-            type.set(3);
-            listData.add(homeMainItemViewModel1);
-            Map<String,Object> map2 = new HashMap<>();
-            map2.put("type",1);
-            map2.put("text",StringUtils.getString(R.string.playfun_tab_female_1));
-            HomeMainTabItemViewModel homeMainItemViewModel2 = new HomeMainTabItemViewModel(this,map2,false);
-            listData.add(homeMainItemViewModel2);
-            Map<String,Object> map3 = new HashMap<>();
-            map3.put("type",2);
-            map3.put("text",StringUtils.getString(R.string.playfun_tab_female_2));
-            HomeMainTabItemViewModel homeMainItemViewModel3 = new HomeMainTabItemViewModel(this,map3,false);
-            listData.add(homeMainItemViewModel3);
+    private void setTabList() {
+        if (tabList.size() > 0)
+            tabList.clear();
+        if (gender.get()){
+            tabList.add(StringUtils.getString(R.string.playfun_tab_male_3_audit));
+            tabList.add(StringUtils.getString(R.string.playfun_tab_male_2));
+        }else {
+            tabList.add(StringUtils.getString(R.string.playfun_tab_male_3));
+            tabList.add(StringUtils.getString(R.string.playfun_tab_female_2));
         }
-        observableListTab.addAll(listData);
     }
+
+    public BindingCommand toTaskClickCommand = new BindingCommand(() -> {
+        uc.clickAccountDialog.setValue("0");
+        AppContext.instance().logEvent(AppsFlyerEvent.homepage_batch_accost);
+    });
+
+    public BindingCommand regionOnClickCommand = new BindingCommand(() -> uc.clickRegion.call());
 
     //消费者
     private Disposable loadReceive;
@@ -184,64 +135,15 @@ public class HomeMainViewModel extends BaseParkViewModel<AppRepository> {
     public HomeMainViewModel(@NonNull Application application, AppRepository repository) {
         super(application, repository);
         try {
-            userSex = repository.readUserData().getSex();
             gender.set(repository.readUserData().getSex() != 1);
-        }catch (Exception e) {
-            userSex = 1;
+        } catch (Exception e) {
             gender.set(true);
         }
-        initGenderTab();
+        setTabList();
         list_chooseCityItem.addAll(model.readCityConfig());
         //一键搭讪
         accostKey =  StringUtil.getDailyFlag("dailyAccost");
 
-    }
-
-    public void titleRcvItemClick(int idx, int checkType) {
-        if (observableListTab.isEmpty()) {
-            return;
-        }
-        if (lastTabClickIdx == -1) {
-            observableListTab.get(idx).checked.set(true);
-            type.set(checkType);
-            lastTabClickIdx = idx;
-            startRefresh();
-        } else {
-            if (idx != lastTabClickIdx) {
-                observableListTab.get(lastTabClickIdx).checked.set(false);
-                observableListTab.get(idx).checked.set(true);
-                type.set(checkType);
-                lastTabClickIdx = idx;
-                startRefresh();
-            }
-        }
-    }
-
-    public void isBindCity(Integer city_id) {
-        model.isBindCity(city_id)
-                .doOnSubscribe(this)
-                .compose(RxUtils.schedulersTransformer())
-                .compose(RxUtils.exceptionTransformer())
-                .doOnSubscribe(disposable -> showHUD())
-                .subscribe(new BaseObserver() {
-                    @Override
-                    public void onSuccess(BaseResponse baseResponse) {
-                        UserDataEntity userDataEntity = model.readUserData();
-                        ArrayList<Integer> list = new ArrayList<>();
-                        list.add(city_id);
-                        userDataEntity.setPermanentCityIds(list);
-                        model.saveUserData(userDataEntity);
-                    }
-
-                    @Override
-                    public void onComplete() {
-                        dismissHUD();
-                    }
-                });
-    }
-
-    public UserDataEntity loadLocalUserData() {
-        return model.readUserData();
     }
 
     @Override
@@ -250,15 +152,6 @@ public class HomeMainViewModel extends BaseParkViewModel<AppRepository> {
         loadReceive = RxBus.getDefault().toObservable(LoadEvent.class)
                 .subscribe(countDownTimerEvent -> {
                     uc.isLoad.postValue(countDownTimerEvent.isLoad());
-                });
-        mLocationSubscription = RxBus.getDefault().toObservable(LocationChangeEvent.class)
-                .subscribe(event -> {
-                    startRefresh();
-                });
-
-        mCitySubscription = RxBus.getDefault().toObservable(CityChangeEvent.class)
-                .subscribe(cityChangeEvent -> {
-                    startRefresh();
                 });
         dailyAccostSubscription = RxBus.getDefault().toObservable(DailyAccostEvent.class)
                 .subscribe(cityChangeEvent -> {
@@ -288,14 +181,8 @@ public class HomeMainViewModel extends BaseParkViewModel<AppRepository> {
                     }
 
                 });
-        mAddBlackListSubscription = RxBus.getDefault().toObservable(AddBlackListEvent.class)
-                .subscribe(cityChangeEvent -> {
-                    startRefresh();
-                });
 
         //将订阅者加入管理站
-        RxSubscriptions.add(mLocationSubscription);
-        RxSubscriptions.add(mCitySubscription);
         RxSubscriptions.add(mAddBlackListSubscription);
         RxSubscriptions.add(dailyAccostSubscription);
 
@@ -313,27 +200,8 @@ public class HomeMainViewModel extends BaseParkViewModel<AppRepository> {
     public void removeRxBus() {
         super.removeRxBus();
         RxSubscriptions.remove(loadReceive);
-        RxSubscriptions.remove(mLocationSubscription);
-        RxSubscriptions.remove(mCitySubscription);
         RxSubscriptions.remove(mAddBlackListSubscription);
         RxSubscriptions.remove(dailyAccostSubscription);
-    }
-
-
-    @Override
-    public void onLazyInitView() {
-        super.onLazyInitView();
-        loadDatas(1);
-    }
-
-    @Override
-    public void AccostFirstSuccess(ParkItemEntity itemEntity, int position) {
-        if (itemEntity == null) {//提醒充值钻石
-            uc.sendAccostFirstError.call();
-        } else {
-            //loadLoteAnime.postValue(position);
-//            ChatUtils.chatUser(itemEntity.getId(), itemEntity.getNickname(), HomeListViewModel.this);
-        }
     }
 
     //批量搭讪
@@ -352,53 +220,6 @@ public class HomeMainViewModel extends BaseParkViewModel<AppRepository> {
                     @Override
                     public void onComplete() {
                         dismissHUD();
-                    }
-                });
-    }
-
-    @Override
-    public void loadDatas(int page) {
-
-        if (currentPage == 1 && observableList.size()>0) {
-            observableList.clear();
-        }
-        model.homeList(cityId.get(),
-                type.get(),
-                online.get() ? 1 : 0,
-                gender.get()? 1 : 0,
-                null,
-                lng.get(),
-                lat.get(),
-                page
-        )
-                .compose(RxUtils.schedulersTransformer())
-                .compose(RxUtils.exceptionTransformer())
-                .doOnSubscribe(this)
-                .subscribe(new BaseListEmptyObserver<BaseListDataResponse<ParkItemEntity>>(this) {
-                    @Override
-                    public void onSuccess(BaseListDataResponse<ParkItemEntity> response) {
-                        super.onSuccess(response);
-                        int sex = model.readUserData().getSex();
-                        for (ParkItemEntity itemEntity : response.getData().getData()) {
-                            Integer itemType = itemEntity.getType();
-                            if(itemType!=null){
-                                BaseParkItemViewModel item;
-                                if(itemType==1){
-                                    item = new BaseParkItemViewModel(HomeMainViewModel.this, sex, itemEntity);
-                                    item.multiItemType(ItemPark);
-                                }else{
-                                    item = new BaseParkItemViewModel(HomeMainViewModel.this, itemEntity.getBannerList());
-                                    item.multiItemType(ItemParkBanner);
-                                }
-                                observableList.add(item);
-                            }
-
-                        }
-                    }
-
-                    @Override
-                    public void onComplete() {
-                        stopRefreshOrLoadMore();
                     }
                 });
     }

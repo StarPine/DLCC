@@ -415,7 +415,7 @@
                                                     android:layout_height="13dp"
                                                     android:layout_gravity="center"
                                                     android:layout_marginRight="5dp"
-                                                    android:src="@drawable/ic_real_man" />
+                                                    android:src="@drawable/ic_real_people" />
 
                                                 <TextView
                                                     android:layout_width="wrap_content"
@@ -437,7 +437,7 @@
                                                     android:layout_height="13dp"
                                                     android:layout_gravity="center"
                                                     android:layout_marginRight="5dp"
-                                                    android:src="@drawable/ic_goddess" />
+                                                    android:src="@drawable/ic_good_goddess" />
 
                                                 <TextView
                                                     android:layout_width="wrap_content"

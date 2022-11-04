@@ -471,15 +471,15 @@ public class AudioCallChatingViewModel extends BaseViewModel<AppRepository> {
                     return AppContext.instance().getDrawable(R.drawable.ic_vip);
                 } else {
                     if (fromUserProfile.getCertification() == 1) {
-                        return AppContext.instance().getDrawable(R.drawable.ic_real_man);
+                        return AppContext.instance().getDrawable(R.drawable.ic_real_people);
                     }
                 }
             } else {//女生
                 if (fromUserProfile.getIsVip() == 1) {
-                    return AppContext.instance().getDrawable(R.drawable.ic_goddess);
+                    return AppContext.instance().getDrawable(R.drawable.ic_good_goddess);
                 } else {
                     if (fromUserProfile.getCertification() == 1) {
-                        return AppContext.instance().getDrawable(R.drawable.ic_real_man);
+                        return AppContext.instance().getDrawable(R.drawable.ic_real_people);
                     }
                 }
             }

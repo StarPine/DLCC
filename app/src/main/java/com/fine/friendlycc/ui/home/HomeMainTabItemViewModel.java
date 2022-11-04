@@ -26,7 +26,5 @@ public class HomeMainTabItemViewModel extends MultiItemViewModel<HomeMainViewMod
     }
 
     public BindingCommand itemClick = new BindingCommand(() -> {
-        int index = viewModel.observableListTab.indexOf(this);
-        viewModel.titleRcvItemClick(index,(int)itemMap.get().get("type"));
     });
 }

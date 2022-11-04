@@ -109,11 +109,11 @@ public class TraceManItemViewModel extends MultiItemViewModel<TraeManViewModel> 
                 if (traceEntity.getSex() == 1) {
                     return AppContext.instance().getDrawable(R.drawable.ic_vip);
                 } else {//女生
-                    return AppContext.instance().getDrawable(R.drawable.ic_goddess);
+                    return AppContext.instance().getDrawable(R.drawable.ic_good_goddess);
                 }
             } else {
                 if (traceEntity.getCertification() != null && traceEntity.getCertification() == 1) {
-                    return AppContext.instance().getDrawable(R.drawable.ic_real_man);
+                    return AppContext.instance().getDrawable(R.drawable.ic_real_people);
                 }
             }
         }

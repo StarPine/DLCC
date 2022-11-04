@@ -52,12 +52,10 @@ public class MessageMainViewModel extends BaseViewModel<AppRepository> {
         if (index == 0){
             if (!flag) {
                 tabSelected.set(true);
-                tabSelectEvent.postValue(true);
             }
         }else {
             if (flag) {
                 tabSelected.set(false);
-                tabSelectEvent.postValue(false);
             }
         }
     });

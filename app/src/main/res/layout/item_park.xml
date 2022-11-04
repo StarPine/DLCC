@@ -22,230 +22,138 @@
     </data>
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:paddingStart="13.6dp"
-        android:paddingTop="17.46dp"
-        android:paddingEnd="8dp"
-        android:paddingBottom="17.46dp"
-        binding:onClickCommand="@{viewModel.itemClick}">
-        <RelativeLayout
-            android:id="@+id/rl_iv_avatar"
+        binding:onClickCommand="@{viewModel.itemClick}"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        android:layout_marginBottom="15dp"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/item_lottie"
             android:layout_width="80dp"
-            android:layout_height="80dp">
+            android:layout_height="80dp"
+            android:layout_centerInParent="true"
+            android:elevation="11dp"
+            android:visibility="gone"
+            app:lottie_autoPlay="false"
+            app:lottie_loop="false"
+            app:lottie_rawRes="@raw/accost_animation"
+            binding:accountCollect="@{viewModel.accountCollect}"/>
 
-            <com.fine.friendlycc.widget.image.CircleImageView
-                android:id="@+id/iv_avatar"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="fitXY"
-                android:src="@drawable/default_avatar"
-                binding:imageItemErrorPlaceholderRes="@{R.drawable.default_avatar}"
-                binding:imageItemPath="@{viewModel.itemEntity.avatar}"
-                binding:imageItemPlaceholderRes="@{R.drawable.default_avatar}"
-                binding:resizeH="@{80}"
-                binding:resizeW="@{80}" />
-
-            <com.airbnb.lottie.LottieAnimationView
-                android:id="@+id/item_lottie"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_gravity="center"
-                android:elevation="11dp"
-                android:visibility="gone"
-                app:lottie_autoPlay="false"
-                app:lottie_loop="false"
-                app:lottie_rawRes="@raw/accost_animation"
-                binding:accountCollect="@{viewModel.accountCollect}"/>
-        </RelativeLayout>
-
-
-        <RelativeLayout
-            android:id="@+id/rl_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="14dp"
-            android:layout_toEndOf="@+id/rl_iv_avatar">
-
-            <TextView
-                android:id="@+id/tv_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:gravity="center_vertical"
-                android:maxWidth="109dp"
-                android:maxLength="12"
-                android:singleLine="true"
-                android:text="@{viewModel.itemEntity.nickname}"
-                android:textColor="@color/toolbar_title_color"
-                android:textSize="17sp"
-                android:textStyle="bold"
-                tools:text="艾希lovexi666" />
-
-            <ImageView
-                android:id="@+id/iv_real_man"
-                android:layout_width="31dp"
-                android:layout_height="13dp"
-                android:layout_alignBottom="@+id/tv_name"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="7dp"
-                android:layout_toEndOf="@+id/tv_name"
-                android:src="@drawable/ic_real_man"
-                android:visibility="@{viewModel.isRealManVisible()}" />
-
-            <ImageView
-                android:id="@+id/iv_goddess"
-                android:layout_width="31dp"
-                android:layout_height="13dp"
-                android:layout_alignBottom="@+id/tv_name"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="7dp"
-                android:layout_toEndOf="@+id/iv_real_man"
-                android:src="@drawable/ic_goddess"
-                android:visibility="@{viewModel.isGoddessVisible()}" />
-
-            <ImageView
-                android:id="@+id/iv_vip"
-                android:layout_width="31dp"
-                android:layout_height="13dp"
-                android:layout_alignBottom="@+id/tv_name"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="7dp"
-                android:layout_toEndOf="@+id/iv_goddess"
-                android:src="@drawable/ic_vip"
-                android:visibility="@{viewModel.isVipVisible()}" />
-
-            <ImageView
-                android:layout_width="31dp"
-                android:layout_height="13dp"
-                android:layout_alignBottom="@+id/tv_name"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="7dp"
-                android:layout_toEndOf="@+id/iv_vip"
-                android:scaleType="fitCenter"
-                binding:imagePath="@{viewModel.gameUrl()}" />
-        </RelativeLayout>
+        <com.fine.friendlycc.widget.roundedimageview.RoundedImageView
+            android:id="@+id/round_image_view_item"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:scaleType="centerCrop"
+            app:riv_corner_radius="10dp"
+            android:src="@drawable/radio_dating_img_default"
+            binding:imageErrorPlaceholderRes="@{R.drawable.radio_dating_img_default}"
+            binding:imagePlaceholderRes="@{R.drawable.radio_dating_img_default}"
+            binding:imagePath="@{viewModel.itemEntity.avatar}" />
 
         <RelativeLayout
             android:layout_width="46dp"
             android:layout_height="46dp"
-            android:layout_alignParentEnd="true"
-            android:layout_centerInParent="true"
-            android:layout_marginEnd="14dp"
+            android:layout_below="@+id/round_image_view_item"
+            android:layout_alignRight="@+id/round_image_view_item"
+            android:layout_alignTop="@+id/ll_head"
             android:background="@drawable/item_park_radius_back"
             binding:onClickCommand="@{viewModel.accostOnClickCommand}">
 
 
             <ImageView
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:scaleType="centerCrop"
-                android:src="@drawable/item_accost_img"
+                android:src="@drawable/item_accost_logo"
                 android:visibility="@{viewModel.itemEntity.isAccost==0?View.VISIBLE:View.GONE}" />
 
 
             <ImageView
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:scaleType="centerCrop"
-                android:src="@drawable/icon_message_send"
+                android:src="@drawable/item_chat_logo"
                 android:visibility="@{viewModel.itemEntity.isAccost==1?View.VISIBLE:View.GONE}" />
 
         </RelativeLayout>
 
         <LinearLayout
-            android:id="@+id/ll_tag_1"
+            android:id="@+id/ll_head"
+            android:orientation="horizontal"
+            android:layout_below="@+id/round_image_view_item"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/rl_name"
-            android:layout_alignStart="@+id/rl_name"
-            android:layout_marginTop="6dp"
-            android:orientation="vertical">
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:layout_height="wrap_content">
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/tv_nickname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:maxWidth="80dp"
+                android:lines="1"
+                android:ellipsize="end"
+                android:text='@{viewModel.itemEntity.nickname}'
+                android:textStyle="bold"
+                android:textSize="16sp"
+                tools:text="海浪花多少度"
+                />
+
+            <ImageView
+                android:id="@+id/iv_real_man"
+                android:layout_width="31dp"
+                android:layout_height="13dp"
+                android:visibility="@{viewModel.getVipGodsImg(viewModel.itemEntity) != null ?View.VISIBLE:View.GONE}"
+                android:src="@{viewModel.getVipGodsImg(viewModel.itemEntity)}"
+                tools:src="@drawable/ic_good_goddess"
+                />
 
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:includeFontPadding="false"
-                    android:visibility="@{viewModel.isEmpty(viewModel.ageAndConstellation)? View.GONE :View.VISIBLE}"
-                    android:text="@{viewModel.ageAndConstellation}"
-                    android:textColor="#FF827692"
-                    android:textSize="12sp"
-                    tools:text="19" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="20dp"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginEnd="4dp"
-                    android:gravity="center_vertical"
-                    android:text="|"
-                    android:visibility="@{StringUtils.isEmpty(viewModel.getOccupationByIdOnNull) ? View.GONE : View.VISIBLE}"
-                    android:textColor="#CDCED1"
-                    android:textSize="@dimen/text_size_small"
-                    tools:ignore="HardcodedText" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@{viewModel.getOccupationByIdOnNull}"
-                    android:includeFontPadding="false"
-                    android:textColor="#FF827692"
-                    android:textSize="12sp"
-                    tools:text="台北市" />
-
-            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/ll_head2"
+            android:orientation="horizontal"
+            android:layout_below="@+id/ll_head"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/ll_tag_1"
-            android:layout_alignStart="@+id/rl_name"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:includeFontPadding="false"
+                android:visibility="@{viewModel.isEmpty(viewModel.ageAndConstellation)? View.GONE :View.VISIBLE}"
+                android:text="@{viewModel.ageAndConstellation}"
+                android:textColor="#FF827692"
+                android:textSize="12sp"
+                tools:text="19" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
-                android:drawableStart="@drawable/ic_location"
-                android:drawablePadding="2dp"
-                android:gravity="center_vertical"
-                android:text="@{viewModel.distance}"
-                android:visibility="@{viewModel.getDistanceShow}"
-                android:textColor="@color/text_9EA1B0"
-                android:textSize="@dimen/text_size_small"
-                tools:text="未知" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="20dp"
-                android:layout_marginStart="7dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
                 android:gravity="center_vertical"
                 android:text="|"
-                android:visibility="@{viewModel.getDistanceShow}"
+                android:visibility="@{StringUtils.isEmpty(viewModel.getOccupationByIdOnNull) ? View.GONE : View.VISIBLE}"
                 android:textColor="#CDCED1"
                 android:textSize="@dimen/text_size_small"
                 tools:ignore="HardcodedText" />
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="20dp"
-                android:layout_marginStart="7dp"
-                android:text='@{viewModel.onlineStatus}'
-                android:textColor="@{viewModel.onLineColor(viewModel.itemEntity)}"
-                android:textSize="@dimen/text_size_small"
-                app:isBold="@{viewModel.itemEntity.isOnline == 1 ? true:false}"
-                tools:text="在线"
-                tools:textColor="@color/green"
-                tools:textStyle="bold" />
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.getOccupationByIdOnNull}"
+                android:includeFontPadding="false"
+                android:textColor="#FF827692"
+                android:textSize="12sp"
+                tools:text="职业" />
+
         </LinearLayout>
 
     </RelativeLayout>

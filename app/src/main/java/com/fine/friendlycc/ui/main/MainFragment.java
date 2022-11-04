@@ -42,18 +42,19 @@ import com.fine.friendlycc.entity.MqBroadcastGiftEntity;
 import com.fine.friendlycc.entity.MqBroadcastGiftUserEntity;
 import com.fine.friendlycc.entity.VersionEntity;
 import com.fine.friendlycc.event.DailyAccostEvent;
+import com.fine.friendlycc.event.GenderToggleEvent;
 import com.fine.friendlycc.event.MainTabEvent;
 import com.fine.friendlycc.event.TaskListEvent;
 import com.fine.friendlycc.manager.ConfigManager;
 import com.fine.friendlycc.ui.base.BaseFragment;
 import com.fine.friendlycc.ui.dialog.LockDialog;
+import com.fine.friendlycc.ui.home.HomeMainFragment;
 import com.fine.friendlycc.ui.message.MessageMainFragment;
 import com.fine.friendlycc.ui.mine.MineFragment;
 import com.fine.friendlycc.ui.mine.vipsubscribe.VipSubscribeFragment;
+import com.fine.friendlycc.ui.radio.radiohome.RadioFragment;
 import com.fine.friendlycc.ui.task.TaskCenterFragment;
 import com.fine.friendlycc.ui.userdetail.detail.UserDetailFragment;
-import com.fine.friendlycc.ui.vest.first.VestFirstFragment;
-import com.fine.friendlycc.ui.vest.second.VestSecondFragment;
 import com.fine.friendlycc.utils.ImmersionBarUtils;
 import com.fine.friendlycc.utils.StringUtil;
 import com.fine.friendlycc.widget.coinrechargesheet.CoinRechargeSheetView;
@@ -562,7 +563,7 @@ public class MainFragment extends BaseFragment<FragmentMainBinding, MainViewMode
     private void broadcastGiftImg(MqBroadcastGiftUserEntity giftUserEntity,ImageView userImg){
         if(giftUserEntity.getSex()!=null && giftUserEntity.getSex()==1){
             if(giftUserEntity.getCertification()!=null && giftUserEntity.getCertification()==1){
-                userImg.setImageResource(R.drawable.ic_real_man);
+                userImg.setImageResource(R.drawable.ic_real_people);
                 userImg.setVisibility(View.VISIBLE);
             }
             if(giftUserEntity.getIsVip()!=null && giftUserEntity.getIsVip()==1){
@@ -571,11 +572,11 @@ public class MainFragment extends BaseFragment<FragmentMainBinding, MainViewMode
             }
         }else{
             if(giftUserEntity.getCertification()!=null && giftUserEntity.getCertification()==1){
-                userImg.setImageResource(R.drawable.ic_real_man);
+                userImg.setImageResource(R.drawable.ic_real_people);
                 userImg.setVisibility(View.VISIBLE);
             }
             if(giftUserEntity.getIsVip()!=null && giftUserEntity.getIsVip()==1){
-                userImg.setImageResource(R.drawable.ic_goddess);
+                userImg.setImageResource(R.drawable.ic_good_goddess);
                 userImg.setVisibility(View.VISIBLE);
             }
         }
@@ -649,11 +650,8 @@ public class MainFragment extends BaseFragment<FragmentMainBinding, MainViewMode
     }
 
     private void initView() {
-        mFragments[FIRST] = new VestFirstFragment();
-        mFragments[SECOND] = new VestSecondFragment();
-
-//        mFragments[FIRST] = new HomeMainFragment();
-//        mFragments[SECOND] = new RadioFragment();
+        mFragments[FIRST] = new HomeMainFragment();
+        mFragments[SECOND] = new RadioFragment();
         mFragments[THIRD] = new TaskCenterFragment();
         mFragments[FOURTH] = new MessageMainFragment();
         mFragments[FIFTH] = new MineFragment();
@@ -693,6 +691,12 @@ public class MainFragment extends BaseFragment<FragmentMainBinding, MainViewMode
     private void setSelectedItemId(ImageView view) {
         if(selTabImgLayout==null){
             selTabImgLayout = view;
+        }
+        if (selTabImgLayout.getId() == view.getId()) {
+            int id = view.getId();
+            if (id == R.id.navigation_home_img) {
+                RxBus.getDefault().post(new GenderToggleEvent());
+            }
         }
         if (selTabImgLayout != null && selTabImgLayout.getId() != view.getId()) {
             resetMenuState(selTabImgLayout.getId());

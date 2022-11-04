@@ -369,7 +369,7 @@ public class HomeAccostDialog extends BaseDialog {
                                     item_entity_text1.setText(String.format(StringUtils.getString(R.string.playfun_mine_age), itemEntity1.getAge()));
                                     if (itemEntity1.getCertification() == 1) {
                                         item_tag_img1.setVisibility(View.VISIBLE);
-                                        item_tag_img1.setImageResource(R.drawable.ic_real_man);
+                                        item_tag_img1.setImageResource(R.drawable.ic_real_people);
                                     } else if (itemEntity1.getIsVip() == 1) {
                                         item_tag_img1.setVisibility(View.VISIBLE);
                                         item_tag_img1.setImageResource(R.drawable.ic_vip);
@@ -385,7 +385,7 @@ public class HomeAccostDialog extends BaseDialog {
                                     item_entity_text2.setText(String.format(StringUtils.getString(R.string.playfun_mine_age), itemEntity2.getAge()) );
                                     if (itemEntity2.getCertification() == 1) {
                                         item_tag_img2.setVisibility(View.VISIBLE);
-                                        item_tag_img2.setImageResource(R.drawable.ic_real_man);
+                                        item_tag_img2.setImageResource(R.drawable.ic_real_people);
                                     } else if (itemEntity2.getIsVip() == 1) {
                                         item_tag_img2.setVisibility(View.VISIBLE);
                                         item_tag_img2.setImageResource(R.drawable.ic_vip);
@@ -400,7 +400,7 @@ public class HomeAccostDialog extends BaseDialog {
                                     item_entity_text3.setText(String.format(StringUtils.getString(R.string.playfun_mine_age), itemEntity3.getAge()));
                                     if (itemEntity3.getCertification() == 1) {
                                         item_tag_img3.setVisibility(View.VISIBLE);
-                                        item_tag_img3.setImageResource(R.drawable.ic_real_man);
+                                        item_tag_img3.setImageResource(R.drawable.ic_real_people);
                                     } else if (itemEntity3.getIsVip() == 1) {
                                         item_tag_img3.setVisibility(View.VISIBLE);
                                         item_tag_img3.setImageResource(R.drawable.ic_vip);
@@ -416,7 +416,7 @@ public class HomeAccostDialog extends BaseDialog {
 
                                     if (itemEntity4.getCertification() == 1) {
                                         item_tag_img4.setVisibility(View.VISIBLE);
-                                        item_tag_img4.setImageResource(R.drawable.ic_real_man);
+                                        item_tag_img4.setImageResource(R.drawable.ic_real_people);
                                     } else if (itemEntity4.getIsVip() == 1) {
                                         item_tag_img4.setVisibility(View.VISIBLE);
                                         item_tag_img4.setImageResource(R.drawable.ic_vip);
@@ -432,7 +432,7 @@ public class HomeAccostDialog extends BaseDialog {
                                     item_entity_text5.setText(String.format(StringUtils.getString(R.string.playfun_mine_age), itemEntity5.getAge()));
                                     if (itemEntity5.getCertification() == 1) {
                                         item_tag_img5.setVisibility(View.VISIBLE);
-                                        item_tag_img5.setImageResource(R.drawable.ic_real_man);
+                                        item_tag_img5.setImageResource(R.drawable.ic_real_people);
                                     } else if (itemEntity5.getIsVip() == 1) {
                                         item_tag_img5.setVisibility(View.VISIBLE);
                                         item_tag_img5.setImageResource(R.drawable.ic_vip);
@@ -448,7 +448,7 @@ public class HomeAccostDialog extends BaseDialog {
                                     item_entity_text6.setText(String.format(StringUtils.getString(R.string.playfun_mine_age), itemEntity6.getAge()));
                                     if (itemEntity6.getCertification() == 1) {
                                         item_tag_img6.setVisibility(View.VISIBLE);
-                                        item_tag_img6.setImageResource(R.drawable.ic_real_man);
+                                        item_tag_img6.setImageResource(R.drawable.ic_real_people);
                                     } else if (itemEntity6.getIsVip() == 1) {
                                         item_tag_img6.setVisibility(View.VISIBLE);
                                         item_tag_img6.setImageResource(R.drawable.ic_vip);

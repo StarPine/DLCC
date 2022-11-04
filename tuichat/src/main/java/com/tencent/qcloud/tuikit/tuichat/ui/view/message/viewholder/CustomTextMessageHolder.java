@@ -301,7 +301,7 @@ public class CustomTextMessageHolder extends TextMessageHolder {
 
                 }
             } else {//女性用户
-                ic_vip.setImageResource(R.drawable.ic_goddess);
+                ic_vip.setImageResource(R.drawable.ic_good_goddess);
                 ic_vip.setVisibility(isVip == 1 ? View.VISIBLE : View.GONE);
                 if (certification == 1) {
                     ic_certification.setVisibility(isVip == 1 ? View.GONE : View.VISIBLE);

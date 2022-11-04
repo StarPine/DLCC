@@ -38,7 +38,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
-                android:background="@drawable/img_main_bar_backdrop" />
+                android:background="@drawable/top_bar_bg" />
 
             <View
                 android:layout_width="match_parent"
