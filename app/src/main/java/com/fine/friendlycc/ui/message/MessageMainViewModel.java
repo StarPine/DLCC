@@ -45,6 +45,22 @@ public class MessageMainViewModel extends BaseViewModel<AppRepository> {
 
     private Disposable mSubscription, MessageCountTagSubscription,mainTabEventReceive,MessageCountContactSubscription;
 
+
+    public BindingCommand<Integer> onPageSelectedCommand = new BindingCommand<>(index -> {
+
+        boolean flag = tabSelected.get();
+        if (index == 0){
+            if (!flag) {
+                tabSelected.set(true);
+                tabSelectEvent.postValue(true);
+            }
+        }else {
+            if (flag) {
+                tabSelected.set(false);
+                tabSelectEvent.postValue(false);
+            }
+        }
+    });
     //tab切换按键
     public BindingCommand toLeftTabClickCommand = new BindingCommand(() -> {
         boolean flag = tabSelected.get();

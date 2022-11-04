@@ -71,7 +71,7 @@ public class MessageMainFragment extends BaseFragment<FragmentMessageMainBinding
         MessagePagerAdapter fragmentAdapter = new MessagePagerAdapter(this);
         fragmentAdapter.setFragmentList(mFragments);
 
-        binding.viewPager.setUserInputEnabled(false);
+        binding.viewPager.setUserInputEnabled(true);
         binding.viewPager.setOffscreenPageLimit(1);
         binding.viewPager.setAdapter(fragmentAdapter);
         //取消保存页面--未知BUG

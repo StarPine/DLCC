@@ -254,7 +254,7 @@ public class ConversationListAdapter extends RecyclerView.Adapter implements ICo
                 return;
             }
             if (conversationInfo.isTop() && !isForwardFragment) {
-                baseHolder.itemView.setBackgroundColor(baseHolder.rootView.getResources().getColor(R.color.conversation_item_top_color));
+                baseHolder.itemView.setBackground(baseHolder.rootView.getResources().getDrawable(R.drawable.chat_istop_bg));
             } else {
                 baseHolder.itemView.setBackgroundColor(Color.WHITE);
             }

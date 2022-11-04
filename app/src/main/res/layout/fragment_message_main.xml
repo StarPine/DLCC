@@ -28,7 +28,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="90dp"
                 android:scaleType="fitXY"
-                android:src="@drawable/img_main_bar_backdrop" />
+                android:src="@drawable/chat_top_bar_bg" />
             <View
                 android:id="@+id/status_bar_view"
                 android:layout_width="match_parent"
@@ -47,6 +47,16 @@
                     android:layout_height="match_parent"
                     binding:onClickCommand="@{viewModel.toLeftTabClickCommand}">
 
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:layout_alignEnd="@+id/tv_message_text"
+                        android:layout_alignTop="@+id/tv_message_text"
+                        android:layout_marginTop="-3dp"
+                        android:src="@drawable/item_checked_basemap"
+                        android:visibility="@{viewModel.tabSelected ? View.VISIBLE : View.GONE}" />
+
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tv_message_text"
                         android:layout_width="wrap_content"
@@ -55,9 +65,10 @@
                         android:layout_centerInParent="true"
                         android:layout_marginStart="15dp"
                         android:text="@string/playfun_tab_message_1"
-                        android:textColor="@{viewModel.tabSelected ? @color/play_chat_purple_1 : @color/black}"
-                        android:textSize="16sp"
+                        android:textColor="@{viewModel.tabSelected ? @color/toolbar_title_color : @color/play_chat_gray_3}"
+                        android:textSize="@{viewModel.tabSelected ?@dimen/alivc_common_font_18:@dimen/alivc_common_font_14}"
                         binding:isBold="@{viewModel.tabSelected}" />
+
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tv_message_hint"
@@ -75,14 +86,6 @@
                         android:textSize="11sp"
                         android:visibility="@{viewModel.chatMessageCount > 0 ? View.VISIBLE:View.INVISIBLE}"
                         tools:ignore="RelativeOverlap,SmallSp" />
-                    <View
-                        android:visibility="@{viewModel.tabSelected ? View.VISIBLE : View.GONE}"
-                        binding:drawable_color="@{@color/purple_text}"
-                        binding:drawable_cornersRadius="@{2}"
-                        android:layout_alignParentBottom="true"
-                        android:layout_centerInParent="true"
-                        android:layout_width="19dp"
-                        android:layout_height="3dp"/>
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -92,6 +95,16 @@
                     android:paddingEnd="5dp"
                     binding:onClickCommand="@{viewModel.toRightTabClickCommand}">
 
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:layout_alignEnd="@+id/tv_message_contact"
+                        android:layout_alignTop="@+id/tv_message_contact"
+                        android:layout_marginTop="-3dp"
+                        android:src="@drawable/item_checked_basemap"
+                        android:visibility="@{!viewModel.tabSelected ? View.VISIBLE : View.GONE}" />
+
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tv_message_contact"
                         android:layout_width="wrap_content"
@@ -100,8 +113,8 @@
                         android:layout_centerInParent="true"
                         android:layout_marginStart="15dp"
                         android:text="@string/playfun_tab_message_3"
-                        android:textColor="@{!viewModel.tabSelected ? @color/play_chat_purple_1 : @color/black}"
-                        android:textSize="16sp"
+                        android:textColor="@{!viewModel.tabSelected ? @color/toolbar_title_color : @color/play_chat_gray_3}"
+                        android:textSize="@{!viewModel.tabSelected ?@dimen/alivc_common_font_18:@dimen/alivc_common_font_14}"
                         binding:isBold="@{!viewModel.tabSelected}" />
 
                     <androidx.appcompat.widget.AppCompatTextView
@@ -118,14 +131,6 @@
                         android:textColor="@color/white"
                         android:textSize="11sp"
                         android:visibility="@{viewModel.chatMessageContactCount > 0 ? View.VISIBLE:View.INVISIBLE}" />
-                    <View
-                        android:visibility="@{!viewModel.tabSelected ? View.VISIBLE : View.GONE}"
-                        binding:drawable_color="@{@color/purple_text}"
-                        binding:drawable_cornersRadius="@{2}"
-                        android:layout_alignParentBottom="true"
-                        android:layout_centerInParent="true"
-                        android:layout_width="19dp"
-                        android:layout_height="3dp"/>
                 </RelativeLayout>
 
                 <androidx.appcompat.widget.AppCompatImageView
@@ -176,7 +181,8 @@
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/view_pager"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                binding:onPageSelectedCommand="@{viewModel.onPageSelectedCommand}" />
 
         </RelativeLayout>
     </LinearLayout>
