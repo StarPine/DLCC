@@ -22,13 +22,14 @@
     </data>
 
     <RelativeLayout
-        binding:onClickCommand="@{viewModel.itemClick}"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
         android:paddingStart="5dp"
         android:paddingEnd="5dp"
-        android:layout_marginBottom="15dp"
-        android:gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        binding:onClickCommand="@{viewModel.itemClick}">
+
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/item_lottie"
             android:layout_width="80dp"
@@ -39,25 +40,25 @@
             app:lottie_autoPlay="false"
             app:lottie_loop="false"
             app:lottie_rawRes="@raw/accost_animation"
-            binding:accountCollect="@{viewModel.accountCollect}"/>
+            binding:accountCollect="@{viewModel.accountCollect}" />
 
         <com.fine.friendlycc.widget.roundedimageview.RoundedImageView
             android:id="@+id/round_image_view_item"
             android:layout_width="180dp"
             android:layout_height="180dp"
             android:scaleType="centerCrop"
-            app:riv_corner_radius="10dp"
             android:src="@drawable/radio_dating_img_default"
+            app:riv_corner_radius="10dp"
             binding:imageErrorPlaceholderRes="@{R.drawable.radio_dating_img_default}"
-            binding:imagePlaceholderRes="@{R.drawable.radio_dating_img_default}"
-            binding:imagePath="@{viewModel.itemEntity.avatar}" />
+            binding:imagePath="@{viewModel.itemEntity.avatar}"
+            binding:imagePlaceholderRes="@{R.drawable.radio_dating_img_default}" />
 
         <RelativeLayout
             android:layout_width="46dp"
             android:layout_height="46dp"
             android:layout_below="@+id/round_image_view_item"
-            android:layout_alignRight="@+id/round_image_view_item"
             android:layout_alignTop="@+id/ll_head"
+            android:layout_alignRight="@+id/round_image_view_item"
             android:background="@drawable/item_park_radius_back"
             binding:onClickCommand="@{viewModel.accostOnClickCommand}">
 
@@ -82,55 +83,53 @@
 
         <LinearLayout
             android:id="@+id/ll_head"
-            android:orientation="horizontal"
-            android:layout_below="@+id/round_image_view_item"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/round_image_view_item"
             android:layout_marginTop="5dp"
             android:gravity="center"
-            android:layout_height="wrap_content">
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/tv_nickname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:maxWidth="80dp"
-                android:lines="1"
                 android:ellipsize="end"
+                android:lines="1"
+                android:maxWidth="80dp"
                 android:text='@{viewModel.itemEntity.nickname}'
-                android:textStyle="bold"
                 android:textSize="16sp"
-                tools:text="海浪花多少度"
-                />
+                android:textStyle="bold"
+                tools:text="海浪花多少度" />
 
             <ImageView
                 android:id="@+id/iv_real_man"
                 android:layout_width="31dp"
                 android:layout_height="13dp"
-                android:visibility="@{viewModel.getVipGodsImg(viewModel.itemEntity) != null ?View.VISIBLE:View.GONE}"
                 android:src="@{viewModel.getVipGodsImg(viewModel.itemEntity)}"
-                tools:src="@drawable/ic_good_goddess"
-                />
+                android:visibility="@{viewModel.getVipGodsImg(viewModel.itemEntity) != null ?View.VISIBLE:View.GONE}"
+                tools:src="@drawable/ic_good_goddess" />
 
 
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/ll_head2"
-            android:orientation="horizontal"
-            android:layout_below="@+id/ll_head"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ll_head"
             android:layout_marginTop="5dp"
             android:gravity="center"
-            android:layout_height="wrap_content">
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:includeFontPadding="false"
-                android:visibility="@{viewModel.isEmpty(viewModel.ageAndConstellation)? View.GONE :View.VISIBLE}"
                 android:text="@{viewModel.ageAndConstellation}"
                 android:textColor="#FF827692"
                 android:textSize="12sp"
+                android:visibility="@{viewModel.isEmpty(viewModel.ageAndConstellation)? View.GONE :View.VISIBLE}"
                 tools:text="19" />
 
             <TextView
@@ -140,16 +139,16 @@
                 android:layout_marginEnd="4dp"
                 android:gravity="center_vertical"
                 android:text="|"
-                android:visibility="@{StringUtils.isEmpty(viewModel.getOccupationByIdOnNull) ? View.GONE : View.VISIBLE}"
                 android:textColor="#CDCED1"
                 android:textSize="@dimen/text_size_small"
+                android:visibility="@{StringUtils.isEmpty(viewModel.getOccupationByIdOnNull) ? View.GONE : View.VISIBLE}"
                 tools:ignore="HardcodedText" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{viewModel.getOccupationByIdOnNull}"
                 android:includeFontPadding="false"
+                android:text="@{viewModel.getOccupationByIdOnNull}"
                 android:textColor="#FF827692"
                 android:textSize="12sp"
                 tools:text="职业" />

@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -38,9 +39,12 @@ import com.fine.friendlycc.ui.coinpusher.dialog.CoinPusherRoomListDialog;
 import com.fine.friendlycc.ui.dialog.CityChooseDialog;
 import com.fine.friendlycc.ui.home.accost.HomeAccostDialog;
 import com.fine.friendlycc.ui.home.active.HomeFristTabFragment;
+import com.fine.friendlycc.ui.mine.MineFragment;
 import com.fine.friendlycc.utils.AutoSizeUtils;
 import com.fine.friendlycc.utils.ImmersionBarUtils;
+import com.fine.friendlycc.widget.AppBarStateChangeListener;
 import com.fine.friendlycc.widget.coinrechargesheet.CoinRechargeSheetView;
+import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
@@ -103,6 +107,21 @@ public class HomeMainFragment extends BaseFragment<FragmentHomeMainBinding, Home
         binding.tvLocationWarn.setOnClickListener(view -> {
             Intent intent = IntentUtils.getLaunchAppDetailsSettingsIntent(mActivity.getPackageName());
             startActivity(intent);
+        });
+
+        binding.appBar.addOnOffsetChangedListener(new AppBarStateChangeListener() {
+            @Override
+            public void onStateChanged(AppBarLayout appBarLayout, AppBarStateChangeListener.State state) {
+                if (state == State.COLLAPSED) {
+                    //折叠状态
+                    binding.imgBarBackground.setVisibility(View.GONE);
+                    binding.viewAssist.setVisibility(View.GONE);
+                } else if (state == State.EXPANDED) {
+                    //展开状态
+                    binding.imgBarBackground.setVisibility(View.VISIBLE);
+                    binding.viewAssist.setVisibility(View.VISIBLE);
+                }
+            }
         });
 
         //展示首页广告位
