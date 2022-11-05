@@ -765,7 +765,7 @@
                                     android:layout_centerInParent="true"
                                     android:layout_marginEnd="5dp"
                                     android:layout_toStartOf="@+id/audio_remove"
-                                    android:src="@drawable/mine_audio_start_img" />
+                                    android:src="@drawable/radio_item_play_audio" />
 
                                 <ImageView
                                     android:id="@+id/audio_remove"

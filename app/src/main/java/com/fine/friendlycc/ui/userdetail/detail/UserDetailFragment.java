@@ -404,7 +404,7 @@ public class UserDetailFragment extends BaseToolbarFragment<FragmentUserDetailBi
         } else {
             if (AudioPlayer.getInstance().isPlaying()) {
                 AudioPlayer.getInstance().stopPlay();
-                binding.audioStart.setImageResource(R.drawable.mine_audio_start_img);
+                binding.audioStart.setImageResource(R.drawable.radio_item_play_audio);
             }
         }
     }
@@ -572,7 +572,7 @@ public class UserDetailFragment extends BaseToolbarFragment<FragmentUserDetailBi
                 binding.audioStart.setImageResource(R.drawable.mine_audio_stop_img);
                 if (AudioPlayer.getInstance().isPlaying()) {
                     AudioPlayer.getInstance().stopPlay();
-                    binding.audioStart.setImageResource(R.drawable.mine_audio_start_img);
+                    binding.audioStart.setImageResource(R.drawable.radio_item_play_audio);
                     return;
                 }
                 Glide.with(UserDetailFragment.this.getContext()).asGif().load(R.drawable.audio_waves)
@@ -582,7 +582,7 @@ public class UserDetailFragment extends BaseToolbarFragment<FragmentUserDetailBi
                 AudioPlayer.getInstance().startPlay(StringUtil.getFullAudioUrl(viewModel.detailEntity.get().getSound()), new AudioPlayer.Callback() {
                     @Override
                     public void onCompletion(Boolean success, Boolean isOutTime) {
-                        binding.audioStart.setImageResource(R.drawable.mine_audio_start_img);
+                        binding.audioStart.setImageResource(R.drawable.radio_item_play_audio);
                     }
                 });
             }

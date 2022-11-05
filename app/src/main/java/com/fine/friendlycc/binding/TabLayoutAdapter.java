@@ -68,14 +68,14 @@ public class TabLayoutAdapter {
     private static void tabUnSelectedSetting(ViewHolder holder) {
         holder.mTabItemName.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL));
         holder.mTabItemName.setSelected(false);
-        holder.mTabItemName.setTextSize(14);
+        holder.mTabItemName.setTextSize(13);
         holder.mTabItemName.setTextColor(ColorUtils.getColor(R.color.play_chat_gray_3));
         holder.mTabItemNBg.setVisibility(View.GONE);
     }
 
     private static void tabSelectedSetting(ViewHolder holder) {
         holder.mTabItemName.setSelected(true);
-        holder.mTabItemName.setTextSize(18);
+        holder.mTabItemName.setTextSize(17);
         holder.mTabItemName.setTextColor(ColorUtils.getColor(R.color.toolbar_title_color));
         holder.mTabItemName.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
         holder.mTabItemNBg.setVisibility(View.VISIBLE);

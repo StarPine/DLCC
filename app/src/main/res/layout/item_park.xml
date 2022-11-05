@@ -24,7 +24,7 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="14dp"
         android:gravity="center"
         android:paddingStart="5dp"
         android:paddingEnd="5dp"
@@ -44,8 +44,8 @@
 
         <com.fine.friendlycc.widget.roundedimageview.RoundedImageView
             android:id="@+id/round_image_view_item"
-            android:layout_width="180dp"
-            android:layout_height="180dp"
+            android:layout_width="161dp"
+            android:layout_height="161dp"
             android:scaleType="centerCrop"
             android:src="@drawable/radio_dating_img_default"
             app:riv_corner_radius="10dp"
@@ -54,19 +54,17 @@
             binding:imagePlaceholderRes="@{R.drawable.radio_dating_img_default}" />
 
         <RelativeLayout
-            android:layout_width="46dp"
-            android:layout_height="46dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_below="@+id/round_image_view_item"
             android:layout_alignTop="@+id/ll_head"
-            android:layout_alignRight="@+id/round_image_view_item"
-            android:background="@drawable/item_park_radius_back"
+            android:layout_marginTop="2dp"
+            android:layout_alignEnd="@+id/round_image_view_item"
             binding:onClickCommand="@{viewModel.accostOnClickCommand}">
-
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:scaleType="centerCrop"
                 android:src="@drawable/item_accost_logo"
                 android:visibility="@{viewModel.itemEntity.isAccost==0?View.VISIBLE:View.GONE}" />
 
@@ -74,8 +72,6 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:scaleType="centerCrop"
                 android:src="@drawable/item_chat_logo"
                 android:visibility="@{viewModel.itemEntity.isAccost==1?View.VISIBLE:View.GONE}" />
 
@@ -86,7 +82,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/round_image_view_item"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="7dp"
             android:gravity="center"
             android:orientation="horizontal">
 
@@ -96,10 +92,11 @@
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:lines="1"
-                android:maxWidth="80dp"
+                android:maxWidth="100dp"
                 android:text='@{viewModel.itemEntity.nickname}'
-                android:textSize="16sp"
+                android:textSize="15sp"
                 android:textStyle="bold"
+                android:textColor="@color/toolbar_title_color"
                 tools:text="海浪花多少度" />
 
             <ImageView
@@ -118,7 +115,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/ll_head"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="1dp"
             android:gravity="center"
             android:orientation="horizontal">
 
@@ -127,7 +124,7 @@
                 android:layout_height="wrap_content"
                 android:includeFontPadding="false"
                 android:text="@{viewModel.ageAndConstellation}"
-                android:textColor="#FF827692"
+                android:textColor="@color/text_9EA1B0"
                 android:textSize="12sp"
                 android:visibility="@{viewModel.isEmpty(viewModel.ageAndConstellation)? View.GONE :View.VISIBLE}"
                 tools:text="19" />
@@ -149,7 +146,7 @@
                 android:layout_height="wrap_content"
                 android:includeFontPadding="false"
                 android:text="@{viewModel.getOccupationByIdOnNull}"
-                android:textColor="#FF827692"
+                android:textColor="@color/text_9EA1B0"
                 android:textSize="12sp"
                 tools:text="职业" />
 

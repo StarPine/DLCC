@@ -120,26 +120,27 @@
 
                         <androidx.appcompat.widget.AppCompatImageView
                             android:id="@+id/iv_search"
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
-                            android:layout_marginEnd="20dp"
+                            android:padding="10dp"
                             android:layout_toStartOf="@+id/iv_gender"
                             android:scaleType="fitXY"
-                            android:src="@drawable/ic_search"
+                            android:src="@drawable/ic_home_search"
                             binding:onClickCommand="@{viewModel.searchOnClickCommand}" />
 
                         <androidx.appcompat.widget.AppCompatImageView
                             android:id="@+id/iv_gender"
-                            android:layout_width="21dp"
-                            android:layout_height="21dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
-                            android:layout_marginEnd="20dp"
                             android:layout_toStartOf="@+id/ll_area"
+                            android:padding="10dp"
+                            android:layout_marginEnd="10dp"
                             android:scaleType="fitXY"
-                            android:src="@{safeUnbox(viewModel.gender) ? @drawable/ic_head_male : @drawable/ic_head_female}"
+                            android:src="@{safeUnbox(viewModel.gender) ? @drawable/ic_head_gender_male : @drawable/ic_head_gender_female}"
                             binding:onClickCommand="@{viewModel.genderOnClickCommand}"
-                            tools:src="@drawable/ic_head_male" />
+                            tools:src="@drawable/ic_head_gender_male" />
 
                         <LinearLayout
                             android:id="@+id/ll_area"
@@ -148,6 +149,7 @@
                             android:layout_alignParentEnd="true"
                             android:layout_centerVertical="true"
                             android:layout_marginEnd="15dp"
+                            android:gravity="center_vertical"
                             android:orientation="horizontal"
                             binding:onClickCommand="@{viewModel.regionOnClickCommand}">
 
@@ -157,12 +159,11 @@
                                 android:includeFontPadding="false"
                                 android:text="@{viewModel.regionTitle}"
                                 android:textColor="#ff333333"
-                                android:textSize="18sp" />
+                                android:textSize="13sp" />
 
                             <androidx.appcompat.widget.AppCompatImageView
-                                android:layout_width="22dp"
-                                android:layout_height="22dp"
-                                android:scaleType="fitXY"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
                                 android:src="@drawable/arrow_right_black" />
                         </LinearLayout>
 
