@@ -1568,6 +1568,7 @@
     <string name="playfun_age_and_city">%s歲 %s</string>
     <string name="playfun_message_sended">訊息已發送</string>
     <string name="playfun_buy_vip">成為VIP</string>
+    <string name="playfun_buy_vip2">立即開通</string>
     <string name="playfun_valid_time">有效期：</string>
     <string name="playfun_account_hidden_tip_male">社群賬號已隱藏，可先與他私訊</string>
     <string name="playfun_account_hidden_tip_female">社群賬號已隱藏，可先與她私訊</string>
@@ -1896,6 +1897,7 @@
     <string name="playfun_accost_same_sex">無法搭訕同性</string>
     <string name="playfun_name_number_too_long2">不能超出10個字</string>
     <string name="playfun_mine_vip_hint">會員特權</string>
+    <string name="playfun_mine_vip_hint_new">暢享專屬標籤、免費鑽石、更多曝光等</string>
     <string name="playfun_vipsubscribe_item_vip_txt_currency">$</string>
     <string name="playfun_version_latest">已是最新版本!</string>
     <string name="playfun_mine_setting_desc">無痕與隱藏</string>

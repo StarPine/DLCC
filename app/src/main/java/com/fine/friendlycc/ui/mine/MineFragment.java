@@ -187,7 +187,7 @@ public class MineFragment extends BaseRefreshFragment<FragmentMineBinding, MineV
                     AudioPlayer.getInstance().startPlay(StringUtil.getFullAudioUrl(userInfoEntity.getSound()), new AudioPlayer.Callback() {
                         @Override
                         public void onCompletion(Boolean success, Boolean isOutTime) {
-                            binding.audioStop.setImageResource(R.drawable.radio_item_play_audio);
+                            binding.audioStop.setImageResource(R.drawable.mine_play_audio);
                             binding.audioWaves.setImageResource(R.drawable.audio_waves_stop);
                         }
                     });

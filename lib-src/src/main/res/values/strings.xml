@@ -2258,4 +2258,7 @@
     <string name="playfun_coinpusher_history_text2">Lv%s player</string>
 
     <!--PlayFun-APP-END-->
+
+    <string name="playfun_buy_vip2">立即開通</string>
+    <string name="playfun_mine_vip_hint_new">暢享專屬標籤、免費鑽石、更多曝光等</string>
 </resources>
