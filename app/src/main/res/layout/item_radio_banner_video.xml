@@ -35,13 +35,13 @@
                 binding:imagePath='@{viewModel.adUserItemEntity.avatar}'
                 binding:imagePlaceholderRes="@{R.drawable.img_pc_default_load}"
                 binding:onClickCommand="@{viewModel.itemClick}"
-                binding:resizeH="@{200}"
-                binding:resizeW="@{170}" />
+                binding:resizeH="@{217}"
+                binding:resizeW="@{165}" />
             <RelativeLayout
                 android:clickable="true"
                 android:elevation="10dp"
-                android:layout_width="58dp"
-                android:layout_height="25dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentStart="true"
                 android:layout_marginStart="10dp"
@@ -49,19 +49,20 @@
                 android:visibility="@{viewModel.getSoundShow}">
 
                 <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/user_detail_audio_layout" />
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/radio_audio_bg" />
 
                 <ImageView
                     android:id="@+id/audio_start"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginStart="2dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="1dp"
+                    android:layout_centerVertical="true"
                     android:scaleType="fitXY"
                     android:src="@{viewModel.gerDrawablePlay(viewModel.isPlaying)}"
                     binding:onClickCommand="@{viewModel.audioPlayClickCommand}"
-                    tools:src="@drawable/mine_audio_start_img" />
+                    tools:src="@drawable/radio_item_play_audio" />
 
                 <TextView
                     android:id="@+id/audio_time"
@@ -71,17 +72,11 @@
                     android:layout_toEndOf="@+id/audio_start"
                     android:layout_centerInParent="true"
                     android:includeFontPadding="false"
-                    android:text="@{String.valueOf(viewModel.adUserItemEntity.soundTime)}"
-                    android:textColor="#FFA72DFE"
-                    android:textSize="13sp"
-                    tools:text="14" />
+                    android:text="@{String.valueOf(viewModel.adUserItemEntity.soundTime)+'”'}"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    tools:text="14“" />
 
-                <ImageView
-                    android:layout_width="5dp"
-                    android:layout_height="3dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_toEndOf="@+id/audio_time"
-                    android:src="@drawable/icon_mine_audio_dian" />
             </RelativeLayout>
 
             <androidx.appcompat.widget.AppCompatImageView
@@ -95,6 +90,6 @@
                 android:layout_marginBottom="10dp"
                 binding:onClickCommand="@{viewModel.callVideoClickCommand}"
                 android:scaleType="fitXY"
-                android:src="@drawable/img_item_call_video" />
+                android:src="@drawable/icon_item_call_video" />
         </RelativeLayout>
 </layout>

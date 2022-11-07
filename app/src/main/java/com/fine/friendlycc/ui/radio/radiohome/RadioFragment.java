@@ -42,11 +42,13 @@ import com.fine.friendlycc.ui.userdetail.report.ReportUserFragment;
 import com.fine.friendlycc.utils.AutoSizeUtils;
 import com.fine.friendlycc.utils.PictureSelectorUtil;
 import com.fine.friendlycc.viewadapter.CustomRefreshHeader;
+import com.fine.friendlycc.widget.AppBarStateChangeListener;
 import com.fine.friendlycc.widget.coinrechargesheet.CoinRechargeSheetView;
 import com.fine.friendlycc.widget.dialog.MMAlertDialog;
 import com.fine.friendlycc.widget.dialog.MVDialog;
 import com.fine.friendlycc.widget.dialog.TraceDialog;
 import com.fine.friendlycc.widget.dropdownfilterpop.DropDownFilterPopupWindow;
+import com.google.android.material.appbar.AppBarLayout;
 import com.google.gson.reflect.TypeToken;
 import com.shuyu.gsyvideoplayer.GSYVideoManager;
 import com.tencent.qcloud.tuikit.tuichat.component.AudioPlayer;
@@ -178,6 +180,19 @@ public class RadioFragment extends BaseRefreshFragment<FragmentRadioBinding, Rad
                     viewModel.setSexId((Integer) obj.getData());
                 }
                 viewModel.tarckingTitle.set(obj.getName());
+            }
+        });
+
+        binding.appBar.addOnOffsetChangedListener(new AppBarStateChangeListener() {
+            @Override
+            public void onStateChanged(AppBarLayout appBarLayout, AppBarStateChangeListener.State state) {
+                if (state == State.COLLAPSED) {
+                    //折叠状态
+                    binding.llBg.setVisibility(View.GONE);
+                } else if (state == State.EXPANDED) {
+                    //展开状态
+                    binding.llBg.setVisibility(View.VISIBLE);
+                }
             }
         });
 

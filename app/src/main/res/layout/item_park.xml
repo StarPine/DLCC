@@ -92,17 +92,18 @@
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:lines="1"
-                android:maxWidth="100dp"
+                android:maxWidth="90dp"
                 android:text='@{viewModel.itemEntity.nickname}'
                 android:textSize="15sp"
                 android:textStyle="bold"
                 android:textColor="@color/toolbar_title_color"
-                tools:text="海浪花多少度" />
+                tools:text="海浪花多少度gg" />
 
             <ImageView
                 android:id="@+id/iv_real_man"
-                android:layout_width="31dp"
-                android:layout_height="13dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
                 android:src="@{viewModel.getVipGodsImg(viewModel.itemEntity)}"
                 android:visibility="@{viewModel.getVipGodsImg(viewModel.itemEntity) != null ?View.VISIBLE:View.GONE}"
                 tools:src="@drawable/ic_good_goddess" />

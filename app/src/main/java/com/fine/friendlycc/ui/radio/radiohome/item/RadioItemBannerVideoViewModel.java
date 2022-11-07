@@ -57,7 +57,7 @@ public class RadioItemBannerVideoViewModel extends MultiItemViewModel<RadioViewM
     });
     //获取播放状态图片
     public Drawable gerDrawablePlay(boolean play){
-        return play ? Utils.getContext().getDrawable(R.drawable.mine_audio_stop_img) :Utils.getContext().getDrawable(R.drawable.mine_audio_start_img) ;
+        return play ? Utils.getContext().getDrawable(R.drawable.mine_audio_stop_img) :Utils.getContext().getDrawable(R.drawable.radio_item_play_audio) ;
     }
 
     //播放语音

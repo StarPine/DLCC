@@ -158,12 +158,12 @@
 
                 <ImageView
                     android:id="@+id/iv_more"
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_marginTop="29dp"
                     android:layout_marginEnd="14dp"
-                    android:src="@drawable/icon_radio_item_more"
+                    android:src="@drawable/icon_more"
                     binding:onClickCommand="@{viewModel.moreClick}" />
 
                 <TextView
@@ -264,8 +264,8 @@
                         android:id="@+id/tv_like_img"
                         android:layout_width="22dp"
                         android:layout_height="22dp"
-                        android:src="@{viewModel.newsEntityObservableField.isGive==1?@drawable/ic_like_purple:@drawable/ic_activity_like}"
-                        tools:src="@drawable/ic_like_purple" />
+                        android:src="@{viewModel.newsEntityObservableField.isGive==1?@drawable/ic_like_checked:@drawable/ic_like_normal}"
+                        tools:src="@drawable/ic_like_checked" />
 
                     <TextView
                         android:id="@+id/tv_like_num"
@@ -293,8 +293,8 @@
                         android:id="@+id/tv_msg__img"
                         android:layout_width="22dp"
                         android:layout_height="22dp"
-                        android:src="@{viewModel.newsEntityObservableField.broadcast.isComment==0?@drawable/ic_activity_comment:@drawable/ic_activity_comment_disable}"
-                        tools:src="@drawable/ic_activity_comment" />
+                        android:src="@{viewModel.newsEntityObservableField.broadcast.isComment==0?@drawable/icon_comment:@drawable/ic_activity_comment_disable}"
+                        tools:src="@drawable/icon_comment" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -323,7 +323,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_activity_comment" />
+                    android:src="@drawable/icon_comment" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:layout_width="match_parent"

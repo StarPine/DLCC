@@ -108,12 +108,12 @@
 
             <ImageView
                 android:id="@+id/iv_more"
-                android:layout_width="15dp"
-                android:layout_height="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="29dp"
                 android:layout_marginEnd="14dp"
-                android:src="@drawable/icon_radio_item_more" />
+                android:src="@drawable/icon_more" />
 
         </RelativeLayout>
 
@@ -196,8 +196,8 @@
                     android:id="@+id/tv_like_img"
                     android:layout_width="22dp"
                     android:layout_height="22dp"
-                    android:src="@drawable/ic_like_purple"
-                    tools:src="@drawable/ic_like_purple" />
+                    android:src="@drawable/ic_like_checked"
+                    tools:src="@drawable/ic_like_checked" />
 
                 <TextView
                     android:id="@+id/tv_like_num"
@@ -224,8 +224,8 @@
                     android:id="@+id/tv_msg__img"
                     android:layout_width="22dp"
                     android:layout_height="22dp"
-                    android:src="@drawable/ic_activity_comment"
-                    tools:src="@drawable/ic_activity_comment" />
+                    android:src="@drawable/icon_comment"
+                    tools:src="@drawable/icon_comment" />
 
                 <TextView
                     android:layout_width="wrap_content"

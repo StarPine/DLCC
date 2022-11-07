@@ -13,7 +13,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="30dp"
-        android:background="@color/task_back_group"
+        android:background="@color/pseekbar_process_off2"
         android:orientation="vertical">
         <TextView
             android:layout_alignParentStart="true"
@@ -23,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{viewModel.emptyTextField}"
-            android:textColor="#ff9ea1b0"
+            android:textColor="@color/pseekbar_process_off3"
             android:textSize="12sp"
             tools:text="@string/playfun_radio_list_trace_empty2"
             />

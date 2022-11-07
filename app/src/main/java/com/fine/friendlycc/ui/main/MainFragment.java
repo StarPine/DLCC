@@ -727,11 +727,7 @@ public class MainFragment extends BaseFragment<FragmentMainBinding, MainViewMode
                 binding.navigationMineImg.setVisibility(View.INVISIBLE);
                 binding.navigationMineImgLottie.setVisibility(View.VISIBLE);
                 binding.navigationMineImgLottie.playAnimation();
-                if (ConfigManager.getInstance().isMale()) {
-                    binding.navigationMineImg.setImageResource(R.drawable.tab_mine_male_checked);
-                } else {
-                    binding.navigationMineImg.setImageResource(R.drawable.tab_mine_female_checked);
-                }
+                binding.navigationMineImg.setImageResource(R.drawable.tab_mine_checked);
             }
             selTabImgLayout = view;
         }
