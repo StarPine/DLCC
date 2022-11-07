@@ -41,8 +41,8 @@
 
                 <ImageView
                     android:id="@+id/navigation_home_img"
-                    android:layout_width="21dp"
-                    android:layout_height="21dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:layout_marginBottom="4dp"
                     android:scaleType="centerCrop"
@@ -72,8 +72,8 @@
 
                 <ImageView
                     android:id="@+id/navigation_radio_img"
-                    android:layout_width="21dp"
-                    android:layout_height="21dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:layout_marginBottom="4dp"
                     android:scaleType="centerCrop"
@@ -165,8 +165,8 @@
 
                 <ImageView
                     android:id="@+id/navigation_message_img"
-                    android:layout_width="21dp"
-                    android:layout_height="21dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:layout_gravity="center_horizontal|top"
                     android:layout_marginBottom="4dp"
@@ -197,8 +197,8 @@
 
                 <ImageView
                     android:id="@+id/navigation_mine_img"
-                    android:layout_width="21dp"
-                    android:layout_height="21dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:layout_marginBottom="4dp"
                     android:scaleType="centerCrop"
