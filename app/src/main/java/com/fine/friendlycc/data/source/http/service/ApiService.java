@@ -413,7 +413,7 @@ public interface ApiService {
      * @return io.reactivex.Observable<com.dl.playfun.data.source.http.response.BaseListDataResponse<com.dl.playfun.entity.AdItemEntity>>
      * @Date 2022/7/25
      */
-    @GET("api/ad/list")
+    @GET("friendly/commercial/list")
     Observable<BaseDataResponse<AdBannerEntity>> getRadioAdBannerList(@Query("position") int position);
     /**
     * @Desc TODO(用户广告位)
@@ -422,7 +422,7 @@ public interface ApiService {
     * @return io.reactivex.Observable<com.dl.playfun.data.source.http.response.BaseDataResponse>
     * @Date 2022/7/26
     */
-    @GET("api/userAd")
+    @GET("friendly/plazaRecommend")
     Observable<BaseDataResponse<AdUserBannerEntity>> getUserAdList(@Query("position") Integer position);
     /**
      * @Desc TODO(广告列表获取  1：首页 2：广场页)
@@ -431,7 +431,7 @@ public interface ApiService {
      * @return io.reactivex.Observable<com.dl.playfun.data.source.http.response.BaseListDataResponse<com.dl.playfun.entity.AdItemEntity>>
      * @Date 2022/7/25
      */
-    @GET("api/navigation")
+    @GET("friendly/homeRecommend")
     Observable<BaseDataResponse<AdBannerEntity>> getMainAdBannerList(@Query("position") int position);
     /**
      * 保存个人笔记内容
@@ -467,7 +467,7 @@ public interface ApiService {
     * @Date 2022/7/2
     */
     @Headers(RetrofitHeadersConfig.DEFAULT_API_INIT_URL)
-    @GET("api/entrance")
+    @GET("friendly/open")
     Observable<BaseDataResponse<ApiConfigManagerEntity>> initApiConfig();
 
     /**
@@ -1178,7 +1178,7 @@ public interface ApiService {
      * type 类别 1按发布时间 2按活动时间]
      * @Date 2021/10/26
      */
-    @GET("api/v2/broadcast/home")
+    @GET("friendly/v4/plaza/info")
     Observable<BaseDataResponse<BroadcastListEntity>> getBroadcastHome(
             @Query("sex") Integer sex,
             @Query("city_id") Integer city_id,
@@ -1204,7 +1204,7 @@ public interface ApiService {
      *
      * @return
      */
-    @GET("/calling/config/getSensitiveWords")
+    @GET("friendly/config/getBlackWords")
     Observable<BaseDataResponse> getSensitiveWords();
 
     /**
@@ -1377,7 +1377,7 @@ public interface ApiService {
      * @parame []
      * @Date 2021/8/4
      */
-    @GET("api/v2/user/newsBrowseNumber")
+    @GET("friendly/v4/user/peopleNumber")
     Observable<BaseDataResponse<BrowseNumberEntity>> newsBrowseNumber();
 
     /**
@@ -1481,7 +1481,7 @@ public interface ApiService {
      * @param city_id
      * @return
      */
-    @POST("api/v2/city")
+    @POST("friendly/v4/city")
     Observable<BaseResponse> isBindCity(@Query("city_id") Integer city_id);
 
     /**
@@ -1561,7 +1561,7 @@ public interface ApiService {
      * @email 15616314565@163.com
      * Param [client]
      **/
-    @GET("/api/version")
+    @GET("friendly/version")
     Observable<BaseDataResponse<VersionEntity>> detectionVersion(@Query("client") String client);
 
     /**
@@ -1648,7 +1648,7 @@ public interface ApiService {
      * @param latitude   纬度
      * @return
      */
-    @GET("api/home")
+    @GET("friendly/frist")
     Observable<BaseListDataResponse<ParkItemEntity>> homeListGet(
             @Query("city_id") Integer cityId,
             @Query("type") Integer type,
@@ -1665,7 +1665,7 @@ public interface ApiService {
      *
      * @return 邀请码版本 0原有版本 1新版本
      */
-    @GET("api/user/info")
+    @GET("friendly/user/info")
     Observable<BaseDataResponse<UserInfoEntity>> getUserInfo(@Query("invite_version") Integer invite_version);
 
     /**
@@ -1673,7 +1673,7 @@ public interface ApiService {
      *
      * @return
      */
-    @GET("api/user/data")
+    @GET("friendly/user/data")
     Observable<BaseDataResponse<UserDataEntity>> getUserData(@Query("invite_version") Integer invite_version);
 
     /**
@@ -2314,7 +2314,7 @@ public interface ApiService {
      *
      * @return
      */
-    @GET("api/user/privacy")
+    @GET("friendly/user/private")
     Observable<BaseDataResponse<PrivacyEntity>> getPrivacy();
 
     /**
@@ -2551,7 +2551,7 @@ public interface ApiService {
      *
      * @return
      */
-    @GET("api/message")
+    @GET("friendly/chat")
     Observable<BaseDataResponse<List<MessageGroupEntity>>> getMessageList();
 
 

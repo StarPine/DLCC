@@ -84,14 +84,14 @@ android {
         open {
             dimension "friendly"
             // 服务端接口HOST
-            buildConfigField "String", "DEFAULT_API_URL", "\"http://config.play-chat.net/\""
+            buildConfigField "String", "DEFAULT_API_URL", "\"http://api.playcc.net/\""
             applicationId "com.fine.friendlycc"
             // 腾讯IM FCM离线推送ID
             buildConfigField "int", "GOOGLE_FCM_PUSH_BUZID", "17321"
             //客服id聊天
             buildConfigField "String", "CHAT_SERVICE_USER_ID_SEND", "\"administrator\""
             // 图片HOST
-            buildConfigField "String", "IMAGE_BASE_URL", "\"https://img.play-chat.net/\""
+            buildConfigField "String", "IMAGE_BASE_URL", "\"https://img.playcc.net/\""
             // Ali OSS BucketName
             buildConfigField "String", "BUCKET_NAME", "\"joymask\""
             //app名字
@@ -116,7 +116,7 @@ android {
             dimension "friendly"
             resConfigs "zh", "en"
             // 服务端接口HOST
-            buildConfigField "String", "DEFAULT_API_URL", "\"http://t-config.play-chat.net/\""
+            buildConfigField "String", "DEFAULT_API_URL", "\"http://t-api.playcc.net/\""
             applicationId "com.friendly.test"
             //客服id聊天
             buildConfigField "String", "CHAT_SERVICE_USER_ID_SEND", "\"administrator\""
@@ -124,7 +124,7 @@ android {
             //客服id聊天
             buildConfigField "String", "CHAT_SERVICE_USER_ID_SEND", "\"administrator\""
             // 图片HOST
-            buildConfigField "String", "IMAGE_BASE_URL", "\"https://img.joy-mask.com/\""
+            buildConfigField "String", "IMAGE_BASE_URL", "\"https://img.playcc.net/\""
             // Ali OSS BucketName
             buildConfigField "String", "BUCKET_NAME", "\"joymask\""
             //app名字
