@@ -95,7 +95,7 @@ android {
             // Ali OSS BucketName
             buildConfigField "String", "BUCKET_NAME", "\"joymask\""
             //app名字
-            resValue "string", "app_name", "Friendly CC"
+            resValue "string", "app_name", "Play CC"
             //Facebook APPID
             resValue "string", "facebook_app_token", "c5725141441c9d4a5bf4abc6a502b3e3"
             //AppsFlorid-AppId
@@ -128,7 +128,7 @@ android {
             // Ali OSS BucketName
             buildConfigField "String", "BUCKET_NAME", "\"joymask\""
             //app名字
-            resValue "string", "app_name", "FriendlyCC-beta"
+            resValue "string", "app_name", "Play CC-beta"
             //Facebook APPID
             resValue "string", "facebook_app_token", "c5725141441c9d4a5bf4abc6a502b3e3"
             //AppsFlorid-AppId

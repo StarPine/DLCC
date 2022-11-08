@@ -19,31 +19,16 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
-            android:src="@drawable/login_backdrop_img" />
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_alignParentTop="true"
-            android:layout_centerInParent="true"
-            android:src="@drawable/splash_top"
-            android:layout_marginTop="80dp"
-            android:layout_width="278dp"
-            android:layout_height="117dp"/>
+            android:src="@drawable/splash" />
         <TextView
             android:id="@+id/tv_init"
             binding:onClickCommand="@{viewModel.RetryCLick}"
             android:visibility="@{viewModel.hintRetryShow ? View.VISIBLE : View.GONE}"
-            android:layout_above="@+id/bom_logo"
             android:textSize="18sp"
             android:gravity="center"
-            android:layout_marginBottom="41dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="60dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/bom_logo"
-            android:layout_centerInParent="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="58dp"
-            android:src="@drawable/splash_bom_logo"
-            android:layout_width="125dp"
-            android:layout_height="43dp"/>
     </RelativeLayout>
 </layout>

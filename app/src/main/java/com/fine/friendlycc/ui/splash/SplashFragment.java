@@ -49,7 +49,7 @@ public class SplashFragment extends BaseFragment<FragmentSplashBinding, SplashVi
         String txt2 = getString(R.string.splash_init_tv2);
         int whiteLength = txt.length() - txt2.length();
         SpannableString stringBuilder = new SpannableString(txt);
-        ForegroundColorSpan whiteSpan = new ForegroundColorSpan(ColorUtils.getColor(R.color.white));
+        ForegroundColorSpan whiteSpan = new ForegroundColorSpan(ColorUtils.getColor(R.color.toolbar_title_color));
         ForegroundColorSpan redSpan = new ForegroundColorSpan(ColorUtils.getColor(R.color.red_9));
         stringBuilder.setSpan(whiteSpan, 0, whiteLength, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         stringBuilder.setSpan(redSpan, whiteLength, txt.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
