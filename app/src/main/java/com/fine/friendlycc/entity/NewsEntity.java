@@ -54,6 +54,15 @@ public class NewsEntity extends BaseObservable {
     //对方用户 IM iD
     @SerializedName("toImId")
     private String ImToUserId;
+    private int isAccost;
+
+    public int getIsAccost() {
+        return isAccost;
+    }
+
+    public void setIsAccost(int isAccost) {
+        this.isAccost = isAccost;
+    }
 
     public String getImUserId() {
         return ImUserId;

@@ -129,6 +129,9 @@ public class TrendDetailViewModel extends BaseViewModel<AppRepository> {
     public BindingCommand avatarClick = new BindingCommand(new BindingAction() {
         @Override
         public void call() {
+            if (String.valueOf(newsEntityObservableField.get().getUser().getId()).equals(ConfigManager.getInstance().getUserId())) {
+                return;
+            }
             AppContext.instance().logEvent(AppsFlyerEvent.User_Page_1);
             Bundle bundle = UserDetailFragment.getStartBundle(newsEntityObservableField.get().getUser().getId());
             start(UserDetailFragment.class.getCanonicalName(), bundle);

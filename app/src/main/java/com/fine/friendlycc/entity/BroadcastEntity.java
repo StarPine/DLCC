@@ -52,6 +52,17 @@ public class BroadcastEntity {
     @SerializedName("toImId")
     private String ImToUserId;
 
+    @SerializedName("is_accost")
+    private int isAccost;
+
+    public int getIsAccost() {
+        return isAccost;
+    }
+
+    public void setIsAccost(int isAccost) {
+        this.isAccost = isAccost;
+    }
+
     public String getImUserId() {
         return ImUserId;
     }

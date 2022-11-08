@@ -15,6 +15,7 @@ import androidx.databinding.ObservableList;
 import com.fine.friendlycc.BR;
 import com.fine.friendlycc.R;
 import com.fine.friendlycc.app.AppContext;
+import com.fine.friendlycc.app.AppsFlyerEvent;
 import com.fine.friendlycc.entity.BaseUserBeanEntity;
 import com.fine.friendlycc.entity.BroadcastBeanEntity;
 import com.fine.friendlycc.entity.BroadcastEntity;
@@ -29,6 +30,8 @@ import com.fine.friendlycc.ui.mine.broadcast.mytrends.trenddetail.TrendDetailVie
 import com.fine.friendlycc.ui.radio.radiohome.RadioViewModel;
 import com.fine.friendlycc.ui.userdetail.detail.UserDetailFragment;
 import com.fine.friendlycc.ui.userdetail.userdynamic.UserDynamicViewModel;
+import com.fine.friendlycc.ui.viewmodel.BaseParkItemViewModel;
+import com.fine.friendlycc.utils.ChatUtils;
 import com.fine.friendlycc.utils.ExceptionReportUtils;
 import com.fine.friendlycc.utils.ListUtils;
 import com.fine.friendlycc.viewmodel.BaseViewModel;
@@ -73,6 +76,29 @@ public class TrendItemViewModel extends MultiItemViewModel<BaseViewModel> {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+        }
+    });
+    //搭讪 or  聊天
+    public BindingCommand accostOnClickCommand = new BindingCommand(() -> {
+        try {
+            NewsEntity itemEntity = newsEntityObservableField.get();
+
+            //拿到position
+            if (itemEntity.getUser().getIsAccost() == 1) {
+                ChatUtils.chatUser(itemEntity.getImUserId(), itemEntity.getId(), itemEntity.getUser().getNickname(), viewModel);
+                AppContext.instance().logEvent(AppsFlyerEvent.homepage_chat);
+            } else {
+                    //男女点击搭讪
+                AppContext.instance().logEvent(ConfigManager.getInstance().isMale() ? AppsFlyerEvent.greet_male : AppsFlyerEvent.greet_female);
+                AppContext.instance().logEvent(AppsFlyerEvent.homepage_accost);
+                    if (viewModel instanceof RadioViewModel) {
+                        int position = ((RadioViewModel) viewModel).radioItems.indexOf(TrendItemViewModel.this);
+                        ((RadioViewModel) viewModel).putAccostFirst(position);
+                    }
+            }
+
+        } catch (Exception e) {
+            ExceptionReportUtils.report(e);
         }
     });
     // 点赞
@@ -274,6 +300,7 @@ public class TrendItemViewModel extends MultiItemViewModel<BaseViewModel> {
         userBean.setNickname(broadcastEntity.getNickname());
         userBean.setSex(broadcastEntity.getSex());
         userBean.setCertification(broadcastEntity.getCertification());
+        userBean.setIsAccost(broadcastEntity.getIsAccost());
         newsEntity.setUser(userBean);
 
         if (broadcastEntity.getNews().getGive_user() != null) {

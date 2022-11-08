@@ -47,11 +47,13 @@ import com.fine.friendlycc.ui.mine.wallet.diamond.recharge.DiamondRechargeActivi
 import com.fine.friendlycc.ui.radio.issuanceprogram.IssuanceProgramFragment;
 import com.fine.friendlycc.ui.radio.radiohome.item.RadioItemBannerVideoViewModel;
 import com.fine.friendlycc.ui.task.webview.FukuokaViewFragment;
+import com.fine.friendlycc.utils.ToastCenterUtils;
 import com.fine.friendlycc.viewmodel.BaseRefreshViewModel;
 import com.google.gson.Gson;
 import com.shuyu.gsyvideoplayer.GSYVideoManager;
 
 import java.util.List;
+import java.util.Objects;
 
 import io.reactivex.disposables.Disposable;
 import me.goldze.mvvmhabit.base.MultiItemViewModel;
@@ -110,7 +112,7 @@ public class RadioViewModel extends BaseRefreshViewModel<AppRepository> {
             String itemType = (String) item.getItemType();
             if (RadioRecycleType_New.equals(itemType)) {
                 //设置new
-                itemBinding.set(BR.viewModel, R.layout.item_trend);
+                itemBinding.set(BR.viewModel, R.layout.item_trend_new);
             } else if (RadioRecycleType_trace.equals(itemType)) {
                 //设置看追踪列表为空
                 itemBinding.set(BR.viewModel, R.layout.item_radio_trace_empty);
@@ -184,6 +186,8 @@ public class RadioViewModel extends BaseRefreshViewModel<AppRepository> {
     private Disposable likeChangeEventDisposable, zoomInPictureEvent;
     private boolean isFirstComment = false;
     private boolean isFirstLike = false;
+    private boolean accostThree = false;
+    private boolean dayAccost = false;
 
     public RadioViewModel(@NonNull Application application, AppRepository model) {
         super(application, model);
@@ -244,6 +248,8 @@ public class RadioViewModel extends BaseRefreshViewModel<AppRepository> {
                 .subscribe(taskTypeStatusEvent -> {
                     isFirstComment = taskTypeStatusEvent.getDayCommentNews() == 0;
                     isFirstLike = taskTypeStatusEvent.getDayGiveNews() == 0;
+                    accostThree = taskTypeStatusEvent.getAccostThree() == 0;
+                    dayAccost = taskTypeStatusEvent.getDayAccost() == 0;
                 });
     }
 
@@ -774,6 +780,41 @@ public class RadioViewModel extends BaseRefreshViewModel<AppRepository> {
 
                     @Override
                     public void onComplete() {
+                        dismissHUD();
+                    }
+                });
+    }
+
+    //搭讪
+    public void putAccostFirst(int position) {
+        int id = ((TrendItemViewModel)radioItems.get(position)).newsEntityObservableField.get().getUser().getId();
+        model.putAccostFirst(id)
+                .compose(RxUtils.schedulersTransformer())
+                .compose(RxUtils.exceptionTransformer())
+                .doOnSubscribe(this)
+                .doOnSubscribe(disposable -> showHUD())
+                .subscribe(new BaseObserver<BaseResponse>() {
+                    @Override
+                    public void onSuccess(BaseResponse response) {
+                        dismissHUD();
+                        ToastUtils.showShort(R.string.playfun_text_accost_success1);
+                        Objects.requireNonNull(((TrendItemViewModel)adapter.getAdapterItem(position)).newsEntityObservableField.get()).getUser().setIsAccost(1);
+                        adapter.notifyItemChanged(position);
+                        //刷新任务列表状态
+                        if (accostThree || dayAccost)RxBus.getDefault().post(new TaskListEvent());
+                    }
+
+                    @Override
+                    public void onError(RequestException e) {
+                        super.onError(e);
+                        if(e.getCode()!=null && e.getCode().intValue()==21001 ){//钻石余额不足
+                            ToastCenterUtils.showToast(R.string.playfun_dialog_exchange_integral_total_text3);
+                        }
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        super.onComplete();
                         dismissHUD();
                     }
                 });

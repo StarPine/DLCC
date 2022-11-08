@@ -18,6 +18,15 @@ public class BaseUserBeanEntity {
     private int isVip;
     private int certification;
     private String avatar;
+    private int isAccost;
+
+    public int getIsAccost() {
+        return isAccost;
+    }
+
+    public void setIsAccost(int isAccost) {
+        this.isAccost = isAccost;
+    }
 
     public int getId() {
         return id;
