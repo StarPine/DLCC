@@ -592,7 +592,6 @@ public class MainFragment extends BaseFragment<FragmentMainBinding, MainViewMode
         initView();
         boolean sexFlag = ConfigManager.getInstance().isMale();
         ConversationCommonHolder.sexMale = sexFlag;
-        binding.navigationMineImgLottie.setAnimation(sexFlag ? R.raw.lottie_navigation_mine_male : R.raw.lottie_navigation_mine_fmale);
         binding.navigationMineImg.setImageResource(sexFlag ? R.drawable.tab_mine_male_image : R.drawable.tab_mine_female_normal);
 
 
@@ -685,7 +684,6 @@ public class MainFragment extends BaseFragment<FragmentMainBinding, MainViewMode
             setSelectedItemId(tmp);
             selTabImgLayout = tmp;
         }
-        lottieAddAnimatorListener();
     }
 
     private void setSelectedItemId(ImageView view) {
@@ -703,30 +701,21 @@ public class MainFragment extends BaseFragment<FragmentMainBinding, MainViewMode
             int id = view.getId();
             if (id == R.id.navigation_home_img) {
                 mainViewPager.setCurrentItem(0, false);
-                //binding.navigationHomeImg.setVisibility(View.VISIBLE);
-                binding.navigationHomeImg.setVisibility(View.INVISIBLE);
-                binding.navigationHomeImgLottie.setVisibility(View.VISIBLE);
-                binding.navigationHomeImgLottie.playAnimation();
+                binding.navigationHomeImg.setVisibility(View.VISIBLE);
                 binding.navigationHomeImg.setImageResource(R.drawable.tab_home_checked);
             } else if (id == R.id.navigation_radio_img) {
                 mainViewPager.setCurrentItem(1, false);
-                binding.navigationRadioImg.setVisibility(View.INVISIBLE);
-                binding.navigationRadioImgLottie.setVisibility(View.VISIBLE);
-                binding.navigationRadioImgLottie.playAnimation();
+                binding.navigationRadioImg.setVisibility(View.VISIBLE);
                 binding.navigationRadioImg.setImageResource(R.drawable.tab_radio_checked);
             } else if (id == R.id.navigation_rank_img) {
                 mainViewPager.setCurrentItem(2, false);
             } else if (id == R.id.navigation_message_img) {
                 mainViewPager.setCurrentItem(3, false);
-                binding.navigationMessageImg.setVisibility(View.INVISIBLE);
-                binding.navigationMessageImgLottie.setVisibility(View.VISIBLE);
-                binding.navigationMessageImgLottie.playAnimation();
+                binding.navigationMessageImg.setVisibility(View.VISIBLE);
                 binding.navigationMessageImg.setImageResource(R.drawable.tab_message_checked);
             } else if (id == R.id.navigation_mine_img) {
                 mainViewPager.setCurrentItem(4, false);
-                binding.navigationMineImg.setVisibility(View.INVISIBLE);
-                binding.navigationMineImgLottie.setVisibility(View.VISIBLE);
-                binding.navigationMineImgLottie.playAnimation();
+                binding.navigationMineImg.setVisibility(View.VISIBLE);
                 binding.navigationMineImg.setImageResource(R.drawable.tab_mine_checked);
             }
             selTabImgLayout = view;
@@ -757,38 +746,6 @@ public class MainFragment extends BaseFragment<FragmentMainBinding, MainViewMode
             }
         }
     }
-    //添加lottie监听
-    private void lottieAddAnimatorListener(){
-        binding.navigationHomeImgLottie.addAnimatorListener(new AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                binding.navigationHomeImgLottie.setVisibility(View.GONE);
-                binding.navigationHomeImg.setVisibility(View.VISIBLE);
-            }
-        });
-        binding.navigationRadioImgLottie.addAnimatorListener(new AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                binding.navigationRadioImgLottie.setVisibility(View.GONE);
-                binding.navigationRadioImg.setVisibility(View.VISIBLE);
-            }
-        });
-        binding.navigationMessageImgLottie.addAnimatorListener(new AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                binding.navigationMessageImgLottie.setVisibility(View.GONE);
-                binding.navigationMessageImg.setVisibility(View.VISIBLE);
-            }
-        });
-        binding.navigationMineImgLottie.addAnimatorListener(new AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                binding.navigationMineImgLottie.setVisibility(View.GONE);
-                binding.navigationMineImg.setVisibility(View.VISIBLE);
-            }
-        });
-    }
-
     @Override
     protected boolean isUmengReportPage() {
         return false;
