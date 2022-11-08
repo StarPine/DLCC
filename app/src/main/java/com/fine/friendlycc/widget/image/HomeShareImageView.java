@@ -33,7 +33,7 @@ public class HomeShareImageView extends androidx.appcompat.widget.AppCompatImage
         this.context = context;
         screenHeight = getScreenHeight(context);
         screenWidth = getScreenWidth(context);
-        top = dp2px(context, 130);
+        top = dp2px(context, 20);
         bottom = dp2px(context, 100);
         start = dp2px(context, 280);
     }

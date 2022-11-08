@@ -111,7 +111,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/toolbar_icon_task_checked" />
+                        android:src="@drawable/toolbar_icon_center" />
 
                     <TextView
                         android:layout_width="@dimen/red_dot"

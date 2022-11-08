@@ -212,13 +212,14 @@
             </androidx.coordinatorlayout.widget.CoordinatorLayout>
         </com.scwang.smart.refresh.layout.SmartRefreshLayout>
 
-        <ImageView
+        <com.fine.friendlycc.widget.image.HomeShareImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
             android:layout_marginEnd="14dp"
             android:src="@drawable/radio_fl_post_news"
-            android:layout_centerVertical="true"
-            android:layout_alignParentEnd="true"
+            android:layout_marginStart="288dp"
+            android:layout_marginTop="430dp"
             android:elevation="50dp"
             binding:onClickCommand="@{viewModel.publishOnClickCommand}"
             />

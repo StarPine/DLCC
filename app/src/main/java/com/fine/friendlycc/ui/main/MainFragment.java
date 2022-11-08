@@ -744,7 +744,7 @@ public class MainFragment extends BaseFragment<FragmentMainBinding, MainViewMode
             if(ImgSrcPath!=-1){
                 binding.navigationRankImg.setImageResource(ImgSrcPath);
             }else{
-                binding.navigationRankImg.setImageResource(R.drawable.toolbar_icon_task_checked);
+                binding.navigationRankImg.setImageResource(R.drawable.toolbar_icon_center);
             }
             binding.navigationRankText.setTextColor(getResources().getColor(R.color.navigation_checkno));
         } else if (id == R.id.navigation_message_img) { //讯息页面
