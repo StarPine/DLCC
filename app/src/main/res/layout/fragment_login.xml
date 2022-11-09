@@ -38,8 +38,8 @@
             android:layout_above="@+id/ll_hint"
             android:layout_marginStart="50dp"
             android:layout_marginEnd="50dp"
-            android:layout_marginBottom="75dp"
-            android:src="@drawable/login_facebook_bg" />
+            android:layout_marginBottom="20dp"
+            android:src="@drawable/login_facebook_btn_bg" />
 
         <LinearLayout
             android:id="@+id/ll_hint"
@@ -47,14 +47,14 @@
             android:layout_height="wrap_content"
             android:layout_above="@+id/auth_login_layout"
             android:layout_centerInParent="true"
-            android:layout_marginBottom="30dp"
+            android:layout_marginBottom="15dp"
             android:gravity="center_horizontal">
 
             <View
                 android:layout_width="40dp"
                 android:layout_height="1dp"
                 android:layout_gravity="center"
-                android:background="#E0E0E0" />
+                android:background="@color/toolbar_title_color" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -62,37 +62,37 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:text="@string/register_bom_title2"
-                android:textColor="#E0E0E0" />
+                android:textColor="@color/toolbar_title_color" />
 
             <View
                 android:layout_width="40dp"
                 android:layout_height="1dp"
                 android:layout_gravity="center"
-                android:background="#E0E0E0" />
+                android:background="@color/toolbar_title_color" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/auth_login_layout"
-            android:layout_above="@+id/bottom_layout"
-            android:layout_marginBottom="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_above="@+id/bottom_layout"
+            android:layout_marginBottom="20dp"
             android:gravity="center"
             android:orientation="horizontal">
 
             <ImageView
                 android:id="@+id/iv_google_login"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:background="@drawable/login_google_bg_min"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/login_google_btn"
                 android:orientation="vertical" />
 
             <ImageView
                 android:id="@+id/iv_phone_login"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
-                android:background="@drawable/login_in_moblie2"
+                android:background="@drawable/login_phone_btn"
                 binding:onClickCommand="@{viewModel.registerOnClickCommand}" />
 
 
@@ -119,24 +119,25 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/agree"
-                android:textColor="@color/pseekbar_process_off2"
-                android:textSize="@dimen/text_size_middle2" />
+                android:textColor="@color/toolbar_title_color"
+                android:textSize="12sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
                 android:text="@string/terms_of_service"
-                android:textColor="@color/white"
-                android:textSize="@dimen/text_size_middle2"
+                android:textColor="@color/toolbar_title_color"
+                android:textSize="12sp"
+                android:textStyle="bold"
                 binding:onClickCommand="@{viewModel.termsOfServiceOnClickCommand}" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/and"
-                android:textColor="@color/pseekbar_process_off2"
-                android:textSize="@dimen/text_size_middle2" />
+                android:textColor="@color/toolbar_title_color"
+                android:textSize="12sp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -145,8 +146,9 @@
                 android:paddingEnd="0dp"
                 android:paddingRight="0dp"
                 android:text="@string/privacy_policy"
-                android:textColor="@color/white"
-                android:textSize="@dimen/text_size_middle2"
+                android:textColor="@color/toolbar_title_color"
+                android:textSize="12sp"
+                android:textStyle="bold"
                 binding:onClickCommand="@{viewModel.usageSpecificationOnClickCommand}" />
         </LinearLayout>
     </RelativeLayout>
