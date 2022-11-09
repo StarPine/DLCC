@@ -1,11 +1,7 @@
 <resources>
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="red_dot">12dp</dimen>
-    <dimen name="dp_18">18dp</dimen>
     <dimen name="dp_20">20dp</dimen>
-    <dimen name="dp_22">22dp</dimen>
-    <dimen name="dp_25">25dp</dimen>
-    <dimen name="dp_45">45dp</dimen>
     <dimen name="dp_145">145dp</dimen>
     <dimen name="action_bar_height">44dp</dimen>
     <dimen name="tab_bar_height">30dp</dimen>
