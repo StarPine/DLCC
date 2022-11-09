@@ -31,7 +31,7 @@ public interface StatusAction {
      * 显示加载中
      */
     default void showLoading() {
-        showLoading(R.raw.loading);
+        showLoading(R.raw.web_loading);
     }
 
     default void showLoading(@RawRes int id) {

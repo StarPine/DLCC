@@ -141,6 +141,7 @@ public class TaskCenterFragment extends BaseToolbarFragment<TaskCenterFragmentBi
     @Override
     public void initData() {
         super.initData();
+        binding.refreshLayout.setEnableLoadMore(false);
         toolbarHeight = binding.taskTitle1.getHeight();
         AppContext.instance().logEvent(AppsFlyerEvent.task_center);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this.getContext()) {
@@ -179,13 +180,13 @@ public class TaskCenterFragment extends BaseToolbarFragment<TaskCenterFragmentBi
                             toolbarUp = false;
                             if (getHeadImg != null) {
                                 Glide.with(TaskCenterFragment.this.getContext()).load(StringUtil.getFullImageUrl(getHeadImg))
-                                        .error(R.drawable.task_title_1)
+                                        .error(R.drawable.chat_top_bar_bg)
                                         .placeholder(R.drawable.photo_mark_tran_bottom)
                                         .dontAnimate()
                                         .diskCacheStrategy(DiskCacheStrategy.ALL)
                                         .into(binding.taskTitle1);
                             } else {
-                                binding.taskTitle1.setImageResource(R.drawable.task_title_1);
+                                binding.taskTitle1.setImageResource(R.drawable.chat_top_bar_bg);
                             }
                         }
                     }
@@ -201,29 +202,6 @@ public class TaskCenterFragment extends BaseToolbarFragment<TaskCenterFragmentBi
 
     @Override
     public void initViewObservable() {
-        //加载背景图片
-        viewModel.uc.loadSysConfigTask.observe(this, new Observer<SystemConfigTaskEntity>() {
-            @Override
-            public void onChanged(SystemConfigTaskEntity systemConfigTaskEntity) {
-                if (!StringUtils.isTrimEmpty(systemConfigTaskEntity.getBackgroundImg())) {
-                    Glide.with(TaskCenterFragment.this.getContext()).load(StringUtil.getFullImageUrl(systemConfigTaskEntity.getBackgroundImg()))
-                            .error(R.drawable.task_title)
-                            .placeholder(R.drawable.task_title)
-                            .dontAnimate()
-                            .diskCacheStrategy(DiskCacheStrategy.ALL)
-                            .into(binding.taskImgBack);
-                }
-                if (!StringUtils.isTrimEmpty(systemConfigTaskEntity.getHeadImg())) {
-                    getHeadImg = systemConfigTaskEntity.getHeadImg();
-                    Glide.with(TaskCenterFragment.this.getContext()).load(StringUtil.getFullImageUrl(systemConfigTaskEntity.getHeadImg()))
-                            .error(R.drawable.task_title_1)
-                            .placeholder(R.drawable.task_title_1)
-                            .dontAnimate()
-                            .diskCacheStrategy(DiskCacheStrategy.ALL)
-                            .into(binding.taskTitle1);
-                }
-            }
-        });
         //加载全部-收起
         viewModel.uc.UnfoldEvent.observe(this, new Observer<Boolean>() {
             @Override

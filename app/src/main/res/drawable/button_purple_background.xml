@@ -10,8 +10,8 @@
             <!-- 矩形的填充色 -->
             <gradient
                 android:angle="315"
-                android:endColor="#BE63FF"
-                android:startColor="#6D62F8" />
+                android:endColor="#7DAEFF"
+                android:startColor="#B263FC" />
         </shape>
     </item>
 </layer-list>

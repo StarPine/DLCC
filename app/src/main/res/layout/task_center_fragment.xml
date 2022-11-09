@@ -1,578 +1,573 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:binding="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
     <data>
+
         <import type="com.fine.friendlycc.R" />
+
         <import type="android.view.View" />
+
         <import type="com.blankj.utilcode.util.StringUtils" />
 
         <variable
             name="viewModel"
             type="com.fine.friendlycc.ui.task.TaskCenterViewModel" />
+
         <import type="me.tatarka.bindingcollectionadapter2.LayoutManagers" />
 
     </data>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/task_title_1"
             android:layout_width="match_parent"
-            android:layout_height="42dp"
+            android:layout_height="wrap_content"
             android:scaleType="fitXY"
-            android:src="@drawable/task_title_1" />
+            android:src="@drawable/chat_top_bar_bg" />
+
+        <View
+            android:id="@+id/status_bar_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/transparent" />
 
         <com.scwang.smart.refresh.layout.SmartRefreshLayout
+            android:id="@+id/refresh_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/refresh_layout"
-            android:layout_below="@+id/task_title_1"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            binding:onLoadMoreCommand="@{viewModel.onLoadMoreCommand}"
+            android:layout_below="@+id/status_bar_view"
             binding:onRefreshCommand="@{viewModel.onRefreshCommand}">
 
-            <androidx.cardview.widget.CardView
-                app:cardBackgroundColor="@color/transparent"
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/nested_scroll"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:cardElevation="0dp">
+                android:descendantFocusability="blocksDescendants"
+                android:fillViewport="true"
+                android:scrollbars="none">
 
-                <androidx.core.widget.NestedScrollView
-                    android:id="@+id/nested_scroll"
-                    android:descendantFocusability="blocksDescendants"
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:fillViewport="true"
-                    android:scrollbars="none">
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        style="@style/ActionBarMenu"
+                        android:layout_width="19dp"
+                        android:layout_height="19dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="13dp"
+                        android:layout_marginEnd="15dp"
+                        android:elevation="11dp"
+                        android:src="@drawable/task_title_help"
+                        binding:onClickCommand="@{viewModel.helpOnClickCommand}" />
 
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                                <ImageView
-                                    style="@style/ActionBarMenu"
-                                    android:layout_marginTop="13dp"
-                                    android:layout_width="19dp"
-                                    android:layout_height="19dp"
-                                    android:layout_alignParentEnd="true"
-                                    android:elevation="11dp"
-                                    android:layout_marginEnd="15dp"
-                                    android:src="@drawable/ranklist_title_help"
-                                    binding:onClickCommand="@{viewModel.helpOnClickCommand}" />
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="12dp"
+                        android:visibility="@{viewModel.isShowEmpty?View.GONE:View.VISIBLE}">
 
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:visibility="@{viewModel.isShowEmpty?View.GONE:View.VISIBLE}">
+                            android:background="@color/transparent">
 
-                            <ImageView
-                                android:id="@+id/task_img_back"
-                                android:layout_width="match_parent"
-                                android:layout_height="390dp"
-                                android:scaleType="fitXY"
-                                android:src="@drawable/task_title" />
-
-                            <RelativeLayout
+                            <LinearLayout
+                                android:id="@+id/task_day_layout"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:layout_marginTop="200dp"
-                                android:background="@color/transparent">
+                                android:background="@drawable/task_center_top_bg">
 
-                                <LinearLayout
-                                    android:id="@+id/task_day_layout"
-                                    android:layout_height="match_parent"
+                                <RelativeLayout
                                     android:layout_width="match_parent"
-                                    android:background="@drawable/task_img_content_back2">
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="15dp"
+                                    android:layout_marginTop="73dp"
+                                    android:layout_marginEnd="14dp"
+                                    android:layout_marginBottom="15dp"
+                                    android:background="@drawable/task_center_sign_in_bg">
+
+                                    <TextView
+                                        android:id="@+id/eject_day_left"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="14dp"
+                                        android:layout_marginTop="13dp"
+
+                                        android:text="@string/task_fragment_eject_day_left"
+                                        android:textColor="#FF692E02"
+                                        android:textSize="15sp" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="5dp"
+                                        android:layout_marginTop="13dp"
+                                        android:layout_toEndOf="@+id/eject_day_left"
+                                        android:text="@{viewModel.SignDayNumEd}"
+                                        android:textColor="#FFFD42D6"
+                                        android:textSize="15sp"
+                                        tools:text="0天" />
 
                                     <RelativeLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="318dp"
-                                        android:layout_marginStart="14dp"
-                                        android:layout_marginTop="12dp"
-                                        android:layout_marginEnd="14dp"
-                                        android:layout_marginBottom="16dp"
-                                        android:background="@drawable/task_img_content_back">
+                                        android:id="@+id/gold_layout"
+                                        android:layout_width="80dp"
+                                        android:layout_height="28dp"
+                                        android:layout_marginTop="10dp"
+                                        android:layout_alignParentEnd="true"
+                                        android:layout_marginEnd="20dp"
+                                        android:background="@drawable/task_coin_bg">
 
-                                        <TextView
-                                            android:id="@+id/eject_day_left"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_marginStart="14dp"
-                                            android:layout_marginTop="13dp"
-                                            android:text="@string/task_fragment_eject_day_left"
-                                            android:textColor="#FF692E02"
-                                            android:textSize="15sp" />
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_marginStart="5dp"
-                                            android:layout_marginTop="13dp"
-                                            android:layout_toRightOf="@+id/eject_day_left"
-                                            android:text="@{viewModel.SignDayNumEd}"
-                                            android:textColor="#FFFD42D6"
-                                            android:textSize="15dp"
-                                            tools:text="0天" />
-
-                                        <RelativeLayout
-                                            android:id="@+id/gold_layout"
-                                            android:layout_width="101dp"
+                                        <ImageView
+                                            android:id="@+id/icon1"
+                                            android:layout_width="27dp"
                                             android:layout_height="27dp"
-                                            android:layout_alignParentEnd="true"
-                                            android:layout_marginTop="10dp"
-                                            android:layout_marginEnd="10dp"
-                                            binding:drawable_color="@{@color/white}"
-                                            binding:drawable_cornersRadius="@{13}">
+                                            android:layout_alignParentStart="true"
+                                            android:layout_centerInParent="true"
+                                            android:layout_marginStart="2dp"
+                                            android:background="@drawable/task_integral_balance_img" />
 
-                                            <ImageView
-                                                android:id="@+id/icon1"
-                                                android:layout_width="27dp"
-                                                android:layout_height="27dp"
-                                                android:layout_alignParentStart="true"
-                                                android:layout_centerInParent="true"
-                                                android:background="@drawable/task_integral_balance_img" />
-
-                                            <TextView
-                                                android:layout_width="match_parent"
-                                                android:layout_height="wrap_content"
-                                                android:layout_centerInParent="true"
-                                                android:layout_toStartOf="@+id/task_right_img"
-                                                android:layout_toEndOf="@+id/icon1"
-                                                android:gravity="center"
-                                                android:includeFontPadding="false"
-                                                android:lines="1"
-                                                android:text="@{viewModel.goldMoney.toString()}"
-                                                android:textColor="#FFB95541"
-                                                android:textSize="13sp"
-                                                tools:text="123213" />
-
-                                            <FrameLayout
-                                                android:id="@+id/task_right_img"
-                                                android:layout_width="22dp"
-                                                android:layout_height="22dp"
-                                                android:layout_alignParentRight="true"
-                                                android:layout_centerVertical="true"
-                                                android:layout_marginEnd="2dp"
-                                                android:visibility="invisible"></FrameLayout>
-                                        </RelativeLayout>
-
-                                        <LinearLayout
-                                            android:id="@+id/sign_layout"
+                                        <TextView
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_centerInParent="true"
-                                            android:layout_marginTop="65dp"
-                                            android:orientation="vertical">
+                                            android:layout_toStartOf="@+id/task_right_img"
+                                            android:layout_toEndOf="@+id/icon1"
+                                            android:layout_marginEnd="5dp"
+                                            android:gravity="center"
+                                            android:includeFontPadding="false"
+                                            android:lines="1"
+                                            android:text="@{viewModel.goldMoney.toString()}"
+                                            android:textColor="#FFB95541"
+                                            android:textSize="13sp"
+                                            tools:text="123213" />
 
-                                            <LinearLayout
-                                                android:layout_width="match_parent"
-                                                android:layout_height="75dp"
-                                                android:layout_gravity="center_horizontal"
-                                                android:layout_marginStart="19dp"
-                                                android:layout_marginEnd="19dp">
-
-                                                <RelativeLayout
-                                                    android:id="@+id/day1_back"
-                                                    android:layout_width="67dp"
-                                                    android:layout_height="75dp"
-                                                    android:background="@drawable/task_sign_day1_no"
-                                                    android:orientation="vertical">
-
-                                                    <ImageView
-                                                        android:id="@+id/day1_img"
-                                                        android:layout_width="29dp"
-                                                        android:layout_height="29dp"
-                                                        android:layout_alignParentTop="true"
-                                                        android:layout_centerInParent="true"
-                                                        android:layout_marginTop="24dp"
-                                                        android:src="@drawable/dialog_sign_gold_coins" />
-
-                                                    <TextView
-                                                        android:id="@+id/day1_fen"
-                                                        android:layout_width="wrap_content"
-                                                        android:layout_height="wrap_content"
-                                                        android:layout_below="@+id/day1_img"
-                                                        android:layout_centerInParent="true"
-                                                        android:layout_marginTop="-1dp"
-                                                        android:includeFontPadding="false"
-                                                        android:text="+10"
-                                                        android:textColor="#FFB06BA9"
-                                                        android:textSize="17sp"
-                                                        android:textStyle="bold" />
-                                                </RelativeLayout>
-
-                                                <RelativeLayout
-                                                    android:id="@+id/day2_back"
-                                                    android:layout_width="67dp"
-                                                    android:layout_height="75dp"
-                                                    android:layout_marginStart="8dp"
-                                                    android:background="@drawable/task_sign_day2_no"
-                                                    android:orientation="vertical">
-
-                                                    <ImageView
-                                                        android:id="@+id/day2_img"
-                                                        android:layout_width="29dp"
-                                                        android:layout_height="29dp"
-                                                        android:layout_alignParentTop="true"
-                                                        android:layout_centerInParent="true"
-                                                        android:layout_marginTop="24dp"
-                                                        android:src="@drawable/dialog_sign_gold_coins" />
-
-                                                    <TextView
-                                                        android:id="@+id/day2_fen"
-                                                        android:layout_width="wrap_content"
-                                                        android:layout_height="wrap_content"
-                                                        android:layout_below="@+id/day2_img"
-                                                        android:layout_centerInParent="true"
-                                                        android:layout_marginTop="-1dp"
-                                                        android:includeFontPadding="false"
-                                                        android:text="+10"
-                                                        android:textColor="#FFB06BA9"
-                                                        android:textSize="17sp"
-                                                        android:textStyle="bold" />
-                                                </RelativeLayout>
-
-                                                <RelativeLayout
-                                                    android:id="@+id/day3_back"
-                                                    android:layout_width="67dp"
-                                                    android:layout_height="75dp"
-                                                    android:layout_marginStart="8dp"
-                                                    android:background="@drawable/task_sign_day3_no"
-                                                    android:orientation="vertical">
-
-                                                    <ImageView
-                                                        android:id="@+id/day3_img"
-                                                        android:layout_width="29dp"
-                                                        android:layout_height="29dp"
-                                                        android:layout_alignParentTop="true"
-                                                        android:layout_centerInParent="true"
-                                                        android:layout_marginTop="24dp"
-                                                        android:src="@drawable/dialog_sign_gold_coins" />
-
-                                                    <TextView
-                                                        android:id="@+id/day3_fen"
-                                                        android:layout_width="wrap_content"
-                                                        android:layout_height="wrap_content"
-                                                        android:layout_below="@+id/day3_img"
-                                                        android:layout_centerInParent="true"
-                                                        android:layout_marginTop="-1dp"
-                                                        android:includeFontPadding="false"
-                                                        android:text="@string/task_sign_day3"
-                                                        android:textColor="#FFB06BA9"
-                                                        android:textSize="17sp"
-                                                        android:textStyle="bold" />
-                                                </RelativeLayout>
-
-                                                <RelativeLayout
-                                                    android:id="@+id/day4_back"
-                                                    android:layout_width="67dp"
-                                                    android:layout_height="75dp"
-                                                    android:layout_marginStart="8dp"
-                                                    android:background="@drawable/task_sign_day4_no"
-                                                    android:orientation="vertical">
-
-                                                    <ImageView
-                                                        android:id="@+id/day4_img"
-                                                        android:layout_width="29dp"
-                                                        android:layout_height="29dp"
-                                                        android:layout_alignParentTop="true"
-                                                        android:layout_centerInParent="true"
-                                                        android:layout_marginTop="24dp"
-                                                        android:src="@drawable/dialog_sign_gold_coins" />
-
-                                                    <TextView
-                                                        android:id="@+id/day4_fen"
-                                                        android:layout_width="wrap_content"
-                                                        android:layout_height="wrap_content"
-                                                        android:layout_below="@+id/day4_img"
-                                                        android:layout_centerInParent="true"
-                                                        android:layout_marginTop="-1dp"
-                                                        android:includeFontPadding="false"
-                                                        android:text="+10"
-                                                        android:textColor="#FFB06BA9"
-                                                        android:textSize="17sp"
-                                                        android:textStyle="bold" />
-                                                </RelativeLayout>
-
-                                            </LinearLayout>
-
-                                            <LinearLayout
-                                                android:layout_width="match_parent"
-                                                android:layout_height="75dp"
-                                                android:layout_gravity="center_horizontal"
-                                                android:layout_marginStart="19dp"
-                                                android:layout_marginTop="8dp"
-                                                android:layout_marginEnd="19dp">
-
-
-                                                <RelativeLayout
-                                                    android:id="@+id/day5_back"
-                                                    android:layout_width="67dp"
-                                                    android:layout_height="75dp"
-                                                    android:background="@drawable/task_sign_day5_no"
-                                                    android:orientation="vertical">
-
-                                                    <ImageView
-                                                        android:id="@+id/day5_img"
-                                                        android:layout_width="29dp"
-                                                        android:layout_height="29dp"
-                                                        android:layout_alignParentTop="true"
-                                                        android:layout_centerInParent="true"
-                                                        android:layout_marginTop="24dp"
-                                                        android:src="@drawable/dialog_sign_gold_coins" />
-
-                                                    <TextView
-                                                        android:id="@+id/day5_fen"
-                                                        android:layout_width="wrap_content"
-                                                        android:layout_height="wrap_content"
-                                                        android:layout_below="@+id/day5_img"
-                                                        android:layout_centerInParent="true"
-                                                        android:layout_marginTop="-1dp"
-                                                        android:includeFontPadding="false"
-                                                        android:text="+10"
-                                                        android:textColor="#FFB06BA9"
-                                                        android:textSize="17sp"
-                                                        android:textStyle="bold" />
-                                                </RelativeLayout>
-
-
-                                                <RelativeLayout
-                                                    android:id="@+id/day6_back"
-                                                    android:layout_width="67dp"
-                                                    android:layout_height="75dp"
-                                                    android:layout_marginStart="8dp"
-                                                    android:background="@drawable/task_sign_day6_no"
-                                                    android:orientation="vertical">
-
-                                                    <ImageView
-                                                        android:id="@+id/day6_img"
-                                                        android:layout_width="29dp"
-                                                        android:layout_height="29dp"
-                                                        android:layout_alignParentTop="true"
-                                                        android:layout_centerInParent="true"
-                                                        android:layout_marginTop="24dp"
-                                                        android:src="@drawable/dialog_sign_gold_coins" />
-
-                                                    <TextView
-                                                        android:id="@+id/day6_fen"
-                                                        android:layout_width="wrap_content"
-                                                        android:layout_height="wrap_content"
-                                                        android:layout_below="@+id/day6_img"
-                                                        android:layout_centerInParent="true"
-                                                        android:layout_marginTop="-1dp"
-                                                        android:includeFontPadding="false"
-                                                        android:text="+10"
-                                                        android:textColor="#FFB06BA9"
-                                                        android:textSize="17sp"
-                                                        android:textStyle="bold" />
-                                                </RelativeLayout>
-
-                                                <RelativeLayout
-                                                    android:id="@+id/day7_back"
-                                                    android:layout_width="match_parent"
-                                                    android:layout_height="75dp"
-                                                    android:layout_marginStart="8dp"
-                                                    android:background="@drawable/task_sign_girl_day7_no"
-                                                    android:orientation="vertical">
-
-                                                    <ImageView
-                                                        android:layout_width="29dp"
-                                                        android:layout_height="29dp"
-                                                        android:layout_alignParentTop="true"
-                                                        android:layout_centerInParent="true"
-                                                        android:layout_marginTop="24dp"
-                                                        android:visibility="invisible" />
-
-                                                    <TextView
-                                                        android:id="@+id/day7_fen2"
-                                                        android:layout_width="wrap_content"
-                                                        android:layout_height="wrap_content"
-                                                        android:layout_centerVertical="true"
-                                                        android:layout_marginBottom="2dp"
-                                                        android:visibility="visible" />
-
-                                                    <TextView
-                                                        android:id="@+id/day7_fen"
-                                                        android:layout_width="wrap_content"
-                                                        android:layout_height="wrap_content"
-                                                        android:layout_below="@+id/day7_fen2"
-                                                        android:layout_centerVertical="true"
-                                                        android:layout_marginStart="12dp"
-                                                        android:layout_marginBottom="4dp"
-                                                        android:gravity="center"
-                                                        android:text="+30"
-                                                        android:textColor="#FFB06BA9"
-                                                        android:textSize="17sp"
-                                                        android:textStyle="bold" />
-                                                </RelativeLayout>
-                                            </LinearLayout>
-                                        </LinearLayout>
-
-                                        <Button
-                                            style="@style/ButtonPrimary"
-                                            android:layout_width="match_parent"
-                                            android:layout_height="45dp"
-                                            android:layout_below="@+id/sign_layout"
-                                            android:layout_marginStart="16dp"
-                                            android:layout_marginTop="19dp"
-                                            android:layout_marginEnd="16dp"
-                                            android:text="@string/radio_daily_atendance_btn"
-                                            android:textColor="@color/white"
-                                            android:visibility="@{viewModel.isShowSign?View.GONE:View.VISIBLE}"
-                                            binding:onClickCommand="@{viewModel.onClickday}"
-                                            tools:visibility="gone" />
-
-                                        <Button
-                                            android:layout_width="match_parent"
-                                            android:layout_height="45dp"
-                                            android:layout_below="@+id/sign_layout"
-                                            android:layout_marginStart="16dp"
-                                            android:layout_marginTop="19dp"
-                                            android:layout_marginEnd="16dp"
-                                            android:layout_marginBottom="16dp"
-                                            android:background="@drawable/button_purple_background1"
-                                            android:paddingStart="18dp"
-                                            android:paddingEnd="18dp"
-                                            android:text="@string/task_fragment_sign_ed"
-                                            android:textColor="@color/white"
-                                            android:textSize="15sp"
-                                            android:visibility="@{viewModel.isShowSign?View.VISIBLE:View.GONE}"
-                                            binding:onClickCommand="@{viewModel.onClickRepeat}"
-                                            tools:visibility="visible" />
+                                        <FrameLayout
+                                            android:id="@+id/task_right_img"
+                                            android:layout_width="22dp"
+                                            android:layout_height="22dp"
+                                            android:layout_alignParentEnd="true"
+                                            android:layout_centerVertical="true"
+                                            android:layout_marginEnd="2dp"
+                                            android:visibility="gone"/>
                                     </RelativeLayout>
-                                </LinearLayout>
 
-                                <RelativeLayout
-                                    android:id="@+id/task_new_layout"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_below="@+id/task_day_layout"
-                                    binding:drawable_color="@{@color/white}"
-                                    binding:drawable_cornersRadius="@{1}">
-
-                                    <ImageView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="124dp"
-                                        android:background="@drawable/daily_task_img_back" />
-
-                                    <TextView
+                                    <LinearLayout
+                                        android:id="@+id/sign_layout"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_centerHorizontal="true"
-                                        android:layout_marginTop="35dp"
-                                        android:text="@string/playfun_daily_task"
-                                        android:textColor="@color/coffee2"
-                                        android:textSize="@dimen/text_size_big_22"
-                                        android:textStyle="bold" />
+                                        android:layout_marginTop="65dp"
+                                        android:orientation="vertical">
 
-                                    <androidx.recyclerview.widget.RecyclerView
-                                        android:id="@+id/daily_task_rx"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="270dp"
-                                        android:layout_marginStart="14dp"
-                                        android:layout_marginTop="74dp"
-                                        android:background="@color/transparent"
-                                        android:nestedScrollingEnabled="false"
-                                        android:orientation="vertical"
-                                        binding:adapter="@{viewModel.daily_task_adapter}"
-                                        binding:itemBinding="@{viewModel.daily_task_itemBinding}"
-                                        binding:items="@{viewModel.daily_task_observableList}" />
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="75dp"
+                                            android:layout_gravity="center_horizontal"
+                                            android:layout_marginStart="19dp"
+                                            android:layout_marginEnd="19dp">
 
-                                    <TextView
-                                        android:id="@+id/xian"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="1dp"
-                                        android:layout_below="@+id/daily_task_rx"
-                                        android:layout_marginStart="9dp"
-                                        android:layout_marginEnd="9dp"
-                                        android:background="@color/task_xuxian" />
+                                            <RelativeLayout
+                                                android:id="@+id/day1_back"
+                                                android:layout_width="67dp"
+                                                android:layout_height="75dp"
+                                                android:background="@drawable/task_sign_day1_no"
+                                                android:orientation="vertical">
 
-                                    <LinearLayout
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_below="@+id/xian"
-                                        android:layout_centerInParent="true"
-                                        android:layout_marginTop="10dp"
-                                        android:layout_marginBottom="97dp"
-                                        android:orientation="horizontal"
-                                        binding:onClickCommand="@{viewModel.ocClickUnfold}">
+                                                <ImageView
+                                                    android:id="@+id/day1_img"
+                                                    android:layout_width="29dp"
+                                                    android:layout_height="29dp"
+                                                    android:layout_alignParentTop="true"
+                                                    android:layout_centerInParent="true"
+                                                    android:layout_marginTop="24dp"
+                                                    android:src="@drawable/dialog_sign_gold_coins" />
 
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:text="@{viewModel.isUnfold?@string/task_fragment_fold:@string/task_fragment_unfold}"
-                                            android:textColor="#FF9EA1B0" />
+                                                <TextView
+                                                    android:id="@+id/day1_fen"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_below="@+id/day1_img"
+                                                    android:layout_centerInParent="true"
+                                                    android:layout_marginTop="-1dp"
+                                                    android:includeFontPadding="false"
+                                                    android:text="+10"
+                                                    android:textColor="#FFB06BA9"
+                                                    android:textSize="17sp"
+                                                    android:textStyle="bold" />
+                                            </RelativeLayout>
 
-                                        <ImageView
-                                            android:layout_width="14dp"
-                                            android:layout_height="9dp"
-                                            android:layout_gravity="center"
-                                            android:background="@{viewModel.isUnfold?@drawable/ic_fold:@drawable/ic_unfod}" />
+                                            <RelativeLayout
+                                                android:id="@+id/day2_back"
+                                                android:layout_width="67dp"
+                                                android:layout_height="75dp"
+                                                android:layout_marginStart="8dp"
+                                                android:background="@drawable/task_sign_day2_no"
+                                                android:orientation="vertical">
+
+                                                <ImageView
+                                                    android:id="@+id/day2_img"
+                                                    android:layout_width="29dp"
+                                                    android:layout_height="29dp"
+                                                    android:layout_alignParentTop="true"
+                                                    android:layout_centerInParent="true"
+                                                    android:layout_marginTop="24dp"
+                                                    android:src="@drawable/dialog_sign_gold_coins" />
+
+                                                <TextView
+                                                    android:id="@+id/day2_fen"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_below="@+id/day2_img"
+                                                    android:layout_centerInParent="true"
+                                                    android:layout_marginTop="-1dp"
+                                                    android:includeFontPadding="false"
+                                                    android:text="+10"
+                                                    android:textColor="#FFB06BA9"
+                                                    android:textSize="17sp"
+                                                    android:textStyle="bold" />
+                                            </RelativeLayout>
+
+                                            <RelativeLayout
+                                                android:id="@+id/day3_back"
+                                                android:layout_width="67dp"
+                                                android:layout_height="75dp"
+                                                android:layout_marginStart="8dp"
+                                                android:background="@drawable/task_sign_day3_no"
+                                                android:orientation="vertical">
+
+                                                <ImageView
+                                                    android:id="@+id/day3_img"
+                                                    android:layout_width="29dp"
+                                                    android:layout_height="29dp"
+                                                    android:layout_alignParentTop="true"
+                                                    android:layout_centerInParent="true"
+                                                    android:layout_marginTop="24dp"
+                                                    android:src="@drawable/dialog_sign_gold_coins" />
+
+                                                <TextView
+                                                    android:id="@+id/day3_fen"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_below="@+id/day3_img"
+                                                    android:layout_centerInParent="true"
+                                                    android:layout_marginTop="-1dp"
+                                                    android:includeFontPadding="false"
+                                                    android:text="@string/task_sign_day3"
+                                                    android:textColor="#FFB06BA9"
+                                                    android:textSize="17sp"
+                                                    android:textStyle="bold" />
+                                            </RelativeLayout>
+
+                                            <RelativeLayout
+                                                android:id="@+id/day4_back"
+                                                android:layout_width="67dp"
+                                                android:layout_height="75dp"
+                                                android:layout_marginStart="8dp"
+                                                android:background="@drawable/task_sign_day4_no"
+                                                android:orientation="vertical">
+
+                                                <ImageView
+                                                    android:id="@+id/day4_img"
+                                                    android:layout_width="29dp"
+                                                    android:layout_height="29dp"
+                                                    android:layout_alignParentTop="true"
+                                                    android:layout_centerInParent="true"
+                                                    android:layout_marginTop="24dp"
+                                                    android:src="@drawable/dialog_sign_gold_coins" />
+
+                                                <TextView
+                                                    android:id="@+id/day4_fen"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_below="@+id/day4_img"
+                                                    android:layout_centerInParent="true"
+                                                    android:layout_marginTop="-1dp"
+                                                    android:includeFontPadding="false"
+                                                    android:text="+10"
+                                                    android:textColor="#FFB06BA9"
+                                                    android:textSize="17sp"
+                                                    android:textStyle="bold" />
+                                            </RelativeLayout>
+
+                                        </LinearLayout>
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="75dp"
+                                            android:layout_gravity="center_horizontal"
+                                            android:layout_marginStart="19dp"
+                                            android:layout_marginTop="8dp"
+                                            android:layout_marginEnd="19dp">
+
+
+                                            <RelativeLayout
+                                                android:id="@+id/day5_back"
+                                                android:layout_width="67dp"
+                                                android:layout_height="75dp"
+                                                android:background="@drawable/task_sign_day5_no"
+                                                android:orientation="vertical">
+
+                                                <ImageView
+                                                    android:id="@+id/day5_img"
+                                                    android:layout_width="29dp"
+                                                    android:layout_height="29dp"
+                                                    android:layout_alignParentTop="true"
+                                                    android:layout_centerInParent="true"
+                                                    android:layout_marginTop="24dp"
+                                                    android:src="@drawable/dialog_sign_gold_coins" />
+
+                                                <TextView
+                                                    android:id="@+id/day5_fen"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_below="@+id/day5_img"
+                                                    android:layout_centerInParent="true"
+                                                    android:layout_marginTop="-1dp"
+                                                    android:includeFontPadding="false"
+                                                    android:text="+10"
+                                                    android:textColor="#FFB06BA9"
+                                                    android:textSize="17sp"
+                                                    android:textStyle="bold" />
+                                            </RelativeLayout>
+
+
+                                            <RelativeLayout
+                                                android:id="@+id/day6_back"
+                                                android:layout_width="67dp"
+                                                android:layout_height="75dp"
+                                                android:layout_marginStart="8dp"
+                                                android:background="@drawable/task_sign_day6_no"
+                                                android:orientation="vertical">
+
+                                                <ImageView
+                                                    android:id="@+id/day6_img"
+                                                    android:layout_width="29dp"
+                                                    android:layout_height="29dp"
+                                                    android:layout_alignParentTop="true"
+                                                    android:layout_centerInParent="true"
+                                                    android:layout_marginTop="24dp"
+                                                    android:src="@drawable/dialog_sign_gold_coins" />
+
+                                                <TextView
+                                                    android:id="@+id/day6_fen"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_below="@+id/day6_img"
+                                                    android:layout_centerInParent="true"
+                                                    android:layout_marginTop="-1dp"
+                                                    android:includeFontPadding="false"
+                                                    android:text="+10"
+                                                    android:textColor="#FFB06BA9"
+                                                    android:textSize="17sp"
+                                                    android:textStyle="bold" />
+                                            </RelativeLayout>
+
+                                            <RelativeLayout
+                                                android:id="@+id/day7_back"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="75dp"
+                                                android:layout_marginStart="8dp"
+                                                android:background="@drawable/task_sign_girl_day7_no"
+                                                android:orientation="vertical">
+
+                                                <ImageView
+                                                    android:layout_width="29dp"
+                                                    android:layout_height="29dp"
+                                                    android:layout_alignParentTop="true"
+                                                    android:layout_centerInParent="true"
+                                                    android:layout_marginTop="24dp"
+                                                    android:visibility="invisible" />
+
+                                                <TextView
+                                                    android:id="@+id/day7_fen2"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_centerVertical="true"
+                                                    android:layout_marginBottom="2dp"
+                                                    android:visibility="visible" />
+
+                                                <TextView
+                                                    android:id="@+id/day7_fen"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_below="@+id/day7_fen2"
+                                                    android:layout_centerVertical="true"
+                                                    android:layout_marginStart="12dp"
+                                                    android:layout_marginBottom="4dp"
+                                                    android:gravity="center"
+                                                    android:text="+30"
+                                                    android:textColor="#FFB06BA9"
+                                                    android:textSize="17sp"
+                                                    android:textStyle="bold" />
+                                            </RelativeLayout>
+                                        </LinearLayout>
                                     </LinearLayout>
 
+                                    <Button
+                                        style="@style/ButtonPrimary"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="45dp"
+                                        android:layout_below="@+id/sign_layout"
+                                        android:layout_marginStart="16dp"
+                                        android:layout_marginTop="21dp"
+                                        android:layout_marginEnd="16dp"
+                                        android:text="@string/radio_daily_atendance_btn"
+                                        android:textColor="@color/white"
+                                        android:visibility="@{viewModel.isShowSign?View.GONE:View.VISIBLE}"
+                                        binding:onClickCommand="@{viewModel.onClickday}"
+                                        tools:visibility="visible" />
+
+                                    <Button
+                                        android:layout_width="match_parent"
+                                        android:layout_height="45dp"
+                                        android:layout_below="@+id/sign_layout"
+                                        android:layout_marginStart="16dp"
+                                        android:layout_marginTop="21dp"
+                                        android:layout_marginEnd="16dp"
+                                        android:layout_marginBottom="16dp"
+                                        android:background="@drawable/button_purple_background1"
+                                        android:paddingStart="18dp"
+                                        android:paddingEnd="18dp"
+                                        android:text="@string/task_fragment_sign_ed"
+                                        android:textColor="@color/white"
+                                        android:textSize="15sp"
+                                        android:visibility="@{viewModel.isShowSign?View.VISIBLE:View.GONE}"
+                                        binding:onClickCommand="@{viewModel.onClickRepeat}"
+                                        tools:visibility="gone" />
                                 </RelativeLayout>
-                            </RelativeLayout>
-                        </RelativeLayout>
+                            </LinearLayout>
 
-                        <RelativeLayout
-                            android:id="@+id/rv_empty_view"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@color/task_back_group"
-                            android:clickable="true"
-                            android:focusableInTouchMode="true"
-                            android:visibility="@{viewModel.isShowEmpty?View.VISIBLE:View.GONE}"
-                            tools:visibility="gone">
-
-                            <LinearLayout
+                            <RelativeLayout
+                                android:id="@+id/task_new_layout"
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_alignParentStart="true"
-                                android:layout_alignParentLeft="true"
-                                android:layout_alignParentBottom="true"
-                                android:gravity="center"
-                                android:orientation="vertical"
-                                android:paddingBottom="60dp">
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/task_day_layout"
+                                binding:drawable_color="@{@color/white}"
+                                binding:drawable_cornersRadius="@{1}">
 
                                 <ImageView
-                                    android:id="@+id/none_data"
-                                    android:layout_width="209dp"
-                                    android:layout_height="183dp"
-                                    android:scaleType="fitCenter"
-                                    android:src="@drawable/task_empty_view_list" />
+                                    android:layout_width="match_parent"
+                                    android:layout_height="124dp"
+                                    android:background="@drawable/daily_task_img_back" />
 
                                 <TextView
-                                    android:id="@+id/tv_msg"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_below="@+id/none_data"
                                     android:layout_centerHorizontal="true"
-                                    android:layout_marginTop="29dp"
-                                    android:text="@string/task_fragment_error1"
-                                    android:textColor="@color/task_check_yin"
-                                    android:textSize="@dimen/text_size_middle" />
+                                    android:layout_marginTop="35dp"
+                                    android:text="@string/playfun_daily_task"
+                                    android:textColor="@color/coffee2"
+                                    android:textSize="@dimen/text_size_big_22"
+                                    android:textStyle="bold" />
 
-                                <Button
-                                    android:id="@+id/btn_retry"
-                                    android:layout_width="95dp"
-                                    android:layout_height="38dp"
-                                    android:layout_marginTop="16dp"
-                                    android:background="@drawable/trace_channel"
-                                    android:gravity="center"
-                                    android:text="@string/task_fragment_error2"
-                                    android:textStyle="normal"
-                                    binding:onClickCommand="@{viewModel.emptyRetryOnClickCommand}" />
+                                <androidx.recyclerview.widget.RecyclerView
+                                    android:id="@+id/daily_task_rx"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="270dp"
+                                    android:layout_marginStart="14dp"
+                                    android:layout_marginTop="74dp"
+                                    android:background="@color/transparent"
+                                    android:nestedScrollingEnabled="false"
+                                    android:orientation="vertical"
+                                    binding:adapter="@{viewModel.daily_task_adapter}"
+                                    binding:itemBinding="@{viewModel.daily_task_itemBinding}"
+                                    binding:items="@{viewModel.daily_task_observableList}" />
 
-                            </LinearLayout>
+                                <TextView
+                                    android:id="@+id/xian"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:layout_below="@+id/daily_task_rx"
+                                    android:layout_marginStart="9dp"
+                                    android:layout_marginEnd="9dp"
+                                    android:background="@color/task_xuxian" />
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/xian"
+                                    android:layout_centerInParent="true"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_marginBottom="97dp"
+                                    android:orientation="horizontal"
+                                    binding:onClickCommand="@{viewModel.ocClickUnfold}">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="@{viewModel.isUnfold?@string/task_fragment_fold:@string/task_fragment_unfold}"
+                                        android:textColor="#FF9EA1B0" />
+
+                                    <ImageView
+                                        android:layout_width="14dp"
+                                        android:layout_height="9dp"
+                                        android:layout_gravity="center"
+                                        android:background="@{viewModel.isUnfold?@drawable/ic_fold:@drawable/ic_unfod}" />
+                                </LinearLayout>
+
+                            </RelativeLayout>
                         </RelativeLayout>
                     </RelativeLayout>
-                </androidx.core.widget.NestedScrollView>
-            </androidx.cardview.widget.CardView>
+
+                    <RelativeLayout
+                        android:id="@+id/rv_empty_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/task_back_group"
+                        android:clickable="true"
+                        android:focusableInTouchMode="true"
+                        android:visibility="@{viewModel.isShowEmpty?View.VISIBLE:View.GONE}"
+                        tools:visibility="gone">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentBottom="true"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:paddingBottom="60dp">
+
+                            <ImageView
+                                android:id="@+id/none_data"
+                                android:layout_width="209dp"
+                                android:layout_height="183dp"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/task_empty_view_list" />
+
+                            <TextView
+                                android:id="@+id/tv_msg"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/none_data"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="29dp"
+                                android:text="@string/task_fragment_error1"
+                                android:textColor="@color/task_check_yin"
+                                android:textSize="@dimen/text_size_middle" />
+
+                            <Button
+                                android:id="@+id/btn_retry"
+                                android:layout_width="95dp"
+                                android:layout_height="38dp"
+                                android:layout_marginTop="16dp"
+                                android:background="@drawable/trace_channel"
+                                android:gravity="center"
+                                android:text="@string/task_fragment_error2"
+                                android:textStyle="normal"
+                                binding:onClickCommand="@{viewModel.emptyRetryOnClickCommand}" />
+
+                        </LinearLayout>
+                    </RelativeLayout>
+                </RelativeLayout>
+            </androidx.core.widget.NestedScrollView>
         </com.scwang.smart.refresh.layout.SmartRefreshLayout>
     </RelativeLayout>
 </layout>
