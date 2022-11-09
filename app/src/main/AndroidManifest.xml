@@ -152,7 +152,7 @@
 
                 <data
                     android:host="@string/app_flyer_invite_onelink"
-                    android:pathPrefix="/X5VR"
+                    android:pathPrefix="/har0"
                     android:scheme="https" />
             </intent-filter>
         </activity>

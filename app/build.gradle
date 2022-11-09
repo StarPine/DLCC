@@ -98,8 +98,8 @@ android {
             resValue "string", "app_name", "Play CC"
             //AppsFlorid-AppId
             resValue "string", "app_flyer", "J4YbG6jNVHaFWuAeixmCuC"
-            resValue "string", "app_flyer_invite_pathPrefix", "X5VR"
-            resValue "string", "app_flyer_invite_onelink", "playchat.onelink.me"
+            resValue "string", "app_flyer_invite_pathPrefix", "har0"
+            resValue "string", "app_flyer_invite_onelink", "playcc.onelink.me"
             //facebook 相关参数
             resValue "string", "facebook_app_id", "592441739237853"
             resValue "string", "facebook_app_token", "84ed23e5eff31b4b492d380842a2298a"
@@ -118,8 +118,6 @@ android {
             // 服务端接口HOST
             buildConfigField "String", "DEFAULT_API_URL", "\"http://t-api.playcc.net/\""
             applicationId "com.friendly.test"
-            //客服id聊天
-            buildConfigField "String", "CHAT_SERVICE_USER_ID_SEND", "\"administrator\""
             buildConfigField "int", "GOOGLE_FCM_PUSH_BUZID", "18414"
             //客服id聊天
             buildConfigField "String", "CHAT_SERVICE_USER_ID_SEND", "\"administrator\""
@@ -133,8 +131,8 @@ android {
             //AppsFlorid-AppId
             resValue "string", "app_flyer", "J4YbG6jNVHaFWuAeixmCuC"
             //AppsFlorid-AppInviteOneLink
-            resValue "string", "app_flyer_invite_pathPrefix", "X5VR"
-            resValue "string", "app_flyer_invite_onelink", "/X5VR"
+            resValue "string", "app_flyer_invite_pathPrefix", "har0"
+            resValue "string", "app_flyer_invite_onelink", "/har0"
             //facebook 相关参数
             resValue "string", "facebook_app_id", "592441739237853"
             resValue "string", "facebook_app_token", "84ed23e5eff31b4b492d380842a2298a"
