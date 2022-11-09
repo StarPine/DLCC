@@ -107,9 +107,9 @@ android {
             //Google公钥
             resValue "string", "google_public_key", "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsCw2u2oMe1lSiRpS83MeoKQ5LYETFqhnWfiHT7BZhD5acnEGQ7JVUMxB5b6SWbBcvYhdbFF06lex54sl7qE3jABcCHNLk6Gjt1dmxSOzvY8uKYzf+QpCNzm+QpxbNhaR7kmlyqPxC+yTV8E2ahABhNfiIJ0tNxgw7gpyQDLSscvUmUtXiFtw93diquTTTldIh720g/mhofCF13QucmxTpYJVkUDZRoBxmK+9pziU6gKO+srK34KT/cpL6DZcvJzKvmDTufPE4ThOrpyF8mfgxiAwb6Xary76AAvQGniopZYAgvhBkhy21hSFgSIp5sPAaRvs9+JAcn7RA8+wGr1zCwIDAQAB"
             //版本
-            versionCode 28
+            versionCode 2
             // 版本名
-            versionName "1.4.61"
+            versionName "1.0.1"
         }
         // 内部调试
         internal {
@@ -140,9 +140,9 @@ android {
             //Google公钥
             resValue "string", "google_public_key", "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsCw2u2oMe1lSiRpS83MeoKQ5LYETFqhnWfiHT7BZhD5acnEGQ7JVUMxB5b6SWbBcvYhdbFF06lex54sl7qE3jABcCHNLk6Gjt1dmxSOzvY8uKYzf+QpCNzm+QpxbNhaR7kmlyqPxC+yTV8E2ahABhNfiIJ0tNxgw7gpyQDLSscvUmUtXiFtw93diquTTTldIh720g/mhofCF13QucmxTpYJVkUDZRoBxmK+9pziU6gKO+srK34KT/cpL6DZcvJzKvmDTufPE4ThOrpyF8mfgxiAwb6Xary76AAvQGniopZYAgvhBkhy21hSFgSIp5sPAaRvs9+JAcn7RA8+wGr1zCwIDAQAB"
             // 版本号
-            versionCode 30
+            versionCode 2
             // 版本名
-            versionName "1.4.62"
+            versionName "1.0.1"
         }
     }
 
