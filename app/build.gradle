@@ -96,16 +96,16 @@ android {
             buildConfigField "String", "BUCKET_NAME", "\"joymask\""
             //app名字
             resValue "string", "app_name", "Play CC"
-            //Facebook APPID
-            resValue "string", "facebook_app_token", "c5725141441c9d4a5bf4abc6a502b3e3"
             //AppsFlorid-AppId
             resValue "string", "app_flyer", "J4YbG6jNVHaFWuAeixmCuC"
             resValue "string", "app_flyer_invite_pathPrefix", "X5VR"
             resValue "string", "app_flyer_invite_onelink", "playchat.onelink.me"
-            //facebook 登录key
-            resValue "string", "fb_login_protocol_scheme", "fb5173832349346696"
+            //facebook 相关参数
+            resValue "string", "facebook_app_id", "592441739237853"
+            resValue "string", "facebook_app_token", "84ed23e5eff31b4b492d380842a2298a"
+            resValue "string", "fb_login_protocol_scheme", "fb592441739237853"
             //Google公钥
-            resValue "string", "google_public_key", "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAozfhLY9JLc+toLyhl/ZM/GbIEdNmqnrcLogdWs0rAOj+d8SXGBXWgtKBRgXGVKXxdf3jsmMJPO40Eow+AokHiNTBm/l8HBEadHkdcFPhnKzdvDs0ZsUpWdUYAJ+f7gcWwqfhuRSGUHkbGHrdDCXCJMBcfVGHaJM4lZ9wwH47Otvm88/F8DSKrXSZD/Xazqun0A/NyTsKP61jeGpUX67Ay0GolFewgt5pax5Qxh97O+YXDdxxO9iNSkAjnrAheF/JTm1+0mP/MdQ3u+hvOL7QacOZcnmKhJN3E+E0ZHRTXJi5eygDof1vqjiDJVhW3SnDmpktCYtd/1ANU0iUsaOTKwIDAQAB"
+            resValue "string", "google_public_key", "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsCw2u2oMe1lSiRpS83MeoKQ5LYETFqhnWfiHT7BZhD5acnEGQ7JVUMxB5b6SWbBcvYhdbFF06lex54sl7qE3jABcCHNLk6Gjt1dmxSOzvY8uKYzf+QpCNzm+QpxbNhaR7kmlyqPxC+yTV8E2ahABhNfiIJ0tNxgw7gpyQDLSscvUmUtXiFtw93diquTTTldIh720g/mhofCF13QucmxTpYJVkUDZRoBxmK+9pziU6gKO+srK34KT/cpL6DZcvJzKvmDTufPE4ThOrpyF8mfgxiAwb6Xary76AAvQGniopZYAgvhBkhy21hSFgSIp5sPAaRvs9+JAcn7RA8+wGr1zCwIDAQAB"
             //版本
             versionCode 28
             // 版本名
@@ -130,16 +130,17 @@ android {
             //app名字
             resValue "string", "app_name", "Play CC-beta"
             //Facebook APPID
-            resValue "string", "facebook_app_token", "c5725141441c9d4a5bf4abc6a502b3e3"
             //AppsFlorid-AppId
             resValue "string", "app_flyer", "J4YbG6jNVHaFWuAeixmCuC"
             //AppsFlorid-AppInviteOneLink
             resValue "string", "app_flyer_invite_pathPrefix", "X5VR"
             resValue "string", "app_flyer_invite_onelink", "/X5VR"
-            //facebook 登录key
-            resValue "string", "fb_login_protocol_scheme", "fb5173832349346696"
+            //facebook 相关参数
+            resValue "string", "facebook_app_id", "592441739237853"
+            resValue "string", "facebook_app_token", "84ed23e5eff31b4b492d380842a2298a"
+            resValue "string", "fb_login_protocol_scheme", "fb592441739237853"
             //Google公钥
-            resValue "string", "google_public_key", "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAozfhLY9JLc+toLyhl/ZM/GbIEdNmqnrcLogdWs0rAOj+d8SXGBXWgtKBRgXGVKXxdf3jsmMJPO40Eow+AokHiNTBm/l8HBEadHkdcFPhnKzdvDs0ZsUpWdUYAJ+f7gcWwqfhuRSGUHkbGHrdDCXCJMBcfVGHaJM4lZ9wwH47Otvm88/F8DSKrXSZD/Xazqun0A/NyTsKP61jeGpUX67Ay0GolFewgt5pax5Qxh97O+YXDdxxO9iNSkAjnrAheF/JTm1+0mP/MdQ3u+hvOL7QacOZcnmKhJN3E+E0ZHRTXJi5eygDof1vqjiDJVhW3SnDmpktCYtd/1ANU0iUsaOTKwIDAQAB"
+            resValue "string", "google_public_key", "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsCw2u2oMe1lSiRpS83MeoKQ5LYETFqhnWfiHT7BZhD5acnEGQ7JVUMxB5b6SWbBcvYhdbFF06lex54sl7qE3jABcCHNLk6Gjt1dmxSOzvY8uKYzf+QpCNzm+QpxbNhaR7kmlyqPxC+yTV8E2ahABhNfiIJ0tNxgw7gpyQDLSscvUmUtXiFtw93diquTTTldIh720g/mhofCF13QucmxTpYJVkUDZRoBxmK+9pziU6gKO+srK34KT/cpL6DZcvJzKvmDTufPE4ThOrpyF8mfgxiAwb6Xary76AAvQGniopZYAgvhBkhy21hSFgSIp5sPAaRvs9+JAcn7RA8+wGr1zCwIDAQAB"
             // 版本号
             versionCode 30
             // 版本名
