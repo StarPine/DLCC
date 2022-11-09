@@ -159,52 +159,6 @@
                     binding:onClickCommand="@{viewModel.withdrawonClickCommand}" />
             </RelativeLayout>
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:visibility="gone"
-                android:layout_height="124dp">
-
-                <TextView
-                    android:id="@+id/tv_game_coin_num"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="39dp"
-                    android:layout_marginTop="17dp"
-                    android:elevation="11dp"
-                    android:text="@{viewModel.totalGameCoin}"
-                    android:textColor="@color/white"
-                    android:textSize="35sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/tv_game_coin_num"
-                    android:layout_alignStart="@+id/tv_game_coin_num"
-                    android:elevation="11dp"
-                    android:text="@string/playfun_game_coin_name"
-                    android:textColor="@color/white"
-                    android:textSize="15sp" />
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/taiwan_dollar_backdrop_img" />
-
-
-                <Button
-                    android:id="@+id/btn_game_coin_topup"
-                    android:layout_width="106dp"
-                    android:layout_height="29dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginTop="36dp"
-                    android:layout_marginRight="29dp"
-                    android:background="@drawable/btn_charge_is_polite_bg"
-                    android:text="@string/playfun_gift_bag_text1"
-                    android:textColor="#C28300"
-                    android:textSize="12sp" />
-            </RelativeLayout>
-
         </LinearLayout>
     </LinearLayout>
 </layout>

@@ -3,7 +3,6 @@ package com.fine.friendlycc.data.source.local;
 import com.blankj.utilcode.util.GsonUtils;
 import com.blankj.utilcode.util.ObjectUtils;
 import com.blankj.utilcode.util.StringUtils;
-import com.fine.friendlycc.api.AppGameConfig;
 import com.fine.friendlycc.app.AppConfig;
 import com.fine.friendlycc.data.source.LocalDataSource;
 import com.fine.friendlycc.entity.ApiConfigManagerEntity;
@@ -169,24 +168,6 @@ public class LocalDataSourceImpl implements LocalDataSource {
             return null;
         }
         return GsonUtils.fromJson(json, ApiConfigManagerEntity.class);
-    }
-
-    @Override
-    public void saveGameConfigSetting(AppGameConfig appGameConfig) {
-        if (ObjectUtils.isEmpty(appGameConfig)) {
-            return;
-        }
-        String json = GsonUtils.toJson(appGameConfig);
-        kv.encode(AppConfig.GAME_SOURCES_APP_CONFIG, json);
-    }
-
-    @Override
-    public AppGameConfig readGameConfigSetting() {
-        String json = kv.decodeString(AppConfig.GAME_SOURCES_APP_CONFIG);
-        if (StringUtil.isEmpty(json)) {
-            return null;
-        }
-        return GsonUtils.fromJson(json, AppGameConfig.class);
     }
 
     @Override

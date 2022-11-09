@@ -28,10 +28,8 @@ import com.fine.friendlycc.ui.certification.certificationfemale.CertificationFem
 import com.fine.friendlycc.ui.certification.certificationmale.CertificationMaleFragment;
 import com.fine.friendlycc.ui.mine.wallet.diamond.recharge.DiamondRechargeActivity;
 import com.fine.friendlycc.utils.AutoSizeUtils;
-import com.fine.friendlycc.widget.coinrechargesheet.CoinExchargeItegralPayDialog;
 import com.fine.friendlycc.widget.dialog.MVDialog;
 
-import me.goldze.mvvmhabit.utils.ToastUtils;
 
 /**
  * @author wulei
@@ -60,7 +58,6 @@ public class WalletFragment extends BaseToolbarFragment<FragmentWalletBinding, W
         super.initData();
         viewModel.getUserAccount();
         binding.btnExchangeGameCoin.setOnClickListener(this);
-        binding.btnGameCoinTopup.setOnClickListener(this);
         viewModel.certification.observe(this,event -> {
             MVDialog.getInstance(WalletFragment.this.getContext())
                     .setTitele(getString(R.string.playfun_fragment_certification_tip))
@@ -93,35 +90,7 @@ public class WalletFragment extends BaseToolbarFragment<FragmentWalletBinding, W
         if (v.getId() == R.id.btn_exchange_game_coin) {
             Intent intent = new Intent(mActivity, DiamondRechargeActivity.class);
             startActivity(intent);
-        }else if(R.id.btn_game_coin_topup == v.getId()){
-            CoinExchargeItegralPayDialog coinRechargeSheetView = new CoinExchargeItegralPayDialog(getContext(),mActivity);
-            coinRechargeSheetView.show();
-            coinRechargeSheetView.setCoinRechargeSheetViewListener(new CoinExchargeItegralPayDialog.CoinRechargeSheetViewListener() {
-                @Override
-                public void onPaySuccess(CoinExchargeItegralPayDialog sheetView, GameCoinBuy sel_goodsEntity) {
-                    sheetView.endGooglePlayConnect();
-                    sheetView.dismiss();
-                    MVDialog.getInstance(WalletFragment.this.getContext())
-                            .setTitele(StringUtils.getString(R.string.playfun_recharge_coin_success))
-                            .setConfirmText(StringUtils.getString(R.string.playfun_confirm))
-                            .setConfirmOnlick(dialog -> {
-                                dialog.dismiss();
-                                viewModel.getUserAccount();
-                            })
-                            .chooseType(MVDialog.TypeEnum.CENTER)
-                            .show();
-                }
-
-                @Override
-                public void onPayFailed(CoinExchargeItegralPayDialog sheetView, String msg) {
-                    sheetView.dismiss();
-                    ToastUtils.showShort(msg);
-                    AppContext.instance().logEvent(AppsFlyerEvent.Failed_to_top_up);
-                }
-            });
         }
-
-
     }
 
     //跳转谷歌支付act

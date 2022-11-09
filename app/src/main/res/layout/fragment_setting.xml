@@ -163,38 +163,6 @@
 
                 <RelativeLayout
                     style="@style/ProfileItem"
-                    android:visibility="@{viewModel.showUrl?View.VISIBLE:View.GONE}"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/profile_item_height"
-                    android:layout_marginTop="10dp"
-                    binding:onClickCommand="@{viewModel.termsOfServiceOnClickCommand}">
-
-                    <TextView
-                        style="@style/ProfileItemTitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/playfun_setting_terms_of_service" />
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    style="@style/ProfileItem"
-                    android:visibility="@{viewModel.showUrl2?View.VISIBLE:View.GONE}"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/profile_item_height"
-                    android:background="@color/white"
-                    binding:onClickCommand="@{viewModel.privacyPolicyPasswordOnClickCommand}">
-
-                    <TextView
-                        style="@style/ProfileItemTitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/playfun_user_privacy_policy" />
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    style="@style/ProfileItem"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/profile_item_height"
                     android:layout_marginTop="10dp"

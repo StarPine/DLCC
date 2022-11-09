@@ -1,6 +1,5 @@
 package com.fine.friendlycc.data.source;
 
-import com.fine.friendlycc.api.AppGameConfig;
 import com.fine.friendlycc.entity.ApiConfigManagerEntity;
 import com.fine.friendlycc.entity.ConfigItemEntity;
 import com.fine.friendlycc.entity.CrystalDetailsConfigEntity;
@@ -38,11 +37,6 @@ public interface LocalDataSource {
     //读取api配置
     ApiConfigManagerEntity readApiConfigManagerEntity();
 
-
-    //保存游戏配置
-    void saveGameConfigSetting(AppGameConfig appGameConfig);
-    //读取游戏配置
-    AppGameConfig readGameConfigSetting();
     //保存键值对
     void putKeyValue(String key, String value);
 

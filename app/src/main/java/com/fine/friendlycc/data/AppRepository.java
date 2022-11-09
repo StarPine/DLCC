@@ -3,7 +3,6 @@ package com.fine.friendlycc.data;
 import androidx.annotation.NonNull;
 import androidx.annotation.VisibleForTesting;
 
-import com.fine.friendlycc.api.AppGameConfig;
 import com.fine.friendlycc.data.source.HttpDataSource;
 import com.fine.friendlycc.data.source.LocalDataSource;
 import com.fine.friendlycc.data.source.http.response.BaseDataResponse;
@@ -392,16 +391,6 @@ public class AppRepository extends BaseModel implements HttpDataSource, LocalDat
     @Override
     public ApiConfigManagerEntity readApiConfigManagerEntity() {
         return mLocalDataSource.readApiConfigManagerEntity();
-    }
-
-    @Override
-    public void saveGameConfigSetting(AppGameConfig appGameConfig) {
-        mLocalDataSource.saveGameConfigSetting(appGameConfig);
-    }
-
-    @Override
-    public AppGameConfig readGameConfigSetting() {
-        return mLocalDataSource.readGameConfigSetting();
     }
 
     @Override

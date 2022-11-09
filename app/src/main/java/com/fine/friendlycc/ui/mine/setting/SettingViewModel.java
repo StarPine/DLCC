@@ -9,7 +9,6 @@ import androidx.databinding.ObservableField;
 
 import com.blankj.utilcode.util.ObjectUtils;
 import com.fine.friendlycc.R;
-import com.fine.friendlycc.api.AppGameConfig;
 import com.fine.friendlycc.app.AppConfig;
 import com.fine.friendlycc.data.AppRepository;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
@@ -61,14 +60,6 @@ public class SettingViewModel extends BaseViewModel<AppRepository> {
         cacheSize.set("0.00KB");
         ToastUtils.showShort(R.string.playfun_cleared_image_cache);
     });
-    public BindingCommand termsOfServiceOnClickCommand = new BindingCommand(() -> {
-        Bundle bundle = WebDetailFragment.getStartBundle(model.readGameConfigSetting().getTermsOfServiceUrl());
-        start(WebDetailFragment.class.getCanonicalName(), bundle);
-    });
-    public BindingCommand privacyPolicyPasswordOnClickCommand = new BindingCommand(() -> {
-        Bundle bundle = WebDetailFragment.getStartBundle(model.readGameConfigSetting().getPrivacyPolicyUrl());
-        start(WebDetailFragment.class.getCanonicalName(), bundle);
-    });
     public BindingCommand settintAppLockOnClickCommand = new BindingCommand(() -> {
         start(ScreenLockFragment.class.getCanonicalName());
     });
@@ -93,15 +84,6 @@ public class SettingViewModel extends BaseViewModel<AppRepository> {
         super.onCreate();
         String strCacheSize = GlideCacheManager.getInstance().getCacheSize(getApplication());
         cacheSize.set(strCacheSize);
-        AppGameConfig appGameConfig = ConfigManager.getInstance().getAppRepository().readGameConfigSetting();
-        if(!ObjectUtils.isEmpty(appGameConfig)){
-            if(!StringUtils.isEmpty(appGameConfig.getTermsOfServiceUrl())){
-                showUrl.set(true);
-            }
-            if(!StringUtils.isEmpty(appGameConfig.getPrivacyPolicyUrl())){
-                showUrl2.set(true);
-            }
-        }
     }
 
     @Override
