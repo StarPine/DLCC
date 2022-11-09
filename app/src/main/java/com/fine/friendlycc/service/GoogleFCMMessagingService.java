@@ -16,7 +16,7 @@ import androidx.core.app.NotificationCompat;
 
 import com.fine.friendlycc.app.AppContext;
 import com.fine.friendlycc.event.PushMessageEvent;
-import com.fine.friendlycc.ui.MainContainerActivity;
+import com.fine.friendlycc.MainActivity;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 import com.fine.friendlycc.R;
@@ -78,7 +78,7 @@ public class GoogleFCMMessagingService extends FirebaseMessagingService {
 
 
         //跳转到你想要跳转到页面
-        Intent intent = new Intent(AppContext.instance(), MainContainerActivity.class);
+        Intent intent = new Intent(AppContext.instance(), MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent;
         //兼容安卓12判断通知栏

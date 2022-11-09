@@ -40,7 +40,7 @@ import com.fine.friendlycc.event.LoginExpiredEvent;
 import com.fine.friendlycc.manager.ConfigManager;
 import com.fine.friendlycc.manager.ThirdPushTokenMgr;
 import com.fine.friendlycc.tim.TUIUtils;
-import com.fine.friendlycc.ui.MainContainerActivity;
+import com.fine.friendlycc.MainActivity;
 import com.fine.friendlycc.utils.StringUtil;
 import com.faceunity.nama.FURenderer;
 import com.google.firebase.FirebaseApp;
@@ -198,7 +198,7 @@ public class AppContext extends Application {
                 .trackActivities(BuildConfig.DEBUG) //是否跟踪Activity
                 .minTimeBetweenCrashesMs(2000) //崩溃的间隔时间(毫秒)
                 .errorDrawable(R.mipmap.ic_launcher) //错误图标
-                .restartActivity(MainContainerActivity.class) //重新启动后的activity
+                .restartActivity(MainActivity.class) //重新启动后的activity
                 //.errorActivity(YourCustomErrorActivity.class) //崩溃后的错误activity
                 //.eventListener(new YourCustomEventListener()) //崩溃后的错误监听
                 .apply();

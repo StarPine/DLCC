@@ -1,4 +1,4 @@
-package com.fine.friendlycc.ui;
+package com.fine.friendlycc;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,7 +14,6 @@ import androidx.lifecycle.Observer;
 import com.aliyun.svideo.crop.bean.AlivcCropOutputParam;
 import com.android.billingclient.api.BillingClient;
 import com.blankj.utilcode.util.KeyboardUtils;
-import com.fine.friendlycc.R;
 import com.fine.friendlycc.app.AppConfig;
 import com.fine.friendlycc.app.AppContext;
 import com.fine.friendlycc.app.BillingClientLifecycle;
@@ -45,7 +44,7 @@ import me.yokeyword.fragmentation.anim.FragmentAnimator;
 /**
  * @author wulei
  */
-public class MainContainerActivity extends MySupportActivity {
+public class MainActivity extends MySupportActivity {
     // 再点一次退出程序时间设置
     private static final long WAIT_TIME = 2000L;
     private long TOUCH_TIME = 0;
@@ -177,14 +176,14 @@ public class MainContainerActivity extends MySupportActivity {
                         return;
                     }
                     if (userDisableDialog == null) {
-                        userDisableDialog = MVDialog.getInstance(MainContainerActivity.this)
+                        userDisableDialog = MVDialog.getInstance(MainActivity.this)
                                 .setTitele(getString(R.string.playfun_dialog_user_disable_title))
                                 .setContent(getString(R.string.playfun_dialog_user_disable_content))
                                 .setConfirmText(getString(R.string.playfun_dialog_user_disable_btn_text))
                                 .setCancelable(true)
                                 .setConfirmOnlick(dialog -> {
                                     //跳转到登录界面
-                                    startWithPopTo(new LoginFragment(), MainContainerActivity.class, true);
+                                    startWithPopTo(new LoginFragment(), MainActivity.class, true);
                                 })
                                 .chooseType(MVDialog.TypeEnum.CENTERWARNED);
                     }

@@ -8,7 +8,8 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -16,14 +17,17 @@
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.READ_LOGS"
+    <uses-permission
+        android:name="android.permission.READ_LOGS"
         tools:ignore="ProtectedPermissions" />
 
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
 
     <!--删除相关请求安装权限&#45;&#45;迎合谷歌政策-->
-    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" tools:node="remove" />
+    <uses-permission
+        android:name="android.permission.REQUEST_INSTALL_PACKAGES"
+        tools:node="remove" />
 
     <uses-permission android:name="android.permission.BROADCAST_STICKY" />
     <!--在播放时有特殊设置的需要声明一个相应的WAKE_LOCK权限-->
@@ -35,7 +39,7 @@
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
     <uses-permission android:name="com.google.android.providers.gsf.permission.WRITE_GSERVICES" />
     <!--声明有使用广告ID-->
-    <uses-permission android:name="com.google.android.gms.permission.AD_ID"/>
+    <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
 
     <supports-screens
         android:largeScreens="true"
@@ -65,12 +69,14 @@
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/fb_login_protocol_scheme" />
-        <meta-data android:name="com.facebook.sdk.ClientToken" android:value="@string/facebook_app_token"/>
+        <meta-data
+            android:name="com.facebook.sdk.ClientToken"
+            android:value="@string/facebook_app_token" />
 
         <activity
-            android:exported="true"
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:exported="true"
             android:label="@string/app_name" />
         <activity
             android:name="com.facebook.CustomTabActivity"
@@ -127,12 +133,12 @@
         </service>
 
         <activity
-            android:name="com.fine.friendlycc.ui.MainContainerActivity"
+            android:name="com.fine.friendlycc.MainActivity"
+            android:exported="true"
             android:requestLegacyExternalStorage="true"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="adjustPan|adjustResize|stateHidden"
-            android:exported="true"><!--" adjustResize|stateHidden"-->
+            android:windowSoftInputMode="adjustPan|adjustResize|stateHidden"><!--" adjustResize|stateHidden"-->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -152,8 +158,8 @@
         </activity>
         <activity
             android:name="com.fine.friendlycc.kl.view.DialingAudioActivity"
-            android:launchMode="singleTop"
             android:exported="true"
+            android:launchMode="singleTop"
             android:requestLegacyExternalStorage="true"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
@@ -162,15 +168,15 @@
 
         <activity
             android:name="com.fine.friendlycc.ui.base.OtherFragmentActivity"
+            android:exported="true"
             android:requestLegacyExternalStorage="true"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="adjustPan|adjustResize|stateHidden"
-            android:exported="true"/>
+            android:windowSoftInputMode="adjustPan|adjustResize|stateHidden" />
         <activity
             android:name="com.fine.friendlycc.kl.view.CallingVideoActivity"
-            android:launchMode="singleTop"
             android:exported="true"
+            android:launchMode="singleTop"
             android:requestLegacyExternalStorage="true"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
@@ -178,58 +184,58 @@
         </activity>
 
         <!-- 快照页面 -->
-        <activity android:name="com.fine.friendlycc.ui.message.mediagallery.SnapshotPhotoActivity"
+        <activity
+            android:name="com.fine.friendlycc.ui.message.mediagallery.SnapshotPhotoActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
             android:requestLegacyExternalStorage="true"
             android:screenOrientation="portrait"
-            android:launchMode="singleTop"
-            android:exported="true"
-            android:theme="@style/AppTheme.NoActionBar"
-            />
+            android:theme="@style/AppTheme.NoActionBar" />
         <!--视频设置页面-->
-        <activity android:name="com.fine.friendlycc.ui.message.mediagallery.MediaGalleryVideoSettingActivity"
+        <activity
+            android:name="com.fine.friendlycc.ui.message.mediagallery.MediaGalleryVideoSettingActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
             android:requestLegacyExternalStorage="true"
             android:screenOrientation="portrait"
-            android:launchMode="singleTop"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.fine.friendlycc.ui.message.mediagallery.video.MediaGalleryVideoPayActivity"
             android:exported="true"
-            android:theme="@style/AppTheme.NoActionBar"
-            />
-        <activity android:name="com.fine.friendlycc.ui.message.mediagallery.video.MediaGalleryVideoPayActivity"
+            android:launchMode="singleTop"
             android:requestLegacyExternalStorage="true"
             android:screenOrientation="portrait"
-            android:launchMode="singleTop"
-            android:exported="true"
-            android:theme="@style/AppTheme.NoActionBar"
-            />
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <!-- IM快照 or 普通照片查看-->
-        <activity android:name="com.fine.friendlycc.ui.message.mediagallery.photo.MediaGalleryPhotoPayActivity"
+        <activity
+            android:name="com.fine.friendlycc.ui.message.mediagallery.photo.MediaGalleryPhotoPayActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
             android:requestLegacyExternalStorage="true"
             android:screenOrientation="portrait"
-            android:launchMode="singleTop"
-            android:exported="true"
-            android:theme="@style/AppTheme.NoActionBar"
-            />
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
             android:name="com.fine.friendlycc.kl.view.AudioCallChatingActivity"
-            android:launchMode="singleTop"
             android:exported="true"
+            android:launchMode="singleTop"
             android:requestLegacyExternalStorage="true"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan|adjustResize|stateHidden" /><!--" adjustResize|stateHidden"-->
         <activity
             android:name="com.fine.friendlycc.kl.view.VideoPresetActivity"
-            android:launchMode="singleTop"
             android:exported="true"
+            android:launchMode="singleTop"
             android:requestLegacyExternalStorage="true"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan|adjustResize|stateHidden" /><!--" adjustResize|stateHidden"-->
         <activity
             android:name="com.fine.friendlycc.ui.message.chatdetail.notepad.NotepadActivity"
-            android:launchMode="singleTop"
             android:exported="true"
+            android:launchMode="singleTop"
             android:requestLegacyExternalStorage="true"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
@@ -237,17 +243,17 @@
 
         <activity
             android:name="com.fine.friendlycc.ui.mine.wallet.diamond.recharge.DiamondRechargeActivity"
-            android:launchMode="singleTop"
             android:exported="true"
+            android:launchMode="singleTop"
             android:requestLegacyExternalStorage="true"
-            android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan|adjustResize|stateHidden" />
 
         <activity
             android:name="com.fine.friendlycc.ui.mine.exclusive.ExclusiveCallActivity"
-            android:launchMode="singleTop"
             android:exported="true"
+            android:launchMode="singleTop"
             android:requestLegacyExternalStorage="true"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
@@ -261,26 +267,29 @@
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan|adjustResize|stateHidden" />
 
-        <activity android:name="com.fine.friendlycc.ui.coinpusher.CoinPusherGameActivity"
+        <activity
+            android:name="com.fine.friendlycc.ui.coinpusher.CoinPusherGameActivity"
             android:launchMode="singleTop"
             android:requestLegacyExternalStorage="true"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="adjustPan|adjustResize|stateHidden"/>
+            android:windowSoftInputMode="adjustPan|adjustResize|stateHidden" />
 
 
-        <activity android:name="com.fine.friendlycc.api.login.email.LoginEmailMangerActivity"
-            android:launchMode="singleTop"
+        <activity
+            android:name="com.fine.friendlycc.api.login.email.LoginEmailMangerActivity"
             android:exported="true"
+            android:launchMode="singleTop"
             android:requestLegacyExternalStorage="true"
             android:screenOrientation="portrait"
-            android:theme="@style/dialog_activity_style"/>
-        <activity android:name="com.fine.friendlycc.ui.mine.account.bind.EmailMangerBindActivity"
-            android:launchMode="singleTop"
+            android:theme="@style/dialog_activity_style" />
+        <activity
+            android:name="com.fine.friendlycc.ui.mine.account.bind.EmailMangerBindActivity"
             android:exported="true"
+            android:launchMode="singleTop"
             android:requestLegacyExternalStorage="true"
             android:screenOrientation="portrait"
-            android:theme="@style/dialog_activity_style"/>
+            android:theme="@style/dialog_activity_style" />
 
     </application>
 
