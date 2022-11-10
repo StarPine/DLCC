@@ -125,8 +125,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_margin="10dp"
-                            android:src="@{viewModel.isMale?@drawable/icon_boy_diamond:@drawable/icon_girls_diamond}"
-                            tools:src="@drawable/icon_boy_diamond" />
+                            android:src="@{viewModel.isMale?@drawable/icon_male_diamond:@drawable/icon_female_diamond}"
+                            tools:src="@drawable/icon_male_diamond" />
 
                         <TextView
                             android:layout_width="wrap_content"

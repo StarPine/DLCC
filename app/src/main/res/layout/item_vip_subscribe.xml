@@ -65,7 +65,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@{viewModel.itemEntity.goodsName}"
-                    android:textColor="@{viewModel.itemEntity.selected ? @color/vip_sub_color_selected_tip:@color/vip_sub_color_normal}"
+                    android:textColor="@{viewModel.itemEntity.selected ? @color/vip_sub_color_selected:@color/vip_sub_color_normal}"
                     android:textSize="11sp"
                     android:textStyle="bold"
                     tools:text="一个月"

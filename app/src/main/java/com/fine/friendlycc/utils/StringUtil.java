@@ -112,7 +112,7 @@ public class StringUtil {
             if (imgPath.endsWith(".mp4")) {
                 return AppConfig.IMAGE_BASE_URL + imgPath;
             } else {
-                return AppConfig.IMAGE_BASE_URL + imgPath + "?x-oss-process=style/watermark";
+                return AppConfig.IMAGE_BASE_URL + imgPath + "?x-oss-process=style/playcc";
             }
         }
         return imgPath;

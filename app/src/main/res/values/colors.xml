@@ -52,8 +52,8 @@
     <color name="text_9EA1B0">#9EA1B0</color>
     <color name="text_7639FF">#7639FF</color>
     <color name="vip_sub_color_normal">#FFC4B4A6</color>
-    <color name="vip_sub_color_selected">#FFD1521C</color>
-    <color name="vip_sub_color_selected_tip">#FF53371B</color>
+    <color name="vip_sub_color_selected">#756ABD</color>
+    <color name="vip_sub_color_selected_tip">#DFD0BC</color>
 
     <color name="empty_list_hint">#ffbfbfbf</color>
 

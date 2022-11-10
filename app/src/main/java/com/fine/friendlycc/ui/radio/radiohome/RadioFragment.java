@@ -144,7 +144,6 @@ public class RadioFragment extends BaseRefreshFragment<FragmentRadioBinding, Rad
         radioFragmentLifecycle = new RadioFragmentLifecycle();
         //让radioFragmentLifecycle拥有View的生命周期感应
         getLifecycle().addObserver(radioFragmentLifecycle);
-        binding.refreshLayout.setRefreshHeader(new CustomRefreshHeader(getContext()));
         citys = ConfigManager.getInstance().getAppRepository().readCityConfig();
         ConfigItemEntity nearItemEntity = new ConfigItemEntity();
         nearItemEntity.setId(-1);

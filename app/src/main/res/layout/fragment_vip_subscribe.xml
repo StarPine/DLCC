@@ -90,9 +90,9 @@
                             android:id="@+id/iv_vip_banner"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:src="@drawable/bg_vip_title_image"
-                            binding:imageErrorPlaceholderRes="@{R.drawable.bg_vip_title_image}"
-                            binding:imagePlaceholderRes="@{R.drawable.bg_vip_title_image}"
+                            android:src="@drawable/bg_vip_title_image2"
+                            binding:imageErrorPlaceholderRes="@{R.drawable.bg_vip_title_image2}"
+                            binding:imagePlaceholderRes="@{R.drawable.bg_vip_title_image2}"
                             binding:imageThumbPath="@{viewModel.vipInfoEntity.banner.img}" />
 
                         <LinearLayout
@@ -224,10 +224,10 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="42dp"
+                android:layout_height="45dp"
                 android:layout_marginStart="50dp"
                 android:layout_marginEnd="50dp"
-                android:background="@drawable/btn_bg_vip_buy"
+                android:background="@drawable/btn_bg_vip_buy2"
                 android:gravity="center"
                 android:text="@string/playcc_buy_now"
                 android:textColor="@color/vip_buy"

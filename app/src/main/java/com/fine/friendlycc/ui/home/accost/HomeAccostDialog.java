@@ -212,9 +212,10 @@ public class HomeAccostDialog extends BaseDialog {
 
 
         btn_submit = rootView.findViewById(R.id.btn_submit);
-        Glide.with(getContext()).asGif().load(R.drawable.btn_gif_accost)
-                .error(R.drawable.btn_gif_accost)
-                .placeholder(R.drawable.btn_gif_accost)
+        Glide.with(getContext())
+                .load(R.drawable.btn_able_accost)
+                .error(R.drawable.btn_able_accost)
+                .placeholder(R.drawable.btn_able_accost)
                 .into(btn_submit);
 
         btn_submit.setOnClickListener(new View.OnClickListener() {
@@ -558,9 +559,9 @@ public class HomeAccostDialog extends BaseDialog {
                 isCountdown = false;
                 submit = true;
                 exp_time.setVisibility(View.GONE);
-                Glide.with(getContext()).asGif().load(R.drawable.btn_gif_accost)
-                        .error(R.drawable.btn_gif_accost)
-                        .placeholder(R.drawable.btn_gif_accost)
+                Glide.with(getContext()).load(R.drawable.btn_able_accost)
+                        .error(R.drawable.btn_able_accost)
+                        .placeholder(R.drawable.btn_able_accost)
                         .into(btn_submit);
                 //RxBus.getDefault().post(new MessageTagEvent(null, false));
             }
