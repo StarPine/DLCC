@@ -939,7 +939,7 @@
     <string name="TUIKitErrorEnableUserStatusOnConsole">You do not have the user status function turned on, log in to the console first</string>
     <!--腾讯异常代码语言-->
     <!--================腾讯IM语言包================-->
-    <!--PlayFun-APP-Start-->
+    <!--PlayCC-APP-Start-->
     <string name="app_name_release">PlayChat</string>
     <string name="playcc_local_language">en-US</string>
     <string name="playcc_local_language_val">en</string>
@@ -2257,5 +2257,5 @@
     <string name="playcc_coinpusher_history_text1">Display the historical results of winning in the past 7 days</string>
     <string name="playcc_coinpusher_history_text2">Lv%s player</string>
 
-    <!--PlayFun-APP-END-->
+    <!--PlayCC-APP-END-->
 </resources>

@@ -938,7 +938,7 @@
     <string name="TUIKitErrorEnableUserStatusOnConsole">您未开启用户状态功能，请先登录控制台开启</string>
     <!--腾讯异常代码语言-->
     <!--================腾讯IM语言包================-->
-    <!--PlayFun-APP-Start-->
+    <!--PlayCC-APP-Start-->
     <string name="app_name_release">聊玩</string>
     <string name="playcc_local_language">zh-TW</string>
     <string name="playcc_local_language_val">zh</string>
@@ -1568,6 +1568,7 @@
     <string name="playcc_age_and_city">%s歲 %s</string>
     <string name="playcc_message_sended">訊息已發送</string>
     <string name="playcc_buy_vip">成為VIP</string>
+    <string name="playcc_buy_vip2">立即開通</string>
     <string name="playcc_valid_time">有效期：</string>
     <string name="playcc_account_hidden_tip_male">社群賬號已隱藏，可先與他私訊</string>
     <string name="playcc_account_hidden_tip_female">社群賬號已隱藏，可先與她私訊</string>
@@ -1896,6 +1897,7 @@
     <string name="playcc_accost_same_sex">無法搭訕同性</string>
     <string name="playcc_name_number_too_long2">不能超出10個字</string>
     <string name="playcc_mine_vip_hint">會員特權</string>
+    <string name="playcc_mine_vip_hint_new">暢享專屬標籤、免費鑽石、更多曝光等</string>
     <string name="playcc_vipsubscribe_item_vip_txt_currency">$</string>
     <string name="playcc_version_latest">已是最新版本!</string>
     <string name="playcc_mine_setting_desc">無痕與隱藏</string>
@@ -2258,5 +2260,5 @@
     <string name="playcc_update_version_text4">忽略此版本</string>
     <string name="playcc_coinpusher_history_text1">展示近7天中獎歷史結果</string>
     <string name="playcc_coinpusher_history_text2">Lv%s號機</string>
-    <!--PlayFun-APP-END-->
+    <!--PlayCC-APP-END-->
 </resources>
