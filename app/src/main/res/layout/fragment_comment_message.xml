@@ -37,7 +37,7 @@
                 android:id="@+id/basic_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/action_bar_height"
-                app:toolbar_title="@string/playfun_fragment_custom_chat_input_title" />
+                app:toolbar_title="@string/playcc_fragment_custom_chat_input_title" />
 
         </com.google.android.material.appbar.AppBarLayout>
 

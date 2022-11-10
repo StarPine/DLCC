@@ -26,7 +26,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="18dp"
-                android:text="@string/playfun_share_vip_day7_text5"
+                android:text="@string/playcc_share_vip_day7_text5"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -38,7 +38,7 @@
                 android:layout_marginTop="26dp"
                 android:background="@mipmap/share_get_input"
                 android:gravity="center"
-                android:hint="@string/playfun_share_vip_day7_text6"
+                android:hint="@string/playcc_share_vip_day7_text6"
                 android:textColor="#90919F" />
 
             <Button
@@ -49,7 +49,7 @@
                 android:layout_marginTop="15dp"
                 android:layout_marginRight="27dp"
                 android:background="@mipmap/share_sub"
-                android:text="@string/playfun_share_vip_day7_text3"
+                android:text="@string/playcc_share_vip_day7_text3"
                 android:textSize="17sp" />
 
             <TextView
@@ -57,7 +57,7 @@
                 android:layout_height="17dp"
                 android:layout_gravity="center_horizontal"
                 android:gravity="center_horizontal"
-                android:text="@string/playfun_share_vip_day7_text8"
+                android:text="@string/playcc_share_vip_day7_text8"
                 android:textColor="#ff90919f"
                 android:textSize="13sp" />
         </LinearLayout>

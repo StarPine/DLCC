@@ -38,7 +38,7 @@
             style="@style/MessageItem"
             android:layout_toRightOf="@+id/iv_avatar"
             android:text="@{viewModel.itemEntity.content}"
-            tools:text="@string/playfun_message_hint_all" />
+            tools:text="@string/playcc_message_hint_all" />
         <TextView
             android:id="@+id/tv_time"
             android:layout_width="wrap_content"

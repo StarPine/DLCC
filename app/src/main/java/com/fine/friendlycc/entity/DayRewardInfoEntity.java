@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * 修改备注：每日奖励数据
  *
- * @Name： PlayFun_Google
+ * @Name： PlayCC
  * @Description：
  * @Author： liaosf
  * @Date： 2022/8/17 15:29

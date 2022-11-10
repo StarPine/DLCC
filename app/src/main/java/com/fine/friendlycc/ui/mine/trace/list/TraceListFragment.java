@@ -87,9 +87,9 @@ public class TraceListFragment extends BaseToolbarFragment<FragmentTraceListBind
             @Override
             public void onChanged(Integer unused) {
                 TraceDialog.getInstance(TraceListFragment.this.getContext())
-                        .setTitle(getString(R.string.playfun_mine_trace_delike))
-                        .setCannelText(getString(R.string.playfun_mine_trace_delike_cannel))
-                        .setConfirmText(getString(R.string.playfun_mine_trace_delike_confirm))
+                        .setTitle(getString(R.string.playcc_mine_trace_delike))
+                        .setCannelText(getString(R.string.playcc_mine_trace_delike_cannel))
+                        .setConfirmText(getString(R.string.playcc_mine_trace_delike_confirm))
                         .chooseType(TraceDialog.TypeEnum.CENTER)
                         .setConfirmOnlick(new TraceDialog.ConfirmOnclick() {
                             @Override

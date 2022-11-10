@@ -36,7 +36,7 @@
                     android:drawableTop="@drawable/radio_publish_program"
                     android:drawablePadding="10dp"
                     android:gravity="center"
-                    android:text="@string/playfun_publish_program"
+                    android:text="@string/playcc_publish_program"
                     android:textColor="@color/toolbar_title_color"
                     android:textSize="@dimen/text_size_middle2" />
             </LinearLayout>
@@ -60,7 +60,7 @@
                     android:drawableTop="@drawable/radio_publish_dynamic"
                     android:drawablePadding="10dp"
                     android:gravity="center"
-                    android:text="@string/playfun_publish_dynamic"
+                    android:text="@string/playcc_publish_dynamic"
                     android:textColor="@color/toolbar_title_color"
                     android:textSize="@dimen/text_size_middle2" />
             </LinearLayout>

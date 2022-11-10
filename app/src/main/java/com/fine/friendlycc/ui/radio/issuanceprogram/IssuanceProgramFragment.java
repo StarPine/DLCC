@@ -68,7 +68,7 @@ public class IssuanceProgramFragment extends BaseToolbarFragment<FragmentIssuanc
 
     public static Bundle getStartBundle(ThemeItemEntity program, ConfigItemEntity city) {
         if (program == null) {
-            ToastUtils.showShort(R.string.playfun_parameter_error);
+            ToastUtils.showShort(R.string.playcc_parameter_error);
             return null;
         }
         Bundle bundle = new Bundle();
@@ -81,7 +81,7 @@ public class IssuanceProgramFragment extends BaseToolbarFragment<FragmentIssuanc
 
     public static Bundle getStartBundle(ThemeItemEntity program, ConfigItemEntity city, String addressName, String address, Double lat, Double lng) {
         if (program == null || city == null || addressName == null) {
-            ToastUtils.showShort(R.string.playfun_parameter_error);
+            ToastUtils.showShort(R.string.playcc_parameter_error);
             return null;
         }
         Bundle bundle = new Bundle();
@@ -183,9 +183,9 @@ public class IssuanceProgramFragment extends BaseToolbarFragment<FragmentIssuanc
                 if(typeDating.intValue()==1){
                     int sex = ConfigManager.getInstance().isMale()?1:0;
                     MVDialog.getInstance(IssuanceProgramFragment.this.getContext())
-                            .setContent(getString(R.string.playfun_issuance_tends))
-                            .setConfirmText(sex == 1 ? getString(R.string.playfun_to_be_member_issuance) : getString(R.string.playfun_author_free_issuance))
-                            .setConfirmTwoText(getString(R.string.playfun_pay_issuance) + "（" + ConfigManager.getInstance().getNewsMoney() + getString(R.string.playfun_element) + "）")
+                            .setContent(getString(R.string.playcc_issuance_tends))
+                            .setConfirmText(sex == 1 ? getString(R.string.playcc_to_be_member_issuance) : getString(R.string.playcc_author_free_issuance))
+                            .setConfirmTwoText(getString(R.string.playcc_pay_issuance) + "（" + ConfigManager.getInstance().getNewsMoney() + getString(R.string.playcc_element) + "）")
                             .chooseType(MVDialog.TypeEnum.CENTER)
                             .setConfirmOnlick(new MVDialog.ConfirmOnclick() {
                                 @Override
@@ -214,9 +214,9 @@ public class IssuanceProgramFragment extends BaseToolbarFragment<FragmentIssuanc
                             .show();
                 }else{
                     MVDialog.getInstance(IssuanceProgramFragment.this.getContext())
-                            .setTitele(getString(R.string.playfun_fragment_issuance_program_title))
-                            .setConfirmText(viewModel.sex == 1 ? getString(R.string.playfun_to_be_member_issuance) : getString(R.string.playfun_author_free_issuance))
-                            .setConfirmTwoText(getString(R.string.playfun_pay_issuance) + "（" + viewModel.configManager.getTopicalMoney() + getString(R.string.playfun_element) + "）")
+                            .setTitele(getString(R.string.playcc_fragment_issuance_program_title))
+                            .setConfirmText(viewModel.sex == 1 ? getString(R.string.playcc_to_be_member_issuance) : getString(R.string.playcc_author_free_issuance))
+                            .setConfirmTwoText(getString(R.string.playcc_pay_issuance) + "（" + viewModel.configManager.getTopicalMoney() + getString(R.string.playcc_element) + "）")
                             .chooseType(MVDialog.TypeEnum.CENTER)
                             .setConfirmOnlick(new MVDialog.ConfirmOnclick() {
                                 @Override
@@ -303,36 +303,36 @@ public class IssuanceProgramFragment extends BaseToolbarFragment<FragmentIssuanc
         DatingObjItemEntity datingObjItemEntity5 = new DatingObjItemEntity();
         datingObjItemEntity5.setType(0);
         datingObjItemEntity5.setId(1);
-        datingObjItemEntity5.setName(StringUtils.getString(R.string.playfun_mood_item_id1));
+        datingObjItemEntity5.setName(StringUtils.getString(R.string.playcc_mood_item_id1));
         datingObjItemEntity5.setSelect(true);
         datingObjItemEntity5.setIconChecked(getResources().getResourceName(R.mipmap.dating_obj_mood1_img));
         viewModel.$datingObjItemEntity = datingObjItemEntity5;
         DatingObjItemEntity datingObjItemEntity1 = new DatingObjItemEntity();
         datingObjItemEntity1.setType(0);
         datingObjItemEntity1.setId(2);
-        datingObjItemEntity1.setName(StringUtils.getString(R.string.playfun_mood_item_id2));
+        datingObjItemEntity1.setName(StringUtils.getString(R.string.playcc_mood_item_id2));
         datingObjItemEntity1.setIconChecked(getResources().getResourceName(R.mipmap.dating_obj_mood2_img));
         DatingObjItemEntity datingObjItemEntity2 = new DatingObjItemEntity();
         datingObjItemEntity2.setType(0);
         datingObjItemEntity2.setId(3);
-        datingObjItemEntity2.setName(StringUtils.getString(R.string.playfun_mood_item_id3));
+        datingObjItemEntity2.setName(StringUtils.getString(R.string.playcc_mood_item_id3));
         datingObjItemEntity2.setIconChecked(getResources().getResourceName(R.mipmap.dating_obj_mood3_img));
         DatingObjItemEntity datingObjItemEntity3 = new DatingObjItemEntity();
         datingObjItemEntity3.setType(0);
         datingObjItemEntity3.setId(4);
-        datingObjItemEntity3.setName(StringUtils.getString(R.string.playfun_mood_item_id4));
+        datingObjItemEntity3.setName(StringUtils.getString(R.string.playcc_mood_item_id4));
         datingObjItemEntity3.setIconChecked(getResources().getResourceName(R.mipmap.dating_obj_mood4_img));
         DatingObjItemEntity datingObjItemEntity4 = new DatingObjItemEntity();
         datingObjItemEntity4.setType(0);
         datingObjItemEntity4.setId(5);
-        datingObjItemEntity4.setName(StringUtils.getString(R.string.playfun_mood_item_id5));
+        datingObjItemEntity4.setName(StringUtils.getString(R.string.playcc_mood_item_id5));
         datingObjItemEntity4.setIconChecked(getResources().getResourceName(R.mipmap.dating_obj_mood5_img));
 
 
         DatingObjItemEntity datingObjItemEntity = new DatingObjItemEntity();
         datingObjItemEntity.setType(0);
         datingObjItemEntity.setId(6);
-        datingObjItemEntity.setName(StringUtils.getString(R.string.playfun_mood_item_id6));
+        datingObjItemEntity.setName(StringUtils.getString(R.string.playcc_mood_item_id6));
         datingObjItemEntity.setIconChecked(getResources().getResourceName(R.mipmap.dating_obj_mood6_img));
 
         RadioDatingItemViewModel radioThemeItemViewMode0 = new RadioDatingItemViewModel(viewModel, datingObjItemEntity);
@@ -351,20 +351,20 @@ public class IssuanceProgramFragment extends BaseToolbarFragment<FragmentIssuanc
     }
     private void showDialog(int type) {
         int payType = 0;
-        String titles = StringUtils.getString(R.string.playfun_issuance_tends);
+        String titles = StringUtils.getString(R.string.playcc_issuance_tends);
         if(type==1){//动态
             payType = 8;
-            titles = StringUtils.getString(R.string.playfun_issuance_tends);
+            titles = StringUtils.getString(R.string.playcc_issuance_tends);
         }else{
             payType = 9;//约会
-            titles = StringUtils.getString(R.string.playfun_send_show);
+            titles = StringUtils.getString(R.string.playcc_send_show);
         }
 
         new CoinPaySheet.Builder(mActivity).setPayParams(payType, ConfigManager.getInstance().getAppRepository().readUserData().getId(), titles, false, new CoinPaySheet.CoinPayDialogListener() {
             @Override
             public void onPaySuccess(CoinPaySheet sheet, String orderNo, Integer payPrice) {
                 sheet.dismiss();
-                ToastUtils.showShort(R.string.playfun_pay_success);
+                ToastUtils.showShort(R.string.playcc_pay_success);
                 viewModel.sendConfirm();
             }
             @Override
@@ -381,7 +381,7 @@ public class IssuanceProgramFragment extends BaseToolbarFragment<FragmentIssuanc
         coinRechargeFragmentView.setClickListener(new CoinRechargeSheetView.ClickListener() {
             @Override
             public void paySuccess(GoodsEntity goodsEntity) {
-                ToastUtils.showShort(R.string.playfun_pay_success);
+                ToastUtils.showShort(R.string.playcc_pay_success);
                 viewModel.sendConfirm();
             }
         });

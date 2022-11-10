@@ -217,7 +217,7 @@ if (rootProject.ext.BuildSdkPlayfun) {
                     copy {
                         from outputFile
                         into "../app/libs"
-                        rename outputFile.name, "playfun-lib-1.5.7.aar"
+                        rename outputFile.name, "playcc-lib-1.5.7.aar"
                     }
                 }
             }

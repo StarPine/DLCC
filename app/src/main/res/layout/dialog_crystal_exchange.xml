@@ -190,7 +190,7 @@
         android:layout_marginTop="25dp"
         android:layout_marginRight="10dp"
         android:layout_marginBottom="25dp"
-        android:text="@string/playfun_dialog_crystal_exchange_button"
+        android:text="@string/playcc_dialog_crystal_exchange_button"
         android:textSize="@dimen/text_size_1067"
         android:textStyle="normal" />
 

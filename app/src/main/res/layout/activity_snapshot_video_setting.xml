@@ -44,7 +44,7 @@
                 android:layout_width="wrap_content"
                 android:gravity="center"
                 android:layout_height="42dp"
-                android:text="@string/playfun_confirm"
+                android:text="@string/playcc_confirm"
                 android:textColor="@color/white"
                 android:textSize="13sp"
                 />
@@ -90,8 +90,8 @@
                     android:orientation="horizontal"
                     android:visibility="@{viewModel.isPayState ? View.VISIBLE : View.GONE}"
                     binding:drawable_cornersRadius="@{22}"
-                    binding:drawable_gradient_endColor="@{@color/playfun_shape_radius_end_color}"
-                    binding:drawable_gradient_startColor="@{@color/playfun_shape_radius_start_color}"
+                    binding:drawable_gradient_endColor="@{@color/playcc_shape_radius_end_color}"
+                    binding:drawable_gradient_startColor="@{@color/playcc_shape_radius_start_color}"
                     binding:drawable_orientation="@{GradientDrawable.Orientation.LEFT_RIGHT}"
                     binding:onClickCommand="@{viewModel.settingClick}"
                     tools:visibility="visible">
@@ -106,7 +106,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
                         android:includeFontPadding="false"
-                        android:text="@string/playfun_setting_text"
+                        android:text="@string/playcc_setting_text"
                         android:textColor="@color/white"
                         android:textSize="15sp" />
                 </LinearLayout>

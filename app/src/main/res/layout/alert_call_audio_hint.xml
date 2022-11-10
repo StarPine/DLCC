@@ -20,7 +20,7 @@
                 android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/playfun_call_message_deatail_girl_txt6"
+                android:text="@string/playcc_call_message_deatail_girl_txt6"
                 android:textSize="15sp"
                 android:textColor="@color/black"/>
             <TextView
@@ -30,7 +30,7 @@
                 android:layout_marginEnd="14dp"
                 android:background="@drawable/radius_purple_22dp"
                 android:gravity="center"
-                android:text="@string/playfun_call_message_deatail_girl_txt7"
+                android:text="@string/playcc_call_message_deatail_girl_txt7"
                 android:textColor="#FFA72DFE"
                 android:textSize="13sp"
                 android:layout_width="match_parent"
@@ -42,7 +42,7 @@
                 android:layout_marginEnd="14dp"
                 android:background="@drawable/radius_purple_22dp"
                 android:gravity="center"
-                android:text="@string/playfun_call_message_deatail_girl_txt15"
+                android:text="@string/playcc_call_message_deatail_girl_txt15"
                 android:textColor="#FFA72DFE"
                 android:textSize="13sp"
                 android:layout_width="match_parent"
@@ -57,7 +57,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:textSize="14sp"
-                android:text="@string/playfun_call_message_deatail_girl_txt8"
+                android:text="@string/playcc_call_message_deatail_girl_txt8"
                 android:textColor="@color/white"/>
         </LinearLayout>
     </androidx.cardview.widget.CardView>

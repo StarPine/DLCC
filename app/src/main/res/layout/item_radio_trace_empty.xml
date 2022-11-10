@@ -25,7 +25,7 @@
             android:text="@{viewModel.emptyTextField}"
             android:textColor="@color/pseekbar_process_off3"
             android:textSize="12sp"
-            tools:text="@string/playfun_radio_list_trace_empty2"
+            tools:text="@string/playcc_radio_list_trace_empty2"
             />
     </RelativeLayout>
 </layout>

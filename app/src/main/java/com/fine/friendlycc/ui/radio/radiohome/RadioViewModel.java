@@ -96,8 +96,8 @@ public class RadioViewModel extends BaseRefreshViewModel<AppRepository> {
     public ObservableBoolean itemBannerShow = new ObservableBoolean(false);
 
     //位置选择文字
-    public ObservableField<String> regionTitle = new ObservableField<>(StringUtils.getString(R.string.playfun_tab_female_1));
-    public ObservableField<String> tarckingTitle = new ObservableField<>(StringUtils.getString(R.string.playfun_radio_selected_zuiz));
+    public ObservableField<String> regionTitle = new ObservableField<>(StringUtils.getString(R.string.playcc_tab_female_1));
+    public ObservableField<String> tarckingTitle = new ObservableField<>(StringUtils.getString(R.string.playcc_radio_selected_zuiz));
 
     public BindingRecyclerViewAdapter<RadioItemBannerVideoViewModel> adapterAdUser = new BindingRecyclerViewAdapter<>();
     public ObservableList<RadioItemBannerVideoViewModel> radioItemsAdUser = new ObservableArrayList<>();
@@ -400,12 +400,12 @@ public class RadioViewModel extends BaseRefreshViewModel<AppRepository> {
                                 String emptyText = null;
                                 if (radioItems == null || radioItems.size() == 0) {
                                     if (collectListEmpty != null && collectListEmpty >= 1) {//有追踪的人
-                                        emptyText = StringUtils.getString(R.string.playfun_radio_list_trace_empty2);
+                                        emptyText = StringUtils.getString(R.string.playcc_radio_list_trace_empty2);
                                     } else {//没有追踪的人
-                                        emptyText = StringUtils.getString(R.string.playfun_radio_list_trace_empty);
+                                        emptyText = StringUtils.getString(R.string.playcc_radio_list_trace_empty);
                                     }
                                 } else {
-                                    emptyText = StringUtils.getString(R.string.playfun_radio_list_trace_empty2);
+                                    emptyText = StringUtils.getString(R.string.playcc_radio_list_trace_empty2);
                                 }
                                 // 动态
                                 RadioTraceEmptyItemViewModel trendItemViewModel = new RadioTraceEmptyItemViewModel(RadioViewModel.this, emptyText);
@@ -468,12 +468,12 @@ public class RadioViewModel extends BaseRefreshViewModel<AppRepository> {
                                         String emptyText = null;
                                         if (radioItems == null || radioItems.size() == 0) {
                                             if (collectListEmpty != null && collectListEmpty >= 1) {//有追踪的人
-                                                emptyText = StringUtils.getString(R.string.playfun_radio_list_trace_empty2);
+                                                emptyText = StringUtils.getString(R.string.playcc_radio_list_trace_empty2);
                                             } else {//没有追踪的人
-                                                emptyText = StringUtils.getString(R.string.playfun_radio_list_trace_empty);
+                                                emptyText = StringUtils.getString(R.string.playcc_radio_list_trace_empty);
                                             }
                                         } else {
-                                            emptyText = StringUtils.getString(R.string.playfun_radio_list_trace_empty2);
+                                            emptyText = StringUtils.getString(R.string.playcc_radio_list_trace_empty2);
                                         }
                                         // 动态
                                         RadioTraceEmptyItemViewModel trendItemViewModel = new RadioTraceEmptyItemViewModel(RadioViewModel.this, emptyText);
@@ -498,12 +498,12 @@ public class RadioViewModel extends BaseRefreshViewModel<AppRepository> {
                                     String emptyText = null;
                                     if (radioItems == null || radioItems.size() == 0) {
                                         if (collectListEmpty != null && collectListEmpty >= 1) {//有追踪的人
-                                            emptyText = StringUtils.getString(R.string.playfun_radio_list_trace_empty2);
+                                            emptyText = StringUtils.getString(R.string.playcc_radio_list_trace_empty2);
                                         } else {//没有追踪的人
-                                            emptyText = StringUtils.getString(R.string.playfun_radio_list_trace_empty);
+                                            emptyText = StringUtils.getString(R.string.playcc_radio_list_trace_empty);
                                         }
                                     } else {
-                                        emptyText = StringUtils.getString(R.string.playfun_radio_list_trace_empty2);
+                                        emptyText = StringUtils.getString(R.string.playcc_radio_list_trace_empty2);
                                     }
                                     // 动态
                                     RadioTraceEmptyItemViewModel trendItemViewModel = new RadioTraceEmptyItemViewModel(RadioViewModel.this, emptyText);
@@ -612,7 +612,7 @@ public class RadioViewModel extends BaseRefreshViewModel<AppRepository> {
                     @Override
                     public void onSuccess(BaseResponse response) {
                         dismissHUD();
-                        ToastUtils.showShort(R.string.playfun_give_success);
+                        ToastUtils.showShort(R.string.playcc_give_success);
                         if (isFirstLike) {
                             RxBus.getDefault().post(new TaskListEvent());
                         }
@@ -638,7 +638,7 @@ public class RadioViewModel extends BaseRefreshViewModel<AppRepository> {
                     @Override
                     public void onSuccess(BaseResponse response) {
                         dismissHUD();
-                        ToastUtils.showShort(R.string.playfun_comment_success);
+                        ToastUtils.showShort(R.string.playcc_comment_success);
                         if (isFirstComment) {//每天第一次留言
                             RxBus.getDefault().post(new TaskListEvent());
                         }
@@ -655,7 +655,7 @@ public class RadioViewModel extends BaseRefreshViewModel<AppRepository> {
                     @Override
                     public void onError(RequestException e) {
                         if (e.getCode() == 10016) {
-                            ToastUtils.showShort(StringUtils.getString(R.string.playfun_comment_close));
+                            ToastUtils.showShort(StringUtils.getString(R.string.playcc_comment_close));
                             for (int i = 0; i < radioItems.size(); i++) {
                                 if (radioItems.get(i) instanceof TrendItemViewModel) {
                                     if (id == ((TrendItemViewModel) radioItems.get(i)).newsEntityObservableField.get().getId()) {
@@ -697,7 +697,7 @@ public class RadioViewModel extends BaseRefreshViewModel<AppRepository> {
                     public void onSuccess(BaseResponse response) {
                         dismissHUD();
                         if (type.equals(RadioRecycleType_New)) {
-                            ToastUtils.showShort(((TrendItemViewModel) radioItems.get(posion)).newsEntityObservableField.get().getBroadcast().getIsComment() == 1 ? StringUtils.getString(R.string.playfun_open_comment_success) : StringUtils.getString(R.string.playfun_close_success));
+                            ToastUtils.showShort(((TrendItemViewModel) radioItems.get(posion)).newsEntityObservableField.get().getBroadcast().getIsComment() == 1 ? StringUtils.getString(R.string.playcc_open_comment_success) : StringUtils.getString(R.string.playcc_close_success));
                             ((TrendItemViewModel) radioItems.get(posion)).newsEntityObservableField.get().getBroadcast().setIsComment(
                                     ((TrendItemViewModel) radioItems.get(posion)).newsEntityObservableField.get().getBroadcast().getIsComment() == 0 ? 1 : 0);
                         }
@@ -758,7 +758,7 @@ public class RadioViewModel extends BaseRefreshViewModel<AppRepository> {
                             return;
                         }
                         if (callingInviteInfoBaseDataResponse.getCode() == 22001) {//游戏中
-                            Toast.makeText(AppContext.instance(), R.string.playfun_in_game, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(AppContext.instance(), R.string.playcc_in_game, Toast.LENGTH_SHORT).show();
                             return;
                         }
                         CallingInviteInfo callingInviteInfo = callingInviteInfoBaseDataResponse.getData();
@@ -797,7 +797,7 @@ public class RadioViewModel extends BaseRefreshViewModel<AppRepository> {
                     @Override
                     public void onSuccess(BaseResponse response) {
                         dismissHUD();
-                        ToastUtils.showShort(R.string.playfun_text_accost_success1);
+                        ToastUtils.showShort(R.string.playcc_text_accost_success1);
                         Objects.requireNonNull(((TrendItemViewModel)adapter.getAdapterItem(position)).newsEntityObservableField.get()).getUser().setIsAccost(1);
                         adapter.notifyItemChanged(position);
                         //刷新任务列表状态
@@ -808,7 +808,7 @@ public class RadioViewModel extends BaseRefreshViewModel<AppRepository> {
                     public void onError(RequestException e) {
                         super.onError(e);
                         if(e.getCode()!=null && e.getCode().intValue()==21001 ){//钻石余额不足
-                            ToastCenterUtils.showToast(R.string.playfun_dialog_exchange_integral_total_text3);
+                            ToastCenterUtils.showToast(R.string.playcc_dialog_exchange_integral_total_text3);
                         }
                     }
 

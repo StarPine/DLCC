@@ -178,7 +178,7 @@ public class VipSubscribeViewModel extends BaseViewModel<AppRepository> {
 
     private void rechargeCreateOrder() {
         if (selectedPosition.get() < 0) {
-            ToastUtils.showShort(R.string.playfun_please_choose_top_up_package);
+            ToastUtils.showShort(R.string.playcc_please_choose_top_up_package);
             return;
         }
         try {
@@ -226,7 +226,7 @@ public class VipSubscribeViewModel extends BaseViewModel<AppRepository> {
                     public void onSuccess(BaseResponse response) {
                         dismissHUD();
                         if (event.intValue() == 0) {
-                            ToastUtils.showShort(StringUtils.getString(R.string.playfun_pay_success));
+                            ToastUtils.showShort(StringUtils.getString(R.string.playcc_pay_success));
                             model.clearGooglePayCache();
                             Integer sucb = uc.successBack.getValue();
                             if (sucb != null) {

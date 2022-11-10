@@ -90,7 +90,7 @@ public class MediaGalleryVideoSettingViewModel extends BaseViewModel<AppReposito
                     @Override
                     public void onError(Throwable e) {
                         dismissHUD();
-                        ToastUtils.showShort(R.string.playfun_upload_failed);
+                        ToastUtils.showShort(R.string.playcc_upload_failed);
                     }
 
                     @Override

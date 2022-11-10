@@ -357,7 +357,7 @@ public class CoinPusherRoomListDialog extends BaseDialog {
                 binding.flLayoutEmpty.setLayoutParams(layoutParams);
                 binding.flLayoutEmpty.setVisibility(View.VISIBLE);
                 binding.refreshLayout.setVisibility(View.GONE);
-                String emptyText = StringUtils.getString(R.string.playfun_coinpusher_room_empty_text);
+                String emptyText = StringUtils.getString(R.string.playcc_coinpusher_room_empty_text);
                 SpannableString stringBuilder = new SpannableString(emptyText);
                 ForegroundColorSpan whiteSpan = new ForegroundColorSpan(ColorUtils.getColor(R.color.gray_light));
                 stringBuilder.setSpan(whiteSpan, 0, emptyText.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
@@ -369,8 +369,8 @@ public class CoinPusherRoomListDialog extends BaseDialog {
                 binding.flLayoutEmpty.setLayoutParams(layoutParams);
                 binding.flLayoutEmpty.setVisibility(View.VISIBLE);
                 binding.rcvTitle.setVisibility(View.GONE);
-                String emptyText = StringUtils.getString(R.string.playfun_coinpusher_error_text1);
-                String refreshText = StringUtils.getString(R.string.playfun_refresh);
+                String emptyText = StringUtils.getString(R.string.playcc_coinpusher_error_text1);
+                String refreshText = StringUtils.getString(R.string.playcc_refresh);
                 SpannableString stringBuilder = new SpannableString(emptyText + refreshText);
                 ForegroundColorSpan whiteSpan = new ForegroundColorSpan(ColorUtils.getColor(R.color.gray_light));
                 ForegroundColorSpan redSpan = new ForegroundColorSpan(ColorUtils.getColor(R.color.purple_text));

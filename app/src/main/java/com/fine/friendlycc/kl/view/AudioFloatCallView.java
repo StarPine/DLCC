@@ -213,8 +213,8 @@ public class AudioFloatCallView extends BaseTUICallView {
      * @param giftEntity
      */
     private void showGiftBarrage(GiftEntity giftEntity) {
-        String sexText = isMale() ? StringUtils.getString(R.string.playfun_call_message_deatail_girl_txt3) : StringUtils.getString(R.string.playfun_call_message_deatail_girl_txt2);
-        String messageText = otherUserProfile.getNickname() + " " + StringUtils.getString(R.string.playfun_call_message_deatail_girl_txt1) + " " + sexText + " " + giftEntity.getTitle() + "x" + giftEntity.getAmount();
+        String sexText = isMale() ? StringUtils.getString(R.string.playcc_call_message_deatail_girl_txt3) : StringUtils.getString(R.string.playcc_call_message_deatail_girl_txt2);
+        String messageText = otherUserProfile.getNickname() + " " + StringUtils.getString(R.string.playcc_call_message_deatail_girl_txt1) + " " + sexText + " " + giftEntity.getTitle() + "x" + giftEntity.getAmount();
         AudioCallingBarrageEntity barrageEntity = new AudioCallingBarrageEntity(messageText ,giftEntity.getImgPath(),true);
         audioBarrageList.add(barrageEntity);
     }

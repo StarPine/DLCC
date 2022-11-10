@@ -55,7 +55,7 @@ public class ScreenLockFragment extends BaseFragment<FragmentScreenLockBinding, 
         viewModel.uc.bindupdata.observe(this, new Observer<Void>() {
             @Override
             public void onChanged(Void aVoid) {
-                String[] items = new String[]{getString(R.string.playfun_setting_new_password), getString(R.string.playfun_cancel_lock_design)};
+                String[] items = new String[]{getString(R.string.playcc_setting_new_password), getString(R.string.playcc_cancel_lock_design)};
                 AlertDialog.Builder builder = new AlertDialog.Builder(mActivity);
                 builder.setSingleChoiceItems(items, 0, new DialogInterface.OnClickListener() {
                     @Override
@@ -69,7 +69,7 @@ public class ScreenLockFragment extends BaseFragment<FragmentScreenLockBinding, 
                     }
                 });
                 AlertDialog dialog = builder.create();
-                dialog.setTitle(getString(R.string.playfun_want_set_up));
+                dialog.setTitle(getString(R.string.playcc_want_set_up));
                 dialog.show();
                 dialog.setCanceledOnTouchOutside(true);
             }

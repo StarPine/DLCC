@@ -44,7 +44,7 @@
         android:layout_height="match_parent"
         android:background="@color/white"
         android:orientation="vertical"
-        tools:context="com.fine.friendlycc.com.dl.playfun.ui.mine.broadcast.mytrends.trenddetail.TrendDetailFragment">
+        tools:context="com.fine.friendlycc.com.dl.playcc.ui.mine.broadcast.mytrends.trenddetail.TrendDetailFragment">
 
         <View
             android:id="@+id/status_bar_view"
@@ -62,7 +62,7 @@
                 android:id="@+id/basic_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/action_bar_height"
-                app:toolbar_title="@{viewModel.isSelf ? @string/playfun_trend_detail_title:@string/playfun_trend_detail_title_other}">
+                app:toolbar_title="@{viewModel.isSelf ? @string/playcc_trend_detail_title:@string/playcc_trend_detail_title_other}">
 
             </com.fine.friendlycc.widget.BasicToolbar>
 
@@ -175,7 +175,7 @@
                     android:background="@drawable/radio_item_like_button_bg"
                     android:paddingStart="8dp"
                     android:paddingEnd="8dp"
-                    android:text="@string/playfun_my_issuance"
+                    android:text="@string/playcc_my_issuance"
                     android:textColor="#636363"
                     android:textSize="@dimen/text_size_1067"
                     android:visibility="@{viewModel.newsEntityObservableField.user.id!=viewModel.userId||viewModel.isSelf?View.GONE:View.VISIBLE}" />

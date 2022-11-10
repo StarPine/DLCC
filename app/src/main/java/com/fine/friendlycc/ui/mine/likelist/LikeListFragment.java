@@ -51,9 +51,9 @@ public class LikeListFragment extends BaseToolbarFragment<FragmentLikeListBindin
             @Override
             public void onChanged(Integer unused) {
                 TraceDialog.getInstance(LikeListFragment.this.getContext())
-                        .setTitle(getString(R.string.playfun_mine_trace_delike))
-                        .setCannelText(getString(R.string.playfun_mine_trace_delike_cannel))
-                        .setConfirmText(getString(R.string.playfun_mine_trace_delike_confirm))
+                        .setTitle(getString(R.string.playcc_mine_trace_delike))
+                        .setCannelText(getString(R.string.playcc_mine_trace_delike_cannel))
+                        .setConfirmText(getString(R.string.playcc_mine_trace_delike_confirm))
                         .chooseType(TraceDialog.TypeEnum.CENTER)
                         .setConfirmOnlick(new TraceDialog.ConfirmOnclick() {
                             @Override
@@ -73,7 +73,7 @@ public class LikeListFragment extends BaseToolbarFragment<FragmentLikeListBindin
         viewModel.uc.loadRefresh.observe(this, new Observer<Void>() {
             @Override
             public void onChanged(Void unused) {
-                binding.title.setText(String.format(StringUtils.getString(R.string.playfun_mine_trace_man_title2), viewModel.totalCount));
+                binding.title.setText(String.format(StringUtils.getString(R.string.playcc_mine_trace_man_title2), viewModel.totalCount));
             }
         });
 

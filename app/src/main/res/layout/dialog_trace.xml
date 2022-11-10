@@ -22,7 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:text="@string/playfun_mine_trace_delike"
+            android:text="@string/playcc_mine_trace_delike"
             android:textStyle="bold"
             android:textAlignment="center"
             android:gravity="center_horizontal"
@@ -30,7 +30,7 @@
             android:layout_marginRight="30dp"
             android:textColor="@color/text_default"
             android:textSize="16sp"
-            tools:text="@string/playfun_duplicate_nickname_tips"
+            tools:text="@string/playcc_duplicate_nickname_tips"
             />
 
         <LinearLayout
@@ -50,7 +50,7 @@
                 style="@style/ButtonPrimary"
                 android:layout_width="match_parent"
                 android:layout_height="52dp"
-                android:text="@string/playfun_dialog_set_withdraw_account_confirm"
+                android:text="@string/playcc_dialog_set_withdraw_account_confirm"
                 android:textSize="14sp"
                 android:layout_marginBottom="15dp"
                 android:textStyle="normal" />
@@ -61,7 +61,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="52dp"
                 android:scaleType="centerCrop"
-                android:text="@string/playfun_cancel"
+                android:text="@string/playcc_cancel"
                 android:textColor="@color/purple1"
                 android:textSize="14sp" />
 

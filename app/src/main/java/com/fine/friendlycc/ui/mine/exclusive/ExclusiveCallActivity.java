@@ -24,7 +24,7 @@ import com.tencent.qcloud.tuikit.tuichat.util.TUIChatUtils;
 /**
  * 修改备注：我的专属招呼activity
  *
- * @Name： PlayFun_Google
+ * @Name： PlayCC
  * @Description：
  * @Author： liaosf
  * @Date： 2022/8/11 20:01
@@ -86,11 +86,11 @@ public class ExclusiveCallActivity extends BaseActivity<ActivityExclusivecallBin
                         @Override
                         public void onConfirm(Dialog dialog, String content) {
                             if (content.length() <= 0) {
-                                ToastCenterUtils.showShort(R.string.playfun_text_accost_tips);
+                                ToastCenterUtils.showShort(R.string.playcc_text_accost_tips);
                                 return;
                             }
                             if (TUIChatUtils.isContains(content, viewModel.sensitiveWords.get())) {
-                                ToastCenterUtils.showShort(R.string.playfun_text_accost_tips2);
+                                ToastCenterUtils.showShort(R.string.playcc_text_accost_tips2);
                                 return;
                             }
                             dialog.dismiss();

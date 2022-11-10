@@ -119,7 +119,7 @@ public class GuessYouLikeDialog extends BaseDialogFragment implements View.OnCli
             RecommendUserEntity user1 = likeRecommendEntity.getUser().get(0);
             GlideEngine.createGlideEngine().loadImage(getContext(), StringUtil.getFullThumbImageUrl(user1.getAvatar()), ivAvatar1);
             tvName1.setText(user1.getNickname());
-            tvAddress1.setText(String.format(getString(R.string.playfun_age_and_city), user1.getAge(), user1.getCityName()));
+            tvAddress1.setText(String.format(getString(R.string.playcc_age_and_city), user1.getAge(), user1.getCityName()));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -128,7 +128,7 @@ public class GuessYouLikeDialog extends BaseDialogFragment implements View.OnCli
             RecommendUserEntity user2 = likeRecommendEntity.getUser().get(1);
             GlideEngine.createGlideEngine().loadImage(getContext(), StringUtil.getFullThumbImageUrl(user2.getAvatar()), ivAvatar2);
             tvName2.setText(user2.getNickname());
-            tvAddress2.setText(String.format(getString(R.string.playfun_age_and_city), user2.getAge(), user2.getCityName()));
+            tvAddress2.setText(String.format(getString(R.string.playcc_age_and_city), user2.getAge(), user2.getCityName()));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -137,7 +137,7 @@ public class GuessYouLikeDialog extends BaseDialogFragment implements View.OnCli
             RecommendUserEntity user3 = likeRecommendEntity.getUser().get(2);
             GlideEngine.createGlideEngine().loadImage(getContext(), StringUtil.getFullThumbImageUrl(user3.getAvatar()), ivAvatar3);
             tvName3.setText(user3.getNickname());
-            tvAddress3.setText(String.format(getString(R.string.playfun_age_and_city), user3.getAge(), user3.getCityName()));
+            tvAddress3.setText(String.format(getString(R.string.playcc_age_and_city), user3.getAge(), user3.getCityName()));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -146,16 +146,16 @@ public class GuessYouLikeDialog extends BaseDialogFragment implements View.OnCli
             RecommendUserEntity user4 = likeRecommendEntity.getUser().get(3);
             GlideEngine.createGlideEngine().loadImage(getContext(), StringUtil.getFullThumbImageUrl(user4.getAvatar()), ivAvatar4);
             tvName4.setText(user4.getNickname());
-            tvAddress4.setText(String.format(getString(R.string.playfun_age_and_city), user4.getAge(), user4.getCityName()));
+            tvAddress4.setText(String.format(getString(R.string.playcc_age_and_city), user4.getAge(), user4.getCityName()));
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         if (likeRecommendEntity.getPrice() > 0) {
             if (Injection.provideDemoRepository().readUserData().getSex() == 1) {
-                btnCall.setText(String.format(getString(R.string.playfun_call_female_im), likeRecommendEntity.getPrice()));
+                btnCall.setText(String.format(getString(R.string.playcc_call_female_im), likeRecommendEntity.getPrice()));
             } else {
-                btnCall.setText(String.format(getString(R.string.playfun_call_male_im), likeRecommendEntity.getPrice()));
+                btnCall.setText(String.format(getString(R.string.playcc_call_male_im), likeRecommendEntity.getPrice()));
             }
             tvClose.setVisibility(View.VISIBLE);
         } else {

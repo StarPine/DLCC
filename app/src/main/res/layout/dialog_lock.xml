@@ -30,7 +30,7 @@
             android:layout_centerHorizontal="true"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="60dp"
-            android:text="@string/playfun_please_draw"
+            android:text="@string/playcc_please_draw"
             android:textColor="@color/gray_dark"
             android:textSize="@dimen/text_size_middle" />
 
@@ -61,7 +61,7 @@
         android:layout_marginTop="50dp"
         android:layout_marginRight="10dp"
         android:padding="5dp"
-        android:text="@string/playfun_setting_sign_out"
+        android:text="@string/playcc_setting_sign_out"
         android:textColor="@color/purple"
         android:textSize="@dimen/text_size_middle" />
 

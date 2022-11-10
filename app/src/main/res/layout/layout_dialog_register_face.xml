@@ -22,7 +22,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:text="@string/playfun_face_detect_auth_begin_ok"
+            android:text="@string/playcc_face_detect_auth_begin_ok"
             android:textColor="@color/black"
             android:textSize="18sp" />
 
@@ -43,7 +43,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginRight="20dp"
             android:layout_marginBottom="20dp"
-            android:text="@string/playfun_face_detect_dialog_btn_sure"
+            android:text="@string/playcc_face_detect_dialog_btn_sure"
             android:textAlignment="center" />
     </LinearLayout>
 

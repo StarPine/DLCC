@@ -107,7 +107,7 @@ public class TraceManFragment extends BaseToolbarFragment<FragmentMineTraceManBi
         viewModel.uc.loadRefresh.observe(this, new Observer<Void>() {
             @Override
             public void onChanged(Void unused) {
-                binding.title.setText(String.format(StringUtils.getString(R.string.playfun_mine_trace_man_title1),viewModel.totalCount.get()));
+                binding.title.setText(String.format(StringUtils.getString(R.string.playcc_mine_trace_man_title1),viewModel.totalCount.get()));
                 //binding.confirm.setText(String.format(StringUtils.getString(R.string.mine_trace_man_title3), viewModel.totalCount));
                 if (viewModel.isPlay != null && viewModel.isPlay == 1) {
                     binding.refreshLayout.setEnableRefresh(true);
@@ -141,17 +141,17 @@ public class TraceManFragment extends BaseToolbarFragment<FragmentMineTraceManBi
                 }
                 vipDialog = TraceDialog.getInstance(TraceManFragment.this.getContext())
                         .chooseType(TraceDialog.TypeEnum.CENTER)
-                        .setConfirmText(String.format(StringUtils.getString(R.string.playfun_mine_trace_man_play_confirm), UseBrowseMoney))
+                        .setConfirmText(String.format(StringUtils.getString(R.string.playcc_mine_trace_man_play_confirm), UseBrowseMoney))
                         .setConfirmOnlick(new TraceDialog.ConfirmOnclick() {
                             @Override
                             public void confirm(Dialog dialog) {
                                 dialog.dismiss();
-                                new CoinPaySheet.Builder(mActivity).setPayParams(13, userId, getString(R.string.playfun_mine_trace_man_play_title), false, new CoinPaySheet.CoinPayDialogListener() {
+                                new CoinPaySheet.Builder(mActivity).setPayParams(13, userId, getString(R.string.playcc_mine_trace_man_play_title), false, new CoinPaySheet.CoinPayDialogListener() {
                                     @Override
                                     public void onPaySuccess(CoinPaySheet sheet, String orderNo, Integer payPrice) {
                                         sheet.dismiss();
                                         AppContext.instance().logEvent(AppsFlyerEvent.unlock_my_visitor);
-                                        ToastUtils.showShort(R.string.playfun_pay_success);
+                                        ToastUtils.showShort(R.string.playcc_pay_success);
                                         viewModel.isPlay = 1;
                                         viewModel.currentPage = 1;
                                         binding.btnConfirm.setVisibility(View.GONE);
@@ -205,7 +205,7 @@ public class TraceManFragment extends BaseToolbarFragment<FragmentMineTraceManBi
             public void paySuccess(GoodsEntity goodsEntity) {
                 if(goodsEntity!=null){
                     AppContext.instance().logEvent(AppsFlyerEvent.unlock_my_visitor);
-                    ToastUtils.showShort(R.string.playfun_pay_success);
+                    ToastUtils.showShort(R.string.playcc_pay_success);
                     viewModel.isPlay = 1;
                     viewModel.currentPage = 1;
                     binding.btnConfirm.setVisibility(View.GONE);

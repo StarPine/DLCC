@@ -165,7 +165,7 @@ public class VestSecondViewModel extends BaseRefreshViewModel<AppRepository> {
                             return;
                         }
                         if (callingInviteInfoBaseDataResponse.getCode() == 22001) {//游戏中
-                            Toast.makeText(AppContext.instance(), R.string.playfun_in_game, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(AppContext.instance(), R.string.playcc_in_game, Toast.LENGTH_SHORT).show();
                             return;
                         }
                         CallingInviteInfo callingInviteInfo = callingInviteInfoBaseDataResponse.getData();

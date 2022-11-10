@@ -135,9 +135,9 @@ public class EditProfileFragment extends BaseToolbarFragment<FragmentEditProfile
             @Override
             public void onChanged(Object o) {
                 MVDialog.getInstance(EditProfileFragment.this.getContext())
-                        .setTitele(getString(R.string.playfun_user_proflt))
-                        .setContent(getString(R.string.playfun_user_proflt1))
-                        .setConfirmText(getString(R.string.playfun_dialog_set_withdraw_account_confirm))
+                        .setTitele(getString(R.string.playcc_user_proflt))
+                        .setContent(getString(R.string.playcc_user_proflt1))
+                        .setConfirmText(getString(R.string.playcc_dialog_set_withdraw_account_confirm))
                         .setConfirmOnlick(dialog -> {
                             pop();
                         })
@@ -221,12 +221,12 @@ public class EditProfileFragment extends BaseToolbarFragment<FragmentEditProfile
             viewModel.userDataEntity.notifyChange();
         })
                 .setType(new boolean[]{true, true, true, false, false, false})//分别对应年月日时分秒，默认全部显示
-                .setCancelText(getString(R.string.playfun_cancel))//取消按钮文字
-                .setSubmitText(getString(R.string.playfun_confirm))//确认按钮文字
+                .setCancelText(getString(R.string.playcc_cancel))//取消按钮文字
+                .setSubmitText(getString(R.string.playcc_confirm))//确认按钮文字
                 .setContentTextSize(14)//滚轮文字大小
                 .setSubCalSize(14)
                 .setTitleSize(14)//标题文字大小
-                .setTitleText(getString(R.string.playfun_fragment_edit_profile_brithday))//标题文字
+                .setTitleText(getString(R.string.playcc_fragment_edit_profile_brithday))//标题文字
                 .setOutSideCancelable(true)//点击屏幕，点在控件外部范围时，是否取消显示
                 .setTitleColor(getResources().getColor(R.color.gray_dark))//标题文字颜色
                 .setSubmitColor(getResources().getColor(R.color.purple))//确定按钮文字颜色
@@ -282,12 +282,12 @@ public class EditProfileFragment extends BaseToolbarFragment<FragmentEditProfile
                 viewModel.userDataEntity.get().setHeight(viewModel.height.get(options1).getId());
             }
         })
-                .setCancelText(getString(R.string.playfun_cancel))//取消按钮文字
-                .setSubmitText(getString(R.string.playfun_confirm))//确认按钮文字
+                .setCancelText(getString(R.string.playcc_cancel))//取消按钮文字
+                .setSubmitText(getString(R.string.playcc_confirm))//确认按钮文字
                 .setContentTextSize(14)//滚轮文字大小
                 .setSubCalSize(14)
                 .setTitleSize(14)//标题文字大小
-                .setTitleText(getString(R.string.playfun_height))//标题文字
+                .setTitleText(getString(R.string.playcc_height))//标题文字
                 .setOutSideCancelable(true)//点击屏幕，点在控件外部范围时，是否取消显示
                 .setTitleColor(getResources().getColor(R.color.gray_dark))//标题文字颜色
                 .setSubmitColor(getResources().getColor(R.color.purple))//确定按钮文字颜色
@@ -344,12 +344,12 @@ public class EditProfileFragment extends BaseToolbarFragment<FragmentEditProfile
                 viewModel.userDataEntity.get().setWeight(viewModel.weight.get(options1).getId());
             }
         })
-                .setCancelText(getString(R.string.playfun_cancel))//取消按钮文字
-                .setSubmitText(getString(R.string.playfun_confirm))//确认按钮文字
+                .setCancelText(getString(R.string.playcc_cancel))//取消按钮文字
+                .setSubmitText(getString(R.string.playcc_confirm))//确认按钮文字
                 .setContentTextSize(14)//滚轮文字大小
                 .setSubCalSize(14)
                 .setTitleSize(14)//标题文字大小
-                .setTitleText(getString(R.string.playfun_weight))//标题文字
+                .setTitleText(getString(R.string.playcc_weight))//标题文字
                 .setOutSideCancelable(true)//点击屏幕，点在控件外部范围时，是否取消显示
                 .setTitleColor(getResources().getColor(R.color.gray_dark))//标题文字颜色
                 .setSubmitColor(getResources().getColor(R.color.purple))//确定按钮文字颜色

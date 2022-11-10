@@ -49,7 +49,7 @@ public class TwDollarMoneyViewModel extends BaseViewModel<AppRepository> {
 
     public ObservableField<Boolean> isShowEmpty = new ObservableField<Boolean>(false);
     public ObservableField<Boolean> isShowProfitTips = new ObservableField<Boolean>(false);
-    public ObservableField<String> withdrawString = new ObservableField<>(StringUtils.getString(R.string.playfun_withdraw));
+    public ObservableField<String> withdrawString = new ObservableField<>(StringUtils.getString(R.string.playcc_withdraw));
     public ObservableField<String> currencyName = new ObservableField<>();
 
     public UIChangeObservable uc = new UIChangeObservable();
@@ -140,7 +140,7 @@ public class TwDollarMoneyViewModel extends BaseViewModel<AppRepository> {
                         List<UserProfitPageInfoEntity> listData = pageData.getData();
                         if (!ObjectUtils.isEmpty(listData) && listData.size() > 0) {
                             isShowEmpty.set(false);
-                            withdrawString.set(StringUtils.getString(R.string.playfun_withdraw));
+                            withdrawString.set(StringUtils.getString(R.string.playcc_withdraw));
                             stateModel.setEmptyState(EmptyState.NORMAL);
                             for (UserProfitPageInfoEntity itemEntity : listData) {
                                 TwDollarMoneyItemViewModel twDollarMoneyItemViewModel = new TwDollarMoneyItemViewModel(TwDollarMoneyViewModel.this, itemEntity);
@@ -149,8 +149,8 @@ public class TwDollarMoneyViewModel extends BaseViewModel<AppRepository> {
                         } else {
                             if (observableList == null || observableList.size() < 1) {
                                 isShowEmpty.set(true);
-                                withdrawString.set(StringUtils.getString(R.string.playfun_dialong_coin_doing_task));
-                                stateModel.emptyText.set(StringUtils.getString(R.string.playfun_tw_money_empty));
+                                withdrawString.set(StringUtils.getString(R.string.playcc_dialong_coin_doing_task));
+                                stateModel.emptyText.set(StringUtils.getString(R.string.playcc_tw_money_empty));
                                 stateModel.setEmptyState(EmptyState.EMPTY);
                             }
                         }

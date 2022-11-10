@@ -139,7 +139,7 @@ public class SnapshotPhotoActivity extends BaseActivity<ActivitySnapshotPhotoSet
             }
         }
         //选择的是图片
-        GlideEngine.createGlideEngine().loadImage(this, srcLocalPath,binding.imgContent,binding.imgLong,R.drawable.playfun_loading_logo_placeholder_max,R.drawable.playfun_loading_logo_error);
+        GlideEngine.createGlideEngine().loadImage(this, srcLocalPath,binding.imgContent,binding.imgLong,R.drawable.pro_loading_logo_placeholder_max,R.drawable.pro_loading_logo_error);
     }
 
     @Override

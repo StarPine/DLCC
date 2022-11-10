@@ -1,7 +1,7 @@
 package com.tencent.qcloud.tuikit.tuichat.event;
 
 /**
- * @Name： PlayFun_Google
+ * @Name： PlayCC
  * @Description：
  * @Author： liaosf
  * @Date： 2022/5/24 15:24

@@ -270,16 +270,16 @@ public class UserDetailViewModel extends BaseTheirPhotoAlbumViewModel<AppReposit
     }
 
     public void refreshDistance() {
-        String distance = StringUtils.getString(R.string.playfun_unknown);
+        String distance = StringUtils.getString(R.string.playcc_unknown);
         if (detailEntity.get() == null) {
             return;
         }
         Double d = detailEntity.get().getDistance();
         if (d != null) {
             if (d == -1) {
-                distance = StringUtils.getString(R.string.playfun_unknown);
+                distance = StringUtils.getString(R.string.playcc_unknown);
             } else if (d == -2) {
-                distance = StringUtils.getString(R.string.playfun_keep);
+                distance = StringUtils.getString(R.string.playcc_keep);
             } else {
                 if (d > 1000) {
                     double df = d / 1000;
@@ -300,14 +300,14 @@ public class UserDetailViewModel extends BaseTheirPhotoAlbumViewModel<AppReposit
         if (detailEntity.get() == null) {
             return;
         }
-        String onlineStatus = StringUtils.getString(R.string.playfun_unknown);
+        String onlineStatus = StringUtils.getString(R.string.playcc_unknown);
         if (detailEntity.get().getIsOnline() == -1) {
-            onlineStatus = StringUtils.getString(R.string.playfun_keep);
+            onlineStatus = StringUtils.getString(R.string.playcc_keep);
         } else if (detailEntity.get().getIsOnline() == 1) {
-            onlineStatus = StringUtils.getString(R.string.playfun_on_line);
+            onlineStatus = StringUtils.getString(R.string.playcc_on_line);
         } else if (detailEntity.get().getIsOnline() == 0) {
             if (StringUtils.isEmpty(detailEntity.get().getOfflineTime())) {
-                onlineStatus = StringUtils.getString(R.string.playfun_unknown);
+                onlineStatus = StringUtils.getString(R.string.playcc_unknown);
             } else {
                 onlineStatus = TimeUtils.getFriendlyTimeSpan(detailEntity.get().getOfflineTime());
             }
@@ -347,15 +347,15 @@ public class UserDetailViewModel extends BaseTheirPhotoAlbumViewModel<AppReposit
                         }
                         refreshDistance();
                         refreshOnlineStatus();
-                        sexName.set(detailEntity.get().getSex() == 1 ? StringUtils.getString(R.string.playfun_user_sex_his) : StringUtils.getString(R.string.playfun_user_sex_her));
-                        sexNameSheAndHis.set(detailEntity.get().getSex() == 1 ? StringUtils.getString(R.string.playfun_user_sex_his) : StringUtils.getString(R.string.playfun_user_sex_she));
+                        sexName.set(detailEntity.get().getSex() == 1 ? StringUtils.getString(R.string.playcc_user_sex_his) : StringUtils.getString(R.string.playcc_user_sex_her));
+                        sexNameSheAndHis.set(detailEntity.get().getSex() == 1 ? StringUtils.getString(R.string.playcc_user_sex_his) : StringUtils.getString(R.string.playcc_user_sex_she));
                         showAlbum2(response.getData().getAlbum(), response.getData().getAlbumImgTotal());
                         if (model.readUserData().getSex() == 1) {
-                            unLockAlbumText.set(String.format(StringUtils.getString(R.string.playfun_unlock_her_photo_album_member_free), detailEntity.get().getAlbumPayMoney()));
+                            unLockAlbumText.set(String.format(StringUtils.getString(R.string.playcc_unlock_her_photo_album_member_free), detailEntity.get().getAlbumPayMoney()));
                         } else {
-                            unLockAlbumText.set(String.format(StringUtils.getString(R.string.playfun_unlock_he_photo_album_goddess_free), detailEntity.get().getAlbumPayMoney()));
+                            unLockAlbumText.set(String.format(StringUtils.getString(R.string.playcc_unlock_he_photo_album_goddess_free), detailEntity.get().getAlbumPayMoney()));
                         }
-                        albumNumberText.set(String.format(StringUtils.getString(R.string.playfun_have_photos), detailEntity.get().getAlbum().size()));
+                        albumNumberText.set(String.format(StringUtils.getString(R.string.playcc_have_photos), detailEntity.get().getAlbum().size()));
 
 
                         List<String> news = detailEntity.get().getNews();
@@ -414,7 +414,7 @@ public class UserDetailViewModel extends BaseTheirPhotoAlbumViewModel<AppReposit
                 .subscribe(new BaseObserver<BaseResponse>() {
                     @Override
                     public void onSuccess(BaseResponse response) {
-                        ToastUtils.showShort(R.string.playfun_text_accost_success1);
+                        ToastUtils.showShort(R.string.playcc_text_accost_success1);
                         RxBus.getDefault().post(new AccostEvent(position));
                         loadData();
                     }
@@ -423,7 +423,7 @@ public class UserDetailViewModel extends BaseTheirPhotoAlbumViewModel<AppReposit
                     public void onError(RequestException e) {
                         super.onError(e);
                         if(e.getCode()!=null && e.getCode() == 21001 ){//钻石余额不足
-                            ToastCenterUtils.showToast(R.string.playfun_dialog_exchange_integral_total_text3);
+                            ToastCenterUtils.showToast(R.string.playcc_dialog_exchange_integral_total_text3);
                             uc.sendAccostFirstError.call();
                         }
                     }
@@ -455,7 +455,7 @@ public class UserDetailViewModel extends BaseTheirPhotoAlbumViewModel<AppReposit
                         detailEntity.set(userDisable);
                         isShowCanTrack();
                         RxBus.getDefault().post(new LikeChangeEvent(userId.get(), true));
-                        ToastUtils.showShort(R.string.playfun_cancel_zuizong_3);
+                        ToastUtils.showShort(R.string.playcc_cancel_zuizong_3);
                     }
 
                     @Override
@@ -484,7 +484,7 @@ public class UserDetailViewModel extends BaseTheirPhotoAlbumViewModel<AppReposit
                     @Override
                     public void onSuccess(BaseResponse response) {
                         dismissHUD();
-                        ToastUtils.showShort(R.string.playfun_cancel_zuizong_2);
+                        ToastUtils.showShort(R.string.playcc_cancel_zuizong_2);
                         if (detailEntity.get() == null) {
                             return;
                         }
@@ -582,9 +582,9 @@ public class UserDetailViewModel extends BaseTheirPhotoAlbumViewModel<AppReposit
                         if(response.getData().getStatus() == 1){
                             getUserEvaluate();
                         }else if(response.getData().getStatus() ==2){
-                            ToastUtils.showShort(R.string.playfun_no_information_cant_comment_hims);
+                            ToastUtils.showShort(R.string.playcc_no_information_cant_comment_hims);
                         }else{
-                            ToastUtils.showShort(R.string.playfun_no_information_cant_comment_him);
+                            ToastUtils.showShort(R.string.playcc_no_information_cant_comment_him);
                         }
                     }
 
@@ -668,7 +668,7 @@ public class UserDetailViewModel extends BaseTheirPhotoAlbumViewModel<AppReposit
                     @Override
                     public void onError(Throwable e) {
                         dismissHUD();
-                        ToastUtils.showShort(R.string.playfun_upload_failed);
+                        ToastUtils.showShort(R.string.playcc_upload_failed);
                     }
 
                     @Override
@@ -693,7 +693,7 @@ public class UserDetailViewModel extends BaseTheirPhotoAlbumViewModel<AppReposit
                     @Override
                     public void onSuccess(BaseResponse response) {
                         dismissHUD();
-                        ToastUtils.showShort(R.string.playfun_user_detail_evaluation_hint);
+                        ToastUtils.showShort(R.string.playcc_user_detail_evaluation_hint);
                     }
 
                     @Override
@@ -811,7 +811,7 @@ public class UserDetailViewModel extends BaseTheirPhotoAlbumViewModel<AppReposit
                     @Override
                     public void onError(Throwable e) {
                         dismissHUD();
-                        ToastUtils.showShort(R.string.playfun_upload_failed);
+                        ToastUtils.showShort(R.string.playcc_upload_failed);
                     }
 
                     @Override
@@ -926,7 +926,7 @@ public class UserDetailViewModel extends BaseTheirPhotoAlbumViewModel<AppReposit
                             return;
                         }
                         if (callingInviteInfoBaseDataResponse.getCode() == 22001) {//游戏中
-                            Toast.makeText(AppContext.instance(), R.string.playfun_in_game, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(AppContext.instance(), R.string.playcc_in_game, Toast.LENGTH_SHORT).show();
                             return;
                         }
                         CallingInviteInfo callingInviteInfo = callingInviteInfoBaseDataResponse.getData();

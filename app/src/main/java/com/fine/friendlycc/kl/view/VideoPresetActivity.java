@@ -19,7 +19,7 @@ import com.tencent.liteav.trtccalling.ui.videocall.videolayout.TRTCVideoLayout;
 import com.tencent.liteav.trtccalling.ui.videocall.videolayout.TRTCVideoLayoutManager;
 
 /**
- * @Name： PlayFun_Google
+ * @Name： PlayCC
  * @Description：
  * @Author： liaosf
  * @Date： 2022/3/29 17:13

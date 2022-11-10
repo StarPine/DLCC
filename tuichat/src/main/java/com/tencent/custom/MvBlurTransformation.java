@@ -23,7 +23,7 @@ public class MvBlurTransformation implements Transformation<Bitmap> {
 
     private static final int VERSION = 1;
     private static final String ID =
-            "com.dl.playfun.transformations.MvBlurTransformation." + VERSION;
+            "com.dl.playcc.transformations.MvBlurTransformation." + VERSION;
 
 
     private final int radius;

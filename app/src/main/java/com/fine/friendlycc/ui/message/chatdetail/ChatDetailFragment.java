@@ -297,10 +297,10 @@ public class ChatDetailFragment extends BaseToolbarFragment<FragmentChatDetailBi
         viewModel.uc.callVideoViewEvent.observe(this, event -> {
             if (viewModel.tagEntitys.get() != null) {
                 if (viewModel.tagEntitys.get().getBlacklistStatus() == 1 || viewModel.tagEntitys.get().getBlacklistStatus() == 3) {
-                    Toast.makeText(mActivity, R.string.playfun_chat_detail_pull_black_other, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mActivity, R.string.playcc_chat_detail_pull_black_other, Toast.LENGTH_SHORT).show();
                     return;
                 } else if (viewModel.tagEntitys.get().getBlacklistStatus() == 2) {
-                    Toast.makeText(mActivity, R.string.playfun_chat_detail_blocked, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mActivity, R.string.playcc_chat_detail_blocked, Toast.LENGTH_SHORT).show();
                     return;
                 }
                 new RxPermissions(mActivity)
@@ -459,9 +459,9 @@ public class ChatDetailFragment extends BaseToolbarFragment<FragmentChatDetailBi
                 if (tagEntity.getThisIsGg().intValue() == 1) {//当前用户是GG
                     viewModel.isTagShow.set(true);
                     if (tagEntity.getToIsInvite().intValue() == 1) {//是否填写邀请码 0否 1是
-                        binding.tagTitle.setText(R.string.playfun_user_message_tag2);
+                        binding.tagTitle.setText(R.string.playcc_user_message_tag2);
                     } else {
-                        binding.tagTitle.setText(R.string.playfun_user_message_tag1);
+                        binding.tagTitle.setText(R.string.playcc_user_message_tag1);
                     }
                 }
                 if (tagEntity.getToIsGg().intValue() == 1) {//对方用户是GG
@@ -474,9 +474,9 @@ public class ChatDetailFragment extends BaseToolbarFragment<FragmentChatDetailBi
         viewModel.uc.otherBusy.observe(this, o -> {
             TraceDialog.getInstance(ChatDetailFragment.this.getContext())
                     .chooseType(TraceDialog.TypeEnum.CENTER)
-                    .setTitle(StringUtils.getString(R.string.playfun_other_busy_title))
-                    .setContent(StringUtils.getString(R.string.playfun_other_busy_text))
-                    .setConfirmText(StringUtils.getString(R.string.playfun_mine_trace_delike_confirm))
+                    .setTitle(StringUtils.getString(R.string.playcc_other_busy_title))
+                    .setContent(StringUtils.getString(R.string.playcc_other_busy_text))
+                    .setConfirmText(StringUtils.getString(R.string.playcc_mine_trace_delike_confirm))
                     .setConfirmOnlick(new TraceDialog.ConfirmOnclick() {
                         @Override
                         public void confirm(Dialog dialog) {
@@ -508,14 +508,14 @@ public class ChatDetailFragment extends BaseToolbarFragment<FragmentChatDetailBi
                     return;
                 }
                 if (viewModel.inBlacklist.get()) {
-                    viewModel.menuBlockade.set(getString(R.string.playfun_remove_black_shield_both_sides));
+                    viewModel.menuBlockade.set(getString(R.string.playcc_remove_black_shield_both_sides));
                 } else {
-                    viewModel.menuBlockade.set(getString(R.string.playfun_pull_black_shield_both_sides));
+                    viewModel.menuBlockade.set(getString(R.string.playcc_pull_black_shield_both_sides));
                 }
                 if (viewModel.isTrack.get()) {
-                    viewModel.menuTrack.set(getString(R.string.playfun_cancel_zuizong));
+                    viewModel.menuTrack.set(getString(R.string.playcc_cancel_zuizong));
                 } else {
-                    viewModel.menuTrack.set(getString(R.string.playfun_mine_my_likes));
+                    viewModel.menuTrack.set(getString(R.string.playcc_mine_my_likes));
                 }
 
                 showMoreMenu(userId);
@@ -571,8 +571,8 @@ public class ChatDetailFragment extends BaseToolbarFragment<FragmentChatDetailBi
                 viewModel.delBlackList(userId);
             } else {
                 MVDialog.getInstance(mActivity)
-                        .setContent(getString(R.string.playfun_dialog_add_blacklist_content))
-                        .setConfirmText(getString(R.string.playfun_dialog_add_black_list_btn))
+                        .setContent(getString(R.string.playcc_dialog_add_blacklist_content))
+                        .setConfirmText(getString(R.string.playcc_dialog_add_black_list_btn))
                         .setConfirmOnlick(dialog -> {
                             viewModel.addBlackList(userId);
                         })
@@ -1026,7 +1026,7 @@ public class ChatDetailFragment extends BaseToolbarFragment<FragmentChatDetailBi
                 msgModuleInfo.setContentBody(msgBodyInfo);
                 CustomDlTempMessage customDlTempMessage = new CustomDlTempMessage();
                 customDlTempMessage.setContentBody(msgModuleInfo);
-                customDlTempMessage.setLanguage(StringUtils.getString(R.string.playfun_local_language));
+                customDlTempMessage.setLanguage(StringUtils.getString(R.string.playcc_local_language));
                 String data = GsonUtils.toJson(customDlTempMessage);
                 TUIMessageBean messageInfo = ChatMessageBuilder.buildCustomMessage(data, null, null);
                 if (messageInfo != null) {
@@ -1162,10 +1162,10 @@ public class ChatDetailFragment extends BaseToolbarFragment<FragmentChatDetailBi
     public void onClickGift() {//点击调用礼物
         if (viewModel.tagEntitys.get() != null) {
             if (viewModel.tagEntitys.get().getBlacklistStatus() == 1 || viewModel.tagEntitys.get().getBlacklistStatus() == 3) {
-                Toast.makeText(mActivity, R.string.playfun_chat_detail_pull_black_other2, Toast.LENGTH_SHORT).show();
+                Toast.makeText(mActivity, R.string.playcc_chat_detail_pull_black_other2, Toast.LENGTH_SHORT).show();
                 return;
             } else if (viewModel.tagEntitys.get().getBlacklistStatus() == 2) {
-                Toast.makeText(mActivity, R.string.playfun_chat_detail_blocked2, Toast.LENGTH_SHORT).show();
+                Toast.makeText(mActivity, R.string.playcc_chat_detail_blocked2, Toast.LENGTH_SHORT).show();
                 return;
             }
             AppContext.instance().logEvent(AppsFlyerEvent.im_gifts);
@@ -1243,10 +1243,10 @@ public class ChatDetailFragment extends BaseToolbarFragment<FragmentChatDetailBi
         }
         if (viewModel.tagEntitys.get() != null) {
             if (viewModel.tagEntitys.get().getBlacklistStatus() == 1 || viewModel.tagEntitys.get().getBlacklistStatus() == 3) {
-                Toast.makeText(mActivity, R.string.playfun_chat_detail_pull_black_other, Toast.LENGTH_SHORT).show();
+                Toast.makeText(mActivity, R.string.playcc_chat_detail_pull_black_other, Toast.LENGTH_SHORT).show();
                 return;
             } else if (viewModel.tagEntitys.get().getBlacklistStatus() == 2) {
-                Toast.makeText(mActivity, R.string.playfun_chat_detail_blocked, Toast.LENGTH_SHORT).show();
+                Toast.makeText(mActivity, R.string.playcc_chat_detail_blocked, Toast.LENGTH_SHORT).show();
                 return;
             }
             DialogCallPlayUser();

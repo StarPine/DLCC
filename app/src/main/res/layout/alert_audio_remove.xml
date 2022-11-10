@@ -22,7 +22,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="5dp"
             android:gravity="center"
-            android:text="@string/playfun_mine_audio_text2"
+            android:text="@string/playcc_mine_audio_text2"
             android:textColor="@color/gray_middle"
             android:textSize="15sp"
             android:textStyle="bold" />
@@ -33,7 +33,7 @@
             android:layout_width="match_parent"
             android:layout_height="42dp"
             android:layout_marginTop="21dp"
-            android:text="@string/playfun_confirm"
+            android:text="@string/playcc_confirm"
             android:textColor="@color/white"
             android:textSize="@dimen/text_size_42" />
 
@@ -44,7 +44,7 @@
             android:layout_height="42dp"
             android:layout_marginTop="21dp"
             android:background="@drawable/side_gray_round_bg"
-            android:text="@string/playfun_confirm"
+            android:text="@string/playcc_confirm"
             android:textColor="@color/text_color_gray"
             android:textSize="@dimen/text_size_42"
             android:visibility="gone" />

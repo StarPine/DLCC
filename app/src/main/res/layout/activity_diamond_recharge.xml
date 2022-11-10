@@ -65,7 +65,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 app:boolbar_back_image="@drawable/ic_toolbar_back_white"
-                app:toolbar_title="@string/playfun_tab_wallet_2"
+                app:toolbar_title="@string/playcc_tab_wallet_2"
                 app:toolbar_title_color="@color/white">
 
                 <RelativeLayout
@@ -82,7 +82,7 @@
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
                         android:layout_marginEnd="10dp"
-                        android:text="@string/playfun_diamond_detail_title"
+                        android:text="@string/playcc_diamond_detail_title"
                         android:textColor="@color/white"
                         android:textSize="@dimen/text_size_middle"
                         binding:onClickCommand="@{viewModel.clickCoinMoneyView}" />
@@ -131,7 +131,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@{viewModel.diamondInfo.isVip == 0 ? @string/playfun_nonactivated : viewModel.diamondInfo.endTime}"
+                            android:text="@{viewModel.diamondInfo.isVip == 0 ? @string/playcc_nonactivated : viewModel.diamondInfo.endTime}"
                             android:textColor="@color/text_yellow2"
                             android:visibility="@{viewModel.isMale?View.VISIBLE:View.GONE}"
                             tools:visibility="gone" />
@@ -165,7 +165,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/playfun_diamond_my_diamond"
+                        android:text="@string/playcc_diamond_my_diamond"
                         android:textColor="@color/toolbar_title_color"
                         android:textSize="@dimen/text_size_middle"
                         android:textStyle="bold" />
@@ -183,7 +183,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="5dp"
-                        android:text="@string/playfun_diamond_choose_a_plan"
+                        android:text="@string/playcc_diamond_choose_a_plan"
                         android:textColor="@color/toolbar_title_color"
                         android:textSize="@dimen/text_size_big"
                         android:textStyle="bold" />
@@ -230,7 +230,7 @@
                 onClickCommand="@{viewModel.confirmPayOnClick}"
                 android:layout_width="220dp"
                 android:layout_height="42dp"
-                android:text="@string/playfun_btn_now_buy"
+                android:text="@string/playcc_btn_now_buy"
                 android:textSize="@dimen/text_size_14"
                 android:textStyle="normal" />
 

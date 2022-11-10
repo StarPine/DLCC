@@ -430,7 +430,7 @@ public class FukubukuroFragment extends BaseFragment<FragmentFukubukuroBinding, 
 
         @JavascriptInterface
         public String getMultilingualFlag() {
-            return mActivity.getString(R.string.playfun_local_language);
+            return mActivity.getString(R.string.playcc_local_language);
         }
 
         @JavascriptInterface

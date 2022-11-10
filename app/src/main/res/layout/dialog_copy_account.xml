@@ -19,7 +19,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="5dp"
             android:gravity="center"
-            android:text="@string/playfun_she_social_account"
+            android:text="@string/playcc_she_social_account"
             android:textColor="@color/gray_middle"
             android:textSize="@dimen/text_size_middle"
             android:textStyle="bold" />
@@ -47,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:padding="5dp"
-                android:text="@string/playfun_copy"
+                android:text="@string/playcc_copy"
                 android:textColor="@color/purple"
                 android:textSize="@dimen/text_size_middle" />
 
@@ -59,7 +59,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="21dp"
-            android:text="@string/playfun_get_my_social_account"
+            android:text="@string/playcc_get_my_social_account"
             android:textColor="@color/gray_dark"
             android:textSize="@dimen/text_size_middle"
             android:textStyle="bold" />
@@ -70,7 +70,7 @@
             android:layout_width="match_parent"
             android:layout_height="42dp"
             android:layout_marginTop="30dp"
-            android:text="@string/playfun_chat_she"
+            android:text="@string/playcc_chat_she"
             android:textColor="@color/white"
             android:textSize="@dimen/text_size_42" />
 

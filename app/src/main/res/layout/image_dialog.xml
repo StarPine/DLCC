@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/transparent">
 
-<!--    <com.dl.playfun.widget.image.ZoomImageView-->
+<!--    <com.dl.playcc.widget.image.ZoomImageView-->
     <com.tencent.qcloud.tuikit.tuichat.component.photoview.view.PhotoView
         android:id="@+id/imageView"
         android:layout_width="match_parent"

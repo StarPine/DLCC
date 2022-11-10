@@ -22,10 +22,10 @@
             android:layout_marginBottom="10dp"
             android:layout_marginStart="15dp"
             android:scaleType="fitXY"
-            android:src="@drawable/playfun_loading_logo_200"
-            binding:imageErrorPlaceholderRes="@{R.drawable.playfun_loading_logo_200_error}"
+            android:src="@drawable/pro_loading_logo_200"
+            binding:imageErrorPlaceholderRes="@{R.drawable.pro_loading_logo_200_error}"
             binding:imagePath="@{itemEntity.icon}"
-            binding:imagePlaceholderRes="@{R.drawable.playfun_loading_logo_200}"
+            binding:imagePlaceholderRes="@{R.drawable.pro_loading_logo_200}"
             binding:resizeH="@{75}"
             binding:resizeW="@{75}" />
 
@@ -47,7 +47,7 @@
             android:layout_alignStart="@+id/tv_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{String.format(@string/playfun_mine_trace_man_hint,itemEntity.quantity)}"
+            android:text="@{String.format(@string/playcc_mine_trace_man_hint,itemEntity.quantity)}"
             android:textColor="#A2A1BA"
             android:textSize="13sp"
             />

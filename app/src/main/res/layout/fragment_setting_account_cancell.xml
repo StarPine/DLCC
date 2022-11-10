@@ -32,7 +32,7 @@
                 android:id="@+id/basic_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/action_bar_height"
-                app:toolbar_title="@string/playfun_mine_setting_account" />
+                app:toolbar_title="@string/playcc_mine_setting_account" />
 
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -48,7 +48,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:includeFontPadding="false"
-                android:text="@string/playfun_setting_account_hint3"
+                android:text="@string/playcc_setting_account_hint3"
                 android:textColor="#ff2f2f4d"
                 android:textSize="16sp" />
 
@@ -57,7 +57,7 @@
                 android:layout_height="wrap_content"
                 android:includeFontPadding="false"
                 android:layout_marginTop="30dp"
-                android:text="@string/playfun_setting_account_hint4"
+                android:text="@string/playcc_setting_account_hint4"
                 android:textColor="#ff2f2f4d"
                 android:textSize="16sp" />
 
@@ -73,7 +73,7 @@
                     android:layout_marginTop="10dp"
                     android:gravity="start"
                     android:lineHeight="24dp"
-                    android:text="@string/playfun_setting_account_hint2"
+                    android:text="@string/playcc_setting_account_hint2"
                     android:textColor="#ff2f2f4d"
                     android:textSize="11sp" />
 
@@ -88,7 +88,7 @@
                     android:layout_marginBottom="35dp"
                     android:background="@drawable/btn_setting_account_cancel"
                     android:gravity="center"
-                    android:text="@string/playfun_setting_account_hint5"
+                    android:text="@string/playcc_setting_account_hint5"
                     android:textColor="@color/white"
                     android:textSize="15sp" />
             </RelativeLayout>

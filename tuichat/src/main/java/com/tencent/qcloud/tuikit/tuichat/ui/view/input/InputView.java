@@ -777,7 +777,7 @@ public class InputView extends LinearLayout implements View.OnClickListener, Tex
     @Override
     public void onClick(View view) {
         if (mChatLayout.getChatInfo() == null){
-            ToastUtil.toastShortMessage(TUIChatService.getAppContext().getString(R.string.playfun_inputview_text1));
+            ToastUtil.toastShortMessage(TUIChatService.getAppContext().getString(R.string.playcc_inputview_text1));
             return;
         }
 

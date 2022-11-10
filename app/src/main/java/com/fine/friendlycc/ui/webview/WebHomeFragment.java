@@ -31,7 +31,7 @@ import com.fine.friendlycc.app.AppConfig;
 import com.fine.friendlycc.app.AppContext;
 import com.fine.friendlycc.app.AppViewModelFactory;
 import com.fine.friendlycc.app.AppsFlyerEvent;
-import com.fine.friendlycc.databinding.ActivityWebHomePlayfunBinding;
+import com.fine.friendlycc.databinding.ActivityWebHomePlayccBinding;
 import com.fine.friendlycc.entity.CallingInviteInfo;
 import com.fine.friendlycc.kl.Utils;
 import com.fine.friendlycc.ui.base.BaseFragment;
@@ -52,7 +52,7 @@ import com.tencent.qcloud.tuicore.Status;
  * Time: 2022/7/29 17:25
  * Description: This is WebHomeActivity
  */
-public class WebHomeFragment extends BaseFragment<ActivityWebHomePlayfunBinding,WebHomeViewModel> implements StatusAction {
+public class WebHomeFragment extends BaseFragment<ActivityWebHomePlayccBinding,WebHomeViewModel> implements StatusAction {
 
     BrowserView webView;
     String webUrl;
@@ -84,7 +84,7 @@ public class WebHomeFragment extends BaseFragment<ActivityWebHomePlayfunBinding,
 
     @Override
     public int initContentView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return R.layout.activity_web_home_playfun;
+        return R.layout.activity_web_home_playcc;
     }
 
     @SuppressLint("SetJavaScriptEnabled")
@@ -154,9 +154,9 @@ public class WebHomeFragment extends BaseFragment<ActivityWebHomePlayfunBinding,
         viewModel.webUC.otherBusy.observe(this, o -> {
             TraceDialog.getInstance(getContext())
                     .chooseType(TraceDialog.TypeEnum.CENTER)
-                    .setTitle(StringUtils.getString(R.string.playfun_other_busy_title))
-                    .setContent(StringUtils.getString(R.string.playfun_other_busy_text))
-                    .setConfirmText(StringUtils.getString(R.string.playfun_mine_trace_delike_confirm))
+                    .setTitle(StringUtils.getString(R.string.playcc_other_busy_title))
+                    .setContent(StringUtils.getString(R.string.playcc_other_busy_text))
+                    .setConfirmText(StringUtils.getString(R.string.playcc_mine_trace_delike_confirm))
                     .setConfirmOnlick(new TraceDialog.ConfirmOnclick() {
                         @Override
                         public void confirm(Dialog dialog) {
@@ -390,7 +390,7 @@ public class WebHomeFragment extends BaseFragment<ActivityWebHomePlayfunBinding,
         //返回国际化语言
         @JavascriptInterface
         public String getMultilingualFlag(){
-            return mContext.getString(R.string.playfun_local_language);
+            return mContext.getString(R.string.playcc_local_language);
         }
 
         //弹出砖石购买弹窗

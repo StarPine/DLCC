@@ -3,7 +3,7 @@ package com.fine.friendlycc.entity;
 import java.io.Serializable;
 
 /**
- * @Name： PlayFun_Google
+ * @Name： PlayCC
  * @Description：
  * @Author： liaosf
  * @Date： 2022/7/22 17:46

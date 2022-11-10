@@ -73,7 +73,7 @@ public class CommunityAccountModel extends BaseViewModel<AppRepository> {
                 }).subscribe(new BaseObserver<BaseResponse>() {
             @Override
             public void onSuccess(BaseResponse baseResponse) {
-                ToastUtils.showShort(R.string.playfun_binding_auth_success);
+                ToastUtils.showShort(R.string.playcc_binding_auth_success);
                 RxBus.getDefault().post(new IsAuthBindingEvent());
                 dismissHUD();
                 pop();

@@ -16,7 +16,7 @@ import com.fine.friendlycc.widget.BasicToolbar;
 import me.tatarka.bindingcollectionadapter2.BR;
 
 /**
- * @Name： PlayFun_Google
+ * @Name： PlayCC
  * @Description：
  * @Author： liaosf
  * @Date： 2022/6/15 17:23

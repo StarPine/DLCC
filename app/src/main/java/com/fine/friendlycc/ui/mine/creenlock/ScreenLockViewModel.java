@@ -45,10 +45,10 @@ public class ScreenLockViewModel extends BaseViewModel<AppRepository> {
         password = model.readPassword();
         if (StringUtil.isEmpty(password)) {
             isUpdata = false;
-            title.set(StringUtils.getString(R.string.playfun_setting_screen_lock));
+            title.set(StringUtils.getString(R.string.playcc_setting_screen_lock));
         } else {
             isUpdata = true;
-            title.set(StringUtils.getString(R.string.playfun_update_screen_lock));
+            title.set(StringUtils.getString(R.string.playcc_update_screen_lock));
         }
     }
 
@@ -59,12 +59,12 @@ public class ScreenLockViewModel extends BaseViewModel<AppRepository> {
         if (!StringUtil.isEmpty(str)) {
             if (str.length() < 4) {
                 isExplainVisibility.set(true);
-                passwordExplain.set(StringUtils.getString(R.string.playfun_least_fount_points));
+                passwordExplain.set(StringUtils.getString(R.string.playcc_least_fount_points));
             } else {
                 if (StringUtil.isEmpty(password)) {
                     password = str;
                     isExplainVisibility.set(true);
-                    passwordExplain.set(StringUtils.getString(R.string.playfun_please_again_draw));
+                    passwordExplain.set(StringUtils.getString(R.string.playcc_please_again_draw));
                 } else {
                     if (password.equals(str)) {
                         if (isUpdata) {
@@ -72,7 +72,7 @@ public class ScreenLockViewModel extends BaseViewModel<AppRepository> {
                         } else {
                             isExplainVisibility.set(true);
                             colorval.set(getColor(R.color.green));
-                            passwordExplain.set(StringUtils.getString(R.string.playfun_setting_success));
+                            passwordExplain.set(StringUtils.getString(R.string.playcc_setting_success));
                             model.savePassword(str);
                             CountDownTimer timer = new CountDownTimer(1000, 100) {
                                 @Override
@@ -89,7 +89,7 @@ public class ScreenLockViewModel extends BaseViewModel<AppRepository> {
                         if (isUpdata) {
                             isExplainVisibility.set(true);
                             colorval.set(getColor(R.color.red_7c));
-                            passwordExplain.set(StringUtils.getString(R.string.playfun_draw_wrong_again_draw));
+                            passwordExplain.set(StringUtils.getString(R.string.playcc_draw_wrong_again_draw));
                             CountDownTimer timer = new CountDownTimer(500, 100) {
                                 @Override
                                 public void onTick(long millisUntilFinished) {
@@ -104,7 +104,7 @@ public class ScreenLockViewModel extends BaseViewModel<AppRepository> {
                             password = "";
                             isExplainVisibility.set(true);
                             colorval.set(getColor(R.color.red_7c));
-                            passwordExplain.set(StringUtils.getString(R.string.playfun_two_draw_different));
+                            passwordExplain.set(StringUtils.getString(R.string.playcc_two_draw_different));
                         }
                     }
                 }
@@ -115,7 +115,7 @@ public class ScreenLockViewModel extends BaseViewModel<AppRepository> {
 
     public void setNewPassword() {
         password = "";
-        title.set(StringUtils.getString(R.string.playfun_setting_screen_lock));
+        title.set(StringUtils.getString(R.string.playcc_setting_screen_lock));
         isUpdata = false;
     }
 

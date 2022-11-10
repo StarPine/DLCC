@@ -137,7 +137,7 @@ public class CoinRechargeSheetView extends BasePopupWindow implements View.OnCli
 
         this.billingClientLifecycle.PAYMENT_FAIL.observe(this, billingPurchasesState -> {
             Log.e("BillingClientLifecycle","支付购买失败回调");
-            ToastUtils.showShort(StringUtils.getString(R.string.playfun_pay_fail));
+            ToastUtils.showShort(StringUtils.getString(R.string.playcc_pay_fail));
             switch (billingPurchasesState.getBillingFlowNode()){
                 //查询商品阶段-->异常
                 case querySkuDetails:
@@ -263,7 +263,7 @@ public class CoinRechargeSheetView extends BasePopupWindow implements View.OnCli
         }
 
         TraceDialog.getInstance(mActivity)
-                .setTitle(mActivity.getString(R.string.playfun_recharge_success))
+                .setTitle(mActivity.getString(R.string.playcc_recharge_success))
                 .setConfirmOnlick(dialog -> {
                     if (clickListener != null){
                         clickListener.paySuccess(currGoodsInfo);
@@ -305,7 +305,7 @@ public class CoinRechargeSheetView extends BasePopupWindow implements View.OnCli
      */
     public void createOrder() {
         if (currGoodsInfo == null) {
-            ToastUtils.showShort(R.string.playfun_please_choose_top_up_package);
+            ToastUtils.showShort(R.string.playcc_please_choose_top_up_package);
             return;
         }
         Injection.provideDemoRepository()
@@ -365,7 +365,7 @@ public class CoinRechargeSheetView extends BasePopupWindow implements View.OnCli
                 .subscribe(new BaseObserver<BaseResponse>() {
                     @Override
                     public void onSuccess(BaseResponse response) {
-                        ToastUtils.showShort(StringUtils.getString(R.string.playfun_pay_success));
+                        ToastUtils.showShort(StringUtils.getString(R.string.playcc_pay_success));
                         showRewardDialog();
                     }
 

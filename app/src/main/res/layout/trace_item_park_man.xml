@@ -166,7 +166,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
                 android:layout_gravity="center_vertical"
-                android:text="@{StringUtils.isEmpty(viewModel.itemEntity.city) ? @string/playfun_unknown_region : viewModel.itemEntity.city}"
+                android:text="@{StringUtils.isEmpty(viewModel.itemEntity.city) ? @string/playcc_unknown_region : viewModel.itemEntity.city}"
                 android:textColor="#827692"
                 android:visibility="gone"
                 tools:text="台北市" />

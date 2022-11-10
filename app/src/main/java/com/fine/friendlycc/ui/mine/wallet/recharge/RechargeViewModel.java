@@ -26,7 +26,7 @@ import me.goldze.mvvmhabit.utils.RxUtils;
 import me.goldze.mvvmhabit.utils.ToastUtils;
 
 /**
- * @Name： PlayFun_Google
+ * @Name： PlayCC
  * @Description：
  * @Author： liaosf
  * @Date： 2022/6/15 18:23
@@ -113,7 +113,7 @@ public class RechargeViewModel extends BaseViewModel<AppRepository> {
                     @Override
                     public void onSuccess(BaseResponse response) {
                         dismissHUD();
-                        ToastUtils.showShort(StringUtils.getString(R.string.playfun_pay_success));
+                        ToastUtils.showShort(StringUtils.getString(R.string.playcc_pay_success));
                         finsh.postValue(goodsEntity.get());
                     }
 

@@ -183,7 +183,7 @@ public class CoinPusherGameActivity extends BaseActivity<ActivityCoinpusherGameB
             public void onWsWebrtcError(String s, ErrCode errCode) {
                 if(errCode == ErrCode.ERR_CODE_WEBRTC_DISCONN){
                     //链接断开
-                    SnackUtils.showCenterShort(getContentShowView(),StringUtils.getString(R.string.playfun_network_text));
+                    SnackUtils.showCenterShort(getContentShowView(),StringUtils.getString(R.string.playcc_network_text));
                 }
                 Log.e(TAG,"onWsWebrtcError："+s+"============"+errCode.toString());
             }
@@ -234,7 +234,7 @@ public class CoinPusherGameActivity extends BaseActivity<ActivityCoinpusherGameB
         super.initData();
         viewModel.coinPusherDataInfoEntity = coinPusherDataInfoEntity;
         viewModel.totalMoney.set(coinPusherDataInfoEntity.getTotalGold());
-        binding.tvMoneyHint.setText(String.format(StringUtils.getString(R.string.playfun_coinpusher_game_text_2),coinPusherDataInfoEntity.getRoomInfo().getMoney()));
+        binding.tvMoneyHint.setText(String.format(StringUtils.getString(R.string.playcc_coinpusher_game_text_2),coinPusherDataInfoEntity.getRoomInfo().getMoney()));
         doubleClick(binding.imgHelp);
         doubleClick(binding.rlCoin);
         doubleClick(binding.imgHistroy);
@@ -394,7 +394,7 @@ public class CoinPusherGameActivity extends BaseActivity<ActivityCoinpusherGameB
         //toast弹窗居中
         viewModel.gameUI.toastCenter.observe(this,coinPusherGamePlayingEvent->{
             //中奖落币
-            String textContent = com.blankj.utilcode.util.StringUtils.getString(R.string.playfun_coinpusher_coin_text_reward);
+            String textContent = com.blankj.utilcode.util.StringUtils.getString(R.string.playcc_coinpusher_coin_text_reward);
             String valueText = String.format(textContent, coinPusherGamePlayingEvent.getGoldNumber());
             viewModel.totalMoney.set(coinPusherGamePlayingEvent.getTotalGold());
             SnackUtils.showCenterShort(getContentShowView(),valueText);
@@ -485,12 +485,12 @@ public class CoinPusherGameActivity extends BaseActivity<ActivityCoinpusherGameB
             }else{
                 Integer stringResId = null;
                 if(viewModel.gamePlayingState.equals(viewModel.loadingPlayer)){//投币状态
-                    stringResId = R.string.playfun_coinpusher_hint_retain;
+                    stringResId = R.string.playcc_coinpusher_hint_retain;
                 }else if(viewModel.gamePlayingState.equals(CustomConstants.CoinPusher.START_WINNING)){ //落币状态
-                    stringResId = R.string.playfun_coinpusher_hint_retain2;
+                    stringResId = R.string.playcc_coinpusher_hint_retain2;
                 }else if(viewModel.gamePlayingState.equals(CustomConstants.CoinPusher.LITTLE_GAME_WINNING)){
                     //小游戏提示
-                    stringResId = R.string.playfun_coinpusher_hint_retain3;
+                    stringResId = R.string.playcc_coinpusher_hint_retain3;
                 }
                 if(stringResId != null){
                     CoinPusherDialogAdapter.getDialogCoinPusherRetainHint(this, stringResId, new CoinPusherDialogAdapter.CoinPusherDialogListener() {
@@ -516,7 +516,7 @@ public class CoinPusherGameActivity extends BaseActivity<ActivityCoinpusherGameB
                 if(!downTimeMillisHintFlag){
                     if(millisUntilFinished / 1000 <= downTimeMillisHint){
                         downTimeMillisHintFlag = true;
-                        SnackUtils.showCenterShort(getContentShowView(),String.format(StringUtils.getString(R.string.playfun_coinpusher_text_downtime),millisUntilFinished/1000));
+                        SnackUtils.showCenterShort(getContentShowView(),String.format(StringUtils.getString(R.string.playcc_coinpusher_text_downtime),millisUntilFinished/1000));
                     }
                 }
 

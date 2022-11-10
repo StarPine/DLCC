@@ -60,7 +60,7 @@
                     android:checked="true"
                     android:clickable="false"
                     android:gravity="center"
-                    android:text="@string/playfun_mine_upload_photo"
+                    android:text="@string/playcc_mine_upload_photo"
                     android:textColor="@drawable/online_checkbok_text_color"
                     android:textSize="@dimen/text_size_middle"
                     android:textStyle="bold" />
@@ -83,7 +83,7 @@
                     android:paddingRight="10dp"
                     android:paddingTop="2dp"
                     android:paddingLeft="10dp"
-                    android:text="@string/playfun_fragment_face_recognition"
+                    android:text="@string/playcc_fragment_face_recognition"
                     android:textColor="@drawable/online_checkbok_text_color"
                     android:textSize="@dimen/text_size_middle"
                     android:textStyle="bold" />
@@ -103,7 +103,7 @@
                     android:checked="true"
                     android:clickable="false"
                     android:gravity="center"
-                    android:text="@string/playfun_fragment_face_recognition_finish"
+                    android:text="@string/playcc_fragment_face_recognition_finish"
                     android:textColor="@drawable/online_checkbok_text_color"
                     android:textSize="@dimen/text_size_middle"
                     android:textStyle="bold" />
@@ -135,7 +135,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="20dp"
-                        android:text="@string/playfun_fragment_face_verify_success_explain_one"
+                        android:text="@string/playcc_fragment_face_verify_success_explain_one"
                         android:textSize="@dimen/text_size_big"
                         android:textStyle="bold" />
 
@@ -146,10 +146,10 @@
                         android:layout_marginTop="10dp"
                         android:visibility="gone"
                         android:gravity="center"
-                        android:text="@{viewModel.isMessageMan?@string/playfun_fragment_face_verify_success_explain_two:@string/playfun_fragment_face_verify_success_explain_man}"
+                        android:text="@{viewModel.isMessageMan?@string/playcc_fragment_face_verify_success_explain_two:@string/playcc_fragment_face_verify_success_explain_man}"
                         android:textColor="@color/gray_light"
                         android:textSize="@dimen/text_size_middle"
-                        tools:text="@string/playfun_fragment_face_verify_success_explain_man" />
+                        tools:text="@string/playcc_fragment_face_verify_success_explain_man" />
 
                 </LinearLayout>
 
@@ -159,7 +159,7 @@
                     android:layout_height="42dp"
                     android:layout_gravity="center_horizontal"
                     android:layout_margin="20dp"
-                    android:text="@string/playfun_finish"
+                    android:text="@string/playcc_finish"
                     binding:onClickCommand="@{viewModel.finishOnClickCommand}" />
 
             </LinearLayout>

@@ -65,7 +65,7 @@ public class SystemDictUtils {
         List<ConfigItemEntity> data = Injection.provideDemoRepository().readCityConfig();
         StringBuffer sb = new StringBuffer();
         if (id == null) {
-            sb.append(StringUtils.getString(R.string.playfun_unknown));
+            sb.append(StringUtils.getString(R.string.playcc_unknown));
         } else {
             if (data != null && !data.isEmpty()) {
                 for (ConfigItemEntity config : data) {
@@ -147,7 +147,7 @@ public class SystemDictUtils {
      */
     public static String getOccupationById(int id) {
         List<OccupationConfigItemEntity> list = Injection.provideDemoRepository().readOccupationConfig();
-        String name = StringUtils.getString(R.string.playfun_unknown);
+        String name = StringUtils.getString(R.string.playcc_unknown);
         for (OccupationConfigItemEntity occupationConfigItemEntity : list) {
             boolean find = false;
             for (OccupationConfigItemEntity.ItemEntity itemEntity : occupationConfigItemEntity.getItem()) {
@@ -197,7 +197,7 @@ public class SystemDictUtils {
      */
     public static String getHeightById(int id) {
         List<ConfigItemEntity> list = Injection.provideDemoRepository().readHeightConfig();
-        String name = StringUtils.getString(R.string.playfun_unknown);
+        String name = StringUtils.getString(R.string.playcc_unknown);
         for (ConfigItemEntity configItemEntity : list) {
             if (configItemEntity.getId().intValue() == id) {
                 name = configItemEntity.getName();
@@ -215,7 +215,7 @@ public class SystemDictUtils {
      */
     public static String getWidthById(int id) {
         List<ConfigItemEntity> list = Injection.provideDemoRepository().readWeightConfig();
-        String name = StringUtils.getString(R.string.playfun_unknown);
+        String name = StringUtils.getString(R.string.playcc_unknown);
         for (ConfigItemEntity configItemEntity : list) {
             if (configItemEntity.getId().intValue() == id) {
                 name = configItemEntity.getName();

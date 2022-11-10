@@ -45,7 +45,7 @@
             android:ellipsize="end"
             android:maxLines="2"
             app:htmlText="@{viewModel.itemEntity.content}"
-            tools:text="@string/playfun_message_hint_all" />
+            tools:text="@string/playcc_message_hint_all" />
         <TextView
             android:id="@+id/tv_time"
             android:layout_width="wrap_content"
@@ -63,7 +63,7 @@
             android:layout_alignBottom="@id/tv_time"
             android:layout_alignParentRight="true"
             android:drawableRight="@drawable/ic_arrow_right"
-            android:text="@string/playfun_go_see"
+            android:text="@string/playcc_go_see"
             android:textColor="@color/gray_light"
             android:textSize="@dimen/text_size_mini" />
     </RelativeLayout>

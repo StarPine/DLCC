@@ -120,7 +120,7 @@ public interface HttpDataSource {
      * @parame [
      * msgKey    string	聊天中的msgKey
      * toUserId	int	对方的用户id]
-     * @return io.reactivex.Observable<com.dl.playfun.data.source.http.response.BaseResponse>
+     * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseResponse>
      * @Date 2022/9/15
      */
     @FormUrlEncoded
@@ -130,7 +130,7 @@ public interface HttpDataSource {
      * @Desc TODO(获取红包相片/影片评价)
      * @author 彭石林
      * @parame []
-     * @return io.reactivex.Observable<com.dl.playfun.data.source.http.response.BaseDataResponse<java.util.Map<java.lang.String,java.lang.Integer>>>
+     * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseDataResponse<java.util.Map<java.lang.String,java.lang.Integer>>>
      * @Date 2022/9/17
      */
     Observable<BaseDataResponse<Map<String, Integer>>> mediaGalleryEvaluationQry(String msgKey, Integer toUserId);
@@ -142,7 +142,7 @@ public interface HttpDataSource {
      *     toUserId	int	对方的用户id
      *     type	int	评价，1差评，2好评
      * ]
-     * @return io.reactivex.Observable<com.dl.playfun.data.source.http.response.BaseResponse>
+     * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseResponse>
      * @Date 2022/9/17
      */
     Observable<BaseResponse> mediaGalleryEvaluationPut(
@@ -155,7 +155,7 @@ public interface HttpDataSource {
      * @Desc TODO(红包照片设置以读)
      * @author 彭石林
      * @parame [msgKey, toUserId]
-     * @return io.reactivex.Observable<com.dl.playfun.data.source.http.response.BaseResponse>
+     * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseResponse>
      * @Date 2022/9/16
      */
     Observable<BaseResponse> mediaGallerySnapshotUnLock(String msgKey, Integer toUserId);
@@ -164,7 +164,7 @@ public interface HttpDataSource {
      * @Desc TODO(查询用户当前余额)
      * @author 彭石林
      * @parame []
-     * @return io.reactivex.Observable<com.dl.playfun.data.source.http.response.BaseDataResponse<com.dl.playfun.entity.CoinPusherBalanceDataEntity>>
+     * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseDataResponse<com.dl.playcc.entity.CoinPusherBalanceDataEntity>>
      * @Date 2022/9/6
      */
     @GET("api/iscan/balance")
@@ -174,7 +174,7 @@ public interface HttpDataSource {
      * @Desc TODO(推币机-查询历史中奖记录)
      * @author 彭石林
      * @parame []
-     * @return io.reactivex.Observable<com.dl.playfun.data.source.http.response.BaseDataResponse<java.util.List<com.dl.playfun.entity.CoinPusherRoomHistoryEntity>>>
+     * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseDataResponse<java.util.List<com.dl.playcc.entity.CoinPusherRoomHistoryEntity>>>
      * @Date 2022/8/26
      */
     Observable<BaseDataResponse<List<CoinPusherRoomHistoryEntity>>> qryCoinPusherRoomHistory(Integer roomId);
@@ -182,7 +182,7 @@ public interface HttpDataSource {
      * @Desc TODO(推币机-开始游戏)
      * @author 彭石林
      * @parame [roomId]
-     * @return io.reactivex.Observable<com.dl.playfun.data.source.http.response.BaseDataResponse<com.dl.playfun.entity.CoinPusherDataInfoEntity>>
+     * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseDataResponse<com.dl.playcc.entity.CoinPusherDataInfoEntity>>
      * @Date 2022/9/1
      */
     Observable<BaseDataResponse<CoinPusherDataInfoEntity>> playingCoinPusherStart(Integer roomId);
@@ -190,7 +190,7 @@ public interface HttpDataSource {
      * @Desc TODO(推币机-结束游戏)
      * @author 彭石林
      * @parame [roomId]
-     * @return io.reactivex.Observable<com.dl.playfun.data.source.http.response.BaseResponse>
+     * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseResponse>
      * @Date 2022/8/24
      */
     Observable<BaseResponse> playingCoinPusherClose(Integer roomId);
@@ -198,7 +198,7 @@ public interface HttpDataSource {
      * @Desc TODO(推币机-操作雨刷)
      * @author 彭石林
      * @parame [roomId]
-     * @return io.reactivex.Observable<com.dl.playfun.data.source.http.response.BaseResponse>
+     * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseResponse>
      * @Date 2022/8/24
      */
     Observable<BaseResponse> playingCoinPusherAct(Integer roomId);
@@ -206,7 +206,7 @@ public interface HttpDataSource {
      * @Desc TODO(推币机-投币)
      * @author 彭石林
      * @parame []
-     * @return io.reactivex.Observable<com.dl.playfun.data.source.http.response.BaseResponse>
+     * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseResponse>
      * @Date 2022/8/24
      */
     Observable<BaseDataResponse<CoinPusherBalanceDataEntity>> playingCoinPusherThrowCoin(Integer roomId);
@@ -217,7 +217,7 @@ public interface HttpDataSource {
      * amount	是	int	兑换值
      * type	是	int	兑换类型 1金币 2钻石 3搭讪卡
      * ]
-     * @return io.reactivex.Observable<com.dl.playfun.data.source.http.response.BaseResponse>
+     * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseResponse>
      * @Date 2022/8/24
      */
     Observable<BaseDataResponse<CoinPusherBalanceDataEntity>> convertCoinPusherGoldsCoin(Integer id, Integer type);
@@ -225,7 +225,7 @@ public interface HttpDataSource {
      * @Desc TODO(推币机-兑换钻石)
      * @author 彭石林
      * @parame []
-     * @return io.reactivex.Observable<com.dl.playfun.data.source.http.response.BaseResponse>
+     * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseResponse>
      * @Date 2022/8/24
      */
     Observable<BaseDataResponse<CoinPusherBalanceDataEntity>> convertCoinPusherDiamonds(Integer id);
@@ -233,7 +233,7 @@ public interface HttpDataSource {
      * @Desc TODO(推币机-等级列表)
      * @author 彭石林
      * @parame []
-     * @return io.reactivex.Observable<com.dl.playfun.data.source.http.response.BaseDataResponse<com.dl.playfun.entity.CoinPusherRoomTagInfoEntity>>
+     * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseDataResponse<com.dl.playcc.entity.CoinPusherRoomTagInfoEntity>>
      * @Date 2022/8/24
      */
     Observable<BaseDataResponse<CoinPusherRoomTagInfoEntity>> qryCoinPusherRoomTagList();
@@ -241,7 +241,7 @@ public interface HttpDataSource {
      * @Desc TODO(推币机-设备列表)
      * @author 彭石林
      * @parame []
-     * @return io.reactivex.Observable<com.dl.playfun.data.source.http.response.BaseDataResponse<com.dl.playfun.entity.CoinPusherRoomInfoEntity>>
+     * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseDataResponse<com.dl.playcc.entity.CoinPusherRoomInfoEntity>>
      * @Date 2022/8/24
      */
     Observable<BaseDataResponse<CoinPusherRoomInfoEntity>> qryCoinPusherRoomList(Integer tagId);
@@ -250,7 +250,7 @@ public interface HttpDataSource {
      * @Desc TODO(推币机-兑换列表)
      * @author 彭石林
      * @parame []
-     * @return io.reactivex.Observable<com.dl.playfun.data.source.http.response.BaseDataResponse<com.dl.playfun.entity.CoinPusherConverInfoEntity>>
+     * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseDataResponse<com.dl.playcc.entity.CoinPusherConverInfoEntity>>
      * @Date 2022/8/23
      */
     Observable<BaseDataResponse<CoinPusherConverInfoEntity>> qryCoinPusherConverList();
@@ -258,7 +258,7 @@ public interface HttpDataSource {
      * @Desc TODO(添加常联系人)
      * @author 彭石林
      * @parame [requestBody]
-     * @return io.reactivex.Observable<com.dl.playfun.data.source.http.response.BaseResponse>
+     * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseResponse>
      * @Date 2022/8/16
      */
     Observable<BaseResponse> friendAddFrequent(RequestBody requestBody);
@@ -266,7 +266,7 @@ public interface HttpDataSource {
      * @Desc TODO(添加常联系人)
      * @author 彭石林
      * @parame [requestBody]
-     * @return io.reactivex.Observable<com.dl.playfun.data.source.http.response.BaseResponse>
+     * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseResponse>
      * @Date 2022/8/16
      */
     Observable<BaseResponse> friendDeleteFrequent(RequestBody requestBody);
@@ -314,7 +314,7 @@ public interface HttpDataSource {
      * @Desc TODO(设置视讯广场封面图)
      * @author 彭石林
      * @parame []
-     * @return io.reactivex.Observable<com.dl.playfun.data.source.http.response.BaseResponse>
+     * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseResponse>
      * @Date 2022/8/2
      */
     Observable<BaseResponse> photoCallCover(Integer albumId, Integer type);
@@ -349,7 +349,7 @@ public interface HttpDataSource {
      * @Desc TODO(广告列表获取  1：首页 2：广场页)
      * @author 彭石林
      * @parame []
-     * @return io.reactivex.Observable<com.dl.playfun.data.source.http.response.BaseListDataResponse<com.dl.playfun.entity.AdItemEntity>>
+     * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseListDataResponse<com.dl.playcc.entity.AdItemEntity>>
      * @Date 2022/7/25
      */
     Observable<BaseDataResponse<AdBannerEntity>> getRadioAdBannerList(int position);
@@ -358,7 +358,7 @@ public interface HttpDataSource {
      * @Desc TODO(用户广告位)
      * @author 彭石林
      * @parame [position]
-     * @return io.reactivex.Observable<com.dl.playfun.data.source.http.response.BaseDataResponse>
+     * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseDataResponse>
      * @Date 2022/7/26
      */
     @GET("api/userAd")
@@ -383,7 +383,7 @@ public interface HttpDataSource {
      * @Desc TODO(广告列表获取  1：首页 2：广场页)
      * @author 彭石林
      * @parame []
-     * @return io.reactivex.Observable<com.dl.playfun.data.source.http.response.BaseListDataResponse<com.dl.playfun.entity.AdItemEntity>>
+     * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseListDataResponse<com.dl.playcc.entity.AdItemEntity>>
      * @Date 2022/7/25
      */
     Observable<BaseDataResponse<AdBannerEntity>> getMainAdBannerList(int position);
@@ -399,7 +399,7 @@ public interface HttpDataSource {
      * @Desc TODO(初始化api接口)
      * @author 彭石林
      * @parame []
-     * @return io.reactivex.Observable<com.dl.playfun.data.source.http.response.BaseDataResponse<com.dl.playfun.entity.ApiConfigManagerEntity>>
+     * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseDataResponse<com.dl.playcc.entity.ApiConfigManagerEntity>>
      * @Date 2022/7/2
      */
     Observable<BaseDataResponse<ApiConfigManagerEntity>> initApiConfig();
@@ -644,7 +644,7 @@ public interface HttpDataSource {
      * @Desc TODO(根据邮箱发送验证码)
      * @author 彭石林
      * @parame []
-     * @return io.reactivex.Observable<com.dl.playfun.data.source.http.response.BaseResponse>
+     * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseResponse>
      * @Date 2022/5/17
      */
     Observable<BaseResponse> sendEmailCode(String email);
@@ -653,7 +653,7 @@ public interface HttpDataSource {
      * @Desc TODO(绑定用户邮箱)
      * @author 彭石林
      * @parame [email, code, pass, type]
-     * @return io.reactivex.Observable<com.dl.playfun.data.source.http.response.BaseDataResponse<com.dl.playfun.entity.UserDataEntity>>
+     * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseDataResponse<com.dl.playcc.entity.UserDataEntity>>
      * @Date 2022/5/17
      */
     Observable<BaseResponse> bindUserEmail(
@@ -667,7 +667,7 @@ public interface HttpDataSource {
      * @Desc TODO(邮箱登录)
      * @author 彭石林
      * @parame [email, code, type]
-     * @return io.reactivex.Observable<com.dl.playfun.data.source.http.response.BaseResponse>
+     * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseResponse>
      * @Date 2022/5/17
      */
     Observable<BaseDataResponse<UserDataEntity>> loginEmail(
@@ -698,7 +698,7 @@ public interface HttpDataSource {
      * @Desc TODO(IM用户Id转成数值id)
      * @author 彭石林
      * @parame [IMUserId]
-     * @return io.reactivex.Observable<com.dl.playfun.data.source.http.response.BaseDataResponse<com.dl.playfun.entity.IMTransUserEntity>>
+     * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseDataResponse<com.dl.playcc.entity.IMTransUserEntity>>
      * @Date 2022/4/2
      */
     Observable<BaseDataResponse<IMTransUserEntity>> transUserIM(String IMUserId);
@@ -725,7 +725,7 @@ public interface HttpDataSource {
      * @Desc TODO(游戏支付成功验签)
      * @author 彭石林
      * @parame [packageName, orderNumber, productId, token, type, event, serverId, roleId]
-     * @return io.reactivex.Observable<com.dl.playfun.data.source.http.response.BaseResponse>
+     * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseResponse>
      * @Date 2022/2/10
      */
     Observable<BaseResponse> GamePaySuccessNotify(
@@ -742,7 +742,7 @@ public interface HttpDataSource {
      * @Desc TODO()
      * @author 彭石林
      * @parame [serverId, roleId]
-     * @return io.reactivex.Observable<com.dl.playfun.data.source.http.response.BaseDataResponse<com.dl.playfun.entity.GamePhotoAlbumEntity>>
+     * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseDataResponse<com.dl.playcc.entity.GamePhotoAlbumEntity>>
      * @Date 2022/1/21
      */
     Observable<BaseDataResponse<GamePhotoAlbumEntity>> getGamePhotoAlbumList(String serverId, String roleId);
@@ -750,7 +750,7 @@ public interface HttpDataSource {
      * @Desc TODO(游戏在线状态 1在线 -1离线)
      * @author 彭石林
      * @parame [gameState]
-     * @return io.reactivex.Observable<com.dl.playfun.data.source.http.response.BaseResponse>
+     * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseResponse>
      * @Date 2022/1/15
      */
     Observable<BaseResponse> setGameState(int gameState);
@@ -761,7 +761,7 @@ public interface HttpDataSource {
      *avatarUrl 是 String 角色头像URL地址 ， 最多1000个字符)
      * @author 彭石林
      * @parame []
-     * @return io.reactivex.Observable<com.dl.playfun.data.source.http.response.BaseResponse>
+     * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseResponse>
      * @Date 2022/1/14
      */
     Observable<BaseResponse> commitRoleInfo(RequestBody requestBody);
@@ -770,7 +770,7 @@ public interface HttpDataSource {
      * @Desc TODO(修改用户性别)
      * @author 彭石林
      * @parame [sex]
-     * @return io.reactivex.Observable<com.dl.playfun.data.source.http.response.BaseResponse>
+     * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseResponse>
      * @Date 2022/1/12
      */
     Observable<BaseResponse> upUserSex(Integer sex);
@@ -792,7 +792,7 @@ public interface HttpDataSource {
     );
 
     /**
-     * @return io.reactivex.Observable<com.dl.playfun.data.source.http.response.BaseDataResponse < com.dl.playfun.entity.PriceConfigEntity.Current>>
+     * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseDataResponse < com.dl.playcc.entity.PriceConfigEntity.Current>>
      * @Desc TODO(男生获取未读消息 \ 清空)
      * @author 彭石林
      * @parame [toUserId, type]
@@ -819,7 +819,7 @@ public interface HttpDataSource {
             Integer type);
 
     /**
-     * @return io.reactivex.Observable<com.dl.playfun.data.source.http.response.BaseDataResponse < java.util.Map < java.lang.String, java.lang.Integer>>>
+     * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseDataResponse < java.util.Map < java.lang.String, java.lang.Integer>>>
      * @Desc TODO(真人 / 女神提醒)
      * @author 彭石林
      * @parame [toUserId]
@@ -828,7 +828,7 @@ public interface HttpDataSource {
     Observable<BaseDataResponse<Map<String, Integer>>> verifyGoddessTips(Integer toUserId);
 
     /**
-     * @return io.reactivex.Observable<com.dl.playfun.data.source.http.response.BaseDataResponse>
+     * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseDataResponse>
      * @Desc TODO(IM价格配置)
      * @author 彭石林
      * @parame [to_user_id]
@@ -840,14 +840,14 @@ public interface HttpDataSource {
      * @Desc TODO(破冰文案列表)
      * @author 彭石林
      * @parame [page, perPage]
-     * @return io.reactivex.Observable<com.dl.playfun.data.source.http.response.BaseDataResponse<com.dl.playfun.entity.CallingInfoEntity.SayHiList>>
+     * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseDataResponse<com.dl.playcc.entity.CallingInfoEntity.SayHiList>>
      * @Date 2021/12/18
      */
     @GET("/calling/listSayHis")
     Observable<BaseDataResponse<CallingInfoEntity.SayHiList>> getSayHiList(Integer page,Integer perPage);
 
     /**
-     * @return io.reactivex.Observable<com.dl.playfun.data.source.http.response.BaseDataResponse < com.dl.playfun.entity.CallingInfoEntity>>
+     * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseDataResponse < com.dl.playcc.entity.CallingInfoEntity>>
      * @Desc TODO(通话中)
      * @author 彭石林
      * @parame [roomId, callingType, fromUserId, toUserId, currentUserId]
@@ -861,7 +861,7 @@ public interface HttpDataSource {
     );
 
     /**
-     * @return io.reactivex.Observable<com.dl.playfun.entity.CallingInviteInfo>
+     * @return io.reactivex.Observable<com.dl.playcc.entity.CallingInviteInfo>
      * @Desc TODO(IM聊天页面 拔打中 / 接收中)
      * @author 彭石林
      * @parame [appId, callingType, fromUserId, toUserId, currentUserId]
@@ -889,7 +889,7 @@ public interface HttpDataSource {
     Observable<BaseDataResponse<CallingInviteInfo>> callingInviteInfo(Integer callingType, Integer fromUserId, Integer toUserId, Integer currentUserId);
 
     /**
-     * @return io.reactivex.Observable<com.dl.playfun.data.source.http.response.BaseResponse>
+     * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseResponse>
      * @Desc TODO(发送礼物)
      * @author 彭石林
      * @parame [gift_id, to_user_id, amount]
@@ -901,7 +901,7 @@ public interface HttpDataSource {
      * @Desc TODO(礼物背包接口)
      * @author 彭石林
      * @parame []
-     * @return io.reactivex.Observable<com.dl.playfun.data.source.http.response.BaseDataResponse<com.dl.playfun.entity.GiftBagEntity>>
+     * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseDataResponse<com.dl.playcc.entity.GiftBagEntity>>
      * @Date 2021/12/7
      */
     Observable<BaseDataResponse<GiftBagEntity>> getBagGiftInfo();
@@ -916,7 +916,7 @@ public interface HttpDataSource {
      * @Desc TODO(用户收益页面)
      * @author 彭石林
      * @parame []
-     * @return io.reactivex.Observable<com.dl.playfun.data.source.http.response.BaseDataResponse>
+     * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseDataResponse>
      * @Date 2021/12/6
      */
     Observable<BaseDataResponse<UserProfitPageEntity>> getUserProfitPageInfo(Long currentUserId, Integer page, Integer perPage);
@@ -925,7 +925,7 @@ public interface HttpDataSource {
      * @Desc TODO(用户账户余额)
      * @author 彭石林
      * @parame []
-     * @return io.reactivex.Observable<com.dl.playfun.data.source.http.response.BaseDataResponse<com.dl.playfun.entity.CoinWalletEntity>>
+     * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseDataResponse<com.dl.playcc.entity.CoinWalletEntity>>
      * @Date 2021/12/6
      */
     Observable<BaseDataResponse<CoinWalletEntity>> getUserAccount();
@@ -934,12 +934,12 @@ public interface HttpDataSource {
      * @Desc TODO(用户账户余额)
      * @author KL
      * @parame []
-     * @return io.reactivex.Observable<com.dl.playfun.data.source.http.response.BaseDataResponse<com.dl.playfun.entity.GameCoinWalletEntity>>
+     * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseDataResponse<com.dl.playcc.entity.GameCoinWalletEntity>>
      */
     Observable<BaseDataResponse<GameCoinWalletEntity>> getUserAccountPageInfo();
 
     /**
-     * @return io.reactivex.Observable<com.dl.playfun.data.source.http.response.BaseDataResponse < com.dl.playfun.entity.BubbleEntity>>
+     * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseDataResponse < com.dl.playcc.entity.BubbleEntity>>
      * @Desc TODO(回复收益气泡)
      * @author 彭石林
      * @parame []
@@ -948,7 +948,7 @@ public interface HttpDataSource {
     Observable<BaseDataResponse<BubbleEntity>> getBubbleEntity();
 
     /**
-     * @return io.reactivex.Observable<com.dl.playfun.data.source.http.response.BaseDataResponse < com.dl.playfun.entity.AccostEntity>>
+     * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseDataResponse < com.dl.playcc.entity.AccostEntity>>
      * @Desc TODO(获取批量搭讪用户列表)
      * @author 彭石林
      * @parame []
@@ -957,7 +957,7 @@ public interface HttpDataSource {
     Observable<BaseDataResponse<AccostEntity>> getAccostList(Integer page);
 
     /**
-     * @return io.reactivex.Observable<com.dl.playfun.data.source.http.response.BaseResponse>
+     * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseResponse>
      * @Desc TODO(批量搭讪)
      * @author 彭石林
      * @parame [userIds]
@@ -966,7 +966,7 @@ public interface HttpDataSource {
     Observable<BaseResponse> putAccostList(List<Integer> userIds);
 
     /**
-     * @return io.reactivex.Observable<com.dl.playfun.data.source.http.response.BaseResponse>
+     * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseResponse>
      * @Desc TODO(单次搭讪接口)
      * @author 彭石林
      * @parame [userId]
@@ -975,7 +975,7 @@ public interface HttpDataSource {
     Observable<BaseResponse> putAccostFirst(Integer userId);
 
     /**
-     * @return io.reactivex.Observable<com.dl.playfun.data.source.http.response.BaseListDataResponse < com.dl.playfun.entity.ParkItemEntity>>
+     * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseListDataResponse < com.dl.playcc.entity.ParkItemEntity>>
      * @Desc TODO(电台首页)
      * @author 彭石林
      * @parame [
@@ -998,7 +998,7 @@ public interface HttpDataSource {
     );
 
     /**
-     * @return io.reactivex.Observable<com.dl.playfun.data.source.http.response.BaseListDataResponse < com.dl.playfun.entity.MessageRuleEntity>>
+     * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseListDataResponse < com.dl.playcc.entity.MessageRuleEntity>>
      * @Desc TODO(获取聊天 （ 相册 、 评价发送规则 ）)
      * @author 彭石林
      * @parame []
@@ -1016,7 +1016,7 @@ public interface HttpDataSource {
      * @Desc TODO(IM聊天相册)
      * @author 彭石林
      * @parame [user_id]
-     * @return io.reactivex.Observable<com.dl.playfun.data.source.http.response.BaseDataResponse>
+     * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseDataResponse>
      * @Date 2021/10/22
      */
     Observable<BaseDataResponse<PhotoAlbumEntity>> getPhotoAlbum(Integer user_id);
@@ -1024,7 +1024,7 @@ public interface HttpDataSource {
      * @Desc TODO(删除用户录音)
      * @author 彭石林
      * @parame []
-     * @return io.reactivex.Observable<com.dl.playfun.data.source.http.response.BaseResponse>
+     * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseResponse>
      * @Date 2021/10/25
      */
     Observable<BaseResponse> removeUserSound();
@@ -1032,7 +1032,7 @@ public interface HttpDataSource {
      * @Desc TODO(上传录音文案)
      * @author 彭石林
      * @parame [paht]
-     * @return io.reactivex.Observable<com.dl.playfun.data.source.http.response.BaseDataResponse>
+     * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseDataResponse>
      * @Date 2021/10/21
      */
     Observable<BaseDataResponse> putUserSound(String paht,Integer sound_time);
@@ -1041,7 +1041,7 @@ public interface HttpDataSource {
      * @Desc TODO(查询录音文案)
      * @author 彭石林
      * @parame []
-     * @return io.reactivex.Observable<com.dl.playfun.data.source.http.response.BaseDataResponse>
+     * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseDataResponse>
      * @Date 2021/10/21
      */
     Observable<BaseListDataResponse<SoundEntity>> getUserSound(Integer page);
@@ -1094,7 +1094,7 @@ public interface HttpDataSource {
     Observable<BaseResponse> pushGreet(Integer type);
 
     /**
-     * @return io.reactivex.Observable<com.dl.playfun.data.source.http.response.BaseDataResponse < java.util.Map < java.lang.String, java.lang.String>>>
+     * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseDataResponse < java.util.Map < java.lang.String, java.lang.String>>>
      * @Desc TODO(查询用户是否在黑名单里面)
      * @author 彭石林
      * @parame [userId]
@@ -1103,7 +1103,7 @@ public interface HttpDataSource {
     Observable<BaseDataResponse<Map<String, String>>> isBlacklist(String userId);
 
     /**
-     * @return io.reactivex.Observable<com.dl.playfun.data.source.http.response.BaseListDataResponse < com.dl.playfun.entity.TaskAdEntity>>
+     * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseListDataResponse < com.dl.playcc.entity.TaskAdEntity>>
      * @Desc TODO(查询会员中心配置)
      * @author 彭石林
      * @parame []
@@ -1112,7 +1112,7 @@ public interface HttpDataSource {
     Observable<BaseListDataResponse<TaskAdEntity>> rechargeVipList();
 
     /**
-     * @return io.reactivex.Observable<com.dl.playfun.data.source.http.response.BaseDataResponse < java.util.Map < java.lang.String, java.lang.String>>>
+     * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseDataResponse < java.util.Map < java.lang.String, java.lang.String>>>
      * @Desc TODO(查询用户是否离线)
      * @author 彭石林
      * @parame []
@@ -1121,7 +1121,7 @@ public interface HttpDataSource {
     Observable<BaseDataResponse<Map<String, String>>> isOnlineUser(String userId);
 
     /**
-     * @return io.reactivex.Observable<com.dl.playfun.data.source.http.response.BaseDataResponse < BrowseNumberEntity>>
+     * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseDataResponse < BrowseNumberEntity>>
      * @Desc TODO(新增谁看我及粉丝数)
      * @author 彭石林
      * @parame []
@@ -1130,7 +1130,7 @@ public interface HttpDataSource {
     Observable<BaseDataResponse<BrowseNumberEntity>> newsBrowseNumber();
 
     /**
-     * @return io.reactivex.Observable<com.dl.playfun.data.source.http.response.BaseListDataResponse < com.dl.playfun.entity.TraceEntity>>
+     * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseListDataResponse < com.dl.playcc.entity.TraceEntity>>
      * @Desc TODO(谁看过我列表)
      * @author 彭石林
      * @parame [page]
@@ -1139,7 +1139,7 @@ public interface HttpDataSource {
     Observable<BaseListDataResponse<TraceEntity>> toBrowse(Integer page);
 
     /**
-     * @return io.reactivex.Observable<com.dl.playfun.data.source.http.response.BaseListDataResponse < com.dl.playfun.entity.TraceEntity>>
+     * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseListDataResponse < com.dl.playcc.entity.TraceEntity>>
      * @Desc TODO(查询粉丝列表)
      * @author 彭石林
      * @parame [page]
@@ -1148,7 +1148,7 @@ public interface HttpDataSource {
     Observable<BaseListDataResponse<TraceEntity>> collectFans(Integer page);
 
     /**
-     * @return io.reactivex.Observable<com.dl.playfun.data.source.http.response.BaseListDataResponse < TraceEntity>>
+     * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseListDataResponse < TraceEntity>>
      * @Desc TODO(查询追踪列表)
      * @author 彭石林
      * @parame [page]
@@ -1238,7 +1238,7 @@ public interface HttpDataSource {
     Observable<BaseResponse> coordinate(Double latitude, Double longitude, String county_name, String province_name);
 
     /**
-     * @return io.reactivex.Observable<com.dl.playfun.data.source.http.response.BaseDataResponse < com.dl.playfun.entity.SwiftMessageEntity>>
+     * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseDataResponse < com.dl.playcc.entity.SwiftMessageEntity>>
      * @Author 彭石林
      * @Description 获取聊天信息快捷语
      * @Date 2021/4/30 16:07
@@ -1249,7 +1249,7 @@ public interface HttpDataSource {
     Observable<BaseDataResponse<SwiftMessageEntity>> getSwiftMessage(Integer page);
 
     /**
-     * @return io.reactivex.Observable<com.dl.playfun.data.source.http.response.BaseResponse>
+     * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseResponse>
      * @Author 彭石林
      * @Description 绑定第三方账号
      * @Date 2021/4/29 15:33
@@ -1260,7 +1260,7 @@ public interface HttpDataSource {
     Observable<BaseResponse> bindAccount(String id, String type);
 
     /**
-     * @return io.reactivex.Observable<com.dl.playfun.data.source.http.response.BaseDataResponse < com.dl.playfun.entity.UserDataEntity>>
+     * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseDataResponse < com.dl.playcc.entity.UserDataEntity>>
      * @Author 彭石林
      * @Description 第三方登录
      * @Date 2021/4/27 17:30
@@ -1281,7 +1281,7 @@ public interface HttpDataSource {
     );
 
     /**
-     * @return io.reactivex.Observable<com.dl.playfun.entity.VersionEntity>
+     * @return io.reactivex.Observable<com.dl.playcc.entity.VersionEntity>
      * @Author 彭石林
      * @Description 后台效验检测更新
      * @Date 2021/3/31 19:32

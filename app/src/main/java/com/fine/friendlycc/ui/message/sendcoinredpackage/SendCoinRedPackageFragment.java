@@ -78,7 +78,7 @@ public class SendCoinRedPackageFragment extends BaseToolbarFragment<FragmentSend
             @Override
             public void onChanged(Void v) {
                 if (StringUtils.isEmpty(viewModel.number.get()) || Integer.valueOf(viewModel.number.get()) < 1) {
-                    ToastUtils.showShort(R.string.playfun_please_diamond_number);
+                    ToastUtils.showShort(R.string.playcc_please_diamond_number);
                     return;
                 }
                 hideSoftInput();
@@ -92,7 +92,7 @@ public class SendCoinRedPackageFragment extends BaseToolbarFragment<FragmentSend
     }
 
     public void payCoinRedPackage(int userId, int coinNumber, String desc) {
-        new CoinPaySheet.Builder(mActivity).setPayRedPackageParams(userId, coinNumber, desc, getString(R.string.playfun_diamond_red_package), (sheet, redPackageId) -> {
+        new CoinPaySheet.Builder(mActivity).setPayRedPackageParams(userId, coinNumber, desc, getString(R.string.playcc_diamond_red_package), (sheet, redPackageId) -> {
             sheet.dismiss();
             Bundle bundle = new Bundle();
             bundle.putInt(ARG_RED_PACKAGE_ID, redPackageId);

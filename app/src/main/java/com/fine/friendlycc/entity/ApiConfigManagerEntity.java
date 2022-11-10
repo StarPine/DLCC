@@ -14,13 +14,13 @@ public class ApiConfigManagerEntity implements Parcelable {
     //playchat web网址
     @SerializedName("playChatH5")
     private String playChatWebUrl;
-    //playfun web网址
+    //playcc web网址
     @SerializedName("playFunH5")
     private String playFunWebUrl;
     //福袋网址
     @SerializedName("goodBagUrl")
     private String goodBagWebUrl;
-    //playfun api
+    //playcc api
     @SerializedName("playFunApi")
     private String playFunApiUrl;
     //playchat api

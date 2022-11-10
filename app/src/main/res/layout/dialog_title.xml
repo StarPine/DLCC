@@ -21,7 +21,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="25dp"
             android:gravity="center"
-            android:text="@string/playfun_dialog_choose_sex_warm_content"
+            android:text="@string/playcc_dialog_choose_sex_warm_content"
             android:textColor="@color/text_default"
             android:textSize="@dimen/text_size_middle"
             android:textStyle="bold" />
@@ -33,7 +33,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"
             android:gravity="center"
-            android:text="@string/playfun_dialog_choose_sex_warm_content"
+            android:text="@string/playcc_dialog_choose_sex_warm_content"
             android:textColor="@color/gray_middle"
             android:textSize="@dimen/text_size_mini" />
 
@@ -55,7 +55,7 @@
                 android:layout_marginRight="8dp"
                 android:layout_weight="1"
                 android:padding="5dp"
-                android:text="@string/playfun_confirm"
+                android:text="@string/playcc_confirm"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_size_42"
                 android:visibility="gone"

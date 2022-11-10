@@ -42,7 +42,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="14.32dp"
                     android:layout_marginTop="20dp"
-                    android:text="@string/playfun_you_receive_red_envelope_on_that_chat" />
+                    android:text="@string/playcc_you_receive_red_envelope_on_that_chat" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -61,7 +61,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/playfun_fragment_cash_total_account"
+                            android:text="@string/playcc_fragment_cash_total_account"
                             android:textColor="@color/gray_dark"
                             android:textSize="@dimen/text_size_big" />
 
@@ -84,7 +84,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/playfun_fragment_cash_usable_withdraw"
+                            android:text="@string/playcc_fragment_cash_usable_withdraw"
                             android:textColor="@color/gray_dark"
                             android:textSize="@dimen/text_size_big" />
 
@@ -117,7 +117,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:text="@string/playfun_fragment_cash_withdraw_account" />
+                        android:text="@string/playcc_fragment_cash_withdraw_account" />
 
                     <TextView
                         style="@style/ProfileItemSubTitle"
@@ -126,7 +126,7 @@
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
                         android:drawableRight="@drawable/ic_arrow_right"
-                        android:text="@string/playfun_fragment_cash_withdraw_account_bind" />
+                        android:text="@string/playcc_fragment_cash_withdraw_account_bind" />
                 </RelativeLayout>
             </LinearLayout>
         </com.scwang.smart.refresh.layout.SmartRefreshLayout>
@@ -143,7 +143,7 @@
                 style="@style/ButtonPrimary"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/playfun_withdraw" />
+                android:text="@string/playcc_withdraw" />
         </FrameLayout>
     </RelativeLayout>
 </layout>

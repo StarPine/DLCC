@@ -51,7 +51,7 @@ public class PerfectProfileViewModel extends BaseViewModel<AppRepository> {
     public ObservableField<String> UserName = new ObservableField<>();
 
     public ObservableField<String> UserBirthday = new ObservableField<>("1995-01-01");
-    public ObservableField<String> userAge = new ObservableField<>(getApplication().getString(R.string.playfun_perfect_age));
+    public ObservableField<String> userAge = new ObservableField<>(getApplication().getString(R.string.playcc_perfect_age));
     public ObservableField<String> UserAvatar = new ObservableField<>();
     public ObservableField<String> invitationCode = new ObservableField<>();
 
@@ -69,14 +69,14 @@ public class PerfectProfileViewModel extends BaseViewModel<AppRepository> {
     //提交
     public BindingCommand submitClick = new BindingCommand(() -> {
         if (ObjectUtils.isEmpty(UserSex.get())) {
-            ToastUtils.showShort(R.string.playfun_fragment_perfect_sex_hint);
+            ToastUtils.showShort(R.string.playcc_fragment_perfect_sex_hint);
             return;
         }
         uc.getClickBirthday.call();
     });
     public BindingCommand nextViewClick = new BindingCommand(() -> {
         if (StringUtils.isEmpty(UserName.get())) {
-            ToastUtils.showShort(R.string.playfun_fragment_perfect_name_hint);
+            ToastUtils.showShort(R.string.playcc_fragment_perfect_name_hint);
             return;
         } else {
             if (UserName.get().length() > 10) {
@@ -115,7 +115,7 @@ public class PerfectProfileViewModel extends BaseViewModel<AppRepository> {
                     @Override
                     public void onError(Throwable e) {
                         dismissHUD();
-                        ToastUtils.showShort(R.string.playfun_upload_failed);
+                        ToastUtils.showShort(R.string.playcc_upload_failed);
                     }
 
                     @Override
@@ -212,7 +212,7 @@ public class PerfectProfileViewModel extends BaseViewModel<AppRepository> {
                         }
                         if (goMain) {
                             AppContext.instance().logEvent(AppsFlyerEvent.LOG_Edit_Profile);
-                            ToastUtils.showShort(R.string.playfun_submit_success);
+                            ToastUtils.showShort(R.string.playcc_submit_success);
                             startWithPopTo(MainFragment.class.getCanonicalName(), PerfectProfileFragment.class.getCanonicalName(), true);
                         }
                     }

@@ -109,8 +109,8 @@
     <color name="white_yin1">#908fa6</color>
     <color name="partTranslucent">#39000000</color>
 
-    <color name="playfun_shape_radius_start_color">#6D62F8</color>
-    <color name="playfun_shape_radius_end_color">#BE63FF</color>
+    <color name="playcc_shape_radius_start_color">#6D62F8</color>
+    <color name="playcc_shape_radius_end_color">#BE63FF</color>
 
 
 </resources>

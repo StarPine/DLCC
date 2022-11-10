@@ -18,7 +18,7 @@ import java.util.List;
  */
 public class BeautyConfigManagerUtil {
     private static BeautyConfigManagerUtil mCacheManager;
-    private final String cryptKey = "playfun@2020";
+    private final String cryptKey = "playcc@2020";
     private static final String KEY_FACE_BEAUTY = "key_face_beauty";
     private static final String KEY_FACE_BEAUTY_FILTERS = "key_face_beauty_filters";
     private static final String KEY_FACE_BEAUTY_FILTERS_INDEX = "key_face_beauty_filters_index";

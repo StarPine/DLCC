@@ -178,7 +178,7 @@ public class WebViewFragment extends BaseFragment<WebviewFragmentBinding, WebVie
             cookieManager.setAcceptCookie(true);
             cookieManager.removeSessionCookie();//移除
             cookieManager.removeAllCookie();
-            cookieManager.setCookie(url, "local="+context.getString(R.string.playfun_local_language));
+            cookieManager.setCookie(url, "local="+context.getString(R.string.playcc_local_language));
             cookieManager.setCookie(url, "appId="+AppConfig.APPID);
             CookieSyncManager.getInstance().sync();
         } catch (Exception e) {
@@ -277,7 +277,7 @@ public class WebViewFragment extends BaseFragment<WebviewFragmentBinding, WebVie
             public void onPaySuccess(CoinExchargeItegralDialog sheetView, GoodsEntity sel_goodsEntity) {
                 coinExchargeItegralSheetView.dismiss();
                 dialog.dismiss();
-                ToastUtils.showShort(R.string.playfun_dialog_exchange_integral_success);
+                ToastUtils.showShort(R.string.playcc_dialog_exchange_integral_success);
             }
             @Override
             public void onPayFailed(CoinExchargeItegralDialog sheetView, String msg) {
@@ -421,7 +421,7 @@ public class WebViewFragment extends BaseFragment<WebviewFragmentBinding, WebVie
         //返回国际化语言
         @JavascriptInterface
         public String getMultilingualFlag(){
-            return mContext.getString(R.string.playfun_local_language);
+            return mContext.getString(R.string.playcc_local_language);
         }
 
         @JavascriptInterface
@@ -463,9 +463,9 @@ public class WebViewFragment extends BaseFragment<WebviewFragmentBinding, WebVie
         public void humanAuthentication() {//真人认证
             LogUtils.i("humanAuthentication: ");
             MVDialog.getInstance(WebViewFragment.this.getContext())
-                    .setTitele(getString(R.string.playfun_fragment_certification_tip))
-                    .setContent(getString(R.string.playfun_fragment_certification_content))
-                    .setConfirmText(getString(R.string.playfun_task_fragment_task_new11))
+                    .setTitele(getString(R.string.playcc_fragment_certification_tip))
+                    .setContent(getString(R.string.playcc_fragment_certification_content))
+                    .setConfirmText(getString(R.string.playcc_task_fragment_task_new11))
                     .chooseType(MVDialog.TypeEnum.CENTER)
                     .setConfirmOnlick(new MVDialog.ConfirmOnclick() {
                         @Override
@@ -477,7 +477,7 @@ public class WebViewFragment extends BaseFragment<WebviewFragmentBinding, WebVie
                                 viewModel.start(CertificationFemaleFragment.class.getCanonicalName());
                                 return;
                             }
-                            com.blankj.utilcode.util.ToastUtils.showShort(R.string.playfun_sex_unknown);
+                            com.blankj.utilcode.util.ToastUtils.showShort(R.string.playcc_sex_unknown);
                             dialog.dismiss();
                         }
                     })

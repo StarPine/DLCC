@@ -33,7 +33,7 @@
                 android:id="@+id/basic_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/action_bar_height"
-                app:toolbar_title="@string/playfun_mine_my_borcast">
+                app:toolbar_title="@string/playcc_mine_my_borcast">
 
                 <RelativeLayout
                     android:layout_width="match_parent"

@@ -167,12 +167,12 @@ public class TaskCenterItemViewModel extends MultiItemViewModel<TaskCenterViewMo
         String key = itemEntity.get().getName();
         int status = itemEntity.get().getStatus();
         if (status == 1) {
-            return StringUtils.getString(R.string.playfun_receive);
+            return StringUtils.getString(R.string.playcc_receive);
         } else if (status == 2) {
             if (type == 1) {
                 return StringUtils.getString(R.string.task_fragment_sign_ed);
             }
-            return StringUtils.getString(R.string.playfun_received);
+            return StringUtils.getString(R.string.playcc_received);
         } else {
             if (key.equals("invite")) {//男-女 邀请
                 return StringUtils.getString(R.string.task_fragment_task_new3);

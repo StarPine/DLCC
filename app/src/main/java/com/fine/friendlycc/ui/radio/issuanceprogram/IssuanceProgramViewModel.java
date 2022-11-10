@@ -68,7 +68,7 @@ public class IssuanceProgramViewModel extends BaseViewModel<AppRepository> {
     public ObservableField<String> selectMediaPath = new ObservableField<>();
     //心情选中
     public ObservableBoolean moolCheck = new ObservableBoolean(true);
-    public ObservableField<String> selThemeItemName = new ObservableField<>("#" + StringUtils.getString(R.string.playfun_mood_item_id1));
+    public ObservableField<String> selThemeItemName = new ObservableField<>("#" + StringUtils.getString(R.string.playcc_mood_item_id1));
     public DatingObjItemEntity $datingObjItemEntity;
     //约会对象
     public BindingRecyclerViewAdapter<RadioDatingItemViewModel> objAdapter = new BindingRecyclerViewAdapter<>();
@@ -220,7 +220,7 @@ public class IssuanceProgramViewModel extends BaseViewModel<AppRepository> {
                     @Override
                     public void onError(Throwable e) {
                         dismissHUD();
-                        ToastUtils.showShort(R.string.playfun_upload_failed);
+                        ToastUtils.showShort(R.string.playcc_upload_failed);
                     }
 
                     @Override
@@ -250,7 +250,7 @@ public class IssuanceProgramViewModel extends BaseViewModel<AppRepository> {
                 .subscribe(new BaseDisposableObserver<BaseResponse>() {
                     @Override
                     public void onSuccess(BaseResponse response) {
-                        ToastUtils.showShort(R.string.playfun_issuance_success);
+                        ToastUtils.showShort(R.string.playcc_issuance_success);
                         RxBus.getDefault().post(new BadioEvent(1));
                         UserDataEntity userDataEntity = model.readUserData();
                         if (ObjectUtils.isEmpty(userDataEntity.getPermanentCityIds())) {

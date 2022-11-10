@@ -190,8 +190,8 @@ public class VipSubscribeFragment extends BaseToolbarFragment<FragmentVipSubscri
     private void initServiceTips() {
         String content = (String) binding.tvVipServiceTip.getText();
         SpannableString spannableString = new SpannableString(content);
-        USER_AGREEMENT = getString(R.string.playfun_user_agreement_tips);
-        PRIVACY_POLICY = getString(R.string.playfun_privacy_policy_tips);
+        USER_AGREEMENT = getString(R.string.playcc_user_agreement_tips);
+        PRIVACY_POLICY = getString(R.string.playcc_privacy_policy_tips);
         setServiceTips(spannableString, binding.tvVipServiceTip, content, USER_AGREEMENT);
         setServiceTips(spannableString, binding.tvVipServiceTip, content, PRIVACY_POLICY);
     }

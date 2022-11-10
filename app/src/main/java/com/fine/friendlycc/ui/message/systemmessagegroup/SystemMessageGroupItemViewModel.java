@@ -45,23 +45,23 @@ public class SystemMessageGroupItemViewModel extends MultiItemViewModel<SystemMe
     public String getTitleName() {
         switch (itemEntity.get().getMold()) {
             case "system":
-                return StringUtils.getString(R.string.playfun_system_message);
+                return StringUtils.getString(R.string.playcc_system_message);
             case "sign":
-                return StringUtils.getString(R.string.playfun_sign_message_title);
+                return StringUtils.getString(R.string.playcc_sign_message_title);
             case "give":
-                return StringUtils.getString(R.string.playfun_fragment_give_list_title);
+                return StringUtils.getString(R.string.playcc_fragment_give_list_title);
             case "evaluate":
-                return StringUtils.getString(R.string.playfun_fragment_evaluate_message_title);
+                return StringUtils.getString(R.string.playcc_fragment_evaluate_message_title);
             case "comment":
-                return StringUtils.getString(R.string.playfun_fragment_custom_chat_input_title);
+                return StringUtils.getString(R.string.playcc_fragment_custom_chat_input_title);
             case "broadcast":
-                return StringUtils.getString(R.string.playfun_fragment_broadcast_message_title);
+                return StringUtils.getString(R.string.playcc_fragment_broadcast_message_title);
             case "apply":
-                return StringUtils.getString(R.string.playfun_application_erad);
+                return StringUtils.getString(R.string.playcc_application_erad);
             case "profit":
-                return StringUtils.getString(R.string.playfun_profit_message_title);
+                return StringUtils.getString(R.string.playcc_profit_message_title);
             default:
-                return StringUtils.getString(R.string.playfun_unknown);
+                return StringUtils.getString(R.string.playcc_unknown);
         }
     }
 

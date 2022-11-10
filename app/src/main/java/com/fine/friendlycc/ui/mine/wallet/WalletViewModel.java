@@ -95,7 +95,7 @@ public class WalletViewModel extends BaseViewModel<AppRepository> {
                         if(gameCoinWalletEntity!=null){
                             int totalCoins = gameCoinWalletEntity.getTotalCoins();
                             if (totalCoins > 9999999){
-                                totalCoin.set(StringUtils.getString(R.string.playfun_max_vaule));
+                                totalCoin.set(StringUtils.getString(R.string.playcc_max_vaule));
                             }else {
                                 totalCoin.set(String.valueOf(totalCoins));
                             }

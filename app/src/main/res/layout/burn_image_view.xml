@@ -28,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="@string/playfun_reading_after_burn_photo"
+            android:text="@string/playcc_reading_after_burn_photo"
             android:textColor="@color/red_7c"
             android:textSize="@dimen/text_size_big" />
 
@@ -36,7 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
-            android:text="@string/playfun_press_screen_check"
+            android:text="@string/playcc_press_screen_check"
             android:textColor="@color/gray_light"
             android:textSize="@dimen/text_size_middle" />
 

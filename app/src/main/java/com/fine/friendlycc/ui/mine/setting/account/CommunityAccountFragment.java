@@ -113,7 +113,7 @@ public class CommunityAccountFragment extends BaseToolbarFragment<FragmentSettin
                     @Override
                     public void onError(FacebookException exception) {
                         // App code
-                        ToastUtils.showShort(R.string.playfun_error_facebook);
+                        ToastUtils.showShort(R.string.playcc_error_facebook);
                     }
                 });
         GoogleLogin();
@@ -151,7 +151,7 @@ public class CommunityAccountFragment extends BaseToolbarFragment<FragmentSettin
             if (signInAccount != null) {
                 viewModel.bindAccount(signInAccount.getId(), "google");
             } else {
-                ToastUtils.showShort(R.string.playfun_error_google);
+                ToastUtils.showShort(R.string.playcc_error_google);
             }
 
         } catch (ApiException e) {

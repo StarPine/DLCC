@@ -15,7 +15,7 @@ import com.fine.friendlycc.ui.mine.wallet.coin.CoinFragment;
 public class WalletTabPagerAdapter extends FragmentStatePagerAdapter {
 
     @StringRes
-    private static final int[] TAB_TITLES = new int[]{R.string.playfun_tab_wallet_1, R.string.playfun_tab_wallet_2};
+    private static final int[] TAB_TITLES = new int[]{R.string.playcc_tab_wallet_1, R.string.playcc_tab_wallet_2};
     private final Context mContext;
 
     public WalletTabPagerAdapter(Context context, FragmentManager fm) {

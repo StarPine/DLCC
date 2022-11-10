@@ -214,10 +214,10 @@ public class ChatMessageFragment extends BaseFragment<FragmentChatMessageBinding
                         })
                         .setConfirmThreeOnlick(dialog -> {
                             TraceDialog.getInstance(ChatMessageFragment.this.getContext())
-                                    .setTitle(getString(R.string.playfun_del_banned_account_content))
+                                    .setTitle(getString(R.string.playcc_del_banned_account_content))
                                     .setTitleSize(18)
-                                    .setCannelText(getString(R.string.playfun_cancel))
-                                    .setConfirmText(getString(R.string.playfun_mine_trace_delike_confirm))
+                                    .setCannelText(getString(R.string.playcc_cancel))
+                                    .setConfirmText(getString(R.string.playcc_mine_trace_delike_confirm))
                                     .chooseType(TraceDialog.TypeEnum.CENTER)
                                     .setConfirmOnlick(new TraceDialog.ConfirmOnclick() {
                                         @Override
@@ -248,10 +248,10 @@ public class ChatMessageFragment extends BaseFragment<FragmentChatMessageBinding
                     if (ConfigManager.getInstance().isMale()) {
                         if (ObjectUtils.isEmpty(browseNumberEntity.getBrowseNumber()) || browseNumberEntity.getBrowseNumber().intValue() < 1) {
                             viewModel.NewNumberText.set(null);
-                            binding.conversationLastMsg.setText(R.string.playfun_char_message_text2);
+                            binding.conversationLastMsg.setText(R.string.playcc_char_message_text2);
                         } else {
                             Integer number = browseNumberEntity.getBrowseNumber();
-                            String text = String.format(StringUtils.getString(R.string.playfun_char_message_text1),number) ;
+                            String text = String.format(StringUtils.getString(R.string.playcc_char_message_text1),number) ;
                             binding.conversationLastMsg.setText(text);
                             if (number > 99) {
                                 viewModel.NewNumberText.set("99+");

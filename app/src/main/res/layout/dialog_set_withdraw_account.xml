@@ -19,7 +19,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"
             android:gravity="center"
-            android:text="@string/playfun_dialog_set_withdraw_account_title"
+            android:text="@string/playcc_dialog_set_withdraw_account_title"
             android:textColor="@color/text_default"
             android:textSize="@dimen/text_size_big"
             android:textStyle="bold" />
@@ -38,7 +38,7 @@
                 android:layout_height="50dp"
                 android:layout_weight="1"
                 android:background="@drawable/edit_grey_background"
-                android:hint="@string/playfun_dialog_set_withdraw_account_act_hint"
+                android:hint="@string/playcc_dialog_set_withdraw_account_act_hint"
                 android:inputType="text"
                 android:maxLength="32"
                 android:paddingLeft="20dp"
@@ -63,7 +63,7 @@
                 android:layout_height="50dp"
                 android:layout_weight="1"
                 android:background="@drawable/edit_grey_background"
-                android:hint="@string/playfun_dialog_set_withdraw_account_name_hint"
+                android:hint="@string/playcc_dialog_set_withdraw_account_name_hint"
                 android:inputType="text"
                 android:maxLength="10"
                 android:paddingLeft="20dp"
@@ -81,7 +81,7 @@
             android:layout_height="45dp"
             android:layout_marginTop="30dp"
             android:layout_marginBottom="20dp"
-            android:text="@string/playfun_dialog_set_withdraw_account_confirm"
+            android:text="@string/playcc_dialog_set_withdraw_account_confirm"
             android:textColor="@color/white"
             android:textSize="@dimen/text_size_42" />
     </LinearLayout>

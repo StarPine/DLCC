@@ -243,7 +243,7 @@ public class MMAlertDialog {
             contentBtn.setText(confirmText);
         }
         if (StringUtil.isEmpty(confirmTwoText)) {
-            contentTowBtn.setText(context.getResources().getString(R.string.playfun_confirm));
+            contentTowBtn.setText(context.getResources().getString(R.string.playcc_confirm));
             contentTowBtn.setVisibility(View.GONE);
         } else {
             contentTowBtn.setText(confirmTwoText);

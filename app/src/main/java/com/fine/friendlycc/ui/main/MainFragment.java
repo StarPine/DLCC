@@ -306,7 +306,7 @@ public class MainFragment extends BaseFragment<FragmentMainBinding, MainViewMode
                 @Override
                 public void onLogoutClick(LockDialog lockDialog) {
                     MVDialog.getInstance(MainFragment.this.getContext())
-                            .setContent(getString(R.string.playfun_conflirm_log_out))
+                            .setContent(getString(R.string.playcc_conflirm_log_out))
                             .setConfirmOnlick(dialog -> {
                                 lockDialog.dismiss();
                                 dialog.dismiss();
@@ -468,7 +468,7 @@ public class MainFragment extends BaseFragment<FragmentMainBinding, MainViewMode
             return;
         }
         TraceDialog.getInstance(mActivity)
-                .setTitle(getString(R.string.playfun_reward_title))
+                .setTitle(getString(R.string.playcc_reward_title))
                 .setFirstRewardId(R.drawable.icon_say_hi_card)
                 .setSecondRewardId(R.drawable.icon_chat_card)
                 .setConfirmOnlick(dialog -> {
@@ -527,7 +527,7 @@ public class MainFragment extends BaseFragment<FragmentMainBinding, MainViewMode
 
         TextView giftTitle = streamerView.findViewById(R.id.gift_title);
 
-        String tips = mActivity.getString(R.string.playfun_send_tips);
+        String tips = mActivity.getString(R.string.playcc_send_tips);
         String detail = tips + "[" + mqttMessageEntity.getGiftName() + "]";
         SpannableString stringBuilder = new SpannableString(detail);
         ForegroundColorSpan blueSpanWhite = new ForegroundColorSpan(ColorUtils.getColor(R.color.white));

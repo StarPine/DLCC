@@ -83,7 +83,7 @@ public class LockDialog extends BaseDialogFragment {
             } else {
                 tvExpain.setVisibility(View.VISIBLE);
                 tvExpain.setTextColor(ColorUtils.getColor(R.color.red_7c));
-                tvExpain.setText(getString(R.string.playfun_draw_wrong_again_draw));
+                tvExpain.setText(getString(R.string.playcc_draw_wrong_again_draw));
                 CountDownTimer timer = new CountDownTimer(1000, 100) {
                     @Override
                     public void onTick(long millisUntilFinished) {

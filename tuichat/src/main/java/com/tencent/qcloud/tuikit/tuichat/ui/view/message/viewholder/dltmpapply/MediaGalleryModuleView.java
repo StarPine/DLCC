@@ -1,9 +1,7 @@
 package com.tencent.qcloud.tuikit.tuichat.ui.view.message.viewholder.dltmpapply;
 
-import android.content.Context;
 import android.graphics.Color;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -34,7 +32,6 @@ import com.tencent.qcloud.tuikit.tuichat.util.TUIChatUtils;
 import java.io.File;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.Map;
 
 /**
  * Author: 彭石林
@@ -207,7 +204,7 @@ public class MediaGalleryModuleView extends BaseMessageModuleView {
         Glide.with(TUIChatService.getAppContext())
                 .load(imagePath)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .apply(override.error(R.drawable.playfun_loading_logo_error_min).placeholder(R.drawable.playfun_loading_logo))
+                .apply(override.error(R.drawable.pro_loading_logo_error_min).placeholder(R.drawable.pro_loading_logo))
                 .into(imgContent);
         rootView.addView(customImageView);
         CloudCustomDataMediaGalleryEntity finalCloudCustomDataMediaGalleryEntity = cloudCustomDataMediaGalleryEntity;
@@ -303,7 +300,7 @@ public class MediaGalleryModuleView extends BaseMessageModuleView {
         Glide.with(TUIChatService.getAppContext())
                 .load(imagePath)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .apply(override.error(R.drawable.playfun_loading_logo_error_min).placeholder(R.drawable.playfun_loading_logo))
+                .apply(override.error(R.drawable.pro_loading_logo_error_min).placeholder(R.drawable.pro_loading_logo))
                 .into(imgContent);
         rootView.addView(customImageView);
         CloudCustomDataMediaGalleryEntity finalCloudCustomDataMediaGalleryEntity = cloudCustomDataMediaGalleryEntity;

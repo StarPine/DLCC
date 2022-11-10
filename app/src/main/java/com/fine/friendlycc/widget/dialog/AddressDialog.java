@@ -51,7 +51,7 @@ public class AddressDialog {
         bottomDialog.getWindow().setWindowAnimations(R.style.BottomDialog_Animation);
         RecyclerView rcvTiem = contentView.findViewById(R.id.rcv_tiem);
         TextView tv_titles = contentView.findViewById(R.id.tv_titles);
-        tv_titles.setText(R.string.playfun_dialog_choose_city);
+        tv_titles.setText(R.string.playcc_dialog_choose_city);
         rcvTiem.setLayoutManager(new LinearLayoutManager(context));
         AddressCityAdapter cityAdapter = new AddressCityAdapter(configEntities);
         rcvTiem.setAdapter(cityAdapter);
@@ -98,7 +98,7 @@ public class AddressDialog {
         bottomDialog.getWindow().setWindowAnimations(R.style.BottomDialog_Animation);
         RecyclerView rcvTiem = contentView.findViewById(R.id.rcv_tiem);
         TextView tv_titles = contentView.findViewById(R.id.tv_titles);
-        tv_titles.setText(R.string.playfun_dialog_choose_city);
+        tv_titles.setText(R.string.playcc_dialog_choose_city);
         rcvTiem.setLayoutManager(new LinearLayoutManager(context));
         AddressCityItemAdapter cityAdapter = new AddressCityItemAdapter(configEntities);
         rcvTiem.setAdapter(cityAdapter);

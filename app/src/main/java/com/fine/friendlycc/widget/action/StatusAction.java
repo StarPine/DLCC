@@ -57,7 +57,7 @@ public interface StatusAction {
      * 显示空提示
      */
     default void showEmpty() {
-        showLayout(R.drawable.status_empty_ic, R.string.playfun_status_layout_no_data, null);
+        showLayout(R.drawable.status_empty_ic, R.string.playcc_status_layout_no_data, null);
     }
 
     /**
@@ -71,11 +71,11 @@ public interface StatusAction {
             NetworkInfo info = manager.getActiveNetworkInfo();
             // 判断网络是否连接
             if (info == null || !info.isConnected()) {
-                showLayout(R.drawable.status_nerwork_ic, R.string.playfun_status_layout_error_network, listener);
+                showLayout(R.drawable.status_nerwork_ic, R.string.playcc_status_layout_error_network, listener);
                 return;
             }
         }
-        showLayout(R.drawable.status_error_ic, R.string.playfun_status_layout_error_request, listener);
+        showLayout(R.drawable.status_error_ic, R.string.playcc_status_layout_error_request, listener);
     }
 
     /**

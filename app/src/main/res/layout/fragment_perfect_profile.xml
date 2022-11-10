@@ -83,7 +83,7 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="10dp"
                     android:includeFontPadding="false"
-                    android:text="@string/playfun_perfect_tips"
+                    android:text="@string/playcc_perfect_tips"
                     android:textColor="@color/text_9EA1B0"
                     android:textSize="14sp" />
                 <RelativeLayout
@@ -101,7 +101,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:hint="@string/playfun_fragment_perfect_name_hint"
+                        android:hint="@string/playcc_fragment_perfect_name_hint"
                         android:inputType="text"
                         android:maxLength="10"
                         android:text="@={viewModel.UserName}"

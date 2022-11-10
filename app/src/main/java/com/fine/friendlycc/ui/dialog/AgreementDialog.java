@@ -102,10 +102,10 @@ public class AgreementDialog extends BaseDialogFragment implements View.OnClickL
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnNext(aLong -> {
-                    btnAgree.setText(String.format(getString(R.string.playfun_agree_second), maxSeconds - aLong.intValue()));
+                    btnAgree.setText(String.format(getString(R.string.playcc_agree_second), maxSeconds - aLong.intValue()));
                 })
                 .doOnComplete(() -> {
-                    btnAgree.setText(getString(R.string.playfun_dialog_agree));
+                    btnAgree.setText(getString(R.string.playcc_dialog_agree));
                     btnAgree.setEnabled(true);
                 })
                 .subscribe();
@@ -113,7 +113,7 @@ public class AgreementDialog extends BaseDialogFragment implements View.OnClickL
 
     private SpannableString generateSp() {
 
-        SpannableString spannableString = new SpannableString(getString(R.string.playfun_check_protocol_criterion));
+        SpannableString spannableString = new SpannableString(getString(R.string.playcc_check_protocol_criterion));
         ClickableSpan agreementClickableSpan = new ClickableSpan() {
             @Override
             public void onClick(@NonNull View view) {

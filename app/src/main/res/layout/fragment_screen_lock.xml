@@ -35,7 +35,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="10dp"
-                android:text="@string/playfun_cancel"
+                android:text="@string/playcc_cancel"
                 android:textColor="@color/purple"
                 android:textSize="@dimen/text_size_middle"
                 binding:onClickCommand="@{viewModel.cancelClickCommand}" />
@@ -82,7 +82,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="60dp"
-                    android:text="@string/playfun_please_draw"
+                    android:text="@string/playcc_please_draw"
                     android:textColor="@color/gray_dark"
                     android:textSize="@dimen/text_size_middle" />
 

@@ -247,7 +247,7 @@ public class WebViewDialog extends BaseDialog {
             cookieManager.setAcceptCookie(true);
             cookieManager.removeSessionCookie();//移除
             cookieManager.removeAllCookie();
-            cookieManager.setCookie(url, "local="+context.getString(R.string.playfun_local_language));
+            cookieManager.setCookie(url, "local="+context.getString(R.string.playcc_local_language));
             cookieManager.setCookie(url, "appId="+ AppConfig.APPID);
             CookieSyncManager.getInstance().sync();
         } catch (Exception e) {
@@ -389,7 +389,7 @@ public class WebViewDialog extends BaseDialog {
                         //dialog.dismiss();
                         try{
                             if(vipItemEntity==null){
-                                ToastUtils.showShort(R.string.playfun_coin_custom_text);
+                                ToastUtils.showShort(R.string.playcc_coin_custom_text);
                                 return;
                             }
                             if (GooglePayInApp) {
@@ -424,7 +424,7 @@ public class WebViewDialog extends BaseDialog {
                                 }
                             }
                         }catch (Exception e){
-                            ToastUtils.showShort(R.string.playfun_coin_custom_text);
+                            ToastUtils.showShort(R.string.playcc_coin_custom_text);
                         }
 
                     }

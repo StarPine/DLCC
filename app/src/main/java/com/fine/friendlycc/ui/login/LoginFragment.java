@@ -109,7 +109,7 @@ public class LoginFragment extends BaseFragment<FragmentLoginBinding, LoginViewM
             @Override
             public void onClick(View view) {
                 if (!viewModel.agree.get()) {
-                    ToastUtils.showShort(R.string.playfun_warn_agree_terms);
+                    ToastUtils.showShort(R.string.playcc_warn_agree_terms);
                     return;
                 }
                 Collection<String> collection = new ArrayList<String>();
@@ -151,7 +151,7 @@ public class LoginFragment extends BaseFragment<FragmentLoginBinding, LoginViewM
                                 } catch (Exception e) {
                                     Log.e("获取facebook关键资料", "异常原因: " + e.getMessage());
                                     // App code
-                                    ToastUtils.showShort(R.string.playfun_error_facebook);
+                                    ToastUtils.showShort(R.string.playcc_error_facebook);
                                 }
                             }
                         });
@@ -170,7 +170,7 @@ public class LoginFragment extends BaseFragment<FragmentLoginBinding, LoginViewM
                     @Override
                     public void onError(FacebookException exception) {
                         // App code
-                        ToastUtils.showShort(R.string.playfun_error_facebook);
+                        ToastUtils.showShort(R.string.playcc_error_facebook);
                     }
                 });
         GoogleLogin();
@@ -178,7 +178,7 @@ public class LoginFragment extends BaseFragment<FragmentLoginBinding, LoginViewM
             @Override
             public void onClick(View v) {
                 if (!viewModel.agree.get()) {
-                    ToastUtils.showShort(R.string.playfun_warn_agree_terms);
+                    ToastUtils.showShort(R.string.playcc_warn_agree_terms);
                     return;
                 }
                 Intent intent = googleSignInClient.getSignInIntent();
@@ -267,55 +267,55 @@ public class LoginFragment extends BaseFragment<FragmentLoginBinding, LoginViewM
         } catch (ApiException e) {
             switch (e.getStatusCode()) {
                 case 2:
-                    ToastUtils.showLong(R.string.playfun_error_google_2);
+                    ToastUtils.showLong(R.string.playcc_error_google_2);
                     break;
                 case 3:
-                    ToastUtils.showLong(R.string.playfun_error_google_3);
+                    ToastUtils.showLong(R.string.playcc_error_google_3);
                     break;
                 case 4:
-                    ToastUtils.showLong(R.string.playfun_error_google_4);
+                    ToastUtils.showLong(R.string.playcc_error_google_4);
                     break;
                 case 5:
-                    ToastUtils.showLong(R.string.playfun_error_google_5);
+                    ToastUtils.showLong(R.string.playcc_error_google_5);
                     break;
                 case 6:
-                    ToastUtils.showLong(R.string.playfun_error_google_6);
+                    ToastUtils.showLong(R.string.playcc_error_google_6);
                     break;
                 case 7:
-                    ToastUtils.showLong(R.string.playfun_error_google_7);
+                    ToastUtils.showLong(R.string.playcc_error_google_7);
                     break;
                 case 8:
-                    ToastUtils.showLong(R.string.playfun_error_google_8);
+                    ToastUtils.showLong(R.string.playcc_error_google_8);
                     break;
                 case 13:
-                    ToastUtils.showLong(R.string.playfun_error_google_13);
+                    ToastUtils.showLong(R.string.playcc_error_google_13);
                     break;
                 case 14:
-                    ToastUtils.showLong(R.string.playfun_error_google_14);
+                    ToastUtils.showLong(R.string.playcc_error_google_14);
                     break;
                 case 15:
-                    ToastUtils.showLong(R.string.playfun_error_google_15);
+                    ToastUtils.showLong(R.string.playcc_error_google_15);
                     break;
                 case 16:
-                    ToastUtils.showLong(R.string.playfun_error_google_16);
+                    ToastUtils.showLong(R.string.playcc_error_google_16);
                     break;
                 case 17:
-                    ToastUtils.showLong(R.string.playfun_error_google_17);
+                    ToastUtils.showLong(R.string.playcc_error_google_17);
                     break;
                 case 20:
-                    ToastUtils.showLong(R.string.playfun_error_google_20);
+                    ToastUtils.showLong(R.string.playcc_error_google_20);
                     break;
                 case 21:
-                    ToastUtils.showLong(R.string.playfun_error_google_21);
+                    ToastUtils.showLong(R.string.playcc_error_google_21);
                     break;
                 case 22:
-                    ToastUtils.showLong(R.string.playfun_error_google_22);
+                    ToastUtils.showLong(R.string.playcc_error_google_22);
                     break;
                 case 12500:
-                    ToastUtils.showLong(R.string.playfun_error_google_12500);
+                    ToastUtils.showLong(R.string.playcc_error_google_12500);
                     break;
                 default:
-                    ToastUtils.showLong(R.string.playfun_error_google);
+                    ToastUtils.showLong(R.string.playcc_error_google);
                     break;
             }
 //            Log.e("谷歌登录异常2",e.getLocalizedMessage());

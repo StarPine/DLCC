@@ -132,7 +132,7 @@ public class ChatMessageViewModel extends BaseViewModel<AppRepository> {
                     @Override
                     public void onError(RequestException e) {
                         if (e.getCode() == 11111) { //注销
-                            ToastCenterUtils.showShort(R.string.playfun_user_detail_user_disable3);
+                            ToastCenterUtils.showShort(R.string.playcc_user_detail_user_disable3);
                         } else {
                             super.onError(e);
                         }

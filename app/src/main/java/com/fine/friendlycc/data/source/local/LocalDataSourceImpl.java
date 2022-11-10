@@ -66,7 +66,7 @@ public class LocalDataSourceImpl implements LocalDataSource {
     private static final String KEY_CITY_CONFIG_ALL = "key_city_config_all";
     private static final String KEY_IS_FIRST = "is_first";
     private volatile static LocalDataSourceImpl INSTANCE = null;
-    private final String cryptKey = "playfun@2022";
+    private final String cryptKey = "playcc@2022";
     private final MMKV kv = MMKV.mmkvWithID("cache", MMKV.SINGLE_PROCESS_MODE, cryptKey);
 
     private LocalDataSourceImpl() {
@@ -127,7 +127,7 @@ public class LocalDataSourceImpl implements LocalDataSource {
     * @Desc TODO(读取本地消息记录IM)
     * @author 彭石林
     * @parame [eventId]
-    * @return com.dl.playfun.entity.LocalMessageIMEntity
+    * @return com.dl.playcc.entity.LocalMessageIMEntity
     * @Date 2021/10/25
     */
     public LocalMessageIMEntity readLocalMessageIM(String eventId) {

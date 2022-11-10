@@ -90,7 +90,7 @@ public class GoogleFCMMessagingService extends FirebaseMessagingService {
 //        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
 //                PendingIntent.FLAG_ONE_SHOT);
 
-        String channelId = getString(R.string.playfun_received_new_message);
+        String channelId = getString(R.string.playcc_received_new_message);
         Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder notificationBuilder =
                 new NotificationCompat.Builder(this, channelId)

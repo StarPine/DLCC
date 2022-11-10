@@ -73,7 +73,7 @@
                 android:layout_marginBottom="30dp"
                 android:background="@drawable/img_coinpusher_btn"
                 android:gravity="center"
-                android:text="@string/playfun_purchase_text"
+                android:text="@string/playcc_purchase_text"
                 android:textColor="#ff333333"
                 android:textSize="15sp"
                 android:textStyle="bold" />

@@ -24,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="@string/playfun_dialog_face_recognition_title"
+            android:text="@string/playcc_dialog_face_recognition_title"
             android:textColor="@color/gray_dark"
             android:textSize="@dimen/text_size_middle"
             android:textStyle="bold" />
@@ -37,7 +37,7 @@
             android:layout_marginBottom="17dp"
             android:gravity="center"
             android:lineSpacingExtra="3dp"
-            android:text="@string/playfun_dialog_face_recognition_desc"
+            android:text="@string/playcc_dialog_face_recognition_desc"
             android:textColor="@color/gray_middle"
             android:textSize="@dimen/text_size_mini" />
 
@@ -46,7 +46,7 @@
             style="@style/ButtonPrimary"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:text="@string/playfun_dialog_face_recognition_btn_first" />
+            android:text="@string/playcc_dialog_face_recognition_btn_first" />
 
         <Button
             android:id="@+id/btn_logout"
@@ -54,7 +54,7 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="17dp"
-            android:text="@string/playfun_dialog_face_recognition_btn_second" />
+            android:text="@string/playcc_dialog_face_recognition_btn_second" />
 
         <TextView
             android:id="@+id/tv_contact_service"
@@ -63,7 +63,7 @@
             android:layout_marginTop="12dp"
             android:layout_marginBottom="17dp"
             android:padding="5dp"
-            android:text="@string/playfun_dialog_face_recognition_contact_service"
+            android:text="@string/playcc_dialog_face_recognition_contact_service"
             android:textColor="@color/blue"
             android:textSize="@dimen/text_size_mini" />
     </LinearLayout>

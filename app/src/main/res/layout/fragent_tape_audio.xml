@@ -50,7 +50,7 @@
                 android:layout_marginEnd="38dp"
                 android:layout_marginTop="29dp"
                 android:includeFontPadding="false"
-                android:text="@string/playfun_mine_audio_text7"
+                android:text="@string/playcc_mine_audio_text7"
                 android:textColor="#FF333333"
                 android:textSize="24sp"
                 android:textStyle="bold" />
@@ -142,7 +142,7 @@
                 android:layout_marginStart="41dp"
                 android:layout_marginEnd="41dp"
                 android:includeFontPadding="false"
-                android:text="@string/playfun_mine_audio_text8"
+                android:text="@string/playcc_mine_audio_text8"
                 android:textColor="#ff4f4f4f"
                 android:textSize="13sp" />
         </RelativeLayout>
@@ -165,7 +165,7 @@
                 android:layout_below="@+id/audio_rest"
                 android:layout_marginStart="70dp"
                 android:layout_marginTop="41dp"
-                android:text="@string/playfun_mine_audio_text9"
+                android:text="@string/playcc_mine_audio_text9"
                 android:visibility="gone"
                 android:textColor="#ff4f4f4f"
                 android:textSize="13sp"
@@ -185,7 +185,7 @@
                 android:layout_alignTop="@+id/audio_rest_text"
                 android:layout_marginStart="56dp"
                 android:layout_toEndOf="@+id/audio_rest_text"
-                android:text="@string/playfun_mine_audio_text10"
+                android:text="@string/playcc_mine_audio_text10"
                 android:visibility="gone"
                 android:textColor="#ff4f4f4f"
                 android:textSize="13sp"
@@ -207,7 +207,7 @@
                 android:layout_marginStart="56dp"
                 android:layout_toEndOf="@+id/start_play_text"
                 android:visibility="gone"
-                android:text="@string/playfun_mine_audio_text11"
+                android:text="@string/playcc_mine_audio_text11"
                 android:textColor="#ff4f4f4f"
                 android:textSize="13sp"
                 />

@@ -23,7 +23,7 @@
                 android:layout_alignParentStart="true"
                 android:layout_centerInParent="true"
                 android:layout_marginStart="15dp"
-                android:text="@string/playfun_meagess_gift"
+                android:text="@string/playcc_meagess_gift"
                 android:textColor="@color/purple1"
                 android:textSize="@dimen/red_dot" />
 
@@ -34,7 +34,7 @@
                 android:layout_alignTop="@+id/tab_gift"
                 android:layout_marginStart="29dp"
                 android:layout_toEndOf="@+id/tab_gift"
-                android:text="@string/playfun_meagess_backpack"
+                android:text="@string/playcc_meagess_backpack"
                 android:textColor="@color/empty_list_hint"
                 android:textSize="@dimen/red_dot" />
 
@@ -71,7 +71,7 @@
                 android:ellipsize="end"
                 android:gravity="center"
                 android:maxLines="1"
-                android:text="@string/playfun_dialong_coin_rechaege_top_up"
+                android:text="@string/playcc_dialong_coin_rechaege_top_up"
                 android:textColor="@color/purple1"
                 android:textSize="@dimen/text_size_1067" />
 
@@ -134,7 +134,7 @@
                         android:layout_centerInParent="true"
                         android:layout_marginStart="16dp"
                         android:includeFontPadding="false"
-                        android:text="@string/playfun_gift_bag_number_hint"
+                        android:text="@string/playcc_gift_bag_number_hint"
                         android:textColor="#ff828282"
                         android:textSize="12sp" />
 
@@ -146,7 +146,7 @@
                         android:layout_marginStart="5dp"
                         android:layout_toEndOf="@+id/number_text"
                         android:includeFontPadding="false"
-                        android:text="@string/playfun_gift_bag_more_text"
+                        android:text="@string/playcc_gift_bag_more_text"
                         android:textColor="#ff828282"
                         android:textSize="12sp"
                         tools:text="1314"
@@ -170,7 +170,7 @@
                     android:layout_alignParentEnd="true"
                     android:layout_marginEnd="24dp"
                     android:background="@drawable/btn_circle_purple"
-                    android:text="@string/playfun_meagess_give_away"
+                    android:text="@string/playcc_meagess_give_away"
                     android:textColor="@color/white"
                     android:textSize="10sp" />
             </RelativeLayout>

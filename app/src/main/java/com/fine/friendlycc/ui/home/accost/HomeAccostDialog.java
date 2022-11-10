@@ -222,13 +222,13 @@ public class HomeAccostDialog extends BaseDialog {
             public void onClick(View v) {
                 if (submit) {
                     if (isCountdown) {
-                        ToastUtils.showShort(R.string.playfun_text_time_not_up);
+                        ToastUtils.showShort(R.string.playcc_text_time_not_up);
                         return;
                     } else {
                         submitAccostList();
                     }
                 } else {
-                    ToastUtils.showShort(R.string.playfun_text_run_out);
+                    ToastUtils.showShort(R.string.playcc_text_run_out);
                     return;
                 }
 
@@ -357,7 +357,7 @@ public class HomeAccostDialog extends BaseDialog {
                                 btn_submit.setImageResource(R.drawable.btn_accost_nomal);
                                 exp_time.setVisibility(View.VISIBLE);
                                 exp_time.setTextColor(ColorUtils.getColor(R.color.black));
-                                exp_time.setText(mContext.getString(R.string.playfun_text_accost_empty));
+                                exp_time.setText(mContext.getString(R.string.playcc_text_accost_empty));
                             }
                             $listData = accostEntity.getData();
                             if ($listData != null) {
@@ -366,7 +366,7 @@ public class HomeAccostDialog extends BaseDialog {
                                     AccostItemEntity itemEntity1 = $listData.get(0);
                                     loadImage(itemEntity1.getAvatar(), item_entity_img1);
                                     item_entity_name1.setText(itemEntity1.getNickname());
-                                    item_entity_text1.setText(String.format(StringUtils.getString(R.string.playfun_mine_age), itemEntity1.getAge()));
+                                    item_entity_text1.setText(String.format(StringUtils.getString(R.string.playcc_mine_age), itemEntity1.getAge()));
                                     if (itemEntity1.getCertification() == 1) {
                                         item_tag_img1.setVisibility(View.VISIBLE);
                                         item_tag_img1.setImageResource(R.drawable.ic_real_people);
@@ -382,7 +382,7 @@ public class HomeAccostDialog extends BaseDialog {
                                     AccostItemEntity itemEntity2 = $listData.get(1);
                                     loadImage(itemEntity2.getAvatar(), item_entity_img2);
                                     item_entity_name2.setText(itemEntity2.getNickname());
-                                    item_entity_text2.setText(String.format(StringUtils.getString(R.string.playfun_mine_age), itemEntity2.getAge()) );
+                                    item_entity_text2.setText(String.format(StringUtils.getString(R.string.playcc_mine_age), itemEntity2.getAge()) );
                                     if (itemEntity2.getCertification() == 1) {
                                         item_tag_img2.setVisibility(View.VISIBLE);
                                         item_tag_img2.setImageResource(R.drawable.ic_real_people);
@@ -397,7 +397,7 @@ public class HomeAccostDialog extends BaseDialog {
                                     AccostItemEntity itemEntity3 = $listData.get(2);
                                     loadImage(itemEntity3.getAvatar(), item_entity_img3);
                                     item_entity_name3.setText(itemEntity3.getNickname());
-                                    item_entity_text3.setText(String.format(StringUtils.getString(R.string.playfun_mine_age), itemEntity3.getAge()));
+                                    item_entity_text3.setText(String.format(StringUtils.getString(R.string.playcc_mine_age), itemEntity3.getAge()));
                                     if (itemEntity3.getCertification() == 1) {
                                         item_tag_img3.setVisibility(View.VISIBLE);
                                         item_tag_img3.setImageResource(R.drawable.ic_real_people);
@@ -412,7 +412,7 @@ public class HomeAccostDialog extends BaseDialog {
                                     AccostItemEntity itemEntity4 = $listData.get(3);
                                     loadImage(itemEntity4.getAvatar(), item_entity_img4);
                                     item_entity_name4.setText(itemEntity4.getNickname());
-                                    item_entity_text4.setText(String.format(StringUtils.getString(R.string.playfun_mine_age), itemEntity4.getAge()));
+                                    item_entity_text4.setText(String.format(StringUtils.getString(R.string.playcc_mine_age), itemEntity4.getAge()));
 
                                     if (itemEntity4.getCertification() == 1) {
                                         item_tag_img4.setVisibility(View.VISIBLE);
@@ -429,7 +429,7 @@ public class HomeAccostDialog extends BaseDialog {
                                     AccostItemEntity itemEntity5 = $listData.get(4);
                                     loadImage(itemEntity5.getAvatar(), item_entity_img5);
                                     item_entity_name5.setText(itemEntity5.getNickname());
-                                    item_entity_text5.setText(String.format(StringUtils.getString(R.string.playfun_mine_age), itemEntity5.getAge()));
+                                    item_entity_text5.setText(String.format(StringUtils.getString(R.string.playcc_mine_age), itemEntity5.getAge()));
                                     if (itemEntity5.getCertification() == 1) {
                                         item_tag_img5.setVisibility(View.VISIBLE);
                                         item_tag_img5.setImageResource(R.drawable.ic_real_people);
@@ -445,7 +445,7 @@ public class HomeAccostDialog extends BaseDialog {
                                     AccostItemEntity itemEntity6 = $listData.get(5);
                                     loadImage(itemEntity6.getAvatar(), item_entity_img6);
                                     item_entity_name6.setText(itemEntity6.getNickname());
-                                    item_entity_text6.setText(String.format(StringUtils.getString(R.string.playfun_mine_age), itemEntity6.getAge()));
+                                    item_entity_text6.setText(String.format(StringUtils.getString(R.string.playcc_mine_age), itemEntity6.getAge()));
                                     if (itemEntity6.getCertification() == 1) {
                                         item_tag_img6.setVisibility(View.VISIBLE);
                                         item_tag_img6.setImageResource(R.drawable.ic_real_people);
@@ -465,7 +465,7 @@ public class HomeAccostDialog extends BaseDialog {
                                 btn_submit.setImageResource(R.drawable.btn_accost_nomal);
                                 exp_time.setVisibility(View.VISIBLE);
                                 exp_time.setTextColor(ColorUtils.getColor(R.color.black));
-                                exp_time.setText(mContext.getString(R.string.playfun_text_accost_empty2));
+                                exp_time.setText(mContext.getString(R.string.playcc_text_accost_empty2));
                             }
                         }
                     }
@@ -531,7 +531,7 @@ public class HomeAccostDialog extends BaseDialog {
                 dismiss();
             }
         } else {
-            ToastUtils.showShort(R.string.playfun_text_accost_error2);
+            ToastUtils.showShort(R.string.playcc_text_accost_error2);
         }
 
     }
@@ -647,7 +647,7 @@ public class HomeAccostDialog extends BaseDialog {
                     public void onSuccess(BaseResponse baseResponse) {
                         AppContext.instance().logEvent(AppsFlyerEvent.accost_chatup);
                         lottieAnimationView();
-                        ToastUtils.showShort(R.string.playfun_text_accost_success);
+                        ToastUtils.showShort(R.string.playcc_text_accost_success);
                         getAccountList(false);
                     }
 

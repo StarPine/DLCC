@@ -461,7 +461,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_centerHorizontal="true"
                                     android:layout_marginTop="35dp"
-                                    android:text="@string/playfun_daily_task"
+                                    android:text="@string/playcc_daily_task"
                                     android:textColor="@color/coffee2"
                                     android:textSize="@dimen/text_size_big_22"
                                     android:textStyle="bold" />

@@ -35,7 +35,7 @@
                     android:drawablePadding="10.48dp"
                     android:gravity="center"
                     android:padding="10dp"
-                    android:text="@string/playfun_fragment_issuance_program_title"
+                    android:text="@string/playcc_fragment_issuance_program_title"
                     android:textColor="@color/gray_dark"
                     android:textSize="@dimen/text_size_middle" />
 
@@ -55,7 +55,7 @@
                     android:drawablePadding="10.48dp"
                     android:gravity="center"
                     android:padding="10dp"
-                    android:text="@string/playfun_issuance_tends"
+                    android:text="@string/playcc_issuance_tends"
                     android:textColor="@color/gray_dark"
                     android:textSize="@dimen/text_size_middle" />
             </LinearLayout>

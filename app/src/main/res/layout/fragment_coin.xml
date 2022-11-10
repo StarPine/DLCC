@@ -46,7 +46,7 @@
                     android:id="@+id/basic_toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/action_bar_height"
-                    app:toolbar_title="@string/playfun_coin_electronic_wallet" />
+                    app:toolbar_title="@string/playcc_coin_electronic_wallet" />
 
                 <ImageView
                     android:layout_width="20dp"
@@ -97,7 +97,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="39dp"
                                 android:layout_marginTop="17dp"
-                                android:text="@{String.format(@string/playfun_x_count, viewModel.coinWalletEntity.totalCoin)}"
+                                android:text="@{String.format(@string/playcc_x_count, viewModel.coinWalletEntity.totalCoin)}"
                                 android:textColor="@color/white"
                                 android:textSize="35sp" />
 
@@ -106,7 +106,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="39dp"
                                 android:layout_marginTop="63dp"
-                                android:text="@string/playfun_coin_total_hint"
+                                android:text="@string/playcc_coin_total_hint"
                                 android:textColor="@color/white"
                                 android:textSize="15sp" />
                         </RelativeLayout>
@@ -132,7 +132,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="59dp"
                             android:layout_marginTop="167dp"
-                            android:text="@string/playfun_our_coin_hint1"
+                            android:text="@string/playcc_our_coin_hint1"
                             android:textColor="#90919F"
                             android:textSize="12sp"
                             android:visibility="gone" />
@@ -150,7 +150,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="59dp"
                             android:layout_marginTop="166dp"
-                            android:text="@string/playfun_our_coin_hint2"
+                            android:text="@string/playcc_our_coin_hint2"
                             android:textColor="#90919F"
                             android:textSize="12sp" />
 
@@ -339,7 +339,7 @@
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="29dp"
                         android:gravity="center"
-                        android:text="@string/playfun_coin_fragment_empty"
+                        android:text="@string/playcc_coin_fragment_empty"
                         android:textColor="@color/task_check_yin"
                         android:textSize="@dimen/text_size_middle" />
 

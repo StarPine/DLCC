@@ -41,7 +41,7 @@ public class CoinRedPackageDetailViewModel extends BaseViewModel<AppRepository> 
     public BindingCommand linkServiceOnClickCommand = new BindingCommand(new BindingAction() {
         @Override
         public void call() {
-            ChatUtils.chatUser(AppConfig.CHAT_SERVICE_USER_ID_SEND,0, StringUtils.getString(R.string.playfun_chat_service_name), CoinRedPackageDetailViewModel.this);
+            ChatUtils.chatUser(AppConfig.CHAT_SERVICE_USER_ID_SEND,0, StringUtils.getString(R.string.playcc_chat_service_name), CoinRedPackageDetailViewModel.this);
         }
     });
 
@@ -68,7 +68,7 @@ public class CoinRedPackageDetailViewModel extends BaseViewModel<AppRepository> 
                         model.saveChatCustomMessageStatus(msgId.get(), 2);
                         //C2CChatPresenter..updateMessageInfoStatusByMessageId(msgId.get());
                         redpackageDetail.get().setStatus(1);
-                        statusText.set(StringUtils.getString(R.string.playfun_received));
+                        statusText.set(StringUtils.getString(R.string.playcc_received));
                         refreshTipText();
                     }
 
@@ -91,20 +91,20 @@ public class CoinRedPackageDetailViewModel extends BaseViewModel<AppRepository> 
                         redpackageDetail.set(response.getData());
                         if (response.getData().getStatus() == 0) {
                             if (isSender.get()) {
-                                statusText.set(StringUtils.getString(R.string.playfun_to_be_received));
+                                statusText.set(StringUtils.getString(R.string.playcc_to_be_received));
                             } else {
-                                statusText.set(StringUtils.getString(R.string.playfun_chat_get_red_package_wait_rec));
+                                statusText.set(StringUtils.getString(R.string.playcc_chat_get_red_package_wait_rec));
                             }
                         } else if (response.getData().getStatus() == 1) {
                             model.saveChatCustomMessageStatus(msgId.get(), 2);
                             if (isSender.get()) {
-                                statusText.set(StringUtils.getString(R.string.playfun_her_received));
+                                statusText.set(StringUtils.getString(R.string.playcc_her_received));
                             } else {
-                                statusText.set(StringUtils.getString(R.string.playfun_received));
+                                statusText.set(StringUtils.getString(R.string.playcc_received));
                             }
                         } else if (response.getData().getStatus() == 2) {
                             model.saveChatCustomMessageStatus(msgId.get(), 3);
-                            statusText.set(StringUtils.getString(R.string.playfun_returned));
+                            statusText.set(StringUtils.getString(R.string.playcc_returned));
                         }
                         refreshTipText();
                         //C2CChatManagerKit.getInstance().updateMessageInfoStatusByMessageId(msgId.get());
@@ -116,15 +116,15 @@ public class CoinRedPackageDetailViewModel extends BaseViewModel<AppRepository> 
     private void refreshTipText() {
         if (redpackageDetail.get().getStatus() == 1) {
             if (isSender.get()) {
-                tipText.set(StringUtils.getString(R.string.playfun_you_cheated_money_recover_loss_for_you));
+                tipText.set(StringUtils.getString(R.string.playcc_you_cheated_money_recover_loss_for_you));
             } else {
-                tipText.set(StringUtils.getString(R.string.playfun_redpackage_detail_tip_receiver));
+                tipText.set(StringUtils.getString(R.string.playcc_redpackage_detail_tip_receiver));
             }
         } else {
             if (isSender.get()) {
-                tipText.set(StringUtils.getString(R.string.playfun_redpackage_detail_tip_sender));
+                tipText.set(StringUtils.getString(R.string.playcc_redpackage_detail_tip_sender));
             } else {
-                tipText.set(StringUtils.getString(R.string.playfun_redpackage_detail_tip_receiver));
+                tipText.set(StringUtils.getString(R.string.playcc_redpackage_detail_tip_receiver));
             }
         }
     }

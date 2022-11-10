@@ -43,7 +43,7 @@
                 android:background="@drawable/radio_filter_item_background"
                 android:gravity="center"
                 android:padding="16dp"
-                android:text="@string/playfun_cancel"
+                android:text="@string/playcc_cancel"
                 android:textColor="@color/gray_middle"
                 android:textSize="@dimen/text_size_middle"
                 android:textStyle="bold" />

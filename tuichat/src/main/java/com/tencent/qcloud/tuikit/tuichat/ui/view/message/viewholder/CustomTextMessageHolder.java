@@ -33,7 +33,7 @@ import java.util.Map;
 
 /**
  * 修改备注：自定义json文本信息类型
- * @Name： PlayFun_Google
+ * @Name： PlayCC
  * @Description：
  * @Author： liaosf
  * @Date： 2022/7/4 11:13
@@ -255,13 +255,13 @@ public class CustomTextMessageHolder extends TextMessageHolder {
             setCallingMsgIconStyle(msg, callType);
             if (msg.isSelf()) {
                 if (status == 2){
-                    msgBodyText.setText(appContext.getString(R.string.playfun_in_game));
+                    msgBodyText.setText(appContext.getString(R.string.playcc_in_game));
                 }else {
                     msgBodyText.setText(appContext.getString(R.string.custom_message_other_busy));
                 }
             } else {
                 if (status == 2){
-                    msgBodyText.setText(appContext.getString(R.string.playfun_in_game_missed));
+                    msgBodyText.setText(appContext.getString(R.string.playcc_in_game_missed));
                 }else {
                     msgBodyText.setText(appContext.getString(R.string.custom_message_busy_missed));
                 }

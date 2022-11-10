@@ -626,7 +626,7 @@ public class AppContext extends Application {
     * @Desc TODO(获取阿里云mqtt实列)
     * @author 彭石林
     * @parame []
-    * @return com.dl.playfun.app.AliYunMqttClientLifecycle
+    * @return com.dl.playcc.app.AliYunMqttClientLifecycle
     * @Date 2022/7/5
     */
     public AliYunMqttClientLifecycle getBqttClientLifecycle() {

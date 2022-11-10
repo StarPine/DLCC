@@ -38,28 +38,28 @@ public class TimeUtils {
                 long now = System.currentTimeMillis();
                 long span = now - millis;
                 if (span < 1000) {
-                    return StringUtils.getString(R.string.playfun_just);
+                    return StringUtils.getString(R.string.playcc_just);
                 } else if (span < MIN) {
-                    return String.format(Locale.getDefault(), StringUtils.getString(R.string.playfun_seconds_ago), span / SEC);
+                    return String.format(Locale.getDefault(), StringUtils.getString(R.string.playcc_seconds_ago), span / SEC);
                 } else if (span < HOUR) {
-                    return String.format(Locale.getDefault(), StringUtils.getString(R.string.playfun_minutes_ago), span / MIN);
+                    return String.format(Locale.getDefault(), StringUtils.getString(R.string.playcc_minutes_ago), span / MIN);
                 } else if (span < DAY) {
-                    return String.format(Locale.getDefault(), StringUtils.getString(R.string.playfun_hours_ago), span / HOUR);
+                    return String.format(Locale.getDefault(), StringUtils.getString(R.string.playcc_hours_ago), span / HOUR);
                 } else if (span < WEEK) {
-                    return String.format(Locale.getDefault(), StringUtils.getString(R.string.playfun_daily_ago), span / DAY);
+                    return String.format(Locale.getDefault(), StringUtils.getString(R.string.playcc_daily_ago), span / DAY);
                 } else if (span < MONTH) {
-                    return String.format(Locale.getDefault(), StringUtils.getString(R.string.playfun_weeks_ago), span / WEEK);
+                    return String.format(Locale.getDefault(), StringUtils.getString(R.string.playcc_weeks_ago), span / WEEK);
                 } else if (span < YEAR) {
-                    return String.format(Locale.getDefault(), StringUtils.getString(R.string.playfun_month_ago), span / MONTH);
+                    return String.format(Locale.getDefault(), StringUtils.getString(R.string.playcc_month_ago), span / MONTH);
                 } else {
-                    return String.format(Locale.getDefault(), StringUtils.getString(R.string.playfun_year_ago), span / YEAR);
+                    return String.format(Locale.getDefault(), StringUtils.getString(R.string.playcc_year_ago), span / YEAR);
                 }
 
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
-        return StringUtils.getString(R.string.playfun_unknown);
+        return StringUtils.getString(R.string.playcc_unknown);
     }
 
     /**
@@ -287,7 +287,7 @@ public class TimeUtils {
     }
 
     public static SimpleDateFormat getSimpleDateFormat() {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy" + StringUtils.getString(R.string.playfun_year) + "M" + AppContext.instance().getResources().getString(R.string.playfun_month) + "d" + AppContext.instance().getResources().getString(R.string.playfun_daily));
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy" + StringUtils.getString(R.string.playcc_year) + "M" + AppContext.instance().getResources().getString(R.string.playcc_month) + "d" + AppContext.instance().getResources().getString(R.string.playcc_daily));
         return sdf;
     }
 

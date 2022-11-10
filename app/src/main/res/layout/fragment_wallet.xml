@@ -35,7 +35,7 @@
                 android:id="@+id/basic_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/action_bar_height"
-                app:toolbar_title="@string/playfun_coin_electronic_wallet" />
+                app:toolbar_title="@string/playcc_coin_electronic_wallet" />
 
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -66,7 +66,7 @@
                     android:layout_below="@+id/diamond_num"
                     android:layout_alignStart="@+id/diamond_num"
                     android:elevation="11dp"
-                    android:text="@string/playfun_tab_wallet_2"
+                    android:text="@string/playcc_tab_wallet_2"
                     android:textColor="@color/white"
                     android:textSize="15sp" />
 
@@ -83,7 +83,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_marginTop="9dp"
                     android:layout_marginRight="29dp"
-                    android:text="@string/playfun_detail_link"
+                    android:text="@string/playcc_detail_link"
                     android:textColor="@color/white"
                     android:textSize="14sp"
                     binding:onClickCommand="@{viewModel.clickCoinMoneyView}" />
@@ -96,7 +96,7 @@
                     android:layout_marginTop="36dp"
                     android:layout_marginRight="29dp"
                     android:background="@drawable/btn_diamond_exchange_bg"
-                    android:text="@string/playfun_txt_diamond_exchange"
+                    android:text="@string/playcc_txt_diamond_exchange"
                     android:textColor="#785AFF"
                     android:textSize="12sp" />
 
@@ -141,7 +141,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_marginTop="9dp"
                     android:layout_marginRight="29dp"
-                    android:text="@string/playfun_detail_link"
+                    android:text="@string/playcc_detail_link"
                     android:textColor="@color/white"
                     android:textSize="14sp"
                     binding:onClickCommand="@{viewModel.clickGirlMoneyView}" />
@@ -153,7 +153,7 @@
                     android:layout_marginTop="36dp"
                     android:layout_marginRight="29dp"
                     android:background="@drawable/btn_crystal_exchange_bg"
-                    android:text="@string/playfun_txt_exchange_apply_game_coin"
+                    android:text="@string/playcc_txt_exchange_apply_game_coin"
                     android:textColor="@color/pseekbar_process"
                     android:textSize="12sp"
                     binding:onClickCommand="@{viewModel.withdrawonClickCommand}" />

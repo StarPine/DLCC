@@ -64,7 +64,7 @@
                 android:id="@+id/img_content"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/img_playfun_fuzzy_loading"
+                android:src="@drawable/img_fuzzy_loading"
                 android:scaleType="centerInside" />
 
             <com.luck.picture.lib.widget.longimage.SubsamplingScaleImageView
@@ -100,7 +100,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="@string/playfun_mine_burn"
+                    android:text="@string/playcc_mine_burn"
                     android:textColor="@color/pseekbar_process"
                     android:textSize="13sp" />
 
@@ -110,13 +110,13 @@
                     android:layout_width="154dp"
                     android:layout_height="43dp"
                     android:gravity="center"
-                    android:text="@string/playfun_click_check"
+                    android:text="@string/playcc_click_check"
                     android:textColor="@color/white"
                     android:textSize="13sp"
                     binding:onClickCommand="@{photoViewModel.clickUnLock}"
                     binding:drawable_cornersRadius="@{22}"
-                    binding:drawable_gradient_endColor="@{@color/playfun_shape_radius_end_color}"
-                    binding:drawable_gradient_startColor="@{@color/playfun_shape_radius_start_color}" />
+                    binding:drawable_gradient_endColor="@{@color/playcc_shape_radius_end_color}"
+                    binding:drawable_gradient_startColor="@{@color/playcc_shape_radius_start_color}" />
             </LinearLayout>
             <LinearLayout
                 android:visibility="@{photoViewModel.isReadLook ? View.VISIBLE : View.GONE}"
@@ -137,7 +137,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/playfun_photo_burned"
+                    android:text="@string/playcc_photo_burned"
                     android:textColor="@color/white"
                     android:textSize="13sp"
                     />
@@ -179,7 +179,7 @@
                         android:layout_gravity="center"
                         android:layout_marginStart="10dp"
                         android:includeFontPadding="false"
-                        android:text="@string/playfun_text_dislike"
+                        android:text="@string/playcc_text_dislike"
                         android:textColor="#ffffffff"
                         android:textSize="15sp" />
                 </LinearLayout>
@@ -193,8 +193,8 @@
                     android:layout_marginStart="28dp"
                     android:orientation="horizontal"
                     binding:drawable_cornersRadius="@{22}"
-                    binding:drawable_gradient_endColor="@{@color/playfun_shape_radius_end_color}"
-                    binding:drawable_gradient_startColor="@{@color/playfun_shape_radius_start_color}">
+                    binding:drawable_gradient_endColor="@{@color/playcc_shape_radius_end_color}"
+                    binding:drawable_gradient_startColor="@{@color/playcc_shape_radius_start_color}">
 
                     <androidx.appcompat.widget.AppCompatImageView
                         android:layout_width="28dp"
@@ -208,7 +208,7 @@
                         android:layout_gravity="center"
                         android:layout_marginStart="10dp"
                         android:includeFontPadding="false"
-                        android:text="@string/playfun_text_like"
+                        android:text="@string/playcc_text_like"
                         android:textColor="#ffffffff"
                         android:textSize="15sp" />
                 </LinearLayout>

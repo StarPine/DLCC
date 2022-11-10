@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="120dp"
-            android:text="@string/playfun_vip_ratain_title"
+            android:text="@string/playcc_vip_ratain_title"
             android:textColor="@color/coffee_11d"
             android:textSize="16sp"
             android:textStyle="bold" />
@@ -47,7 +47,7 @@
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="12dp"
             android:background="@drawable/button_background_bug"
-            android:text="@string/playfun_continue_to_now"
+            android:text="@string/playcc_continue_to_now"
             android:textColor="@color/yellow_dad" />
 
         <TextView
@@ -57,7 +57,7 @@
             android:layout_below="@+id/btn_buy"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="15dp"
-            android:text="@string/playfun_vip_retain_give_up"
+            android:text="@string/playcc_vip_retain_give_up"
             android:textColor="@color/yellow_a44"
             android:textSize="16sp" />
 

@@ -255,7 +255,7 @@ public class TaskCenterFragment extends BaseToolbarFragment<TaskCenterFragmentBi
                     TraceDialog.getInstance(TaskCenterFragment.this.getContext())
                             .setTitle(getString(R.string.task_fragment_bonus_dialog_5))
                             .setContent(getString(R.string.task_fragment_bonus_dialog_6))
-                            .setConfirmText(getString(R.string.playfun_mine_trace_delike_confirm))
+                            .setConfirmText(getString(R.string.playcc_mine_trace_delike_confirm))
                             .setConfirmOnlick(new TraceDialog.ConfirmOnclick() {
                                 @Override
                                 public void confirm(Dialog dialog) {
@@ -289,7 +289,7 @@ public class TaskCenterFragment extends BaseToolbarFragment<TaskCenterFragmentBi
                     TraceDialog.getInstance(TaskCenterFragment.this.getContext())
                             .setTitle(title)
                             .setCannelText(getString(R.string.cancel))
-                            .setConfirmText(getString(R.string.playfun_mine_trace_delike_confirm))
+                            .setConfirmText(getString(R.string.playcc_mine_trace_delike_confirm))
                             .setCannelOnclick(new TraceDialog.CannelOnclick() {
                                 @Override
                                 public void cannel(Dialog dialog) {
@@ -308,7 +308,7 @@ public class TaskCenterFragment extends BaseToolbarFragment<TaskCenterFragmentBi
                     TraceDialog.getInstance(TaskCenterFragment.this.getContext())
                             .setTitle(getString(R.string.task_fragment_bonus_dialog_5))
                             .setContent(getString(R.string.task_fragment_bonus_dialog_6))
-                            .setConfirmText(getString(R.string.playfun_mine_trace_delike_confirm))
+                            .setConfirmText(getString(R.string.playcc_mine_trace_delike_confirm))
                             .setConfirmOnlick(new TraceDialog.ConfirmOnclick() {
                                 @Override
                                 public void confirm(Dialog dialog) {
@@ -435,7 +435,7 @@ public class TaskCenterFragment extends BaseToolbarFragment<TaskCenterFragmentBi
                 binding.day1Img.setImageResource(R.drawable.dialog_sign_gold_coins);
                 binding.day1Img.setVisibility(View.VISIBLE);
                 binding.day1Fen.setTextSize(defaultSize);
-                binding.day1Fen.setText(String.format(StringUtils.getString(R.string.playfun_coin_earnings_money_add), maleConfig1.getValue()));
+                binding.day1Fen.setText(String.format(StringUtils.getString(R.string.playcc_coin_earnings_money_add), maleConfig1.getValue()));
             } else {
                 binding.day1Fen.setTextSize(sizeCard);
                 binding.day1Fen.setTypeface(Typeface.DEFAULT);
@@ -460,7 +460,7 @@ public class TaskCenterFragment extends BaseToolbarFragment<TaskCenterFragmentBi
                 binding.day2Img.setVisibility(View.VISIBLE);
                 binding.day2Img.setImageResource(R.drawable.dialog_sign_gold_coins);
                 binding.day2Fen.setTextSize(defaultSize);
-                binding.day2Fen.setText(String.format(StringUtils.getString(R.string.playfun_coin_earnings_money_add), maleConfig2.getValue()));
+                binding.day2Fen.setText(String.format(StringUtils.getString(R.string.playcc_coin_earnings_money_add), maleConfig2.getValue()));
             } else {
                 binding.day2Fen.setTextSize(sizeCard);
                 binding.day2Fen.setTypeface(Typeface.DEFAULT);
@@ -486,7 +486,7 @@ public class TaskCenterFragment extends BaseToolbarFragment<TaskCenterFragmentBi
                 binding.day3Img.setVisibility(View.VISIBLE);
                 binding.day3Img.setImageResource(R.drawable.dialog_sign_gold_coins);
                 binding.day3Fen.setTextSize(defaultSize);
-                binding.day3Fen.setText(String.format(StringUtils.getString(R.string.playfun_coin_earnings_money_add), maleConfig3.getValue()));
+                binding.day3Fen.setText(String.format(StringUtils.getString(R.string.playcc_coin_earnings_money_add), maleConfig3.getValue()));
             } else {
                 binding.day3Fen.setTypeface(Typeface.DEFAULT);
                 binding.day3Fen.setTextSize(sizeCard);
@@ -512,7 +512,7 @@ public class TaskCenterFragment extends BaseToolbarFragment<TaskCenterFragmentBi
                 binding.day4Img.setVisibility(View.VISIBLE);
                 binding.day4Img.setImageResource(R.drawable.dialog_sign_gold_coins);
                 binding.day4Fen.setTextSize(defaultSize);
-                binding.day4Fen.setText(String.format(StringUtils.getString(R.string.playfun_coin_earnings_money_add), maleConfig4.getValue()));
+                binding.day4Fen.setText(String.format(StringUtils.getString(R.string.playcc_coin_earnings_money_add), maleConfig4.getValue()));
             } else {
                 binding.day4Fen.setTypeface(Typeface.DEFAULT);
                 binding.day4Fen.setTextSize(sizeCard);
@@ -538,7 +538,7 @@ public class TaskCenterFragment extends BaseToolbarFragment<TaskCenterFragmentBi
                 binding.day5Img.setVisibility(View.VISIBLE);
                 binding.day5Img.setImageResource(R.drawable.dialog_sign_gold_coins);
                 binding.day5Fen.setTextSize(defaultSize);
-                binding.day5Fen.setText(String.format(StringUtils.getString(R.string.playfun_coin_earnings_money_add), maleConfig5.getValue()));
+                binding.day5Fen.setText(String.format(StringUtils.getString(R.string.playcc_coin_earnings_money_add), maleConfig5.getValue()));
             } else {
                 binding.day5Fen.setTypeface(Typeface.DEFAULT);
                 binding.day5Fen.setTextSize(sizeCard);
@@ -563,7 +563,7 @@ public class TaskCenterFragment extends BaseToolbarFragment<TaskCenterFragmentBi
                 binding.day6Img.setVisibility(View.VISIBLE);
                 binding.day6Img.setImageResource(R.drawable.dialog_sign_gold_coins);
                 binding.day6Fen.setTextSize(defaultSize);
-                binding.day6Fen.setText(String.format(StringUtils.getString(R.string.playfun_coin_earnings_money_add), maleConfig6.getValue()));
+                binding.day6Fen.setText(String.format(StringUtils.getString(R.string.playcc_coin_earnings_money_add), maleConfig6.getValue()));
             } else {
                 binding.day6Fen.setTypeface(Typeface.DEFAULT);
                 binding.day6Fen.setTop(3);
@@ -593,7 +593,7 @@ public class TaskCenterFragment extends BaseToolbarFragment<TaskCenterFragmentBi
             if (day_ed >= 7) {
                 binding.day7Back.setBackground(TaskCenterFragment.this.getResources().getDrawable(R.drawable.task_sign_male_day7_ed));
                 binding.day7Fen.setTextColor(TaskCenterFragment.this.getResources().getColor(R.color.colorPrimaryDark));
-                binding.day7Fen.setText(String.format(StringUtils.getString(R.string.playfun_coin_earnings_money_add), maleConfig7.getValue()));
+                binding.day7Fen.setText(String.format(StringUtils.getString(R.string.playcc_coin_earnings_money_add), maleConfig7.getValue()));
                 binding.day7Fen2.setVisibility(View.GONE);
                 binding.day7Fen.setTextSize(size);
             } else {
@@ -603,13 +603,13 @@ public class TaskCenterFragment extends BaseToolbarFragment<TaskCenterFragmentBi
             }
         } else {//女生
             binding.day7Back.setBackground(TaskCenterFragment.this.getResources().getDrawable(R.drawable.task_sign_girl_day7_no));
-            binding.day1Fen.setText(String.format(StringUtils.getString(R.string.playfun_coin_earnings_money_add), ejectEntity.getFemaleConfig().get(0)));
-            binding.day2Fen.setText(String.format(StringUtils.getString(R.string.playfun_coin_earnings_money_add), ejectEntity.getFemaleConfig().get(1)));
-            binding.day3Fen.setText(String.format(StringUtils.getString(R.string.playfun_coin_earnings_money_add), ejectEntity.getFemaleConfig().get(2)));
-            binding.day4Fen.setText(String.format(StringUtils.getString(R.string.playfun_coin_earnings_money_add), ejectEntity.getFemaleConfig().get(3)));
-            binding.day5Fen.setText(String.format(StringUtils.getString(R.string.playfun_coin_earnings_money_add), ejectEntity.getFemaleConfig().get(4)));
-            binding.day6Fen.setText(String.format(StringUtils.getString(R.string.playfun_coin_earnings_money_add), ejectEntity.getFemaleConfig().get(5)));
-            binding.day7Fen.setText(String.format(StringUtils.getString(R.string.playfun_coin_earnings_money_add), ejectEntity.getFemaleConfig().get(6)));
+            binding.day1Fen.setText(String.format(StringUtils.getString(R.string.playcc_coin_earnings_money_add), ejectEntity.getFemaleConfig().get(0)));
+            binding.day2Fen.setText(String.format(StringUtils.getString(R.string.playcc_coin_earnings_money_add), ejectEntity.getFemaleConfig().get(1)));
+            binding.day3Fen.setText(String.format(StringUtils.getString(R.string.playcc_coin_earnings_money_add), ejectEntity.getFemaleConfig().get(2)));
+            binding.day4Fen.setText(String.format(StringUtils.getString(R.string.playcc_coin_earnings_money_add), ejectEntity.getFemaleConfig().get(3)));
+            binding.day5Fen.setText(String.format(StringUtils.getString(R.string.playcc_coin_earnings_money_add), ejectEntity.getFemaleConfig().get(4)));
+            binding.day6Fen.setText(String.format(StringUtils.getString(R.string.playcc_coin_earnings_money_add), ejectEntity.getFemaleConfig().get(5)));
+            binding.day7Fen.setText(String.format(StringUtils.getString(R.string.playcc_coin_earnings_money_add), ejectEntity.getFemaleConfig().get(6)));
             if (day_ed == 0) {
                 binding.day1Img.setVisibility(View.VISIBLE);
                 binding.day2Img.setVisibility(View.VISIBLE);
@@ -757,7 +757,7 @@ public class TaskCenterFragment extends BaseToolbarFragment<TaskCenterFragmentBi
                 binding.day7Back.setBackground(TaskCenterFragment.this.getResources().getDrawable(R.drawable.task_sign_girl_day7_ed));
             }else {
                 binding.day7Back.setBackground(TaskCenterFragment.this.getResources().getDrawable(R.drawable.task_sign_male_day7_ed));
-                binding.day7Fen.setText(String.format(StringUtils.getString(R.string.playfun_coin_earnings_money_add), maleConfig7.getValue()));
+                binding.day7Fen.setText(String.format(StringUtils.getString(R.string.playcc_coin_earnings_money_add), maleConfig7.getValue()));
 
             }
 

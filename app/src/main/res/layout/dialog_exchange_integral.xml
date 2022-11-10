@@ -42,7 +42,7 @@
                     android:layout_marginStart="24dp"
                     android:layout_marginTop="9dp"
                     android:includeFontPadding="false"
-                    android:text="@string/playfun_points_balance"
+                    android:text="@string/playcc_points_balance"
                     android:textColor="#ff90919f"
                     android:textSize="11sp"
                     />
@@ -70,7 +70,7 @@
                     android:layout_marginStart="171dp"
                     android:layout_marginTop="9dp"
                     android:includeFontPadding="false"
-                    android:text="@string/playfun_coin_balance"
+                    android:text="@string/playcc_coin_balance"
                     android:textColor="#ff90919f"
                     android:textSize="11sp"
                     />

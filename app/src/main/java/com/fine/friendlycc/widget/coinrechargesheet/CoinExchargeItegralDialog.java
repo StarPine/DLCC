@@ -186,7 +186,7 @@ public class CoinExchargeItegralDialog extends BaseDialog implements View.OnClic
                 .subscribe(new BaseObserver<BaseDataResponse<CoinWalletEntity>>() {
                     @Override
                     public void onSuccess(BaseDataResponse<CoinWalletEntity> response) {
-                        tvBalance.setText(String.format(mActivity.getResources().getString(R.string.playfun_x_coin), response.getData().getTotalCoin()));
+                        tvBalance.setText(String.format(mActivity.getResources().getString(R.string.playcc_x_coin), response.getData().getTotalCoin()));
                     }
 
                     @Override
@@ -263,7 +263,7 @@ public class CoinExchargeItegralDialog extends BaseDialog implements View.OnClic
                             coinExchargeIntegralAdapterListener.onPaySuccess(CoinExchargeItegralDialog.this, sel_goodsEntity);
                         } else {
                             CoinExchargeItegralDialog.this.dismiss();
-                            ToastUtils.showShort(R.string.playfun_pay_success);
+                            ToastUtils.showShort(R.string.playcc_pay_success);
                             loadBalance();
                             dismiss();
                         }

@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 /**
  * 修改备注：专属搭讪信息
- * @Name： PlayFun_Google
+ * @Name： PlayCC
  * @Description：
  * @Author： liaosf
  * @Date： 2022/8/12 11:08

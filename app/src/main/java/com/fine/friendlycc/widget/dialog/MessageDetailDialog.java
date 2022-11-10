@@ -88,7 +88,7 @@ public class MessageDetailDialog {
                 if(finalEndDateTimestamp - currentTimeMillis > 0){
                     Date currentData = new Date();
                     currentData.setTime(finalEndDateTimestamp * 1000);
-                    ToastUtils.showShort(String.format(StringUtils.getString(R.string.playfun_text_disable_the_deadline), Utils.format.format(currentData)));
+                    ToastUtils.showShort(String.format(StringUtils.getString(R.string.playcc_text_disable_the_deadline), Utils.format.format(currentData)));
                     return;
                 }
             }
@@ -109,7 +109,7 @@ public class MessageDetailDialog {
                 if(finalEndDateTimestamp - currentTimeMillis > 0){
                     Date currentData = new Date();
                     currentData.setTime(finalEndDateTimestamp * 1000);
-                    ToastUtils.showShort(String.format(StringUtils.getString(R.string.playfun_text_disable_the_deadline), Utils.format.format(currentData)));
+                    ToastUtils.showShort(String.format(StringUtils.getString(R.string.playcc_text_disable_the_deadline), Utils.format.format(currentData)));
                     return;
                 }
             }

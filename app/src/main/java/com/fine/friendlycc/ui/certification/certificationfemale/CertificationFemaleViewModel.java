@@ -49,16 +49,16 @@ public class CertificationFemaleViewModel extends BaseRefreshViewModel<AppReposi
     });
     public BindingCommand goddessVerifyOnClickCommand = new BindingCommand(() -> {
         if (model.readUserData().getCertification() != 1) {
-            ToastUtils.showShort(R.string.playfun_warn_no_certification);
+            ToastUtils.showShort(R.string.playcc_warn_no_certification);
             return;
         }
         if (applyGoddessStatus.get() == -1 || applyGoddessStatus.get() == 2) {
             start(GoddessCertificationFragment.class.getCanonicalName());
         } else {
             if (applyGoddessStatus.get() == 0) {
-                ToastUtils.showShort(R.string.playfun_model_certification_again);
+                ToastUtils.showShort(R.string.playcc_model_certification_again);
             } else if (applyGoddessStatus.get() == 1) {
-                ToastUtils.showShort(R.string.playfun_model_certifition_pass_application);
+                ToastUtils.showShort(R.string.playcc_model_certifition_pass_application);
             }
         }
     });
@@ -130,16 +130,16 @@ public class CertificationFemaleViewModel extends BaseRefreshViewModel<AppReposi
                         applyGoddessStatus.set(status);
                         switch (status) {
                             case -1:
-                                applyGoddessStatusStr.set(StringUtils.getString(R.string.playfun_model_certification_not_applied));
+                                applyGoddessStatusStr.set(StringUtils.getString(R.string.playcc_model_certification_not_applied));
                                 break;
                             case 0:
-                                applyGoddessStatusStr.set(StringUtils.getString(R.string.playfun_model_certification_wait_applied));
+                                applyGoddessStatusStr.set(StringUtils.getString(R.string.playcc_model_certification_wait_applied));
                                 break;
                             case 1:
-                                applyGoddessStatusStr.set(StringUtils.getString(R.string.playfun_model_certifition_pass));
+                                applyGoddessStatusStr.set(StringUtils.getString(R.string.playcc_model_certifition_pass));
                                 break;
                             case 2:
-                                applyGoddessStatusStr.set(StringUtils.getString(R.string.playfun_model_certifition_no_pass));
+                                applyGoddessStatusStr.set(StringUtils.getString(R.string.playcc_model_certifition_no_pass));
                                 break;
                             default:
                                 applyGoddessStatusStr.set("");

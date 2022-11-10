@@ -128,7 +128,7 @@ public class CoinPusherConvertDialog  extends BaseDialog {
             pusherConvertCapsuleDialog.setItemConvertListener(new CoinPusherConvertCapsuleDialog.ItemConvertListener() {
                 @Override
                 public void success(CoinPusherBalanceDataEntity coinPusherDataEntity) {
-                        ToastUtils.showShort(R.string.playfun_coinpusher_text_5);
+                        ToastUtils.showShort(R.string.playcc_coinpusher_text_5);
                         //购买成功数据相加
                         totalMoney = coinPusherDataEntity.getTotalGold();
                         tvTotalMoneyRefresh();
@@ -273,7 +273,7 @@ public class CoinPusherConvertDialog  extends BaseDialog {
 
     private void tvTotalMoneyRefresh(){
         String val = totalMoney > 99999 ? "99999+" : totalMoney+"";
-        String format = String.format(StringUtils.getString(R.string.playfun_coinpusher_text_4),val);
+        String format = String.format(StringUtils.getString(R.string.playcc_coinpusher_text_4),val);
         binding.tvConverDetail.setText(Html.fromHtml(format));
     }
     //金币兑换砖石礼包
@@ -295,7 +295,7 @@ public class CoinPusherConvertDialog  extends BaseDialog {
                             tvTotalMoneyRefresh();
                         }
                         //弹出兑换成功
-                        ToastUtils.showShort(R.string.playfun_coinpusher_text_6);
+                        ToastUtils.showShort(R.string.playcc_coinpusher_text_6);
                     }
 
                     @Override
@@ -314,8 +314,8 @@ public class CoinPusherConvertDialog  extends BaseDialog {
             binding.flLayoutEmpty.setVisibility(View.GONE);
         }else if(state == 1){//级别为空
                 binding.flLayoutEmpty.setVisibility(View.VISIBLE);
-                String emptyText = StringUtils.getString(R.string.playfun_coinpusher_error_text1);
-                String refreshText = StringUtils.getString(R.string.playfun_refresh);
+                String emptyText = StringUtils.getString(R.string.playcc_coinpusher_error_text1);
+                String refreshText = StringUtils.getString(R.string.playcc_refresh);
                 SpannableString stringBuilder = new SpannableString(emptyText + refreshText);
                 ForegroundColorSpan whiteSpan = new ForegroundColorSpan(ColorUtils.getColor(R.color.gray_light));
                 ForegroundColorSpan redSpan = new ForegroundColorSpan(ColorUtils.getColor(R.color.purple_text));

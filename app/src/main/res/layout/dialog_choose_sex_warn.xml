@@ -39,7 +39,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="17dp"
             android:gravity="center"
-            android:text="@string/playfun_dialog_choose_sex_warm_content"
+            android:text="@string/playcc_dialog_choose_sex_warm_content"
             android:textColor="@color/gray_middle"
             android:textSize="@dimen/text_size_mini" />
 
@@ -52,7 +52,7 @@
             android:layout_marginTop="21dp"
             android:layout_marginRight="31dp"
             android:background="@drawable/round_gary_side"
-            android:text="@string/playfun_confirm"
+            android:text="@string/playcc_confirm"
             android:textColor="@color/gray_middle"
             android:textSize="@dimen/text_size_42" />
 

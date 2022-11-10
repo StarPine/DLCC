@@ -13,7 +13,7 @@ import com.fine.friendlycc.viewmodel.BaseViewModel;
 /**
  * 修改备注：
  *
- * @Name： PlayFun_Google
+ * @Name： PlayCC
  * @Description：
  * @Author： liaosf
  * @Date： 2022/8/24 14:06

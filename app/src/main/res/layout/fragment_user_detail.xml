@@ -321,7 +321,7 @@
                                                 android:layout_width="wrap_content"
                                                 android:layout_height="21dp"
                                                 android:layout_marginEnd="6dp"
-                                                android:text="@{StringUtils.isEmpty(viewModel.detailEntity.city) ? @string/playfun_unknown_region : viewModel.detailEntity.city}"
+                                                android:text="@{StringUtils.isEmpty(viewModel.detailEntity.city) ? @string/playcc_unknown_region : viewModel.detailEntity.city}"
                                                 tools:text="城市" />
 
 
@@ -330,7 +330,7 @@
                                                 android:layout_width="wrap_content"
                                                 android:layout_height="21dp"
                                                 android:layout_marginEnd="6dp"
-                                                android:text="@{@string/playfun_mine_age(viewModel.detailEntity.age)}"
+                                                android:text="@{@string/playcc_mine_age(viewModel.detailEntity.age)}"
                                                 android:visibility="@{viewModel.detailEntity.age == null ? View.GONE : View.VISIBLE}"
                                                 tools:text="26" />
                                         </LinearLayout>
@@ -420,7 +420,7 @@
                                                 <TextView
                                                     android:layout_width="wrap_content"
                                                     android:layout_height="wrap_content"
-                                                    android:text="@string/playfun_user_detail_face_verification_pass"
+                                                    android:text="@string/playcc_user_detail_face_verification_pass"
                                                     android:textColor="#7C8698"
                                                     android:textSize="@dimen/text_size_small"
                                                     tools:text="他通過臉部辨識認證真實性" />
@@ -442,7 +442,7 @@
                                                 <TextView
                                                     android:layout_width="wrap_content"
                                                     android:layout_height="wrap_content"
-                                                    android:text="@string/playfun_user_detail_is_goddess"
+                                                    android:text="@string/playcc_user_detail_is_goddess"
                                                     android:textColor="#7C8698"
                                                     android:textSize="@dimen/text_size_small"
                                                     tools:text="她已獲得女神認證" />
@@ -464,7 +464,7 @@
                                                 <TextView
                                                     android:layout_width="wrap_content"
                                                     android:layout_height="wrap_content"
-                                                    android:text="@string/playfun_user_detail_paying_user"
+                                                    android:text="@string/playcc_user_detail_paying_user"
                                                     android:textColor="#7C8698"
                                                     android:textSize="@dimen/text_size_small" />
 
@@ -508,7 +508,7 @@
                                                     android:layout_height="wrap_content"
                                                     android:layout_alignTop="@+id/iv_feeling"
                                                     android:layout_toEndOf="@+id/iv_feeling"
-                                                    android:text="@string/playfun_user_detail_evaluation_hint3"
+                                                    android:text="@string/playcc_user_detail_evaluation_hint3"
                                                     android:textColor="#FFBFBFBF"
                                                     android:textSize="12sp"
                                                     android:visibility="@{ObjectUtils.isEmpty(viewModel.detailEntity.news) ? View.VISIBLE:View.GONE}" />
@@ -588,7 +588,7 @@
                                                             android:background="@drawable/album_more_count_background"
                                                             android:elevation="11dp"
                                                             android:gravity="center"
-                                                            android:text="@{@string/playfun_user_detail_phone_list_hint((viewModel.detailEntity.newsNumber-4)>99?99:(viewModel.detailEntity.newsNumber-4))}"
+                                                            android:text="@{@string/playcc_user_detail_phone_list_hint((viewModel.detailEntity.newsNumber-4)>99?99:(viewModel.detailEntity.newsNumber-4))}"
                                                             android:textColor="@color/white"
                                                             android:textSize="13sp"
                                                             android:visibility="@{safeUnbox(viewModel.detailEntity.newsNumber-4) > 1 ? View.VISIBLE:View.GONE}"
@@ -621,11 +621,11 @@
                                                     android:layout_height="wrap_content"
                                                     android:layout_alignTop="@+id/iv_photo"
                                                     android:layout_toEndOf="@+id/iv_photo"
-                                                    android:text="@{viewModel.detailEntity.getSex() == 0? @string/playfun_he_not_uploaded_photo_girl:@string/playfun_he_not_uploaded_photo(viewModel.sexName)}"
+                                                    android:text="@{viewModel.detailEntity.getSex() == 0? @string/playcc_he_not_uploaded_photo_girl:@string/playcc_he_not_uploaded_photo(viewModel.sexName)}"
                                                     android:textColor="@color/gray_light"
                                                     android:textSize="12sp"
                                                     android:visibility="@{viewModel.detailEntity.album.size()>0?View.GONE:View.VISIBLE}"
-                                                    tools:text="@string/playfun_he_not_uploaded_photo_girl" />
+                                                    tools:text="@string/playcc_he_not_uploaded_photo_girl" />
 
                                                 <androidx.recyclerview.widget.RecyclerView
                                                     android:layout_width="match_parent"
@@ -662,7 +662,7 @@
                                                         android:layout_width="wrap_content"
                                                         android:layout_height="wrap_content"
                                                         android:layout_marginTop="10dp"
-                                                        android:text="@{@string/playfun_user_detail_album_lock(viewModel.sexName)}"
+                                                        android:text="@{@string/playcc_user_detail_album_lock(viewModel.sexName)}"
                                                         android:textColor="@color/gray_middle"
                                                         android:textSize="@dimen/text_size_middle"
                                                         tools:text="ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd" />
@@ -715,7 +715,7 @@
                                                     android:layout_alignTop="@+id/iv_evaluation"
                                                     android:layout_marginTop="1dp"
                                                     android:layout_toEndOf="@+id/iv_evaluation"
-                                                    android:text="@string/playfun_user_detail_evaluation_empty"
+                                                    android:text="@string/playcc_user_detail_evaluation_empty"
                                                     android:textColor="#FFBFBFBF"
                                                     android:textSize="12sp"
                                                     android:visibility="@{viewModel.isUserTagShow?View.GONE:View.VISIBLE}" />
@@ -749,7 +749,7 @@
                                                     android:layout_width="match_parent"
                                                     android:layout_height="wrap_content"
                                                     android:layout_marginBottom="16dp"
-                                                    android:text="@string/playfun_user_detail"
+                                                    android:text="@string/playcc_user_detail"
                                                     android:textSize="16sp"
                                                     android:textStyle="bold" />
 
@@ -845,7 +845,7 @@
                                                 android:layout_width="wrap_content"
                                                 android:layout_height="wrap_content"
                                                 android:layout_marginTop="20dp"
-                                                android:text="@{viewModel.detailEntity.albumApply == 0 ? @string/playfun_user_detail_profile_lock_sended:@string/playfun_user_detail_profile_lock(viewModel.sexNameSheAndHis,viewModel.sexNameSheAndHis)}"
+                                                android:text="@{viewModel.detailEntity.albumApply == 0 ? @string/playcc_user_detail_profile_lock_sended:@string/playcc_user_detail_profile_lock(viewModel.sexNameSheAndHis,viewModel.sexNameSheAndHis)}"
                                                 android:textColor="@color/gray_middle"
                                                 android:textSize="@dimen/text_size_middle" />
 
@@ -856,7 +856,7 @@
                                                 android:layout_marginTop="20dp"
                                                 android:paddingStart="20dp"
                                                 android:paddingEnd="20dp"
-                                                android:text="@string/playfun_user_detail_btn_apply_check"
+                                                android:text="@string/playcc_user_detail_btn_apply_check"
                                                 android:visibility="@{viewModel.detailEntity.albumApply != 0 ? View.VISIBLE:View.GONE}"
                                                 binding:onClickCommand="@{viewModel.applyCheckDetailOnClickCommand}" />
 
@@ -878,7 +878,7 @@
                                             android:drawableTop="@drawable/ic_user_disable"
                                             android:drawablePadding="10dp"
                                             android:gravity="center"
-                                            android:text="@string/playfun_user_detail_user_disable"
+                                            android:text="@string/playcc_user_detail_user_disable"
                                             android:textColor="@color/gray_light"
                                             android:textSize="@dimen/text_size_middle" />
 
@@ -914,7 +914,7 @@
                                         android:layout_height="wrap_content"
                                         android:layout_marginTop="11dp"
                                         android:gravity="center_horizontal"
-                                        android:text="@{viewModel.detailEntity.blacklistStatus != 2 ? @string/playfun_blocked_each_other : @string/playfun_block_each_other}"
+                                        android:text="@{viewModel.detailEntity.blacklistStatus != 2 ? @string/playcc_blocked_each_other : @string/playcc_block_each_other}"
                                         android:textColor="@color/gray_middle"
                                         android:textSize="@dimen/text_size_42" />
 

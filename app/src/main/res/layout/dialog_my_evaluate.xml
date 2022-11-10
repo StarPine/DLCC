@@ -24,7 +24,7 @@
                 android:id="@+id/tv_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/playfun_dialog_my_evaluate_title"
+                android:text="@string/playcc_dialog_my_evaluate_title"
                 android:textColor="@color/text_default"
                 android:textSize="@dimen/text_size_middle"
                 android:textStyle="bold" />
@@ -43,14 +43,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="42dp"
                 android:layout_marginTop="17dp"
-                android:text="@string/playfun_dialog_commit_evaluate_title" />
+                android:text="@string/playcc_dialog_commit_evaluate_title" />
 
             <TextView
                 android:id="@+id/tv_tip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingTop="10dp"
-                android:text="@string/playfun_dialog_commit_evaluate_repor"
+                android:text="@string/playcc_dialog_commit_evaluate_repor"
                 android:textColor="@color/red_7c"
                 android:textSize="@dimen/text_size_mini" />
         </LinearLayout>

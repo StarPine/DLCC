@@ -32,7 +32,7 @@
                 android:id="@+id/basic_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/action_bar_height"
-                app:toolbar_title="@string/playfun_mine_apply_invitation_code" />
+                app:toolbar_title="@string/playcc_mine_apply_invitation_code" />
 
         </com.google.android.material.appbar.AppBarLayout>
 

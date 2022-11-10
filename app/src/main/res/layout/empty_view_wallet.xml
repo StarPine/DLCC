@@ -50,7 +50,7 @@
                 android:textColor="@color/gray_light"
                 android:textSize="@dimen/text_size_middle"
                 android:visibility="gone"
-                tootls:text="@string/playfun_tw_money_empty" />
+                tootls:text="@string/playcc_tw_money_empty" />
 
         </LinearLayout>
 

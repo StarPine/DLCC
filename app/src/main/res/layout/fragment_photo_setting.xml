@@ -94,7 +94,7 @@
                     android:checked="@={viewModel.isBurn}"
                     android:gravity="center"
                     android:padding="5dp"
-                    android:text="@string/playfun_phono_setting_reading_burn"
+                    android:text="@string/playcc_phono_setting_reading_burn"
                     android:textColor="@color/gray_middle"
                     android:textSize="@dimen/text_size_big"
                     binding:onClickCommand="@{viewModel.burnOnClickCommand}" />

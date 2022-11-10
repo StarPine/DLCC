@@ -40,7 +40,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="@string/playfun_mine_setting_email_hint"
+                android:text="@string/playcc_mine_setting_email_hint"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 />
@@ -56,7 +56,7 @@
                 android:layout_marginEnd="@dimen/dp_40"
                 android:textColor="@color/white"
                 android:textSize="14sp"
-                android:text="@string/playfun_mine_setting_email_hint2"
+                android:text="@string/playcc_mine_setting_email_hint2"
                 />
         </LinearLayout>
 

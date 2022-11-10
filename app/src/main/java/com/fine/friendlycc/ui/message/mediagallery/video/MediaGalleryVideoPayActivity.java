@@ -122,10 +122,10 @@ public class MediaGalleryVideoPayActivity extends BaseActivity<ActivityMediaGall
         viewModel.evaluationLikeEvent.observe(this, state -> {
             //评价，0未评价，1差评，2好评
             if(state == 1){
-                generateDrawable(binding.llNoLike,null,22,null,null,R.color.playfun_shape_radius_start_color,R.color.playfun_shape_radius_end_color,GradientDrawable.Orientation.LEFT_RIGHT);
+                generateDrawable(binding.llNoLike,null,22,null,null,R.color.playcc_shape_radius_start_color,R.color.playcc_shape_radius_end_color,GradientDrawable.Orientation.LEFT_RIGHT);
                 generateDrawable(binding.llLike,R.color.black,22,R.color.purple_text,1,null,null,null);
             }else if(state == 2){
-                generateDrawable(binding.llLike,null,22,null,null,R.color.playfun_shape_radius_start_color,R.color.playfun_shape_radius_end_color,GradientDrawable.Orientation.LEFT_RIGHT);
+                generateDrawable(binding.llLike,null,22,null,null,R.color.playcc_shape_radius_start_color,R.color.playcc_shape_radius_end_color,GradientDrawable.Orientation.LEFT_RIGHT);
                 generateDrawable(binding.llNoLike,R.color.black,22,R.color.purple_text,1,null,null,null);
             }else{
                 generateDrawable(binding.llLike,R.color.black,22,R.color.purple_text,1,null,null,null);

@@ -41,11 +41,11 @@ public class SetRedPackageVideoItemViewModel extends MultiItemViewModel<SetRedPa
     public String getPhotoShowName() {
         if (!ConfigManager.getInstance().isMale()) {
             if (itemEntity.get().getVerificationType() == 0) {
-                return StringUtils.getString(R.string.playfun_audit_failed);
+                return StringUtils.getString(R.string.playcc_audit_failed);
             } else if (itemEntity.get().getVerificationType() == -1) {
-                return StringUtils.getString(R.string.playfun_photo_in_review);
+                return StringUtils.getString(R.string.playcc_photo_in_review);
             } else if (itemEntity.get().getVerificationType() == 1) {
-                return StringUtils.getString(R.string.playfun_self);
+                return StringUtils.getString(R.string.playcc_self);
             }
         }
         return "";

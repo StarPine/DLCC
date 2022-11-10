@@ -69,7 +69,7 @@ public class HomeMainViewModel extends BaseViewModel<AppRepository> {
     public ItemBinding<HomeMainBannerItemViewModel> itemBannerBinding = ItemBinding.of(BR.viewModel, R.layout.item_main_banner);
 
     //位置选择文字
-    public ObservableField<String> regionTitle = new ObservableField<>(StringUtils.getString(R.string.playfun_tab_female_1));
+    public ObservableField<String> regionTitle = new ObservableField<>(StringUtils.getString(R.string.playcc_tab_female_1));
 
     //推荐用户弹窗
     public ObservableField<Integer> cityId = new ObservableField<>();
@@ -114,11 +114,11 @@ public class HomeMainViewModel extends BaseViewModel<AppRepository> {
         if (tabList.size() > 0)
             tabList.clear();
         if (gender.get()){
-            tabList.add(StringUtils.getString(R.string.playfun_tab_male_3_audit));
-            tabList.add(StringUtils.getString(R.string.playfun_tab_male_2));
+            tabList.add(StringUtils.getString(R.string.playcc_tab_male_3_audit));
+            tabList.add(StringUtils.getString(R.string.playcc_tab_male_2));
         }else {
-            tabList.add(StringUtils.getString(R.string.playfun_tab_male_3));
-            tabList.add(StringUtils.getString(R.string.playfun_tab_female_2));
+            tabList.add(StringUtils.getString(R.string.playcc_tab_male_3));
+            tabList.add(StringUtils.getString(R.string.playcc_tab_female_2));
         }
     }
 

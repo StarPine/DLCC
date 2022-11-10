@@ -128,7 +128,7 @@ public class MineViewModel extends BaseMyPhotoAlbumViewModel<AppRepository> {
         }
         if (userInfoEntity.get().getSex() == 0) {
             Bundle bundle = new Bundle();
-            bundle.putString("title", StringUtils.getString(R.string.playfun_mine_my_likes));
+            bundle.putString("title", StringUtils.getString(R.string.playcc_mine_my_likes));
             bundle.putInt("sel_idx", 0);
             start(TraceFragment.class.getCanonicalName(), bundle);//女号
         } else {
@@ -143,7 +143,7 @@ public class MineViewModel extends BaseMyPhotoAlbumViewModel<AppRepository> {
         }
         if (userInfoEntity.get().getSex() == 0) {
             Bundle bundle = new Bundle();
-            bundle.putString("title", StringUtils.getString(R.string.playfun_mine_my_visitors_many));
+            bundle.putString("title", StringUtils.getString(R.string.playcc_mine_my_visitors_many));
             bundle.putInt("sel_idx", 1);
             start(TraceFragment.class.getCanonicalName(), bundle);
         } else {
@@ -165,7 +165,7 @@ public class MineViewModel extends BaseMyPhotoAlbumViewModel<AppRepository> {
                 return;
             }
         }
-        ToastUtils.showShort(R.string.playfun_sex_unknown);
+        ToastUtils.showShort(R.string.playcc_sex_unknown);
     });
     //邀请码按钮的点击事件
     public BindingCommand invitationCodeOnClickCommand = new BindingCommand(() -> {
@@ -233,7 +233,7 @@ public class MineViewModel extends BaseMyPhotoAlbumViewModel<AppRepository> {
     public BindingCommand serviceOnClickCommand = new BindingCommand(() -> {
         try {
             AppContext.instance().logEvent(AppsFlyerEvent.Contact_Us);
-            ChatUtils.chatUser(AppConfig.CHAT_SERVICE_USER_ID_SEND, 0,StringUtils.getString(R.string.playfun_chat_service_name), MineViewModel.this);
+            ChatUtils.chatUser(AppConfig.CHAT_SERVICE_USER_ID_SEND, 0,StringUtils.getString(R.string.playcc_chat_service_name), MineViewModel.this);
         } catch (Exception e) {
             ExceptionReportUtils.report(e);
         }
@@ -242,7 +242,7 @@ public class MineViewModel extends BaseMyPhotoAlbumViewModel<AppRepository> {
     public BindingCommand complaintOnClickCommand = new BindingCommand(new BindingAction() {
         @Override
         public void call() {
-            ToastUtils.showShort(R.string.playfun_mine_complaint_service);
+            ToastUtils.showShort(R.string.playcc_mine_complaint_service);
         }
     });
     UIChangeObservable uc = new UIChangeObservable();
@@ -302,13 +302,13 @@ public class MineViewModel extends BaseMyPhotoAlbumViewModel<AppRepository> {
     //相册属性 1公开 2付费解锁 3查看需要我验证
     public String getAlbumPrivacy() {
         if (userInfoEntity.get().getAlbumType() == 1) {
-            return StringUtils.getString(R.string.playfun_public_open);
+            return StringUtils.getString(R.string.playcc_public_open);
         } else if (userInfoEntity.get().getAlbumType() == 2) {
-            return String.format(StringUtils.getString(R.string.playfun_pay_ro_unlock_diamond), userInfoEntity.get().getAlbumMoney());
+            return String.format(StringUtils.getString(R.string.playcc_pay_ro_unlock_diamond), userInfoEntity.get().getAlbumMoney());
         } else if (userInfoEntity.get().getAlbumType() == 3) {
-            return StringUtils.getString(R.string.playfun_need_verify_before_viewing);
+            return StringUtils.getString(R.string.playcc_need_verify_before_viewing);
         }
-        return StringUtils.getString(R.string.playfun_unknown);
+        return StringUtils.getString(R.string.playcc_unknown);
     }
 
     public void setAllowPrivacy(String type, boolean isOpen) {
@@ -327,9 +327,9 @@ public class MineViewModel extends BaseMyPhotoAlbumViewModel<AppRepository> {
                     @Override
                     public void onSuccess(BaseResponse response) {
                         if (type.equals(ALLOW_TYPE_AUDIO) && !isOpen){
-                            ToastUtils.showShort(R.string.playfun_mine_ban_audio_tips);
+                            ToastUtils.showShort(R.string.playcc_mine_ban_audio_tips);
                         }else if (type.equals(ALLOW_TYPE_VIDEO) && !isOpen){
-                            ToastUtils.showShort(R.string.playfun_mine_ban_video_tips);
+                            ToastUtils.showShort(R.string.playcc_mine_ban_video_tips);
                         }
                         dismissHUD();
                     }
@@ -564,7 +564,7 @@ public class MineViewModel extends BaseMyPhotoAlbumViewModel<AppRepository> {
                     @Override
                     public void onError(Throwable e) {
                         dismissHUD();
-                        ToastUtils.showShort(R.string.playfun_upload_failed);
+                        ToastUtils.showShort(R.string.playcc_upload_failed);
                     }
 
                     @Override
@@ -582,7 +582,7 @@ public class MineViewModel extends BaseMyPhotoAlbumViewModel<AppRepository> {
                 .subscribe(new BaseObserver<BaseResponse>() {
                     @Override
                     public void onSuccess(BaseResponse response) {
-                        ToastUtils.showShort(R.string.playfun_updata_head_success);
+                        ToastUtils.showShort(R.string.playcc_updata_head_success);
                     }
 
                     @Override
@@ -605,7 +605,7 @@ public class MineViewModel extends BaseMyPhotoAlbumViewModel<AppRepository> {
                         userInfoEntity.get().setAlbumType(type);
                         userInfoEntity.get().setAlbumMoney(money);
                         albumPrivacyText.set(getAlbumPrivacy());
-                        ToastUtils.showShort(R.string.playfun_setting_success);
+                        ToastUtils.showShort(R.string.playcc_setting_success);
                     }
 
                     @Override
@@ -625,7 +625,7 @@ public class MineViewModel extends BaseMyPhotoAlbumViewModel<AppRepository> {
                     @Override
                     public void onSuccess(BaseResponse response) {
                         dismissHUD();
-                        ToastUtils.showShort(R.string.playfun_restored);
+                        ToastUtils.showShort(R.string.playcc_restored);
                         userInfoEntity.get().setBurnCount(0);
                     }
 

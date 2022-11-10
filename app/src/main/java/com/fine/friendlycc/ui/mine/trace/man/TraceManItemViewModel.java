@@ -58,7 +58,7 @@ public class TraceManItemViewModel extends MultiItemViewModel<TraeManViewModel> 
 
     public String getTime() {
         String time = itemEntity.get().getTime();
-        String data = StringUtils.getString(R.string.playfun_mine_trace_time_exp);
+        String data = StringUtils.getString(R.string.playcc_mine_trace_time_exp);
         try {
             Date oldDate = Utils.format.parse(time);
             Date oneDay = new Date();
@@ -68,21 +68,21 @@ public class TraceManItemViewModel extends MultiItemViewModel<TraeManViewModel> 
             if (hour <= 1) {
                 return data;
             } else if (1 < hour && hour <= 2) {
-                return StringUtils.getString(R.string.playfun_mine_trace_time_exp2);
+                return StringUtils.getString(R.string.playcc_mine_trace_time_exp2);
             } else if (2 < hour && hour <= 3) {
-                return StringUtils.getString(R.string.playfun_mine_trace_time_exp3);
+                return StringUtils.getString(R.string.playcc_mine_trace_time_exp3);
             } else if (3 < hour && hour <= 4) {
-                return StringUtils.getString(R.string.playfun_mine_trace_time_exp4);
+                return StringUtils.getString(R.string.playcc_mine_trace_time_exp4);
             } else if (4 < hour && hour <= 5) {
-                return StringUtils.getString(R.string.playfun_mine_trace_time_exp5);
+                return StringUtils.getString(R.string.playcc_mine_trace_time_exp5);
             } else if (5 < hour && hour <= 6) {
-                return StringUtils.getString(R.string.playfun_mine_trace_time_exp6);
+                return StringUtils.getString(R.string.playcc_mine_trace_time_exp6);
             } else if (6 < hour && hour <= 24) {
-                return StringUtils.getString(R.string.playfun_mine_trace_time_exp7);
+                return StringUtils.getString(R.string.playcc_mine_trace_time_exp7);
             } else if (24 < hour && hour <= 48) {
-                return StringUtils.getString(R.string.playfun_mine_trace_time_exp8);
+                return StringUtils.getString(R.string.playcc_mine_trace_time_exp8);
             } else if (48 < hour) {
-                return StringUtils.getString(R.string.playfun_mine_trace_time_exp9);
+                return StringUtils.getString(R.string.playcc_mine_trace_time_exp9);
             }
         } catch (Exception e) {
             return data;
@@ -96,11 +96,11 @@ public class TraceManItemViewModel extends MultiItemViewModel<TraeManViewModel> 
     }
 
     public String getText() {
-        return String.format(StringUtils.getString(R.string.playfun_mine_trace_man_hint), itemEntity.get().getNumber());
+        return String.format(StringUtils.getString(R.string.playcc_mine_trace_man_hint), itemEntity.get().getNumber());
     }
 
     public String getAgeAndConstellation() {
-        return String.format(StringUtils.getString(R.string.playfun_mine_age), itemEntity.get().getAge());
+        return String.format(StringUtils.getString(R.string.playcc_mine_age), itemEntity.get().getAge());
     }
 
     public Drawable getVipGodsImg(TraceEntity traceEntity) {

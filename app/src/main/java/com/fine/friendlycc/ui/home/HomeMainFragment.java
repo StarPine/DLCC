@@ -95,7 +95,7 @@ public class HomeMainFragment extends BaseFragment<FragmentHomeMainBinding, Home
         citys = ConfigManager.getInstance().getAppRepository().readCityConfig();
         ConfigItemEntity nearItemEntity = new ConfigItemEntity();
         nearItemEntity.setId(-1);
-        nearItemEntity.setName(getStringByResId(R.string.playfun_tab_female_1));
+        nearItemEntity.setName(getStringByResId(R.string.playcc_tab_female_1));
         citys.add(0, nearItemEntity);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this.getContext()) {
@@ -217,7 +217,7 @@ public class HomeMainFragment extends BaseFragment<FragmentHomeMainBinding, Home
                     viewModel.regionTitle.set(itemEntity.getName());
                 }else{
                     viewModel.cityId.set(null);
-                    viewModel.regionTitle.set(StringUtils.getString(R.string.playfun_tab_female_1));
+                    viewModel.regionTitle.set(StringUtils.getString(R.string.playcc_tab_female_1));
                 }
                 RxBus.getDefault().post(new CityChangeEvent(itemEntity , currIndex));
 //                binding.refreshLayout.autoRefresh();

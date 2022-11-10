@@ -22,7 +22,7 @@
                 android:layout_marginEnd="24dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/playfun_mine_audio_text6"
+                android:text="@string/playcc_mine_audio_text6"
                 android:textColor="#ff43435e"
                 android:textSize="15sp"
                 />
@@ -39,7 +39,7 @@
                 android:gravity="center"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                android:text="@string/playfun_roger"
+                android:text="@string/playcc_roger"
                 android:textColor="#ffa72dfe"
                 android:textSize="14sp"
                 android:layout_width="match_parent"

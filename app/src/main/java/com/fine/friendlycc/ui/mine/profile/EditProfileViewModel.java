@@ -118,7 +118,7 @@ public class EditProfileViewModel extends BaseViewModel<AppRepository> {
                         model.saveUserData(data);
                         userDataEntity.set(data);
                         if(userDataEntity.get().getSex() != null){
-                            gender.set(StringUtils.getString((userDataEntity.get().getSex() == 0 ? R.string.playfun_fragment_edit_profile_male : R.string.playfun_fragment_edit_profile_female)));
+                            gender.set(StringUtils.getString((userDataEntity.get().getSex() == 0 ? R.string.playcc_fragment_edit_profile_male : R.string.playcc_fragment_edit_profile_female)));
                         }
                     }
                 });
@@ -143,7 +143,7 @@ public class EditProfileViewModel extends BaseViewModel<AppRepository> {
                     @Override
                     public void onError(Throwable e) {
                         dismissHUD();
-                        ToastUtils.showShort(R.string.playfun_upload_failed);
+                        ToastUtils.showShort(R.string.playcc_upload_failed);
                     }
 
                     @Override
@@ -163,7 +163,7 @@ public class EditProfileViewModel extends BaseViewModel<AppRepository> {
                     @Override
                     public void onSuccess(BaseResponse baseResponse) {
                         dismissHUD();
-                        ToastUtils.showShort(R.string.playfun_updata_head_success);
+                        ToastUtils.showShort(R.string.playcc_updata_head_success);
                         RxBus.getDefault().post(new AvatarChangeEvent(fileKey));
                     }
 
@@ -182,19 +182,19 @@ public class EditProfileViewModel extends BaseViewModel<AppRepository> {
             return;
         }
         if (userEntity.getAvatar() == null || userEntity.getAvatar().length() == 0) {
-            ToastUtils.showShort(R.string.playfun_warn_avatar_not_null);
+            ToastUtils.showShort(R.string.playcc_warn_avatar_not_null);
             return;
         }
         if (StringUtils.isEmpty(userEntity.getNickname())) {
-            ToastUtils.showShort(R.string.playfun_name_nust);
+            ToastUtils.showShort(R.string.playcc_name_nust);
             return;
         }
         if (userEntity.getBirthday() == null) {
-            ToastUtils.showShort(R.string.playfun_brithday_must);
+            ToastUtils.showShort(R.string.playcc_brithday_must);
             return;
         }
         if (userEntity.getOccupationId() == null || userEntity.getOccupationId().intValue() == 0) {
-            ToastUtils.showShort(R.string.playfun_occupation_must);
+            ToastUtils.showShort(R.string.playcc_occupation_must);
             return;
         }
 
@@ -223,7 +223,7 @@ public class EditProfileViewModel extends BaseViewModel<AppRepository> {
                         dismissHUD();
                         model.saveUserData(userEntity);
                         RxBus.getDefault().post(new ProfileChangeEvent());
-                        ToastUtils.showShort(R.string.playfun_alter_success);
+                        ToastUtils.showShort(R.string.playcc_alter_success);
                         pop();
 
                     }

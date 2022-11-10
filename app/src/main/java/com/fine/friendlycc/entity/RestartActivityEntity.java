@@ -3,7 +3,7 @@ package com.fine.friendlycc.entity;
 import android.content.Intent;
 
 /**
- * @Name： PlayFun_Google
+ * @Name： PlayCC
  * @Description：
  * @Author： liaosf
  * @Date： 2022/8/11 12:02

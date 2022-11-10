@@ -16,7 +16,7 @@
         android:paddingTop="5dp"
         android:paddingEnd="10dp"
         android:paddingBottom="5dp"
-        android:text="@string/playfun_cancel"
+        android:text="@string/playcc_cancel"
         android:textColor="@color/gray"
         android:textSize="@dimen/text_size_middle" />
 </FrameLayout>

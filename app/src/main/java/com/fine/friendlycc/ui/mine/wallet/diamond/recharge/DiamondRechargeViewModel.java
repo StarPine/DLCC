@@ -38,7 +38,7 @@ import me.tatarka.bindingcollectionadapter2.BindingRecyclerViewAdapter;
 import me.tatarka.bindingcollectionadapter2.ItemBinding;
 
 /**
- * @Name： PlayFun_Google
+ * @Name： PlayCC
  * @Description：
  * @Author： liaosf
  * @Date： 2022/6/15 18:23
@@ -104,7 +104,7 @@ public class DiamondRechargeViewModel extends BaseViewModel<AppRepository> {
 
     public void createOrder() {
         if (selectedPosition < 0) {
-            ToastUtils.showShort(R.string.playfun_please_choose_top_up_package);
+            ToastUtils.showShort(R.string.playcc_please_choose_top_up_package);
             return;
         }
         model.createOrder(selectedGoodsEntity.get().getId(), 1, 2, null)
@@ -150,7 +150,7 @@ public class DiamondRechargeViewModel extends BaseViewModel<AppRepository> {
                     @Override
                     public void onSuccess(BaseResponse response) {
                         dismissHUD();
-                        ToastUtils.showShort(StringUtils.getString(R.string.playfun_pay_success));
+                        ToastUtils.showShort(StringUtils.getString(R.string.playcc_pay_success));
                         paySuccess.postValue(selectedGoodsEntity.get());
                     }
 

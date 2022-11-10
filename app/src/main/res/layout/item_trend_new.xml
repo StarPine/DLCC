@@ -262,7 +262,7 @@
                 android:layout_below="@+id/iv_more"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/radio_item_like_button_bg"
-                android:text="@string/playfun_my_issuance"
+                android:text="@string/playcc_my_issuance"
                 android:textColor="#636363"
                 android:textSize="@dimen/text_size_1067"
                 android:visibility="@{viewModel.newsEntityObservableField.user.id!=viewModel.userId||viewModel.isSelf?View.GONE:View.VISIBLE}"

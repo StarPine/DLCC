@@ -315,14 +315,14 @@ public class MineFragment extends BaseRefreshFragment<FragmentMineBinding, MineV
             dialog.show(getChildFragmentManager(), MyEvaluateDialog.class.getCanonicalName());
         });
         viewModel.uc.clickPrivacy.observe(this, aVoid -> {
-            String[] items = new String[]{getString(R.string.playfun_public_recommended), getString(R.string.playfun_pay_to_unlock), getString(R.string.playfun_need_verify_look)};
+            String[] items = new String[]{getString(R.string.playcc_public_recommended), getString(R.string.playcc_pay_to_unlock), getString(R.string.playcc_need_verify_look)};
             int selectIndex = viewModel.userInfoEntity.get().getAlbumType() - 1;
             if (selectIndex < 0) {
                 selectIndex = 0;
             }
             new BottomSheet.Builder(mActivity)
                     .setType(BottomSheet.BOTTOM_SHEET_TYPE_SINGLE_CHOOSE)
-                    .setTitle(getString(R.string.playfun_mine_album_privacy))
+                    .setTitle(getString(R.string.playcc_mine_album_privacy))
                     .setDatas(items)
                     .setSelectIndex(selectIndex)
                     .setOnItemSelectedListener((bottomSheet, position) -> {
@@ -333,8 +333,8 @@ public class MineFragment extends BaseRefreshFragment<FragmentMineBinding, MineV
                         } else if (position == 1) {
                             if (viewModel.userInfoEntity.get().getSex() == 0 && viewModel.userInfoEntity.get().getIsVip() != 1) {
                                 MVDialog.getInstance(MineFragment.this.getContext())
-                                        .setTitele(getStringByResId(R.string.playfun_goddess_unlock_payalbum))
-                                        .setConfirmText(getStringByResId(R.string.playfun_goddess_certification))
+                                        .setTitele(getStringByResId(R.string.playcc_goddess_unlock_payalbum))
+                                        .setConfirmText(getStringByResId(R.string.playcc_goddess_certification))
                                         .setConfirmOnlick(new MVDialog.ConfirmOnclick() {
                                             @Override
                                             public void confirm(MVDialog dialog) {
@@ -347,18 +347,18 @@ public class MineFragment extends BaseRefreshFragment<FragmentMineBinding, MineV
                                 return;
                             }
                             //"非认证女士需要付费解锁才能查看你的相册，费用由你定；认证女士可以消耗一次查看机会解锁你的相册。";
-                            String msg = String.format(getString(R.string.playfun_mine_contrnt_one),
-                                    viewModel.userInfoEntity.get().getSex() == 1 ? getString(R.string.playfun_non_certified_lady) : getString(R.string.playfun_non_certified_man),
-                                    viewModel.userInfoEntity.get().getSex() == 1 ? getString(R.string.playfun_certified_lady) : getString(R.string.playfun_certified_man));
+                            String msg = String.format(getString(R.string.playcc_mine_contrnt_one),
+                                    viewModel.userInfoEntity.get().getSex() == 1 ? getString(R.string.playcc_non_certified_lady) : getString(R.string.playcc_non_certified_man),
+                                    viewModel.userInfoEntity.get().getSex() == 1 ? getString(R.string.playcc_certified_lady) : getString(R.string.playcc_certified_man));
                             MVDialog.getInstance(MineFragment.this.getContext())
                                     .setContent(msg)
-                                    .setConfirmText(getString(R.string.playfun_carry_on))
+                                    .setConfirmText(getString(R.string.playcc_carry_on))
                                     .setConfirmOnlick(new MVDialog.ConfirmOnclick() {
                                         @Override
                                         public void confirm(MVDialog dialog) {
                                             dialog.dismiss();
                                             MVDialog.getInstance(MineFragment.this.getContext())
-                                                    .setTitele(getString(R.string.playfun_set_view_amount))
+                                                    .setTitele(getString(R.string.playcc_set_view_amount))
                                                     .setConfirmMoneyOnclick(new MVDialog.ConfirmMoneyOnclick() {
                                                         @Override
                                                         public void confirm(MVDialog dialog, String money) {
@@ -367,7 +367,7 @@ public class MineFragment extends BaseRefreshFragment<FragmentMineBinding, MineV
                                                                 AppContext.instance().logEvent(AppsFlyerEvent.Paid_me);
                                                                 viewModel.setAlbumPrivacy(2, Integer.parseInt(money));
                                                             } else {
-                                                                ToastUtils.showShort(R.string.playfun_please_enter_amount);
+                                                                ToastUtils.showShort(R.string.playcc_please_enter_amount);
                                                             }
                                                         }
                                                     }).chooseType(MVDialog.TypeEnum.SET_MONEY)
@@ -383,7 +383,7 @@ public class MineFragment extends BaseRefreshFragment<FragmentMineBinding, MineV
                                     .chooseType(MVDialog.TypeEnum.CENTER)
                                     .show();
                         } else if (position == 2) {
-                            String msg = String.format(getString(R.string.playfun_mine_contrnt_two), viewModel.userInfoEntity.get().getSex() == 1 ? getString(R.string.playfun_lady) : getString(R.string.playfun_man));
+                            String msg = String.format(getString(R.string.playcc_mine_contrnt_two), viewModel.userInfoEntity.get().getSex() == 1 ? getString(R.string.playcc_lady) : getString(R.string.playcc_man));
                             MVDialog.getInstance(MineFragment.this.getContext())
                                     .setContent(msg)
                                     .chooseType(MVDialog.TypeEnum.CENTER)
@@ -398,7 +398,7 @@ public class MineFragment extends BaseRefreshFragment<FragmentMineBinding, MineV
                                     .chooseType(MVDialog.TypeEnum.CENTER)
                                     .show();
                         }
-                    }).setCancelButton(getString(R.string.playfun_cancel), new BottomSheet.CancelClickListener() {
+                    }).setCancelButton(getString(R.string.playcc_cancel), new BottomSheet.CancelClickListener() {
                 @Override
                 public void onCancelClick(BottomSheet bottomSheet) {
                     bottomSheet.dismiss();
@@ -410,7 +410,7 @@ public class MineFragment extends BaseRefreshFragment<FragmentMineBinding, MineV
         viewModel.uc.clickSetRedPackagePhoto.observe(this, new Observer<Void>() {
             @Override
             public void onChanged(Void aVoid) {
-                String[] items = new String[]{getString(R.string.playfun_mine_set_redpackage_photo), getString(R.string.playfun_setting_red_video)};
+                String[] items = new String[]{getString(R.string.playcc_mine_set_redpackage_photo), getString(R.string.playcc_setting_red_video)};
                 new BottomSheet.Builder(mActivity)
                         .setType(BottomSheet.BOTTOM_SHEET_TYPE_NORMAL)
                         .setDatas(items)
@@ -420,8 +420,8 @@ public class MineFragment extends BaseRefreshFragment<FragmentMineBinding, MineV
                                 bottomSheet.dismiss();
                                 if (viewModel.userInfoEntity.get().getIsVip() != 1) {
                                     MVDialog.getInstance(MineFragment.this.getContext())
-                                            .setTitele(getStringByResId(R.string.playfun_goddess_unlock_redpackage_photo))
-                                            .setConfirmText(getStringByResId(R.string.playfun_goddess_certification))
+                                            .setTitele(getStringByResId(R.string.playcc_goddess_unlock_redpackage_photo))
+                                            .setConfirmText(getStringByResId(R.string.playcc_goddess_certification))
                                             .setConfirmOnlick(new MVDialog.ConfirmOnclick() {
                                                 @Override
                                                 public void confirm(MVDialog dialog) {
@@ -439,7 +439,7 @@ public class MineFragment extends BaseRefreshFragment<FragmentMineBinding, MineV
                                     viewModel.start(SetRedPackageVideoFragment.class.getCanonicalName());
                                 }
                             }
-                        }).setCancelButton(getString(R.string.playfun_cancel), new BottomSheet.CancelClickListener() {
+                        }).setCancelButton(getString(R.string.playcc_cancel), new BottomSheet.CancelClickListener() {
                     @Override
                     public void onCancelClick(BottomSheet bottomSheet) {
                         bottomSheet.dismiss();
@@ -451,7 +451,7 @@ public class MineFragment extends BaseRefreshFragment<FragmentMineBinding, MineV
             @Override
             public void onChanged(Void aVoid) {
                 MVDialog.getInstance(MineFragment.this.getContext())
-                        .setContent(getString(R.string.playfun_dialog_recover_burn_content))
+                        .setContent(getString(R.string.playcc_dialog_recover_burn_content))
                         .setConfirmOnlick(new MVDialog.ConfirmOnclick() {
                             @Override
                             public void confirm(MVDialog dialog) {

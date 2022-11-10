@@ -78,7 +78,7 @@ public class MyPhotoAlbumFragment extends BaseRefreshToolbarFragment<FragmentMyP
     }
 
     private void showChoosePhotoSheet() {
-        String[] items = new String[]{getString(R.string.playfun_chat_action_picture), getString(R.string.playfun_video)};
+        String[] items = new String[]{getString(R.string.playcc_chat_action_picture), getString(R.string.playcc_video)};
         new BottomSheet.Builder(mActivity)
                 .setType(BottomSheet.BOTTOM_SHEET_TYPE_NORMAL)
                 .setDatas(items)
@@ -93,7 +93,7 @@ public class MyPhotoAlbumFragment extends BaseRefreshToolbarFragment<FragmentMyP
                         }
                         chooseVideo();
                     }
-                }).setCancelButton(getString(R.string.playfun_cancel), new BottomSheet.CancelClickListener() {
+                }).setCancelButton(getString(R.string.playcc_cancel), new BottomSheet.CancelClickListener() {
             @Override
             public void onCancelClick(BottomSheet bottomSheet) {
                 bottomSheet.dismiss();

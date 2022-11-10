@@ -8,7 +8,7 @@ import android.graphics.drawable.Drawable;
 import android.text.style.ImageSpan;
 
 /**
- * @Name： PlayFun_Google
+ * @Name： PlayCC
  * @Description：
  * @Author： liaosf
  * @Date： 2022/5/4 11:54

@@ -36,7 +36,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_toEndOf="@+id/img_logo"
                 android:includeFontPadding="false"
-                android:text="@string/playfun_text_set_unlock_price"
+                android:text="@string/playcc_text_set_unlock_price"
                 android:textColor="@color/toolbar_title_color"
                 android:textSize="15sp"
                 android:textStyle="bold"
@@ -49,13 +49,13 @@
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="14dp"
                 android:gravity="center"
-                android:text="@string/playfun_confirm"
+                android:text="@string/playcc_confirm"
                 android:textColor="@color/white"
                 android:textSize="13sp"
                 binding:drawable_orientation="@{GradientDrawable.Orientation.LEFT_RIGHT}"
                 binding:drawable_cornersRadius="@{12}"
-                binding:drawable_gradient_endColor="@{@color/playfun_shape_radius_end_color}"
-                binding:drawable_gradient_startColor="@{@color/playfun_shape_radius_start_color}" />
+                binding:drawable_gradient_endColor="@{@color/playcc_shape_radius_end_color}"
+                binding:drawable_gradient_startColor="@{@color/playcc_shape_radius_start_color}" />
         </RelativeLayout>
         <LinearLayout
             android:id="@+id/ll_layout_coin"
@@ -165,7 +165,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:includeFontPadding="false"
-                android:text="@string/playfun_phono_setting_reading_burn"
+                android:text="@string/playcc_phono_setting_reading_burn"
                 android:textColor="@color/text_9EA1B0"
                 android:textSize="15sp" />
         </LinearLayout>

@@ -27,7 +27,7 @@
                 android:gravity="center"
                 android:paddingTop="20dp"
                 android:paddingBottom="20dp"
-                android:text="@string/playfun_top_chat"
+                android:text="@string/playcc_top_chat"
                 android:textColor="@color/text_default"
                 android:textSize="18sp" />
 
@@ -39,7 +39,7 @@
                 android:gravity="center"
                 android:paddingTop="20dp"
                 android:paddingBottom="20dp"
-                android:text="@string/playfun_delet_chat"
+                android:text="@string/playcc_delet_chat"
                 android:textColor="@color/text_default"
                 android:textSize="18sp" />
 
@@ -51,7 +51,7 @@
                 android:gravity="center"
                 android:paddingTop="20dp"
                 android:paddingBottom="20dp"
-                android:text="@string/playfun_delet_banned_account"
+                android:text="@string/playcc_delet_banned_account"
                 android:textColor="@color/text_default"
                 android:textSize="18sp"
                 android:visibility="gone" />

@@ -37,7 +37,7 @@
                 android:id="@+id/basic_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/action_bar_height"
-                app:toolbar_title="@string/playfun_red_package_photo_title">
+                app:toolbar_title="@string/playcc_red_package_photo_title">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -54,7 +54,7 @@
                         android:layout_centerVertical="true"
                         android:paddingTop="5dp"
                         android:paddingBottom="5dp"
-                        android:text="@string/playfun_confirm"
+                        android:text="@string/playcc_confirm"
                         binding:onClickCommand="@{viewModel.confirmOnClickCommand}" />
                 </RelativeLayout>
             </com.fine.friendlycc.widget.BasicToolbar>
@@ -73,7 +73,7 @@
                 style="@style/TopWarn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{@string/playfun_set_red_package_photo_tip(viewModel.redPackagePrice)}" />
+                android:text="@{@string/playcc_set_red_package_photo_tip(viewModel.redPackagePrice)}" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"

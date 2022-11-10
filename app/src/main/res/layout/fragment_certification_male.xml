@@ -36,7 +36,7 @@
                 android:id="@+id/basic_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/action_bar_height"
-                app:toolbar_title="@string/playfun_fragment_certification_female_title" />
+                app:toolbar_title="@string/playcc_fragment_certification_female_title" />
 
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -66,7 +66,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="30dp"
-                    android:text="@string/playfun_fragment_certification_male_one"
+                    android:text="@string/playcc_fragment_certification_male_one"
                     android:textColor="@color/gray_dark"
                     android:textSize="@dimen/text_size_big"
                     android:textStyle="bold" />
@@ -81,7 +81,7 @@
                     android:drawableLeft="@drawable/ic_btn_male"
                     android:paddingLeft="65dp"
                     android:paddingRight="65dp"
-                    android:text="@string/playfun_start_certification"
+                    android:text="@string/playcc_start_certification"
                     android:textSize="14.67dp"
                     binding:onClickCommand="@{viewModel.startOnClickCommand}" />
             </LinearLayout>
@@ -114,7 +114,7 @@
                     android:layout_below="@+id/iv_avatar"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="30dp"
-                    android:text="@string/playfun_completed_real_person_certification"
+                    android:text="@string/playcc_completed_real_person_certification"
                     android:textColor="@color/gray_dark"
                     android:textSize="@dimen/text_size_big"
                     android:textStyle="bold" />
@@ -127,7 +127,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="10dp"
                     android:gravity="center"
-                    android:text="@string/playfun_free_repor_sign_up"
+                    android:text="@string/playcc_free_repor_sign_up"
                     android:visibility="gone"
                     android:textColor="@color/gray_light"
                     android:textSize="@dimen/text_size_small" />
@@ -141,7 +141,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="30dp"
-                    android:text="@string/playfun_update_face_record"
+                    android:text="@string/playcc_update_face_record"
                     binding:onClickCommand="@{viewModel.startOnClickCommand}" />
 
                 <TextView
@@ -150,7 +150,7 @@
                     android:layout_below="@+id/btn_update"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="10dp"
-                    android:text="@string/playfun_look_better_tell_me"
+                    android:text="@string/playcc_look_better_tell_me"
                     android:textColor="@color/gray_light"
                     android:textSize="@dimen/text_size_small" />
             </RelativeLayout>

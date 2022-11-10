@@ -39,7 +39,7 @@ public class ApplyMessageFragment extends BaseRefreshToolbarFragment<FragmentApp
     public void initViewObservable() {
         super.initViewObservable();
         viewModel.uc.clickDelete.observe(this, integer -> MVDialog.getInstance(mActivity)
-                .setContent(getString(R.string.playfun_comfirm_delete_message))
+                .setContent(getString(R.string.playcc_comfirm_delete_message))
                 .chooseType(MVDialog.TypeEnum.CENTERWARNED)
                 .setConfirmOnlick(dialog -> {
                     dialog.dismiss();

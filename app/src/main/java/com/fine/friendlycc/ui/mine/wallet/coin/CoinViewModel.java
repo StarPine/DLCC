@@ -41,7 +41,7 @@ public class CoinViewModel extends BaseRefreshViewModel<AppRepository> {
 
     public ObservableList<CoinItemViewModel> observableList = new ObservableArrayList<>();
 
-    public ObservableField<String> paypalAccount = new ObservableField<>(StringUtils.getString(R.string.playfun_fragment_cash_withdraw_account_bind));
+    public ObservableField<String> paypalAccount = new ObservableField<>(StringUtils.getString(R.string.playcc_fragment_cash_withdraw_account_bind));
     public ObservableField<String> emptyText = new ObservableField<>();
     public ObservableField<Boolean> isShowEmpty = new ObservableField<Boolean>(false);
     //RecyclerView多布局添加ItemBinding
@@ -74,9 +74,9 @@ public class CoinViewModel extends BaseRefreshViewModel<AppRepository> {
             loadCoinWallet();
         }
         if(ConfigManager.getInstance().isMale()){
-            emptyText.set(StringUtils.getString(R.string.playfun_coin_fragment_empty_male));
+            emptyText.set(StringUtils.getString(R.string.playcc_coin_fragment_empty_male));
         }else {
-            emptyText.set(StringUtils.getString(R.string.playfun_coin_fragment_empty_female));
+            emptyText.set(StringUtils.getString(R.string.playcc_coin_fragment_empty_female));
         }
         model.userCoinEarnings(page)
                 .doOnSubscribe(this)

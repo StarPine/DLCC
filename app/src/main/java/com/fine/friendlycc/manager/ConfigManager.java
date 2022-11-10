@@ -67,7 +67,7 @@ public class ConfigManager {
      * @Desc TODO(获取操作API库)
      * @author 彭石林
      * @parame []
-     * @return com.dl.playfun.data.AppRepository
+     * @return com.dl.playcc.data.AppRepository
      * @Date 2022/3/31
      */
     public AppRepository getAppRepository(){

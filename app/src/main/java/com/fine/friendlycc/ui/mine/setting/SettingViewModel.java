@@ -58,7 +58,7 @@ public class SettingViewModel extends BaseViewModel<AppRepository> {
     public BindingCommand clearCacheOnClickCommand = new BindingCommand(() -> {
         GlideCacheManager.getInstance().clearImageDiskCache(getApplication());
         cacheSize.set("0.00KB");
-        ToastUtils.showShort(R.string.playfun_cleared_image_cache);
+        ToastUtils.showShort(R.string.playcc_cleared_image_cache);
     });
     public BindingCommand settintAppLockOnClickCommand = new BindingCommand(() -> {
         start(ScreenLockFragment.class.getCanonicalName());

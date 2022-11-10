@@ -53,7 +53,7 @@
                 android:layout_width="30dp"
                 android:layout_height="21dp"
                 android:layout_centerInParent="true"
-                android:text="@string/playfun_setting_text"
+                android:text="@string/playcc_setting_text"
                 android:textColor="#ffffffff"
                 android:textSize="15sp"
                 android:visibility="@{viewModel.photoCoverShow==0?View.VISIBLE:View.GONE}" />
@@ -77,7 +77,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:includeFontPadding="false"
-                    android:text="@string/playfun_phone_cover_text"
+                    android:text="@string/playcc_phone_cover_text"
                     android:textColor="#ffffffff"
                     android:textSize="16sp" />
             </LinearLayout>

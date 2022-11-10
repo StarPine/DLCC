@@ -35,7 +35,7 @@
                 android:id="@+id/basic_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/action_bar_height"
-                app:toolbar_title="@string/playfun_fragment_certification_female_title" />
+                app:toolbar_title="@string/playcc_fragment_certification_female_title" />
 
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -72,7 +72,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="20dp"
-                        android:text="@string/playfun_update_face_record"
+                        android:text="@string/playcc_update_face_record"
                         android:textSize="@dimen/text_size_big"
                         android:textStyle="bold" />
 
@@ -82,7 +82,7 @@
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="10dp"
                         android:gravity="center"
-                        android:text="@string/playfun_update_face_explain_two"
+                        android:text="@string/playcc_update_face_explain_two"
                         android:textColor="@color/gray_light"
                         android:textSize="@dimen/text_size_middle" />
 
@@ -94,7 +94,7 @@
                     android:layout_height="42dp"
                     android:layout_gravity="center_horizontal"
                     android:layout_margin="20dp"
-                    android:text="@string/playfun_fragment_face_recognition_start"
+                    android:text="@string/playcc_fragment_face_recognition_start"
                     binding:onClickCommand="@{viewModel.startFaceVerifyOnClickCommand}" />
 
             </LinearLayout>
@@ -125,7 +125,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="20dp"
-                        android:text="@string/playfun_fragment_face_recognintion_fail"
+                        android:text="@string/playcc_fragment_face_recognintion_fail"
                         android:textSize="@dimen/text_size_big"
                         android:textStyle="bold" />
 
@@ -135,7 +135,7 @@
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="10dp"
                         android:gravity="center"
-                        android:text="@string/playfun_face_recognintion_fail_explain"
+                        android:text="@string/playcc_face_recognintion_fail_explain"
                         android:textColor="@color/gray_light"
                         android:textSize="@dimen/text_size_middle" />
 
@@ -147,7 +147,7 @@
                     android:layout_height="42dp"
                     android:layout_gravity="center_horizontal"
                     android:layout_margin="20dp"
-                    android:text="@string/playfun_ragment_face_recognintion_again"
+                    android:text="@string/playcc_ragment_face_recognintion_again"
                     binding:onClickCommand="@{viewModel.startFaceVerifyOnClickCommand}" />
 
                 <TextView
@@ -155,7 +155,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:padding="10dp"
-                    android:text="@string/playfun_anew_upload_photo"
+                    android:text="@string/playcc_anew_upload_photo"
                     android:textColor="@color/blue"
                     android:textSize="@dimen/text_size_middle"
                     binding:onClickCommand="@{viewModel.reUploadPhotoOnClickCommand}" />

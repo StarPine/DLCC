@@ -138,7 +138,7 @@ public class TapeAudioFragment extends BaseFragment<FragentTapeAudioBinding,Tape
                     case MotionEvent.ACTION_UP:
                         stopAudioCall();
                         if (startTime < 5) {
-                            ToastUtil.toastShortMessage(StringUtils.getString(R.string.playfun_tape_audio_error_text));
+                            ToastUtil.toastShortMessage(StringUtils.getString(R.string.playcc_tape_audio_error_text));
                             //ToastCenterUtils.showShort(R.string.tape_audio_error_text);
                             //ToastUtils.showShort(R.string.tape_audio_error_text);
                             startTime = 0;
@@ -288,7 +288,7 @@ public class TapeAudioFragment extends BaseFragment<FragentTapeAudioBinding,Tape
             public void onFinish() {
                 stopAudioCall();
                 if (startTime < 5) {
-                    ToastUtil.toastShortMessage(StringUtils.getString(R.string.playfun_tape_audio_error_text));
+                    ToastUtil.toastShortMessage(StringUtils.getString(R.string.playcc_tape_audio_error_text));
                     //ToastCenterUtils.showShort(R.string.tape_audio_error_text);
                     //ToastUtils.showShort(R.string.tape_audio_error_text);
                     startTime = 0;

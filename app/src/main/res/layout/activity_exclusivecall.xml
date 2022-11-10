@@ -42,7 +42,7 @@
                     android:id="@+id/basic_toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
-                    app:toolbar_title="@string/playfun_mine_title_my_exclusive">
+                    app:toolbar_title="@string/playcc_mine_title_my_exclusive">
 
                 </com.fine.friendlycc.widget.BasicToolbar>
             </com.google.android.material.appbar.AppBarLayout>
@@ -69,7 +69,7 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
                     android:maxWidth="400dp"
-                    android:text="@string/playfun_my_exclusive_tips_content"
+                    android:text="@string/playcc_my_exclusive_tips_content"
                     android:textColor="@color/yellow_714" />
             </LinearLayout>
 
@@ -94,7 +94,7 @@
                         android:background="@drawable/custom_right_gift_backdrop"
                         android:drawablePadding="10dp"
                         android:padding="10dp"
-                        android:text="@string/playfun_text_chat_up"
+                        android:text="@string/playcc_text_chat_up"
                         android:textColor="@color/white"
                         android:visibility="@{viewModel.textContent == null?View.VISIBLE:View.GONE}"
                         app:drawableStartCompat="@drawable/icon_text"
@@ -181,7 +181,7 @@
                         android:background="@drawable/custom_right_gift_backdrop"
                         android:drawablePadding="10dp"
                         android:padding="10dp"
-                        android:text="@string/playfun_audio_chat_up"
+                        android:text="@string/playcc_audio_chat_up"
                         android:textColor="@color/white"
                         android:visibility="@{viewModel.audioContent == null?View.VISIBLE:View.GONE}"
                         app:drawableStartCompat="@drawable/icon_audio" />

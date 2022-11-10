@@ -38,7 +38,7 @@
                 android:id="@+id/basic_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                app:toolbar_title="@string/playfun_tab_message_2"/>
+                app:toolbar_title="@string/playcc_tab_message_2"/>
 
         </com.google.android.material.appbar.AppBarLayout>
 

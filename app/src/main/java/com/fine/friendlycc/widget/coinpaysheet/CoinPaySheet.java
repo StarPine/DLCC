@@ -352,14 +352,14 @@ public class CoinPaySheet {
 
         private void payOrder() {
             if (mOrderEntity == null) {
-                ToastUtils.showShort(R.string.playfun_order_no_exist);
+                ToastUtils.showShort(R.string.playcc_order_no_exist);
                 return;
             }
             if (mBalance < mOrderEntity.getMoney()) {
                 MVDialog.getInstance(mActivity)
-                        .setTitele(StringUtils.getString(R.string.playfun_insufficient_diamonds))
-                        .setContent(StringUtils.getString(R.string.playfun_top_up_to_pay))
-                        .setConfirmText(StringUtils.getString(R.string.playfun_dialong_coin_rechaege_top_up))
+                        .setTitele(StringUtils.getString(R.string.playcc_insufficient_diamonds))
+                        .setContent(StringUtils.getString(R.string.playcc_top_up_to_pay))
+                        .setConfirmText(StringUtils.getString(R.string.playcc_dialong_coin_rechaege_top_up))
                         .chooseType(MVDialog.TypeEnum.CENTER)
                         .setConfirmOnlick(dialog -> {
                             dialog.dismiss();
@@ -408,9 +408,9 @@ public class CoinPaySheet {
         private void payCoinRedPackage() {
             if (mBalance < bottomSheet.builder.coinNumber) {
                 MVDialog.getInstance(mActivity)
-                        .setTitele(StringUtils.getString(R.string.playfun_insufficient_diamonds))
-                        .setContent(StringUtils.getString(R.string.playfun_top_up_to_pay))
-                        .setConfirmText(StringUtils.getString(R.string.playfun_dialong_coin_rechaege_top_up))
+                        .setTitele(StringUtils.getString(R.string.playcc_insufficient_diamonds))
+                        .setContent(StringUtils.getString(R.string.playcc_top_up_to_pay))
+                        .setConfirmText(StringUtils.getString(R.string.playcc_dialong_coin_rechaege_top_up))
                         .chooseType(MVDialog.TypeEnum.CENTER)
                         .setConfirmOnlick(dialog -> {
                             dialog.dismiss();

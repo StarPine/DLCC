@@ -104,7 +104,7 @@ public class CoinPusherHelpDialog extends BaseDialog {
     private class ShareJavaScriptInterface{
         @JavascriptInterface
         public String getMultilingualFlag() {
-            return StringUtils.getString(R.string.playfun_local_language);
+            return StringUtils.getString(R.string.playcc_local_language);
         }
         @JavascriptInterface
         public String getCurrentUserInfo() {
@@ -112,7 +112,7 @@ public class CoinPusherHelpDialog extends BaseDialog {
             //当前配置
             WebViewDataEntity.SettingInfo settingInfo = new WebViewDataEntity.SettingInfo();
             settingInfo.setAppId(AppConfig.APPID);
-            settingInfo.setCurrentLanguage(StringUtils.getString(R.string.playfun_local_language));
+            settingInfo.setCurrentLanguage(StringUtils.getString(R.string.playcc_local_language));
             AppRepository appRepository = ConfigManager.getInstance().getAppRepository();
             String userToken = null;
             TokenEntity tokenEntity = appRepository.readLoginInfo();

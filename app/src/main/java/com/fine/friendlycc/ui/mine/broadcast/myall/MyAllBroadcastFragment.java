@@ -189,12 +189,12 @@ public class MyAllBroadcastFragment extends BaseRefreshFragment<FragmentMyAllBro
             boolean isSelf = false;
             if (type.equals(RadioRecycleType_New)) {
                 if (viewModel.userId == ((TrendItemViewModel) viewModel.observableList.get(position)).newsEntityObservableField.get().getUser().getId()) {
-                    stop.setText(((TrendItemViewModel) viewModel.observableList.get(position)).newsEntityObservableField.get().getBroadcast().getIsComment() == 0 ? getString(R.string.playfun_fragment_issuance_program_no_comment) : getString(R.string.playfun_open_comment));
+                    stop.setText(((TrendItemViewModel) viewModel.observableList.get(position)).newsEntityObservableField.get().getBroadcast().getIsComment() == 0 ? getString(R.string.playcc_fragment_issuance_program_no_comment) : getString(R.string.playcc_open_comment));
                     stop.setVisibility(View.GONE);
                     isSelf = true;
                 } else {
                     mCirclePop.findViewById(R.id.tv_detele).setVisibility(View.GONE);
-                    stop.setText(getString(R.string.playfun_report_user_title));
+                    stop.setText(getString(R.string.playcc_report_user_title));
                     isSelf = false;
                 }
             }
@@ -219,7 +219,7 @@ public class MyAllBroadcastFragment extends BaseRefreshFragment<FragmentMyAllBro
                 @Override
                 public void onClick(View v) {
                     MVDialog.getInstance(MyAllBroadcastFragment.this.getContext())
-                            .setContent(type.equals(RadioRecycleType_New) ? getString(R.string.playfun_comfirm_delete_trend) : getString(R.string.playfun_confirm_delete_program))
+                            .setContent(type.equals(RadioRecycleType_New) ? getString(R.string.playcc_comfirm_delete_trend) : getString(R.string.playcc_confirm_delete_program))
                             .chooseType(MVDialog.TypeEnum.CENTER)
                             .setConfirmOnlick(new MVDialog.ConfirmOnclick() {
                                 @Override
@@ -258,7 +258,7 @@ public class MyAllBroadcastFragment extends BaseRefreshFragment<FragmentMyAllBro
                     if (((TrendItemViewModel) viewModel.observableList.get(position)).newsEntityObservableField.get().getIsGive() == 0) {
                         viewModel.newsGive(position);
                     } else {
-                        ToastUtils.showShort(R.string.playfun_already);
+                        ToastUtils.showShort(R.string.playcc_already);
                     }
                 }
             }
@@ -277,7 +277,7 @@ public class MyAllBroadcastFragment extends BaseRefreshFragment<FragmentMyAllBro
                                 @Override
                                 public void clickListItem(Dialog dialog, String comment) {
                                     if (StringUtils.isEmpty(comment)) {
-                                        ToastUtils.showShort(R.string.playfun_warn_input_comment);
+                                        ToastUtils.showShort(R.string.playcc_warn_input_comment);
                                         return;
                                     }
                                     dialog.dismiss();

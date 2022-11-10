@@ -58,7 +58,7 @@
                 android:includeFontPadding="false"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/playfun_im_photo_burned"
+                android:text="@string/playcc_im_photo_burned"
                 android:textColor="@color/white"
                 android:textSize="11sp"
                 />
@@ -103,7 +103,7 @@
                     android:layout_marginEnd="5dp"
                     android:layout_width="12dp"
                     android:layout_height="12dp"
-                    android:src="@drawable/icon_playfun_lock_1"
+                    android:src="@drawable/icon_playcc_lock_1"
                     />
             </RelativeLayout>
             <androidx.appcompat.widget.AppCompatImageView
@@ -112,7 +112,7 @@
                 android:layout_width="12dp"
                 android:layout_height="12dp"
                 android:visibility="gone"
-                android:src="@drawable/icon_playfun_confirm_1"
+                android:src="@drawable/icon_playcc_confirm_1"
                 />
         </RelativeLayout>
     </FrameLayout>

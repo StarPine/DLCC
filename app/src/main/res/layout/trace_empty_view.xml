@@ -54,7 +54,7 @@
                 android:layout_below="@+id/none_data"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="16dp"
-                android:text="@string/playfun_mine_trace_empty"
+                android:text="@string/playcc_mine_trace_empty"
                 android:textColor="@color/gray_light"
                 android:textSize="@dimen/text_size_middle" />
 

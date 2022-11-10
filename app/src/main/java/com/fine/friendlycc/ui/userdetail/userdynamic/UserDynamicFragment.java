@@ -80,9 +80,9 @@ public class UserDynamicFragment extends BaseRefreshToolbarFragment<FragmentUser
         UserDynamicViewModel viewModel = ViewModelProviders.of(this, factory).get(UserDynamicViewModel.class);
         viewModel.id.set(userId);
         if (sex == 0) {
-            viewModel.titleText.set(getString(R.string.playfun_her_trend));
+            viewModel.titleText.set(getString(R.string.playcc_her_trend));
         } else if (sex == 1) {
-            viewModel.titleText.set(getString(R.string.playfun_other_trend));
+            viewModel.titleText.set(getString(R.string.playcc_other_trend));
         }
         return viewModel;
     }
@@ -201,7 +201,7 @@ public class UserDynamicFragment extends BaseRefreshToolbarFragment<FragmentUser
                 }
                 TextView stop = mCirclePop.findViewById(R.id.tv_stop);
                 mCirclePop.findViewById(R.id.tv_detele).setVisibility(View.GONE);
-                stop.setText(R.string.playfun_report_user_title);
+                stop.setText(R.string.playcc_report_user_title);
                 stop.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -222,7 +222,7 @@ public class UserDynamicFragment extends BaseRefreshToolbarFragment<FragmentUser
                 if (viewModel.observableList.get(position).newsEntityObservableField.get().getIsGive() == 0) {
                     viewModel.newsGive(position);
                 } else {
-                    ToastUtils.showShort(R.string.playfun_already);
+                    ToastUtils.showShort(R.string.playcc_already);
                 }
             }
         });
@@ -236,7 +236,7 @@ public class UserDynamicFragment extends BaseRefreshToolbarFragment<FragmentUser
                                 @Override
                                 public void clickListItem(Dialog dialog, String comment) {
                                     if (StringUtils.isEmpty(comment)) {
-                                        ToastUtils.showShort(R.string.playfun_warn_input_comment);
+                                        ToastUtils.showShort(R.string.playcc_warn_input_comment);
                                         return;
                                     }
                                     dialog.dismiss();

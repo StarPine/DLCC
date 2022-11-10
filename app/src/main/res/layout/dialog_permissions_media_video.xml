@@ -30,7 +30,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="25dp"
             android:gravity="center"
-            android:text="@string/playfun_permissions_audio_txt"
+            android:text="@string/playcc_permissions_audio_txt"
             android:textColor="@color/gray_middle"
             android:textSize="15sp"
             android:textStyle="bold" />
@@ -44,7 +44,7 @@
             android:layout_marginTop="21dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
-            android:text="@string/playfun_confirm"
+            android:text="@string/playcc_confirm"
             android:textColor="@color/white"
             android:textSize="@dimen/text_size_42" />
     </LinearLayout>

@@ -86,7 +86,7 @@
                         android:layout_gravity="center"
                         android:layout_marginStart="10dp"
                         android:includeFontPadding="false"
-                        android:text="@string/playfun_text_dislike"
+                        android:text="@string/playcc_text_dislike"
                         android:textColor="#ffffffff"
                         android:textSize="15sp" />
                 </LinearLayout>
@@ -100,8 +100,8 @@
                     android:layout_marginStart="28dp"
                     android:orientation="horizontal"
                     binding:drawable_cornersRadius="@{22}"
-                    binding:drawable_gradient_endColor="@{@color/playfun_shape_radius_end_color}"
-                    binding:drawable_gradient_startColor="@{@color/playfun_shape_radius_start_color}">
+                    binding:drawable_gradient_endColor="@{@color/playcc_shape_radius_end_color}"
+                    binding:drawable_gradient_startColor="@{@color/playcc_shape_radius_start_color}">
 
                     <androidx.appcompat.widget.AppCompatImageView
                         android:layout_width="28dp"
@@ -115,7 +115,7 @@
                         android:layout_gravity="center"
                         android:layout_marginStart="10dp"
                         android:includeFontPadding="false"
-                        android:text="@string/playfun_text_like"
+                        android:text="@string/playcc_text_like"
                         android:textColor="#ffffffff"
                         android:textSize="15sp" />
                 </LinearLayout>

@@ -171,7 +171,7 @@ public class CoinPusherConvertCapsuleDialog extends BaseDialog {
                     public void onError(RequestException e) {
                         super.onError(e);
                         if(e.getCode()!=null && e.getCode().intValue()==21001 ){//钻石余额不足
-                            SnackUtils.showCenterShort(binding.getRoot(),StringUtils.getString(R.string.playfun_dialog_exchange_integral_total_text1));
+                            SnackUtils.showCenterShort(binding.getRoot(),StringUtils.getString(R.string.playcc_dialog_exchange_integral_total_text1));
                             if(getItemConvertListener()!=null){
                                 getItemConvertListener().buyError();
                             }

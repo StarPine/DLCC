@@ -31,11 +31,11 @@
                 android:gravity="center"
                 android:layout_width="90dp"
                 android:layout_height="24dp"
-                android:text="@{itemEntity.status == 1 ? @string/playfun_coinpusher_text_1 : @string/playfun_coinpusher_text_2}"
+                android:text="@{itemEntity.status == 1 ? @string/playcc_coinpusher_text_1 : @string/playcc_coinpusher_text_2}"
                 android:textColor="@color/white"
                 android:textSize="14sp"
                 android:textStyle="bold"
-                tools:text="@string/playfun_coinpusher_text_1"
+                tools:text="@string/playcc_coinpusher_text_1"
                 tools:background="@color/red_9"
                 />
 
@@ -83,10 +83,10 @@
                     android:layout_marginStart="5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{String.format(@string/playfun_coinpusher_text_3,itemEntity.money)}"
+                    android:text="@{String.format(@string/playcc_coinpusher_text_3,itemEntity.money)}"
                     android:textColor="@color/pseekbar_process"
                     android:textSize="14sp"
-                    tools:text="@string/playfun_coinpusher_text_3"
+                    tools:text="@string/playcc_coinpusher_text_3"
                     />
             </LinearLayout>
 

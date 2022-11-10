@@ -116,12 +116,12 @@ public class FaceRecognitionViewModel extends BaseViewModel<AppRepository> {
                 .map((Function<String, String>) entity -> FileUploadUtils.ossUploadFile(String.format("album/%s/", model.readUserData().getId()), 1, uc.imageUrlFace.getValue(), new FileUploadUtils.FileUploadProgressListener() {
                     @Override
                     public void fileCompressProgress(int progress) {
-                        showProgressHUD(String.format(StringUtils.getString(R.string.playfun_compressing), progress), progress);
+                        showProgressHUD(String.format(StringUtils.getString(R.string.playcc_compressing), progress), progress);
                     }
 
                     @Override
                     public void fileUploadProgress(int progress) {
-                        showProgressHUD(String.format(StringUtils.getString(R.string.playfun_uploading), progress), progress);
+                        showProgressHUD(String.format(StringUtils.getString(R.string.playcc_uploading), progress), progress);
                     }
                 }))
                 .observeOn(AndroidSchedulers.mainThread())
@@ -139,7 +139,7 @@ public class FaceRecognitionViewModel extends BaseViewModel<AppRepository> {
                                         Map<String, String> map = mapBaseDataResponse.getData();
                                         String status = map.get("status");
                                         if (status.equals("1")) {
-                                            ToastUtils.showShort(R.string.playfun_face_success);
+                                            ToastUtils.showShort(R.string.playcc_face_success);
                                             UserDataEntity userDataEntity = model.readUserData();
                                             userDataEntity.setCertification(1);
                                             model.saveUserData(userDataEntity);
@@ -149,22 +149,22 @@ public class FaceRecognitionViewModel extends BaseViewModel<AppRepository> {
                                             String message = String.valueOf(map.get("message"));
                                             if (message != null) {
                                                 if (message.indexOf("Error.InternalError") != -1) { //服务内部出现未知错误，请联系技术支持排查。
-                                                    ToastUtils.showShort(R.string.playfun_error_InternalError);
+                                                    ToastUtils.showShort(R.string.playcc_error_InternalError);
                                                 } else if (message.indexOf("InvalidParam.MaterialsNotValid") != -1) { //请确保提交的材料类型正确性。
-                                                    ToastUtils.showShort(R.string.playfun_error_MaterialsNotValid);
+                                                    ToastUtils.showShort(R.string.playcc_error_MaterialsNotValid);
                                                 } else if (message.indexOf("Error.MaterialsInsufficient") != -1) { // requirements for verification.	提交认证的材料种类不满足要求，请检查上传的材料种类是否符合业务场景要求。
-                                                    ToastUtils.showShort(R.string.playfun_error_MaterialsInsufficient);
+                                                    ToastUtils.showShort(R.string.playcc_error_MaterialsInsufficient);
                                                 } else if (message.indexOf("Error.NoFaceDetected") != -1) { //指定图片中没有检测到人脸。
-                                                    ToastUtils.showShort(R.string.playfun_error_NoFaceDetected);
+                                                    ToastUtils.showShort(R.string.playcc_error_NoFaceDetected);
                                                 } else if (message.indexOf("InvalidParam.FacePicNotGiven") != -1) { //进行比对的两个图片中，至少其中一个图片的类型应该设置为人脸照FacePic。。 At least one of the two given images has a type of FacePic
-                                                    ToastUtils.showShort(R.string.playfun_error_FacePicNotGiven);
+                                                    ToastUtils.showShort(R.string.playcc_error_FacePicNotGiven);
                                                 } else if (message.indexOf("Error.DuplicatedTicketId") != -1) { //请确保提交的材料类型正确性。
-                                                    ToastUtils.showShort(R.string.playfun_error_DuplicatedTicketId);
+                                                    ToastUtils.showShort(R.string.playcc_error_DuplicatedTicketId);
                                                 } else { //请确保提交的材料类型正确性。
-                                                    ToastUtils.showShort(R.string.playfun_error_face_message);
+                                                    ToastUtils.showShort(R.string.playcc_error_face_message);
                                                 }
                                             } else {
-                                                ToastUtils.showShort(R.string.playfun_error_face_message);
+                                                ToastUtils.showShort(R.string.playcc_error_face_message);
                                             }
                                             verifyFaceFail.set(true);
                                         }
@@ -186,7 +186,7 @@ public class FaceRecognitionViewModel extends BaseViewModel<AppRepository> {
                     @Override
                     public void onError(Throwable e) {
 //                        dismissHUD();
-                        ToastUtils.showShort(R.string.playfun_upload_failed);
+                        ToastUtils.showShort(R.string.playcc_upload_failed);
                     }
 
                     @Override

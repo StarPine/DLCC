@@ -48,7 +48,7 @@
             android:ellipsize="end"
             android:maxLines="2"
             app:htmlText="@{viewModel.itemEntity.content}"
-            tools:text="@string/playfun_message_hint_all" />
+            tools:text="@string/playcc_message_hint_all" />
 
         <com.fine.friendlycc.widget.roundedimageview.RoundedImageView
             android:id="@+id/iv_photo"
@@ -93,7 +93,7 @@
             android:layout_alignBottom="@id/tv_time"
             android:layout_alignParentRight="true"
             android:drawableRight="@drawable/ic_arrow_right"
-            android:text="@string/playfun_ta_homepage"
+            android:text="@string/playcc_ta_homepage"
             android:textColor="@color/gray_light"
             android:textSize="@dimen/text_size_mini" />
 
@@ -105,7 +105,7 @@
             android:layout_alignLeft="@id/tv_content"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:text="@{viewModel.itemEntity.apply.status == 1 ? @string/playfun_request_allow:@string/playfun_request_denied}"
+            android:text="@{viewModel.itemEntity.apply.status == 1 ? @string/playcc_request_allow:@string/playcc_request_denied}"
             android:textColor="@{viewModel.itemEntity.apply.status == 1 ? @color/green:@color/red_7c}"
             android:textSize="@dimen/text_size_middle"
             android:visibility="@{viewModel.itemEntity.apply.status != 0 ? View.VISIBLE:View.GONE}"
@@ -129,7 +129,7 @@
                 android:drawableLeft="@drawable/time_countdown"
                 android:drawablePadding="3dp"
                 android:textSize="@dimen/text_size_small_12"
-                android:text="@string/playfun_allowes"
+                android:text="@string/playcc_allowes"
                 binding:onClickCommand="@{viewModel.allowClick}" />
 
             <Button
@@ -139,7 +139,7 @@
                 android:padding="5dp"
                 android:layout_marginLeft="10dp"
                 android:textSize="@dimen/text_size_small_12"
-                android:text="@string/playfun_reject"
+                android:text="@string/playcc_reject"
                 binding:onClickCommand="@{viewModel.rejectClick}" />
         </LinearLayout>
 

@@ -186,7 +186,7 @@ public class EvaluateMessageViewModel extends BaseRefreshViewModel<AppRepository
                     public void onSuccess(BaseResponse response) {
                         dismissHUD();
                         startRefresh();
-                        ToastUtils.showShort(R.string.playfun_submittd);
+                        ToastUtils.showShort(R.string.playcc_submittd);
                     }
 
                     @Override
@@ -224,7 +224,7 @@ public class EvaluateMessageViewModel extends BaseRefreshViewModel<AppRepository
                     @Override
                     public void onError(Throwable e) {
                         dismissHUD();
-                        ToastUtils.showShort(R.string.playfun_upload_failed);
+                        ToastUtils.showShort(R.string.playcc_upload_failed);
                     }
 
                     @Override
@@ -262,16 +262,16 @@ public class EvaluateMessageViewModel extends BaseRefreshViewModel<AppRepository
     }
 
     public String getStatusText(int s) {
-        String status = StringUtils.getString(R.string.playfun_unknown);
+        String status = StringUtils.getString(R.string.playcc_unknown);
         //0未上诉 1已上诉等待处理 2上诉成功 3上诉失败
         if (s == 0) {
             status = "";
         } else if (s == 1) {
-            status = StringUtils.getString(R.string.playfun_applealed);
+            status = StringUtils.getString(R.string.playcc_applealed);
         } else if (s == 2) {
-            status = StringUtils.getString(R.string.playfun_appleal_success);
+            status = StringUtils.getString(R.string.playcc_appleal_success);
         } else if (s == 3) {
-            status = StringUtils.getString(R.string.playfun_appleal_defail);
+            status = StringUtils.getString(R.string.playcc_appleal_defail);
         }
         return status;
     }

@@ -52,7 +52,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/action_bar_height"
                     app:boolbar_back_image="@drawable/ic_toolbar_back_white"
-                    app:toolbar_title="@string/playfun_member_subscribe_title"
+                    app:toolbar_title="@string/playcc_member_subscribe_title"
                     app:toolbar_title_color="@color/white" />
 
             </com.google.android.material.appbar.AppBarLayout>
@@ -115,7 +115,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="10dp"
-                                android:text="@{String.format(@string/playfun_deadline_is_up,viewModel.vipInfoEntity.endTime)}"
+                                android:text="@{String.format(@string/playcc_deadline_is_up,viewModel.vipInfoEntity.endTime)}"
                                 android:textColor="@color/coffee_11d"
                                 android:textSize="16sp"
                                 android:visibility="@{viewModel.vipInfoEntity.isVip == 0? View.GONE :View.VISIBLE}"
@@ -125,7 +125,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="10dp"
-                                android:text="@string/playfun_nonactivated"
+                                android:text="@string/playcc_nonactivated"
                                 android:textColor="@color/coffee_11d"
                                 android:textSize="16sp"
                                 android:visibility="@{viewModel.vipInfoEntity.isVip == 1? View.GONE :View.VISIBLE}"
@@ -172,7 +172,7 @@
                         android:paddingStart="15dp"
                         android:paddingTop="10dp"
                         android:paddingBottom="10dp"
-                        android:text="@string/playfun_vip_tips_privilege"
+                        android:text="@string/playcc_vip_tips_privilege"
                         android:textColor="@color/white"
                         android:textSize="16sp"
                         android:textStyle="bold"
@@ -203,7 +203,7 @@
                         android:layout_height="wrap_content"
                         android:background="@color/black_558"
                         android:padding="15dp"
-                        android:text="@string/playfun_vip_service_tips"
+                        android:text="@string/playcc_vip_service_tips"
                         android:textColor="@color/pseekbar_process_off"
                         android:textSize="12sp" />
 
@@ -229,7 +229,7 @@
                 android:layout_marginEnd="50dp"
                 android:background="@drawable/btn_bg_vip_buy"
                 android:gravity="center"
-                android:text="@string/playfun_buy_now"
+                android:text="@string/playcc_buy_now"
                 android:textColor="@color/vip_buy"
                 android:textSize="@dimen/text_size_toolbar_title"
                 android:textStyle="bold"

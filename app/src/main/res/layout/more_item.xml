@@ -20,7 +20,7 @@
             android:gravity="center"
             android:paddingTop="12dp"
             android:paddingBottom="12dp"
-            android:text="@string/playfun_fragment_issuance_program_no_comment"
+            android:text="@string/playcc_fragment_issuance_program_no_comment"
             android:textColor="@color/gray_middle"
             android:textSize="14sp" />
 
@@ -37,7 +37,7 @@
             android:gravity="center"
             android:paddingTop="12dp"
             android:paddingBottom="12dp"
-            android:text="@string/playfun_delete_trend"
+            android:text="@string/playcc_delete_trend"
             android:textColor="@color/gray_middle"
             android:textSize="14sp" />
     </LinearLayout>

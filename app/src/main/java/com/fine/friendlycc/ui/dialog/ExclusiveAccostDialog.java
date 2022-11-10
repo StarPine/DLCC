@@ -35,7 +35,7 @@ import java.io.File;
 /**
  * 修改备注：
  *
- * @Name： PlayFun_Google
+ * @Name： PlayCC
  * @Description：
  * @Author： liaosf
  * @Date： 2022/8/12 11:26
@@ -95,9 +95,9 @@ public class ExclusiveAccostDialog {
         ImageView close = contentView.findViewById(R.id.iv_close);
         if (!TextUtils.isEmpty(content)) {
             edAccostText.setText(content);
-            wordCount.setText(String.format(mContext.getString(R.string.playfun_text_accost_number_of_fonts), edAccostText.getText().length() + ""));
+            wordCount.setText(String.format(mContext.getString(R.string.playcc_text_accost_number_of_fonts), edAccostText.getText().length() + ""));
         } else {
-            wordCount.setText(String.format(mContext.getString(R.string.playfun_text_accost_number_of_fonts), "0"));
+            wordCount.setText(String.format(mContext.getString(R.string.playcc_text_accost_number_of_fonts), "0"));
 
         }
         close.setOnClickListener(v -> dialog.dismiss());
@@ -109,7 +109,7 @@ public class ExclusiveAccostDialog {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                wordCount.setText(String.format(mContext.getString(R.string.playfun_text_accost_number_of_fonts), edAccostText.getText().length() + ""));
+                wordCount.setText(String.format(mContext.getString(R.string.playcc_text_accost_number_of_fonts), edAccostText.getText().length() + ""));
             }
 
             @Override
@@ -164,7 +164,7 @@ public class ExclusiveAccostDialog {
                                         audioNomal.setImageDrawable(mContext.getDrawable(R.drawable.icon_anim_audio_recording));
                                         startAnimal(audioNomal);
                                         recording.setBackgroundResource(R.drawable.button_purple_background2);
-                                        recording.setText(mContext.getString(R.string.playfun_audio_accost_recording));
+                                        recording.setText(mContext.getString(R.string.playcc_audio_accost_recording));
                                         startTime = 0;
                                         startRecord(timing);
                                         setTimeText(timing);
@@ -175,7 +175,7 @@ public class ExclusiveAccostDialog {
                                         audioNomal.clearAnimation();
                                         stopRecord();
                                         if (startTime < 1) {
-                                            ToastUtil.toastShortMessage(StringUtils.getString(R.string.playfun_audio_tips_text_one));
+                                            ToastUtil.toastShortMessage(StringUtils.getString(R.string.playcc_audio_tips_text_one));
                                             startTime = 0;
                                             deleteFlag = true;
                                             resetStatus(recording, timing, audioNomal, llCompletiion, audioPlayable);
@@ -266,9 +266,9 @@ public class ExclusiveAccostDialog {
 
     private void resetStatus(Button recording, TextView timing, ImageView audioNomal, LinearLayout llCompletiion, ImageView audioPlayable) {
         audioNomal.setImageDrawable(mContext.getDrawable(R.drawable.icon_audio_nomal));
-        timing.setText(mContext.getString(R.string.playfun_audio_accost_tip));
+        timing.setText(mContext.getString(R.string.playcc_audio_accost_tip));
         recording.setBackgroundResource(R.drawable.button_purple_background);
-        recording.setText(mContext.getString(R.string.playfun_audio_accost_long_click));
+        recording.setText(mContext.getString(R.string.playcc_audio_accost_long_click));
         llCompletiion.setVisibility(View.GONE);
         audioPlayable.setVisibility(View.GONE);
         recording.setVisibility(View.VISIBLE);

@@ -176,7 +176,7 @@ public class FukuokaViewFragment extends BaseFragment<WebviewFukubukuroFragmentB
             cookieManager.setAcceptCookie(true);
             cookieManager.removeSessionCookie();//移除
             cookieManager.removeAllCookie();
-            cookieManager.setCookie(url, "local="+context.getString(R.string.playfun_local_language));
+            cookieManager.setCookie(url, "local="+context.getString(R.string.playcc_local_language));
             cookieManager.setCookie(url, "appId="+ AppConfig.APPID);
             CookieSyncManager.getInstance().sync();
         } catch (Exception e) {

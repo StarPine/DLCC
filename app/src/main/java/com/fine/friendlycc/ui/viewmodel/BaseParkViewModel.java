@@ -198,7 +198,7 @@ public abstract class BaseParkViewModel<T extends AppRepository> extends BaseRef
                     @Override
                     public void onSuccess(BaseResponse response) {
                         dismissHUD();
-                        ToastUtils.showShort(R.string.playfun_text_accost_success1);
+                        ToastUtils.showShort(R.string.playcc_text_accost_success1);
                         parkItemEntity.setCollect(false);
                         Objects.requireNonNull(adapter.getAdapterItem(position).itemEntity.get()).setIsAccost(1);
                         adapter.getAdapterItem(position).accountCollect.set(true);
@@ -212,7 +212,7 @@ public abstract class BaseParkViewModel<T extends AppRepository> extends BaseRef
                     public void onError(RequestException e) {
                         super.onError(e);
                         if(e.getCode()!=null && e.getCode().intValue()==21001 ){//钻石余额不足
-                            ToastCenterUtils.showToast(R.string.playfun_dialog_exchange_integral_total_text3);
+                            ToastCenterUtils.showToast(R.string.playcc_dialog_exchange_integral_total_text3);
                             AccostFirstSuccess(null, position);
                         }
                         parkItemEntity.setCollect(false);

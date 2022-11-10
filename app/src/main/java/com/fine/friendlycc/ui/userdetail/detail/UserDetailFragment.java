@@ -161,9 +161,9 @@ public class UserDetailFragment extends BaseToolbarFragment<FragmentUserDetailBi
         viewModel.uc.otherBusy.observe(this, o -> {
             TraceDialog.getInstance(UserDetailFragment.this.getContext())
                     .chooseType(TraceDialog.TypeEnum.CENTER)
-                    .setTitle(StringUtils.getString(R.string.playfun_other_busy_title))
-                    .setContent(StringUtils.getString(R.string.playfun_other_busy_text))
-                    .setConfirmText(StringUtils.getString(R.string.playfun_mine_trace_delike_confirm))
+                    .setTitle(StringUtils.getString(R.string.playcc_other_busy_title))
+                    .setContent(StringUtils.getString(R.string.playcc_other_busy_text))
+                    .setConfirmText(StringUtils.getString(R.string.playcc_mine_trace_delike_confirm))
                     .setConfirmOnlick(new TraceDialog.ConfirmOnclick() {
                         @Override
                         public void confirm(Dialog dialog) {
@@ -205,12 +205,12 @@ public class UserDetailFragment extends BaseToolbarFragment<FragmentUserDetailBi
                     return;
                 }
 //                String[] items = new String[]{getString(R.string.pull_black_shield_both_sides), getString(R.string.remark_user_title), getString(R.string.report_user_title)};
-                String[] items = new String[]{getString(R.string.playfun_pull_black_shield_both_sides), getString(R.string.playfun_report_user_title)};
+                String[] items = new String[]{getString(R.string.playcc_pull_black_shield_both_sides), getString(R.string.playcc_report_user_title)};
                 if (viewModel.detailEntity.get().getCollect()) {
-                    items = new String[]{getString(R.string.playfun_pull_black_shield_both_sides), getString(R.string.playfun_report_user_title), getString(R.string.playfun_cancel_zuizong)};
+                    items = new String[]{getString(R.string.playcc_pull_black_shield_both_sides), getString(R.string.playcc_report_user_title), getString(R.string.playcc_cancel_zuizong)};
                 }
                 if (viewModel.detailEntity.get().getIsBlacklist() == 1) {
-                    items[0] = getString(R.string.playfun_remove_black_shield_both_sides);
+                    items[0] = getString(R.string.playcc_remove_black_shield_both_sides);
                 }
                 new BottomSheet.Builder(mActivity).setDatas(items).setOnItemSelectedListener((bottomSheet, position) -> {
                     bottomSheet.dismiss();
@@ -219,8 +219,8 @@ public class UserDetailFragment extends BaseToolbarFragment<FragmentUserDetailBi
                             viewModel.delBlackList();
                         } else {
                             MVDialog.getInstance(mActivity)
-                                    .setContent(getString(R.string.playfun_dialog_add_blacklist_content))
-                                    .setConfirmText(getString(R.string.playfun_dialog_add_blacklist_content2))
+                                    .setContent(getString(R.string.playcc_dialog_add_blacklist_content))
+                                    .setConfirmText(getString(R.string.playcc_dialog_add_blacklist_content2))
                                     .setConfirmOnlick(dialog -> {
                                         viewModel.addBlackList();
                                     })
@@ -242,7 +242,7 @@ public class UserDetailFragment extends BaseToolbarFragment<FragmentUserDetailBi
                             viewModel.collectOnClickCommand.execute();
                         }
                     }
-                }).setCancelButton(StringUtils.getString(R.string.playfun_cancel), new BottomSheet.CancelClickListener() {
+                }).setCancelButton(StringUtils.getString(R.string.playcc_cancel), new BottomSheet.CancelClickListener() {
                     @Override
                     public void onCancelClick(BottomSheet bottomSheet) {
                         bottomSheet.dismiss();
@@ -275,7 +275,7 @@ public class UserDetailFragment extends BaseToolbarFragment<FragmentUserDetailBi
                 @Override
                 public void onEvaluateClick(MyEvaluateDialog dialog) {
                     if (viewModel.canEvaluate.get() == false) {
-                        ToastUtils.showShort(viewModel.detailEntity.get().isMale() ? R.string.playfun_no_information_cant_comment_him : R.string.playfun_no_information_cant_comment);
+                        ToastUtils.showShort(viewModel.detailEntity.get().isMale() ? R.string.playcc_no_information_cant_comment_him : R.string.playcc_no_information_cant_comment);
                         return;
                     }
                     dialog.dismiss();
@@ -286,8 +286,8 @@ public class UserDetailFragment extends BaseToolbarFragment<FragmentUserDetailBi
                         if (entity != null) {
                             if (entity.isNegativeEvaluate()) {
                                 MVDialog.getInstance(mActivity)
-                                        .setContent(getString(R.string.playfun_provide_screenshot))
-                                        .setConfirmText(getString(R.string.playfun_choose_photo))
+                                        .setContent(getString(R.string.playcc_provide_screenshot))
+                                        .setConfirmText(getString(R.string.playcc_choose_photo))
                                         .setConfirmOnlick(dialog1 -> {
                                             dialog1.dismiss();
                                             PictureSelectorUtil.selectImage(mActivity, false, 1, new OnResultCallbackListener<LocalMedia>() {
@@ -309,7 +309,7 @@ public class UserDetailFragment extends BaseToolbarFragment<FragmentUserDetailBi
                                 viewModel.commitUserEvaluate(entity.getTagId(), null);
                             }
                         } else {
-                            ToastUtils.showShort(R.string.playfun_user_detail_evaluation_hint2);
+                            ToastUtils.showShort(R.string.playcc_user_detail_evaluation_hint2);
                         }
                     });
                 }
@@ -329,9 +329,9 @@ public class UserDetailFragment extends BaseToolbarFragment<FragmentUserDetailBi
             @Override
             public void onChanged(String nickName) {
                 MVDialog.getInstance(mActivity)
-                        .setTitele(String.format(getString(R.string.playfun_setting_limit), nickName))
-                        .setContent(getString(R.string.playfun_setting_limit_content))
-                        .setConfirmText(getString(R.string.playfun_choose_photo))
+                        .setTitele(String.format(getString(R.string.playcc_setting_limit), nickName))
+                        .setContent(getString(R.string.playcc_setting_limit_content))
+                        .setConfirmText(getString(R.string.playcc_choose_photo))
                         .setConfirmOnlick(dialog -> {
                             dialog.dismiss();
                             choosePhoto();
@@ -437,19 +437,19 @@ public class UserDetailFragment extends BaseToolbarFragment<FragmentUserDetailBi
         String title2 = null;
         if (getMoreNumber.intValue() <= 2) {
             if (getMoreNumber.intValue() <= 0) {
-                title1 = getString(R.string.playfun_userdetail_unlock_title1);
+                title1 = getString(R.string.playcc_userdetail_unlock_title1);
             } else {
-                title1 = String.format(getString(R.string.playfun_userdetail_unlock_title), viewModel.detailEntity.get().getMoreNumber());
+                title1 = String.format(getString(R.string.playcc_userdetail_unlock_title), viewModel.detailEntity.get().getMoreNumber());
             }
-            title2 = String.format(getString(R.string.playfun_pay_unlock), ConfigManager.getInstance().getGetUserHomeMoney());
+            title2 = String.format(getString(R.string.playcc_pay_unlock), ConfigManager.getInstance().getGetUserHomeMoney());
         } else {
-            title1 = String.format(getString(R.string.playfun_userdetail_unlock_title), viewModel.detailEntity.get().getMoreNumber());
+            title1 = String.format(getString(R.string.playcc_userdetail_unlock_title), viewModel.detailEntity.get().getMoreNumber());
         }
         String vipTitle = null;
         if (!ConfigManager.getInstance().isVip()) {
-            vipTitle = getString(R.string.playfun_userdetail_unlock_btn_vip);
+            vipTitle = getString(R.string.playcc_userdetail_unlock_btn_vip);
         }
-        MMAlertDialog.isAlertVipMonetyunlock(UserDetailFragment.this.getContext(), true, title1, getString(R.string.playfun_userdetail_unlock_context), vipTitle, title2, new MMAlertDialog.AlertVipMonetyunlockInterface() {
+        MMAlertDialog.isAlertVipMonetyunlock(UserDetailFragment.this.getContext(), true, title1, getString(R.string.playcc_userdetail_unlock_context), vipTitle, title2, new MMAlertDialog.AlertVipMonetyunlockInterface() {
 
             @Override
             public void confirm(DialogInterface dialog, int which) {
@@ -473,7 +473,7 @@ public class UserDetailFragment extends BaseToolbarFragment<FragmentUserDetailBi
                             sheet.dismiss2(1);
                             dialog.dismiss();
                             viewModel.loadData();
-                            ToastUtils.showShort(R.string.playfun_pay_success);
+                            ToastUtils.showShort(R.string.playcc_pay_success);
                         }
 
                         @Override
@@ -624,18 +624,18 @@ public class UserDetailFragment extends BaseToolbarFragment<FragmentUserDetailBi
     private void payLockAlbum(Integer userId, String nickName, Integer coinPrice) {
         String btn1 = "";
         if (ConfigManager.getInstance().getAppRepository().readUserData().getSex() == 1) {
-            btn1 = getString(R.string.playfun_to_be_member_free_albums);
+            btn1 = getString(R.string.playcc_to_be_member_free_albums);
         } else {
             if (ConfigManager.getInstance().getAppRepository().readUserData().getCertification() == 1) {
-                btn1 = getString(R.string.playfun_to_be_goddess_free_albums);
+                btn1 = getString(R.string.playcc_to_be_goddess_free_albums);
             } else {
-                btn1 = getString(R.string.playfun_warn_no_certification);
+                btn1 = getString(R.string.playcc_warn_no_certification);
             }
         }
         MVDialog.getInstance(UserDetailFragment.this.getContext())
-                .setContent(String.format(getString(R.string.playfun_unlock_paid_album), nickName))
+                .setContent(String.format(getString(R.string.playcc_unlock_paid_album), nickName))
                 .setConfirmText(btn1)
-                .setConfirmTwoText(String.format(getString(R.string.playfun_pay_ro_unlock_diamond), coinPrice))
+                .setConfirmTwoText(String.format(getString(R.string.playcc_pay_ro_unlock_diamond), coinPrice))
                 .setConfirmOnlick(dialog -> {
 //                    if(dialog!=null){
 //                        dialog.dismiss();
@@ -650,11 +650,11 @@ public class UserDetailFragment extends BaseToolbarFragment<FragmentUserDetailBi
 //                    if(dialog!=null){
 //                        dialog.dismiss();
 //                    }
-                    new CoinPaySheet.Builder(mActivity).setPayParams(3, userId, getString(R.string.playfun_unlock_album), false, new CoinPaySheet.CoinPayDialogListener() {
+                    new CoinPaySheet.Builder(mActivity).setPayParams(3, userId, getString(R.string.playcc_unlock_album), false, new CoinPaySheet.CoinPayDialogListener() {
                         @Override
                         public void onPaySuccess(CoinPaySheet sheet, String orderNo, Integer payPrice) {
                             sheet.dismiss();
-                            ToastUtils.showShort(R.string.playfun_pay_success);
+                            ToastUtils.showShort(R.string.playcc_pay_success);
                             viewModel.payLockAlbumSuccess(userId);
                         }
                         @Override
@@ -671,15 +671,15 @@ public class UserDetailFragment extends BaseToolbarFragment<FragmentUserDetailBi
     private void vipLockAlbum(String nickName, Integer number, Integer coinPrice) {
         if (number == 0) {
             MVDialog.getInstance(UserDetailFragment.this.getContext())
-                    .setContent(String.format(getString(R.string.playfun_pay_dimond_content), coinPrice, nickName))
-                    .setConfirmText(String.format(getString(R.string.playfun_pay_diamond), coinPrice))
+                    .setContent(String.format(getString(R.string.playcc_pay_dimond_content), coinPrice, nickName))
+                    .setConfirmText(String.format(getString(R.string.playcc_pay_diamond), coinPrice))
                     .setConfirmOnlick(dialog -> {
                         dialog.dismiss();
-                        new CoinPaySheet.Builder(mActivity).setPayParams(3, userId, getString(R.string.playfun_unlock_album), false, new CoinPaySheet.CoinPayDialogListener(){
+                        new CoinPaySheet.Builder(mActivity).setPayParams(3, userId, getString(R.string.playcc_unlock_album), false, new CoinPaySheet.CoinPayDialogListener(){
 
                             @Override
                             public void onPaySuccess(CoinPaySheet sheet, String orderNo, Integer payPrice) {
-                                ToastUtils.showShort(R.string.playfun_pay_success);
+                                ToastUtils.showShort(R.string.playcc_pay_success);
                                 viewModel.payLockAlbumSuccess(userId);
                             }
 
@@ -693,8 +693,8 @@ public class UserDetailFragment extends BaseToolbarFragment<FragmentUserDetailBi
                     .show();
         } else {
             MVDialog.getInstance(UserDetailFragment.this.getContext())
-                    .setContent(String.format(getString(R.string.playfun_use_one_chance_content), nickName, number))
-                    .setConfirmText(getString(R.string.playfun_use_one_chance))
+                    .setContent(String.format(getString(R.string.playcc_use_one_chance_content), nickName, number))
+                    .setConfirmText(getString(R.string.playcc_use_one_chance))
                     .setConfirmOnlick(new MVDialog.ConfirmOnclick() {
                         @Override
                         public void confirm(MVDialog dialog) {
@@ -723,13 +723,13 @@ public class UserDetailFragment extends BaseToolbarFragment<FragmentUserDetailBi
         if (number <= 0) {
             // 实际上不会走到这个分支？
             MVDialog.getInstance(UserDetailFragment.this.getContext())
-                    .setContent(String.format(getString(R.string.playfun_pay_diamond_content), coinPrice))
-                    .setConfirmText(String.format(getString(R.string.playfun_pay_diamond), coinPrice))
+                    .setContent(String.format(getString(R.string.playcc_pay_diamond_content), coinPrice))
+                    .setConfirmText(String.format(getString(R.string.playcc_pay_diamond), coinPrice))
                     .setConfirmOnlick(dialog -> {
                         dialog.dismiss();
-                        new CoinPaySheet.Builder(mActivity).setPayParams(6, userId, getString(R.string.playfun_check_detail), false, (sheet, orderNo, payPrice) -> {
+                        new CoinPaySheet.Builder(mActivity).setPayParams(6, userId, getString(R.string.playcc_check_detail), false, (sheet, orderNo, payPrice) -> {
                             sheet.dismiss();
-                            ToastUtils.showShort(R.string.playfun_pay_success);
+                            ToastUtils.showShort(R.string.playcc_pay_success);
                             viewModel.chatPaySuccess();
                         }).build().show();
                     })
@@ -737,8 +737,8 @@ public class UserDetailFragment extends BaseToolbarFragment<FragmentUserDetailBi
                     .show();
         } else {
             MVDialog.getInstance(UserDetailFragment.this.getContext())
-                    .setContent(String.format(getString(R.string.playfun_use_one_chance_chat), number))
-                    .setConfirmText(getString(R.string.playfun_use_one_chance))
+                    .setContent(String.format(getString(R.string.playcc_use_one_chance_chat), number))
+                    .setConfirmText(getString(R.string.playcc_use_one_chance))
                     .setConfirmOnlick(dialog -> {
                         dialog.dismiss();
                         viewModel.useVipChat(userId, 1, 1);

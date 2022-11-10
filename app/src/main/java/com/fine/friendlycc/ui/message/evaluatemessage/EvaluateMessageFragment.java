@@ -95,8 +95,8 @@ public class EvaluateMessageFragment extends BaseRefreshToolbarFragment<Fragment
                             int userId = (int) map.get("userId");
                             if (entity.isNegativeEvaluate()) {
                                 MVDialog.getInstance(mActivity)
-                                        .setContent(getString(R.string.playfun_provide_screenshot))
-                                        .setConfirmText(getString(R.string.playfun_choose_photo))
+                                        .setContent(getString(R.string.playcc_provide_screenshot))
+                                        .setConfirmText(getString(R.string.playcc_choose_photo))
                                         .setConfirmOnlick(dialog1 -> {
                                             dialog1.dismiss();
                                             PictureSelectorUtil.selectImage(mActivity, false, 1, new OnResultCallbackListener<LocalMedia>() {
@@ -137,8 +137,8 @@ public class EvaluateMessageFragment extends BaseRefreshToolbarFragment<Fragment
             @Override
             public void onChanged(Integer integer) {
                 MVDialog.getInstance(mActivity)
-                        .setContent(getString(R.string.playfun_appeal_review))
-                        .setConfirmText(StringUtils.getString(R.string.playfun_confirm))
+                        .setContent(getString(R.string.playcc_appeal_review))
+                        .setConfirmText(StringUtils.getString(R.string.playcc_confirm))
                         .setConfirmOnlick(new MVDialog.ConfirmOnclick() {
                             @Override
                             public void confirm(MVDialog dialog) {
@@ -151,7 +151,7 @@ public class EvaluateMessageFragment extends BaseRefreshToolbarFragment<Fragment
             }
         });
         viewModel.uc.clickDelete.observe(this, integer -> MVDialog.getInstance(mActivity)
-                .setContent(getString(R.string.playfun_comfirm_delete_message))
+                .setContent(getString(R.string.playcc_comfirm_delete_message))
                 .chooseType(MVDialog.TypeEnum.CENTERWARNED)
                 .setConfirmOnlick(dialog -> {
                     dialog.dismiss();

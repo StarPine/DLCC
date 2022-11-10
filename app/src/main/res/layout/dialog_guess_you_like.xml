@@ -23,7 +23,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/playfun_today_recommand"
+                android:text="@string/playcc_today_recommand"
                 android:textColor="@color/black"
                 android:textSize="22sp" />
 
@@ -223,7 +223,7 @@
                 android:layout_height="40dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:text="@string/playfun_say_hello" />
+                android:text="@string/playcc_say_hello" />
 
             <TextView
                 android:id="@+id/tv_close"
@@ -232,7 +232,7 @@
                 android:paddingLeft="10dp"
                 android:paddingTop="10dp"
                 android:paddingRight="10dp"
-                android:text="@string/playfun_consider_the"
+                android:text="@string/playcc_consider_the"
                 android:textColor="@color/gray_middle"
                 android:textSize="13sp" />
         </LinearLayout>

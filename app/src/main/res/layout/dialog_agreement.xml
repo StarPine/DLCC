@@ -23,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="@string/playfun_dialog_criterion"
+            android:text="@string/playcc_dialog_criterion"
             android:textColor="@color/gray_dark"
             android:textSize="@dimen/text_size_middle"
             android:textStyle="bold" />
@@ -49,7 +49,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:lineSpacingExtra="6dp"
-                android:text="@string/playfun_dialog_agree_content"
+                android:text="@string/playcc_dialog_agree_content"
                 android:textColor="@color/gray_dark"
                 android:textSize="@dimen/text_size_mini" />
         </ScrollView>
@@ -67,7 +67,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="17dp"
-            android:text="@string/playfun_dialog_agreement_check"
+            android:text="@string/playcc_dialog_agreement_check"
             android:textColor="@color/gray_dark"
             android:textSize="@dimen/text_size_mini" />
 
@@ -79,6 +79,6 @@
             android:layout_marginLeft="29dp"
             android:layout_marginRight="29dp"
             android:layout_marginBottom="26dp"
-            android:text="@string/playfun_dialog_agree" />
+            android:text="@string/playcc_dialog_agree" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>

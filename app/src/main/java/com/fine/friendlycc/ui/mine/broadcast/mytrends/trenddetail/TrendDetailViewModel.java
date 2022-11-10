@@ -99,7 +99,7 @@ public class TrendDetailViewModel extends BaseViewModel<AppRepository> {
                 AppContext.instance().logEvent(AppsFlyerEvent.Like_2);
                 newsGive();
             } else {
-                ToastUtils.showShort(R.string.playfun_already);
+                ToastUtils.showShort(R.string.playcc_already);
             }
         }
     });
@@ -111,11 +111,11 @@ public class TrendDetailViewModel extends BaseViewModel<AppRepository> {
                 return;
             }
             if (newsEntityObservableField.get().getBroadcast().getIsComment() == 1) {
-                ToastUtils.showShort(R.string.playfun_comment_close);
+                ToastUtils.showShort(R.string.playcc_comment_close);
                 return;
             }
             if (userId == newsEntityObservableField.get().getUser().getId()) {
-                ToastUtils.showShort(R.string.playfun_self_ont_comment_broadcast);
+                ToastUtils.showShort(R.string.playcc_self_ont_comment_broadcast);
             } else {
                 AppContext.instance().logEvent(AppsFlyerEvent.Message_2);
                 Map<String, String> data = new HashMap<>();
@@ -298,7 +298,7 @@ public class TrendDetailViewModel extends BaseViewModel<AppRepository> {
                     @Override
                     public void onSuccess(BaseResponse response) {
                         dismissHUD();
-                        ToastUtils.showShort(newsEntityObservableField.get().getBroadcast().getIsComment() == 1 ? StringUtils.getString(R.string.playfun_open_comment_success) : StringUtils.getString(R.string.playfun_close_success));
+                        ToastUtils.showShort(newsEntityObservableField.get().getBroadcast().getIsComment() == 1 ? StringUtils.getString(R.string.playcc_open_comment_success) : StringUtils.getString(R.string.playcc_close_success));
                         newsEntityObservableField.get().getBroadcast().setIsComment(
                                 newsEntityObservableField.get().getBroadcast().getIsComment() == 0 ? 1 : 0);
                         RadioadetailEvent radioadetailEvent = new RadioadetailEvent();
@@ -327,7 +327,7 @@ public class TrendDetailViewModel extends BaseViewModel<AppRepository> {
                     @Override
                     public void onSuccess(BaseResponse response) {
                         dismissHUD();
-                        ToastUtils.showShort(R.string.playfun_give_success);
+                        ToastUtils.showShort(R.string.playcc_give_success);
                         if (newsEntityObservableField.get().getGive_user() == null) {
                             newsEntityObservableField.get().setGive_user(new ArrayList<>());
                         }
@@ -368,7 +368,7 @@ public class TrendDetailViewModel extends BaseViewModel<AppRepository> {
                 .subscribe(new BaseDisposableObserver<BaseResponse>() {
                     @Override
                     public void onSuccess(BaseResponse response) {
-                        ToastUtils.showShort(R.string.playfun_comment_success);
+                        ToastUtils.showShort(R.string.playcc_comment_success);
                         if (newsEntityObservableField.get().getComment() == null) {
                             newsEntityObservableField.get().setComment(new ArrayList<>());
                         }
@@ -410,7 +410,7 @@ public class TrendDetailViewModel extends BaseViewModel<AppRepository> {
                     @Override
                     public void onError(RequestException e) {
                         if (e.getCode() == 10016) {
-                            ToastUtils.showShort(StringUtils.getString(R.string.playfun_comment_close));
+                            ToastUtils.showShort(StringUtils.getString(R.string.playcc_comment_close));
                             newsEntityObservableField.get().getBroadcast().setIsComment(1);
                             RadioadetailEvent radioadetailEvent = new RadioadetailEvent();
                             radioadetailEvent.setId(id);

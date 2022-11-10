@@ -108,7 +108,7 @@
                     android:layout_centerInParent="true"
                     android:layout_marginBottom="5dp"
                     android:includeFontPadding="false"
-                    android:text="@string/playfun_task_fragment_title1"
+                    android:text="@string/playcc_task_fragment_title1"
                     android:textColor="@color/black"
                     android:textSize="9sp"
                     android:visibility="invisible" />

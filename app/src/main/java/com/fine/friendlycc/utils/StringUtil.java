@@ -136,25 +136,25 @@ public class StringUtil {
         String str = "";
         switch (weekeng) {
             case 1:
-                str = StringUtils.getString(R.string.playfun_monday);
+                str = StringUtils.getString(R.string.playcc_monday);
                 break;
             case 2:
-                str = StringUtils.getString(R.string.playfun_tuesday);
+                str = StringUtils.getString(R.string.playcc_tuesday);
                 break;
             case 3:
-                str = StringUtils.getString(R.string.playfun_wednesday);
+                str = StringUtils.getString(R.string.playcc_wednesday);
                 break;
             case 4:
-                str = StringUtils.getString(R.string.playfun_thursday);
+                str = StringUtils.getString(R.string.playcc_thursday);
                 break;
             case 5:
-                str = StringUtils.getString(R.string.playfun_friday);
+                str = StringUtils.getString(R.string.playcc_friday);
                 break;
             case 6:
-                str = StringUtils.getString(R.string.playfun_saturday);
+                str = StringUtils.getString(R.string.playcc_saturday);
                 break;
             case 7:
-                str = StringUtils.getString(R.string.playfun_sunday);
+                str = StringUtils.getString(R.string.playcc_sunday);
                 break;
         }
         return str;
@@ -184,25 +184,25 @@ public class StringUtil {
      * @Date 2021/10/18
      */
     public static String getDatingObjItem(int id) {
-        String str = StringUtils.getString(R.string.playfun_user_detail_ta_dynamic);
+        String str = StringUtils.getString(R.string.playcc_user_detail_ta_dynamic);
         switch (id) {
             case 1:
-                str = StringUtils.getString(R.string.playfun_mood_item_id1);
+                str = StringUtils.getString(R.string.playcc_mood_item_id1);
                 break;
             case 2:
-                str = StringUtils.getString(R.string.playfun_mood_item_id2);
+                str = StringUtils.getString(R.string.playcc_mood_item_id2);
                 break;
             case 3:
-                str = StringUtils.getString(R.string.playfun_mood_item_id3);
+                str = StringUtils.getString(R.string.playcc_mood_item_id3);
                 break;
             case 4:
-                str = StringUtils.getString(R.string.playfun_mood_item_id4);
+                str = StringUtils.getString(R.string.playcc_mood_item_id4);
                 break;
             case 5:
-                str = StringUtils.getString(R.string.playfun_mood_item_id5);
+                str = StringUtils.getString(R.string.playcc_mood_item_id5);
                 break;
             case 6:
-                str = StringUtils.getString(R.string.playfun_mood_item_id6);
+                str = StringUtils.getString(R.string.playcc_mood_item_id6);
                 break;
         }
         return str;

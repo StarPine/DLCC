@@ -14,7 +14,7 @@
 
         <import type="android.view.View" />
 
-        <!--        <import type="com.dl.playfun.utils.StringUtil" />-->
+        <!--        <import type="com.dl.playcc.utils.StringUtil" />-->
         <import type="com.fine.friendlycc.utils.SystemDictUtils" />
 
     </data>
@@ -43,7 +43,7 @@
                 android:id="@+id/basic_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/action_bar_height"
-                app:toolbar_title="@string/playfun_fragment_edit_profile_title">
+                app:toolbar_title="@string/playcc_fragment_edit_profile_title">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -59,7 +59,7 @@
                         android:layout_centerVertical="true"
                         android:paddingTop="5dp"
                         android:paddingBottom="5dp"
-                        android:text="@string/playfun_save"
+                        android:text="@string/playcc_save"
                         binding:onClickCommand="@{viewModel.clickSave}" />
                 </RelativeLayout>
             </com.fine.friendlycc.widget.BasicToolbar>
@@ -85,7 +85,7 @@
                     android:gravity="bottom"
                     android:paddingLeft="15dp"
                     android:paddingBottom="2dp"
-                    android:text="@string/playfun_fragment_edit_profile_basic"
+                    android:text="@string/playcc_fragment_edit_profile_basic"
                     android:textColor="@color/gray_light"
                     android:textSize="@dimen/text_size_42" />
 
@@ -140,7 +140,7 @@
                         android:layout_height="32dp"
                         android:layout_centerVertical="true"
                         android:gravity="center"
-                        android:text="@string/playfun_fragment_edit_profile_updata_head" />
+                        android:text="@string/playcc_fragment_edit_profile_updata_head" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -171,7 +171,7 @@
                         style="@style/EditText"
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
-                        android:hint="@string/playfun_name_number_too_long2"
+                        android:hint="@string/playcc_name_number_too_long2"
                         android:inputType="text"
                         android:maxLength="10"
                         android:text="@={viewModel.userDataEntity.nickname}" />
@@ -207,7 +207,7 @@
                         android:layout_height="48dp"
                         android:layout_weight="1"
                         android:gravity="center_vertical"
-                        android:hint="@string/playfun_please_choose"
+                        android:hint="@string/playcc_please_choose"
                         android:text="@{viewModel.userDataEntity.birthday}"
                         app:onClickCommand="@{viewModel.chooseBirthday}" />
 
@@ -242,7 +242,7 @@
                         android:layout_height="48dp"
                         android:layout_weight="1"
                         android:gravity="center_vertical"
-                        android:hint="@string/playfun_please_choose"
+                        android:hint="@string/playcc_please_choose"
                         android:text='@{SystemDictUtils.getOccupationById(safeUnbox(viewModel.userDataEntity.occupationId))}'
                         app:onClickCommand="@{viewModel.chooseOccupation}" />
                 </LinearLayout>
@@ -258,7 +258,7 @@
                     android:background="@color/status_bar_color"
                     android:gravity="center_vertical"
                     android:paddingLeft="15dp"
-                    android:text="@string/playfun_more_information_optional"
+                    android:text="@string/playcc_more_information_optional"
                     android:textColor="@color/gray_middle"
                     android:textSize="@dimen/text_size_42" />
 
@@ -284,7 +284,7 @@
                         android:layout_height="48dp"
                         android:layout_weight="1"
                         android:gravity="center_vertical"
-                        android:hint="@string/playfun_please_choose"
+                        android:hint="@string/playcc_please_choose"
                         android:text='@{SystemDictUtils.getHeightById(viewModel.userDataEntity.height)}'
                         app:onClickCommand="@{viewModel.chooseHeight}" />
                 </LinearLayout>
@@ -311,7 +311,7 @@
                         android:layout_height="48dp"
                         android:layout_weight="1"
                         android:gravity="center_vertical"
-                        android:hint="@string/playfun_please_choose"
+                        android:hint="@string/playcc_please_choose"
                         android:text='@{SystemDictUtils.getWidthById(viewModel.userDataEntity.weight)}'
                         app:onClickCommand="@{viewModel.chooseWeight}" />
                 </LinearLayout>
@@ -340,7 +340,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:gravity="start"
-                            android:hint="@string/playfun_fragment_edit_profile_self_explain_hint"
+                            android:hint="@string/playcc_fragment_edit_profile_self_explain_hint"
                             android:inputType="textMultiLine"
                             android:maxLength="120"
                             android:paddingTop="10dp"

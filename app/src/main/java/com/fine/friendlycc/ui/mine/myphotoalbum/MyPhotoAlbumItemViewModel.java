@@ -62,26 +62,26 @@ public class MyPhotoAlbumItemViewModel extends ItemViewModel<BaseMyPhotoAlbumVie
     public String getPhotoShowName() {
         if (viewModel.getRepository().readUserData().getSex() == 0) {
             if (itemEntity.get().getVerificationType() == 0) {
-                return StringUtils.getString(R.string.playfun_audit_failed);
+                return StringUtils.getString(R.string.playcc_audit_failed);
             } else if (itemEntity.get().getVerificationType() == -1) {
-                return StringUtils.getString(R.string.playfun_photo_in_review);
+                return StringUtils.getString(R.string.playcc_photo_in_review);
             }
         }
 
         if (itemEntity.get().getIsRedPackage() == 1 && itemEntity.get().getIsBurn() == 1) {
-            return StringUtils.getString(R.string.playfun_reading_after_burn_red_photo);
+            return StringUtils.getString(R.string.playcc_reading_after_burn_red_photo);
         }
         if (itemEntity.get().getIsRedPackage() == 1) {
             if (itemEntity.get().getType() == 2) {
-                return StringUtils.getString(R.string.playfun_red_package_video);
+                return StringUtils.getString(R.string.playcc_red_package_video);
             }
-            return StringUtils.getString(R.string.playfun_fragment_certification_female_read_phone);
+            return StringUtils.getString(R.string.playcc_fragment_certification_female_read_phone);
         }
         if (itemEntity.get().getIsBurn() == 1) {
             if (itemEntity.get().getType() == 2) {
-                return StringUtils.getString(R.string.playfun_reading_after_burn_video);
+                return StringUtils.getString(R.string.playcc_reading_after_burn_video);
             }
-            return StringUtils.getString(R.string.playfun_reading_after_burn_photo);
+            return StringUtils.getString(R.string.playcc_reading_after_burn_photo);
         }
         return "";
     }

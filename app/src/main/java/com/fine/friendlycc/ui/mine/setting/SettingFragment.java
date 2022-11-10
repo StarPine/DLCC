@@ -63,7 +63,7 @@ public class SettingFragment extends BaseToolbarFragment<FragmentSettingBinding,
         });
 
         viewModel.uc.clickLogout.observe(this, aVoid -> MVDialog.getInstance(SettingFragment.this.getContext())
-                .setContent(getString(R.string.playfun_conflirm_log_out))
+                .setContent(getString(R.string.playcc_conflirm_log_out))
                 .setConfirmOnlick(dialog -> {
                     TUIUtils.logout(new V2TIMCallback() {
                         @Override

@@ -195,7 +195,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="14dp"
-                    android:text="@string/playfun_call_waiting_hint"
+                    android:text="@string/playcc_call_waiting_hint"
                     android:textColor="@color/white"
                     android:textSize="17sp" />
             </LinearLayout>

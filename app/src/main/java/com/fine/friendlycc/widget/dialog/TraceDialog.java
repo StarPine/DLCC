@@ -383,7 +383,7 @@ public class TraceDialog {
         if (conversationInfo.isTop()){
             topChat.setText(R.string.quit_chat_top);
         }else {
-            topChat.setText(R.string.playfun_top_chat);
+            topChat.setText(R.string.playcc_top_chat);
         }
         setDelBannedVisibility(conversationInfo, delBannedAccount);
         topChat.setOnClickListener(new View.OnClickListener() {
@@ -667,7 +667,7 @@ public class TraceDialog {
         Button confirmBtn = contentView.findViewById(R.id.btn_confirm);
         TextView cannelBtn = contentView.findViewById(R.id.btn_cannel);
         TextView titleFen = contentView.findViewById(R.id.title_fen);
-        titleFen.setText(String.format(StringUtils.getString(R.string.playfun_radio_daily_atendance_fen1), money));
+        titleFen.setText(String.format(StringUtils.getString(R.string.playcc_radio_daily_atendance_fen1), money));
 
         ImageView cannelImage = contentView.findViewById(R.id.iv_dialog_close);
         cannelImage.setOnClickListener(new View.OnClickListener() {
@@ -932,20 +932,20 @@ public class TraceDialog {
         String fristRewardTips = null;
         String secondRewardTips = null;
         if (dayGiveCoin > 0 && dayGiveVideoCard > 0) {
-            content = String.format(context.getString(R.string.playfun_reward_tips), dayGiveCoin + "", dayGiveVideoCard + "");
+            content = String.format(context.getString(R.string.playcc_reward_tips), dayGiveCoin + "", dayGiveVideoCard + "");
         }
         if (dayGiveCoin > 0 && dayGiveVideoCard <= 0) {
-            content = String.format(context.getString(R.string.playfun_reward_tips2), dayGiveCoin + "");
+            content = String.format(context.getString(R.string.playcc_reward_tips2), dayGiveCoin + "");
         }
         if (dayGiveVideoCard > 0 && dayGiveCoin <= 0) {
-            content = String.format(context.getString(R.string.playfun_reward_tips3), dayGiveVideoCard + "");
+            content = String.format(context.getString(R.string.playcc_reward_tips3), dayGiveVideoCard + "");
         }
         if (fristRewardNum > 0 || secondRewardNum > 0) {
             if (fristRewardNum > 0){
-                fristRewardTips = String.format(context.getString(R.string.playfun_coin_earnings_money_add), fristRewardNum + "");
+                fristRewardTips = String.format(context.getString(R.string.playcc_coin_earnings_money_add), fristRewardNum + "");
             }
             if (secondRewardNum > 0){
-                secondRewardTips = String.format(context.getString(R.string.playfun_coin_earnings_money_add), secondRewardNum + "");
+                secondRewardTips = String.format(context.getString(R.string.playcc_coin_earnings_money_add), secondRewardNum + "");
             }
         }
         return rewardDialog(isUnableEvent, fristRewardTips, secondRewardTips, content);
@@ -960,9 +960,9 @@ public class TraceDialog {
      * @return
      */
     public Dialog registerRewardDialog(boolean isUnableEvent, int fristRewardNum, int secondRewardNum) {
-        String contentTip = context.getString(R.string.playfun_reward_tips4);
-        String fristRewardTips = context.getString(R.string.playfun_reward_card_tips) + fristRewardNum;
-        String secondRewardTips = context.getString(R.string.playfun_reward_card_tips2) + secondRewardNum;
+        String contentTip = context.getString(R.string.playcc_reward_tips4);
+        String fristRewardTips = context.getString(R.string.playcc_reward_card_tips) + fristRewardNum;
+        String secondRewardTips = context.getString(R.string.playcc_reward_card_tips2) + secondRewardNum;
         return rewardDialog(isUnableEvent, fristRewardTips, secondRewardTips, contentTip);
     }
 

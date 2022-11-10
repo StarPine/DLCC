@@ -33,7 +33,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="14.67dp"
-                        android:text="@string/playfun_txt_exchange_game_coin"
+                        android:text="@string/playcc_txt_exchange_game_coin"
                         android:textColor="@color/purple"
                         android:textSize="14sp"
                         android:textStyle="bold" />
@@ -44,7 +44,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginRight="5dp"
                         android:layout_toStartOf="@+id/tv_balance"
-                        android:text="@string/playfun_coin_balance"
+                        android:text="@string/playcc_coin_balance"
                         android:textColor="@color/gray_light"
                         android:textSize="11sp" />
 
@@ -55,7 +55,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginEnd="4dp"
                         android:layout_toLeftOf="@+id/iv_divider"
-                        android:text="@string/playfun_x_coin"
+                        android:text="@string/playcc_x_coin"
                         android:textColor="@color/purple"
                         android:textSize="13sp" />
 
@@ -99,7 +99,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
-                        android:text="@string/playfun_dialog_exchange_integral_total_text2"
+                        android:text="@string/playcc_dialog_exchange_integral_total_text2"
                         android:textColor="#ff90919f"
                         android:textSize="11sp"
                         />

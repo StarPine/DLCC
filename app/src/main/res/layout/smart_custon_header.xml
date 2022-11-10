@@ -35,6 +35,6 @@
 <!--        android:layout_marginTop="5dp"-->
 <!--        android:ellipsize="end"-->
 <!--        android:maxLines="2"-->
-<!--        android:text="@string/playfun_smart_header_text"-->
+<!--        android:text="@string/playcc_smart_header_text"-->
 <!--        />-->
 </RelativeLayout>

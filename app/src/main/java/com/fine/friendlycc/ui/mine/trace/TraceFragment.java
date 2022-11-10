@@ -132,11 +132,11 @@ public class TraceFragment extends BaseToolbarFragment<FragmentMineTraceGirlBind
             public void onChanged(TraceEvent traceEvent) {
                 int size = traceEvent.getSize();
                 if (traceEvent.getSelIdx() == 0) {
-                    String val = StringUtils.getString(R.string.playfun_mine_my_likes);
+                    String val = StringUtils.getString(R.string.playcc_mine_my_likes);
                     Button button = binding.tabs.getTabAt(0).getCustomView().findViewById(R.id.tab_text);
                     button.setText(val + " " + size);
                 } else if (traceEvent.getSelIdx() == 1) {
-                    String val = StringUtils.getString(R.string.playfun_mine_my_visitors_many);
+                    String val = StringUtils.getString(R.string.playcc_mine_my_visitors_many);
                     Button button = binding.tabs.getTabAt(1).getCustomView().findViewById(R.id.tab_text);
                     button.setText(val + " " + size);
                 }

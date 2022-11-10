@@ -59,7 +59,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
             android:gravity="center"
-            android:text="@string/playfun_daily_atendance_vip_hint"
+            android:text="@string/playcc_daily_atendance_vip_hint"
             android:textColor="#ff9b9ca8"
             android:textSize="13sp" />
 
@@ -72,6 +72,6 @@
             android:layout_marginStart="19dp"
             android:layout_marginEnd="19dp"
             android:layout_marginBottom="29dp"
-            android:text="@string/playfun_daily_atendance_accept" />
+            android:text="@string/playcc_daily_atendance_accept" />
     </RelativeLayout>
 </RelativeLayout>

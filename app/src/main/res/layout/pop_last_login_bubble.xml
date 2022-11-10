@@ -25,7 +25,7 @@
             android:paddingTop="5dp"
             android:paddingStart="5dp"
             android:paddingBottom="15dp"
-            android:text="@string/playfun_last_login"/>
+            android:text="@string/playcc_last_login"/>
 
 
     </LinearLayout>

@@ -204,12 +204,12 @@ public class TrendItemViewModel extends MultiItemViewModel<BaseViewModel> {
     public BindingCommand commentClick = new BindingCommand(() -> {
         try {
             if (newsEntityObservableField.get().getBroadcast().getIsComment() == 1) {
-                ToastUtils.showShort(R.string.playfun_comment_close);
+                ToastUtils.showShort(R.string.playcc_comment_close);
                 return;
             }
             if (viewModel instanceof MyTrendsViewModel) {
                 if (((MyTrendsViewModel) viewModel).userId == newsEntityObservableField.get().getUser().getId()) {
-                    ToastUtils.showShort(R.string.playfun_self_ont_comment_broadcast);
+                    ToastUtils.showShort(R.string.playcc_self_ont_comment_broadcast);
                 } else {
                     Map<String, String> data = new HashMap<>();
                     data.put("id", String.valueOf(newsEntityObservableField.get().getId()));
@@ -219,7 +219,7 @@ public class TrendItemViewModel extends MultiItemViewModel<BaseViewModel> {
                 }
             } else if (viewModel instanceof RadioViewModel) {
                 if (((RadioViewModel) viewModel).userId == newsEntityObservableField.get().getUser().getId()) {
-                    ToastUtils.showShort(R.string.playfun_self_ont_comment_broadcast);
+                    ToastUtils.showShort(R.string.playcc_self_ont_comment_broadcast);
                 } else {
                     Map<String, String> data = new HashMap<>();
                     data.put("id", String.valueOf(newsEntityObservableField.get().getId()));
@@ -230,7 +230,7 @@ public class TrendItemViewModel extends MultiItemViewModel<BaseViewModel> {
                 }
             } else if (viewModel instanceof UserDynamicViewModel) {
                 if (((UserDynamicViewModel) viewModel).userId == newsEntityObservableField.get().getUser().getId()) {
-                    ToastUtils.showShort(R.string.playfun_self_ont_comment_broadcast);
+                    ToastUtils.showShort(R.string.playcc_self_ont_comment_broadcast);
                 } else {
                     Map<String, String> data = new HashMap<>();
                     data.put("id", String.valueOf(newsEntityObservableField.get().getId()));
@@ -241,7 +241,7 @@ public class TrendItemViewModel extends MultiItemViewModel<BaseViewModel> {
                 }
             } else if (viewModel instanceof MyAllBroadcastViewModel) {
                 if (((MyAllBroadcastViewModel) viewModel).userId == newsEntityObservableField.get().getUser().getId()) {
-                    ToastUtils.showShort(R.string.playfun_self_ont_comment_broadcast);
+                    ToastUtils.showShort(R.string.playcc_self_ont_comment_broadcast);
                 } else {
                     Map<String, String> data = new HashMap<>();
                     data.put("id", String.valueOf(newsEntityObservableField.get().getId()));

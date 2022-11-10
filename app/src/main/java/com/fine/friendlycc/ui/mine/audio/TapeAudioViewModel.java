@@ -141,7 +141,7 @@ public class TapeAudioViewModel extends BaseViewModel<AppRepository> {
                     @Override
                     public void onError(Throwable e) {
                         dismissHUD();
-                        ToastUtils.showShort(R.string.playfun_upload_failed);
+                        ToastUtils.showShort(R.string.playcc_upload_failed);
                     }
 
                     @Override
@@ -173,7 +173,7 @@ public class TapeAudioViewModel extends BaseViewModel<AppRepository> {
                                 return;
                             }
                         }
-                        ToastUtils.showShort(R.string.playfun_mine_audio_success);
+                        ToastUtils.showShort(R.string.playcc_mine_audio_success);
                         pop();
                     }
                     @Override

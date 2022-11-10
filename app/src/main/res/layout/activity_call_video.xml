@@ -178,7 +178,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginLeft="50dp"
                 android:layout_marginTop="102dp"
-                android:text="@{viewModel.isCalledBinding ? @string/playfun_call_video_invite_hint : @string/playfun_call_waiting_hint}"
+                android:text="@{viewModel.isCalledBinding ? @string/playcc_call_video_invite_hint : @string/playcc_call_waiting_hint}"
                 android:textColor="@color/white"
                 android:textSize="17sp" />
 
@@ -406,7 +406,7 @@
                 android:layout_height="wrap_content"
                 android:background="@color/bg_white"
                 android:layout_below="@+id/img_closes"
-                android:text="@string/playfun_chat_detail_warn"
+                android:text="@string/playcc_chat_detail_warn"
                 android:textSize="@dimen/text_size_middle"
                 android:textColor="@color/text_yellow"
                 android:gravity="center"
@@ -442,7 +442,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
-                    android:text="@string/playfun_call_audio_tips"
+                    android:text="@string/playcc_call_audio_tips"
                     android:textColor="#FCFCFF"
                     android:textSize="11sp" />
 
@@ -561,7 +561,7 @@
                     android:layout_toStartOf="@+id/ic_close_money"
                     android:background="@drawable/btn_yellow_cicle"
                     android:gravity="center"
-                    android:text="@string/playfun_dialong_coin_rechaege_top_up"
+                    android:text="@string/playcc_dialong_coin_rechaege_top_up"
                     android:textColor="@color/purple1"
                     android:textSize="13sp"
                     binding:onClickCommand="@{viewModel.referMoney}" />

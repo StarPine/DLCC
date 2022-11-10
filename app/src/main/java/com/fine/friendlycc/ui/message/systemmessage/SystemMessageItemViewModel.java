@@ -45,7 +45,7 @@ public class SystemMessageItemViewModel extends MultiItemViewModel<SystemMessage
 
     public String getMoreText() {
         if (itemEntity.get().getType() == 3) {
-            return StringUtils.getString(R.string.playfun_immediately_renewal);
+            return StringUtils.getString(R.string.playcc_immediately_renewal);
         }
         return "";
     }

@@ -542,8 +542,8 @@ public class CallingVideoActivity extends BaseActivity<ActivityCallVideoBinding,
             ImageView giftNumImg = streamerView.findViewById(R.id.gift_num_img);
             //文案
             TextView tipText = streamerView.findViewById(R.id.tip_text);
-            String sexText = StringUtils.getString(R.string.playfun_call_message_deatail_girl_txt17);
-            String messageText = StringUtils.getString(R.string.playfun_call_message_deatail_girl_txt1);
+            String sexText = StringUtils.getString(R.string.playcc_call_message_deatail_girl_txt17);
+            String messageText = StringUtils.getString(R.string.playcc_call_message_deatail_girl_txt1);
             String itemTextMessage = sexText + messageText + "\n" + viewModel.callingVideoInviteInfoField.get().getNickname();
             SpannableString stringBuilder = new SpannableString(itemTextMessage);
             stringBuilder.setSpan(new ForegroundColorSpan(ColorUtils.getColor(R.color.call_message_deatail_hint2)), 0, 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
@@ -693,8 +693,8 @@ public class CallingVideoActivity extends BaseActivity<ActivityCallVideoBinding,
             //文案
             TextView tipText = streamerView.findViewById(R.id.tip_text);
             String sexText = viewModel.callingVideoInviteInfoField.get().getNickname();
-            String messageText = StringUtils.getString(R.string.playfun_call_message_deatail_girl_txt1);
-            String lastText = StringUtils.getString(R.string.playfun_call_message_deatail_girl_txt17);
+            String messageText = StringUtils.getString(R.string.playcc_call_message_deatail_girl_txt1);
+            String lastText = StringUtils.getString(R.string.playcc_call_message_deatail_girl_txt17);
             String itemTextMessage = sexText + "\n" + messageText + lastText;
             SpannableString stringBuilder = new SpannableString(itemTextMessage);
             stringBuilder.setSpan(new ForegroundColorSpan(ColorUtils.getColor(R.color.call_message_deatail_hint2)), 0, sexText.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
@@ -827,7 +827,7 @@ public class CallingVideoActivity extends BaseActivity<ActivityCallVideoBinding,
         }
         if (viewModel.isMale) {
             if (viewModel.collected == 1) {//已追踪
-                String title = StringUtils.getString(R.string.playfun_call_message_deatail_girl_txt9);
+                String title = StringUtils.getString(R.string.playcc_call_message_deatail_girl_txt9);
                 MessageDetailDialog.callAudioHint2(mContext, title, null, new MessageDetailDialog.AudioCallHintOnClickListener() {
                     @Override
                     public void check1OnClick() {
@@ -856,8 +856,8 @@ public class CallingVideoActivity extends BaseActivity<ActivityCallVideoBinding,
                 }).show();
             }
         } else {
-            String title = mContext.getString(R.string.playfun_call_message_deatail_girl_txt13);
-            String content = mContext.getString(R.string.playfun_call_message_deatail_girl_txt12);
+            String title = mContext.getString(R.string.playcc_call_message_deatail_girl_txt13);
+            String content = mContext.getString(R.string.playcc_call_message_deatail_girl_txt12);
             MessageDetailDialog.callAudioHint2(mContext, title, content, new MessageDetailDialog.AudioCallHintOnClickListener() {
                 @Override
                 public void check1OnClick() {
@@ -885,7 +885,7 @@ public class CallingVideoActivity extends BaseActivity<ActivityCallVideoBinding,
             public void run() {
                 mTimeCount++;
                 viewModel.TimeCount++;
-                viewModel.timeTextField.set(mContext.getString(R.string.playfun_call_message_deatail_time_msg, mTimeCount/3600, mTimeCount / 60, mTimeCount % 60));
+                viewModel.timeTextField.set(mContext.getString(R.string.playcc_call_message_deatail_time_msg, mTimeCount/3600, mTimeCount / 60, mTimeCount % 60));
                 if (mTimeCount>=5){viewModel.tipSwitch.set(false);}
                 if (!viewModel.sayHiEntityHidden.get() && mTimeCount % 10 == 0) {
                     //没10秒更新一次破冰文案
@@ -903,9 +903,9 @@ public class CallingVideoActivity extends BaseActivity<ActivityCallVideoBinding,
                                 viewModel.hangup();
                                 return;
                             }
-                            String minute = StringUtils.getString(R.string.playfun_minute);
+                            String minute = StringUtils.getString(R.string.playcc_minute);
                             String textHint = (viewModel.totalMinutesRemaining / 60) + minute + (viewModel.totalMinutesRemaining % 60);
-                            String txt = String.format(StringUtils.getString(R.string.playfun_call_message_deatail_girl_txt14), textHint);
+                            String txt = String.format(StringUtils.getString(R.string.playcc_call_message_deatail_girl_txt14), textHint);
                             viewModel.maleTextMoneyField.set(txt);
                             if (!viewModel.flagMoneyNotWorth) {
                                 moneyNoWorthSwich(true);
@@ -936,7 +936,7 @@ public class CallingVideoActivity extends BaseActivity<ActivityCallVideoBinding,
                 viewModel.girlEarningsField.set(true);
             }
             String profit = viewModel.payeeProfits + "";
-            String girlEarningsTex = String.format(StringUtils.getString(R.string.playfun_call_message_deatail_girl_txt), profit);
+            String girlEarningsTex = String.format(StringUtils.getString(R.string.playcc_call_message_deatail_girl_txt), profit);
             SpannableString stringBuilder = new SpannableString(girlEarningsTex);
             ForegroundColorSpan blueSpan = new ForegroundColorSpan(ColorUtils.getColor(R.color.call_message_deatail_hint1));
             int index = girlEarningsTex.indexOf(profit);

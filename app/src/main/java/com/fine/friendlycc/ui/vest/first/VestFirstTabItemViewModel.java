@@ -46,14 +46,14 @@ public class VestFirstTabItemViewModel extends MultiItemViewModel<VestFirstViewM
             if (itemData.get().getIsOnline() == -1) {
                 onlineStatus = null;
             } else if (itemData.get().getIsOnline() == 1) {
-                onlineStatus = StringUtils.getString(R.string.playfun_on_line);
+                onlineStatus = StringUtils.getString(R.string.playcc_on_line);
             } else if (itemData.get().getIsOnline() == 0) {
                 onlineStatus = null;
             }
         }else if (itemData.get().getCallingStatus() == 1){
-            onlineStatus = StringUtils.getString(R.string.playfun_calling);
+            onlineStatus = StringUtils.getString(R.string.playcc_calling);
         }else if (itemData.get().getCallingStatus() == 2){
-            onlineStatus = StringUtils.getString(R.string.playfun_in_video);
+            onlineStatus = StringUtils.getString(R.string.playcc_in_video);
         }
 
         return onlineStatus;

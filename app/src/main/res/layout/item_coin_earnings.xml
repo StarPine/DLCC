@@ -62,7 +62,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:text="@{viewModel.itemEntity.money>0?@string/playfun_coin_earnings_money_add(viewModel.itemEntity.money):@string/playfun_coin_earnings_money_low(viewModel.itemEntity.money)}"
+            android:text="@{viewModel.itemEntity.money>0?@string/playcc_coin_earnings_money_add(viewModel.itemEntity.money):@string/playcc_coin_earnings_money_low(viewModel.itemEntity.money)}"
             android:textColor="@{viewModel.itemEntity.money > 0 ? @color/green:@color/red_7c}"
             android:textSize="@dimen/text_size_mini" />
     </RelativeLayout>

@@ -40,22 +40,22 @@ public class DialogHelper {
         String toFragmentName = null;
         if (ConfigManager.getInstance().getAppRepository().readUserData().getSex() == AppConfig.MALE) {
             if (number <= 0) {
-                title = StringUtils.getString(R.string.playfun_today_browse_useup);
+                title = StringUtils.getString(R.string.playcc_today_browse_useup);
             } else {
-                title = String.format(StringUtils.getString(R.string.playfun_today_browse_female_count), number);
+                title = String.format(StringUtils.getString(R.string.playcc_today_browse_female_count), number);
             }
             toFragmentName = VipSubscribeFragment.class.getCanonicalName();
-            content = String.format(StringUtils.getString(R.string.playfun_not_vip_everyday_browse_home_num), ConfigManager.getInstance().getMaxBrowseHomeNumber());
-            btn = StringUtils.getString(R.string.playfun_upgrade_membership);
+            content = String.format(StringUtils.getString(R.string.playcc_not_vip_everyday_browse_home_num), ConfigManager.getInstance().getMaxBrowseHomeNumber());
+            btn = StringUtils.getString(R.string.playcc_upgrade_membership);
         } else {
             if (number <= 0) {
-                title = StringUtils.getString(R.string.playfun_today_browse_useup);
+                title = StringUtils.getString(R.string.playcc_today_browse_useup);
             } else {
-                title = String.format(StringUtils.getString(R.string.playfun_today_browse_male_count), number);
+                title = String.format(StringUtils.getString(R.string.playcc_today_browse_male_count), number);
             }
-            content = String.format(StringUtils.getString(R.string.playfun_not_goddess_everyday_browse_home_num), ConfigManager.getInstance().getMaxBrowseHomeNumber());
+            content = String.format(StringUtils.getString(R.string.playcc_not_goddess_everyday_browse_home_num), ConfigManager.getInstance().getMaxBrowseHomeNumber());
             toFragmentName = CertificationFemaleFragment.class.getCanonicalName();
-            btn = StringUtils.getString(R.string.playfun_upgrade_goddess);
+            btn = StringUtils.getString(R.string.playcc_upgrade_goddess);
         }
         String finalToFragmentName = toFragmentName;
         MVDialog.getInstance(baseFragment.getActivity())

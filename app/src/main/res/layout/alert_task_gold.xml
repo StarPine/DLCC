@@ -22,7 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:text="@string/playfun_mine_trace_delike"
+            android:text="@string/playcc_mine_trace_delike"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="17sp" />
@@ -32,7 +32,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="7dp"
-            android:text="@string/playfun_mine_trace_delike"
+            android:text="@string/playcc_mine_trace_delike"
             android:textAlignment="center"
             android:textColor="#FF90919F"
             android:textSize="13sp" />
@@ -45,7 +45,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
-            android:text="@string/playfun_dialog_set_withdraw_account_confirm" />
+            android:text="@string/playcc_dialog_set_withdraw_account_confirm" />
 
         <Button
             android:id="@+id/two_confirm"
@@ -56,7 +56,7 @@
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="10dp"
             android:background="@drawable/trace_channel2"
-            android:text="@string/playfun_task_fragment_bonus_dialog_2"
+            android:text="@string/playcc_task_fragment_bonus_dialog_2"
             android:textColor="@color/purple1" />
 
     </LinearLayout>

@@ -101,7 +101,7 @@ public class CustomCalendarView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         setDate();
-        String date = year + this.getResources().getString(R.string.playfun_year) + month + this.getResources().getString(R.string.playfun_month) + day + this.getResources().getString(R.string.playfun_daily);
+        String date = year + this.getResources().getString(R.string.playcc_year) + month + this.getResources().getString(R.string.playcc_month) + day + this.getResources().getString(R.string.playcc_daily);
         Paint.FontMetrics metrics = paint.getFontMetrics();
         float txtHeiht = (float) (Math.ceil(metrics.descent - metrics.top) / 2);
         float txtWith = paint.measureText(date);

@@ -255,9 +255,9 @@ public class VideoCallViewModel extends BaseViewModel<AppRepository> {
         @Override
         public void call() {
             if (micMuteField.get()) {//开启免提
-                ToastUtils.showShort(R.string.playfun_call_message_deatail_txt_4);
+                ToastUtils.showShort(R.string.playcc_call_message_deatail_txt_4);
             } else {
-                ToastUtils.showShort(R.string.playfun_call_message_deatail_txt_3);
+                ToastUtils.showShort(R.string.playcc_call_message_deatail_txt_3);
             }
             boolean minMute = !micMuteField.get();
             micMuteField.set(minMute);
@@ -270,9 +270,9 @@ public class VideoCallViewModel extends BaseViewModel<AppRepository> {
         @Override
         public void call() {
             if (handsFreeField.get()) {//开启免提
-                ToastUtils.showShort(R.string.playfun_call_message_deatail_txt_2);
+                ToastUtils.showShort(R.string.playcc_call_message_deatail_txt_2);
             } else {
-                ToastUtils.showShort(R.string.playfun_call_message_deatail_txt_1);
+                ToastUtils.showShort(R.string.playcc_call_message_deatail_txt_1);
             }
             boolean handsFree = !handsFreeField.get();
             handsFreeField.set(handsFree);
@@ -472,7 +472,7 @@ public class VideoCallViewModel extends BaseViewModel<AppRepository> {
 
     public String ageAndConstellation(CallingInviteInfo callingInviteInfo) {
         if (callingInviteInfo != null) {
-            return String.format(StringUtils.getString(R.string.playfun_age_and_constellation), callingInviteInfo.getUserProfileInfo().getAge());
+            return String.format(StringUtils.getString(R.string.playcc_age_and_constellation), callingInviteInfo.getUserProfileInfo().getAge());
         }
         return "";
     }
@@ -641,9 +641,9 @@ public class VideoCallViewModel extends BaseViewModel<AppRepository> {
                         dialog.dismiss();
                         String textTip = null;
                         if (isMale) {
-                            textTip = StringUtils.getString(R.string.playfun_call_message_deatail_girl_txt_male);
+                            textTip = StringUtils.getString(R.string.playcc_call_message_deatail_girl_txt_male);
                         } else {
-                            textTip = StringUtils.getString(R.string.playfun_call_message_deatail_girl_txt_gift);
+                            textTip = StringUtils.getString(R.string.playcc_call_message_deatail_girl_txt_gift);
                         }
                         String nickname = callingVideoInviteInfoField.get().getNickname();
                         textTip += " " + nickname;
@@ -669,7 +669,7 @@ public class VideoCallViewModel extends BaseViewModel<AppRepository> {
                         dialog.dismiss();
                         dismissHUD();
                         if (e.getCode() != null && e.getCode().intValue() == 21001) {
-                            ToastCenterUtils.showToast(R.string.playfun_dialog_exchange_integral_total_text1);
+                            ToastCenterUtils.showToast(R.string.playcc_dialog_exchange_integral_total_text1);
                             AppContext.instance().logEvent(AppsFlyerEvent.videocall_gift_Insu_topup);
                             uc.sendUserGiftError.postValue(true);
                         }
@@ -693,7 +693,7 @@ public class VideoCallViewModel extends BaseViewModel<AppRepository> {
                         } else {
                             collected = 1;
                             collectedField.set(1);
-                            ToastUtils.showShort(R.string.playfun_cancel_zuizong_3);
+                            ToastUtils.showShort(R.string.playcc_cancel_zuizong_3);
                         }
                     }
 
@@ -782,7 +782,7 @@ public class VideoCallViewModel extends BaseViewModel<AppRepository> {
                                         if (isShow != null && isShow.equals("1")) {
                                             isShowCountdown.set(true);
                                             girlEarningsField.set(true);
-                                            String girlEarningsTex = StringUtils.getString(R.string.playfun_insufficient_balance_of_counterparty);
+                                            String girlEarningsTex = StringUtils.getString(R.string.playcc_insufficient_balance_of_counterparty);
                                             SpannableString stringBuilder = new SpannableString(girlEarningsTex);
                                             stringBuilder.setSpan(new ForegroundColorSpan(ColorUtils.getColor(R.color.white)), 0, girlEarningsTex.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                                             girlEarningsText.set(stringBuilder);
@@ -822,8 +822,8 @@ public class VideoCallViewModel extends BaseViewModel<AppRepository> {
      */
     private void showGiftBarrage(GiftEntity giftEntity) {
         int nickNameLength = callingVideoInviteInfoField.get().getNickname().length();
-        String sexText = isMale ? StringUtils.getString(R.string.playfun_call_message_deatail_girl_txt3) : StringUtils.getString(R.string.playfun_call_message_deatail_girl_txt2);
-        String messageText = callingVideoInviteInfoField.get().getNickname() + " " + StringUtils.getString(R.string.playfun_call_message_deatail_girl_txt1) + " " + sexText + " " + giftEntity.getTitle() + "x" + giftEntity.getAmount();
+        String sexText = isMale ? StringUtils.getString(R.string.playcc_call_message_deatail_girl_txt3) : StringUtils.getString(R.string.playcc_call_message_deatail_girl_txt2);
+        String messageText = callingVideoInviteInfoField.get().getNickname() + " " + StringUtils.getString(R.string.playcc_call_message_deatail_girl_txt1) + " " + sexText + " " + giftEntity.getTitle() + "x" + giftEntity.getAmount();
         int youIndex = messageText.indexOf(sexText);
         SpannableString stringBuilder = new SpannableString(messageText);
 

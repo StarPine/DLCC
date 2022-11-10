@@ -39,7 +39,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="@string/playfun_contact_empty_text"
+                android:text="@string/playcc_contact_empty_text"
                 android:textColor="#ffbfbfbf"
                 android:textSize="16sp"
                 />

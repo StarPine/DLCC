@@ -198,7 +198,7 @@ public class RegisterFragment extends BaseToolbarFragment<FragmentRegisterBindin
                                 } catch (Exception e) {
                                     Log.e("获取facebook关键资料", "异常原因: " + e.getMessage());
                                     // App code
-                                    ToastUtils.showShort(R.string.playfun_error_facebook);
+                                    ToastUtils.showShort(R.string.playcc_error_facebook);
                                 }
                             }
                         });
@@ -217,7 +217,7 @@ public class RegisterFragment extends BaseToolbarFragment<FragmentRegisterBindin
                     @Override
                     public void onError(FacebookException exception) {
                         // App code
-                        ToastUtils.showShort(R.string.playfun_error_facebook);
+                        ToastUtils.showShort(R.string.playcc_error_facebook);
                     }
                 });
         GoogleLogin();
@@ -266,7 +266,7 @@ public class RegisterFragment extends BaseToolbarFragment<FragmentRegisterBindin
 
         } catch (Exception e) {
             e.printStackTrace();
-            ToastUtils.showShort(R.string.playfun_error_google);
+            ToastUtils.showShort(R.string.playcc_error_google);
         }
 
     }

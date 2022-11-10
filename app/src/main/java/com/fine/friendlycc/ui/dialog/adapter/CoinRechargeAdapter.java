@@ -85,7 +85,7 @@ public class CoinRechargeAdapter extends RecyclerView.Adapter<CoinRechargeAdapte
                     holder.flag.setTextColor(ColorUtils.getColor(R.color.toolbar_title_color));
                     holder.flag.setBackgroundResource(R.drawable.bg_right_top_corner);
                 }
-                holder.flag.setText(mContext.getString(R.string.playfun_diamond_detail_item_flag));
+                holder.flag.setText(mContext.getString(R.string.playcc_diamond_detail_item_flag));
                 holder.flag.setVisibility(View.VISIBLE);
             } else {
                 holder.flag.setVisibility(View.GONE);
@@ -93,7 +93,7 @@ public class CoinRechargeAdapter extends RecyclerView.Adapter<CoinRechargeAdapte
         } else if (goodsEntity.getType() == 2) {
             holder.flag.setTextColor(ColorUtils.getColor(R.color.toolbar_title_color));
             holder.flag.setBackgroundResource(R.drawable.bg_right_top_corner);
-            holder.flag.setText(mContext.getString(R.string.playfun_diamond_detail_item_flag2));
+            holder.flag.setText(mContext.getString(R.string.playcc_diamond_detail_item_flag2));
             holder.flag.setVisibility(View.VISIBLE);
         }else {
             holder.flag.setVisibility(View.GONE);

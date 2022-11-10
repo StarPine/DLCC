@@ -178,10 +178,10 @@ public class OftenContactFragment extends BaseFragment<FragmentOftenContactBindi
                 })
                 .setConfirmThreeOnlick(dialog -> {
                     TraceDialog.getInstance(getContext())
-                            .setTitle(getString(R.string.playfun_del_banned_account_content))
+                            .setTitle(getString(R.string.playcc_del_banned_account_content))
                             .setTitleSize(18)
-                            .setCannelText(getString(R.string.playfun_cancel))
-                            .setConfirmText(getString(R.string.playfun_mine_trace_delike_confirm))
+                            .setCannelText(getString(R.string.playcc_cancel))
+                            .setConfirmText(getString(R.string.playcc_mine_trace_delike_confirm))
                             .chooseType(TraceDialog.TypeEnum.CENTER)
                             .setConfirmOnlick(new TraceDialog.ConfirmOnclick() {
                                 @Override

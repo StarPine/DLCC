@@ -191,7 +191,7 @@ public class MVDialog {
         bottomDialog.getWindow().setWindowAnimations(R.style.BottomDialog_Animation);
         RecyclerView rcvTiem = contentView.findViewById(R.id.rcv_tiem);
         TextView tv_titles = contentView.findViewById(R.id.tv_titles);
-        tv_titles.setText(R.string.playfun_address);
+        tv_titles.setText(R.string.playcc_address);
         rcvTiem.setLayoutManager(new LinearLayoutManager(context));
         CityAdapter cityAdapter = new CityAdapter(configEntities);
         rcvTiem.setAdapter(cityAdapter);
@@ -240,7 +240,7 @@ public class MVDialog {
         bottomDialog.getWindow().setWindowAnimations(R.style.BottomDialog_Animation);
         RecyclerView rcvTiem = contentView.findViewById(R.id.rcv_tiem);
         TextView tv_titles = contentView.findViewById(R.id.tv_titles);
-        tv_titles.setText(R.string.playfun_address);
+        tv_titles.setText(R.string.playcc_address);
         rcvTiem.setLayoutManager(new LinearLayoutManager(context));
         CityAdapter cityAdapter = new CityAdapter(configEntities);
         rcvTiem.setAdapter(cityAdapter);
@@ -863,13 +863,13 @@ public class MVDialog {
         });
         if (StringUtil.isEmpty(confirmText)) {
             contentBtn.setVisibility(View.VISIBLE);
-            contentBtn.setText(context.getResources().getString(R.string.playfun_confirm));
+            contentBtn.setText(context.getResources().getString(R.string.playcc_confirm));
         } else {
             contentBtn.setText(confirmText);
             contentBtn.setVisibility(View.VISIBLE);
         }
         if (StringUtil.isEmpty(confirmTwoText)) {
-            contentTowBtn.setText(context.getResources().getString(R.string.playfun_confirm));
+            contentTowBtn.setText(context.getResources().getString(R.string.playcc_confirm));
             contentTowBtn.setVisibility(View.GONE);
         } else {
             contentTowBtn.setText(confirmTwoText);
@@ -946,13 +946,13 @@ public class MVDialog {
         });
         if (StringUtil.isEmpty(confirmText)) {
             contentBtn.setVisibility(View.VISIBLE);
-            contentBtn.setText(context.getResources().getString(R.string.playfun_confirm));
+            contentBtn.setText(context.getResources().getString(R.string.playcc_confirm));
         } else {
             contentBtn.setText(confirmText);
             contentBtn.setVisibility(View.VISIBLE);
         }
         if (StringUtil.isEmpty(confirmTwoText)) {
-            contentTowBtn.setText(context.getResources().getString(R.string.playfun_confirm));
+            contentTowBtn.setText(context.getResources().getString(R.string.playcc_confirm));
             contentTowBtn.setVisibility(View.GONE);
         } else {
             contentTowBtn.setText(confirmTwoText);
@@ -1011,7 +1011,7 @@ public class MVDialog {
             }
         });
         if (StringUtil.isEmpty(confirmText)) {
-            contentBtn.setText(context.getResources().getString(R.string.playfun_confirm));
+            contentBtn.setText(context.getResources().getString(R.string.playcc_confirm));
         } else {
             contentBtn.setText(confirmText);
         }
@@ -1069,7 +1069,7 @@ public class MVDialog {
         });
         Button contentBtn = contentView.findViewById(R.id.btn_confirm);
         if (StringUtils.isEmpty(confirmText)) {
-            contentBtn.setText(context.getResources().getString(R.string.playfun_confirm));
+            contentBtn.setText(context.getResources().getString(R.string.playcc_confirm));
         } else {
             contentBtn.setText(confirmText);
         }

@@ -115,11 +115,11 @@ public class PhotoBrowseFragment extends BaseFragment<FragmentPhotoBrowseBinding
     }
 
     private void payReaPackagePhoto(int photoId) {
-        new CoinPaySheet.Builder(mActivity).setPayParams(4, photoId, getString(R.string.playfun_red_package_photo), false, new CoinPaySheet.CoinPayDialogListener() {
+        new CoinPaySheet.Builder(mActivity).setPayParams(4, photoId, getString(R.string.playcc_red_package_photo), false, new CoinPaySheet.CoinPayDialogListener() {
             @Override
             public void onPaySuccess(CoinPaySheet sheet, String orderNo, Integer payPrice) {
                 sheet.dismiss();
-                ToastUtils.showShort(R.string.playfun_pay_success);
+                ToastUtils.showShort(R.string.playcc_pay_success);
                 viewModel.payRedPackageSuccess(photoId);
             }
             @Override
@@ -130,11 +130,11 @@ public class PhotoBrowseFragment extends BaseFragment<FragmentPhotoBrowseBinding
     }
 
     private void payReaPackageVideo(int photoId) {
-        new CoinPaySheet.Builder(mActivity).setPayParams(5, photoId, getString(R.string.playfun_red_package_video), false, new CoinPaySheet.CoinPayDialogListener() {
+        new CoinPaySheet.Builder(mActivity).setPayParams(5, photoId, getString(R.string.playcc_red_package_video), false, new CoinPaySheet.CoinPayDialogListener() {
             @Override
             public void onPaySuccess(CoinPaySheet sheet, String orderNo, Integer payPrice) {
                 sheet.dismiss();
-                ToastUtils.showShort(R.string.playfun_pay_success);
+                ToastUtils.showShort(R.string.playcc_pay_success);
                 viewModel.payRedPackageSuccess(photoId);
             }
             @Override

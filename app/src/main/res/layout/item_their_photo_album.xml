@@ -58,7 +58,7 @@
                 android:layout_alignParentRight="true"
                 android:background="@drawable/photo_mark_right"
                 android:padding="3dp"
-                android:text="@string/playfun_self"
+                android:text="@string/playcc_self"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_size_mini"
                 android:visibility="@{viewModel.itemEntity.verificationType == 1 ? View.VISIBLE:View.GONE}" />
@@ -87,7 +87,7 @@
             android:layout_centerInParent="true"
             android:background="@drawable/album_more_count_background"
             android:gravity="center"
-            android:text="@{@string/playfun_user_detail_phone_list_hint(viewModel.moreCount>99?99:viewModel.moreCount)}"
+            android:text="@{@string/playcc_user_detail_phone_list_hint(viewModel.moreCount>99?99:viewModel.moreCount)}"
             android:textColor="@color/white"
             android:textSize="13sp"
             android:visibility="@{safeUnbox(viewModel.moreCount) > 0 ? View.VISIBLE:View.GONE}"

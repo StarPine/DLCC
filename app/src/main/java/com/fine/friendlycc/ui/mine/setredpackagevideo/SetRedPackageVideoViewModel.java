@@ -117,7 +117,7 @@ public class SetRedPackageVideoViewModel extends BaseViewModel<AppRepository> {
                         } else {
                             RxBus.getDefault().post(MyPhotoAlbumChangeEvent.genCancelRedPackageEvent(id));
                         }
-                        ToastUtils.showShort(R.string.playfun_hint_set_redpackage_video_success);
+                        ToastUtils.showShort(R.string.playcc_hint_set_redpackage_video_success);
                         pop();
                     }
 

@@ -86,7 +86,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:gravity="center"
-            android:text="@{safeUnbox(viewModel.isCancel)?@string/playfun_add_block:@string/playfun_cancel_block}"
+            android:text="@{safeUnbox(viewModel.isCancel)?@string/playcc_add_block:@string/playcc_cancel_block}"
             android:textColor="@color/purple"
             android:textSize="@dimen/text_size_big"
             binding:onClickCommand="@{viewModel.delBlackClick}" />

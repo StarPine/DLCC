@@ -33,7 +33,7 @@
                 android:id="@+id/basic_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/action_bar_height"
-                app:toolbar_title="@string/playfun_setting_privacy_setting" />
+                app:toolbar_title="@string/playcc_setting_privacy_setting" />
 
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -57,14 +57,14 @@
                     android:layout_height="wrap_content"
                     android:padding="7sp"
                     android:textSize="8sp"
-                    android:text="@string/playfun_privacy_setting_top_tip" />
+                    android:text="@string/playcc_privacy_setting_top_tip" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="14.32dp"
                     android:layout_marginTop="20dp"
-                    android:text="@string/playfun_stealth" />
+                    android:text="@string/playcc_stealth" />
 
                 <RelativeLayout
                     style="@style/ProfileItem"
@@ -76,7 +76,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="15sp"
-                        android:text="@string/playfun_hide_park_list" />
+                        android:text="@string/playcc_hide_park_list" />
 
                     <Switch
                         android:layout_width="wrap_content"
@@ -103,7 +103,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="12sp"
-                        android:text="@string/playfun_hide_park_list_3km" />
+                        android:text="@string/playcc_hide_park_list_3km" />
 
                     <Switch
                         android:layout_width="wrap_content"
@@ -122,7 +122,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="14.32dp"
                     android:layout_marginTop="20dp"
-                    android:text="@string/playfun_hidden_distance_online_time" />
+                    android:text="@string/playcc_hidden_distance_online_time" />
 
                 <RelativeLayout
                     style="@style/ProfileItem"
@@ -133,7 +133,7 @@
                         style="@style/ProfileItemTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/playfun_hide_distance_others" />
+                        android:text="@string/playcc_hide_distance_others" />
 
                     <Switch
                         android:layout_width="wrap_content"
@@ -155,7 +155,7 @@
                         style="@style/ProfileItemTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/playfun_hide_online_time_other" />
+                        android:text="@string/playcc_hide_online_time_other" />
 
                     <Switch
                         android:layout_width="wrap_content"

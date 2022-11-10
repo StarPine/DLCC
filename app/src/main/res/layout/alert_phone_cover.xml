@@ -25,7 +25,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="19dp"
                 android:gravity="center"
-                android:text="@string/playfun_phone_cover_text"
+                android:text="@string/playcc_phone_cover_text"
                 android:textColor="#ff2f2f4d"
                 android:textSize="24sp" />
 
@@ -35,7 +35,7 @@
                 android:layout_marginEnd="22dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/playfun_photo_cover_content_text"
+                android:text="@string/playcc_photo_cover_content_text"
                 android:textColor="#ff333333"
                 android:textSize="14sp"
                 android:lineHeight="20dp"
@@ -50,7 +50,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:gravity="center"
-                android:text="@string/playfun_roger"
+                android:text="@string/playcc_roger"
                 android:textColor="@color/white" />
         </LinearLayout>
     </FrameLayout>

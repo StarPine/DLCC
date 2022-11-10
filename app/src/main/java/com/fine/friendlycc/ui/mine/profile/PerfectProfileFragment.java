@@ -82,9 +82,9 @@ public class PerfectProfileFragment extends BaseFragment<FragmentPerfectProfileB
         });
         viewModel.uc.nicknameDuplicate.observe(this, name -> {
             TraceDialog.getInstance(mActivity)
-                    .setTitle(String.format(getString(R.string.playfun_duplicate_nickname_tips), name))
+                    .setTitle(String.format(getString(R.string.playcc_duplicate_nickname_tips), name))
                     .setCannelText(getString(R.string.cancel))
-                    .setConfirmText(getString(R.string.playfun_mine_trace_delike_confirm))
+                    .setConfirmText(getString(R.string.playcc_mine_trace_delike_confirm))
                     .chooseType(TraceDialog.TypeEnum.CENTER)
                     .setConfirmOnlick(new TraceDialog.ConfirmOnclick() {
                         @Override
@@ -118,7 +118,7 @@ public class PerfectProfileFragment extends BaseFragment<FragmentPerfectProfileB
                 bundle.putString("name", viewModel.UserName.get());
                 viewModel.start(RegisterSexFragment.class.getCanonicalName(), bundle);
             } else {
-                ToastUtils.showShort(R.string.playfun_fragment_perfect_avatar1);
+                ToastUtils.showShort(R.string.playcc_fragment_perfect_avatar1);
             }
         });
     }

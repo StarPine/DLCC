@@ -89,7 +89,7 @@ public interface LocalDataSource {
     void saveChannelAF(String channel);
 
     /**
-     * @return com.dl.playfun.entity.SystemConfigTaskEntity
+     * @return com.dl.playcc.entity.SystemConfigTaskEntity
      * @Desc TODO(读取本地任务中心配置)
      * @author 彭石林
      * @parame []

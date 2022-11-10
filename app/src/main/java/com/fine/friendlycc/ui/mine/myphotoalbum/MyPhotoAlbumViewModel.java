@@ -34,7 +34,7 @@ public class MyPhotoAlbumViewModel extends BaseMyPhotoAlbumViewModel<AppReposito
         @Override
         public void call() {
             if (totalPhoto.get() == null || totalPhoto.get() >= 24) {
-                ToastUtils.showShort(R.string.playfun_warn_max_upload_photo);
+                ToastUtils.showShort(R.string.playcc_warn_max_upload_photo);
                 return;
             }
             uc.clickUploadPhoto.postValue(model.readUserData().getSex());
@@ -45,11 +45,11 @@ public class MyPhotoAlbumViewModel extends BaseMyPhotoAlbumViewModel<AppReposito
     public MyPhotoAlbumViewModel(@NonNull Application application, AppRepository repository) {
         super(application, repository);
         if (model.readUserData().getSex() == 1) {
-            titleBtnText.set(StringUtils.getString(R.string.playfun_photo_album_title_button_text_male));
-            stateModel.setEmptyRetryCommand(StringUtils.getString(R.string.playfun_photo_album_title_button_text_male), uploadPhotoOnClickCommand);
+            titleBtnText.set(StringUtils.getString(R.string.playcc_photo_album_title_button_text_male));
+            stateModel.setEmptyRetryCommand(StringUtils.getString(R.string.playcc_photo_album_title_button_text_male), uploadPhotoOnClickCommand);
         } else {
-            titleBtnText.set(StringUtils.getString(R.string.playfun_photo_album_title_button_female));
-            stateModel.setEmptyRetryCommand(StringUtils.getString(R.string.playfun_photo_album_title_button_female), uploadPhotoOnClickCommand);
+            titleBtnText.set(StringUtils.getString(R.string.playcc_photo_album_title_button_female));
+            stateModel.setEmptyRetryCommand(StringUtils.getString(R.string.playcc_photo_album_title_button_female), uploadPhotoOnClickCommand);
         }
 
     }

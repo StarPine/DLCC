@@ -197,7 +197,7 @@ public class GiftBagDialog extends BaseDialog {
                     @Override
                     public void onClick(View v) {
                         String value =  ((TextView) mCirclePop.findViewById(R.id.text_value1)).getText().toString();
-                        gift_number.setText(value+ StringUtils.getString(R.string.playfun_individual));
+                        gift_number.setText(value+ StringUtils.getString(R.string.playcc_individual));
                         sendGiftNumber = Integer.parseInt(value);
                         mCirclePop.dismiss();
                     }
@@ -206,7 +206,7 @@ public class GiftBagDialog extends BaseDialog {
                     @Override
                     public void onClick(View v) {
                         String value =  ((TextView) mCirclePop.findViewById(R.id.text_value2)).getText().toString();
-                        gift_number.setText(value+ StringUtils.getString(R.string.playfun_individual));
+                        gift_number.setText(value+ StringUtils.getString(R.string.playcc_individual));
                         sendGiftNumber = Integer.parseInt(value);
                         mCirclePop.dismiss();
                     }
@@ -215,7 +215,7 @@ public class GiftBagDialog extends BaseDialog {
                     @Override
                     public void onClick(View v) {
                         String value =  ((TextView) mCirclePop.findViewById(R.id.text_value3)).getText().toString();
-                        gift_number.setText(value+ StringUtils.getString(R.string.playfun_individual));
+                        gift_number.setText(value+ StringUtils.getString(R.string.playcc_individual));
                         sendGiftNumber = Integer.parseInt(value);
                         mCirclePop.dismiss();
                     }
@@ -224,7 +224,7 @@ public class GiftBagDialog extends BaseDialog {
                     @Override
                     public void onClick(View v) {
                         String value =  ((TextView) mCirclePop.findViewById(R.id.text_value4)).getText().toString();
-                        gift_number.setText(value+ StringUtils.getString(R.string.playfun_individual));
+                        gift_number.setText(value+ StringUtils.getString(R.string.playcc_individual));
                         sendGiftNumber = Integer.parseInt(value);
                         mCirclePop.dismiss();
                     }
@@ -233,7 +233,7 @@ public class GiftBagDialog extends BaseDialog {
                     @Override
                     public void onClick(View v) {
                         String value =  ((TextView) mCirclePop.findViewById(R.id.text_value5)).getText().toString();
-                        gift_number.setText(value+ StringUtils.getString(R.string.playfun_individual));
+                        gift_number.setText(value+ StringUtils.getString(R.string.playcc_individual));
                         sendGiftNumber = Integer.parseInt(value);
                         mCirclePop.dismiss();
                     }
@@ -242,7 +242,7 @@ public class GiftBagDialog extends BaseDialog {
                     @Override
                     public void onClick(View v) {
                         String value =  ((TextView) mCirclePop.findViewById(R.id.text_value6)).getText().toString();
-                        gift_number.setText(value+ StringUtils.getString(R.string.playfun_individual));
+                        gift_number.setText(value+ StringUtils.getString(R.string.playcc_individual));
                         sendGiftNumber = Integer.parseInt(value);
                         mCirclePop.dismiss();
                     }
@@ -251,7 +251,7 @@ public class GiftBagDialog extends BaseDialog {
                     @Override
                     public void onClick(View v) {
                         String value =  ((TextView) mCirclePop.findViewById(R.id.text_value7)).getText().toString();
-                        gift_number.setText(value+ StringUtils.getString(R.string.playfun_individual));
+                        gift_number.setText(value+ StringUtils.getString(R.string.playcc_individual));
                         sendGiftNumber = Integer.parseInt(value);
                         mCirclePop.dismiss();
                     }
@@ -260,7 +260,7 @@ public class GiftBagDialog extends BaseDialog {
                     @Override
                     public void onClick(View v) {
                         String value =  ((TextView) mCirclePop.findViewById(R.id.text_value8)).getText().toString();
-                        gift_number.setText(value+ StringUtils.getString(R.string.playfun_individual));
+                        gift_number.setText(value+ StringUtils.getString(R.string.playcc_individual));
                         sendGiftNumber = Integer.parseInt(value);
                         mCirclePop.dismiss();
                     }
@@ -350,7 +350,7 @@ public class GiftBagDialog extends BaseDialog {
                         if (isFirst != null && isFirst == 1) {
                             btn_stored.setBackground(mContext.getDrawable(R.drawable.gift_red_border_backdrop));
                             btn_stored.setTextColor(ColorUtils.getColor(R.color.red));
-                            btn_stored.setText(R.string.playfun_gift_bag_text1);
+                            btn_stored.setText(R.string.playcc_gift_bag_text1);
                         }
                         int totalCoin = giftBagEntity.getTotalCoin().intValue();
                         balance_value.setText(String.valueOf(totalCoin >= 0 ? totalCoin : 0));

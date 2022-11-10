@@ -69,7 +69,7 @@
             android:layout_gravity="center"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="15dp"
-            android:text="@string/playfun_comment_now"
+            android:text="@string/playcc_comment_now"
             android:textColor="@color/text_7639FF"
             android:textSize="11sp"
             binding:onClickCommand="@{viewModel.itemClick}"

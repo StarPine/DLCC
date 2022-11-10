@@ -33,7 +33,7 @@
                 android:id="@+id/basic_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/action_bar_height"
-                app:toolbar_title="@string/playfun_send_coin_red_package_title" />
+                app:toolbar_title="@string/playcc_send_coin_red_package_title" />
 
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -65,7 +65,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/playfun_jewel" />
+                        android:text="@string/playcc_jewel" />
 
                     <EditText
                         android:layout_width="wrap_content"
@@ -84,7 +84,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/playfun_individual" />
+                        android:text="@string/playcc_individual" />
 
                 </LinearLayout>
 
@@ -96,7 +96,7 @@
                     android:layout_marginTop="16dp"
                     android:background="@drawable/edit_white_background"
                     android:gravity="top"
-                    android:hint="@string/playfun_chat_red"
+                    android:hint="@string/playcc_chat_red"
                     android:inputType="text"
                     android:maxLength="20"
                     android:padding="16dp"
@@ -124,7 +124,7 @@
                     style="@style/ButtonPrimary"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/playfun_jewel_red"
+                    android:text="@string/playcc_jewel_red"
                     binding:onClickCommand="@{viewModel.sendOnClickCommand}" />
 
                 <TextView
@@ -132,7 +132,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:gravity="center"
-                    android:text="@string/playfun_jewel_read_explain"
+                    android:text="@string/playcc_jewel_read_explain"
                     android:textColor="@color/gray_light"
                     android:textSize="@dimen/text_size_small" />
             </LinearLayout>

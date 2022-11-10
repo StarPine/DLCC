@@ -13,24 +13,24 @@ public class StringResHelper {
 
     public static String getCommentDialogTitle() {
         if (readSex() == AppConfig.MALE) {
-            return StringUtils.getString(R.string.playfun_only_member_comment);
+            return StringUtils.getString(R.string.playcc_only_member_comment);
         } else {
             if (ConfigManager.getInstance().getAppRepository().readUserData().getCertification() == 1) {
-                return StringUtils.getString(R.string.playfun_dialog_goddess_comment_title);
+                return StringUtils.getString(R.string.playcc_dialog_goddess_comment_title);
             } else {
-                return StringUtils.getString(R.string.playfun_warn_no_certification);
+                return StringUtils.getString(R.string.playcc_warn_no_certification);
             }
         }
     }
 
     public static String getCommentDialogBtnText() {
         if (readSex() == AppConfig.MALE) {
-            return StringUtils.getString(R.string.playfun_to_be_member_comment);
+            return StringUtils.getString(R.string.playcc_to_be_member_comment);
         } else {
             if (ConfigManager.getInstance().getAppRepository().readUserData().getCertification() == 1) {
-                return StringUtils.getString(R.string.playfun_dialog_goddess_comment_button_text);
+                return StringUtils.getString(R.string.playcc_dialog_goddess_comment_button_text);
             } else {
-                return StringUtils.getString(R.string.playfun_dialog_goddess_comment_cert_button_text);
+                return StringUtils.getString(R.string.playcc_dialog_goddess_comment_cert_button_text);
             }
         }
     }

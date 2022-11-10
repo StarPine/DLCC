@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
             android:gravity="center"
-            android:text="@string/playfun_account_text_cancelled"
+            android:text="@string/playcc_account_text_cancelled"
             android:textColor="#ff2f2f4d"
             android:textSize="16sp" />
 
@@ -31,7 +31,7 @@
             android:layout_marginEnd="55dp"
             android:background="@drawable/btn_setting_account_cancel"
             android:gravity="center"
-            android:text="@string/playfun_roger"
+            android:text="@string/playcc_roger"
             android:textColor="@color/white"
             android:textSize="15sp" />
     </LinearLayout>

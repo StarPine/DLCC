@@ -174,7 +174,7 @@
                         style="@style/TopWarn"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/playfun_homt_main_lication_title"
+                        android:text="@string/playcc_homt_main_lication_title"
                         android:visibility="@{viewModel.locationService?View.GONE:View.VISIBLE}"
                         app:drawableRightCompat="@drawable/ic_arrow_right_golden"
                         tools:ignore="TextContrastCheck" />

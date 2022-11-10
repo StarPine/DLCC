@@ -55,7 +55,7 @@ public class ReportUserViewModel extends BaseViewModel<AppRepository> {
         @Override
         public void call() {
             if (reasonId == null) {
-                ToastUtils.showShort(R.string.playfun_report_user_reason);
+                ToastUtils.showShort(R.string.playcc_report_user_reason);
                 return;
             }
             if (type.equals("home")) {
@@ -94,7 +94,7 @@ public class ReportUserViewModel extends BaseViewModel<AppRepository> {
                     @Override
                     public void onSuccess(BaseResponse response) {
                         dismissHUD();
-                        ToastUtils.showShort(R.string.playfun_report_success);
+                        ToastUtils.showShort(R.string.playcc_report_success);
                     }
 
                     @Override
@@ -126,7 +126,7 @@ public class ReportUserViewModel extends BaseViewModel<AppRepository> {
 
                     @Override
                     public void onError(Throwable e) {
-                        ToastUtils.showShort(R.string.playfun_upload_failed);
+                        ToastUtils.showShort(R.string.playcc_upload_failed);
                     }
 
                     @Override

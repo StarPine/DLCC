@@ -36,7 +36,7 @@
                 android:id="@+id/basic_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/action_bar_height"
-                app:toolbar_title="@string/playfun_fragment_certification_female_title" />
+                app:toolbar_title="@string/playcc_fragment_certification_female_title" />
 
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -97,7 +97,7 @@
                                 android:text="@{viewModel.applyGoddessStatusStr}"
                                 android:textColor="@color/white"
                                 android:textSize="@dimen/text_size_middle"
-                                tools:text="@string/playfun_model_certifition_pass"
+                                tools:text="@string/playcc_model_certifition_pass"
                                 />
 
                             <LinearLayout
@@ -150,7 +150,7 @@
                                 android:clickable="false"
                                 android:drawableLeft="@drawable/ic_btn_male"
                                 android:drawablePadding="5dp"
-                                android:text="@{safeUnbox(viewModel.faceCertification) ? @string/playfun_update_face_record:@string/playfun_fragment_certification_female_title}"
+                                android:text="@{safeUnbox(viewModel.faceCertification) ? @string/playcc_update_face_record:@string/playcc_fragment_certification_female_title}"
                                 android:textSize="14.67dp" />
 
                         </RelativeLayout>
@@ -161,7 +161,7 @@
                             android:layout_below="@+id/btn_update"
                             android:layout_gravity="center_horizontal"
                             android:layout_marginTop="14dp"
-                            android:text="@string/playfun_look_better_tell_me"
+                            android:text="@string/playcc_look_better_tell_me"
                             android:textColor="@color/gray_light"
                             android:textSize="@dimen/text_size_small"
                             android:visibility="@{safeUnbox(viewModel.faceCertification) ? View.VISIBLE:View.GONE}" />
@@ -183,9 +183,9 @@
                                 android:clickable="false"
                                 android:drawableLeft="@drawable/ic_btn_female"
                                 android:drawablePadding="5dp"
-                                android:text="@{safeUnbox(viewModel.applyGoddessStatus) == -1 ? @string/playfun_goddess_certification:safeUnbox(viewModel.applyGoddessStatus) == 0 ? @string/playfun_goddess_certification_auditing:@string/playfun_goddess_certification}"
+                                android:text="@{safeUnbox(viewModel.applyGoddessStatus) == -1 ? @string/playcc_goddess_certification:safeUnbox(viewModel.applyGoddessStatus) == 0 ? @string/playcc_goddess_certification_auditing:@string/playcc_goddess_certification}"
                                 android:textSize="14.67dp"
-                                tools:text="@string/playfun_goddess_certification_auditing"
+                                tools:text="@string/playcc_goddess_certification_auditing"
                                 />
                         </RelativeLayout>
 
@@ -218,7 +218,7 @@
                                 android:background="@color/white"
                                 android:paddingLeft="14dp"
                                 android:paddingRight="14dp"
-                                android:text="@string/playfun_authentication_privilege"
+                                android:text="@string/playcc_authentication_privilege"
                                 android:textColor="@color/gray_light"
                                 android:textSize="@dimen/text_size_middle" />
                         </RelativeLayout>
@@ -248,7 +248,7 @@
                                         android:layout_height="match_parent"
                                         android:gravity="center"
                                         android:paddingLeft="50dp"
-                                        android:text="@string/playfun_fragment_certification_female_poster"
+                                        android:text="@string/playcc_fragment_certification_female_poster"
                                         android:textColor="@color/gray_light"
                                         android:textSize="@dimen/text_size_small_12" />
                                 </LinearLayout>
@@ -268,7 +268,7 @@
                                         android:layout_height="match_parent"
                                         android:gravity="center"
                                         android:paddingLeft="50dp"
-                                        android:text="@string/playfun_fragment_certification_female_chat_man"
+                                        android:text="@string/playcc_fragment_certification_female_chat_man"
                                         android:textColor="@color/gray_light"
                                         android:textSize="@dimen/text_size_small_12" />
                                 </LinearLayout>
@@ -295,7 +295,7 @@
                                         android:layout_height="match_parent"
                                         android:gravity="center"
                                         android:paddingLeft="50dp"
-                                        android:text="@string/playfun_fragment_certification_female_read_phone"
+                                        android:text="@string/playcc_fragment_certification_female_read_phone"
                                         android:textColor="@color/gray_light"
                                         android:textSize="@dimen/text_size_small_12" />
                                 </LinearLayout>
@@ -315,7 +315,7 @@
                                         android:layout_height="match_parent"
                                         android:gravity="center"
                                         android:paddingLeft="50dp"
-                                        android:text="@string/playfun_fragment_certification_female_charge_phone"
+                                        android:text="@string/playcc_fragment_certification_female_charge_phone"
                                         android:textColor="@color/gray_light"
                                         android:textSize="@dimen/text_size_small_12" />
                                 </LinearLayout>

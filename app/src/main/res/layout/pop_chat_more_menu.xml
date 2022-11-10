@@ -38,7 +38,7 @@
                 android:layout_gravity="center"
                 android:textColor="@color/toolbar_title_color"
                 android:textSize="@dimen/text_size_big"
-                android:text="@string/playfun_tab_message_3" />
+                android:text="@string/playcc_tab_message_3" />
         </LinearLayout>
 
         <View
@@ -68,7 +68,7 @@
                 android:layout_gravity="center"
                 android:textColor="@color/toolbar_title_color"
                 android:textSize="@dimen/text_size_big"
-                android:text="@string/playfun_mine_my_likes" />
+                android:text="@string/playcc_mine_my_likes" />
         </LinearLayout>
 
         <View
@@ -97,7 +97,7 @@
                 android:layout_gravity="center"
                 android:textColor="@color/toolbar_title_color"
                 android:textSize="@dimen/text_size_big"
-                android:text="@string/playfun_add_block" />
+                android:text="@string/playcc_add_block" />
         </LinearLayout>
 
         <View
@@ -126,7 +126,7 @@
                 android:layout_gravity="center"
                 android:textColor="@color/toolbar_title_color"
                 android:textSize="@dimen/text_size_big"
-                android:text="@string/playfun_report"
+                android:text="@string/playcc_report"
                 tools:ignore="DuplicateIds" />
         </LinearLayout>
 

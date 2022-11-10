@@ -93,7 +93,7 @@ public class LoginViewModel extends BaseViewModel<AppRepository>  {
         Bundle bundle = WebDetailFragment.getStartBundle(AppConfig.PRIVACY_POLICY_URL);
         start(WebDetailFragment.class.getCanonicalName(), bundle);
     });
-    public ObservableField<String> downTimeStr = new ObservableField<>(StringUtils.getString(R.string.playfun_send_code));
+    public ObservableField<String> downTimeStr = new ObservableField<>(StringUtils.getString(R.string.playcc_send_code));
     private boolean isDownTime = false;
     /**
      * 发送短信按钮点击事件
@@ -117,7 +117,7 @@ public class LoginViewModel extends BaseViewModel<AppRepository>  {
             return;
         }
         if (TextUtils.isEmpty(code.get())) {
-            ToastUtils.showShort(R.string.playfun_please_input_code);
+            ToastUtils.showShort(R.string.playcc_please_input_code);
             return;
         }
 
@@ -152,7 +152,7 @@ public class LoginViewModel extends BaseViewModel<AppRepository>  {
 
     private void register() {
         if (!agree.get()) {
-            ToastUtils.showShort(R.string.playfun_warn_agree_terms);
+            ToastUtils.showShort(R.string.playcc_warn_agree_terms);
             return;
         }
         start(RegisterFragment.class.getCanonicalName());

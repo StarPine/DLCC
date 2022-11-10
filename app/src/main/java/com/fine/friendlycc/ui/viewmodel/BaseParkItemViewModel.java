@@ -109,13 +109,13 @@ public class BaseParkItemViewModel extends MultiItemViewModel<BaseParkViewModel>
     });
 
     public String getDistance() {
-        String distance = StringUtils.getString(R.string.playfun_unknown);
+        String distance = StringUtils.getString(R.string.playcc_unknown);
         Double d = itemEntity.get().getDistance();
         if (d != null) {
             if (d == -1) {
-                distance = StringUtils.getString(R.string.playfun_unknown);
+                distance = StringUtils.getString(R.string.playcc_unknown);
             } else if (d == -2) {
-                distance = StringUtils.getString(R.string.playfun_keep);
+                distance = StringUtils.getString(R.string.playcc_keep);
             } else {
                 if (d > 1000) {
                     double df = d / 1000;
@@ -167,14 +167,14 @@ public class BaseParkItemViewModel extends MultiItemViewModel<BaseParkViewModel>
             if (itemEntity.get().getIsOnline() == -1) {
                 onlineStatus = null;
             } else if (itemEntity.get().getIsOnline() == 1) {
-                onlineStatus = StringUtils.getString(R.string.playfun_on_line);
+                onlineStatus = StringUtils.getString(R.string.playcc_on_line);
             } else if (itemEntity.get().getIsOnline() == 0) {
                 onlineStatus = null;
             }
         }else if (itemEntity.get().getCallingStatus() == 1){
-            onlineStatus = StringUtils.getString(R.string.playfun_calling);
+            onlineStatus = StringUtils.getString(R.string.playcc_calling);
         }else if (itemEntity.get().getCallingStatus() == 2){
-            onlineStatus = StringUtils.getString(R.string.playfun_in_video);
+            onlineStatus = StringUtils.getString(R.string.playcc_in_video);
         }
 
         return onlineStatus;
@@ -214,7 +214,7 @@ public class BaseParkItemViewModel extends MultiItemViewModel<BaseParkViewModel>
     }
 
     public String getAgeAndConstellation() {
-        return String.format(StringUtils.getString(R.string.playfun_mine_age), itemEntity.get().getAge());
+        return String.format(StringUtils.getString(R.string.playcc_mine_age), itemEntity.get().getAge());
     }
 
     public boolean isEmpty(String obj) {

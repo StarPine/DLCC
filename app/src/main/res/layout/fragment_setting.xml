@@ -35,7 +35,7 @@
                 android:id="@+id/basic_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/action_bar_height"
-                app:toolbar_title="@string/playfun_mine_setting" />
+                app:toolbar_title="@string/playcc_mine_setting" />
 
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -64,7 +64,7 @@
                         style="@style/ProfileItemTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/playfun_push_setting_title" />
+                        android:text="@string/playcc_push_setting_title" />
 
                     <TextView
                         style="@style/ProfileItemSubTitle"
@@ -87,7 +87,7 @@
                         style="@style/ProfileItemTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/playfun_binding_community_account" />
+                        android:text="@string/playcc_binding_community_account" />
 
                     <TextView
                         style="@style/ProfileItemSubTitle"
@@ -108,14 +108,14 @@
                         style="@style/ProfileItemTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/playfun_phone" />
+                        android:text="@string/playcc_phone" />
 
                     <TextView
                         style="@style/ProfileItemSubTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{@string/playfun_visible_to_oneself(viewModel.privacyEntity.phone)}"
-                        tools:text="@string/playfun_visible_to_oneself" />
+                        android:text="@{@string/playcc_visible_to_oneself(viewModel.privacyEntity.phone)}"
+                        tools:text="@string/playcc_visible_to_oneself" />
 
                 </RelativeLayout>
 
@@ -131,7 +131,7 @@
                         style="@style/ProfileItemTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/playfun_setting_clear_catck" />
+                        android:text="@string/playcc_setting_clear_catck" />
 
                     <TextView
                         style="@style/ProfileItemSubTitle"
@@ -152,7 +152,7 @@
                         style="@style/ProfileItemTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/playfun_set_app_unlock" />
+                        android:text="@string/playcc_set_app_unlock" />
 
                     <TextView
                         style="@style/ProfileItemSubTitle"
@@ -174,7 +174,7 @@
                         style="@style/ProfileItemTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/playfun_setting_sign_out" />
+                        android:text="@string/playcc_setting_sign_out" />
                 </RelativeLayout>
 
                 <RelativeLayout

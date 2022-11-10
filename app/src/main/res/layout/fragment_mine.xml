@@ -268,7 +268,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_alignParentBottom="true"
                                     android:layout_centerHorizontal="true"
-                                    android:text="@string/playfun_mine_profile"
+                                    android:text="@string/playcc_mine_profile"
                                     android:textColor="@color/toolbar_title_color"
                                     android:textSize="12sp" />
 
@@ -309,7 +309,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_alignParentBottom="true"
                                     android:layout_centerInParent="true"
-                                    android:text="@string/playfun_mine_wallet"
+                                    android:text="@string/playcc_mine_wallet"
                                     android:textColor="@color/toolbar_title_color"
                                     android:textSize="12sp" />
                             </RelativeLayout>
@@ -337,7 +337,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_alignParentBottom="true"
                                     android:layout_centerHorizontal="true"
-                                    android:text="@string/playfun_mine_my_likes"
+                                    android:text="@string/playcc_mine_my_likes"
                                     android:textColor="@color/toolbar_title_color"
                                     android:textSize="12sp" />
                             </RelativeLayout>
@@ -368,8 +368,8 @@
                                     android:layout_height="wrap_content"
                                     android:layout_alignParentBottom="true"
                                     android:layout_centerHorizontal="true"
-                                    tools:text="@string/playfun_mine_my_visitors_many"
-                                    android:text="@{viewModel.userInfoEntity.sex==1?@string/playfun_mine_my_visitors_man:@string/playfun_mine_my_visitors_many}"
+                                    tools:text="@string/playcc_mine_my_visitors_many"
+                                    android:text="@{viewModel.userInfoEntity.sex==1?@string/playcc_mine_my_visitors_man:@string/playcc_mine_my_visitors_many}"
                                     android:textColor="@color/toolbar_title_color"
                                     android:textSize="12sp" />
 
@@ -409,7 +409,7 @@
                                 android:maxWidth="149dp"
                                 android:layout_marginStart="54dp"
                                 android:includeFontPadding="false"
-                                android:text="@string/playfun_mine_vip_hint_new"
+                                android:text="@string/playcc_mine_vip_hint_new"
                                 android:textColor="#A56641"
                                 android:textSize="11sp" />
 
@@ -421,7 +421,7 @@
                                 android:layout_marginEnd="14dp"
                                 android:background="@drawable/mine_vip_button_bg"
                                 android:gravity="center"
-                                android:text="@string/playfun_buy_vip2"
+                                android:text="@string/playcc_buy_vip2"
                                 android:textColor="@color/white"
                                 android:textStyle="bold"
                                 android:textSize="12sp"
@@ -450,7 +450,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="8dp"
                                 android:layout_toEndOf="@+id/mine_item_shop"
-                                android:text="@string/playfun_mine_shop"
+                                android:text="@string/playcc_mine_shop"
                                 android:textSize="12sp" />
 
                             <ImageView
@@ -482,7 +482,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="8dp"
                                 android:layout_toEndOf="@+id/mine_item_1"
-                                android:text="@string/playfun_mine_certification_center"
+                                android:text="@string/playcc_mine_certification_center"
                                 android:textSize="12sp" />
 
                             <ImageView
@@ -542,7 +542,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="8dp"
                                 android:layout_toEndOf="@+id/mine_item_3"
-                                android:text="@string/playfun_mine_apply_invitation_code"
+                                android:text="@string/playcc_mine_apply_invitation_code"
                                 android:textSize="13sp" />
 
                             <TextView
@@ -625,7 +625,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="8dp"
                                 android:layout_toEndOf="@+id/mine_item_anchor_center"
-                                android:text="@string/playfun_mine_title_anchor_center"
+                                android:text="@string/playcc_mine_title_anchor_center"
                                 android:textSize="13sp" />
 
                             <TextView
@@ -654,7 +654,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="8dp"
                                 android:layout_toEndOf="@+id/mine_item_4"
-                                android:text="@string/playfun_mine_my_adoui"
+                                android:text="@string/playcc_mine_my_adoui"
                                 android:textSize="13sp" />
 
                             <RelativeLayout
@@ -709,7 +709,7 @@
                                 style="@style/ProfileItemSubTitle"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/playfun_mine_audio_text1"
+                                android:text="@string/playcc_mine_audio_text1"
                                 android:visibility="@{viewModel.getIsSound(viewModel.userInfoEntity.isSound)}"
                                 tools:visibility="gone" />
 
@@ -717,7 +717,7 @@
                                 style="@style/ProfileItemSubTitle"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/playfun_mine_audio_text4"
+                                android:text="@string/playcc_mine_audio_text4"
                                 android:textColor="@color/empty_list_hint"
                                 android:visibility="@{viewModel.getSoundStatusShow(viewModel.userInfoEntity.soundStatus)}" />
 
@@ -725,7 +725,7 @@
                                 style="@style/ProfileItemSubTitle"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/playfun_mine_audio_text5"
+                                android:text="@string/playcc_mine_audio_text5"
                                 android:textColor="@color/red"
                                 android:visibility="@{viewModel.getSoundStatusShow2(viewModel.userInfoEntity.soundStatus)}" />
                         </RelativeLayout>
@@ -751,7 +751,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="8dp"
                                 android:layout_toEndOf="@+id/mine_item_exclusive_call"
-                                android:text="@string/playfun_mine_title_btn_exclusive"
+                                android:text="@string/playcc_mine_title_btn_exclusive"
                                 android:textSize="13sp" />
 
                             <ImageView
@@ -782,7 +782,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="8dp"
                                 android:layout_toEndOf="@+id/mine_item_5"
-                                android:text="@string/playfun_mine_my_borcast"
+                                android:text="@string/playcc_mine_my_borcast"
                                 android:textSize="13sp" />
 
                             <TextView
@@ -811,7 +811,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="8dp"
                                 android:layout_toEndOf="@+id/mine_item_6"
-                                android:text="@string/playfun_mine_title_btn_my_evaluation"
+                                android:text="@string/playcc_mine_title_btn_my_evaluation"
                                 android:textSize="13sp" />
 
                             <ImageView
@@ -849,7 +849,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="8dp"
                                     android:layout_toEndOf="@+id/mine_item_7"
-                                    android:text="@string/playfun_mine_my_album"
+                                    android:text="@string/playcc_mine_my_album"
                                     android:textSize="13sp" />
 
                                 <TextView
@@ -857,7 +857,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_alignParentRight="true"
                                     android:layout_centerVertical="true"
-                                    android:text="@{safeUnbox(viewModel.sex) == 1?@string/playfun_mine_upload_photo:@string/playfun_mine_upload_photo_or_video}"
+                                    android:text="@{safeUnbox(viewModel.sex) == 1?@string/playcc_mine_upload_photo:@string/playcc_mine_upload_photo_or_video}"
                                     android:textColor="@color/purple"
                                     android:textSize="@dimen/text_size_mini"
                                     binding:onClickCommand="@{viewModel.albumOnClickCommand}" />
@@ -882,7 +882,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="10dp"
-                                    android:text="@{@string/playfun_mine_upload_first_pic_sub(viewModel.sex == 1 ? @string/playfun_lady:@string/playfun_man)}"
+                                    android:text="@{@string/playcc_mine_upload_first_pic_sub(viewModel.sex == 1 ? @string/playcc_lady:@string/playcc_man)}"
                                     android:textColor="@color/gray_light"
                                     android:textSize="@dimen/text_size_mini" />
 
@@ -894,7 +894,7 @@
                                     android:layout_marginTop="10dp"
                                     android:paddingStart="15dp"
                                     android:paddingEnd="15dp"
-                                    android:text="@string/playfun_mine_upload_first_pic"
+                                    android:text="@string/playcc_mine_upload_first_pic"
                                     android:textSize="@dimen/text_size_middle"
                                     binding:onClickCommand="@{viewModel.albumOnClickCommand}" />
 
@@ -918,7 +918,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="right"
                                 android:padding="10dp"
-                                android:text="@string/playfun_mine_set_redpackage_photo"
+                                android:text="@string/playcc_mine_set_redpackage_photo"
                                 android:textColor="@color/purple"
                                 android:textSize="@dimen/text_size_mini"
                                 android:visibility="@{safeUnbox(viewModel.sex) != 1 ? View.VISIBLE:View.GONE}"
@@ -945,7 +945,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="8dp"
                                 android:layout_toEndOf="@+id/mine_item_8"
-                                android:text="@string/playfun_mine_album_privacy"
+                                android:text="@string/playcc_mine_album_privacy"
                                 android:textSize="13sp" />
 
                             <TextView
@@ -975,7 +975,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="8dp"
                                 android:layout_toEndOf="@+id/mine_item_9"
-                                android:text="@string/playfun_mine_burn"
+                                android:text="@string/playcc_mine_burn"
                                 android:textSize="13sp" />
 
                             <TextView
@@ -988,7 +988,7 @@
                                 android:gravity="center"
                                 android:paddingStart="10dp"
                                 android:paddingEnd="10dp"
-                                android:text="@string/playfun_mine_burn_recover"
+                                android:text="@string/playcc_mine_burn_recover"
                                 android:textColor="@color/text_7639FF"
                                 android:textSize="@dimen/text_size_mini"
                                 binding:onClickCommand="@{viewModel.burnRecoverOnClickCommand}" />
@@ -1001,7 +1001,7 @@
                                 android:layout_marginRight="10dp"
                                 android:layout_toLeftOf="@+id/tv_burn_button"
                                 android:layout_toRightOf="@+id/tv_burn_title"
-                                android:text="@{@string/playfun_mine_burn_total(viewModel.userInfoEntity.burnCount)}"
+                                android:text="@{@string/playcc_mine_burn_total(viewModel.userInfoEntity.burnCount)}"
                                 android:textColor="@color/gray_middle"
                                 android:textSize="@dimen/text_size_mini"
                                 tools:text="long long longlong long long longlong long long longlong long long longlong " />
@@ -1027,7 +1027,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="8dp"
                                 android:layout_toEndOf="@+id/iv_video_switch"
-                                android:text="@string/playfun_mine_allow_video"
+                                android:text="@string/playcc_mine_allow_video"
                                 android:textSize="13sp" />
 
                             <Switch
@@ -1060,7 +1060,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="8dp"
                                 android:layout_toEndOf="@+id/iv_audio_switch"
-                                android:text="@string/playfun_mine_allow_audio"
+                                android:text="@string/playcc_mine_allow_audio"
                                 android:textSize="13sp" />
 
                             <Switch
@@ -1094,7 +1094,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="8dp"
                                 android:layout_toEndOf="@+id/mine_item_10"
-                                android:text="@string/playfun_mine_me_setting"
+                                android:text="@string/playcc_mine_me_setting"
                                 android:textSize="13sp" />
 
                         </RelativeLayout>
@@ -1119,7 +1119,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="8dp"
                                 android:layout_toEndOf="@+id/mine_item_11"
-                                android:text="@string/playfun_mine_need_help"
+                                android:text="@string/playcc_mine_need_help"
                                 android:textSize="13sp" />
                         </RelativeLayout>
 
@@ -1134,7 +1134,7 @@
                                 style="@style/ProfileItemTitleNormal"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/playfun_mine_complaint_service" />
+                                android:text="@string/playcc_mine_complaint_service" />
 
                             <TextView
                                 style="@style/ProfileItemSubTitle"

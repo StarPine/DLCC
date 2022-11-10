@@ -32,7 +32,7 @@ import me.goldze.mvvmhabit.utils.ToastUtils;
 /**
  * 修改备注：钻石充值activity
  *
- * @Name： PlayFun_Google
+ * @Name： PlayCC
  * @Description：
  * @Author： liaosf
  * @Date： 2022/8/22 14:22
@@ -132,7 +132,7 @@ public class DiamondRechargeActivity extends BaseActivity<ActivityDiamondRecharg
         this.billingClientLifecycle.PAYMENT_FAIL.observe(this, billingPurchasesState -> {
             Log.e("BillingClientLifecycle","支付购买失败回调");
             viewModel.dismissHUD();
-            ToastUtils.showShort(StringUtils.getString(R.string.playfun_pay_fail));
+            ToastUtils.showShort(StringUtils.getString(R.string.playcc_pay_fail));
             switch (billingPurchasesState.getBillingFlowNode()){
                 //查询商品阶段-->异常
                 case querySkuDetails:
@@ -178,7 +178,7 @@ public class DiamondRechargeActivity extends BaseActivity<ActivityDiamondRecharg
             totalReward = goodsEntity.getGiveCoin();
         }
         TraceDialog.getInstance(this)
-                .setTitle(getString(R.string.playfun_recharge_success))
+                .setTitle(getString(R.string.playcc_recharge_success))
                 .setConfirmOnlick(dialog -> {
                     dialog.dismiss();
                     isFinsh = true;

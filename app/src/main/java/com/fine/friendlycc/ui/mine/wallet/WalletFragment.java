@@ -60,9 +60,9 @@ public class WalletFragment extends BaseToolbarFragment<FragmentWalletBinding, W
         binding.btnExchangeGameCoin.setOnClickListener(this);
         viewModel.certification.observe(this,event -> {
             MVDialog.getInstance(WalletFragment.this.getContext())
-                    .setTitele(getString(R.string.playfun_fragment_certification_tip))
-                    .setContent(getString(R.string.playfun_fragment_certification_content))
-                    .setConfirmText(getString(R.string.playfun_task_fragment_task_new11))
+                    .setTitele(getString(R.string.playcc_fragment_certification_tip))
+                    .setContent(getString(R.string.playcc_fragment_certification_content))
+                    .setConfirmText(getString(R.string.playcc_task_fragment_task_new11))
                     .chooseType(MVDialog.TypeEnum.CENTER)
                     .setConfirmOnlick(new MVDialog.ConfirmOnclick() {
                         @Override
@@ -74,7 +74,7 @@ public class WalletFragment extends BaseToolbarFragment<FragmentWalletBinding, W
                                 viewModel.start(CertificationFemaleFragment.class.getCanonicalName());
                                 return;
                             }
-                            com.blankj.utilcode.util.ToastUtils.showShort(R.string.playfun_sex_unknown);
+                            com.blankj.utilcode.util.ToastUtils.showShort(R.string.playcc_sex_unknown);
                             dialog.dismiss();
                         }
                     })

@@ -53,7 +53,7 @@ public class CashFragment extends BaseRefreshFragment<FragmentCashBinding, CashV
     @Override
     public void onClick(View view) {
         if (viewModel.cashWalletEntity.get() != null && viewModel.cashWalletEntity.get().getCanAccount() < 10) {
-            ToastUtils.showShort(R.string.playfun_withdrawal_warn);
+            ToastUtils.showShort(R.string.playcc_withdrawal_warn);
             return;
         }
         viewModel.cashWithdraw(10);

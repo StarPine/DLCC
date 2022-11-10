@@ -225,7 +225,7 @@ public class InviteWebDetailFragment extends BaseToolbarFragment<FragmentInviteW
                 public void confirm(DialogInterface dialog, int which) {
                     dialog.dismiss();
                     if (StringUtil.isEmpty(goodId)) {
-                        ToastUtils.showShort(R.string.playfun_invite_web_detail_error3);
+                        ToastUtils.showShort(R.string.playcc_invite_web_detail_error3);
                         return;
                     }
                     querySkuOrder(goodId);
@@ -242,7 +242,7 @@ public class InviteWebDetailFragment extends BaseToolbarFragment<FragmentInviteW
                     if (!StringUtil.isEmpty(code)) {
                         viewModel.saveInviteCode(code);
                     } else {
-                        ToastUtils.showShort(R.string.playfun_invite_web_detail_error4);
+                        ToastUtils.showShort(R.string.playcc_invite_web_detail_error4);
                     }
                 }
 
@@ -275,7 +275,7 @@ public class InviteWebDetailFragment extends BaseToolbarFragment<FragmentInviteW
             //自定义用户ID
             linkGenerator.setReferrerCustomerId(userId);
             //重定向：
-            linkGenerator.addParameter("deep_link_value", "AppStore-PlayChat-Google-TW");
+            linkGenerator.addParameter("deep_link_value", "AppStore-PlayCC-Google-TW");
             linkGenerator.addParameter("is_retargeting", "true");
             linkGenerator.addParameter("af_sub1", userId);
             linkGenerator.addParameter("af_sub2", "invite");
@@ -291,12 +291,12 @@ public class InviteWebDetailFragment extends BaseToolbarFragment<FragmentInviteW
                     mapData.put("af_sub1", userId);
                     mapData.put("customer_user_id", userId);
                     mapData.put("af_sub2", "invite");
-                    ShareInviteHelper.logInvite(mActivity, "com.ld.play.chat-Taiwan", mapData);
+                    ShareInviteHelper.logInvite(mActivity, "com.fine.friendlycc-Taiwan", mapData);
 
                     binding.webView.post(() -> {
                         viewModel.dismissHUD();
                         ClipboardManager clipboard = (ClipboardManager) mActivity.getSystemService(Context.CLIPBOARD_SERVICE);
-                        ClipData clip = ClipData.newPlainText("playchat", title + "\n" + urls_one);
+                        ClipData clip = ClipData.newPlainText("playcc", title + "\n" + urls_one);
                         clipboard.setPrimaryClip(clip);
                     });
                     Intent intent = IntentUtils.getShareTextIntent(title + "\n" + urls_one);
@@ -324,7 +324,7 @@ public class InviteWebDetailFragment extends BaseToolbarFragment<FragmentInviteW
     //根据iD查询谷歌商品。并且订购它 7days_free
     public void querySkuOrder(String goodId) {
         if (billingClientLifecycle == null || !billingClientLifecycle.isConnectionSuccessful()) {
-            ToastUtils.showShort(R.string.playfun_invite_web_detail_error);
+            ToastUtils.showShort(R.string.playcc_invite_web_detail_error);
             return;
         }
         ArrayList<String> goodList = new ArrayList<>();
@@ -337,7 +337,7 @@ public class InviteWebDetailFragment extends BaseToolbarFragment<FragmentInviteW
                     if (skuDetailsList == null) {
                         //订阅找不到
                         Log.w(TAG, "onSkuDetailsResponse: null SkuDetails list");
-                        ToastUtils.showShort(R.string.playfun_invite_web_detail_error2);
+                        ToastUtils.showShort(R.string.playcc_invite_web_detail_error2);
                     } else {
                         for (SkuDetails skuDetails : skuDetailsList) {
                             if (skuDetails.getSku().equals(goodId)) {

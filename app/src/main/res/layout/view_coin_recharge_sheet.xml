@@ -26,7 +26,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:text="@string/playfun_diamonds_recharge_title"
+                    android:text="@string/playcc_diamonds_recharge_title"
                     android:textColor="@color/text_default"
                     android:textSize="@dimen/text_size_toolbar_title"
                     android:textStyle="bold" />
@@ -100,7 +100,7 @@
                 style="@style/ButtonPrimary"
                 android:layout_width="220dp"
                 android:layout_height="42dp"
-                android:text="@string/playfun_btn_now_buy"
+                android:text="@string/playcc_btn_now_buy"
                 android:textSize="@dimen/text_size_14"
                 android:textStyle="normal" />
 

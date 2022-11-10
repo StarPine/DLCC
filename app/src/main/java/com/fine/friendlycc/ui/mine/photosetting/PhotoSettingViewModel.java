@@ -134,9 +134,9 @@ public class PhotoSettingViewModel extends BaseViewModel<AppRepository> {
         }
         titleText.set(String.format("%s/%s", mIndex + 1, items.size()));
         if (type == PhotoSettingFragment.TYPE_PHOTO_REVIEW) {
-            titleBtnText.set(StringUtils.getString(R.string.playfun_finish));
+            titleBtnText.set(StringUtils.getString(R.string.playcc_finish));
         } else if (type == PhotoSettingFragment.TYPE_PHOTO_SETTING) {
-            titleBtnText.set(StringUtils.getString(R.string.playfun_delete));
+            titleBtnText.set(StringUtils.getString(R.string.playcc_delete));
         }
         if (items != null && items.size() > mIndex) {
             Integer burnStatus = items.get(mIndex).itemEntity.get().getIsBurn();
@@ -163,12 +163,12 @@ public class PhotoSettingViewModel extends BaseViewModel<AppRepository> {
                 .map((Function<AlbumPhotoEntity, String>) entity -> FileUploadUtils.ossUploadFile(String.format("album/%s/", model.readUserData().getId()), entity.getType(), entity.getSrc(), new FileUploadUtils.FileUploadProgressListener() {
                     @Override
                     public void fileCompressProgress(int progress) {
-                        showProgressHUD(String.format(StringUtils.getString(R.string.playfun_compressing), progress), progress);
+                        showProgressHUD(String.format(StringUtils.getString(R.string.playcc_compressing), progress), progress);
                     }
 
                     @Override
                     public void fileUploadProgress(int progress) {
-                        showProgressHUD(String.format(StringUtils.getString(R.string.playfun_uploading), progress), progress);
+                        showProgressHUD(String.format(StringUtils.getString(R.string.playcc_uploading), progress), progress);
                     }
                 }))
                 .observeOn(AndroidSchedulers.mainThread())
@@ -210,7 +210,7 @@ public class PhotoSettingViewModel extends BaseViewModel<AppRepository> {
                     @Override
                     public void onError(Throwable e) {
 //                        dismissHUD();
-                        ToastUtils.showShort(R.string.playfun_upload_failed);
+                        ToastUtils.showShort(R.string.playcc_upload_failed);
                         i++;
                         uploadPhoto();
                     }

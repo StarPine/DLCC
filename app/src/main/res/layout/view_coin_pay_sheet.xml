@@ -32,7 +32,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="14.67dp"
-                        android:text="@string/playfun_dialog_coin_pay"
+                        android:text="@string/playcc_dialog_coin_pay"
                         android:textColor="@color/purple"
                         android:textSize="15.37sp"
                         android:textStyle="bold" />
@@ -42,7 +42,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_toLeftOf="@+id/tv_balance"
-                        android:text="@string/playfun_dialog_coin_usable_balance"
+                        android:text="@string/playcc_dialog_coin_usable_balance"
                         android:textColor="@color/gray_light"
                         android:textSize="12.57sp" />
 
@@ -85,7 +85,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
-                        android:text="@string/playfun_dialog_coin_pay_project_name"
+                        android:text="@string/playcc_dialog_coin_pay_project_name"
                         android:textColor="@color/gray_middle"
                         android:textSize="@dimen/text_size_big" />
 
@@ -95,7 +95,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/tv_pay_name_title"
                         android:layout_marginTop="5dp"
-                        android:text="@string/playfun_dialog_coin_pay_project"
+                        android:text="@string/playcc_dialog_coin_pay_project"
                         android:textColor="@color/gray_dark"
                         android:textSize="@dimen/text_size_big" />
 
@@ -105,7 +105,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/tv_pay_name"
                         android:layout_marginTop="20dp"
-                        android:text="@string/playfun_dialog_coin_pay_number"
+                        android:text="@string/playcc_dialog_coin_pay_number"
                         android:textColor="@color/gray_middle"
                         android:textSize="@dimen/text_size_big" />
 
@@ -128,7 +128,7 @@
                         android:layout_marginLeft="5dp"
                         android:layout_alignBaseline="@+id/tv_pay_price"
                         android:layout_alignParentRight="true"
-                        android:text="@string/playfun_element"
+                        android:text="@string/playcc_element"
                         android:textColor="@color/purple"
                         android:textSize="@dimen/text_size_big" />
 
@@ -150,7 +150,7 @@
                         android:layout_height="wrap_content"
                         android:padding="6dp"
                         android:layout_weight="1"
-                        android:text="@string/playfun_dialong_coin_rechaege_top_up" />
+                        android:text="@string/playcc_dialong_coin_rechaege_top_up" />
 
                     <Button
                         android:id="@+id/btn_pay"
@@ -159,7 +159,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_weight="1.5"
-                        android:text="@string/playfun_confirm_pay" />
+                        android:text="@string/playcc_confirm_pay" />
                 </LinearLayout>
             </LinearLayout>
 

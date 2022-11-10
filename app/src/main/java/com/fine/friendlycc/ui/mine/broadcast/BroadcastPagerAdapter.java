@@ -14,7 +14,7 @@ public class BroadcastPagerAdapter extends FragmentStatePagerAdapter {
 
 //    @StringRes
 //    public static final int[] TAB_TITLES = new int[]{R.string.tab_broadcast_3,R.string.tab_broadcast_1, R.string.tab_broadcast_2};
-    public static final int[] TAB_TITLES = new int[]{R.string.playfun_tab_broadcast_1};
+    public static final int[] TAB_TITLES = new int[]{R.string.playcc_tab_broadcast_1};
 
     private final Context mContext;
 

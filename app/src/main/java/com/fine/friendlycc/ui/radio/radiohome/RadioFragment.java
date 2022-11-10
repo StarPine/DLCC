@@ -148,13 +148,13 @@ public class RadioFragment extends BaseRefreshFragment<FragmentRadioBinding, Rad
         citys = ConfigManager.getInstance().getAppRepository().readCityConfig();
         ConfigItemEntity nearItemEntity = new ConfigItemEntity();
         nearItemEntity.setId(-1);
-        nearItemEntity.setName(getStringByResId(R.string.playfun_tab_female_1));
+        nearItemEntity.setName(getStringByResId(R.string.playcc_tab_female_1));
         citys.add(0, nearItemEntity);
 
         radioFilterListData = new ArrayList<>();
-        radioFilterListData.add(new RadioFilterItemEntity<>(getString(R.string.playfun_radio_selected_zuiz),2));
-        radioFilterListData.add(new RadioFilterItemEntity<>(getString(R.string.playfun_just_look_lady), 0));
-        radioFilterListData.add(new RadioFilterItemEntity<>(getString(R.string.playfun_just_look_man), 1));
+        radioFilterListData.add(new RadioFilterItemEntity<>(getString(R.string.playcc_radio_selected_zuiz),2));
+        radioFilterListData.add(new RadioFilterItemEntity<>(getString(R.string.playcc_just_look_lady), 0));
+        radioFilterListData.add(new RadioFilterItemEntity<>(getString(R.string.playcc_just_look_man), 1));
         radioFilterPopup =  new DropDownFilterPopupWindow(mActivity, radioFilterListData);
         radioFilterCheckIndex = 0;
         radioFilterPopup.setSelectedPosition(radioFilterCheckIndex);
@@ -223,9 +223,9 @@ public class RadioFragment extends BaseRefreshFragment<FragmentRadioBinding, Rad
         viewModel.radioUC.otherBusy.observe(this, o -> {
             TraceDialog.getInstance(getContext())
                     .chooseType(TraceDialog.TypeEnum.CENTER)
-                    .setTitle(StringUtils.getString(R.string.playfun_other_busy_title))
-                    .setContent(StringUtils.getString(R.string.playfun_other_busy_text))
-                    .setConfirmText(StringUtils.getString(R.string.playfun_mine_trace_delike_confirm))
+                    .setTitle(StringUtils.getString(R.string.playcc_other_busy_title))
+                    .setContent(StringUtils.getString(R.string.playcc_other_busy_text))
+                    .setConfirmText(StringUtils.getString(R.string.playcc_mine_trace_delike_confirm))
                     .setConfirmOnlick(new TraceDialog.ConfirmOnclick() {
                         @Override
                         public void confirm(Dialog dialog) {
@@ -256,7 +256,7 @@ public class RadioFragment extends BaseRefreshFragment<FragmentRadioBinding, Rad
                     viewModel.regionTitle.set(itemEntity.getName());
                 }else{
                     viewModel.cityId = null;
-                    viewModel.regionTitle.set(StringUtils.getString(R.string.playfun_tab_female_1));
+                    viewModel.regionTitle.set(StringUtils.getString(R.string.playcc_tab_female_1));
                 }
                 binding.refreshLayout.autoRefresh();
                 dialog1.dismiss();
@@ -294,12 +294,12 @@ public class RadioFragment extends BaseRefreshFragment<FragmentRadioBinding, Rad
             boolean isSelf = false;
             if (type.equals(RadioViewModel.RadioRecycleType_New)) {
                 if (viewModel.userId == ((TrendItemViewModel) viewModel.radioItems.get(position)).newsEntityObservableField.get().getUser().getId()) {
-                    stop.setText(((TrendItemViewModel) viewModel.radioItems.get(position)).newsEntityObservableField.get().getBroadcast().getIsComment() == 0 ? getString(R.string.playfun_fragment_issuance_program_no_comment) : getString(R.string.playfun_open_comment));
+                    stop.setText(((TrendItemViewModel) viewModel.radioItems.get(position)).newsEntityObservableField.get().getBroadcast().getIsComment() == 0 ? getString(R.string.playcc_fragment_issuance_program_no_comment) : getString(R.string.playcc_open_comment));
                     stop.setVisibility(View.GONE);
                     isSelf = true;
                 } else {
                     mCirclePop.findViewById(R.id.tv_detele).setVisibility(View.GONE);
-                    stop.setText(getString(R.string.playfun_report_user_title));
+                    stop.setText(getString(R.string.playcc_report_user_title));
                 }
             }
 
@@ -323,7 +323,7 @@ public class RadioFragment extends BaseRefreshFragment<FragmentRadioBinding, Rad
                 @Override
                 public void onClick(View v) {
                     MVDialog.getInstance(RadioFragment.this.getContext())
-                            .setContent(type.equals(RadioViewModel.RadioRecycleType_New) ? getString(R.string.playfun_comfirm_delete_trend) : getString(R.string.playfun_confirm_delete_program))
+                            .setContent(type.equals(RadioViewModel.RadioRecycleType_New) ? getString(R.string.playcc_comfirm_delete_trend) : getString(R.string.playcc_confirm_delete_program))
                             .chooseType(MVDialog.TypeEnum.CENTER)
                             .setConfirmOnlick(new MVDialog.ConfirmOnclick() {
                                 @Override
@@ -352,7 +352,7 @@ public class RadioFragment extends BaseRefreshFragment<FragmentRadioBinding, Rad
                     if (((TrendItemViewModel) viewModel.radioItems.get(position)).newsEntityObservableField.get().getIsGive() == 0) {
                         viewModel.newsGive(position);
                     } else {
-                        ToastUtils.showShort(R.string.playfun_already);
+                        ToastUtils.showShort(R.string.playcc_already);
                     }
                 }
             }
@@ -371,7 +371,7 @@ public class RadioFragment extends BaseRefreshFragment<FragmentRadioBinding, Rad
                                 @Override
                                 public void clickListItem(Dialog dialog, String comment) {
                                     if (StringUtils.isEmpty(comment)) {
-                                        ToastUtils.showShort(R.string.playfun_warn_input_comment);
+                                        ToastUtils.showShort(R.string.playcc_warn_input_comment);
                                         return;
                                     }
                                     dialog.dismiss();

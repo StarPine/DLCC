@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="14dp"
-            android:text="@string/playfun_cancel"
+            android:text="@string/playcc_cancel"
             android:textColor="@color/purple"
             android:textSize="@dimen/text_size_42" />
 
@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_marginLeft="14dp"
-            android:text="@string/playfun_dialog_choose_city"
+            android:text="@string/playcc_dialog_choose_city"
             android:textColor="@color/text_color_gray"
             android:textSize="@dimen/text_size_big" />
 
@@ -36,7 +36,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="14dp"
-            android:text="@string/playfun_confirm"
+            android:text="@string/playcc_confirm"
             android:textColor="@color/purple"
             android:textSize="@dimen/text_size_42" />
 

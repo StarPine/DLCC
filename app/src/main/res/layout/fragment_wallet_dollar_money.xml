@@ -47,7 +47,7 @@
                     android:id="@+id/basic_toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/action_bar_height"
-                    app:toolbar_title="@string/playfun_crystal_details_text" />
+                    app:toolbar_title="@string/playcc_crystal_details_text" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -55,7 +55,7 @@
                     android:layout_alignParentEnd="true"
                     android:layout_centerInParent="true"
                     android:layout_marginEnd="14dp"
-                    android:text="@string/playfun_tw_money_text2"
+                    android:text="@string/playcc_tw_money_text2"
                     android:textColor="@color/purple1"
                     android:textSize="12sp"
                     android:visibility="@{viewModel.isShowProfitTips?View.VISIBLE:View.GONE}"
@@ -90,7 +90,7 @@
                     android:layout_below="@+id/tw_diamond_num"
                     android:layout_alignStart="@+id/tw_diamond_num"
                     android:elevation="11dp"
-                    tools:text="@string/playfun_tw_money_text"
+                    tools:text="@string/playcc_tw_money_text"
                     android:text="@{viewModel.currencyName}"
                     android:textColor="@color/white"
                     android:textSize="15sp" />

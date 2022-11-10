@@ -39,9 +39,9 @@ public class FolderTextView extends androidx.appcompat.widget.AppCompatTextView 
     // 默认打点文字
     private static final String DEFAULT_ELLIPSIZE = "...";
     // 默认收起文字
-    private static final String DEFAULT_FOLD_TEXT = StringUtils.getString(R.string.playfun_fold);
+    private static final String DEFAULT_FOLD_TEXT = StringUtils.getString(R.string.playcc_fold);
     // 默认展开文字
-    private static final String DEFAULT_UNFOLD_TEXT = StringUtils.getString(R.string.playfun_unfold);
+    private static final String DEFAULT_UNFOLD_TEXT = StringUtils.getString(R.string.playcc_unfold);
     // 默认固定行数
     private static final int DEFAULT_FOLD_LINE = 2;
     // 默认收起和展开文字颜色

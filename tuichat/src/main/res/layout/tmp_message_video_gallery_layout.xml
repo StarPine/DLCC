@@ -66,7 +66,7 @@
                     android:layout_marginEnd="5dp"
                     android:layout_width="12dp"
                     android:layout_height="12dp"
-                    android:src="@drawable/icon_playfun_lock_1"
+                    android:src="@drawable/icon_playcc_lock_1"
                     />
             </RelativeLayout>
             <androidx.appcompat.widget.AppCompatImageView
@@ -75,7 +75,7 @@
                 android:layout_width="12dp"
                 android:layout_height="12dp"
                 android:visibility="gone"
-                android:src="@drawable/icon_playfun_confirm_1"
+                android:src="@drawable/icon_playcc_confirm_1"
                 />
         </RelativeLayout>
         <androidx.appcompat.widget.AppCompatImageView
@@ -83,7 +83,7 @@
             android:id="@+id/img_play"
             android:layout_width="31dp"
             android:layout_height="31dp"
-            android:src="@drawable/icon_playfun_play_start"
+            android:src="@drawable/icon_playcc_play_start"
             />
     </FrameLayout>
     <androidx.appcompat.widget.AppCompatTextView

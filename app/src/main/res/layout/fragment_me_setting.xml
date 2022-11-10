@@ -35,7 +35,7 @@
                 android:id="@+id/basic_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/action_bar_height"
-                app:toolbar_title="@string/playfun_mine_me_setting" />
+                app:toolbar_title="@string/playcc_mine_me_setting" />
 
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -71,7 +71,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:layout_toEndOf="@+id/face_beauty"
-                        android:text="@string/playfun_mine_face_beauty"
+                        android:text="@string/playcc_mine_face_beauty"
                         android:textSize="13sp" />
 
                     <TextView
@@ -95,7 +95,7 @@
                         android:layout_height="wrap_content"
                         android:drawableStart="@drawable/ic_mine_block"
                         android:drawablePadding="8dp"
-                        android:text="@string/playfun_mine_blacklist"
+                        android:text="@string/playcc_mine_blacklist"
                         android:textSize="13sp" />
 
                     <TextView
@@ -115,7 +115,7 @@
                         android:layout_height="wrap_content"
                         android:drawableStart="@drawable/ic_mine_privacy"
                         android:drawablePadding="8dp"
-                        android:text="@string/playfun_setting_privacy_setting"
+                        android:text="@string/playcc_setting_privacy_setting"
                         android:textSize="13sp" />
 
                     <TextView
@@ -128,7 +128,7 @@
                         style="@style/ProfileItemSubTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/playfun_mine_setting_desc" />
+                        android:text="@string/playcc_mine_setting_desc" />
                 </RelativeLayout>
                 <RelativeLayout
                     style="@style/ProfileItem"
@@ -150,7 +150,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
-                        android:text="@string/playfun_mine_setting"
+                        android:text="@string/playcc_mine_setting"
                         android:textSize="13sp" />
 
                     <TextView
@@ -180,7 +180,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:layout_toEndOf="@+id/setting_version"
-                        android:text="@string/playfun_mine_current_version"
+                        android:text="@string/playcc_mine_current_version"
                         android:textSize="13sp" />
 
                     <TextView

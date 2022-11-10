@@ -81,15 +81,15 @@ public class MyEvaluateDialog extends BaseDialogFragment implements View.OnClick
         myEvaluateAdapter.setData(this.evaluateList);
 
         if (type == TYPE_USER_MALE) {
-            tvTitle.setText(R.string.playfun_he_true_evaluation);
+            tvTitle.setText(R.string.playcc_he_true_evaluation);
             btnEvaluate.setVisibility(View.VISIBLE);
             tvTip.setVisibility(View.VISIBLE);
         } else if (type == TYPE_USER_FEMALE) {
-            tvTitle.setText(R.string.playfun_he_true_evaluation);
+            tvTitle.setText(R.string.playcc_he_true_evaluation);
             btnEvaluate.setVisibility(View.VISIBLE);
             tvTip.setVisibility(View.VISIBLE);
         } else {
-            tvTitle.setText(R.string.playfun_your_true_evaluation);
+            tvTitle.setText(R.string.playcc_your_true_evaluation);
             btnEvaluate.setVisibility(View.GONE);
             tvTip.setVisibility(View.GONE);
         }

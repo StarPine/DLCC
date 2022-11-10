@@ -150,7 +150,7 @@ public class MediaGalleryPhotoPayActivity extends BaseActivity<ActivityMediaGall
             }
             //快照 并且不是自己查看 加蒙版
             if(mediaGalleryEditEntity.isStateSnapshot() && !mediaGalleryEditEntity.isSelfSend()){
-                GlideEngine.createGlideEngine().loadImage(this, srcPath, binding.imgContent,R.drawable.playfun_loading_logo_placeholder_max,R.drawable.playfun_loading_logo_error, binding.imgLong,true, new GlideEngine.LoadProgressCallback() {
+                GlideEngine.createGlideEngine().loadImage(this, srcPath, binding.imgContent,R.drawable.pro_loading_logo_placeholder_max,R.drawable.pro_loading_logo_error, binding.imgLong,true, new GlideEngine.LoadProgressCallback() {
                     @Override
                     public void onLoadStarted(@Nullable Drawable placeholder) {
                     }
@@ -174,7 +174,7 @@ public class MediaGalleryPhotoPayActivity extends BaseActivity<ActivityMediaGall
                     }
                 });
             }else{
-                GlideEngine.createGlideEngine().loadImage(this, srcPath, binding.imgContent,R.drawable.playfun_loading_logo_placeholder_max,R.drawable.playfun_loading_logo_error, binding.imgLong,false, new GlideEngine.LoadProgressCallback() {
+                GlideEngine.createGlideEngine().loadImage(this, srcPath, binding.imgContent,R.drawable.pro_loading_logo_placeholder_max,R.drawable.pro_loading_logo_error, binding.imgLong,false, new GlideEngine.LoadProgressCallback() {
                     @Override
                     public void onLoadStarted(@Nullable Drawable placeholder) {
                     }
@@ -245,7 +245,7 @@ public class MediaGalleryPhotoPayActivity extends BaseActivity<ActivityMediaGall
 
         //解锁事件
         viewModel.snapshotLockEvent.observe(this, unused -> {
-            GlideEngine.createGlideEngine().loadImage(this, srcPath, binding.imgContent, R.drawable.playfun_loading_logo_placeholder_max,R.drawable.playfun_loading_logo_error,binding.imgLong,false, new GlideEngine.LoadProgressCallback() {
+            GlideEngine.createGlideEngine().loadImage(this, srcPath, binding.imgContent, R.drawable.pro_loading_logo_placeholder_max,R.drawable.pro_loading_logo_error,binding.imgLong,false, new GlideEngine.LoadProgressCallback() {
                 @Override
                 public void onLoadStarted(@Nullable Drawable placeholder) {
                 }
@@ -267,10 +267,10 @@ public class MediaGalleryPhotoPayActivity extends BaseActivity<ActivityMediaGall
             //评价，0未评价，1差评，2好评
             if(state == 1){
                 viewModel.evaluationState.set(true);
-                generateDrawable(binding.llNoLike,null,22,null,null,R.color.playfun_shape_radius_start_color,R.color.playfun_shape_radius_end_color,GradientDrawable.Orientation.LEFT_RIGHT);
+                generateDrawable(binding.llNoLike,null,22,null,null,R.color.playcc_shape_radius_start_color,R.color.playcc_shape_radius_end_color,GradientDrawable.Orientation.LEFT_RIGHT);
                 generateDrawable(binding.llLike,R.color.black,22,R.color.purple_text,1,null,null,null);
             }else if(state == 2){
-                generateDrawable(binding.llLike,null,22,null,null,R.color.playfun_shape_radius_start_color,R.color.playfun_shape_radius_end_color,GradientDrawable.Orientation.LEFT_RIGHT);
+                generateDrawable(binding.llLike,null,22,null,null,R.color.playcc_shape_radius_start_color,R.color.playcc_shape_radius_end_color,GradientDrawable.Orientation.LEFT_RIGHT);
                 generateDrawable(binding.llNoLike,R.color.black,22,R.color.purple_text,1,null,null,null);
             }else if(state == 0){
                 //没有评价、并且是已经解锁状态
@@ -318,7 +318,7 @@ public class MediaGalleryPhotoPayActivity extends BaseActivity<ActivityMediaGall
             public void onFinish() {
                 stopTimer();
                 //再次模糊图片
-                GlideEngine.createGlideEngine().loadImage(getContext(), srcPath, binding.imgContent,R.drawable.playfun_loading_logo_placeholder_max,R.drawable.playfun_loading_logo_error, binding.imgLong,true, new GlideEngine.LoadProgressCallback() {
+                GlideEngine.createGlideEngine().loadImage(getContext(), srcPath, binding.imgContent,R.drawable.pro_loading_logo_placeholder_max,R.drawable.pro_loading_logo_error, binding.imgLong,true, new GlideEngine.LoadProgressCallback() {
                     @Override
                     public void onLoadStarted(@Nullable Drawable placeholder) {
                     }

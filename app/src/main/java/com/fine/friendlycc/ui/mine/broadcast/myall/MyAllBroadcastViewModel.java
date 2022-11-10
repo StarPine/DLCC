@@ -112,7 +112,7 @@ public class MyAllBroadcastViewModel extends BaseRefreshViewModel<AppRepository>
                     @Override
                     public void onSuccess(BaseListDataResponse<BroadcastEntity> response) {
                         super.onSuccess(response);
-                        stateModel.setEmptyBroadcastCommand(StringUtils.getString(R.string.playfun_my_all_broadcast_empty), R.drawable.my_all_broadcast_empty_img, R.color.all_broadcast_empty, StringUtils.getString(R.string.playfun_task_fragment_task_new10), toProgramVIew);
+                        stateModel.setEmptyBroadcastCommand(StringUtils.getString(R.string.playcc_my_all_broadcast_empty), R.drawable.my_all_broadcast_empty_img, R.color.all_broadcast_empty, StringUtils.getString(R.string.playcc_task_fragment_task_new10), toProgramVIew);
                         if (page == 1) {
                             observableList.clear();
                         }
@@ -146,7 +146,7 @@ public class MyAllBroadcastViewModel extends BaseRefreshViewModel<AppRepository>
                     @Override
                     public void onSuccess(BaseResponse response) {
                         dismissHUD();
-                        ToastUtils.showShort(R.string.playfun_give_success);
+                        ToastUtils.showShort(R.string.playcc_give_success);
                         ((TrendItemViewModel) observableList.get(posion)).addGiveUser();
                         AppContext.instance().logEvent(AppsFlyerEvent.Like);
                     }
@@ -169,7 +169,7 @@ public class MyAllBroadcastViewModel extends BaseRefreshViewModel<AppRepository>
                     @Override
                     public void onSuccess(BaseResponse response) {
                         dismissHUD();
-                        ToastUtils.showShort(R.string.playfun_comment_success);
+                        ToastUtils.showShort(R.string.playcc_comment_success);
                         for (int i = 0; i < observableList.size(); i++) {
                             if (observableList.get(i) instanceof TrendItemViewModel) {
                                 if (id == ((TrendItemViewModel) observableList.get(i)).newsEntityObservableField.get().getId()) {
@@ -183,7 +183,7 @@ public class MyAllBroadcastViewModel extends BaseRefreshViewModel<AppRepository>
                     @Override
                     public void onError(RequestException e) {
                         if (e.getCode() == 10016) {
-                            ToastUtils.showShort(StringUtils.getString(R.string.playfun_comment_close));
+                            ToastUtils.showShort(StringUtils.getString(R.string.playcc_comment_close));
                             for (int i = 0; i < observableList.size(); i++) {
                                 if (observableList.get(i) instanceof TrendItemViewModel) {
                                     if (id == ((TrendItemViewModel) observableList.get(i)).newsEntityObservableField.get().getId()) {
@@ -227,7 +227,7 @@ public class MyAllBroadcastViewModel extends BaseRefreshViewModel<AppRepository>
                     public void onSuccess(BaseResponse response) {
                         dismissHUD();
                         if (type.equals(RadioRecycleType_New)){
-                            ToastUtils.showShort(((TrendItemViewModel) observableList.get(posion)).newsEntityObservableField.get().getBroadcast().getIsComment() == 1 ? StringUtils.getString(R.string.playfun_open_comment_success) : StringUtils.getString(R.string.playfun_close_success));
+                            ToastUtils.showShort(((TrendItemViewModel) observableList.get(posion)).newsEntityObservableField.get().getBroadcast().getIsComment() == 1 ? StringUtils.getString(R.string.playcc_open_comment_success) : StringUtils.getString(R.string.playcc_close_success));
                             ((TrendItemViewModel) observableList.get(posion)).newsEntityObservableField.get().getBroadcast().setIsComment(
                                     ((TrendItemViewModel) observableList.get(posion)).newsEntityObservableField.get().getBroadcast().getIsComment() == 0 ? 1 : 0);
                         }

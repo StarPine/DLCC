@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/iv_close"
             android:layout_centerHorizontal="true"
-            android:text="@string/playfun_audio_chat_up"
+            android:text="@string/playcc_audio_chat_up"
             android:textColor="@color/text_default"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -64,7 +64,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
-            android:text="@string/playfun_audio_accost_tip"
+            android:text="@string/playcc_audio_accost_tip"
             android:textColor="@color/gray_dark"
             android:textSize="@dimen/text_size_small"
             android:textStyle="bold" />
@@ -78,7 +78,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="25dp"
-            android:text="@string/playfun_audio_accost_long_click"
+            android:text="@string/playcc_audio_accost_long_click"
             android:textSize="16sp"
             android:textStyle="bold"
             tools:visibility="visible" />

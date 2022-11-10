@@ -54,7 +54,7 @@ public class MyTrendsViewModel extends BaseRefreshViewModel<AppRepository> {
         avatar = model.readUserData().getAvatar();
 
         //stateModel.setEmptyRetryCommand(StringUtils.getString(R.string.my_trends_no_issuance), StringUtils.getString(R.string.my_trends_issuance), issuanceCommand);
-        stateModel.setEmptyRetryCommand(StringUtils.getString(R.string.playfun_my_trends_no_issuance), null, null);
+        stateModel.setEmptyRetryCommand(StringUtils.getString(R.string.playcc_my_trends_no_issuance), null, null);
     }
 
     //跳转发布界面
@@ -126,7 +126,7 @@ public class MyTrendsViewModel extends BaseRefreshViewModel<AppRepository> {
                     @Override
                     public void onSuccess(BaseListDataResponse<NewsEntity> response) {
                         super.onSuccess(response);
-                        stateModel.setEmptyBroadcastCommand(StringUtils.getString(R.string.playfun_my_all_broadcast_empty), R.drawable.my_all_broadcast_empty_img, R.color.all_broadcast_empty,StringUtils.getString(R.string.playfun_task_fragment_task_new10),toProgramVIew);
+                        stateModel.setEmptyBroadcastCommand(StringUtils.getString(R.string.playcc_my_all_broadcast_empty), R.drawable.my_all_broadcast_empty_img, R.color.all_broadcast_empty,StringUtils.getString(R.string.playcc_task_fragment_task_new10),toProgramVIew);
                         if (response.getData().getData() != null) {
                             if (currentPage == 1) {
                                 observableList.clear();
@@ -159,7 +159,7 @@ public class MyTrendsViewModel extends BaseRefreshViewModel<AppRepository> {
                         dismissHUD();
                         observableList.remove(posion);
                         if(observableList.size()<=0){
-                            stateModel.setEmptyBroadcastCommand(StringUtils.getString(R.string.playfun_my_all_broadcast_empty), R.drawable.my_all_broadcast_empty_img, R.color.all_broadcast_empty,StringUtils.getString(R.string.playfun_task_fragment_task_new10),toProgramVIew);
+                            stateModel.setEmptyBroadcastCommand(StringUtils.getString(R.string.playcc_my_all_broadcast_empty), R.drawable.my_all_broadcast_empty_img, R.color.all_broadcast_empty,StringUtils.getString(R.string.playcc_task_fragment_task_new10),toProgramVIew);
                             stateModel.setEmptyState(EmptyState.EMPTY);
                         }
                     }
@@ -183,7 +183,7 @@ public class MyTrendsViewModel extends BaseRefreshViewModel<AppRepository> {
                     @Override
                     public void onSuccess(BaseResponse response) {
                         dismissHUD();
-                        ToastUtils.showShort(observableList.get(posion).newsEntityObservableField.get().getBroadcast().getIsComment() == 1 ? StringUtils.getString(R.string.playfun_open_comment_success) : StringUtils.getString(R.string.playfun_close_success));
+                        ToastUtils.showShort(observableList.get(posion).newsEntityObservableField.get().getBroadcast().getIsComment() == 1 ? StringUtils.getString(R.string.playcc_open_comment_success) : StringUtils.getString(R.string.playcc_close_success));
                         observableList.get(posion).newsEntityObservableField.get().getBroadcast().setIsComment(
                                 observableList.get(posion).newsEntityObservableField.get().getBroadcast().getIsComment() == 0 ? 1 : 0);
                     }
@@ -206,7 +206,7 @@ public class MyTrendsViewModel extends BaseRefreshViewModel<AppRepository> {
                     @Override
                     public void onSuccess(BaseResponse response) {
                         dismissHUD();
-                        ToastUtils.showShort(R.string.playfun_give_success);
+                        ToastUtils.showShort(R.string.playcc_give_success);
                         observableList.get(posion).addGiveUser();
                     }
 
@@ -227,7 +227,7 @@ public class MyTrendsViewModel extends BaseRefreshViewModel<AppRepository> {
                 .subscribe(new BaseDisposableObserver<BaseResponse>() {
                     @Override
                     public void onSuccess(BaseResponse response) {
-                        ToastUtils.showShort(R.string.playfun_comment_success);
+                        ToastUtils.showShort(R.string.playcc_comment_success);
                         for (int i = 0; i < observableList.size(); i++) {
                             if (id == observableList.get(i).newsEntityObservableField.get().getId()) {
                                 observableList.get(i).addComment(id, content, toUserId, toUserName, model.readUserData().getNickname());
@@ -238,7 +238,7 @@ public class MyTrendsViewModel extends BaseRefreshViewModel<AppRepository> {
                     @Override
                     public void onError(RequestException e) {
                         if (e.getCode() == 10016) {
-                            ToastUtils.showShort(StringUtils.getString(R.string.playfun_comment_close));
+                            ToastUtils.showShort(StringUtils.getString(R.string.playcc_comment_close));
                             for (int i = 0; i < observableList.size(); i++) {
                                 if (id == observableList.get(i).newsEntityObservableField.get().getId()) {
                                     observableList.get(i).newsEntityObservableField.get().getBroadcast().setIsComment(1);

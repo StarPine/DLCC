@@ -313,7 +313,7 @@
                                     android:enabled="@{viewModel.clickChatSubDisplay}"
                                     binding:onClickCommand="@{viewModel.clickChatSub}"
                                     android:gravity="center"
-                                    android:text="@string/playfun_dialog_set_withdraw_account_confirm"
+                                    android:text="@string/playcc_dialog_set_withdraw_account_confirm"
                                     android:textColor="@color/white"
                                     android:textSize="14sp" />
                             </RelativeLayout>
@@ -448,7 +448,7 @@
                                     android:enabled="@{viewModel.clickAudioSubDisplay}"
                                     binding:onClickCommand="@{viewModel.clickAudiotSub}"
                                     android:gravity="center"
-                                    android:text="@string/playfun_dialog_set_withdraw_account_confirm"
+                                    android:text="@string/playcc_dialog_set_withdraw_account_confirm"
                                     android:textColor="@color/white"
                                     android:textSize="14sp" />
                             </RelativeLayout>
@@ -584,7 +584,7 @@
                                     android:enabled="@{viewModel.clickVideoSubDisplay}"
                                     binding:onClickCommand="@{viewModel.clickVideoSub}"
                                     android:gravity="center"
-                                    android:text="@string/playfun_dialog_set_withdraw_account_confirm"
+                                    android:text="@string/playcc_dialog_set_withdraw_account_confirm"
                                     android:textColor="@color/white"
                                     android:textSize="14sp" />
                             </RelativeLayout>

@@ -68,7 +68,7 @@
                     android:gravity="top|left"
                     android:includeFontPadding="false"
                     android:singleLine="true"
-                    android:text="@string/playfun_char_message_text3"
+                    android:text="@string/playcc_char_message_text3"
                     android:textColor="#2F2F4D"
                     android:textSize="15sp"
                     android:textStyle="bold" />
@@ -98,7 +98,7 @@
                     android:singleLine="true"
                     android:textColor="#7f2F2F4D"
                     android:textSize="14sp"
-                    tools:text="@string/playfun_char_message_text2" />
+                    tools:text="@string/playcc_char_message_text2" />
 
                 <com.tencent.qcloud.tuicore.component.UnreadCountTextView
                     android:id="@+id/conversation_unread"

@@ -67,8 +67,8 @@ public class CoinFragment extends BaseRefreshToolbarFragment<FragmentCoinBinding
             }
         });
         viewModel.uc.withdrawComplete.observe(this, aVoid -> MVDialog.getInstance(mActivity)
-                .setTitele(getString(R.string.playfun_dialog_title_withdraw_complete))
-                .setContent(getString(R.string.playfun_dialog_content_withdraw_complete))
+                .setTitele(getString(R.string.playcc_dialog_title_withdraw_complete))
+                .setContent(getString(R.string.playcc_dialog_content_withdraw_complete))
                 .setConfirmOnlick(dialog -> dialog.dismiss())
                 .chooseType(MVDialog.TypeEnum.CENTER)
                 .show());

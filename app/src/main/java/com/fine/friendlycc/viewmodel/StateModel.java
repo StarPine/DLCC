@@ -28,7 +28,7 @@ public class StateModel extends BaseObservable {
 
     private final Context mContext = AppContext.instance();
 
-    public ObservableField<String> emptyText = new ObservableField<>(StringUtils.getString(R.string.playfun_empty_state_no_data));
+    public ObservableField<String> emptyText = new ObservableField<>(StringUtils.getString(R.string.playcc_empty_state_no_data));
     public ObservableField<String> retryBtnText = new ObservableField<>("Retry");
 
     public ObservableField<Boolean> isUpdata = new ObservableField<>(false);
@@ -148,11 +148,11 @@ public class StateModel extends BaseObservable {
             case EmptyState.EMPTY:
                 return emptyText.get();
             case EmptyState.NET_ERROR:
-                return StringUtils.getString(R.string.playfun_empty_state_check_network);
+                return StringUtils.getString(R.string.playcc_empty_state_check_network);
             case EmptyState.NOT_AVAILABLE:
-                return StringUtils.getString(R.string.playfun_empty_state_server_error);
+                return StringUtils.getString(R.string.playcc_empty_state_server_error);
             default:
-                return StringUtils.getString(R.string.playfun_empty_state_no_data);
+                return StringUtils.getString(R.string.playcc_empty_state_no_data);
         }
     }
 

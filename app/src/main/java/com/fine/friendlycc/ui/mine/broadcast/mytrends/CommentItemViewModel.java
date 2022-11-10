@@ -91,11 +91,11 @@ public class CommentItemViewModel extends MultiItemViewModel<BaseViewModel> {
     public String getMessageContent() {
         String content = "";
         if (isShow || isMore) {
-            content = String.format("<font color='#666666' size='24'>%s</font>", getString(R.string.playfun_check_more_commment));
+            content = String.format("<font color='#666666' size='24'>%s</font>", getString(R.string.playcc_check_more_commment));
         } else if (commentBeanObservableField.get().getTouser() == null) {
             content = String.format("<font color='#A72DFE' size='24'>%s：</font>" + commentBeanObservableField.get().getContent(), commentBeanObservableField.get().getUser().getNickname());
         } else {
-            content = String.format("<font color='#A72DFE' size='24' >%s</font> " + StringUtils.getString(R.string.playfun_recovery), commentBeanObservableField.get().getUser().getNickname()) +
+            content = String.format("<font color='#A72DFE' size='24' >%s</font> " + StringUtils.getString(R.string.playcc_recovery), commentBeanObservableField.get().getUser().getNickname()) +
                     String.format(" <font color='#A72DFE' size='24'>%s：</font>" + commentBeanObservableField.get().getContent(), commentBeanObservableField.get().getTouser().getNickname());
         }
         return content;

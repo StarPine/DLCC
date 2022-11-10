@@ -39,7 +39,7 @@ public class GoddessCertificationViewModel extends BaseViewModel<AppRepository> 
         @Override
         public void call() {
             if (chooseMedias == null || chooseMedias.size() == 0) {
-                ToastUtils.showShort(R.string.playfun_model_goddesscertification_choose_photo_video);
+                ToastUtils.showShort(R.string.playcc_model_goddesscertification_choose_photo_video);
                 return;
             }
             index = 0;
@@ -77,7 +77,7 @@ public class GoddessCertificationViewModel extends BaseViewModel<AppRepository> 
                     @Override
                     public void onError(Throwable e) {
                         dismissHUD();
-                        ToastUtils.showShort(R.string.playfun_upload_failed);
+                        ToastUtils.showShort(R.string.playcc_upload_failed);
                     }
 
                     @Override
@@ -92,7 +92,7 @@ public class GoddessCertificationViewModel extends BaseViewModel<AppRepository> 
      */
     private void commitPhotos(List<String> photoSrcs) {
         if (photoSrcs == null || photoSrcs.isEmpty()) {
-            ToastUtils.showShort(R.string.playfun_model_goddesscertification_upload_photo);
+            ToastUtils.showShort(R.string.playcc_model_goddesscertification_upload_photo);
             return;
         }
 

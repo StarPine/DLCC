@@ -23,7 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:text="@string/playfun_mine_trace_man_title_dialog"
+            android:text="@string/playcc_mine_trace_man_title_dialog"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="20sp" />
@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="8dp"
-            android:text="@string/playfun_mine_trace_man_unlocks"
+            android:text="@string/playcc_mine_trace_man_unlocks"
             android:textAlignment="center"
             android:textColor="#FF90919F"
             android:textSize="16sp" />
@@ -48,7 +48,7 @@
             android:layout_marginTop="22dp"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="20dp"
-            android:text="@string/playfun_dialog_set_withdraw_account_confirm" />
+            android:text="@string/playcc_dialog_set_withdraw_account_confirm" />
 
     </LinearLayout>
 </LinearLayout>

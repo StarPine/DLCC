@@ -54,13 +54,13 @@ public class MessageNotification {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel channel;
             if (isDialing) {
-                channel = new NotificationChannel(NOTIFICATION_CHANNEL_CALL, mContext.getString(R.string.playfun_audio_video_invitation_message_notification), NotificationManager.IMPORTANCE_HIGH);
+                channel = new NotificationChannel(NOTIFICATION_CHANNEL_CALL, mContext.getString(R.string.playcc_audio_video_invitation_message_notification), NotificationManager.IMPORTANCE_HIGH);
                 channel.setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE), null);
-                channel.setDescription(mContext.getString(R.string.playfun_incoming_call_message_notification_remind_user));
+                channel.setDescription(mContext.getString(R.string.playcc_incoming_call_message_notification_remind_user));
                 channel.setVibrationPattern(new long[]{0, 1000, 1000, 1000, 1000});
             } else {
-                channel = new NotificationChannel(NOTIFICATION_CHANNEL_COMMON, mContext.getString(R.string.playfun_new_message_notification), NotificationManager.IMPORTANCE_HIGH);
-                channel.setDescription(mContext.getString(R.string.playfun_new_message_notification_remind_user));
+                channel = new NotificationChannel(NOTIFICATION_CHANNEL_COMMON, mContext.getString(R.string.playcc_new_message_notification), NotificationManager.IMPORTANCE_HIGH);
+                channel.setDescription(mContext.getString(R.string.playcc_new_message_notification_remind_user));
             }
             channel.enableVibration(true);
             channel.enableLights(true);

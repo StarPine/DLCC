@@ -24,7 +24,7 @@ public class TraceFragmentTabPagerAdapter extends FragmentStatePagerAdapter {
 
 
     @StringRes
-    public static final int[] TAB_MALE_TITLES = new int[]{R.string.playfun_mine_my_likes, R.string.playfun_mine_my_visitors_many};
+    public static final int[] TAB_MALE_TITLES = new int[]{R.string.playcc_mine_my_likes, R.string.playcc_mine_my_visitors_many};
 
     private final Context mContext;
 

@@ -61,7 +61,7 @@ public class CoinPusherGameHistoryDialog extends BaseDialog {
         if(coinPusherRoomDeviceInfo!=null){
             int levelId = coinPusherRoomDeviceInfo.getLevelId();
             String nickname = coinPusherRoomDeviceInfo.getNickname();
-            binding.tvTitle.setText(String.format(StringUtils.getString(R.string.playfun_coinpusher_history_text2),String.valueOf(levelId+" "+nickname)));
+            binding.tvTitle.setText(String.format(StringUtils.getString(R.string.playcc_coinpusher_history_text2),String.valueOf(levelId+" "+nickname)));
         }
         //支持LiveData绑定xml，数据改变，UI自动会更新
         binding.setLifecycleOwner(this);
@@ -72,7 +72,7 @@ public class CoinPusherGameHistoryDialog extends BaseDialog {
         binding.rcvList.setAdapter(coinPusherCapsuleAdapter);
         binding.imgClose.setOnClickListener(v ->dismiss());
         CustomRefreshHeader customRefreshHeader = new CustomRefreshHeader(getContext());
-        customRefreshHeader.setTvContent(StringUtils.getString(R.string.playfun_coinpusher_history_text1));
+        customRefreshHeader.setTvContent(StringUtils.getString(R.string.playcc_coinpusher_history_text1));
         binding.refreshLayout.setRefreshHeader(customRefreshHeader);
         binding.refreshLayout.setEnableLoadMore(false);
         binding.refreshLayout.setOnRefreshListener(v->startRefreshDataInfo());

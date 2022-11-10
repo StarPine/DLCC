@@ -5,7 +5,7 @@ import com.tencent.qcloud.tuikit.tuichat.TUIChatConstants;
 import java.io.Serializable;
 
 /**
- * @Name： PlayFun_Google
+ * @Name： PlayCC
  * @Description：
  * @Author： liaosf
  * @Date： 2022/6/29 15:32

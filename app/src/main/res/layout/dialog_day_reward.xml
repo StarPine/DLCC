@@ -24,7 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:text="@string/playfun_reward"
+            android:text="@string/playcc_reward"
             android:textAlignment="center"
             android:textColor="@color/balck_35e"
             android:textSize="17sp"
@@ -129,7 +129,7 @@
             android:textAlignment="center"
             android:textColor="@color/gray_middle"
             android:textSize="13sp"
-            tools:text="@string/playfun_reward_tips"
+            tools:text="@string/playcc_reward_tips"
             tools:visibility="visible" />
 
         <Button
@@ -142,7 +142,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="20dp"
-            android:text="@string/playfun_dialog_set_withdraw_account_confirm" />
+            android:text="@string/playcc_dialog_set_withdraw_account_confirm" />
     </RelativeLayout>
 
 

@@ -59,7 +59,7 @@
                         android:layout_alignParentStart="true"
                         android:layout_centerInParent="true"
                         android:layout_marginStart="15dp"
-                        android:text="@string/playfun_tab_message_1"
+                        android:text="@string/playcc_tab_message_1"
                         android:textColor="@{viewModel.tabSelected ? @color/toolbar_title_color : @color/play_chat_gray_3}"
                         android:textSize="@{viewModel.tabSelected ?@dimen/alivc_common_font_18:@dimen/alivc_common_font_14}"
                         binding:isBold="@{viewModel.tabSelected}" />
@@ -107,7 +107,7 @@
                         android:layout_alignParentStart="true"
                         android:layout_centerInParent="true"
                         android:layout_marginStart="15dp"
-                        android:text="@string/playfun_tab_message_3"
+                        android:text="@string/playcc_tab_message_3"
                         android:textColor="@{!viewModel.tabSelected ? @color/toolbar_title_color : @color/play_chat_gray_3}"
                         android:textSize="@{!viewModel.tabSelected ?@dimen/alivc_common_font_18:@dimen/alivc_common_font_14}"
                         binding:isBold="@{!viewModel.tabSelected}" />

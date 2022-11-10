@@ -19,7 +19,7 @@ public class LocaleManager {
      * @return Locale对象
      */
     public static Locale getSystemLocale() {
-        String text = Utils.getContext().getString(R.string.playfun_local_language_val);
+        String text = Utils.getContext().getString(R.string.playcc_local_language_val);
         return new Locale(text);
     }
 

@@ -35,12 +35,12 @@
             android:gravity="center"
             android:paddingTop="2dp"
             android:paddingBottom="2dp"
-            android:text="@{viewModel.itemEntity.type == 1?@string/playfun_diamond_detail_item_flag:@string/playfun_diamond_detail_item_flag2}"
+            android:text="@{viewModel.itemEntity.type == 1?@string/playcc_diamond_detail_item_flag:@string/playcc_diamond_detail_item_flag2}"
             android:textColor="@{viewModel.getFlagBg == 1?@color/white:@color/toolbar_title_color}"
             android:textSize="@dimen/text_size_1067"
             android:visibility="@{viewModel.isShowFlag ? View.VISIBLE : View.GONE}"
             tools:background="@drawable/bg_right_top_corner"
-            tools:text="@string/playfun_diamond_detail_item_flag2" />
+            tools:text="@string/playcc_diamond_detail_item_flag2" />
 
         <LinearLayout
             android:layout_width="wrap_content"

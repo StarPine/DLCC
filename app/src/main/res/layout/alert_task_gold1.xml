@@ -21,7 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:text="@string/playfun_mine_trace_delike"
+            android:text="@string/playcc_mine_trace_delike"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="20sp" />
@@ -46,7 +46,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:text="@string/playfun_task_fragment_bonus_dialog_3"
+                    android:text="@string/playcc_task_fragment_bonus_dialog_3"
                     android:textSize="16sp" />
             </FrameLayout>
 
@@ -64,7 +64,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:text="@string/playfun_task_fragment_bonus_dialog_4"
+                    android:text="@string/playcc_task_fragment_bonus_dialog_4"
                     android:textSize="16sp" />
             </FrameLayout>
         </LinearLayout>
@@ -86,7 +86,7 @@
                 android:layout_height="52dp"
                 android:background="@drawable/trace_channel"
                 android:scaleType="centerCrop"
-                android:text="@string/playfun_cancel"
+                android:text="@string/playcc_cancel"
                 android:textColor="@color/purple1"
                 android:textSize="14sp" />
 
@@ -96,7 +96,7 @@
                 android:layout_width="130dp"
                 android:layout_height="52dp"
                 android:layout_marginStart="20dp"
-                android:text="@string/playfun_dialog_set_withdraw_account_confirm"
+                android:text="@string/playcc_dialog_set_withdraw_account_confirm"
                 android:textSize="14sp"
                 android:textStyle="normal" />
         </LinearLayout>
@@ -108,7 +108,7 @@
             android:layout_marginTop="15dp"
             android:layout_marginBottom="15dp"
             android:gravity="center"
-            android:text="@string/playfun_task_fragment_bonus_dialog_10"
+            android:text="@string/playcc_task_fragment_bonus_dialog_10"
             android:textColor="#ff90919f"
             android:textSize="11sp" />
 

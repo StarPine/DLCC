@@ -86,7 +86,7 @@ public class RegisterSexFragment extends BaseFragment<FragmentRegisterSexBinding
             @Override
             public void onChanged(@Nullable Object o) {
                 if (viewModel.UserSex.get() == null) {
-                    ToastUtils.showShort(R.string.playfun_fragment_perfect_sex_hint2);
+                    ToastUtils.showShort(R.string.playcc_fragment_perfect_sex_hint2);
                 }
                 viewModel.UserSex.set(1);
                 binding.maleIcon.setAlpha(1f);
@@ -99,7 +99,7 @@ public class RegisterSexFragment extends BaseFragment<FragmentRegisterSexBinding
             @Override
             public void onChanged(@Nullable Object o) {
                 if (viewModel.UserSex.get() == null) {
-                    ToastUtils.showShort(R.string.playfun_fragment_perfect_sex_hint2);
+                    ToastUtils.showShort(R.string.playcc_fragment_perfect_sex_hint2);
                 }
                 viewModel.UserSex.set(0);
                 binding.maleIcon.setAlpha(0.5f);
@@ -141,7 +141,7 @@ public class RegisterSexFragment extends BaseFragment<FragmentRegisterSexBinding
         final List<String> options1Items = new ArrayList<>();
         int position = 0;
         int defAge = 18;
-        String ageText = StringUtils.getString(R.string.playfun_mine_age);
+        String ageText = StringUtils.getString(R.string.playcc_mine_age);
         for (int i = defAge; i <= 100; i++) {
             String format = String.format(ageText, i);
             options1Items.add(format);
@@ -157,12 +157,12 @@ public class RegisterSexFragment extends BaseFragment<FragmentRegisterSexBinding
                 viewModel.userAge.set(options1Items.get(options1));
             }
         })
-        .setCancelText(getString(R.string.playfun_cancel))//取消按钮文字
-        .setSubmitText(getString(R.string.playfun_confirm))//确认按钮文字
+        .setCancelText(getString(R.string.playcc_cancel))//取消按钮文字
+        .setSubmitText(getString(R.string.playcc_confirm))//确认按钮文字
         .setContentTextSize(14)//滚轮文字大小
         .setSubCalSize(14)
         .setTitleSize(14)//标题文字大小
-        .setTitleText(getString(R.string.playfun_perfect_tips_age))//标题文字
+        .setTitleText(getString(R.string.playcc_perfect_tips_age))//标题文字
         .setOutSideCancelable(true)//点击屏幕，点在控件外部范围时，是否取消显示
         .setTitleColor(getResources().getColor(R.color.gray_dark))//标题文字颜色
         .setSubmitColor(getResources().getColor(R.color.purple))//确定按钮文字颜色

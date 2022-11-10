@@ -197,7 +197,7 @@ public class AudioCallingViewModel2 extends BaseViewModel<AppRepository> impleme
             public void onReject(String userId) {
                 unListen();
                 finishView();
-                Utils.show(AppContext.instance().getString(R.string.playfun_the_other_party_refuses_to_answer));
+                Utils.show(AppContext.instance().getString(R.string.playcc_the_other_party_refuses_to_answer));
 
             }
 
@@ -205,21 +205,21 @@ public class AudioCallingViewModel2 extends BaseViewModel<AppRepository> impleme
             public void onNoResp(String userId) {
                 unListen();
                 finishView();
-                Utils.show(AppContext.instance().getString(R.string.playfun_the_other_party_is_temporarily_unavailable));
+                Utils.show(AppContext.instance().getString(R.string.playcc_the_other_party_is_temporarily_unavailable));
             }
 
             @Override
             public void onLineBusy(String userId) {
                 unListen();
                 finishView();
-                Utils.show(AppContext.instance().getString(R.string.playfun_the_other_party_is_on_a_call));
+                Utils.show(AppContext.instance().getString(R.string.playcc_the_other_party_is_on_a_call));
             }
 
             @Override
             public void onCallEnd() {
                 unListen();
                 finishView();
-                Utils.show(AppContext.instance().getString(R.string.playfun_call_ended));
+                Utils.show(AppContext.instance().getString(R.string.playcc_call_ended));
             }
 
             @Override
@@ -247,14 +247,14 @@ public class AudioCallingViewModel2 extends BaseViewModel<AppRepository> impleme
             public void onCallingCancel() {
                 unListen();
                 finishView();
-                Utils.show(AppContext.instance().getString(R.string.playfun_the_other_party_cancels_the_call));
+                Utils.show(AppContext.instance().getString(R.string.playcc_the_other_party_cancels_the_call));
             }
 
             @Override
             public void onCallingTimeout() {
                 unListen();
                 finishView();
-                Utils.show(AppContext.instance().getString(R.string.playfun_the_other_party_is_temporarily_unavailable));
+                Utils.show(AppContext.instance().getString(R.string.playcc_the_other_party_is_temporarily_unavailable));
             }
 
             @Override
@@ -349,7 +349,7 @@ public class AudioCallingViewModel2 extends BaseViewModel<AppRepository> impleme
 
     public String ageAndConstellation(CallingInviteInfo callingInviteInfo) {
         if (callingInviteInfo != null) {
-            return String.format(StringUtils.getString(R.string.playfun_age_and_constellation), callingInviteInfo.getUserProfileInfo().getAge(), callingInviteInfo.getUserProfileInfo().getConstellation());
+            return String.format(StringUtils.getString(R.string.playcc_age_and_constellation), callingInviteInfo.getUserProfileInfo().getAge(), callingInviteInfo.getUserProfileInfo().getConstellation());
         }
         return "";
     }

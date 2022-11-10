@@ -57,28 +57,28 @@ public class TheirPhotoAlbumItemViewModel extends ItemViewModel<BaseTheirPhotoAl
         if (itemEntity.get().getIsRedPackage() == 1) {
             if (itemEntity.get().getIsBurn() == 1) {
                 if (itemEntity.get().getType() == 1) {
-                    name = StringUtils.getString(R.string.playfun_reading_after_burn_red_photo);
+                    name = StringUtils.getString(R.string.playcc_reading_after_burn_red_photo);
                 } else if (itemEntity.get().getType() == 2) {
-                    name = StringUtils.getString(R.string.playfun_reading_after_burn_red_photo);
+                    name = StringUtils.getString(R.string.playcc_reading_after_burn_red_photo);
                 }
                 if (itemEntity.get().getBurnStatus() == 1) {
-                    name = StringUtils.getString(R.string.playfun_burned);
+                    name = StringUtils.getString(R.string.playcc_burned);
                 }
             } else {
                 if (itemEntity.get().getType() == 1) {
-                    name = StringUtils.getString(R.string.playfun_redpackage_photo);
+                    name = StringUtils.getString(R.string.playcc_redpackage_photo);
                 } else if (itemEntity.get().getType() == 2) {
-                    name = StringUtils.getString(R.string.playfun_red_package_video);
+                    name = StringUtils.getString(R.string.playcc_red_package_video);
                 }
             }
         } else if (itemEntity.get().getIsBurn() == 1) {
             if (itemEntity.get().getType() == 1) {
-                name = StringUtils.getString(R.string.playfun_reading_after_burn_photo);
+                name = StringUtils.getString(R.string.playcc_reading_after_burn_photo);
             } else if (itemEntity.get().getType() == 2) {
-                name = StringUtils.getString(R.string.playfun_reading_after_burn_video);
+                name = StringUtils.getString(R.string.playcc_reading_after_burn_video);
             }
             if (itemEntity.get().getBurnStatus() == 1) {
-                name = StringUtils.getString(R.string.playfun_burned);
+                name = StringUtils.getString(R.string.playcc_burned);
             }
         }
         return name;

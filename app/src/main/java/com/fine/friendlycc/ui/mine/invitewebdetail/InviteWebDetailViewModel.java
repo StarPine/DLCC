@@ -51,7 +51,7 @@ public class InviteWebDetailViewModel extends BaseViewModel<AppRepository> {
                 .subscribe(new BaseObserver() {
                     @Override
                     public void onSuccess(BaseResponse baseResponse) {
-                        ToastUtils.showShort(R.string.playfun_invite_web_detail_ok);
+                        ToastUtils.showShort(R.string.playcc_invite_web_detail_ok);
                     }
 
                     @Override
@@ -126,7 +126,7 @@ public class InviteWebDetailViewModel extends BaseViewModel<AppRepository> {
                     @Override
                     public void onSuccess(BaseResponse response) {
                         dismissHUD();
-                        ToastUtils.showShort(StringUtils.getString(R.string.playfun_pay_success));
+                        ToastUtils.showShort(StringUtils.getString(R.string.playcc_pay_success));
                         try {
                             RxBus.getDefault().post(new UserUpdateVipEvent(Utils.formatday.format(Utils.addDate(new Date(), pay_good_day)), 1));
                         } catch (Exception e) {

@@ -140,7 +140,7 @@ public class UserDynamicViewModel extends BaseRefreshViewModel<AppRepository> {
                     @Override
                     public void onSuccess(BaseResponse response) {
                         dismissHUD();
-                        ToastUtils.showShort(R.string.playfun_give_success);
+                        ToastUtils.showShort(R.string.playcc_give_success);
                         observableList.get(posion).addGiveUser();
                     }
 
@@ -161,7 +161,7 @@ public class UserDynamicViewModel extends BaseRefreshViewModel<AppRepository> {
                 .subscribe(new BaseObserver<BaseResponse>() {
                     @Override
                     public void onSuccess(BaseResponse response) {
-                        ToastUtils.showShort(R.string.playfun_comment_success);
+                        ToastUtils.showShort(R.string.playcc_comment_success);
                         for (int i = 0; i < observableList.size(); i++) {
                             if (id == observableList.get(i).newsEntityObservableField.get().getId()) {
                                 observableList.get(i).addComment(id, content, toUserId, toUserName, model.readUserData().getNickname());

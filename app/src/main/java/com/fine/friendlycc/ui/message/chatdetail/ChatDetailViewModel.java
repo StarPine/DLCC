@@ -284,7 +284,7 @@ public class ChatDetailViewModel extends BaseViewModel<AppRepository> {
                         if (response.getData().getConnection()) {
                             uc.clickConnMic.call();
                         } else {
-                            ToastUtils.showShort(R.string.playfun_opposite_mic_disabled);
+                            ToastUtils.showShort(R.string.playcc_opposite_mic_disabled);
                         }
                     }
 
@@ -403,7 +403,7 @@ public class ChatDetailViewModel extends BaseViewModel<AppRepository> {
                     @Override
                     public void onSuccess(BaseResponse response) {
                         dismissHUD();
-                        ToastUtils.showShort(R.string.playfun_submittd);
+                        ToastUtils.showShort(R.string.playcc_submittd);
                         uc.removeEvaluateMessage.call();
                     }
 
@@ -446,7 +446,7 @@ public class ChatDetailViewModel extends BaseViewModel<AppRepository> {
                         dialog.dismiss();
                         dismissHUD();
                         if (e.getCode() != null && e.getCode().intValue() == 21001) {
-                            ToastCenterUtils.showToast(R.string.playfun_dialog_exchange_integral_total_text1);
+                            ToastCenterUtils.showToast(R.string.playcc_dialog_exchange_integral_total_text1);
                             AppContext.instance().logEvent(AppsFlyerEvent.im_gifts_Insufficient_topup);
                             uc.sendUserGiftError.call();
                         }
@@ -507,7 +507,7 @@ public class ChatDetailViewModel extends BaseViewModel<AppRepository> {
                             return;
                         }
                         if (callingInviteInfoBaseDataResponse.getCode() == 22001) {//游戏中
-                            Toast.makeText(AppContext.instance(), R.string.playfun_in_game, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(AppContext.instance(), R.string.playcc_in_game, Toast.LENGTH_SHORT).show();
                             return;
                         }
 
@@ -605,7 +605,7 @@ public class ChatDetailViewModel extends BaseViewModel<AppRepository> {
                     public void onSuccess(BaseResponse response) {
                         dismissHUD();
                         isTrack.set(true);
-                        Toast.makeText(AppContext.instance(), R.string.playfun_cancel_zuizong_3, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AppContext.instance(), R.string.playcc_cancel_zuizong_3, Toast.LENGTH_SHORT).show();
                         uc.addLikeSuccess.postValue(msgId);
                     }
 
@@ -678,18 +678,18 @@ public class ChatDetailViewModel extends BaseViewModel<AppRepository> {
                                     maleBalance = totalCoins;
                                 }
                             } else {
-                                ToastUtils.showShort(R.string.playfun_network_text);
+                                ToastUtils.showShort(R.string.playcc_network_text);
                                 pop();
                             }
                         } else {
-                            ToastUtils.showShort(R.string.playfun_network_text);
+                            ToastUtils.showShort(R.string.playcc_network_text);
                             pop();
                         }
                     }
 
                     @Override
                     public void onError(RequestException e) {
-                        ToastUtils.showShort(R.string.playfun_network_text);
+                        ToastUtils.showShort(R.string.playcc_network_text);
                         pop();
                     }
 
@@ -743,7 +743,7 @@ public class ChatDetailViewModel extends BaseViewModel<AppRepository> {
                         @Override
                         public void onSuccess(BaseResponse baseResponse) {
                             isContactsEnabled.set(!isContactsEnabled.get());
-                            ToastUtils.showShort(StringUtils.getString(R.string.playfun_contact_text1));
+                            ToastUtils.showShort(StringUtils.getString(R.string.playcc_contact_text1));
                         }
                         @Override
                         public void onComplete() {
@@ -760,7 +760,7 @@ public class ChatDetailViewModel extends BaseViewModel<AppRepository> {
                         @Override
                         public void onSuccess(BaseResponse baseResponse) {
                             isContactsEnabled.set(!isContactsEnabled.get());
-                            ToastUtils.showShort(StringUtils.getString(R.string.playfun_contact_text2));
+                            ToastUtils.showShort(StringUtils.getString(R.string.playcc_contact_text2));
                         }
                         @Override
                         public void onComplete() {
@@ -826,10 +826,10 @@ public class ChatDetailViewModel extends BaseViewModel<AppRepository> {
                     public void onSuccess(BaseResponse response) {
                         if (type.equals(ALLOW_TYPE_AUDIO)){
                             mySelfAudioFlag = true;
-                            ToastUtils.showShort(R.string.playfun_activated_audio);
+                            ToastUtils.showShort(R.string.playcc_activated_audio);
                         }else if (type.equals(ALLOW_TYPE_VIDEO)){
                             mySelfVideoFlag = true;
-                            ToastUtils.showShort(R.string.playfun_activated_video);
+                            ToastUtils.showShort(R.string.playcc_activated_video);
                         }
                         RxBus.getDefault().post(new MineInfoChangeEvent());
                         dismissHUD();

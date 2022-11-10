@@ -27,7 +27,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="18dp"
                 android:gravity="center"
-                android:text="@string/playfun_alert_invite_write_title"
+                android:text="@string/playcc_alert_invite_write_title"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -39,7 +39,7 @@
                 android:layout_marginTop="26dp"
                 android:background="@mipmap/share_get_input"
                 android:gravity="center"
-                android:hint="@string/playfun_code_tips"
+                android:hint="@string/playcc_code_tips"
                 android:maxLength="6"
                 android:textColor="#90919F" />
 
@@ -52,7 +52,7 @@
                 android:layout_marginLeft="42dp"
                 android:layout_marginTop="39dp"
                 android:layout_marginRight="42dp"
-                android:text="@string/playfun_reg_user_dating_ok" />
+                android:text="@string/playcc_reg_user_dating_ok" />
         </LinearLayout>
     </FrameLayout>
 </LinearLayout>

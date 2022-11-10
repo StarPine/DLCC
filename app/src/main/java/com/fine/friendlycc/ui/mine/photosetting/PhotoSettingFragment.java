@@ -83,12 +83,12 @@ public class PhotoSettingFragment extends BaseToolbarFragment<FragmentPhotoSetti
             String src = viewModel.items.get(index).itemEntity.get().getSrc();
             String title = null;
             if (src.toLowerCase().endsWith(".jpg") || src.toLowerCase().endsWith(".jpeg") || src.toLowerCase().endsWith(".png")) {
-                title = getString(R.string.playfun_dialog_delete_photo_content);
+                title = getString(R.string.playcc_dialog_delete_photo_content);
             } else {
-                title = getString(R.string.playfun_dialog_delete_video_content);
+                title = getString(R.string.playcc_dialog_delete_video_content);
             }
             MVDialog.getInstance(mActivity)
-                    .setTitele(getString(R.string.playfun_dialog_title_prompt))
+                    .setTitele(getString(R.string.playcc_dialog_title_prompt))
                     .setContent(title)
                     .setConfirmOnlick(new MVDialog.ConfirmOnclick() {
                         @Override

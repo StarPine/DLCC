@@ -41,7 +41,7 @@ public class UploadPhotoViewModel extends BaseViewModel<AppRepository> {
 
     public void uploadPhoto() {
         if (selectedPhotoPath.get() == null) {
-            ToastUtils.showShort(R.string.playfun_model_goddesscertification_choose_photo);
+            ToastUtils.showShort(R.string.playcc_model_goddesscertification_choose_photo);
             return;
         }
 
@@ -78,7 +78,7 @@ public class UploadPhotoViewModel extends BaseViewModel<AppRepository> {
                     @Override
                     public void onError(Throwable e) {
                         dismissHUD();
-                        ToastUtils.showShort(R.string.playfun_upload_failed);
+                        ToastUtils.showShort(R.string.playcc_upload_failed);
                     }
 
                     @Override

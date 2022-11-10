@@ -177,9 +177,9 @@ public class MainActivity extends MySupportActivity {
                     }
                     if (userDisableDialog == null) {
                         userDisableDialog = MVDialog.getInstance(MainActivity.this)
-                                .setTitele(getString(R.string.playfun_dialog_user_disable_title))
-                                .setContent(getString(R.string.playfun_dialog_user_disable_content))
-                                .setConfirmText(getString(R.string.playfun_dialog_user_disable_btn_text))
+                                .setTitele(getString(R.string.playcc_dialog_user_disable_title))
+                                .setContent(getString(R.string.playcc_dialog_user_disable_content))
+                                .setConfirmText(getString(R.string.playcc_dialog_user_disable_btn_text))
                                 .setCancelable(true)
                                 .setConfirmOnlick(dialog -> {
                                     //跳转到登录界面
@@ -209,8 +209,8 @@ public class MainActivity extends MySupportActivity {
                     ConfigManager.getInstance().getAppRepository().logout();
                     if (loginExpiredDialog == null) {
                         loginExpiredDialog = MVDialog.getInstance(this)
-                                .setContent(getString(R.string.playfun_again_login))
-                                .setConfirmText(getString(R.string.playfun_confirm))
+                                .setContent(getString(R.string.playcc_again_login))
+                                .setConfirmText(getString(R.string.playcc_confirm))
                                 .setCancelable(true)
                                 .setNotClose(true)
                                 .setConfirmOnlick(dialog -> {
@@ -269,7 +269,7 @@ public class MainActivity extends MySupportActivity {
                 System.exit(0);
             } else {
                 TOUCH_TIME = System.currentTimeMillis();
-                ToastUtils.showShort(R.string.playfun_exit_app);
+                ToastUtils.showShort(R.string.playcc_exit_app);
             }
         }
     }

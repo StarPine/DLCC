@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
-            android:text="@string/playfun_recharge_retain_tip"
+            android:text="@string/playcc_recharge_retain_tip"
             android:layout_marginTop="10dp"
             android:gravity="center"
             android:textStyle="bold"
@@ -44,7 +44,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="15dp"
-            android:text="@string/playfun_retain_think_again"
+            android:text="@string/playcc_retain_think_again"
             android:textSize="16sp"
             android:textStyle="bold"
             tools:visibility="visible" />
@@ -57,7 +57,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="20dp"
-            android:text="@string/playfun_confirm"
+            android:text="@string/playcc_confirm"
             android:textSize="16sp"
             android:textStyle="bold"
             tools:visibility="visible" />

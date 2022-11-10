@@ -33,7 +33,7 @@ import me.goldze.mvvmhabit.utils.ToastUtils;
 /**
  * 修改备注：我的专属招呼viewmodel
  *
- * @Name： PlayFun_Google
+ * @Name： PlayCC
  * @Description：
  * @Author： liaosf
  * @Date： 2022/8/11 20:55
@@ -182,7 +182,7 @@ public class ExclusiveCallViewModel extends BaseViewModel<AppRepository> {
                     @Override
                     public void onError(Throwable e) {
                         dismissHUD();
-                        ToastUtils.showShort(R.string.playfun_upload_failed);
+                        ToastUtils.showShort(R.string.playcc_upload_failed);
                     }
 
                     @Override
@@ -204,11 +204,11 @@ public class ExclusiveCallViewModel extends BaseViewModel<AppRepository> {
 
                         if (type == TEXT_TYPE) {
                             textContent.set(content);
-                            ToastCenterUtils.showShort(R.string.playfun_text_accost_tips3);
+                            ToastCenterUtils.showShort(R.string.playcc_text_accost_tips3);
                         } else if (type == AUDIO_TYPE) {
                             audioContent.set(content);
                             audioSecond.set(second + "");
-                            ToastCenterUtils.showShort(R.string.playfun_audio_accost_tips2);
+                            ToastCenterUtils.showShort(R.string.playcc_audio_accost_tips2);
                         }
                     }
 

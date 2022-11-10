@@ -40,7 +40,7 @@
                 android:id="@+id/basic_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/action_bar_height"
-                app:toolbar_title="@string/playfun_mine_trace_man_title" />
+                app:toolbar_title="@string/playcc_mine_trace_man_title" />
 
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -121,7 +121,7 @@
                         android:layout_centerVertical="true"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{String.format(@string/playfun_visitor_total_count,viewModel.totalCount)}"
+                        android:text="@{String.format(@string/playcc_visitor_total_count,viewModel.totalCount)}"
                         android:textColor="@color/white"
                         android:textSize="12sp" />
                 </RelativeLayout>
@@ -137,7 +137,7 @@
                     android:layout_marginTop="13dp"
                     android:clickable="true"
                     android:elevation="20dp"
-                    android:text="@string/playfun_mine_trace_man_title4"
+                    android:text="@string/playcc_mine_trace_man_title4"
                     android:textColor="#ff9494a5"
                     android:textSize="12sp" />
             </RelativeLayout>

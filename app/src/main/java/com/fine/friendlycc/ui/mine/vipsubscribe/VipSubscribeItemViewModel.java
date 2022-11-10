@@ -74,7 +74,7 @@ public class VipSubscribeItemViewModel extends MultiItemViewModel<VipSubscribeVi
     public Spanned getOriginalPrice() {
         VipPackageItemEntity entity = itemEntity.get();
         if (entity != null && entity.getOriginalPrice() != null) {
-            return Html.fromHtml(String.format(StringUtils.getString(R.string.playfun_vip_alert_gold_tag, entity.getOriginalPrice())));
+            return Html.fromHtml(String.format(StringUtils.getString(R.string.playcc_vip_alert_gold_tag, entity.getOriginalPrice())));
         }
         return null;
     }

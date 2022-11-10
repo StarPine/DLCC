@@ -101,7 +101,7 @@ public class MyTrendsFragment extends BaseRefreshFragment<FragmentMyTrendsBindin
                 }
                 TextView stop = mCirclePop.findViewById(R.id.tv_stop);
                 stop.setVisibility(View.GONE);
-                stop.setText(viewModel.observableList.get((Integer) o).newsEntityObservableField.get().getBroadcast().getIsComment() == 0 ? getString(R.string.playfun_fragment_issuance_program_no_comment) : getString(R.string.playfun_open_comment));
+                stop.setText(viewModel.observableList.get((Integer) o).newsEntityObservableField.get().getBroadcast().getIsComment() == 0 ? getString(R.string.playcc_fragment_issuance_program_no_comment) : getString(R.string.playcc_open_comment));
                 stop.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -113,7 +113,7 @@ public class MyTrendsFragment extends BaseRefreshFragment<FragmentMyTrendsBindin
                     @Override
                     public void onClick(View v) {
                         MVDialog.getInstance(MyTrendsFragment.this.getContext())
-                                .setContent(getString(R.string.playfun_comfirm_delete_trend))
+                                .setContent(getString(R.string.playcc_comfirm_delete_trend))
                                 .chooseType(MVDialog.TypeEnum.CENTER)
                                 .setConfirmOnlick(new MVDialog.ConfirmOnclick() {
                                     @Override
@@ -136,7 +136,7 @@ public class MyTrendsFragment extends BaseRefreshFragment<FragmentMyTrendsBindin
                 if (viewModel.observableList.get((Integer) o).newsEntityObservableField.get().getIsGive() == 0) {
                     viewModel.newsGive((Integer) o);
                 } else {
-                    ToastUtils.showShort(R.string.playfun_already);
+                    ToastUtils.showShort(R.string.playcc_already);
                 }
             }
         });
@@ -149,7 +149,7 @@ public class MyTrendsFragment extends BaseRefreshFragment<FragmentMyTrendsBindin
                                 @Override
                                 public void clickListItem(Dialog dialog, String comment) {
                                     if (StringUtils.isEmpty(comment)) {
-                                        ToastUtils.showShort(R.string.playfun_warn_input_comment);
+                                        ToastUtils.showShort(R.string.playcc_warn_input_comment);
                                         return;
                                     }
                                     dialog.dismiss();

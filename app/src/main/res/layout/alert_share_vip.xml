@@ -32,7 +32,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
-                android:text="@string/playfun_share_vip_day7_text1"
+                android:text="@string/playcc_share_vip_day7_text1"
                 android:textSize="31sp" />
 
             <LinearLayout
@@ -53,7 +53,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
-                        android:text="@string/playfun_share_vip_day7_text2"
+                        android:text="@string/playcc_share_vip_day7_text2"
                         android:textSize="16sp" />
                 </FrameLayout>
             </LinearLayout>
@@ -66,14 +66,14 @@
                 android:layout_marginTop="21dp"
                 android:layout_marginRight="27dp"
                 android:background="@mipmap/share_sub"
-                android:text="@string/playfun_share_vip_day7_text3"
+                android:text="@string/playcc_share_vip_day7_text3"
                 android:textSize="17sp" />
 
             <TextView
                 android:layout_width="298dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="@string/playfun_share_vip_day7_text4"
+                android:text="@string/playcc_share_vip_day7_text4"
                 android:textColor="#ff90919f"
                 android:textSize="9sp" />
         </LinearLayout>
