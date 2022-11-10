@@ -64,6 +64,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="25dp"
+                        android:layout_marginBottom="15dp"
                         binding:adapter="@{viewModel.adapterBanner}"
                         binding:itemBinding="@{viewModel.itemBannerBinding}"
                         binding:items="@{viewModel.observableBanner}"
@@ -84,11 +85,7 @@
                 app:layout_behavior="@string/appbar_scrolling_view_behavior"
                 android:orientation="vertical">
 
-                <View
-                    android:id="@+id/view_assist"
-                    android:layout_width="match_parent"
-                    android:layout_height="15dp"
-                    android:background="@color/transparent" />
+
 
                 <LinearLayout
                     android:layout_width="match_parent"

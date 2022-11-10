@@ -115,11 +115,9 @@ public class HomeMainFragment extends BaseFragment<FragmentHomeMainBinding, Home
                 if (state == State.COLLAPSED) {
                     //折叠状态
                     binding.imgBarBackground.setVisibility(View.GONE);
-                    binding.viewAssist.setVisibility(View.GONE);
                 } else if (state == State.EXPANDED) {
                     //展开状态
                     binding.imgBarBackground.setVisibility(View.VISIBLE);
-                    binding.viewAssist.setVisibility(View.VISIBLE);
                 }
             }
         });
@@ -130,17 +128,12 @@ public class HomeMainFragment extends BaseFragment<FragmentHomeMainBinding, Home
     }
 
     private void initViewPager2(){
-        mFragments[0] = new HomeFristTabFragment();
-        Bundle bundle = new Bundle();
-        bundle.putInt("index", 0);
-        mFragments[0].setArguments(bundle);
-
-        mFragments[1] = new HomeFristTabFragment();
-        Bundle bundle2 = new Bundle();
-        bundle.putInt("index", 1);
-        mFragments[1].setArguments(bundle2);
-
-//        mFragments[1] = new HomeVipFragment();
+        for (int i = 0; i < mFragments.length; i++) {
+            Bundle bundle = new Bundle();
+            bundle.putInt("index", i);
+            mFragments[i] = new HomeFristTabFragment();
+            mFragments[i].setArguments(bundle);
+        }
 
         HomePagerAdapter fragmentAdapter = new HomePagerAdapter(this);
         fragmentAdapter.setFragmentList(mFragments);
