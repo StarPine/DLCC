@@ -2,10 +2,13 @@ package com.fine.friendlycc.data.source.http.interceptor;
 
 import com.blankj.utilcode.util.ObjectUtils;
 import com.blankj.utilcode.util.StringUtils;
+import com.fine.friendlycc.BuildConfig;
+import com.fine.friendlycc.app.AppConfig;
 import com.fine.friendlycc.data.RetrofitHeadersConfig;
 import com.fine.friendlycc.data.source.LocalDataSource;
 import com.fine.friendlycc.data.source.local.LocalDataSourceImpl;
 import com.fine.friendlycc.entity.ApiConfigManagerEntity;
+import com.fine.friendlycc.utils.LogUtils;
 
 import java.io.IOException;
 import java.net.URI;
@@ -63,6 +66,9 @@ public class TokenInterceptor implements Interceptor {
                         builder.addHeader("Authorization", "Bearer " + token);
                     }
                 }
+
+                //设置环境切换
+                setDebugToggle(builder, request);
             }
         }
         if(apiServerUrl!=null){
@@ -113,5 +119,31 @@ public class TokenInterceptor implements Interceptor {
 //            e.printStackTrace();
 //        }
         return chain.proceed(builder.build());
+    }
+
+    private void setDebugToggle(Request.Builder builder, Request request){
+        try {
+            if (BuildConfig.DEBUG){
+                URI openUrl = null;
+                if (AppConfig.isInit){
+                    LogUtils.i("setDebugToggle: 调试");
+                    if (!AppConfig.isTest){
+                        openUrl = new URI("http://api.playcc.net/");
+                    }else {
+                        openUrl = new URI("http://t-api.playcc.net/");
+                    }
+
+                    HttpUrl newUrl = request.url().newBuilder()
+                            .host(openUrl.getHost())
+                            .scheme(openUrl.getScheme())
+                            .build();
+                    builder.url(newUrl);
+                    AppConfig.isInit = false;
+                }
+            }
+        }catch (Exception e){
+
+        }
+
     }
 }

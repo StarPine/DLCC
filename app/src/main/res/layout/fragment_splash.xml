@@ -15,6 +15,42 @@
         android:layout_height="match_parent"
         android:background="@color/white">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="50dp"
+            android:layout_alignParentBottom="true"
+            android:gravity="center"
+            android:layout_marginBottom="200dp"
+            android:visibility="@{viewModel.isDebug?View.VISIBLE:View.GONE}"
+            >
+
+            <Button
+                style="@style/ButtonPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingEnd="20dp"
+                android:paddingStart="20dp"
+                android:layout_marginRight="15dp"
+                android:text="加载测试环境"
+                android:textColor="@color/white"
+                binding:onClickCommand="@{viewModel.loadDebug}"
+                />
+
+            <Button
+                style="@style/ButtonPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingEnd="20dp"
+                android:paddingStart="20dp"
+                android:layout_marginLeft="15dp"
+                android:text="加载正式环境"
+                binding:onClickCommand="@{viewModel.loadRelease}"
+                android:textColor="@color/white" />
+
+
+        </LinearLayout>
+
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"

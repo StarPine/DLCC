@@ -22,8 +22,7 @@ public class AppConfig {
     public static final String VERSION = "1.4.62";
     //上报
     public static final String SDK_VERSION_NAME_PUSH = "1.3.0";
-    //source 来源ID 1667448177=FriendlyCC
-//    public static final String APPID = "1667448177";
+    //source 来源ID 1667448177=PlayCC
     public static final String APPID = "1667448177";
     public static String DEVICE_CODE = "";
     /**
@@ -122,4 +121,6 @@ public class AppConfig {
     public static final String GAME_SOURCES_APP_CONFIG = "game_sources_app_config";
     //登录方式
     public static String LOGIN_TYPE = "0";
+    public static boolean isTest = false;
+    public static boolean isInit = true;
 }

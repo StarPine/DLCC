@@ -10,6 +10,8 @@ import androidx.databinding.ObservableBoolean;
 import com.appsflyer.AppsFlyerLib;
 import com.blankj.utilcode.util.ObjectUtils;
 import com.blankj.utilcode.util.StringUtils;
+import com.fine.friendlycc.BuildConfig;
+import com.fine.friendlycc.app.AppConfig;
 import com.fine.friendlycc.app.AppContext;
 import com.fine.friendlycc.app.AppsFlyerEvent;
 import com.fine.friendlycc.app.EaringlSwitchUtil;
@@ -46,17 +48,31 @@ import me.goldze.mvvmhabit.utils.RxUtils;
 public class SplashViewModel extends BaseViewModel<AppRepository> {
 
     public ObservableBoolean hintRetryShow = new ObservableBoolean(false);
+    public ObservableBoolean isDebug = new ObservableBoolean(false);
 
     public SplashViewModel(@NonNull Application application, AppRepository appRepository) {
         super(application, appRepository);
+        isDebug.set(BuildConfig.DEBUG);
     }
 
     public BindingCommand RetryCLick = new BindingCommand(this::initApiConfig);
 
+    public BindingCommand loadRelease = new BindingCommand(() -> {
+        AppConfig.isTest = false;
+        initApiConfig();
+    });
+
+    public BindingCommand loadDebug = new BindingCommand(() -> {
+        AppConfig.isTest = true;
+        initApiConfig();
+    });
+
     @Override
     public void onEnterAnimationEnd() {
         super.onEnterAnimationEnd();
-        initApiConfig();
+        if (!BuildConfig.DEBUG){
+            initApiConfig();
+        }
     }
     private void initData() {
         if (model.readLoginInfo() != null && !StringUtils.isEmpty(model.readLoginInfo().getToken()) && model.readUserData() != null && model.readUserData().getSex() != null && model.readUserData().getSex() != -1 && !StringUtil.isEmpty(model.readUserData().getNickname())) {
