@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -87,7 +88,9 @@ public class HomeMainFragment extends BaseFragment<FragmentHomeMainBinding, Home
     public void initData() {
         super.initData();
         initViewPager2();
-        Glide.with(getContext()).asGif().load(R.drawable.nearby_accost_tip_img)
+        Glide.with(getContext())
+                .asGif()
+                .load(R.drawable.nearby_accost_tip_img)
                 .error(R.drawable.nearby_accost_tip_img)
                 .placeholder(R.drawable.nearby_accost_tip_img)
                 .into(binding.ivAccost);
@@ -137,6 +140,17 @@ public class HomeMainFragment extends BaseFragment<FragmentHomeMainBinding, Home
 
         HomePagerAdapter fragmentAdapter = new HomePagerAdapter(this);
         fragmentAdapter.setFragmentList(mFragments);
+
+//        binding.viewPager.setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event) {
+//                if (event.getAction() == MotionEvent.ACTION_MOVE){
+//                    v.requestDisallowInterceptTouchEvent
+//                }
+//
+//                return false;
+//            }
+//        });
 
         binding.viewPager.setOffscreenPageLimit(1);
         binding.viewPager.setAdapter(fragmentAdapter);

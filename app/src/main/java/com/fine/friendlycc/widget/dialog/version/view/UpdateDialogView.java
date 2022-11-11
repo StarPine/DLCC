@@ -117,7 +117,6 @@ public class UpdateDialogView {
         tv_update_info.setText(update_info);
         Button btn_ok = popView.findViewById(R.id.btn_ok); //升级按钮
         ImageView iv_close = popView.findViewById(R.id.iv_close);//取消升级按钮
-        LinearLayout ll_close = popView.findViewById(R.id.ll_close);
         iv_close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -125,7 +124,7 @@ public class UpdateDialogView {
             }
         });
         if (isUpdate) {
-            ll_close.setVisibility(View.GONE);
+            iv_close.setVisibility(View.GONE);
             //强制引导去应用市场更新
             dialog.setCanceledOnTouchOutside(false);
             dialog.setCancelable(false);

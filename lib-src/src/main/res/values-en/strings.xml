@@ -2254,6 +2254,7 @@
     <string name="playcc_update_version_text2">Update now</string>
     <string name="playcc_update_version_text3">Update?</string>
     <string name="playcc_update_version_text4">Ignore this version</string>
+    <string name="playcc_update_version_text5">Update：</string>
     <string name="playcc_coinpusher_history_text1">Display the historical results of winning in the past 7 days</string>
     <string name="playcc_coinpusher_history_text2">Lv%s player</string>
 

@@ -116,7 +116,8 @@ android {
             dimension "friendly"
             resConfigs "zh", "en"
             // 服务端接口HOST
-            buildConfigField "String", "DEFAULT_API_URL", "\"http://t-api.playcc.net/\""
+            buildConfigField "String", "DEFAULT_API_URL", "\"http://api.playcc.net/\""
+//            buildConfigField "String", "DEFAULT_API_URL", "\"http://t-api.playcc.net/\""
             applicationId "com.friendly.test"
             buildConfigField "int", "GOOGLE_FCM_PUSH_BUZID", "18414"
             //客服id聊天

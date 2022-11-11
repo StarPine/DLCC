@@ -2258,6 +2258,7 @@
     <string name="playcc_update_version_text2">立即升級</string>
     <string name="playcc_update_version_text3">是否升級</string>
     <string name="playcc_update_version_text4">忽略此版本</string>
+    <string name="playcc_update_version_text5">更新內容：</string>
     <string name="playcc_coinpusher_history_text1">展示近7天中獎歷史結果</string>
     <string name="playcc_coinpusher_history_text2">Lv%s號機</string>
     <!--PlayCC-APP-END-->

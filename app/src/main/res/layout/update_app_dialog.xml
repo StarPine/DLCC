@@ -1,57 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <RelativeLayout
+        android:layout_width="325dp"
+        android:layout_height="459dp"
         android:background="@drawable/version_update_bg"
         android:orientation="vertical">
 
+        <ImageView
+            android:id="@+id/iv_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="15dp"
+            android:src="@mipmap/lib_update_app_close" />
+
         <LinearLayout
+            android:id="@+id/ll_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:orientation="vertical"
             android:padding="16dp">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="120dp"
                 android:text="@string/playcc_update_version_text1"
-                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:gravity="center_horizontal"
+                android:textColor="@android:color/black"
                 android:textSize="@dimen/px_45" />
 
             <TextView
                 android:id="@+id/tv_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="50dp"
+                android:layout_gravity="center_horizontal"
                 android:layout_marginTop="2dp"
-                android:text="1.0.5"
-                android:textColor="@android:color/white"
+                tools:text="V1.0.5"
                 android:textSize="@dimen/px_48" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="60dp"
-                android:text="@string/playcc_update_version_text3"
+                android:layout_marginTop="20dp"
+                android:text="@string/playcc_update_version_text5"
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/px_40"
                 android:textStyle="bold" />
 
             <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="120dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:layout_weight="1"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
                 android:scrollbars="none">
@@ -62,20 +72,30 @@
                     android:layout_height="wrap_content"
                     android:text="1，xxxxxxxx\n2，ooooooooo"
                     android:textColor="#666"
-                    android:textSize="20sp" />
+                    android:textSize="13sp" />
             </ScrollView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_commit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:orientation="vertical">
 
 
             <Button
                 android:id="@+id/btn_ok"
-                style="@style/ButtonPrimaryFilletVip"
+                android:background="@drawable/update_btn_bg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginRight="20dp"
                 android:layout_marginBottom="20dp"
                 android:text="@string/playcc_update_version_text2"
+                android:textSize="17sp"
                 android:textColor="@android:color/white" />
 
             <TextView
@@ -92,32 +112,11 @@
                 android:id="@+id/npb"
                 style="@style/UpdateAppNumberProgressBar_Red"
                 android:paddingTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:paddingBottom="10dp"
                 android:visibility="gone" />
-
         </LinearLayout>
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/ll_close"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center_horizontal"
-        android:orientation="vertical">
-
-        <View
-            android:layout_width="1dp"
-            android:layout_height="50dp"
-            android:background="#d8d8d8"
-            android:visibility="visible" />
-
-        <ImageView
-            android:id="@+id/iv_close"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/lib_update_app_close" />
-    </LinearLayout>
+    </RelativeLayout>
 
 </LinearLayout>

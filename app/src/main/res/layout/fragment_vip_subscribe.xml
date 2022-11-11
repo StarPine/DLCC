@@ -28,6 +28,13 @@
         android:layout_height="match_parent"
         tools:context="com.fine.friendlycc.ui.mine.vipsubscribe.VipSubscribeFragment">
 
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_vip_title"
+
+            />
+
         <LinearLayout
             android:id="@+id/ll_vip_title"
             android:layout_width="match_parent"
@@ -38,12 +45,12 @@
                 android:id="@+id/status_bar_view"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:background="@color/black_848" />
+                android:background="@color/transparent" />
 
             <com.google.android.material.appbar.AppBarLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/black_848"
+                android:background="@color/transparent"
                 android:theme="@style/AppTheme.AppBarOverlay"
                 app:elevation="0dp">
 
@@ -74,7 +81,6 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/bg_vip_all"
                     android:gravity="center_horizontal"
                     android:orientation="vertical"
                     android:paddingBottom="10dp">
@@ -139,6 +145,7 @@
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="20dp"
                         android:paddingStart="15dp">
 
                         <androidx.recyclerview.widget.RecyclerView
@@ -160,7 +167,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/black_848"
+                    android:background="@drawable/bg_vip_privilege"
+                    android:layout_marginTop="-20dp"
                     android:gravity="center_horizontal"
                     android:orientation="vertical">
 
@@ -181,7 +189,7 @@
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/black_558"
+                        android:background="@color/black_382"
                         android:paddingStart="5dp">
 
                         <androidx.recyclerview.widget.RecyclerView
@@ -201,7 +209,7 @@
                         android:id="@+id/tv_vip_service_tip"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/black_558"
+                        android:background="@color/black_382"
                         android:padding="15dp"
                         android:text="@string/playcc_vip_service_tips"
                         android:textColor="@color/pseekbar_process_off"
@@ -217,7 +225,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:background="@color/black_848"
+            android:background="@color/black_382"
             android:paddingTop="15dp"
             android:paddingBottom="15dp"
             tools:visibility="visible">

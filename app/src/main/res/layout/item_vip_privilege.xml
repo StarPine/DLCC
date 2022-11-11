@@ -15,7 +15,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/black_558"
+        android:background="@color/black_382"
         android:gravity="center_vertical"
         android:padding="10dp">
 
