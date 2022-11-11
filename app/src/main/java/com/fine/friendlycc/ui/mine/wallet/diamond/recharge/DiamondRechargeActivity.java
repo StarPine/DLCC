@@ -103,6 +103,10 @@ public class DiamondRechargeActivity extends BaseActivity<ActivityDiamondRecharg
             pay(payCode);
         });
 
+        viewModel.stopRefresh.observe(this, payCode -> {
+            binding.smRefreshLayout.finishRefresh();
+        });
+
         viewModel.paySuccess.observe(this, goodsEntity -> {
             showRewardDialog();
         });

@@ -44,7 +44,6 @@
 
         </LinearLayout>
 
-
         <View
             android:id="@+id/status_bar_view"
             android:layout_width="match_parent"
@@ -93,122 +92,130 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
-        <ScrollView
+        <com.scwang.smart.refresh.layout.SmartRefreshLayout
+            android:id="@+id/sm_refresh_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
             android:layout_above="@+id/ll_nowbuy"
             android:layout_below="@+id/top_bar"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp">
+            app:onRefreshCommand="@{viewModel.onRefreshCommand}">
 
-            <LinearLayout
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/bg_diamod_recharge_head"
-                    android:padding="10dp">
-
-                    <LinearLayout
-                        onClickCommand="@{viewModel.toVipCenter}"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
-                            android:src="@{viewModel.isMale?@drawable/icon_male_diamond:@drawable/icon_female_diamond}"
-                            tools:src="@drawable/icon_male_diamond" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@{viewModel.diamondInfo.isVip == 0 ? @string/playcc_nonactivated : viewModel.diamondInfo.endTime}"
-                            android:textColor="@color/text_yellow2"
-                            android:visibility="@{viewModel.isMale?View.VISIBLE:View.GONE}"
-                            tools:visibility="gone" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:gravity="center"
-                        android:orientation="horizontal"
-                        android:paddingTop="20dp">
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/icon_diamond_head" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:text="@{viewModel.getTotalCoin(viewModel.diamondInfo)}"
-                            android:textColor="@color/toolbar_title_color"
-                            android:textSize="@dimen/alivc_common_font_22"
-                            android:textStyle="bold"
-                            tools:text="9999999+" />
-                    </LinearLayout>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/playcc_diamond_my_diamond"
-                        android:textColor="@color/toolbar_title_color"
-                        android:textSize="@dimen/text_size_middle"
-                        android:textStyle="bold" />
-                </RelativeLayout>
+                android:layout_height="match_parent"
+                >
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/white"
-                    android:orientation="vertical"
-                    android:padding="10dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="5dp"
-                        android:text="@string/playcc_diamond_choose_a_plan"
-                        android:textColor="@color/toolbar_title_color"
-                        android:textSize="@dimen/text_size_big"
-                        android:textStyle="bold" />
+                    android:orientation="vertical">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/white">
+                        android:background="@drawable/bg_diamod_recharge_head"
+                        android:padding="10dp">
 
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/rcv_diamond_recharge"
-                            android:layout_width="match_parent"
+                        <LinearLayout
+                            onClickCommand="@{viewModel.toVipCenter}"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            binding:adapter="@{viewModel.diamondRechargeAdapter}"
-                            binding:itemBinding="@{viewModel.diamondRechargeItem}"
-                            binding:items="@{viewModel.diamondRechargeList}"
-                            binding:layoutManager="@{LayoutManagers.linear(LinearLayoutManager.VERTICAL,false)}"
-                            tools:itemCount="8"
-                            tools:layoutManager="LinearLayoutManager"
-                            tools:listitem="@layout/item_diamond_recharge" />
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="10dp"
+                                android:src="@{viewModel.isMale?@drawable/icon_male_diamond:@drawable/icon_female_diamond}"
+                                tools:src="@drawable/icon_male_diamond" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@{viewModel.diamondInfo.isVip == 0 ? @string/playcc_nonactivated : viewModel.diamondInfo.endTime}"
+                                android:textColor="@color/text_yellow2"
+                                android:visibility="@{viewModel.isMale?View.VISIBLE:View.GONE}"
+                                tools:visibility="gone" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:paddingTop="20dp">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/icon_diamond_head" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:text="@{viewModel.getTotalCoin(viewModel.diamondInfo)}"
+                                android:textColor="@color/toolbar_title_color"
+                                android:textSize="@dimen/alivc_common_font_22"
+                                android:textStyle="bold"
+                                tools:text="9999999+" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/playcc_diamond_my_diamond"
+                            android:textColor="@color/toolbar_title_color"
+                            android:textSize="@dimen/text_size_middle"
+                            android:textStyle="bold" />
                     </RelativeLayout>
 
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:orientation="vertical"
+                        android:padding="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="5dp"
+                            android:text="@string/playcc_diamond_choose_a_plan"
+                            android:textColor="@color/toolbar_title_color"
+                            android:textSize="@dimen/text_size_big"
+                            android:textStyle="bold" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white">
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/rcv_diamond_recharge"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                binding:adapter="@{viewModel.diamondRechargeAdapter}"
+                                binding:itemBinding="@{viewModel.diamondRechargeItem}"
+                                binding:items="@{viewModel.diamondRechargeList}"
+                                binding:layoutManager="@{LayoutManagers.linear(LinearLayoutManager.VERTICAL,false)}"
+                                tools:itemCount="8"
+                                tools:layoutManager="LinearLayoutManager"
+                                tools:listitem="@layout/item_diamond_recharge" />
+                        </RelativeLayout>
+
+                    </LinearLayout>
                 </LinearLayout>
-            </LinearLayout>
-        </ScrollView>
+            </ScrollView>
+        </com.scwang.smart.refresh.layout.SmartRefreshLayout>
 
 
         <LinearLayout

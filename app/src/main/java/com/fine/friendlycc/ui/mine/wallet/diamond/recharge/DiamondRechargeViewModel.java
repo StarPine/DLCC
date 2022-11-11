@@ -56,12 +56,17 @@ public class DiamondRechargeViewModel extends BaseViewModel<AppRepository> {
     public int selectedPosition = -1;
     public SingleLiveEvent<String> payOnClick = new SingleLiveEvent();
     public SingleLiveEvent<GoodsEntity> paySuccess = new SingleLiveEvent();
+    public SingleLiveEvent<Void> stopRefresh = new SingleLiveEvent();
 
     /**
      * 确认支付
      */
     public BindingCommand confirmPayOnClick = new BindingCommand(() -> {
         createOrder();
+    });
+
+    public BindingCommand onRefreshCommand = new BindingCommand(() -> {
+        getRechargeList();
     });
 
     /**
@@ -224,6 +229,7 @@ public class DiamondRechargeViewModel extends BaseViewModel<AppRepository> {
                     @Override
                     public void onComplete() {
                         dismissHUD();
+                        stopRefresh.call();
                     }
                 });
     }
