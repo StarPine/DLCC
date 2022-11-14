@@ -1,7 +1,5 @@
 package com.fine.friendlycc.ui.main;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import android.app.Dialog;
 import android.app.Service;
 import android.os.Bundle;
@@ -709,6 +707,8 @@ public class MainFragment extends BaseFragment<FragmentMainBinding, MainViewMode
                 binding.navigationRadioImg.setImageResource(R.drawable.tab_radio_checked);
             } else if (id == R.id.navigation_rank_img) {
                 mainViewPager.setCurrentItem(2, false);
+                binding.navigationRankImg.setVisibility(View.VISIBLE);
+                binding.navigationRankImg.setImageResource(R.drawable.toolbar_icon_center_checked);
             } else if (id == R.id.navigation_message_img) {
                 mainViewPager.setCurrentItem(3, false);
                 binding.navigationMessageImg.setVisibility(View.VISIBLE);
@@ -729,21 +729,12 @@ public class MainFragment extends BaseFragment<FragmentMainBinding, MainViewMode
         } else if (id == R.id.navigation_radio_img) { //广场
             binding.navigationRadioImg.setImageResource(R.drawable.tab_radio_normal);
         } else if (id == R.id.navigation_rank_img) { //任务中心
-            int ImgSrcPath = TbarCenterImgConfig.getInstance().getImgSrcPath();
-            if(ImgSrcPath!=-1){
-                binding.navigationRankImg.setImageResource(ImgSrcPath);
-            }else{
-                binding.navigationRankImg.setImageResource(R.drawable.toolbar_icon_center);
-            }
+            binding.navigationRankImg.setImageResource(R.drawable.toolbar_icon_center_normal);
             binding.navigationRankText.setTextColor(getResources().getColor(R.color.navigation_checkno));
         } else if (id == R.id.navigation_message_img) { //讯息页面
             binding.navigationMessageImg.setImageResource(R.drawable.tab_message_normal);
         } else if (id == R.id.navigation_mine_img) { //我的页面
-            if (ConfigManager.getInstance().isMale()) {
-                binding.navigationMineImg.setImageResource(R.drawable.tab_mine_male_image);
-            } else {
-                binding.navigationMineImg.setImageResource(R.drawable.tab_mine_female_normal);
-            }
+            binding.navigationMineImg.setImageResource(R.drawable.tab_mine_female_normal);
         }
     }
     @Override
