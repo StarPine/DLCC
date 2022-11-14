@@ -71,11 +71,11 @@ public class AppConfig {
     /**
      * 服务条款url
      */
-    public static final String TERMS_OF_SERVICE_URL = "https://sites.google.com/view/playchat-platformuseragreement";
+    public static final String TERMS_OF_SERVICE_URL = "https://sites.google.com/view/playcc-user";
     /**
      * 隐私政策url
      */
-    public static final String PRIVACY_POLICY_URL = "https://sites.google.com/view/playchat-privacy-agreement";
+    public static final String PRIVACY_POLICY_URL = "https://sites.google.com/view/playcc-privacy";
 
     //新IM 发送图片oss文件夹定义
     public static String OSS_CUSTOM_FILE_NAME_CHAT = "chat";
