@@ -1,6 +1,7 @@
 package com.fine.friendlycc.ui.login;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -15,6 +16,10 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.RequestBuilder;
+import com.bumptech.glide.request.FutureTarget;
+import com.bumptech.glide.request.target.SimpleTarget;
 import com.fine.friendlycc.BR;
 import com.fine.friendlycc.R;
 import com.fine.friendlycc.app.AppConfig;
@@ -45,8 +50,11 @@ import com.google.android.gms.tasks.Task;
 
 import org.json.JSONObject;
 
+import java.io.File;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.concurrent.ExecutionException;
 
 import me.goldze.mvvmhabit.utils.ToastUtils;
 
@@ -257,6 +265,8 @@ public class LoginFragment extends BaseFragment<FragmentLoginBinding, LoginViewM
                 overseasUserEntity.setEmail(signInAccount.getEmail());
                 overseasUserEntity.setName(signInAccount.getDisplayName());
                 overseasUserEntity.setPhoto(signInAccount.getPhotoUrl() == null ? null : String.valueOf(signInAccount.getPhotoUrl()));
+                toLocalPhoto(overseasUserEntity);
+
                 AppConfig.overseasUserEntity = overseasUserEntity;
                 viewModel.authLogin(signInAccount.getId(), "google", overseasUserEntity.getEmail(), null, null, null);
                 AppContext.instance().logEvent(AppsFlyerEvent.LOG_IN_WITH_GOOGLE);
@@ -322,6 +332,21 @@ public class LoginFragment extends BaseFragment<FragmentLoginBinding, LoginViewM
             //ToastUtils.showShort(R.string.error_google);
         }
 
+    }
+
+    private void toLocalPhoto(OverseasUserEntity overseasUserEntity) {
+        FutureTarget<File> future = Glide.with(mActivity)
+                .load(overseasUserEntity.getPhoto())
+                .downloadOnly(500, 500);
+        try {
+            File cacheFile = future.get();
+            //图片缓存路径
+            overseasUserEntity.setPhoto(cacheFile.getAbsolutePath());
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
     }
 
     ActivityResultLauncher<Intent> toGoogleLoginIntent = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
