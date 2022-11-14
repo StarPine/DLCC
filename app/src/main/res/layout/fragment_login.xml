@@ -23,77 +23,40 @@
 
         <ImageView
             android:id="@+id/login_button"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_above="@+id/ll_hint"
-            android:layout_marginStart="50dp"
-            android:layout_marginEnd="50dp"
-            android:layout_marginBottom="20dp"
-            android:src="@drawable/login_facebook_btn_bg" />
-
-        <LinearLayout
-            android:id="@+id/ll_hint"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/auth_login_layout"
-            android:layout_centerInParent="true"
-            android:layout_marginBottom="15dp"
-            android:gravity="center_horizontal">
+            android:layout_centerHorizontal="true"
+            android:layout_above="@+id/iv_google_login"
+            android:layout_marginBottom="13dp"
+            android:src="@drawable/login_facebook_btn_bg" />
 
-            <View
-                android:layout_width="40dp"
-                android:layout_height="1dp"
-                android:layout_gravity="center"
-                android:background="@color/toolbar_title_color" />
+        <ImageView
+            android:id="@+id/iv_google_login"
+            android:layout_above="@+id/iv_phone_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/login_google_btn"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="13dp"
+            android:orientation="vertical" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:text="@string/register_bom_title2"
-                android:textColor="@color/toolbar_title_color" />
-
-            <View
-                android:layout_width="40dp"
-                android:layout_height="1dp"
-                android:layout_gravity="center"
-                android:background="@color/toolbar_title_color" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/auth_login_layout"
-            android:layout_width="match_parent"
+        <ImageView
+            android:id="@+id/iv_phone_login"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@+id/bottom_layout"
-            android:layout_marginBottom="20dp"
-            android:gravity="center"
-            android:orientation="horizontal">
+            android:background="@drawable/login_phone_btn"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="30dp"
+            binding:onClickCommand="@{viewModel.registerOnClickCommand}" />
 
-            <ImageView
-                android:id="@+id/iv_google_login"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/login_google_btn"
-                android:orientation="vertical" />
-
-            <ImageView
-                android:id="@+id/iv_phone_login"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="40dp"
-                android:background="@drawable/login_phone_btn"
-                binding:onClickCommand="@{viewModel.registerOnClickCommand}" />
-
-
-        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/bottom_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="34dp"
+            android:layout_marginBottom="48dp"
             android:gravity="center"
             android:orientation="horizontal">
 
@@ -102,8 +65,10 @@
                 android:layout_height="wrap_content"
                 android:button="@null"
                 android:checked="@={viewModel.agree}"
-                android:drawableStart="@drawable/checkbox_button_login"
-                android:padding="10dp" />
+                android:drawableStart="@drawable/checkbox_style_login"
+                android:padding="10dp"
+                tools:checked="false"
+                />
 
             <TextView
                 android:layout_width="wrap_content"

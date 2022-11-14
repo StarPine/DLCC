@@ -20,12 +20,13 @@
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:background="@drawable/bg_last_login_bubble"
-            android:textSize="13dp"
+            android:textSize="11sp"
             android:gravity="center"
             android:paddingTop="5dp"
             android:paddingStart="5dp"
             android:paddingBottom="15dp"
-            android:text="@string/playcc_last_login"/>
+            android:text="@string/playcc_last_login"
+            tools:ignore="RtlSymmetry" />
 
 
     </LinearLayout>

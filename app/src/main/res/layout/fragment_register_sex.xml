@@ -226,7 +226,7 @@
                         android:layout_marginTop="40dp"
                         android:layout_marginEnd="20dp"
                         android:layout_marginBottom="20dp"
-                        android:background="@drawable/btn_perfect_profile_sub"
+                        android:background="@drawable/btn_phone_login"
                         binding:onClickCommand="@{viewModel.submitClick}" />
                 </LinearLayout>
             </LinearLayout>

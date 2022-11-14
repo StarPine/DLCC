@@ -135,8 +135,10 @@
         <Button
             android:id="@+id/btn_confirm"
             style="@style/ButtonPrimary"
-            android:layout_width="match_parent"
-            android:layout_height="52dp"
+            android:background="@drawable/btn_confirm_bg"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_below="@+id/tv_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"

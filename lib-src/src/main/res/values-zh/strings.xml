@@ -2145,6 +2145,7 @@
 
     <string name="playchat_choose_area_title">地區</string>
     <string name="playcc_contact_empty_text">暫無常聯繫，快去聊天吧</string>
+    <string name="playcc_contact_empty_text2">還沒有消息，快去聊天吧</string>
     <string name="playcc_contact_text1">設定常聯繫成功</string>
     <string name="playcc_contact_text2">已取消常聯繫</string>
     <string name="playcc_mine_title_btn_exclusive">專屬招呼</string>

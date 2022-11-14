@@ -241,11 +241,11 @@ public class LoginFragment extends BaseFragment<FragmentLoginBinding, LoginViewM
             int popWidth = popupWindow.getContentView().getMeasuredWidth();
             int popHeight = popupWindow.getContentView().getMeasuredHeight();
             if (loginType.equals("facebook")) {
-                popupWindow.showAsDropDown(binding.loginButton, binding.loginButton.getHeight() + popWidth / 2, -binding.loginButton.getHeight() - popHeight / 2);
+                popupWindow.showAsDropDown(binding.loginButton, binding.loginButton.getWidth() + popWidth, -binding.loginButton.getHeight() - popHeight / 2);
             } else if (loginType.equals("google")) {
-                popupWindow.showAsDropDown(binding.ivGoogleLogin, -popWidth / 2 + binding.ivGoogleLogin.getHeight() / 2, -binding.ivGoogleLogin.getHeight() - popHeight);
+                popupWindow.showAsDropDown(binding.ivGoogleLogin, binding.ivGoogleLogin.getWidth() + popWidth, -binding.ivGoogleLogin.getHeight() - popHeight/2);
             } else if (loginType.equals("phone")) {
-                popupWindow.showAsDropDown(binding.ivPhoneLogin, -popWidth / 2 + binding.ivPhoneLogin.getHeight() / 2, -binding.ivPhoneLogin.getHeight() - popHeight);
+                popupWindow.showAsDropDown(binding.ivPhoneLogin, binding.ivPhoneLogin.getWidth() - popWidth, -binding.ivPhoneLogin.getHeight() - popHeight/2);
             }
         }
     }

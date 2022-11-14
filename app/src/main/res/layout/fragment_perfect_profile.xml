@@ -66,14 +66,14 @@
 
                 <com.fine.friendlycc.widget.image.CircleImageView
                     android:id="@+id/img_avatar"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="44dp"
                     android:scaleType="fitXY"
-                    android:src="@drawable/perfect_profile_avatar"
-                    binding:imageErrorPlaceholderRes="@{R.drawable.perfect_profile_avatar}"
-                    binding:imagePlaceholderRes="@{R.drawable.perfect_profile_avatar}"
+                    android:src="@drawable/default_avatar_signin"
+                    binding:imageErrorPlaceholderRes="@{R.drawable.default_avatar_signin}"
+                    binding:imagePlaceholderRes="@{R.drawable.default_avatar_signin}"
                     binding:imageThumbPath="@{viewModel.UserAvatar}"
                     binding:onClickCommand="@{viewModel.avatarOnClickCommand}"
                     tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
@@ -126,7 +126,7 @@
                     android:layout_height="60dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="80dp"
-                    android:background="@drawable/btn_perfect_profile_sub"
+                    android:background="@drawable/btn_phone_login"
                     binding:onClickCommand="@{viewModel.nextViewClick}" />
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
