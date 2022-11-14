@@ -379,6 +379,13 @@ public class ConversationPresenter {
                 }
             }
         }
+
+        //非好友列表，判断数据是否为空
+        if (conversationList.size() <= 0 && !isFriendConversation){
+            if(loadConversationCallback!=null){
+                loadConversationCallback.isConversationEmpty(true);
+            }
+        }
     }
 
     public void setAdapter(IConversationListAdapter adapter) {
