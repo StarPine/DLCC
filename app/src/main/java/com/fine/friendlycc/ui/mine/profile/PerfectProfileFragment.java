@@ -61,7 +61,6 @@ public class PerfectProfileFragment extends BaseFragment<FragmentPerfectProfileB
         super.initViewObservable();
         if (AppConfig.overseasUserEntity != null) {
             viewModel.UserName.set(AppConfig.overseasUserEntity.getName());
-            viewModel.UserAvatar.set(AppConfig.overseasUserEntity.getPhoto());
         }
         viewModel.uc.clickAvatar.observe(this, new Observer<Void>() {
             @Override
