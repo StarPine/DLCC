@@ -7,13 +7,11 @@
     android:orientation="vertical">
 
     <RelativeLayout
-        android:layout_width="274dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="43dp"
-        android:layout_marginRight="43dp"
+        android:layout_width="294dp"
+        android:layout_height="478dp"
         android:background="@drawable/bg_dialog_vip_retain"
         android:gravity="center"
-        android:minWidth="319dp"
+        android:minWidth="294dp"
         android:orientation="vertical">
 
         <TextView
@@ -23,32 +21,33 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="120dp"
             android:text="@string/playcc_vip_ratain_title"
-            android:textColor="@color/coffee_11d"
+            android:textColor="@color/bule_483"
             android:textSize="16sp"
             android:textStyle="bold" />
 
         <LinearLayout
             android:id="@+id/ll_privileges"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="267dp"
+            android:layout_height="209dp"
             android:layout_below="@+id/tv_title"
-            android:layout_margin="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="18dp"
+            android:layout_centerHorizontal="true"
             android:background="@drawable/bg_vip_retain_privileges"
             android:minHeight="160dp"
             android:orientation="vertical" />
 
         <Button
             android:id="@+id/btn_buy"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_width="250dp"
+            android:layout_height="43dp"
             android:layout_below="@+id/ll_privileges"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="12dp"
-            android:background="@drawable/button_background_bug"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="16dp"
+            android:textSize="17sp"
+            android:background="@drawable/btn_confirm_bg"
             android:text="@string/playcc_continue_to_now"
-            android:textColor="@color/yellow_dad" />
+            android:textColor="@color/white" />
 
         <TextView
             android:id="@+id/tv_give_up"
@@ -56,10 +55,10 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/btn_buy"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="15dp"
+            android:layout_marginBottom="19dp"
             android:text="@string/playcc_vip_retain_give_up"
-            android:textColor="@color/yellow_a44"
-            android:textSize="16sp" />
+            android:textColor="@color/bule_8A6"
+            android:textSize="14sp" />
 
     </RelativeLayout>
 </LinearLayout>

@@ -19,8 +19,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toEndOf="@+id/iv_privilege_icon"
-        android:textColor="@color/coffee_11d"
-        android:textSize="12sp"
+        android:textColor="@color/bule_483"
+        android:textSize="15sp"
         android:textStyle="bold"
         tools:text="免費鑽石" />
 
@@ -30,8 +30,8 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/iv_privilege_icon"
         android:layout_toEndOf="@+id/iv_privilege_icon"
-        android:textColor="@color/coffee_11d"
-        android:textSize="@dimen/text_size_1067"
+        android:textColor="@color/bule_483"
+        android:textSize="13sp"
         android:ellipsize="end"
         android:maxLines="1"
         tools:text="巨額鑽石免費贈送！登陸必得！ " />
