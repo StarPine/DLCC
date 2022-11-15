@@ -137,7 +137,7 @@
                         android:layout_centerInParent="true"
                         android:layout_toEndOf="@+id/item_entity_name1"
                         android:visibility="gone"
-                        app:srcCompat="@drawable/icon_is_vip" />
+                        app:srcCompat="@drawable/ic_real_people" />
                 </LinearLayout>
 
                 <TextView
@@ -220,7 +220,7 @@
                         android:layout_centerInParent="true"
                         android:layout_toEndOf="@+id/item_entity_name2"
                         android:visibility="gone"
-                        app:srcCompat="@drawable/icon_is_vip" />
+                        app:srcCompat="@drawable/ic_real_people" />
                 </LinearLayout>
 
                 <TextView
@@ -304,7 +304,7 @@
                         android:layout_centerInParent="true"
                         android:layout_toEndOf="@+id/item_entity_name3"
                         android:visibility="gone"
-                        app:srcCompat="@drawable/icon_is_vip" />
+                        app:srcCompat="@drawable/ic_real_people" />
                 </LinearLayout>
 
                 <TextView
@@ -388,7 +388,7 @@
                         android:layout_centerInParent="true"
                         android:layout_toEndOf="@+id/item_entity_name4"
                         android:visibility="gone"
-                        app:srcCompat="@drawable/icon_is_vip" />
+                        app:srcCompat="@drawable/ic_real_people" />
                 </LinearLayout>
 
                 <TextView
@@ -471,7 +471,7 @@
                         android:layout_centerInParent="true"
                         android:layout_toEndOf="@+id/item_entity_name5"
                         android:visibility="gone"
-                        app:srcCompat="@drawable/icon_is_vip" />
+                        app:srcCompat="@drawable/ic_real_people" />
                 </LinearLayout>
 
                 <TextView
@@ -556,7 +556,7 @@
                         android:layout_centerInParent="true"
                         android:layout_toEndOf="@+id/item_entity_name6"
                         android:visibility="gone"
-                        app:srcCompat="@drawable/icon_is_vip" />
+                        app:srcCompat="@drawable/ic_real_people" />
                 </LinearLayout>
 
                 <TextView

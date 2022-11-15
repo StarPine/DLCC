@@ -98,7 +98,7 @@
                     tools:visibility="visible" />
                 <ImageView
                     android:visibility="@{viewModel.cardViewShow?View.GONE:View.VISIBLE}"
-                    android:src="@drawable/task_item_img1"
+                    android:src="@drawable/task_integral_balance_img"
                     android:layout_alignParentEnd="true"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="13dp"
