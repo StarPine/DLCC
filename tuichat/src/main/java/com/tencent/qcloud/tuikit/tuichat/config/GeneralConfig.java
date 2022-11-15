@@ -1,5 +1,7 @@
 package com.tencent.qcloud.tuikit.tuichat.config;
 
+import com.custom.view.BuildConfig;
+
 /**
  * TUIKit的通用配置，比如可以设置日志打印、音视频录制时长等
  */
@@ -16,7 +18,7 @@ public class GeneralConfig {
 
     private boolean isAndroidPrivateRing;
     //以读回执  IM发送消息已读回执
-    private boolean showRead = true;
+    private boolean showRead = !BuildConfig.DEBUG;
     private boolean reactEnable = false;
     private boolean replyEnable = true;
     private boolean quoteEnable = true;

@@ -588,11 +588,6 @@ public class MainFragment extends BaseFragment<FragmentMainBinding, MainViewMode
             binding.navigationRankImg.setImageResource(ImgSrcPath);
         }
         initView();
-        boolean sexFlag = ConfigManager.getInstance().isMale();
-        ConversationCommonHolder.sexMale = sexFlag;
-        binding.navigationMineImg.setImageResource(sexFlag ? R.drawable.tab_mine_male_image : R.drawable.tab_mine_female_normal);
-
-
     }
 
     /**
