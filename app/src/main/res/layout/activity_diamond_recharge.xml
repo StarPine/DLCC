@@ -161,7 +161,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="5dp"
+                                android:layout_marginStart="10dp"
                                 android:text="@{viewModel.getTotalCoin(viewModel.diamondInfo)}"
                                 android:textColor="@color/toolbar_title_color"
                                 android:textSize="29sp"
