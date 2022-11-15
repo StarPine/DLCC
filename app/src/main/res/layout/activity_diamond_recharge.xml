@@ -34,7 +34,7 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
+                android:layout_height="360dp"
                 android:background="@drawable/bg_diamond_recharge" />
 
             <View
@@ -149,6 +149,7 @@
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
                             android:gravity="center"
+                            android:layout_marginStart="14dp"
                             android:orientation="horizontal"
                             android:paddingTop="20dp">
 
@@ -163,7 +164,7 @@
                                 android:layout_marginStart="5dp"
                                 android:text="@{viewModel.getTotalCoin(viewModel.diamondInfo)}"
                                 android:textColor="@color/toolbar_title_color"
-                                android:textSize="@dimen/alivc_common_font_22"
+                                android:textSize="29sp"
                                 android:textStyle="bold"
                                 tools:text="9999999+" />
                         </LinearLayout>
@@ -171,6 +172,8 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="14dp"
+                            android:layout_marginStart="14dp"
                             android:text="@string/playcc_diamond_my_diamond"
                             android:textColor="@color/toolbar_title_color"
                             android:textSize="@dimen/text_size_middle"
@@ -188,10 +191,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
-                            android:layout_marginBottom="5dp"
+                            android:layout_marginBottom="14dp"
                             android:text="@string/playcc_diamond_choose_a_plan"
                             android:textColor="@color/toolbar_title_color"
-                            android:textSize="@dimen/text_size_big"
+                            android:textSize="17sp"
                             android:textStyle="bold" />
 
                         <RelativeLayout
