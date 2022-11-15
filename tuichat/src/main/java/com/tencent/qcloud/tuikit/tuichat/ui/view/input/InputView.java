@@ -224,13 +224,6 @@ public class InputView extends LinearLayout implements View.OnClickListener, Tex
         layoutParams.height = iconSize;
         mEmojiInputButton.setLayoutParams(layoutParams);
 
-        layoutParams = mAudioInputSwitchButton.getLayoutParams();
-        layoutParams.width = iconSize;
-        layoutParams.height = iconSize;
-        mAudioInputSwitchButton.setLayoutParams(layoutParams);
-
-        layoutParams.width = iconSize;
-        layoutParams.height = iconSize;
         phoneVideoBtn = findViewById(R.id.phone_video_btn);
         giftBtn = findViewById(R.id.gift_btn);
         callPhoneAudioBtn = findViewById(R.id.call_phone_audio_btn);

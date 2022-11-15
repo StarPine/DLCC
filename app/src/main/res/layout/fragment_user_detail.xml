@@ -345,7 +345,7 @@
                             android:id="@+id/fda"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_marginTop="-45dp"
+                            android:layout_marginTop="-40dp"
                             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
                             <RelativeLayout
@@ -371,7 +371,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_below="@+id/zuizong"
-                                android:layout_marginTop="-15dp"
+                                android:layout_marginTop="-18dp"
                                 android:visibility="@{viewModel.detailEntity.blacklistStatus == 0 ? View.VISIBLE : View.GONE}"
                                 app:cardCornerRadius="20dp"
                                 app:cardElevation="0dp">
