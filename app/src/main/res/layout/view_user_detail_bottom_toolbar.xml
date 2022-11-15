@@ -16,11 +16,11 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/home_bottom_nav_height"
-        android:layout_gravity="bottom"
-        android:background="@drawable/bottom_navigation_backgroup_user_detail"
-        android:gravity="center"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:layout_gravity="bottom"
+        android:paddingBottom="18dp"
+        android:paddingTop="18dp"
         android:visibility="@{viewModel.detailEntity.sex == null ? View.GONE:View.VISIBLE}">
 
         <LinearLayout
@@ -30,10 +30,10 @@
             android:gravity="center"
             android:orientation="horizontal">
 
-            <com.fine.friendlycc.widget.DrawableCenterTextView
+            <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableStart="@drawable/ic_toolbar_evaluate"
+                android:src="@drawable/ic_toolbar_evaluate"
                 android:gravity="center_vertical"
                 android:textColor="@drawable/user_detail_bottom_text_color"
                 android:textSize="13sp"
@@ -47,15 +47,15 @@
             android:gravity="center"
             android:orientation="horizontal">
 
-            <com.fine.friendlycc.widget.DrawableCenterTextView
+            <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableStart="@{viewModel.detailEntity.isAccost == 0?@drawable/ic_user_detail_accost:@drawable/ic_user_detail_send_message}"
+                android:src="@{viewModel.detailEntity.isAccost == 0?@drawable/ic_user_detail_accost:@drawable/ic_user_detail_send_message}"
                 android:gravity="center_vertical"
                 android:textColor="@drawable/user_detail_bottom_text_color"
                 android:textSize="13sp"
                 binding:onClickCommand="@{viewModel.chatOnClickCommand}"
-                tools:drawableStart="@drawable/ic_user_detail_accost"
+                tools:src="@drawable/ic_user_detail_accost"
                 />
         </LinearLayout>
 
@@ -65,10 +65,10 @@
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="horizontal">
-            <com.fine.friendlycc.widget.DrawableCenterTextView
+            <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableStart="@drawable/ic_user_detail_audio"
+                android:src="@drawable/ic_user_detail_audio"
                 android:textColor="@drawable/user_detail_bottom_text_color"
                 android:textSize="13sp"
                 binding:onClickCommand="@{viewModel.connMicOnClickCommand}" />
@@ -78,14 +78,14 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_weight="1.6"
             android:gravity="center"
             android:orientation="horizontal">
-            <com.fine.friendlycc.widget.DrawableCenterTextView
+            <ImageView
                 android:id="@+id/dt_social_account"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableStart="@drawable/ic_user_detail_video"
+                android:src="@drawable/ic_user_detail_video"
                 android:gravity="center_vertical"
                 android:textColor="@drawable/user_detail_bottom_text_color"
                 android:textSize="13sp"

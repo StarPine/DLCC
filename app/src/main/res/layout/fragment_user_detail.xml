@@ -157,14 +157,6 @@
                                             binding:imagePlaceholderRes="@{R.drawable.default_avatar}"
                                             binding:imageThumbPath="@{viewModel.detailEntity.avatar}" />
 
-                                        <ImageView
-                                            android:layout_width="match_parent"
-                                            android:layout_height="match_parent"
-                                            android:background="@drawable/radius_layout_mine"
-                                            android:elevation="99dp"
-                                            android:scaleType="fitXY"
-                                            android:src="@{viewModel.detailEntity.sex==1?@drawable/user_detail_default_back_img_male:@drawable/user_detail_default_back_img}"
-                                            tools:src="@drawable/user_detail_default_back_img_male" />
                                     </FrameLayout>
 
                                     <RelativeLayout
@@ -350,9 +342,10 @@
                         </com.google.android.material.appbar.AppBarLayout>
 
                         <RelativeLayout
+                            android:id="@+id/fda"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_marginTop="-28dp"
+                            android:layout_marginTop="-45dp"
                             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
                             <RelativeLayout
@@ -374,10 +367,11 @@
                             </RelativeLayout>
 
                             <androidx.cardview.widget.CardView
+                                android:id="@+id/ddd"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_below="@+id/zuizong"
-                                android:layout_marginTop="-35dp"
+                                android:layout_marginTop="-15dp"
                                 android:visibility="@{viewModel.detailEntity.blacklistStatus == 0 ? View.VISIBLE : View.GONE}"
                                 app:cardCornerRadius="20dp"
                                 app:cardElevation="0dp">
@@ -685,6 +679,7 @@
                                                         android:paddingEnd="30dp"
                                                         android:text="@{viewModel.unLockAlbumText}"
                                                         android:textSize="13sp"
+                                                        tools:text="@string/playcc_unlock_her_photo_album_member_free"
                                                         binding:onClickCommand="@{viewModel.applyCheckAlbumOnClickCommand}" />
 
                                                 </LinearLayout>
