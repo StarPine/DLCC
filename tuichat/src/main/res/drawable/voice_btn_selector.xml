@@ -4,14 +4,14 @@
     <item android:state_pressed="true">
         <shape>
             <solid android:color="@color/voice_pressed" />
-            <corners android:radius="3dp" />
+            <corners android:radius="16dp" />
         </shape>
     </item>
     <item>
 
         <shape>
             <solid android:color="@color/voice_normal" />
-            <corners android:radius="3dp" />
+            <corners android:radius="16dp" />
         </shape>
     </item> <!-- default -->
 

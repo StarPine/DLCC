@@ -631,10 +631,10 @@ public class TRTCCalling {
         //如果应用在后台,且没有允许后台拉起应用的权限时返回
         if (!isAppRunningForeground(mContext) && !PermissionUtil.hasPermission(mContext)) {
             TRTCLogger.d(TAG, "isAppRunningForeground is false");
-            //后台播被叫铃声
-            startRing();
             return;
         }
+        //后台播被叫铃声
+        startRing();
         processInvite(inviteID, inviter, groupID, inviteeList, signallingData);
     }
 

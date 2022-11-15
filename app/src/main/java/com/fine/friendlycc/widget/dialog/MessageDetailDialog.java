@@ -140,7 +140,7 @@ public class MessageDetailDialog {
      * @parame [context, touchOutside, audioText, videoText, audioAndVideoCallOnClickListener]
      * @Date 2022/3/1
      */
-    public static Dialog AudioAndVideoCallDialog(Context context, boolean touchOutside, String audioText, String videoText, AudioAndVideoCallOnClickListener audioAndVideoCallOnClickListener) {
+    public static Dialog AudioAndVideoCallDialog(Context context, boolean touchOutside,String audioTag, boolean isDouble, String audioText, String videoText, AudioAndVideoCallOnClickListener audioAndVideoCallOnClickListener) {
         Dialog dialog = new Dialog(context);
         dialog.setCanceledOnTouchOutside(touchOutside);
         dialog.setCancelable(true);
@@ -149,6 +149,16 @@ public class MessageDetailDialog {
         FrameLayout video_layout = view.findViewById(R.id.video_layout);
         FrameLayout audio_layout = view.findViewById(R.id.audio_layout);
         FrameLayout cancel_layout = view.findViewById(R.id.cancel_layout);
+        View line = view.findViewById(R.id.v_line);
+
+        if (!isDouble){
+            if (audioTag.equals("audio")){
+                video_layout.setVisibility(View.GONE);
+                line.setVisibility(View.GONE);
+            }else {
+                audio_layout.setVisibility(View.GONE);
+            }
+        }
         if (!StringUtils.isEmpty(audioText)) {
             TextView audioTx = view.findViewById(R.id.audio_text);
             audioTx.setText(audioText);

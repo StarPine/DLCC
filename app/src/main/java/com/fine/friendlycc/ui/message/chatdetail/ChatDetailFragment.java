@@ -127,6 +127,8 @@ public class ChatDetailFragment extends BaseToolbarFragment<FragmentChatDetailBi
     public static final String CHAT_INFO = "chatInfo";
 
     public static final String TAG = "ChatDetailFragment";
+    private static final String AUDIO_TAG = "audio";
+    private static final String VIDEO_TAG = "video";
     private ChatInfo mChatInfo;
     private InputView inputLayout;
     private String toSendMessageText = null;
@@ -342,17 +344,6 @@ public class ChatDetailFragment extends BaseToolbarFragment<FragmentChatDetailBi
         viewModel.uc.signGiftAnimEvent.observe(this, animEvent -> {
             //调用播放
             startSVGAnimotion();
-        });
-        //im价格加载提醒
-        viewModel.uc.imProfit.observe(this, unused -> {
-            String videoTips = viewModel.priceConfigEntityField.getCurrent().getVideoTips();
-            if (ConfigManager.getInstance().getTipMoneyShowFlag() && videoTips != null && videoTips.length() > 0) {
-                String replaceEnd = videoTips.replaceAll("\\(|\\)", "");
-                inputLayout.setProfitTip(replaceEnd, true);
-            } else {
-                inputLayout.setProfitTip("", false);
-            }
-
         });
         viewModel.uc.sendUserGiftError.observe(this, new Observer<Void>() {
             @Override
@@ -805,7 +796,7 @@ public class ChatDetailFragment extends BaseToolbarFragment<FragmentChatDetailBi
                         viewModel.addLike(getTaUserIdIM(), messageInfo.getId());
                     } else if (customIMTextEntity.getEvent() == 4) {//唤醒语音视频聊天
                         AppContext.instance().logEvent(AppsFlyerEvent.im_tips_vv);
-                        DialogCallPlayUser();
+                        DialogCallPlayUser(null, true);
                     } else if (customIMTextEntity.getEvent() == 11) {//真人认证
                         AppContext.instance().logEvent(AppsFlyerEvent.im_tips_auth);
                         if (ConfigManager.getInstance().isMale()) {
@@ -1236,7 +1227,16 @@ public class ChatDetailFragment extends BaseToolbarFragment<FragmentChatDetailBi
     }
 
     @Override
-    public void onClickCallPlayUser() {//点击调用拨打通话
+    public void onClickCallAudio() {//点击调用拨打通话
+        callingAble(AUDIO_TAG);
+    }
+
+    @Override
+    public void onClickCallVideo() {
+        callingAble(VIDEO_TAG);
+    }
+
+    private void callingAble(String audioTag){
         if (Status.mIsShowFloatWindow){
             me.goldze.mvvmhabit.utils.ToastUtils.showShort(R.string.audio_in_call);
             return;
@@ -1249,13 +1249,12 @@ public class ChatDetailFragment extends BaseToolbarFragment<FragmentChatDetailBi
                 Toast.makeText(mActivity, R.string.playcc_chat_detail_blocked, Toast.LENGTH_SHORT).show();
                 return;
             }
-            DialogCallPlayUser();
+            DialogCallPlayUser(audioTag, false);
         }
-
     }
 
     //调起拨打音视频通话
-    private void DialogCallPlayUser() {
+    private void DialogCallPlayUser(String audioTag, boolean isDouble) {
 
         if (viewModel.priceConfigEntityField != null) {
             AudioProfitTips = viewModel.priceConfigEntityField.getCurrent().getAudioProfitTips();
@@ -1269,76 +1268,87 @@ public class ChatDetailFragment extends BaseToolbarFragment<FragmentChatDetailBi
 
         MessageDetailDialog.AudioAndVideoCallDialog(mActivity,
                 true,
+                audioTag,
+                isDouble,
                 AudioProfitTips,
                 VideoProfitTips,
                 new MessageDetailDialog.AudioAndVideoCallOnClickListener() {
+
                     @Override
                     public void audioOnClick() {
-                        new RxPermissions(mActivity)
-                                .request(Manifest.permission.RECORD_AUDIO)
-                                .subscribe(granted -> {
-                                    if (granted) {
-                                        AppContext.instance().logEvent(AppsFlyerEvent.im_voice_call);
-                                        viewModel.getCallingInvitedInfo(1, getUserIdIM(), mChatInfo.getId());
-                                    } else {
-                                        TraceDialog.getInstance(mActivity)
-                                                .setCannelOnclick(new TraceDialog.CannelOnclick() {
-                                                    @Override
-                                                    public void cannel(Dialog dialog) {
-
-                                                    }
-                                                })
-                                                .setConfirmOnlick(new TraceDialog.ConfirmOnclick() {
-                                                    @Override
-                                                    public void confirm(Dialog dialog) {
-                                                        new RxPermissions(mActivity)
-                                                                .request(Manifest.permission.RECORD_AUDIO)
-                                                                .subscribe(granted -> {
-                                                                    if (granted) {
-                                                                        AppContext.instance().logEvent(AppsFlyerEvent.im_voice_call);
-                                                                        viewModel.getCallingInvitedInfo(1, getUserIdIM(), mChatInfo.getId());
-                                                                    }
-                                                                });
-                                                    }
-                                                }).AlertCallAudioPermissions().show();
-                                    }
-                                });
+                        startAudioCalling();
                     }
 
                     @Override
                     public void videoOnClick() {
-                        new RxPermissions(mActivity)
-                                .request(Manifest.permission.RECORD_AUDIO, Manifest.permission.CAMERA)
-                                .subscribe(granted -> {
-                                    if (granted) {
-                                        AppContext.instance().logEvent(AppsFlyerEvent.im_video_call);
-                                        viewModel.getCallingInvitedInfo(2, getUserIdIM(), mChatInfo.getId());
-                                    } else {
-                                        TraceDialog.getInstance(mActivity)
-                                                .setCannelOnclick(new TraceDialog.CannelOnclick() {
-                                                    @Override
-                                                    public void cannel(Dialog dialog) {
-
-                                                    }
-                                                })
-                                                .setConfirmOnlick(new TraceDialog.ConfirmOnclick() {
-                                                    @Override
-                                                    public void confirm(Dialog dialog) {
-                                                        new RxPermissions(mActivity)
-                                                                .request(Manifest.permission.RECORD_AUDIO, Manifest.permission.CAMERA)
-                                                                .subscribe(granted -> {
-                                                                    if (granted) {
-                                                                        AppContext.instance().logEvent(AppsFlyerEvent.im_video_call);
-                                                                        viewModel.getCallingInvitedInfo(2, getUserIdIM(), mChatInfo.getId());
-                                                                    }
-                                                                });
-                                                    }
-                                                })
-                                                .AlertCallAudioPermissions().show();
-                                    }
-                                });
+                        startVideoCalling();
                     }
                 }).show();
+    }
+
+    private void startVideoCalling() {
+        new RxPermissions(mActivity)
+                .request(Manifest.permission.RECORD_AUDIO, Manifest.permission.CAMERA)
+                .subscribe(granted -> {
+                    if (granted) {
+                        AppContext.instance().logEvent(AppsFlyerEvent.im_video_call);
+                        viewModel.getCallingInvitedInfo(2, getUserIdIM(), mChatInfo.getId());
+                    } else {
+                        TraceDialog.getInstance(mActivity)
+                                .setCannelOnclick(new TraceDialog.CannelOnclick() {
+                                    @Override
+                                    public void cannel(Dialog dialog) {
+
+                                    }
+                                })
+                                .setConfirmOnlick(new TraceDialog.ConfirmOnclick() {
+                                    @Override
+                                    public void confirm(Dialog dialog) {
+                                        new RxPermissions(mActivity)
+                                                .request(Manifest.permission.RECORD_AUDIO, Manifest.permission.CAMERA)
+                                                .subscribe(granted -> {
+                                                    if (granted) {
+                                                        AppContext.instance().logEvent(AppsFlyerEvent.im_video_call);
+                                                        viewModel.getCallingInvitedInfo(2, getUserIdIM(), mChatInfo.getId());
+                                                    }
+                                                });
+                                    }
+                                })
+                                .AlertCallAudioPermissions().show();
+                    }
+                });
+    }
+
+    private void startAudioCalling() {
+        new RxPermissions(mActivity)
+                .request(Manifest.permission.RECORD_AUDIO)
+                .subscribe(granted -> {
+                    if (granted) {
+                        AppContext.instance().logEvent(AppsFlyerEvent.im_voice_call);
+                        viewModel.getCallingInvitedInfo(1, getUserIdIM(), mChatInfo.getId());
+                    } else {
+                        TraceDialog.getInstance(mActivity)
+                                .setCannelOnclick(new TraceDialog.CannelOnclick() {
+                                    @Override
+                                    public void cannel(Dialog dialog) {
+
+                                    }
+                                })
+                                .setConfirmOnlick(new TraceDialog.ConfirmOnclick() {
+                                    @Override
+                                    public void confirm(Dialog dialog) {
+                                        new RxPermissions(mActivity)
+                                                .request(Manifest.permission.RECORD_AUDIO)
+                                                .subscribe(granted -> {
+                                                    if (granted) {
+                                                        AppContext.instance().logEvent(AppsFlyerEvent.im_voice_call);
+                                                        viewModel.getCallingInvitedInfo(1, getUserIdIM(), mChatInfo.getId());
+                                                    }
+                                                });
+                                    }
+                                }).AlertCallAudioPermissions().show();
+                    }
+                });
     }
 
     private void showLoaclRecharge(boolean isGiftSend) {
