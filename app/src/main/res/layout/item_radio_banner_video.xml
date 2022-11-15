@@ -31,9 +31,9 @@
                 android:scaleType="centerCrop"
                 android:src="@drawable/radio_dating_img_default"
                 app:riv_corner_radius="10dp"
-                binding:imageErrorPlaceholderRes="@{R.drawable.img_pc_default_load}"
+                binding:imageErrorPlaceholderRes="@{R.drawable.radio_dating_img_default}"
                 binding:imagePath='@{viewModel.adUserItemEntity.avatar}'
-                binding:imagePlaceholderRes="@{R.drawable.img_pc_default_load}"
+                binding:imagePlaceholderRes="@{R.drawable.radio_dating_img_default}"
                 binding:onClickCommand="@{viewModel.itemClick}"
                 binding:resizeH="@{217}"
                 binding:resizeW="@{165}" />

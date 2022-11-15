@@ -19,8 +19,8 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_gravity="bottom"
-        android:paddingBottom="18dp"
-        android:paddingTop="18dp"
+        android:paddingBottom="13dp"
+        android:paddingTop="13dp"
         android:visibility="@{viewModel.detailEntity.sex == null ? View.GONE:View.VISIBLE}">
 
         <LinearLayout
@@ -78,7 +78,7 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1.5"
+            android:layout_weight="2"
             android:gravity="center"
             android:orientation="horizontal">
             <ImageView

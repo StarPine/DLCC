@@ -29,20 +29,23 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/white"
-            android:visibility="gone">
+            android:visibility="gone"
+            tools:visibility="visible"
+            >
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/iv_empty"
                 android:layout_width="218dp"
                 android:layout_height="191dp"
-                android:layout_centerInParent="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="175dp"
                 android:src="@drawable/message_conversation_empty" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/iv_empty"
-                android:layout_marginTop="31dp"
+                android:layout_marginTop="10dp"
                 android:gravity="center"
                 android:text="@string/playcc_contact_empty_text2"
                 android:textColor="#ffbfbfbf"

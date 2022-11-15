@@ -638,9 +638,7 @@
                                                     android:layout_width="match_parent"
                                                     android:layout_height="wrap_content"
                                                     android:layout_alignTop="@+id/iv_photo"
-                                                    android:layout_toEndOf="@+id/iv_photo"
                                                     android:background="@color/white"
-                                                    android:clickable="true"
                                                     android:gravity="center"
                                                     android:orientation="vertical"
                                                     android:padding="20dp"
@@ -927,7 +925,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:background="@drawable/bottom_navigation_backgroup_user_detail"
             android:visibility="@{viewModel.detailEntity.blacklistStatus == 0 ? View.VISIBLE : View.GONE}">
 
             <include

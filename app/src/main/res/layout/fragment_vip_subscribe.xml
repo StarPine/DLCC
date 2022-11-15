@@ -113,7 +113,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="@{viewModel.vipInfoEntity.banner.title}"
-                                android:textColor="@color/coffee_11d"
+                                android:textColor="@color/bule_483"
                                 android:textSize="22sp"
                                 tools:text="超級鑽石VIP" />
 
@@ -122,7 +122,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="10dp"
                                 android:text="@{String.format(@string/playcc_deadline_is_up,viewModel.vipInfoEntity.endTime)}"
-                                android:textColor="@color/coffee_11d"
+                                android:textColor="@color/bule_483"
                                 android:textSize="16sp"
                                 android:visibility="@{viewModel.vipInfoEntity.isVip == 0? View.GONE :View.VISIBLE}"
                                 tools:visibility="gone" />
@@ -132,7 +132,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="10dp"
                                 android:text="@string/playcc_nonactivated"
-                                android:textColor="@color/coffee_11d"
+                                android:textColor="@color/bule_483"
                                 android:textSize="16sp"
                                 android:visibility="@{viewModel.vipInfoEntity.isVip == 1? View.GONE :View.VISIBLE}"
                                 tools:visibility="visible" />
@@ -238,7 +238,7 @@
                 android:background="@drawable/btn_bg_vip_buy2"
                 android:gravity="center"
                 android:text="@string/playcc_buy_now"
-                android:textColor="@color/vip_buy"
+                android:textColor="@color/bule_3C1"
                 android:textSize="@dimen/text_size_toolbar_title"
                 android:textStyle="bold"
                 binding:onClickCommand="@{viewModel.confirmOnClickCommand}" />

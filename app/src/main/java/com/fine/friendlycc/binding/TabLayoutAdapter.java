@@ -66,7 +66,7 @@ public class TabLayoutAdapter {
     }
 
     private static void tabUnSelectedSetting(ViewHolder holder) {
-        holder.mTabItemName.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL));
+        holder.mTabItemName.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
         holder.mTabItemName.setSelected(false);
         holder.mTabItemName.setTextSize(13);
         holder.mTabItemName.setTextColor(ColorUtils.getColor(R.color.play_chat_gray_3));
