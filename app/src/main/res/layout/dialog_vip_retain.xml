@@ -8,7 +8,7 @@
 
     <RelativeLayout
         android:layout_width="294dp"
-        android:layout_height="478dp"
+        android:layout_height="483dp"
         android:background="@drawable/bg_dialog_vip_retain"
         android:gravity="center"
         android:minWidth="294dp"
