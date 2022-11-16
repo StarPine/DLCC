@@ -1,5 +1,6 @@
 package com.fine.friendlycc.ui.home;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
@@ -48,6 +49,7 @@ import com.fine.friendlycc.widget.coinrechargesheet.CoinRechargeSheetView;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
+import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import java.util.List;
 
@@ -127,7 +129,28 @@ public class HomeMainFragment extends BaseFragment<FragmentHomeMainBinding, Home
 
         //展示首页广告位
         viewModel.getAdListBannber();
+        setLocal();
 
+    }
+
+    @SuppressLint("CheckResult")
+    private void setLocal() {
+        try {
+
+            new RxPermissions(this)
+                    .request(Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION)
+                    .subscribe(granted -> {
+                        if (granted) {
+                            viewModel.locationService.set(true);
+                            startLocation();
+                        } else {
+                            viewModel.locationService.set(false);
+                            RxBus.getDefault().post(new LocationChangeEvent(LocationChangeEvent.LOCATION_STATUS_FAILED));
+                        }
+                    });
+        } catch (Exception ignored) {
+
+        }
     }
 
     private void initViewPager2(){
