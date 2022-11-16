@@ -14,6 +14,7 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -750,8 +751,11 @@ public class MVDialog {
         contentView.offsetLeftAndRight(100);
         bottomDialog.getWindow().setGravity(Gravity.BOTTOM);
         bottomDialog.getWindow().setWindowAnimations(R.style.BottomDialog_Animation);
+        bottomDialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE |
+                WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
         EditText editText = contentView.findViewById(R.id.et_comment);
         TextView tvSize = contentView.findViewById(R.id.tv_size);
+        View hideView = contentView.findViewById(R.id.hide);
         editText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -772,8 +776,8 @@ public class MVDialog {
         editText.setFocusable(true);
         editText.setFocusableInTouchMode(true);
         editText.requestFocus();
-        InputMethodManager inputManager = (InputMethodManager) editText.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-        inputManager.showSoftInput(editText, 0);
+        InputMethodManager inputManager = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+        inputManager.showSoftInput(editText, InputMethodManager.SHOW_IMPLICIT);
         Button confirm = contentView.findViewById(R.id.btn_confirm);
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -782,6 +786,11 @@ public class MVDialog {
                     confirmComment.clickListItem(dialog, editText.getText().toString().trim());
                 }
             }
+        });
+        hideView.setOnClickListener(v -> {
+            inputManager.hideSoftInputFromWindow(editText.getWindowToken(), 0);
+            editText.clearFocus();
+            dismiss();
         });
         return bottomDialog;
     }
