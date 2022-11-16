@@ -33,6 +33,7 @@ import com.fine.friendlycc.utils.ListUtils;
 import com.fine.friendlycc.utils.StringUtil;
 import com.fine.friendlycc.R;
 import com.fine.friendlycc.widget.NineGridLockView;
+import com.tencent.qcloud.tuicore.util.ToastUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -1028,6 +1029,11 @@ public class MVDialog {
             @Override
             public void onClick(View v) {
                 String money = edtMoney.getText().toString();
+                int parseInt = Integer.parseInt(money);
+                if (parseInt <= 0 || money.startsWith("0")){
+                    ToastUtil.toastShortMessage(context.getResources().getString(R.string.playcc_photo_setting));
+                    return;
+                }
                 if (confirmMoneyOnclick != null) {
                     confirmMoneyOnclick.confirm(INSTANCE, money);
                 }

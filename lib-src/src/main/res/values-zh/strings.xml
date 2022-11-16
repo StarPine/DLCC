@@ -2263,5 +2263,6 @@
     <string name="playcc_coinpusher_history_text1">展示近7天中獎歷史結果</string>
     <string name="playcc_coinpusher_history_text2">Lv%s號機</string>
     <string name="playfun_valid_time">有效期</string>
+    <string name="playcc_photo_setting">設定查看鑽石不能為0</string>
     <!--PlayCC-APP-END-->
 </resources>
