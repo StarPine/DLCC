@@ -85,7 +85,7 @@ public class TrendItemViewModel extends MultiItemViewModel<BaseViewModel> {
 
             //拿到position
             if (itemEntity.getUser().getIsAccost() == 1) {
-                ChatUtils.chatUser(itemEntity.getImUserId(), itemEntity.getId(), itemEntity.getUser().getNickname(), viewModel);
+                ChatUtils.chatUser(itemEntity.getImUserId(), itemEntity.getUserId(), itemEntity.getUser().getNickname(), viewModel);
                 AppContext.instance().logEvent(AppsFlyerEvent.homepage_chat);
             } else {
                     //男女点击搭讪
