@@ -138,7 +138,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="@{viewModel.diamondInfo.isVip == 0 ? @string/playcc_nonactivated : viewModel.diamondInfo.endTime}"
-                                android:textColor="@color/text_yellow2"
+                                android:textColor="@color/text_9EA1B0"
                                 android:visibility="@{viewModel.isMale?View.VISIBLE:View.GONE}"
                                 tools:visibility="gone" />
 

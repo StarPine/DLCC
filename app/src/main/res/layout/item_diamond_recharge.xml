@@ -78,7 +78,7 @@
             android:layout_centerVertical="true"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="20dp"
-            android:text="@{viewModel.getPriceText}"
+            android:text="@{viewModel.getPriceText(viewModel.itemEntity)}"
             android:textColor="@{viewModel.itemEntity.type == 2?@color/yellow_544:@color/pseekbar_process}"
             android:textSize="@dimen/alivc_common_font_20"
             android:textStyle="bold"

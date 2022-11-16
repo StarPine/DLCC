@@ -38,8 +38,8 @@ public class DiamondRechargeItemViewModel extends MultiItemViewModel<DiamondRech
         }
     });
 
-    public String getPriceText(){
-        return itemEntity.get().getSymbol() + itemEntity.get().getSalePrice();
+    public String getPriceText(GoodsEntity itemEntity){
+        return itemEntity.getSymbol() + itemEntity.getSalePrice();
     }
 
     public Drawable getItemBg(){

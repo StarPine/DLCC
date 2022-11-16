@@ -68,6 +68,7 @@ public class DiamondRechargeActivity extends BaseActivity<ActivityDiamondRecharg
     @Override
     public void initData() {
         super.initData();
+        binding.smRefreshLayout.setEnableLoadMore(false);
         this.billingClientLifecycle = ((AppContext)getApplication()).getBillingClientLifecycle();
         if(billingClientLifecycle!=null){
             //查询并消耗本地历史订单类型： INAPP 支付购买  SUBS订阅
