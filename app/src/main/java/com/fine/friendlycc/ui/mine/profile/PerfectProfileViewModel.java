@@ -20,6 +20,7 @@ import com.fine.friendlycc.data.source.http.response.BaseResponse;
 import com.fine.friendlycc.entity.CheckNicknameEntity;
 import com.fine.friendlycc.entity.UserDataEntity;
 import com.fine.friendlycc.manager.ThirdPushTokenMgr;
+import com.fine.friendlycc.ui.login.LoginFragment;
 import com.fine.friendlycc.ui.login.LoginViewModel;
 import com.fine.friendlycc.ui.main.MainFragment;
 import com.fine.friendlycc.utils.FileUploadUtils;
@@ -213,7 +214,7 @@ public class PerfectProfileViewModel extends BaseViewModel<AppRepository> {
                         if (goMain) {
                             AppContext.instance().logEvent(AppsFlyerEvent.LOG_Edit_Profile);
                             ToastUtils.showShort(R.string.playcc_submit_success);
-                            startWithPopTo(MainFragment.class.getCanonicalName(), PerfectProfileFragment.class.getCanonicalName(), true);
+                            startWithPopTo(MainFragment.class.getCanonicalName(), LoginFragment.class.getCanonicalName(), true);
                         }
                     }
 
