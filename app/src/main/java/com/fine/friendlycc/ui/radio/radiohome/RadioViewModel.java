@@ -523,6 +523,21 @@ public class RadioViewModel extends BaseRefreshViewModel<AppRepository> {
                 });
     }
 
+    public boolean isShowEmpty(ObservableList<MultiItemViewModel> itemViewModels){
+        if (itemViewModels.size() > 0){
+            if (itemViewModels.size() == 1){
+                MultiItemViewModel multiItemViewModel = itemViewModels.get(0);
+                String itemType = (String) multiItemViewModel.getItemType();
+                if (itemType.equals(RadioRecycleType_trace)){
+                    return true;
+                }
+            }
+        }else {
+            return true;
+        }
+        return false;
+    }
+
     //获取用户广告列表
     public void getAdUserBanner() {
         model.getUserAdList(1)

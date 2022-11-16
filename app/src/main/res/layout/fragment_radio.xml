@@ -198,19 +198,53 @@
                     </RelativeLayout>
                 </com.google.android.material.appbar.AppBarLayout>
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rcv_radio"
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:overScrollMode="never"
-                    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-                    binding:adapter="@{viewModel.adapter}"
-                    binding:itemBinding="@{viewModel.radioItemBinding}"
-                    binding:items="@{viewModel.radioItems}"
-                    binding:layoutManager="@{LayoutManagers.linear()}"
-                    tools:itemCount="5"
-                    tools:layoutManager="LinearLayoutManager"
-                    tools:listitem="@layout/item_trend"/>
+                    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rcv_radio"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:overScrollMode="never"
+                        binding:adapter="@{viewModel.adapter}"
+                        binding:itemBinding="@{viewModel.radioItemBinding}"
+                        binding:items="@{viewModel.radioItems}"
+                        binding:layoutManager="@{LayoutManagers.linear()}"
+                        tools:itemCount="5"
+                        tools:layoutManager="LinearLayoutManager"
+                        tools:listitem="@layout/item_trend"/>
+
+                    <RelativeLayout
+                        android:id="@+id/rl_empty_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:visibility="@{!viewModel.isShowEmpty(viewModel.radioItems)? View.GONE:View.VISIBLE}"
+                        tools:visibility="gone"
+                        >
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/iv_empty"
+                            android:layout_width="218dp"
+                            android:layout_height="191dp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="38dp"
+                            android:src="@drawable/message_conversation_empty" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/iv_empty"
+                            android:layout_marginTop="10dp"
+                            android:gravity="center"
+                            android:text="@string/playcc_contact_empty_text3"
+                            android:textColor="#ffbfbfbf"
+                            android:textSize="16sp" />
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
             </androidx.coordinatorlayout.widget.CoordinatorLayout>
         </com.scwang.smart.refresh.layout.SmartRefreshLayout>
 
