@@ -596,12 +596,7 @@ public class UserDetailFragment extends BaseToolbarFragment<FragmentUserDetailBi
 
     @Override
     public void onClick(View view) {
-        if (view.getId() == R.id.me_avatar) {
-            if (viewModel.detailEntity.get() == null) {
-                return;
-            }
-            PictureSelectorUtil.previewImage(mActivity, StringUtil.getFullImageWatermarkUrl(viewModel.detailEntity.get().getAvatar()));
-        } else if (view.getId() == R.id.iv_back) {
+        if (view.getId() == R.id.iv_back) {
             onBackClick(null);
         } else if (view.getId() == R.id.black_back) {
             onBackClick(null);
