@@ -5,10 +5,19 @@ import java.util.List;
 
 public class CallingInviteInfo implements Serializable {
     UserProfileInfo userProfileInfo;
+    PaymentRelationBean paymentRelation;
     List<String> messages;
     private Integer roomId;
     private Integer userId;
     private Integer minutesRemaining;//剩余通话时长
+
+    public PaymentRelationBean getPaymentRelation() {
+        return paymentRelation;
+    }
+
+    public void setPaymentRelation(PaymentRelationBean paymentRelation) {
+        this.paymentRelation = paymentRelation;
+    }
 
     public Integer getRoomId() {
         return roomId;

@@ -112,7 +112,7 @@ public class VideoCallViewModel extends BaseViewModel<AppRepository> {
     //当前用户是否男性
     public boolean isMale = false;
     //收益开关
-    public boolean isShowTipMoney = false;
+    public ObservableField<Boolean> isShowTipMoney = new ObservableField(true);
     //当前用户是否为收款人
     public boolean isPayee = false;
     public boolean videoSuccess = false;
@@ -341,7 +341,7 @@ public class VideoCallViewModel extends BaseViewModel<AppRepository> {
                         mfromUserId = fromUserId;
                         mtoUserId = userId;
                         callingInviteInfoField.set(callingInviteInfo);
-                        if (model.readUserData().getSex() == 0) {
+                        if(callingInviteInfo.getPaymentRelation().getPayerUserId() == model.readUserData().getId()){
                             if (!ObjectUtils.isEmpty(callingInviteInfo.getMessages()) && callingInviteInfo.getMessages().size() > 0) {
                                 String valueData = "";
                                 for (String value : callingInviteInfo.getMessages()) {
@@ -398,7 +398,7 @@ public class VideoCallViewModel extends BaseViewModel<AppRepository> {
         this.mRole = role;
         this.mCallVideoView = view;
         this.isMale = ConfigManager.getInstance().isMale();
-        this.isShowTipMoney = ConfigManager.getInstance().getTipMoneyShowFlag();
+//        isShowTipMoney.set(ConfigManager.getInstance().getTipMoneyShowFlag());
         this.isCalledBinding.set(role == TUICalling.Role.CALLED);
         this.isCalledWaitingBinding.set(role == TUICalling.Role.CALLED);
     }
@@ -775,7 +775,7 @@ public class VideoCallViewModel extends BaseViewModel<AppRepository> {
                                     //礼物收益提示
                                     giftIncome(giftEntity);
                                 }else if (map_data != null && map_data.get("type") != null && map_data.get("type").equals("message_countdown")) {//对方余额不足
-                                    if (isPayee && isShowTipMoney) {
+                                    if (isPayee && isShowTipMoney.get()) {
                                         String data = (String) map_data.get("data");
                                         Map<String, Object> dataMapCountdown = new Gson().fromJson(data, Map.class);
                                         String isShow = (String) dataMapCountdown.get("is_show");

@@ -12,6 +12,7 @@ import com.blankj.utilcode.util.ObjectUtils;
 import com.blankj.utilcode.util.StringUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.fine.friendlycc.app.AppContext;
+import com.fine.friendlycc.app.Injection;
 import com.fine.friendlycc.data.AppRepository;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseDataResponse;
@@ -367,7 +368,8 @@ public class AudioCallingViewModel2 extends BaseViewModel<AppRepository> impleme
                     public void onSuccess(BaseDataResponse<CallingInviteInfo> callingInviteInfoBaseDataResponse) {
                         CallingInviteInfo callingInviteInfo = callingInviteInfoBaseDataResponse.getData();
                         roomId = callingInviteInfo.getRoomId();
-                        if (model.readUserData().getSex() == 0 && ConfigManager.getInstance().getTipMoneyShowFlag()) {
+                        if (callingInviteInfo.getPaymentRelation().getPayerUserId() == model.readUserData().getId()
+                                && ConfigManager.getInstance().getTipMoneyShowFlag()) {
                             if (!ObjectUtils.isEmpty(callingInviteInfo.getMessages()) && callingInviteInfo.getMessages().size() > 0) {
                                 String valueData = "";
                                 for (String value : callingInviteInfo.getMessages()) {

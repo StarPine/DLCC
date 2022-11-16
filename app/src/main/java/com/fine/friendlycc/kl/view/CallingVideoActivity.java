@@ -40,6 +40,7 @@ import com.fine.friendlycc.R;
 import com.fine.friendlycc.app.AppContext;
 import com.fine.friendlycc.app.AppViewModelFactory;
 import com.fine.friendlycc.app.AppsFlyerEvent;
+import com.fine.friendlycc.app.Injection;
 import com.fine.friendlycc.databinding.ActivityCallVideoBinding;
 import com.fine.friendlycc.entity.CallingInviteInfo;
 import com.fine.friendlycc.entity.CrystalDetailsConfigEntity;
@@ -288,7 +289,7 @@ public class CallingVideoActivity extends BaseActivity<ActivityCallVideoBinding,
             if (callingInviteInfo != null) {
                 viewModel.init(callUserId, toId, role, mCallView, callingInviteInfo.getRoomId());
                 viewModel.callingInviteInfoField.set(callingInviteInfo);
-                if (callingInviteInfo.getUserProfileInfo().getSex() == 1) {
+                if(callingInviteInfo.getPaymentRelation().getPayerUserId() == Injection.provideDemoRepository().readUserData().getId()){
                     if (!ObjectUtils.isEmpty(callingInviteInfo.getMessages()) && callingInviteInfo.getMessages().size() > 0) {
                         String valueData = "";
                         for (String value : callingInviteInfo.getMessages()) {
@@ -894,7 +895,7 @@ public class CallingVideoActivity extends BaseActivity<ActivityCallVideoBinding,
                 if (mTimeCount % 30 == 0){
                     viewModel.getRoomStatus(viewModel.roomId);
                 }
-                if (viewModel.callInfoLoaded && viewModel.isShowTipMoney){
+                if (viewModel.callInfoLoaded && viewModel.isShowTipMoney.get()){
                     //判断是否为付费方
                     if (!viewModel.isPayee) {
                         if (viewModel.totalMinutesRemaining <= viewModel.balanceNotEnoughTipsMinutes * 60) {

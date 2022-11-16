@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.blankj.utilcode.util.ObjectUtils;
 import com.fine.friendlycc.app.AppViewModelFactory;
+import com.fine.friendlycc.app.Injection;
 import com.fine.friendlycc.entity.CallingInviteInfo;
 import com.fine.friendlycc.event.AudioCallingCancelEvent;
 import com.fine.friendlycc.kl.viewmodel.AudioCallingViewModel2;
@@ -119,7 +120,8 @@ public class DialingAudioActivity extends BaseActivity<ActivityCallWaiting2Bindi
             if (callingInviteInfo != null) {
                 viewModel.init(callUserId, toId, role, callingInviteInfo.getRoomId());
                 viewModel.callingInviteInfoField.set(callingInviteInfo);
-                if (callingInviteInfo.getUserProfileInfo().getSex() == 1 && ConfigManager.getInstance().getTipMoneyShowFlag()) {
+                if (callingInviteInfo.getPaymentRelation().getPayerUserId() == Injection.provideDemoRepository().readUserData().getId()
+                        && ConfigManager.getInstance().getTipMoneyShowFlag()) {
                     if (!ObjectUtils.isEmpty(callingInviteInfo.getMessages()) && callingInviteInfo.getMessages().size() > 0) {
                         String valueData = "";
                         for (String value : callingInviteInfo.getMessages()) {
