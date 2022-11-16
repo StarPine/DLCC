@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.databinding.ObservableField;
 
 import com.blankj.utilcode.util.StringUtils;
+import com.fine.friendlycc.BR;
 import com.fine.friendlycc.data.AppRepository;
 import com.fine.friendlycc.data.source.http.exception.RequestException;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
@@ -24,6 +25,7 @@ import com.fine.friendlycc.ui.viewmodel.BaseParkViewModel;
 import me.goldze.mvvmhabit.bus.event.SingleLiveEvent;
 import me.goldze.mvvmhabit.utils.RxUtils;
 import me.goldze.mvvmhabit.utils.ToastUtils;
+import me.tatarka.bindingcollectionadapter2.ItemBinding;
 
 /**
  * @author wulei
@@ -33,6 +35,8 @@ public class SearchViewModel extends BaseParkViewModel<AppRepository> {
     public ObservableField<String> searchBarHint = new ObservableField<>();
 
     public ObservableField<String> searchText = new ObservableField<>();
+
+    public ItemBinding<BaseParkItemViewModel> searchItem = ItemBinding.of(BR.viewModel, R.layout.item_search);
 
     public ObservableField<TextView.OnEditorActionListener> onEditorActionListener = new ObservableField<>();
 

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="ResourceName">
+
+    <data>
+
+        <import type="com.fine.friendlycc.R" />
+
+        <import type="android.view.View" />
+
+        <import type="com.blankj.utilcode.util.StringUtils" />
+
+
+        <variable
+            name="viewModel"
+            type="com.fine.friendlycc.ui.viewmodel.BaseParkItemViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingStart="14dp"
+        android:paddingTop="7dp"
+        android:paddingBottom="7dp"
+        binding:onClickCommand="@{viewModel.itemClick}">
+
+        <RelativeLayout
+            android:id="@+id/rl_iv_avatar"
+            android:layout_width="67dp"
+            android:layout_height="67dp">
+
+            <com.fine.friendlycc.widget.image.CircleImageView
+                android:id="@+id/iv_avatar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@drawable/default_avatar"
+                binding:imageItemErrorPlaceholderRes="@{R.drawable.default_avatar}"
+                binding:imageItemPath="@{viewModel.itemEntity.avatar}"
+                binding:imageItemPlaceholderRes="@{R.drawable.default_avatar}"
+                binding:resizeH="@{67}"
+                binding:resizeW="@{67}" />
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/item_lottie"
+                android:layout_width="67dp"
+                android:layout_height="67dp"
+                android:layout_gravity="center"
+                android:elevation="11dp"
+                android:visibility="gone"
+                app:lottie_autoPlay="false"
+                app:lottie_loop="false"
+                app:lottie_rawRes="@raw/accost_animation"
+                binding:accountCollect="@{viewModel.accountCollect}" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/rl_iv_avatar"
+            android:layout_centerVertical="true">
+
+            <RelativeLayout
+                android:id="@+id/rl_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="14dp">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:includeFontPadding="false"
+                    android:maxWidth="109dp"
+                    android:maxLength="8"
+                    android:singleLine="true"
+                    android:text="@{viewModel.itemEntity.nickname}"
+                    android:textColor="@color/toolbar_title_color"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    tools:text="艾希lovexi666" />
+
+
+                <ImageView
+                    android:id="@+id/iv_real_man"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/tv_name"
+                    android:layout_toEndOf="@+id/tv_name"
+                    android:layout_marginStart="5dp"
+                    android:src="@{viewModel.getVipGodsImg(viewModel.itemEntity)}"
+                    android:visibility="@{viewModel.getVipGodsImg(viewModel.itemEntity) != null ?View.VISIBLE:View.GONE}"
+                    tools:src="@drawable/ic_good_goddess" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_tag_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rl_name"
+                android:layout_alignStart="@+id/rl_name"
+                android:layout_marginTop="6dp"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:includeFontPadding="false"
+                    android:text="@{viewModel.ageAndConstellation}"
+                    android:textColor="@color/text_9EA1B0"
+                    android:textSize="12sp"
+                    android:visibility="@{viewModel.isEmpty(viewModel.ageAndConstellation)? View.GONE :View.VISIBLE}"
+                    tools:text="19" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="4dp"
+                    android:gravity="center_vertical"
+                    android:text="|"
+                    android:textColor="#CDCED1"
+                    android:textSize="@dimen/text_size_small"
+                    android:visibility="@{StringUtils.isEmpty(viewModel.getOccupationByIdOnNull) ? View.GONE : View.VISIBLE}"
+                    tools:ignore="HardcodedText" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:includeFontPadding="false"
+                    android:text="@{viewModel.getOccupationByIdOnNull}"
+                    android:textColor="@color/text_9EA1B0"
+                    android:textSize="12sp"
+                    tools:text="职业" />
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
+            android:layout_marginEnd="14dp"
+            android:background="@drawable/item_park_radius_back"
+            binding:onClickCommand="@{viewModel.accostOnClickCommand}">
+
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/item_accost_logo"
+                android:visibility="@{viewModel.itemEntity.isAccost==0?View.VISIBLE:View.GONE}" />
+
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_centerInParent="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/item_chat_logo"
+                android:visibility="@{viewModel.itemEntity.isAccost==1?View.VISIBLE:View.GONE}" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+</layout>

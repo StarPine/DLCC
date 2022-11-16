@@ -96,7 +96,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     binding:adapter="@{viewModel.adapter}"
-                    binding:itemBinding="@{viewModel.itemBinding}"
+                    binding:itemBinding="@{viewModel.searchItem}"
                     binding:items="@{viewModel.observableList}"
                     binding:layoutManager="@{LayoutManagers.linear()}"
                     binding:lineManager="@{LineManagers.horizontal(1,104,0)}" />
