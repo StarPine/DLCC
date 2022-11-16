@@ -369,6 +369,7 @@ public class TrendDetailViewModel extends BaseViewModel<AppRepository> {
                     @Override
                     public void onSuccess(BaseResponse response) {
                         ToastUtils.showShort(R.string.playcc_comment_success);
+//                        newsDetail();
                         if (newsEntityObservableField.get().getComment() == null) {
                             newsEntityObservableField.get().setComment(new ArrayList<>());
                         }
@@ -387,8 +388,7 @@ public class TrendDetailViewModel extends BaseViewModel<AppRepository> {
                             commentEntity.setTouser(touserBean);
                         }
                         newsEntityObservableField.get().getComment().add(commentEntity);
-                        CommentItemViewModel commentItemViewModel = new CommentItemViewModel(TrendDetailViewModel.this, commentEntity, newsEntityObservableField.get().getId(),
-                                RadioRecycleType_New, newsEntityObservableField.get().getUser().getId() == userId, false);
+                        CommentItemViewModel commentItemViewModel = new CommentItemViewModel(TrendDetailViewModel.this, commentEntity, newsEntityObservableField.get().getId(),RadioRecycleType_New, newsEntityObservableField.get().getUser().getId() == userId, false);
                         commentItemList.add(commentItemViewModel);
 
                         if (ListUtils.isEmpty(newsEntityObservableField.get().getComment())) {
