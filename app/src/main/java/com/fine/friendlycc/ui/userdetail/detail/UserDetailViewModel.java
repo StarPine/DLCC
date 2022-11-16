@@ -149,7 +149,7 @@ public class UserDetailViewModel extends BaseTheirPhotoAlbumViewModel<AppReposit
         if (detailEntity.get() == null) {
             return;
         }
-        getCallingInvitedInfo(2, detailEntity.get().getImUserId(), detailEntity.get().getImToUserId());
+        uc.startVideo.call();
     });
     /**
      * 語音通話
@@ -162,7 +162,7 @@ public class UserDetailViewModel extends BaseTheirPhotoAlbumViewModel<AppReposit
         if (detailEntity.get() == null) {
             return;
         }
-        getCallingInvitedInfo(1, detailEntity.get().getImUserId(), detailEntity.get().getImToUserId());
+        uc.startAudio.call();
     });
     //申请查看
     public BindingCommand applyCheckDetailOnClickCommand = new BindingCommand(() -> {
@@ -965,6 +965,8 @@ public class UserDetailViewModel extends BaseTheirPhotoAlbumViewModel<AppReposit
     }
 
     public class UIChangeObservable {
+        public SingleLiveEvent startAudio = new SingleLiveEvent<>();
+        public SingleLiveEvent startVideo = new SingleLiveEvent<>();
         public SingleLiveEvent clickMore = new SingleLiveEvent<>();
         //对方忙线
         public SingleLiveEvent otherBusy = new SingleLiveEvent<>();

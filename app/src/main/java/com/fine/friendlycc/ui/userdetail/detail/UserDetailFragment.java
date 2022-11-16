@@ -1,5 +1,6 @@
 package com.fine.friendlycc.ui.userdetail.detail;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -57,6 +58,7 @@ import com.fine.friendlycc.widget.emptyview.EmptyState;
 import com.google.android.material.appbar.AppBarLayout;
 import com.luck.picture.lib.entity.LocalMedia;
 import com.luck.picture.lib.listener.OnResultCallbackListener;
+import com.tbruyelle.rxpermissions2.RxPermissions;
 import com.tencent.qcloud.tuicore.Status;
 import com.tencent.qcloud.tuikit.tuichat.component.AudioPlayer;
 
@@ -376,6 +378,13 @@ public class UserDetailFragment extends BaseToolbarFragment<FragmentUserDetailBi
                 flagShow = true;
             }
         });
+        viewModel.uc.startVideo.observe(this,o -> {
+            startVideoCalling();
+        });
+        viewModel.uc.startAudio.observe(this,o -> {
+            startAudioCalling();
+        });
+
     }
 
     @Override
@@ -415,6 +424,71 @@ public class UserDetailFragment extends BaseToolbarFragment<FragmentUserDetailBi
 //       return true;
 //        // return mDelegate.onBackPressedSupport();
 //    }
+
+    private void startVideoCalling() {
+        new RxPermissions(mActivity)
+                .request(Manifest.permission.RECORD_AUDIO, Manifest.permission.CAMERA)
+                .subscribe(granted -> {
+                    if (granted) {
+                        AppContext.instance().logEvent(AppsFlyerEvent.im_video_call);
+                        viewModel.getCallingInvitedInfo(2, viewModel.detailEntity.get().getImUserId(), viewModel.detailEntity.get().getImToUserId());
+                    } else {
+                        TraceDialog.getInstance(mActivity)
+                                .setCannelOnclick(new TraceDialog.CannelOnclick() {
+                                    @Override
+                                    public void cannel(Dialog dialog) {
+
+                                    }
+                                })
+                                .setConfirmOnlick(new TraceDialog.ConfirmOnclick() {
+                                    @Override
+                                    public void confirm(Dialog dialog) {
+                                        new RxPermissions(mActivity)
+                                                .request(Manifest.permission.RECORD_AUDIO, Manifest.permission.CAMERA)
+                                                .subscribe(granted -> {
+                                                    if (granted) {
+                                                        AppContext.instance().logEvent(AppsFlyerEvent.im_video_call);
+                                                        viewModel.getCallingInvitedInfo(2, viewModel.detailEntity.get().getImUserId(), viewModel.detailEntity.get().getImToUserId());
+                                                    }
+                                                });
+                                    }
+                                })
+                                .AlertCallAudioPermissions().show();
+                    }
+                });
+    }
+
+    private void startAudioCalling() {
+        new RxPermissions(mActivity)
+                .request(Manifest.permission.RECORD_AUDIO)
+                .subscribe(granted -> {
+                    if (granted) {
+                        AppContext.instance().logEvent(AppsFlyerEvent.im_voice_call);
+                        viewModel.getCallingInvitedInfo(1, viewModel.detailEntity.get().getImUserId(), viewModel.detailEntity.get().getImToUserId());
+                    } else {
+                        TraceDialog.getInstance(mActivity)
+                                .setCannelOnclick(new TraceDialog.CannelOnclick() {
+                                    @Override
+                                    public void cannel(Dialog dialog) {
+
+                                    }
+                                })
+                                .setConfirmOnlick(new TraceDialog.ConfirmOnclick() {
+                                    @Override
+                                    public void confirm(Dialog dialog) {
+                                        new RxPermissions(mActivity)
+                                                .request(Manifest.permission.RECORD_AUDIO)
+                                                .subscribe(granted -> {
+                                                    if (granted) {
+                                                        AppContext.instance().logEvent(AppsFlyerEvent.im_voice_call);
+                                                        viewModel.getCallingInvitedInfo(1, viewModel.detailEntity.get().getImUserId(), viewModel.detailEntity.get().getImToUserId());
+                                                    }
+                                                });
+                                    }
+                                }).AlertCallAudioPermissions().show();
+                    }
+                });
+    }
 
     public void getUserdetailUnlock() {
         if (flagShow) {//支付成功后不弹出
