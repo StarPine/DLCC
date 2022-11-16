@@ -2262,5 +2262,6 @@
     <string name="playcc_update_version_text5">更新內容：</string>
     <string name="playcc_coinpusher_history_text1">展示近7天中獎歷史結果</string>
     <string name="playcc_coinpusher_history_text2">Lv%s號機</string>
+    <string name="playfun_valid_time">有效期</string>
     <!--PlayCC-APP-END-->
 </resources>

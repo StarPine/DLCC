@@ -413,6 +413,22 @@
                                 android:textColor="#A56641"
                                 android:textSize="11sp" />
 
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerInParent="true"
+                                android:layout_marginEnd="14dp"
+                                android:gravity="end"
+                                android:includeFontPadding="false"
+                                android:text="@{viewModel.getVipTimeText(viewModel.userInfoEntity)}"
+                                android:textColor="@color/toolbar_title_color"
+                                android:textSize="11sp"
+                                android:visibility="@{viewModel.userInfoEntity.isVip == 1 ? View.VISIBLE:View.GONE}"
+                                tools:visibility="visible"
+                                tools:elevation="11dp"
+                                tools:text="expire\n2021-09-01" />
+
                             <androidx.appcompat.widget.AppCompatTextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -426,7 +442,9 @@
                                 android:textStyle="bold"
                                 android:textSize="12sp"
                                 android:visibility="@{viewModel.userInfoEntity.isVip == 1 ? View.GONE:View.VISIBLE}"
-                                binding:onClickCommand="@{viewModel.memberOnClickCommand}" />
+                                binding:onClickCommand="@{viewModel.memberOnClickCommand}"
+                                tools:visibility="gone"
+                                />
                         </RelativeLayout>
 
                         <RelativeLayout

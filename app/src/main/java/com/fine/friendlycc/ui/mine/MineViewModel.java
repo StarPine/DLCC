@@ -311,6 +311,15 @@ public class MineViewModel extends BaseMyPhotoAlbumViewModel<AppRepository> {
         return StringUtils.getString(R.string.playcc_unknown);
     }
 
+    public String getVipTimeText(UserInfoEntity userInfoEntity) {
+        if(userInfoEntity != null){
+            String validTime =  StringUtils.getString(R.string.playfun_valid_time);
+            validTime += "\n"+userInfoEntity.getEndTime();
+            return validTime;
+        }
+        return "";
+    }
+
     public void setAllowPrivacy(String type, boolean isOpen) {
         PrivacyEntity entity = new PrivacyEntity();
         if (type.equals(ALLOW_TYPE_AUDIO)){
