@@ -11,6 +11,7 @@ import com.fine.friendlycc.data.AppRepository;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseDataResponse;
 import com.fine.friendlycc.data.source.http.response.BaseResponse;
+import com.fine.friendlycc.entity.CheckNicknameEntity;
 import com.fine.friendlycc.entity.ConfigItemEntity;
 import com.fine.friendlycc.entity.OccupationConfigItemEntity;
 import com.fine.friendlycc.entity.UserDataEntity;
@@ -86,7 +87,7 @@ public class EditProfileViewModel extends BaseViewModel<AppRepository> {
     });
     private boolean showFlag = false;
     public BindingCommand clickSave = new BindingCommand(() -> {
-        saveProfile();
+        checkNickname();
     });
 
     public EditProfileViewModel(@NonNull Application application, AppRepository repository) {
@@ -170,6 +171,36 @@ public class EditProfileViewModel extends BaseViewModel<AppRepository> {
                     @Override
                     public void onComplete() {
                         super.onComplete();
+                        dismissHUD();
+                    }
+                });
+    }
+
+    public void checkNickname() {
+        UserDataEntity userEntity = userDataEntity.get();
+        if (StringUtils.isEmpty(userEntity.getNickname())) {
+            ToastUtils.showShort(R.string.playcc_name_nust);
+            return;
+        }
+        model.checkNickname(userEntity.getNickname())
+                .doOnSubscribe(this)
+                .compose(RxUtils.schedulersTransformer())
+                .compose(RxUtils.exceptionTransformer())
+                .doOnSubscribe(disposable -> showHUD())
+                .subscribe(new BaseObserver<BaseDataResponse<CheckNicknameEntity>>() {
+                    @Override
+                    public void onSuccess(BaseDataResponse<CheckNicknameEntity> checkNicknameEntityBaseDataResponse) {
+                        CheckNicknameEntity checkNicknameEntity = checkNicknameEntityBaseDataResponse.getData();
+                        if (checkNicknameEntity != null && checkNicknameEntity.getStatus() == 1) {
+                            ToastUtils.showShort(R.string.playcc_check_name_tips);
+                        } else {
+                            saveProfile();
+                        }
+
+                    }
+
+                    @Override
+                    public void onComplete() {
                         dismissHUD();
                     }
                 });
