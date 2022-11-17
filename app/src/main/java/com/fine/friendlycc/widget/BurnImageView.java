@@ -189,7 +189,7 @@ public class BurnImageView extends RelativeLayout {
         this.addWaterMark = addWaterMark;
         this.burnCommand = burnCommand;
         this.tapCommand = tapCommand;
-        isBurn = burnImgEnt.getIsBurn() == 1 || (burnImgEnt.getIsRedPackage() == 1 && burnImgEnt.getIsPay() == 0);
+        isBurn = burnImgEnt.getIsBurn() == 1;
         burnStatus = burnImgEnt.getBurnStatus();
         showImg();
     }
@@ -230,13 +230,24 @@ public class BurnImageView extends RelativeLayout {
                     .into(photoView);
         } else {
             hideBurnMsg();
-            Glide.with(getContext())
-                    .load(url)
-                    .apply(new RequestOptions()
-                            .placeholder(R.drawable.black_background)
-                            .error(R.drawable.black_background))
-                    .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
-                    .into(photoView);
+            if (burnImgEnt.getIsRedPackage() == 1 &&burnImgEnt.getIsPay() == 0){
+                Glide.with(getContext())
+                        .load(url)
+                        .apply(bitmapTransform(new BlurTransformation(100)))
+                        .apply(new RequestOptions()
+                                .placeholder(R.drawable.pro_loading_logo)
+                                .error(R.drawable.pro_loading_logo))
+                        .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
+                        .into(photoView);
+                return;
+            }
+                Glide.with(getContext())
+                        .load(url)
+                        .placeholder(R.drawable.pro_loading_logo)
+                        .error(R.drawable.pro_loading_logo)
+                        .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
+                        .into(photoView);
+
         }
     }
 

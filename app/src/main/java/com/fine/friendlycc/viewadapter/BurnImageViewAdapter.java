@@ -50,4 +50,9 @@ public class BurnImageViewAdapter {
 //        }
     }
 
+    @BindingAdapter(value = {"payType"}, requireAll = false)
+    public static void setPayType(BurnImageView burnImageView, int payType){
+        burnImageView.showImg();
+    }
+
 }
