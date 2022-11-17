@@ -198,6 +198,7 @@ public class CoinRechargeSheetView extends BasePopupWindow implements View.OnCli
 
     public void show() {
         super.showLifecycle();
+        isFinsh = false;
         if (mActivity != null && !mActivity.isFinishing()) {
             Window dialogWindow = mActivity.getWindow();
             WindowManager.LayoutParams lp = dialogWindow.getAttributes();
