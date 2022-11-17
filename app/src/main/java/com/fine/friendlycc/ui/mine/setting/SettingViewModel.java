@@ -113,8 +113,10 @@ public class SettingViewModel extends BaseViewModel<AppRepository> {
         //友盟用户统计
         // MobclickAgent.onProfileSignOff();
         AppConfig.userClickOut = true;
+        showHUD();
         model.logout();
         startWithPopTo(LoginFragment.class.getCanonicalName(), MainFragment.class.getCanonicalName(), true);
+        dismissHUD();
     }
 
     public void loadUserInfo() {

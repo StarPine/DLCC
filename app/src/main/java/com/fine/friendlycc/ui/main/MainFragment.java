@@ -561,25 +561,29 @@ public class MainFragment extends BaseFragment<FragmentMainBinding, MainViewMode
     }
 
     private void broadcastGiftImg(MqBroadcastGiftUserEntity giftUserEntity,ImageView userImg){
-        if(giftUserEntity.getSex()!=null && giftUserEntity.getSex()==1){
-            if(giftUserEntity.getCertification()!=null && giftUserEntity.getCertification()==1){
+        if (giftUserEntity.getSex()!=null
+                && giftUserEntity.getIsVip()!=null
+                && giftUserEntity.getCertification()!= null){
+
+            if(giftUserEntity.getIsVip() == 1){
+                if (giftUserEntity.getSex()==1){
+                    userImg.setImageResource(R.drawable.ic_vip);
+                    userImg.setVisibility(View.VISIBLE);
+                    return;
+                }else {
+                    userImg.setImageResource(R.drawable.ic_good_goddess);
+                    userImg.setVisibility(View.VISIBLE);
+                    return;
+                }
+            }
+            if (giftUserEntity.getCertification()== 1){
                 userImg.setImageResource(R.drawable.ic_real_people);
                 userImg.setVisibility(View.VISIBLE);
-            }
-            if(giftUserEntity.getIsVip()!=null && giftUserEntity.getIsVip()==1){
-                userImg.setImageResource(R.drawable.ic_vip);
-                userImg.setVisibility(View.VISIBLE);
-            }
-        }else{
-            if(giftUserEntity.getCertification()!=null && giftUserEntity.getCertification()==1){
-                userImg.setImageResource(R.drawable.ic_real_people);
-                userImg.setVisibility(View.VISIBLE);
-            }
-            if(giftUserEntity.getIsVip()!=null && giftUserEntity.getIsVip()==1){
-                userImg.setImageResource(R.drawable.ic_good_goddess);
-                userImg.setVisibility(View.VISIBLE);
+                return;
             }
         }
+        userImg.setVisibility(View.GONE);
+
     }
 
     @Override

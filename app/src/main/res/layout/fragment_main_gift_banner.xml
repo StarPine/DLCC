@@ -67,7 +67,7 @@
                     android:id="@+id/left_user_icon"
                     android:layout_width="30dp"
                     android:layout_height="13dp"
-                    android:src="@drawable/ic_vip" />
+                    tools:src="@drawable/ic_vip" />
             </LinearLayout>
 
         </LinearLayout>
@@ -147,7 +147,7 @@
                     android:id="@+id/right_user_icon"
                     android:layout_width="30dp"
                     android:layout_height="13dp"
-                    android:src="@drawable/ic_vip" />
+                    tools:src="@drawable/ic_vip" />
             </LinearLayout>
 
         </LinearLayout>
