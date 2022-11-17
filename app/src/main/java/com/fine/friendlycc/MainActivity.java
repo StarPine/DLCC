@@ -86,11 +86,7 @@ public class MainActivity extends MySupportActivity {
         setContentView(R.layout.activity_main_container);
         ImmersionBarUtils.setupStatusBar(this, true, false);
         //栈内查找 如果存在及复用
-        if(findFragment(SplashFragment.class)!=null){
-            loadRootFragment(R.id.fl_container, findFragment(SplashFragment.class));
-        }else{
-            loadRootFragment(R.id.fl_container, new SplashFragment());
-        }
+        loadRootFragment(R.id.fl_container, new SplashFragment());
         //改变游戏装填---兼容代码
         ConfigManagerUtil.getInstance().putPlayGameFlag(false);
         registerRxBus();
