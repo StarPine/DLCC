@@ -534,6 +534,8 @@ public class MainFragment extends BaseFragment<FragmentMainBinding, MainViewMode
         stringBuilder.setSpan(blueSpanYellow, tips.length(), detail.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         giftTitle.setText(stringBuilder);
         ImageView giftNumImg = streamerView.findViewById(R.id.gift_count);
+        RelativeLayout rl_banner_gift = streamerView.findViewById(R.id.rl_banner_gift);
+        rl_banner_gift.setOnClickListener(v -> {});
         int account = mqttMessageEntity.getAmount();
         setGiftNumImg(giftNumImg, account);
     }
