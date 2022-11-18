@@ -206,10 +206,8 @@ public class DialogDiamondRechargeActivity extends BaseActivity<ActivityDialogDi
 
     private void finishActivity(GoodsEntity goodsEntity) {
         isFinsh = true;
-        Intent intent = new Intent();
-        intent.putExtra("goodsEntity", goodsEntity);
-        setResult(909,intent);
         finish();
+        RxBus.getDefault().post(new DiamondPaySuccessEntity());
     }
 
     @Override

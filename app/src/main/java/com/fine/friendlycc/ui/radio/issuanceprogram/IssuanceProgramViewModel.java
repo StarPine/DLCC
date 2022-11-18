@@ -24,6 +24,7 @@ import com.fine.friendlycc.data.source.http.response.BaseDataResponse;
 import com.fine.friendlycc.data.source.http.response.BaseResponse;
 import com.fine.friendlycc.entity.ConfigItemEntity;
 import com.fine.friendlycc.entity.DatingObjItemEntity;
+import com.fine.friendlycc.entity.DiamondPaySuccessEntity;
 import com.fine.friendlycc.entity.StatusEntity;
 import com.fine.friendlycc.entity.ThemeItemEntity;
 import com.fine.friendlycc.entity.UserDataEntity;
@@ -64,6 +65,8 @@ import me.tatarka.bindingcollectionadapter2.ItemBinding;
 public class IssuanceProgramViewModel extends BaseViewModel<AppRepository> {
     //消费者
     private Disposable MediaStoreDisposable, AlivcCropOutputDisposable;
+    //RxBus订阅事件
+    private Disposable paySuccessSubscriber;
     //用户选择媒体文件：图片/视频
     public ObservableField<String> selectMediaPath = new ObservableField<>();
     //心情选中
@@ -296,6 +299,11 @@ public class IssuanceProgramViewModel extends BaseViewModel<AppRepository> {
         AlivcCropOutputDisposable = RxBus.getDefault().toObservable(AlivcCropOutputParam.class).subscribe(alivcCropOutputParam -> {
             selectMediaPath.set(alivcCropOutputParam.getOutputPath());
         });
+        paySuccessSubscriber = RxBus.getDefault().toObservable(DiamondPaySuccessEntity.class).subscribe(event -> {
+            sendConfirm();
+        });
+        //将订阅者加入管理站
+        RxSubscriptions.add(paySuccessSubscriber);
     }
 
     @Override
@@ -303,6 +311,7 @@ public class IssuanceProgramViewModel extends BaseViewModel<AppRepository> {
         super.removeRxBus();
         RxSubscriptions.remove(MediaStoreDisposable);
         RxSubscriptions.remove(AlivcCropOutputDisposable);
+        RxSubscriptions.remove(paySuccessSubscriber);
     }
 
 

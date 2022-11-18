@@ -8,18 +8,24 @@ import androidx.databinding.ObservableArrayList;
 import androidx.databinding.ObservableField;
 import androidx.databinding.ObservableList;
 
+import com.aliyun.svideo.crop.bean.AlivcCropOutputParam;
 import com.fine.friendlycc.BR;
 import com.fine.friendlycc.data.AppRepository;
 import com.fine.friendlycc.data.source.http.observer.BaseListEmptyObserver;
 import com.fine.friendlycc.data.source.http.response.BaseListDataResponse;
+import com.fine.friendlycc.entity.DiamondPaySuccessEntity;
 import com.fine.friendlycc.entity.TraceEntity;
+import com.fine.friendlycc.event.SelectMediaSourcesEvent;
 import com.fine.friendlycc.viewmodel.BaseViewModel;
 import com.fine.friendlycc.R;
 import com.fine.friendlycc.ui.userdetail.detail.UserDetailFragment;
 
 import org.jetbrains.annotations.NotNull;
 
+import io.reactivex.disposables.Disposable;
 import me.goldze.mvvmhabit.binding.command.BindingCommand;
+import me.goldze.mvvmhabit.bus.RxBus;
+import me.goldze.mvvmhabit.bus.RxSubscriptions;
 import me.goldze.mvvmhabit.bus.event.SingleLiveEvent;
 import me.goldze.mvvmhabit.utils.RxUtils;
 import me.tatarka.bindingcollectionadapter2.BindingRecyclerViewAdapter;
@@ -33,7 +39,8 @@ import me.tatarka.bindingcollectionadapter2.ItemBinding;
 public class TraeManViewModel extends BaseViewModel<AppRepository> {
 
     public int currentPage = 1;
-
+    //RxBus订阅事件
+    private Disposable paySuccessSubscriber;
     public BindingRecyclerViewAdapter<TraceManItemViewModel> adapter = new BindingRecyclerViewAdapter<>();
     public ObservableList<TraceManItemViewModel> observableList = new ObservableArrayList<>();
 
@@ -85,6 +92,22 @@ public class TraeManViewModel extends BaseViewModel<AppRepository> {
         } else {
             uc.finishLoadmore.call();
         }
+    }
+
+    @Override
+    public void registerRxBus() {
+        super.registerRxBus();
+        paySuccessSubscriber = RxBus.getDefault().toObservable(DiamondPaySuccessEntity.class).subscribe(event -> {
+            uc.paySuccess.call();
+        });
+        //将订阅者加入管理站
+        RxSubscriptions.add(paySuccessSubscriber);
+    }
+
+    @Override
+    public void removeRxBus() {
+        super.removeRxBus();
+        RxSubscriptions.remove(paySuccessSubscriber);
     }
 
     public void toBrowse(Integer page) {
@@ -152,5 +175,6 @@ public class TraeManViewModel extends BaseViewModel<AppRepository> {
         public SingleLiveEvent<Void> finishRefreshing = new SingleLiveEvent<>();
         //上拉加载完成
         public SingleLiveEvent<Void> finishLoadmore = new SingleLiveEvent<>();
+        public SingleLiveEvent<Void> paySuccess = new SingleLiveEvent<>();
     }
 }
