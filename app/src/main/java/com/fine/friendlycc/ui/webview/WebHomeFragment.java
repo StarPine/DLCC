@@ -4,6 +4,7 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
@@ -35,6 +36,7 @@ import com.fine.friendlycc.databinding.ActivityWebHomePlayccBinding;
 import com.fine.friendlycc.entity.CallingInviteInfo;
 import com.fine.friendlycc.kl.Utils;
 import com.fine.friendlycc.ui.base.BaseFragment;
+import com.fine.friendlycc.ui.mine.wallet.diamond.recharge.DialogDiamondRechargeActivity;
 import com.fine.friendlycc.ui.userdetail.detail.UserDetailFragment;
 import com.fine.friendlycc.utils.ChatUtils;
 import com.fine.friendlycc.widget.action.StatusAction;
@@ -175,8 +177,9 @@ public class WebHomeFragment extends BaseFragment<ActivityWebHomePlayccBinding,W
      * 去充值
      */
     private void toRecharge() {
-        CoinRechargeSheetView coinRechargeFragmentView = new CoinRechargeSheetView(mActivity);
-        coinRechargeFragmentView.show();
+        Intent intent = new Intent(mActivity, DialogDiamondRechargeActivity.class);
+        mActivity.startActivity(intent);
+        mActivity.overridePendingTransition(R.anim.pop_enter_anim, 0);
     }
 
     @Override

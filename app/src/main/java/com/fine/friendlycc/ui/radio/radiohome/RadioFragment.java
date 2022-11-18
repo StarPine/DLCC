@@ -38,6 +38,7 @@ import com.fine.friendlycc.manager.ConfigManager;
 import com.fine.friendlycc.ui.base.BaseRefreshFragment;
 import com.fine.friendlycc.ui.dialog.CityChooseDialog;
 import com.fine.friendlycc.ui.mine.broadcast.mytrends.TrendItemViewModel;
+import com.fine.friendlycc.ui.mine.wallet.diamond.recharge.DialogDiamondRechargeActivity;
 import com.fine.friendlycc.ui.userdetail.report.ReportUserFragment;
 import com.fine.friendlycc.utils.AutoSizeUtils;
 import com.fine.friendlycc.utils.PictureSelectorUtil;
@@ -438,8 +439,9 @@ public class RadioFragment extends BaseRefreshFragment<FragmentRadioBinding, Rad
     //支付弹窗
     private void googleCoinValueBox() {
         AppContext.instance().logEvent(AppsFlyerEvent.Top_up);
-        CoinRechargeSheetView coinRechargeFragmentView = new CoinRechargeSheetView(mActivity);
-        coinRechargeFragmentView.show();
+        Intent intent = new Intent(mActivity, DialogDiamondRechargeActivity.class);
+        mActivity.startActivity(intent);
+        mActivity.overridePendingTransition(R.anim.pop_enter_anim, 0);
     }
 
     @Override

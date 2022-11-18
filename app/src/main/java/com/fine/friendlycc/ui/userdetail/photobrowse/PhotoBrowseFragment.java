@@ -1,5 +1,6 @@
 package com.fine.friendlycc.ui.userdetail.photobrowse;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import com.fine.friendlycc.app.AppViewModelFactory;
 import com.fine.friendlycc.databinding.FragmentPhotoBrowseBinding;
 import com.fine.friendlycc.entity.AlbumPhotoEntity;
 import com.fine.friendlycc.ui.base.BaseFragment;
+import com.fine.friendlycc.ui.mine.wallet.diamond.recharge.DialogDiamondRechargeActivity;
 import com.fine.friendlycc.widget.coinpaysheet.CoinPaySheet;
 import com.fine.friendlycc.widget.coinrechargesheet.CoinRechargeSheetView;
 import com.shuyu.gsyvideoplayer.GSYVideoManager;
@@ -148,8 +150,9 @@ public class PhotoBrowseFragment extends BaseFragment<FragmentPhotoBrowseBinding
      * 去充值
      */
     private void toRecharge() {
-        CoinRechargeSheetView coinRechargeFragmentView = new CoinRechargeSheetView(mActivity);
-        coinRechargeFragmentView.show();
+        Intent intent = new Intent(mActivity, DialogDiamondRechargeActivity.class);
+        mActivity.startActivity(intent);
+        mActivity.overridePendingTransition(R.anim.pop_enter_anim, 0);
     }
 
     @Override

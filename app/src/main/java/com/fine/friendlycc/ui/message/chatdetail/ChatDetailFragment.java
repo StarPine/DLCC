@@ -150,7 +150,6 @@ public class ChatDetailFragment extends BaseToolbarFragment<FragmentChatDetailBi
     //默认记录马上视频的距离底部宽高
     private volatile int defBottomMargin = 0;
     private volatile int defBottomMarginHeight = 0;
-    private CoinRechargeSheetView coinRechargeFragmentView;
 
     @Nullable
     @Override
@@ -1360,12 +1359,6 @@ public class ChatDetailFragment extends BaseToolbarFragment<FragmentChatDetailBi
         Intent intent = new Intent(mActivity, DialogDiamondRechargeActivity.class);
         mActivity.startActivity(intent);
         mActivity.overridePendingTransition(R.anim.pop_enter_anim, 0);
-//        if (coinRechargeFragmentView == null){
-//            coinRechargeFragmentView = new CoinRechargeSheetView(mActivity);
-//        }
-//        if (!coinRechargeFragmentView.isShowing()){
-//            coinRechargeFragmentView.show();
-//        }
     }
 
     @Override

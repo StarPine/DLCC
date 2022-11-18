@@ -39,6 +39,7 @@ import com.fine.friendlycc.manager.ConfigManager;
 import com.fine.friendlycc.ui.base.BaseFragment;
 import com.fine.friendlycc.ui.certification.certificationfemale.CertificationFemaleFragment;
 import com.fine.friendlycc.ui.certification.certificationmale.CertificationMaleFragment;
+import com.fine.friendlycc.ui.mine.wallet.diamond.recharge.DialogDiamondRechargeActivity;
 import com.fine.friendlycc.ui.webview.BrowserView;
 import com.fine.friendlycc.utils.ApiUitl;
 import com.fine.friendlycc.utils.AutoSizeUtils;
@@ -502,8 +503,9 @@ public class WebViewFragment extends BaseFragment<WebviewFragmentBinding, WebVie
      * 去充值
      */
     private void toRecharge() {
-        CoinRechargeSheetView coinRechargeFragmentView = new CoinRechargeSheetView(mActivity);
-        coinRechargeFragmentView.show();
+        Intent intent = new Intent(mActivity, DialogDiamondRechargeActivity.class);
+        mActivity.startActivity(intent);
+        mActivity.overridePendingTransition(R.anim.pop_enter_anim, 0);
     }
 
 }

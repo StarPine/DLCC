@@ -2,6 +2,7 @@ package com.fine.friendlycc.ui.main;
 
 import android.app.Dialog;
 import android.app.Service;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.text.Spannable;
@@ -50,6 +51,7 @@ import com.fine.friendlycc.ui.home.HomeMainFragment;
 import com.fine.friendlycc.ui.message.MessageMainFragment;
 import com.fine.friendlycc.ui.mine.MineFragment;
 import com.fine.friendlycc.ui.mine.vipsubscribe.VipSubscribeFragment;
+import com.fine.friendlycc.ui.mine.wallet.diamond.recharge.DialogDiamondRechargeActivity;
 import com.fine.friendlycc.ui.radio.radiohome.RadioFragment;
 import com.fine.friendlycc.ui.task.TaskCenterFragment;
 import com.fine.friendlycc.ui.userdetail.detail.UserDetailFragment;
@@ -420,8 +422,9 @@ public class MainFragment extends BaseFragment<FragmentMainBinding, MainViewMode
     }
 
     private void showRecharge() {
-        CoinRechargeSheetView coinRechargeSheetView = new CoinRechargeSheetView(mActivity);
-        coinRechargeSheetView.show();
+        Intent intent = new Intent(mActivity, DialogDiamondRechargeActivity.class);
+        mActivity.startActivity(intent);
+        mActivity.overridePendingTransition(R.anim.pop_enter_anim, 0);
     }
 
     private void dialogCallback() {

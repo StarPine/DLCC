@@ -1,11 +1,15 @@
 package com.fine.friendlycc.ui.mine.trace.man;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
@@ -22,6 +26,7 @@ import com.fine.friendlycc.entity.GoodsEntity;
 import com.fine.friendlycc.event.TraceEmptyEvent;
 import com.fine.friendlycc.manager.ConfigManager;
 import com.fine.friendlycc.ui.base.BaseToolbarFragment;
+import com.fine.friendlycc.ui.mine.wallet.diamond.recharge.DialogDiamondRechargeActivity;
 import com.fine.friendlycc.utils.AutoSizeUtils;
 import com.fine.friendlycc.widget.coinpaysheet.CoinPaySheet;
 import com.fine.friendlycc.widget.coinrechargesheet.CoinRechargeSheetView;
@@ -199,20 +204,24 @@ public class TraceManFragment extends BaseToolbarFragment<FragmentMineTraceManBi
      * 去充值
      */
     private void toRecharge() {
-        CoinRechargeSheetView coinRechargeFragmentView = new CoinRechargeSheetView(mActivity);
-        coinRechargeFragmentView.setClickListener(new CoinRechargeSheetView.ClickListener() {
-            @Override
-            public void paySuccess(GoodsEntity goodsEntity) {
-                if(goodsEntity!=null){
-                    AppContext.instance().logEvent(AppsFlyerEvent.unlock_my_visitor);
-                    ToastUtils.showShort(R.string.playcc_pay_success);
-                    viewModel.isPlay = 1;
-                    viewModel.currentPage = 1;
-                    binding.btnConfirm.setVisibility(View.GONE);
-                    viewModel.loadDatas(1);
-                }
-            }
-        });
-        coinRechargeFragmentView.show();
+        Intent intent = new Intent(mActivity, DialogDiamondRechargeActivity.class);
+        toGooglePlayIntent.launch(intent);
+        mActivity.overridePendingTransition(R.anim.pop_enter_anim, 0);
     }
+
+    //跳转谷歌支付act
+    ActivityResultLauncher<Intent> toGooglePlayIntent = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
+        if (result.getData() != null) {
+            Intent intentData = result.getData();
+            GoodsEntity goodsEntity = (GoodsEntity) intentData.getSerializableExtra("goodsEntity");
+            if(goodsEntity!=null){
+                Log.e("支付成功","===============");
+                AppContext.instance().logEvent(AppsFlyerEvent.unlock_my_visitor);
+                viewModel.isPlay = 1;
+                viewModel.currentPage = 1;
+                binding.btnConfirm.setVisibility(View.GONE);
+                viewModel.loadDatas(1);
+            }
+        }
+    });
 }

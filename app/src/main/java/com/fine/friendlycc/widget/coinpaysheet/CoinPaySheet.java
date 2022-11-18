@@ -2,6 +2,7 @@ package com.fine.friendlycc.widget.coinpaysheet;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.util.Log;
 import android.view.Gravity;
@@ -27,6 +28,7 @@ import com.fine.friendlycc.entity.ChatRedPackageEntity;
 import com.fine.friendlycc.entity.CoinWalletEntity;
 import com.fine.friendlycc.entity.CreateOrderEntity;
 import com.fine.friendlycc.ui.base.BasePopupWindow;
+import com.fine.friendlycc.ui.mine.wallet.diamond.recharge.DialogDiamondRechargeActivity;
 import com.fine.friendlycc.widget.coinrechargesheet.CoinRechargeSheetView;
 import com.fine.friendlycc.widget.dialog.MVDialog;
 
@@ -283,8 +285,9 @@ public class CoinPaySheet {
         //调集充值按钮
         private void showRecharge() {
             this.dismiss();
-            CoinRechargeSheetView coinRechargeSheetView = new CoinRechargeSheetView(mActivity);
-            coinRechargeSheetView.show();
+            Intent intent = new Intent(mActivity, DialogDiamondRechargeActivity.class);
+            mActivity.startActivity(intent);
+            mActivity.overridePendingTransition(R.anim.pop_enter_anim, 0);
             //
             //loadBalance();//刷新钻石
             // payorder

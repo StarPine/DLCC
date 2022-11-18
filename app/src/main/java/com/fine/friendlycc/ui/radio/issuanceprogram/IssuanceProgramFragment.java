@@ -6,7 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
@@ -40,6 +42,7 @@ import com.fine.friendlycc.ui.base.BaseToolbarFragment;
 import com.fine.friendlycc.ui.certification.certificationfemale.CertificationFemaleFragment;
 import com.fine.friendlycc.ui.certification.certificationmale.CertificationMaleFragment;
 import com.fine.friendlycc.ui.mine.vipsubscribe.VipSubscribeFragment;
+import com.fine.friendlycc.ui.mine.wallet.diamond.recharge.DialogDiamondRechargeActivity;
 import com.fine.friendlycc.utils.AutoSizeUtils;
 import com.fine.friendlycc.widget.coinpaysheet.CoinPaySheet;
 import com.fine.friendlycc.widget.coinrechargesheet.CoinRechargeSheetView;
@@ -377,16 +380,21 @@ public class IssuanceProgramFragment extends BaseToolbarFragment<FragmentIssuanc
      * 去充值
      */
     private void toRecharge() {
-        CoinRechargeSheetView coinRechargeFragmentView = new CoinRechargeSheetView(mActivity);
-        coinRechargeFragmentView.setClickListener(new CoinRechargeSheetView.ClickListener() {
-            @Override
-            public void paySuccess(GoodsEntity goodsEntity) {
-                ToastUtils.showShort(R.string.playcc_pay_success);
+        Intent intent = new Intent(mActivity, DialogDiamondRechargeActivity.class);
+        toGooglePlayIntent.launch(intent);
+        mActivity.overridePendingTransition(R.anim.pop_enter_anim, 0);
+    }
+
+    //跳转谷歌支付act
+    ActivityResultLauncher<Intent> toGooglePlayIntent = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
+        if (result.getData() != null) {
+            Intent intentData = result.getData();
+            GoodsEntity goodsEntity = (GoodsEntity) intentData.getSerializableExtra("goodsEntity");
+            if(goodsEntity!=null){
                 viewModel.sendConfirm();
             }
-        });
-        coinRechargeFragmentView.show();
-    }
+        }
+    });
 
     @Override
     public void initData() {

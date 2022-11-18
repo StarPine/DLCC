@@ -4,6 +4,7 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -38,6 +39,7 @@ import com.fine.friendlycc.ui.certification.certificationfemale.CertificationFem
 import com.fine.friendlycc.ui.dialog.CommitEvaluateDialog;
 import com.fine.friendlycc.ui.dialog.MyEvaluateDialog;
 import com.fine.friendlycc.ui.mine.vipsubscribe.VipSubscribeFragment;
+import com.fine.friendlycc.ui.mine.wallet.diamond.recharge.DialogDiamondRechargeActivity;
 import com.fine.friendlycc.ui.userdetail.playnum.CoinPaySheetUserMain;
 import com.fine.friendlycc.ui.userdetail.report.ReportUserFragment;
 import com.fine.friendlycc.utils.AutoSizeUtils;
@@ -780,8 +782,9 @@ public class UserDetailFragment extends BaseToolbarFragment<FragmentUserDetailBi
      * 去充值
      */
     private void toRecharge() {
-        CoinRechargeSheetView coinRechargeFragmentView = new CoinRechargeSheetView(mActivity);
-        coinRechargeFragmentView.show();
+        Intent intent = new Intent(mActivity, DialogDiamondRechargeActivity.class);
+        mActivity.startActivity(intent);
+        mActivity.overridePendingTransition(R.anim.pop_enter_anim, 0);
     }
 
     private boolean isVip() {

@@ -2,6 +2,7 @@ package com.fine.friendlycc.ui.userdetail.playnum;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -24,6 +25,7 @@ import com.fine.friendlycc.data.source.http.response.BaseResponse;
 import com.fine.friendlycc.entity.CoinWalletEntity;
 import com.fine.friendlycc.entity.CreateOrderEntity;
 import com.fine.friendlycc.ui.base.BasePopupWindow;
+import com.fine.friendlycc.ui.mine.wallet.diamond.recharge.DialogDiamondRechargeActivity;
 import com.fine.friendlycc.widget.coinrechargesheet.CoinRechargeSheetView;
 import com.fine.friendlycc.widget.dialog.MVDialog;
 
@@ -273,8 +275,9 @@ public class CoinPaySheetUserMain {
 
         private void showRecharge() {
             this.dismiss();
-            CoinRechargeSheetView coinRechargeSheetView = new CoinRechargeSheetView(mActivity);
-            coinRechargeSheetView.show();
+            Intent intent = new Intent(mActivity, DialogDiamondRechargeActivity.class);
+            mActivity.startActivity(intent);
+            mActivity.overridePendingTransition(R.anim.pop_enter_anim, 0);
         }
 
         private void loadBalance() {

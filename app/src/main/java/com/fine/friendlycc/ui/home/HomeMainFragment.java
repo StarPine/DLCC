@@ -42,6 +42,7 @@ import com.fine.friendlycc.ui.dialog.CityChooseDialog;
 import com.fine.friendlycc.ui.home.accost.HomeAccostDialog;
 import com.fine.friendlycc.ui.home.active.HomeFristTabFragment;
 import com.fine.friendlycc.ui.mine.MineFragment;
+import com.fine.friendlycc.ui.mine.wallet.diamond.recharge.DialogDiamondRechargeActivity;
 import com.fine.friendlycc.utils.AutoSizeUtils;
 import com.fine.friendlycc.utils.ImmersionBarUtils;
 import com.fine.friendlycc.widget.AppBarStateChangeListener;
@@ -65,9 +66,6 @@ public class HomeMainFragment extends BaseFragment<FragmentHomeMainBinding, Home
     private CityChooseDialog cityChooseDialog;
     private final BaseFragment[] mFragments = new BaseFragment[2];
     private int currIndex = -1;
-
-    //充值弹窗
-    private CoinRechargeSheetView coinRechargeSheetView;
 
     @Override
     public int initContentView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -198,17 +196,9 @@ public class HomeMainFragment extends BaseFragment<FragmentHomeMainBinding, Home
 
     //充值弹窗
     private void payCoinRechargeDialog(){
-        if (coinRechargeSheetView == null){
-            coinRechargeSheetView = new CoinRechargeSheetView(mActivity);
-            coinRechargeSheetView.setClickListener(new CoinRechargeSheetView.ClickListener() {
-                @Override
-                public void paySuccess(GoodsEntity goodsEntity) {
-                }
-            });
-        }
-        if (!coinRechargeSheetView.isShowing()){
-            coinRechargeSheetView.show();
-        }
+        Intent intent = new Intent(mActivity, DialogDiamondRechargeActivity.class);
+        mActivity.startActivity(intent);
+        mActivity.overridePendingTransition(R.anim.pop_enter_anim, 0);
     }
 
     @Override
@@ -335,8 +325,9 @@ public class HomeMainFragment extends BaseFragment<FragmentHomeMainBinding, Home
      * 去充值
      */
     private void toRecharge() {
-        CoinRechargeSheetView coinRechargeFragmentView = new CoinRechargeSheetView(mActivity);
-        coinRechargeFragmentView.show();
+        Intent intent = new Intent(mActivity, DialogDiamondRechargeActivity.class);
+        mActivity.startActivity(intent);
+        mActivity.overridePendingTransition(R.anim.pop_enter_anim, 0);
     }
 
     @SuppressLint("MissingPermission")

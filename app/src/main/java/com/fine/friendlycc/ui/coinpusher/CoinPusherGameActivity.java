@@ -32,6 +32,7 @@ import com.fine.friendlycc.ui.coinpusher.dialog.CoinPusherConvertDialog;
 import com.fine.friendlycc.ui.coinpusher.dialog.CoinPusherDialogAdapter;
 import com.fine.friendlycc.ui.coinpusher.dialog.CoinPusherGameHistoryDialog;
 import com.fine.friendlycc.ui.coinpusher.dialog.CoinPusherHelpDialog;
+import com.fine.friendlycc.ui.mine.wallet.diamond.recharge.DialogDiamondRechargeActivity;
 import com.fine.friendlycc.utils.AutoSizeUtils;
 import com.fine.friendlycc.utils.CoinPusherApiUtil;
 import com.fine.friendlycc.utils.ImmersionBarUtils;
@@ -76,9 +77,6 @@ public class CoinPusherGameActivity extends BaseActivity<ActivityCoinpusherGameB
     private boolean downTimeMillisHintFlag = false;
 
     private CoinPusherDataInfoEntity coinPusherDataInfoEntity;
-
-    //充值弹窗
-    private CoinRechargeSheetView coinRechargeSheetView;
 
     @Override
     protected void attachBaseContext(Context newBase) {
@@ -431,12 +429,6 @@ public class CoinPusherGameActivity extends BaseActivity<ActivityCoinpusherGameB
         }
         CoinPusherApiUtil.endGamePaying(viewModel.coinPusherDataInfoEntity.getRoomInfo().getRoomId());
         try {
-            if(coinRechargeSheetView!=null){
-                if(coinRechargeSheetView.isShowing()){
-                    coinRechargeSheetView.dismiss();
-                }
-                coinRechargeSheetView = null;
-            }
             if(dialogCoinPusherHelp != null){
                 dialogCoinPusherHelp.destroy();
                 if(dialogCoinPusherHelp.isShowing()){
@@ -542,18 +534,8 @@ public class CoinPusherGameActivity extends BaseActivity<ActivityCoinpusherGameB
     }
     //充值弹窗
     private void payCoinRechargeDialog(){
-        if (coinRechargeSheetView == null){
-            coinRechargeSheetView = new CoinRechargeSheetView(this);
-            coinRechargeSheetView.setClickListener(new CoinRechargeSheetView.ClickListener() {
-                @Override
-                public void paySuccess(GoodsEntity goodsEntity) {
-                    //充值成功  查询当前用户余额
-                    //viewModel.qryUserGameBalance();
-                }
-            });
-        }
-        if (!coinRechargeSheetView.isShowing()){
-            coinRechargeSheetView.show();
-        }
+        Intent intent = new Intent(this, DialogDiamondRechargeActivity.class);
+        startActivity(intent);
+        overridePendingTransition(R.anim.pop_enter_anim, 0);
     }
 }

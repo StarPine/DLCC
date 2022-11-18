@@ -1,5 +1,6 @@
 package com.fine.friendlycc.ui.mine.wallet.diamond.recharge;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -180,8 +181,7 @@ public class DialogDiamondRechargeActivity extends BaseActivity<ActivityDialogDi
     private void showRewardDialog() {
         GoodsEntity goodsEntity = viewModel.selectedGoodsEntity.get();
         if (goodsEntity == null) {
-            isFinsh = true;
-            viewModel.getRechargeList();
+            finishActivity(goodsEntity);
             return;
         }
         int totalReward ;
@@ -194,9 +194,7 @@ public class DialogDiamondRechargeActivity extends BaseActivity<ActivityDialogDi
                 .setTitle(getString(R.string.playcc_recharge_success))
                 .setConfirmOnlick(dialog -> {
                     dialog.dismiss();
-                    isFinsh = true;
-                    viewModel.getRechargeList();
-                    RxBus.getDefault().post(new DiamondPaySuccessEntity());
+                    finishActivity(goodsEntity);
                 })
                 .dayRewardDialog(true,
                         viewModel.selectedGoodsEntity.get().getDayGiveCoin(),
@@ -204,6 +202,14 @@ public class DialogDiamondRechargeActivity extends BaseActivity<ActivityDialogDi
                         totalReward,
                         viewModel.selectedGoodsEntity.get().getVideoCard())
                 .show();
+    }
+
+    private void finishActivity(GoodsEntity goodsEntity) {
+        isFinsh = true;
+        Intent intent = new Intent();
+        intent.putExtra("goodsEntity", goodsEntity);
+        setResult(909,intent);
+        finish();
     }
 
     @Override

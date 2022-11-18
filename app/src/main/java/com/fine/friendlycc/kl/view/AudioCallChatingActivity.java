@@ -53,6 +53,7 @@ import com.fine.friendlycc.kl.viewmodel.AudioCallChatingViewModel;
 import com.fine.friendlycc.manager.ConfigManager;
 import com.fine.friendlycc.manager.LocaleManager;
 import com.fine.friendlycc.ui.dialog.GiftBagDialog;
+import com.fine.friendlycc.ui.mine.wallet.diamond.recharge.DialogDiamondRechargeActivity;
 import com.fine.friendlycc.utils.AutoSizeUtils;
 import com.fine.friendlycc.utils.ImmersionBarUtils;
 import com.fine.friendlycc.utils.MiuiUtils;
@@ -460,14 +461,9 @@ public class AudioCallChatingActivity extends BaseActivity<ActivityCallAudioChat
      * 去充值
      */
     private void toRecharge() {
-        CoinRechargeSheetView coinRechargeFragmentView = new CoinRechargeSheetView(this);
-        coinRechargeFragmentView.setClickListener(new CoinRechargeSheetView.ClickListener() {
-            @Override
-            public void paySuccess(GoodsEntity goodsEntity) {
-                viewModel.getCallingStatus(roomId);
-            }
-        });
-        coinRechargeFragmentView.show();
+        Intent intent = new Intent(this, DialogDiamondRechargeActivity.class);
+        startActivity(intent);
+        overridePendingTransition(R.anim.pop_enter_anim, 0);
     }
 
     /**
