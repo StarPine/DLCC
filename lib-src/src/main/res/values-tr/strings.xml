@@ -940,7 +940,7 @@
     <!--腾讯异常代码语言-->
     <!--================腾讯IM语言包================-->
     <!--PlayCC-APP-Start-->
-    <string name="app_name_release">PlayChat</string>
+    <string name="app_name_release">PlayCC</string>
     <string name="playcc_local_language">en-US</string>
     <string name="playcc_local_language_val">en</string>
     <string name="playcc_title_home">Home</string>
@@ -1159,7 +1159,7 @@
     <string name="playcc_open">In-app</string>
     <string name="playcc_push_setting_sound">Sound</string>
     <string name="playcc_push_setting_shock">Vibration</string>
-    <string name="playcc_register_alert_hint">Thank you for using PlayChat.\n Our customer service team will review your profile!</string>
+    <string name="playcc_register_alert_hint">Thank you for using PlayCC.\n Our customer service team will review your profile!</string>
     <string name="playcc_code">Verification Code</string>
     <string name="playcc_setting_password">Password</string>
     <string name="playcc_please_setting_password">Enter Password</string>
@@ -1449,7 +1449,7 @@
     <string name="playcc_phone_number_prefix_tw">7</string>
     <string name="playcc_user_detail_user_disable">This user is blocked.</string>
     <string name="playcc_dialog_user_disable_title">Your account is blocked.</string>
-    <string name="playcc_dialog_user_disable_content">If you need to appeal, you can send your account ID and appeal reasons to: \ngloblePlayChat@gmail.com</string>
+    <string name="playcc_dialog_user_disable_content">If you need to appeal, you can send your account ID and appeal reasons to: \ngloblePlayCC@gmail.com</string>
     <string name="playcc_dialog_user_disable_btn_text">OK</string>
     <string name="playcc_user_detail_him_disable_mic">Voice call disabled</string>
     <string name="playcc_dialog_set_withdraw_account_title">Your PayPal</string>
@@ -1521,8 +1521,8 @@
     <string name="playcc_upgrade_vip">Upgrade to VIP</string>
     <string name="playcc_end_time">Expires on %s</string>
     <string name="playcc_x_count">%s</string>
-    <string name="playcc_dialog_agree_content">Hi, welcome to PlayChat. Before making new friends. We warmly inform you:\n\n
-        1. Please comply with PlayChat Use Specification and Broadcast Instructions. PlayChat reserves the right to restrict or even freeze your account if you post any illegal content (such as porn contents).\n\n
+    <string name="playcc_dialog_agree_content">Hi, welcome to PlayCC. Before making new friends. We warmly inform you:\n\n
+        1. Please comply with PlayCC Use Specification and Broadcast Instructions. PlayCC reserves the right to restrict or even freeze your account if you post any illegal content (such as porn contents).\n\n
         2. Need help? Contact us.</string>
     <string name="playcc_recharge_coin_success">Topped up successfully</string>
     <string name="playcc_recharge_coin_success2">Exchange?</string>
@@ -1620,9 +1620,9 @@
     <string name="playcc_error_google_22">The connection timed out while trying to reconnect.</string>
     <string name="playcc_error_google_12500">Update to the latest Google Play services to use.</string>
     <string name="playcc_please_select_location">Choose a city</string>
-    <string name="playcc_user_message_tag1">Join PlayChat via invitation code</string>
+    <string name="playcc_user_message_tag1">Join PlayCC via invitation code</string>
     <string name="playcc_user_message_tag2">To ensure the most authentic dating environment, \n we will review your profile and keep it secret.</string>
-    <string name="playcc_alert_invite_write_title">Thank you for using PlayChat.\n To ensure the most authentic dating environment, we will review your profile and keep it secret.</string>
+    <string name="playcc_alert_invite_write_title">Thank you for using PlayCC.\n To ensure the most authentic dating environment, we will review your profile and keep it secret.</string>
     <string name="playcc_dialog_coin_pay_user_detail_title">Unlock chat times</string>
     <string name="playcc_reg_user_sex_error">Choose your gender</string>
     <string name="playcc_reg_user_dating_ok">Enter the app</string>
@@ -1828,8 +1828,8 @@
     <string name="playcc_fragment_edit_profile_male">Male</string>
     <string name="playcc_fragment_edit_profile_female">Female</string>
     <string name="playcc_chat_detail_tool_bar_title">Enter the invitation code</string>
-    <string name="playcc_homt_main_lication_title">PlayChat can\'t calculate the distance between you and other users without enabling location services</string>
-    <string name="playcc_message_hint_all">Hello, welcome to PlayChat, before we make new friends, we remind you: \n1 Please follow the rules and guidelines of the platform, according to which PlayChat has the right to restrict access to your account and even freeze them. \n2) During the use of the platform, if you need help or valuable advice, please contact the personal customer service of the personal center. Our philosophy is Freeship Powers People! I hope you find valuable friendships and have fun on PlayChat</string>
+    <string name="playcc_homt_main_lication_title">PlayCC can\'t calculate the distance between you and other users without enabling location services</string>
+    <string name="playcc_message_hint_all">Hello, welcome to PlayCC, before we make new friends, we remind you: \n1 Please follow the rules and guidelines of the platform, according to which PlayCC has the right to restrict access to your account and even freeze them. \n2) During the use of the platform, if you need help or valuable advice, please contact the personal customer service of the personal center. Our philosophy is Freeship Powers People! I hope you find valuable friendships and have fun on PlayCC</string>
     <string name="playcc_edit_profile_weight_empty">Weight</string>
     <string name="playcc_edit_profile_height_empty">Height</string>
     <string name="playcc_edit_profile_desc_empty">Please fill in the personal profile</string>
@@ -1937,10 +1937,10 @@
     <string name="fragment_level_text_video2">Video %s diamonds/min</string>
     <string name="playcc_accont_bind_hint">Bind the social account</string>
     <string name="playcc_accont_bind_hint2">Use social account to login</string>
-    <string name="playcc_setting_account_hint2">1. Canceling your PlayChat account is an unrecoverable operation. In order to protect your legitimate rights and interests, before canceling your account, please back up the information and data related to the proposed cancellation of your PlayChat account. If you have any questions, comments and suggestions for account cancellation, you can contact PlayChat customer service and we will give you the necessary help.
-                                        \n2. If your PlayChat account is complained about by others, investigated, or is in litigation or arbitration proceedings, PlayChat has the right to terminate the cancellation of your PlayChat account without your consent.
-                                        \n3. Canceling your PlayChat account does not mean that the account behavior and related liabilities before the cancellation of the PlayChat account have been waived or reduced.
-                                        \n4. After you confirm and successfully log out of your PlayChat account, you will no longer be able to use this account. If your PlayChat account has unused diamonds, points or unredeems rewards, the portion of the diamonds, points and rewards will be automatically frozen from the date you submit the cancellation and the operation is irrevocable.
+    <string name="playcc_setting_account_hint2">1. Canceling your PlayCC account is an unrecoverable operation. In order to protect your legitimate rights and interests, before canceling your account, please back up the information and data related to the proposed cancellation of your PlayCC account. If you have any questions, comments and suggestions for account cancellation, you can contact PlayCC customer service and we will give you the necessary help.
+                                        \n2. If your PlayCC account is complained about by others, investigated, or is in litigation or arbitration proceedings, PlayCC has the right to terminate the cancellation of your PlayCC account without your consent.
+                                        \n3. Canceling your PlayCC account does not mean that the account behavior and related liabilities before the cancellation of the PlayCC account have been waived or reduced.
+                                        \n4. After you confirm and successfully log out of your PlayCC account, you will no longer be able to use this account. If your PlayCC account has unused diamonds, points or unredeems rewards, the portion of the diamonds, points and rewards will be automatically frozen from the date you submit the cancellation and the operation is irrevocable.
                                         \n5. Canceling the account needs to be paid, and the cancellation fee is 1000 diamonds.</string>
     <string name="playcc_setting_account_hint3">By confirming your cancellation, you have read and agreed to the Important Reminder</string>
     <string name="playcc_setting_account_hint4">Important:</string>
@@ -2138,7 +2138,7 @@
     <string name="radio_daily_atendance_day_text">Successful check-in, +10 points</string>
 
 
-    <string name="playchat_choose_area_title">Region</string>
+    <string name="playcc_choose_area_title">Region</string>
     <string name="playcc_contact_empty_text">There is no frequent contact, let\'s chat!</string>
     <string name="playcc_contact_text1">Set up frequent contact success</string>
     <string name="playcc_contact_text2">Frequent contact cancelled</string>

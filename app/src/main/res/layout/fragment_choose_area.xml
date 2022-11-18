@@ -33,7 +33,7 @@
                 android:id="@+id/basic_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/action_bar_height"
-                app:toolbar_title="@string/playchat_choose_area_title" />
+                app:toolbar_title="@string/playcc_choose_area_title" />
         </com.google.android.material.appbar.AppBarLayout>
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"

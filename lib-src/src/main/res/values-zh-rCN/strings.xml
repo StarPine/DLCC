@@ -1158,7 +1158,7 @@
     <string name="playcc_open">產品打開時</string>
     <string name="playcc_push_setting_sound">聲音</string>
     <string name="playcc_push_setting_shock">震動</string>
-    <string name="playcc_register_alert_hint">感謝你使用PlayChat。\n我們的客服團隊將對你的資料進行審核！</string>
+    <string name="playcc_register_alert_hint">感謝你使用PlayCC。\n我們的客服團隊將對你的資料進行審核！</string>
     <string name="playcc_code">驗證碼</string>
     <string name="playcc_setting_password">設定密碼</string>
     <string name="playcc_please_setting_password">請設定登入密碼</string>
@@ -1394,7 +1394,7 @@
     <string name="playcc_goddess_certification">女神認證</string>
     <string name="playcc_goddess_certification_auditing">女神認證（審核中）</string>
     <string name="playcc_dialog_face_recognition_title">請進行臉部辨識</string>
-    <string name="playcc_dialog_face_recognition_desc">你已重新登入，為保護你的賬號安全，請進行臉部辨識。與你的臉部數據對比通過後才可以正常使用PlayChat</string>
+    <string name="playcc_dialog_face_recognition_desc">你已重新登入，為保護你的賬號安全，請進行臉部辨識。與你的臉部數據對比通過後才可以正常使用PlayCC</string>
     <string name="playcc_dialog_face_recognition_btn_first">臉部辨識</string>
     <string name="playcc_dialog_face_recognition_btn_second">登出</string>
     <string name="playcc_dialog_face_recognition_contact_service">遇到問題，聯繫客服</string>
@@ -1448,7 +1448,7 @@
     <string name="playcc_phone_number_prefix_tw">+886</string>
     <string name="playcc_user_detail_user_disable">該用戶已被凍結</string>
     <string name="playcc_dialog_user_disable_title">你的賬號已被凍結</string>
-    <string name="playcc_dialog_user_disable_content">如需申訴，可以發送你的ID 和 申訴理由 到客服郵箱：\ngloblePlayChat@gmail.com</string>
+    <string name="playcc_dialog_user_disable_content">如需申訴，可以發送你的ID 和 申訴理由 到客服郵箱：\ngloblePlayCC@gmail.com</string>
     <string name="playcc_dialog_user_disable_btn_text">我知道了</string>
     <string name="playcc_user_detail_him_disable_mic">对方禁止語音通話</string>
     <string name="playcc_dialog_set_withdraw_account_title">你的PayPal</string>
@@ -1730,7 +1730,7 @@
     <string name="playcc_mine_audio_text2">聲音能讓你更受歡迎！</string>
     <string name="playcc_mine_audio_text4">審核中</string>
     <string name="playcc_mine_audio_text5">審核未通過</string>
-    <string name="playcc_mine_audio_text6">麥克風沒有聲音，請在手機應用授權管理中打開PlayChat的錄音權限。</string>
+    <string name="playcc_mine_audio_text6">麥克風沒有聲音，請在手機應用授權管理中打開PlayCC的錄音權限。</string>
     <string name="playcc_mine_audio_text7">用聲音介紹你自己\n受到更多歡迎！</string>
     <string name="playcc_mine_audio_text8">長按錄音，每次錄製不可超過20秒</string>
     <string name="playcc_mine_audio_text9">重錄</string>
@@ -1942,10 +1942,10 @@
     <string name="fragment_level_text_video2">視訊%s鑽石/分鐘</string>
     <string name="playcc_accont_bind_hint">社群賬戶綁定</string>
     <string name="playcc_accont_bind_hint2">綁定社群賬戶後可直接登入PlayCC</string>
-    <string name="playcc_setting_account_hint2">1、註銷PlayChat賬號是不可恢復的操作。為了保護你的合法權益，在註銷賬號前，請你自行備份擬註銷PlayChat賬號相關的信息和數據。若你對賬號註銷有任何提問、意見、建議，可與PlayChat客服聯繫，我們會給予你必要的幫助。
-                                        \n2、如你的PlayChat賬號被他人投訴、被調查或正處於訴訟、仲裁程序中，PlayChat有權自行終止你的PlayChat賬號註銷而無需得到你的同意。
-                                        \n3、註銷你的PlayChat賬號並不代表本PlayChat賬號註銷前的賬號行為和相關責任得到豁免或減輕。
-                                        \n4、在你確認並成功註銷你的PlayChat賬號後，你將無法再使用本賬號。若你的PlayChat賬號有未消費鑽石、積分或未兌換的獎勵，自你提交註銷賬之日起該部分鑽石、積分及獎勵將自動凍結，且該操作不可撤銷。
+    <string name="playcc_setting_account_hint2">1、註銷PlayCC賬號是不可恢復的操作。為了保護你的合法權益，在註銷賬號前，請你自行備份擬註銷PlayCC賬號相關的信息和數據。若你對賬號註銷有任何提問、意見、建議，可與PlayCC客服聯繫，我們會給予你必要的幫助。
+                                        \n2、如你的PlayCC賬號被他人投訴、被調查或正處於訴訟、仲裁程序中，PlayCC有權自行終止你的PlayCC賬號註銷而無需得到你的同意。
+                                        \n3、註銷你的PlayCC賬號並不代表本PlayCC賬號註銷前的賬號行為和相關責任得到豁免或減輕。
+                                        \n4、在你確認並成功註銷你的PlayCC賬號後，你將無法再使用本賬號。若你的PlayCC賬號有未消費鑽石、積分或未兌換的獎勵，自你提交註銷賬之日起該部分鑽石、積分及獎勵將自動凍結，且該操作不可撤銷。
                                         \n5、註銷賬號需要支付註手續費，註銷金為1000鑽石。</string>
     <string name="playcc_setting_account_hint3">確認註銷即代表你已閱讀並同意《重要提醒》</string>
     <string name="playcc_setting_account_hint4">重要提醒：</string>
@@ -2143,7 +2143,7 @@
     <string name="radio_daily_atendance_day_text">签到成功，积分+10</string>
 
 
-    <string name="playchat_choose_area_title">地區</string>
+    <string name="playcc_choose_area_title">地區</string>
     <string name="playcc_contact_empty_text">暫無常聯繫，快去聊天吧</string>
     <string name="playcc_contact_text1">設定常聯繫成功</string>
     <string name="playcc_contact_text2">已取消常聯繫</string>
