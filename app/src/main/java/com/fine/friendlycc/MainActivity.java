@@ -107,50 +107,6 @@ public class MainActivity extends MySupportActivity {
     }
 
     @Override
-    public boolean dispatchTouchEvent(MotionEvent ev) {
-        try {
-            if (ev.getAction() == MotionEvent.ACTION_DOWN) {  //把操作放在用户点击的时候
-                if (KeyboardUtils.isSoftInputVisible(this)) {
-                    View v = getCurrentFocus();      //得到当前页面的焦点,ps:有输入框的页面焦点一般会被输入框占据
-                    if (isShouldHideKeyboard(v, ev)) { //判断用户点击的是否是输入框以外的区域
-                        KeyboardUtils.hideSoftInput(this);
-                    }
-                }
-            }
-            if (ev != null) {
-                return super.dispatchTouchEvent(ev);
-            }
-        } catch (Exception e) {
-
-        }
-
-        return false;
-    }
-
-    /**
-     * 根据EditText所在坐标和用户点击的坐标相对比，来判断是否隐藏键盘，因为当用户点击EditText时则不能隐藏
-     *
-     * @param v
-     * @param event
-     * @return
-     */
-    private boolean isShouldHideKeyboard(View v, MotionEvent event) {
-        if (v != null && (v instanceof EditText)) {  //判断得到的焦点控件是否包含EditText
-            int[] l = {0, 0};
-            v.getLocationInWindow(l);
-            int left = l[0],    //得到输入框在屏幕中上下左右的位置
-                    top = l[1],
-                    bottom = top + v.getHeight(),
-                    right = left + v.getWidth();
-            // 点击位置如果是EditText的区域，忽略它，不收起键盘。
-            return !(event.getX() > left) || !(event.getX() < right)
-                    || !(event.getY() > top) || !(event.getY() < bottom);
-        }
-        // 如果焦点不是EditText则忽略
-        return false;
-    }
-
-    @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(resultCode==-1){
