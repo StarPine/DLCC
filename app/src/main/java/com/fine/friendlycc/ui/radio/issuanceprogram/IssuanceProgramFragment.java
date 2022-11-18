@@ -381,20 +381,9 @@ public class IssuanceProgramFragment extends BaseToolbarFragment<FragmentIssuanc
      */
     private void toRecharge() {
         Intent intent = new Intent(mActivity, DialogDiamondRechargeActivity.class);
-        toGooglePlayIntent.launch(intent);
+        mActivity.startActivity(intent);
         mActivity.overridePendingTransition(R.anim.pop_enter_anim, 0);
     }
-
-    //跳转谷歌支付act
-    ActivityResultLauncher<Intent> toGooglePlayIntent = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
-        if (result.getData() != null) {
-            Intent intentData = result.getData();
-            GoodsEntity goodsEntity = (GoodsEntity) intentData.getSerializableExtra("goodsEntity");
-            if(goodsEntity!=null){
-                viewModel.sendConfirm();
-            }
-        }
-    });
 
     @Override
     public void initData() {

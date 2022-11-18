@@ -198,23 +198,9 @@ public class TraceManFragment extends BaseToolbarFragment<FragmentMineTraceManBi
                 binding.refreshLayout.finishLoadMore(100);
             }
         });
-    }
-
-    /**
-     * 去充值
-     */
-    private void toRecharge() {
-        Intent intent = new Intent(mActivity, DialogDiamondRechargeActivity.class);
-        toGooglePlayIntent.launch(intent);
-        mActivity.overridePendingTransition(R.anim.pop_enter_anim, 0);
-    }
-
-    //跳转谷歌支付act
-    ActivityResultLauncher<Intent> toGooglePlayIntent = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
-        if (result.getData() != null) {
-            Intent intentData = result.getData();
-            GoodsEntity goodsEntity = (GoodsEntity) intentData.getSerializableExtra("goodsEntity");
-            if(goodsEntity!=null){
+        viewModel.uc.paySuccess.observe(this, new Observer() {
+            @Override
+            public void onChanged(@Nullable Object o) {
                 Log.e("支付成功","===============");
                 AppContext.instance().logEvent(AppsFlyerEvent.unlock_my_visitor);
                 viewModel.isPlay = 1;
@@ -222,6 +208,17 @@ public class TraceManFragment extends BaseToolbarFragment<FragmentMineTraceManBi
                 binding.btnConfirm.setVisibility(View.GONE);
                 viewModel.loadDatas(1);
             }
-        }
-    });
+        });
+
+    }
+
+    /**
+     * 去充值
+     */
+    private void toRecharge() {
+        Intent intent = new Intent(mActivity, DialogDiamondRechargeActivity.class);
+        mActivity.startActivity(intent);
+        mActivity.overridePendingTransition(R.anim.pop_enter_anim, 0);
+    }
+
 }
