@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -37,6 +38,8 @@ import com.tencent.qcloud.tuicore.util.ToastUtil;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import jp.wasabeef.blurry.Blurry;
 
@@ -1029,6 +1032,10 @@ public class MVDialog {
             @Override
             public void onClick(View v) {
                 String money = edtMoney.getText().toString();
+                if(TextUtils.isEmpty(money)){
+                    ToastUtil.toastShortMessage(context.getResources().getString(R.string.playcc_please_diamond_number));
+                    return;
+                }
                 int parseInt = Integer.parseInt(money);
                 if (parseInt <= 0 || money.startsWith("0")){
                     ToastUtil.toastShortMessage(context.getResources().getString(R.string.playcc_photo_setting));
@@ -1045,6 +1052,35 @@ public class MVDialog {
                 edtMoney.clearFocus();
                 edtMoney.setFocusable(false);
                 onDismissListener.onDismiss(bottomDialog);
+            }
+        });
+        edtMoney.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+                String s1 = editable.toString();
+                if (s1.startsWith("0")){
+                    editable.replace(0, 1, "");
+                }
+                String s2 = editable.toString();
+                Pattern p = Pattern.compile("[^0-9]");
+                Matcher m = p.matcher(s2);
+                if(m.find()){
+                    String all = s2.replaceAll("[^0-9]", "");
+                    edtMoney.setText(all);
+                    edtMoney.setSelection(all.length());
+                }
+
             }
         });
 
