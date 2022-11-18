@@ -41,8 +41,8 @@ public class RegisterSexFragment extends BaseFragment<FragmentRegisterSexBinding
     private String avatar;
     private String name;
     private int currentAge = 18;
-    private final String GIRL_HEAD = "images/avatar/girl.png";
-    private final String BOY_HEAD = "images/avatar/boy.png";
+    private final String GIRL_HEAD = "images/avatar/1667448177-girl.png";
+    private final String BOY_HEAD = "images/avatar/1667448177-boy.png";
 
     @Override
     public int initContentView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
