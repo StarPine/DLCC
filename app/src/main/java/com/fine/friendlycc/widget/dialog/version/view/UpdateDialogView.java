@@ -19,6 +19,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.IdRes;
+
 import com.blankj.utilcode.util.StringUtils;
 import com.fine.friendlycc.R;
 import com.fine.friendlycc.utils.ApiUitl;
@@ -103,6 +105,7 @@ public class UpdateDialogView {
      **/
     public UpdateDialogView getUpdateDialogView(String title, String update_info, String apkUrl, boolean isUpdate, String apkName, String appStoreLink) {
         //初始化自定义对话框
+        if (dialog== null)
         dialog = new Dialog(context, R.style.UpdateAppDialog);
         LinearLayout popView = (LinearLayout) LayoutInflater.
                 from(context).inflate(R.layout.update_app_dialog, null);
@@ -179,6 +182,7 @@ public class UpdateDialogView {
     }
 
     public void show() {
+        if (dialog != null && !dialog.isShowing())
         dialog.show();
     }
 
