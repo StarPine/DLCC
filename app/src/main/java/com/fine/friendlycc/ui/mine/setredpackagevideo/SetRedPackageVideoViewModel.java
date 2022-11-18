@@ -94,11 +94,7 @@ public class SetRedPackageVideoViewModel extends BaseViewModel<AppRepository> {
                 item.itemEntity.get().setIsRedPackage(0);
             }
         }
-        if (entity.getIsRedPackage() == 1) {
-            id = entity.getId();
-        } else {
-            id = null;
-        }
+        id = entity.getId();
         state = entity.getIsRedPackage() == 1;
     }
 
