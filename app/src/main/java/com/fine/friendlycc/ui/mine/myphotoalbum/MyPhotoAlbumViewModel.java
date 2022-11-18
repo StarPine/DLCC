@@ -33,7 +33,8 @@ public class MyPhotoAlbumViewModel extends BaseMyPhotoAlbumViewModel<AppReposito
     public BindingCommand uploadPhotoOnClickCommand = new BindingCommand(new BindingAction() {
         @Override
         public void call() {
-            if (totalPhoto.get() == null || totalPhoto.get() >= 24) {
+            if (totalPhoto.get() == null)return;
+            if (totalPhoto.get() >= 24) {
                 ToastUtils.showShort(R.string.playcc_warn_max_upload_photo);
                 return;
             }
