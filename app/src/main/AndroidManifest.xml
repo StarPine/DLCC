@@ -251,16 +251,18 @@
             android:windowSoftInputMode="adjustPan|adjustResize|stateHidden" />
 
         <activity
-            android:name="com.fine.friendlycc.ui.mine.exclusive.ExclusiveCallActivity"
+            android:name="com.fine.friendlycc.ui.mine.wallet.diamond.recharge.DialogDiamondRechargeActivity"
             android:exported="true"
             android:launchMode="singleTop"
             android:requestLegacyExternalStorage="true"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"
+            android:theme="@style/diamond_dialog_style"
             android:windowSoftInputMode="adjustPan|adjustResize|stateHidden" />
 
+
         <activity
-            android:name=".ui.mine.wallet.recharge.RechargeActivity"
+            android:name="com.fine.friendlycc.ui.mine.exclusive.ExclusiveCallActivity"
+            android:exported="true"
             android:launchMode="singleTop"
             android:requestLegacyExternalStorage="true"
             android:screenOrientation="portrait"
@@ -274,22 +276,6 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan|adjustResize|stateHidden" />
-
-
-        <activity
-            android:name="com.fine.friendlycc.api.login.email.LoginEmailMangerActivity"
-            android:exported="true"
-            android:launchMode="singleTop"
-            android:requestLegacyExternalStorage="true"
-            android:screenOrientation="portrait"
-            android:theme="@style/dialog_activity_style" />
-        <activity
-            android:name="com.fine.friendlycc.ui.mine.account.bind.EmailMangerBindActivity"
-            android:exported="true"
-            android:launchMode="singleTop"
-            android:requestLegacyExternalStorage="true"
-            android:screenOrientation="portrait"
-            android:theme="@style/dialog_activity_style" />
 
     </application>
 

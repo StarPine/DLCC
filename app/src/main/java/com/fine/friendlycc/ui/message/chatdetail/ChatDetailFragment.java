@@ -60,6 +60,7 @@ import com.fine.friendlycc.ui.message.mediagallery.SnapshotPhotoActivity;
 import com.fine.friendlycc.ui.message.mediagallery.photo.MediaGalleryPhotoPayActivity;
 import com.fine.friendlycc.ui.message.mediagallery.video.MediaGalleryVideoPayActivity;
 import com.fine.friendlycc.ui.mine.myphotoalbum.MyPhotoAlbumFragment;
+import com.fine.friendlycc.ui.mine.wallet.diamond.recharge.DialogDiamondRechargeActivity;
 import com.fine.friendlycc.ui.mine.webview.WebViewFragment;
 import com.fine.friendlycc.ui.userdetail.detail.UserDetailFragment;
 import com.fine.friendlycc.ui.userdetail.report.ReportUserFragment;
@@ -1356,12 +1357,15 @@ public class ChatDetailFragment extends BaseToolbarFragment<FragmentChatDetailBi
             AppContext.instance().logEvent(AppsFlyerEvent.im_topup);
         }
         AppContext.instance().logEvent(AppsFlyerEvent.Top_up);
-        if (coinRechargeFragmentView == null){
-            coinRechargeFragmentView = new CoinRechargeSheetView(mActivity);
-        }
-        if (!coinRechargeFragmentView.isShowing()){
-            coinRechargeFragmentView.show();
-        }
+        Intent intent = new Intent(mActivity, DialogDiamondRechargeActivity.class);
+        mActivity.startActivity(intent);
+        mActivity.overridePendingTransition(R.anim.pop_enter_anim, 0);
+//        if (coinRechargeFragmentView == null){
+//            coinRechargeFragmentView = new CoinRechargeSheetView(mActivity);
+//        }
+//        if (!coinRechargeFragmentView.isShowing()){
+//            coinRechargeFragmentView.show();
+//        }
     }
 
     @Override

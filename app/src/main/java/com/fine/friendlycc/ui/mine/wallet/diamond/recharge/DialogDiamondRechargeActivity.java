@@ -15,6 +15,7 @@ import com.fine.friendlycc.R;
 import com.fine.friendlycc.app.AppContext;
 import com.fine.friendlycc.app.AppViewModelFactory;
 import com.fine.friendlycc.app.BillingClientLifecycle;
+import com.fine.friendlycc.databinding.ActivityDialogDiamondBinding;
 import com.fine.friendlycc.databinding.ActivityDiamondRechargeBinding;
 import com.fine.friendlycc.entity.DiamondPaySuccessEntity;
 import com.fine.friendlycc.entity.GoodsEntity;
@@ -37,7 +38,7 @@ import me.goldze.mvvmhabit.utils.ToastUtils;
  * @Author： liaosf
  * @Date： 2022/8/22 14:22
  */
-public class DiamondRechargeActivity extends BaseActivity<ActivityDiamondRechargeBinding, DiamondRechargeViewModel> implements BasicToolbar.ToolbarListener{
+public class DialogDiamondRechargeActivity extends BaseActivity<ActivityDialogDiamondBinding, DiamondRechargeViewModel> implements BasicToolbar.ToolbarListener{
 
 
     private BillingClientLifecycle billingClientLifecycle;
@@ -45,7 +46,7 @@ public class DiamondRechargeActivity extends BaseActivity<ActivityDiamondRecharg
 
     @Override
     public int initContentView(Bundle savedInstanceState) {
-        return R.layout.activity_diamond_recharge;
+        return R.layout.activity_dialog_diamond;
     }
 
     @Override
@@ -68,7 +69,6 @@ public class DiamondRechargeActivity extends BaseActivity<ActivityDiamondRecharg
     @Override
     public void initData() {
         super.initData();
-        binding.smRefreshLayout.setEnableLoadMore(false);
         this.billingClientLifecycle = ((AppContext)getApplication()).getBillingClientLifecycle();
         if(billingClientLifecycle!=null){
             //查询并消耗本地历史订单类型： INAPP 支付购买  SUBS订阅
@@ -79,8 +79,6 @@ public class DiamondRechargeActivity extends BaseActivity<ActivityDiamondRecharg
             billingClientLifecycle.queryPurchasesAsync(BillingClient.SkuType.SUBS);
         }
         viewModel.getRechargeList();
-        binding.rcvDiamondRecharge.setNestedScrollingEnabled(false);
-        binding.basicToolbar.setToolbarListener(this);
     }
 
     @Override
@@ -98,14 +96,17 @@ public class DiamondRechargeActivity extends BaseActivity<ActivityDiamondRecharg
     @Override
     public void initViewObservable() {
         super.initViewObservable();
+        binding.rlDiamond.setOnClickListener(v -> {
+            onBackPressed();
+        });
+
+        binding.ivClose.setOnClickListener(v -> {
+            onBackPressed();
+        });
 
         viewModel.payOnClick.observe(this, payCode -> {
             viewModel.showHUD();
             pay(payCode);
-        });
-
-        viewModel.stopRefresh.observe(this, payCode -> {
-            binding.smRefreshLayout.finishRefresh();
         });
 
         viewModel.paySuccess.observe(this, goodsEntity -> {
@@ -173,7 +174,6 @@ public class DiamondRechargeActivity extends BaseActivity<ActivityDiamondRecharg
         });
     }
 
-
     /**
      * 显示奖励dialog
      */
@@ -232,6 +232,7 @@ public class DiamondRechargeActivity extends BaseActivity<ActivityDiamondRecharg
                         isFinsh = true;
                         dialog.dismiss();
                         finish();
+                        overridePendingTransition(0, R.anim.pop_exit_anim);
                     })
                     .rechargeRetainDialog()
                     .show();
