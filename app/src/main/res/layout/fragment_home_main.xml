@@ -39,7 +39,8 @@
             android:id="@+id/status_bar_view"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:background="@color/transparent" />
+            android:background="@{viewModel.observableBanner.size() &lt;= 0?@color/white:@color/transparent}"
+            />
 
         <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:layout_width="match_parent"
@@ -69,6 +70,7 @@
                         binding:itemBinding="@{viewModel.itemBannerBinding}"
                         binding:items="@{viewModel.observableBanner}"
                         binding:layoutManager="@{LayoutManagers.linear(LinearLayoutManager.HORIZONTAL,false)}"
+                        android:visibility="@{viewModel.observableBanner.size() &lt;= 0?View.GONE:View.VISIBLE}"
                         tools:ignore="SpeakableTextPresentCheck"
                         tools:itemCount="6"
                         tools:layoutManager="LinearLayoutManager"
@@ -82,6 +84,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@{viewModel.observableBanner.size() &lt;= 0?@color/white:@color/transparent}"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior"
                 android:orientation="vertical">
 

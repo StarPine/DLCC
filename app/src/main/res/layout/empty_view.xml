@@ -16,7 +16,7 @@
         android:id="@+id/rv_empty_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/container_background"
+        android:background="@color/white"
         android:clickable="true"
         android:focusableInTouchMode="true"
         android:visibility="@{stateModel.empty?View.VISIBLE:View.GONE}"

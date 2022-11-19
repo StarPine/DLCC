@@ -173,7 +173,7 @@ public class StateModel extends BaseObservable {
 //            default:
 //                return ContextCompat.getDrawable(mContext, R.drawable.ic_empty);
 //        }
-        return ResourceUtils.getDrawable(R.drawable.ic_empty);
+        return ResourceUtils.getDrawable(R.drawable.message_conversation_empty);
     }
 
 }

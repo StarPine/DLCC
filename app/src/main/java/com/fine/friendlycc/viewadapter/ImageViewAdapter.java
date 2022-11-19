@@ -1,5 +1,6 @@
 package com.fine.friendlycc.viewadapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
@@ -16,6 +17,7 @@ import com.fine.friendlycc.app.AppConfig;
 import com.fine.friendlycc.utils.StringUtil;
 
 import me.goldze.mvvmhabit.utils.StringUtils;
+import me.goldze.mvvmhabit.utils.Utils;
 
 /**
  * @author wulei
@@ -25,6 +27,8 @@ public class ImageViewAdapter {
     public static void setImageUri(ImageView imageView, String imagePath, String imageThumbPath, String LocalImagePath, int imagePlaceholderRes, int imageErrorPlaceholderRes,Integer resizeH,Integer resizeW,Integer imgRadius, boolean addWaterMark) {
 
         try {
+            Context context = getContext(imageView);
+
             String url = "";
             boolean isVideo = false;
             if (imageThumbPath != null && imageThumbPath.toLowerCase().endsWith(".mp4")) {
@@ -36,13 +40,13 @@ public class ImageViewAdapter {
                 if (addWaterMark) {
                     url = StringUtil.getFullImageWatermarkUrl(imagePath);
                 } else {
-                    url = StringUtil.getFullImageUrl(imagePath) + checkResizeProper(imageView.getContext(),resizeH, resizeW);
+                    url = StringUtil.getFullImageUrl(imagePath) + checkResizeProper(context,resizeH, resizeW);
                 }
             }
             RequestOptions overrideOptions;
             if(imgRadius!=null){
                 //设置图片圆角角度
-                RoundedCorners roundedCorners = new RoundedCorners(dp2px(imageView.getContext(),imgRadius));
+                RoundedCorners roundedCorners = new RoundedCorners(dp2px(context,imgRadius));
                 //通过RequestOptions扩展功能,override:采样率,因为ImageView就这么大,可以压缩图片,降低内存消耗
                 overrideOptions = RequestOptions.bitmapTransform(roundedCorners);
             }else{
@@ -51,7 +55,7 @@ public class ImageViewAdapter {
 
 
 
-            RequestManager requestManager = Glide.with(imageView.getContext());
+            RequestManager requestManager = Glide.with(context);
             if (isVideo) {
                 requestManager.setDefaultRequestOptions(
                         overrideOptions
@@ -60,7 +64,7 @@ public class ImageViewAdapter {
                 );
             }
             if (!StringUtil.isEmpty(LocalImagePath)) {
-                requestManager.load(imageView.getContext().getResources().getIdentifier(LocalImagePath, "mipmap", imageView.getContext().getPackageName()))
+                requestManager.load(context.getResources().getIdentifier(LocalImagePath, "mipmap", context.getPackageName()))
                         .apply(overrideOptions
                                 .placeholder(imagePlaceholderRes)
                                 .error(imageErrorPlaceholderRes))
@@ -76,6 +80,18 @@ public class ImageViewAdapter {
             e.printStackTrace();
         }
     }
+
+    private static Context getContext(ImageView imageView) {
+        Context imageViewContext = imageView.getContext();
+        if (imageViewContext instanceof Activity){
+            Activity activity = (Activity) imageViewContext;
+            if (activity.isDestroyed()) {
+                imageViewContext = Utils.getContext();
+            }
+        }
+        return imageViewContext;
+    }
+
     /**
     * @Desc TODO(根据宽高)
     * @author 彭石林
@@ -133,8 +149,9 @@ public class ImageViewAdapter {
     //针对附近页面单独提供。解决缩放问题
     @BindingAdapter(value = {"imageItemPath", "imageItemPlaceholderRes", "imageItemErrorPlaceholderRes", "resizeH", "resizeW"}, requireAll = true)
     public static void setHomeListItemImageUrl(ImageView imageView, String imagePath, int imageItemPlaceholderRes, int imageItemErrorPlaceholderRes,Integer resizeH,Integer resizeW){
-        String oosResize = checkResizeProper(imageView.getContext(),resizeH, resizeW);
-        Glide.with(imageView.getContext()).load(StringUtil.getFullImageUrl(imagePath)+oosResize)
+        Context context = getContext(imageView);
+        String oosResize = checkResizeProper(context,resizeH, resizeW);
+        Glide.with(context).load(StringUtil.getFullImageUrl(imagePath)+oosResize)
                 .error(imageItemErrorPlaceholderRes)
                 .placeholder(imageItemPlaceholderRes)
                 .into(imageView);
@@ -143,13 +160,14 @@ public class ImageViewAdapter {
     //针对相册页面临时提供 解决本地文件预览问题
     @BindingAdapter(value = {"imageItemPhotoPath", "imageItemPhotoPlaceholderRes", "imageItemPhotoErrorPlaceholderRes","isLocalFile"}, requireAll = true)
     public static void setPhotoItemImageUrl(ImageView imageView, String imageItemPhotoPath, int imageItemPhotoPlaceholderRes, int imageItemPhotoErrorPlaceholderRes,Boolean isLocalFile){
+        Context context = getContext(imageView);
         if(!isLocalFile){
-            Glide.with(imageView.getContext()).load(StringUtil.getFullImageUrl(imageItemPhotoPath))
+            Glide.with(context).load(StringUtil.getFullImageUrl(imageItemPhotoPath))
                     .error(imageItemPhotoErrorPlaceholderRes)
                     .placeholder(imageItemPhotoPlaceholderRes)
                     .into(imageView);
         }else{
-            Glide.with(imageView.getContext()).load(imageItemPhotoPath)
+            Glide.with(context).load(imageItemPhotoPath)
                     .error(imageItemPhotoErrorPlaceholderRes)
                     .placeholder(imageItemPhotoPlaceholderRes)
                     .into(imageView);
