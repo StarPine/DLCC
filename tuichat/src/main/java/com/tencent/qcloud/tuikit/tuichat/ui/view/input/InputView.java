@@ -946,6 +946,7 @@ public class InputView extends LinearLayout implements View.OnClickListener, Tex
 
             @Override
             public void onEmojiClick(Emoji emoji) {
+                if (emoji == null)return;
                 int index = mTextInput.getSelectionStart();
                 Editable editable = mTextInput.getText();
                 editable.insert(index, emoji.getFilter());
