@@ -162,19 +162,9 @@ public class HomeMainFragment extends BaseFragment<FragmentHomeMainBinding, Home
         HomePagerAdapter fragmentAdapter = new HomePagerAdapter(this);
         fragmentAdapter.setFragmentList(mFragments);
 
-//        binding.viewPager.setOnTouchListener(new View.OnTouchListener() {
-//            @Override
-//            public boolean onTouch(View v, MotionEvent event) {
-//                if (event.getAction() == MotionEvent.ACTION_MOVE){
-//                    v.requestDisallowInterceptTouchEvent
-//                }
-//
-//                return false;
-//            }
-//        });
-
         binding.viewPager.setOffscreenPageLimit(1);
         binding.viewPager.setAdapter(fragmentAdapter);
+        binding.viewPager.setSaveEnabled(false);
         TabLayoutMediator mediator = new TabLayoutMediator(binding.tabTitle, binding.viewPager, new TabLayoutMediator.TabConfigurationStrategy() {
             @Override
             public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
