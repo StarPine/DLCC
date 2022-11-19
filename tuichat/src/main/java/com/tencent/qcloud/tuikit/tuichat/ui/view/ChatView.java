@@ -786,6 +786,7 @@ public class ChatView extends LinearLayout  implements IChatLayout {
                 post(new Runnable() {
                     @Override
                     public void run() {
+                        mRecordingGroup.setVisibility(View.VISIBLE);
                         mRecordingIcon.setImageResource(R.drawable.ic_volume_dialog_cancel);
                         mRecordingTips.setText(TUIChatService.getAppContext().getString(R.string.up_cancle_send));
                     }
