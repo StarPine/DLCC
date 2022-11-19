@@ -88,6 +88,7 @@ public class RadioViewModel extends BaseRefreshViewModel<AppRepository> {
     public boolean CollectFlag = false;
     public Integer certification = null;
     public boolean collectReLoad = false;
+    public boolean isLoading = false;
     //最后依次点击音怕播放item下标
     public Integer lastClickAudioPlayer = -1;
 
@@ -373,6 +374,7 @@ public class RadioViewModel extends BaseRefreshViewModel<AppRepository> {
                 .subscribe(new BaseObserver<BaseDataResponse<BroadcastListEntity>>() {
                     @Override
                     public void onSuccess(BaseDataResponse<BroadcastListEntity> response) {
+                        isLoading = true;
                         if (!CollectFlag) {
                             if (page == 1) {
                                 radioItems.clear();
@@ -386,6 +388,10 @@ public class RadioViewModel extends BaseRefreshViewModel<AppRepository> {
                             List<BroadcastEntity> listUntrue = response.getData().getUntrueData();
                             //是否有追踪的人
                             Integer collectListEmpty = response.getData().getIsCollect();
+                            if (listReal.size() <= 0 && listUntrue.size() <= 0 && IsCollect == 0 && radioItems.size() <= 1){
+                                isLoading = false;
+                                radioItems.clear();
+                            }
                             //开始遍历次数
                             int position = 0;
                             if (IsCollect == 1 && page == 1 && CollectFlag) {
@@ -412,6 +418,7 @@ public class RadioViewModel extends BaseRefreshViewModel<AppRepository> {
                                 trendItemViewModel.multiItemType(RadioRecycleType_trace);
                                 radioItems.add(trendItemViewModel);
                             }
+
                             //机器人不为空
                             if (!ObjectUtils.isEmpty(listUntrue) && listUntrue.size() > 0) {
                                 for (BroadcastEntity broadcastEntity : listUntrue) {
@@ -524,6 +531,9 @@ public class RadioViewModel extends BaseRefreshViewModel<AppRepository> {
     }
 
     public boolean isShowEmpty(ObservableList<MultiItemViewModel> itemViewModels){
+        if (isLoading){
+            return false;
+        }
         if (itemViewModels.size() > 0){
             if (itemViewModels.size() == 1){
                 MultiItemViewModel multiItemViewModel = itemViewModels.get(0);
