@@ -81,7 +81,6 @@ public class UserDetailFragment extends BaseToolbarFragment<FragmentUserDetailBi
 
     private int userId;
     private int position;
-    private Integer moreNumber;
 
     private boolean flagShow = false;
 
@@ -116,7 +115,6 @@ public class UserDetailFragment extends BaseToolbarFragment<FragmentUserDetailBi
         super.initParam();
         userId = getArguments().getInt(ARG_USER_DETAIL_USER_ID, 0);
         position = getArguments().getInt(ARG_USER_DETAIL_POSITION, -1);
-        moreNumber = Integer.getInteger(getArguments().getString(ARG_USER_DETAIL_MORENUMBER));
     }
 
     @Override
