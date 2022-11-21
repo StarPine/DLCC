@@ -2259,7 +2259,11 @@
     <string name="playcc_coinpusher_history_text2">Lv%s player</string>
 
     <!--PlayCC-APP-END-->
-
+    <string name="playfun_valid_time">Expires</string>
     <string name="playcc_buy_vip2">Subscribe now</string>
     <string name="playcc_mine_vip_hint_new">Enjoy exclusive tags, free diamonds, more exposure, and more</string>
+    <string name="playcc_photo_setting">Not be zero</string>
+    <string name="playcc_check_name_tips">Nickname occuppied, enter again.</string>
+    <string name="playcc_contact_empty_text2">No message, chat now.</string>
+    <string name="playcc_contact_empty_text3">No moment, try other region.</string>
 </resources>
