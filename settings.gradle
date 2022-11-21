@@ -9,6 +9,8 @@ include ':AliyunCrop'
 include ':QueenBeauty'
 include ':faceunity'
 include ':lib-toast'
+include ':lib-elk'
+include ':lib-util'
 //include ':_demo'
 
 /*IM聊天组件*/

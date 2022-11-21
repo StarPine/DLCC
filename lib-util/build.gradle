@@ -1,0 +1,35 @@
+plugins {
+    id 'com.android.library'
+}
+
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
+    defaultConfig {
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath true
+            }
+        }
+
+    }
+    compileOptions {
+        sourceCompatibility  rootProject.ext.android.sourceCompatibility
+        targetCompatibility  rootProject.ext.android.targetCompatibility
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+        //源代码和资源没有更改，那么就不需要对该模块进行 Lint 分析任务
+        checkDependencies true
+    }
+}
+
+dependencies {
+    api project(":mvvmhabit")
+    api rootProject.ext.dependenciesID["mmkv"]
+    api rootProject.ext.dependenciesID["utilcode"]
+    api rootProject.ext.dependenciesID["facebook-core"]
+}

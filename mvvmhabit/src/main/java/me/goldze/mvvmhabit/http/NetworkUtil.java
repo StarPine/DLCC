@@ -4,10 +4,13 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
 import android.telephony.TelephonyManager;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
+import java.net.Inet4Address;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.SocketException;
@@ -37,27 +40,92 @@ public class NetworkUtil {
         return null != info && info.isAvailable();
     }
 
+
+    public static String getIPAddress(Context context) {
+        NetworkInfo info = ((ConnectivityManager) context
+                .getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo();
+        if (info != null && info.isConnected()) {
+            if (info.getType() == ConnectivityManager.TYPE_MOBILE) {//当前使用2G/3G/4G网络
+                try {
+                    //Enumeration<NetworkInterface> en=NetworkInterface.getNetworkInterfaces();
+                    for (Enumeration<NetworkInterface> en = NetworkInterface.getNetworkInterfaces(); en.hasMoreElements(); ) {
+                        NetworkInterface intf = en.nextElement();
+                        for (Enumeration<InetAddress> enumIpAddr = intf.getInetAddresses(); enumIpAddr.hasMoreElements(); ) {
+                            InetAddress inetAddress = enumIpAddr.nextElement();
+                            if (!inetAddress.isLoopbackAddress() && inetAddress instanceof Inet4Address) {
+                                return inetAddress.getHostAddress();
+                            }
+                        }
+                    }
+                } catch (SocketException e) {
+                    e.printStackTrace();
+                }
+
+            } else if (info.getType() == ConnectivityManager.TYPE_WIFI) {//当前使用无线网络
+                WifiManager wifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+                WifiInfo wifiInfo = wifiManager.getConnectionInfo();
+                return intIP2StringIP(wifiInfo.getIpAddress());
+            }
+        }  //当前无网络连接,请在设置中打开网络
+
+        return "";
+    }
+
     /**
-     * getLocalIpAddress
+     * 将得到的int类型的IP转换为String类型
      *
+     * @param ip
      * @return
      */
-    public static String getLocalIpAddress() {
-        String ret = "";
-        try {
-            for (Enumeration<NetworkInterface> en = NetworkInterface.getNetworkInterfaces(); en.hasMoreElements(); ) {
-                NetworkInterface intf = en.nextElement();
-                for (Enumeration<InetAddress> enumIpAddr = intf.getInetAddresses(); enumIpAddr.hasMoreElements(); ) {
-                    InetAddress inetAddress = enumIpAddr.nextElement();
-                    if (!inetAddress.isLoopbackAddress()) {
-                        ret = inetAddress.getHostAddress();
-                    }
-                }
-            }
-        } catch (SocketException ex) {
-            ex.printStackTrace();
+    public static String intIP2StringIP(int ip) {
+        return (ip & 0xFF) + "." +
+                ((ip >> 8) & 0xFF) + "." +
+                ((ip >> 16) & 0xFF) + "." +
+                (ip >> 24 & 0xFF);
+    }
+
+    /**
+     * 获取当前的网络状态 ：没有网络-0：WIFI网络1：4G网络-4：3G网络-3：2G网络-2
+     * 自定义
+     *
+     * @param context Context
+     * @return int
+     */
+    public static String getAPNType(Context context) {
+        String netType = "";
+        ConnectivityManager manager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = manager.getActiveNetworkInfo();
+        //NetworkInfo对象为空 则代表没有网络
+        if (networkInfo == null) {
+            return netType;
         }
-        return ret;
+        int nType = networkInfo.getType();
+        if (nType == ConnectivityManager.TYPE_WIFI) {
+            //WIFI
+            netType = "wifi";
+        } else if (nType == ConnectivityManager.TYPE_MOBILE) {
+            int nSubType = networkInfo.getSubtype();
+            TelephonyManager telephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+            //3G   联通的3G为UMTS或HSDPA 电信的3G为EVDO
+            if (nSubType == TelephonyManager.NETWORK_TYPE_LTE
+                    && !telephonyManager.isNetworkRoaming()) {
+                netType = "4g";
+            } else if (nSubType == TelephonyManager.NETWORK_TYPE_UMTS
+                    || nSubType == TelephonyManager.NETWORK_TYPE_HSDPA
+                    || nSubType == TelephonyManager.NETWORK_TYPE_EVDO_0
+                    && !telephonyManager.isNetworkRoaming()) {
+                netType = "3g";
+                //2G 移动和联通的2G为GPRS或EGDE，电信的2G为CDMA
+            } else if (nSubType == TelephonyManager.NETWORK_TYPE_GPRS
+                    || nSubType == TelephonyManager.NETWORK_TYPE_EDGE
+                    || nSubType == TelephonyManager.NETWORK_TYPE_CDMA
+                    && !telephonyManager.isNetworkRoaming()) {
+                netType = "2g";
+            } else {
+                netType = "2g";
+            }
+        }
+        return netType;
     }
 
     /**

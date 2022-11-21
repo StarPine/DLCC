@@ -107,6 +107,38 @@ public class UserDataEntity extends BaseObservable implements Serializable {
     @SerializedName("is_password")
     private Integer isPassword;
 
+    //是否开放公会主播入口 0否 1是
+    @SerializedName("anchor")
+    private int anchor;
+    //是否开启视频
+    private boolean allowVideo;
+    //是否开启语音
+    private boolean allowAudio;
+
+    public int getAnchor() {
+        return anchor;
+    }
+
+    public void setAnchor(int anchor) {
+        this.anchor = anchor;
+    }
+
+    public boolean isAllowVideo() {
+        return allowVideo;
+    }
+
+    public void setAllowVideo(boolean allowVideo) {
+        this.allowVideo = allowVideo;
+    }
+
+    public boolean isAllowAudio() {
+        return allowAudio;
+    }
+
+    public void setAllowAudio(boolean allowAudio) {
+        this.allowAudio = allowAudio;
+    }
+
     public String getEmail() {
         return email;
     }
