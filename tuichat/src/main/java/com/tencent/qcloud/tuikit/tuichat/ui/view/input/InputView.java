@@ -337,6 +337,9 @@ public class InputView extends LinearLayout implements View.OnClickListener, Tex
                                 });
                                 break;
                             case MotionEvent.ACTION_MOVE:
+                                if (mChatInputHandler != null) {
+                                    mChatInputHandler.onTouchFlag(true);
+                                }
                                 if (motionEvent.getY() - mStartRecordY < -100) {
                                     mAudioCancel = true;
                                     if (mChatInputHandler != null) {
@@ -354,6 +357,9 @@ public class InputView extends LinearLayout implements View.OnClickListener, Tex
                                 break;
                             case MotionEvent.ACTION_CANCEL:
                             case MotionEvent.ACTION_UP:
+                                if (mChatInputHandler != null) {
+                                    mChatInputHandler.onTouchFlag(false);
+                                }
                                 mAudioCancel = motionEvent.getY() - mStartRecordY < -100;
                                 if (mChatInputHandler != null) {
                                     mChatInputHandler.onRecordStatusChanged(ChatInputHandler.RECORD_STOP);
@@ -1485,6 +1491,7 @@ public class InputView extends LinearLayout implements View.OnClickListener, Tex
         void onInputAreaClick();
 
         void onRecordStatusChanged(int status);
+        void onTouchFlag(boolean isMove);
     }
 
     public interface OnStartActivityListener {

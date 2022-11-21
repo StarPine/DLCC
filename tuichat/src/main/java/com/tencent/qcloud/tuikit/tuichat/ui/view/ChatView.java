@@ -132,6 +132,7 @@ public class ChatView extends LinearLayout  implements IChatLayout {
     private View mForwardMergeButton;
     private View mDeleteButton;
     private boolean isGroup = false;
+    private boolean isMove = false;
 
     private ChatPresenter presenter;
 
@@ -730,6 +731,14 @@ public class ChatView extends LinearLayout  implements IChatLayout {
                         break;
                     default:
                         break;
+                }
+            }
+
+            @Override
+            public void onTouchFlag(boolean isMove) {
+                int visibility = mRecordingGroup.getVisibility();
+                if (visibility == View.GONE && isMove){
+                    mRecordingGroup.setVisibility(View.VISIBLE);
                 }
             }
 
