@@ -705,10 +705,16 @@ public class TraceDialog {
         bottomDialog.setContentView(contentView);
         ViewGroup.LayoutParams layoutParams = contentView.getLayoutParams();
         contentView.setLayoutParams(layoutParams);
-        bottomDialog.getWindow().setGravity(Gravity.CENTER);
         bottomDialog.getWindow().setWindowAnimations(R.style.BottomDialog_Animation);
         bottomDialog.setCanceledOnTouchOutside(true);
         bottomDialog.setCancelable(false);
+        Window window = bottomDialog.getWindow();
+        window.setGravity(Gravity.CENTER); //可设置dialog的位置
+        window.getDecorView().setPadding(0, 0, 0, 0); //消除边距
+        WindowManager.LayoutParams lp = window.getAttributes();
+        lp.width = WindowManager.LayoutParams.MATCH_PARENT;   //设置宽度充满屏幕
+        lp.height = WindowManager.LayoutParams.MATCH_PARENT;
+        window.setAttributes(lp);
 
         Button confirmBtn = contentView.findViewById(R.id.btn_confirm);
 
