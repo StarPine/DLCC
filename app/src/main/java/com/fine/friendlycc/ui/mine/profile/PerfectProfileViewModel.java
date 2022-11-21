@@ -168,6 +168,9 @@ public class PerfectProfileViewModel extends BaseViewModel<AppRepository> {
         Map<String, String> map = model.readOneLinkCode();
         if (!ObjectUtils.isEmpty(map)) {
             String code = map.get("code");
+            if (code == null || code.equals("null")){
+                return;
+            }
             invitationCode.set(code);
         }
     }
