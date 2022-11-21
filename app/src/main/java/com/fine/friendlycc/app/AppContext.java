@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.net.http.HttpResponseCache;
 import android.os.Bundle;
 import android.util.Log;
@@ -38,9 +39,11 @@ import com.fine.friendlycc.entity.TokenEntity;
 import com.fine.friendlycc.entity.UserDataEntity;
 import com.fine.friendlycc.event.LoginExpiredEvent;
 import com.fine.friendlycc.manager.ConfigManager;
+import com.fine.friendlycc.manager.LocaleManager;
 import com.fine.friendlycc.manager.ThirdPushTokenMgr;
 import com.fine.friendlycc.tim.TUIUtils;
 import com.fine.friendlycc.MainActivity;
+import com.fine.friendlycc.utils.ElkLogEventUtils;
 import com.fine.friendlycc.utils.StringUtil;
 import com.faceunity.nama.FURenderer;
 import com.google.firebase.FirebaseApp;
@@ -69,6 +72,7 @@ import com.tencent.qcloud.tuicore.interfaces.TUICallback;
 
 import java.io.File;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 
@@ -156,8 +160,26 @@ public class AppContext extends Application {
     }
 
     @Override
+    protected void attachBaseContext(Context newBase) {
+        ElkLogEventUtils.setDefaultLocalLanguage(Locale.getDefault().getLanguage());
+        if(newBase!=null){
+            LocaleManager.setLocal(newBase);
+        }
+        super.attachBaseContext(LocaleManager.setLocal(newBase));
+        LocaleManager.setLocal(newBase);
+    }
+
+    @Override
     public void onCreate() {
+        ElkLogEventUtils.setDefaultLocalLanguage(Locale.getDefault().getLanguage());
+        Locale localeCache = LocaleManager.getSystemLocale(this);
+        Configuration config = new Configuration();
+        config.locale = localeCache;
+        LocaleManager.setLocal(this);
+        getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
         super.onCreate();
+        //初始化创建后。再次执行设置当前应用语言。确保部分机型不兼容问题
+        LocaleManager.setLocal(this);
         //注册美颜渲染
         FURenderer.getInstance().setup(this);
         try {
