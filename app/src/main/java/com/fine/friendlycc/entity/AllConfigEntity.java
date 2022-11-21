@@ -32,6 +32,15 @@ public class AllConfigEntity {
     //动态配置http请求域名
     @SerializedName("api_url")
     private String apiUrl;
+    private int userInvite;
+
+    public int getUserInvite() {
+        return userInvite;
+    }
+
+    public void setUserInvite(int userInvite) {
+        this.userInvite = userInvite;
+    }
 
     public CrystalDetailsConfigEntity getCrystalDetailsConfig() {
         return crystalDetailsConfig;

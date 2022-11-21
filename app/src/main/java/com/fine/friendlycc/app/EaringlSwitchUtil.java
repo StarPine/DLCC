@@ -16,4 +16,6 @@ public class EaringlSwitchUtil {
     public static String KEY_WALLET_ENTRANCE = "wallet.entrance";
     //注销账号开关
     public static String KEY_DELETE_ACCOUNT = "delete.account";
+    //邀请好友入口开关
+    public static String INVITE_FRIEND = "userInvite";
 }

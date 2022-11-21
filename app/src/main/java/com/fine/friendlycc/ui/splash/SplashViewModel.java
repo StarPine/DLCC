@@ -223,6 +223,7 @@ public class SplashViewModel extends BaseViewModel<AppRepository> {
                             model.saveCrystalDetailsConfig(response.getData().getCrystalDetailsConfig());
                             model.putSwitches(EaringlSwitchUtil.KEY_TIPS, response.getData().getIsTips());
                             model.putSwitches(EaringlSwitchUtil.KEY_DELETE_ACCOUNT, response.getData().getConfig().getDeleteAccount());
+                            model.putSwitches(EaringlSwitchUtil.INVITE_FRIEND, response.getData().getUserInvite());
                         } catch (Exception e) {
                             ExceptionReportUtils.report(e);
                         }

@@ -543,7 +543,7 @@
                             style="@style/ProfileItem"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/profile_item_height"
-                            android:visibility="@{StringUtils.isEmpty(viewModel.userInfoEntity.inviteUrl) ? View.GONE:View.VISIBLE}"
+                            android:visibility="@{StringUtils.isEmpty(viewModel.userInfoEntity.inviteUrl) || !viewModel.isShowInvite ? View.GONE:View.VISIBLE}"
                             binding:onClickCommand="@{viewModel.invitationCodeOnClickCommand}">
 
                             <ImageView

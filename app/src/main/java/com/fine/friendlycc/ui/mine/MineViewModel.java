@@ -12,6 +12,7 @@ import com.blankj.utilcode.util.StringUtils;
 import com.fine.friendlycc.app.AppConfig;
 import com.fine.friendlycc.app.AppContext;
 import com.fine.friendlycc.app.AppsFlyerEvent;
+import com.fine.friendlycc.app.EaringlSwitchUtil;
 import com.fine.friendlycc.data.AppRepository;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseDataResponse;
@@ -88,6 +89,8 @@ public class MineViewModel extends BaseMyPhotoAlbumViewModel<AppRepository> {
     public ObservableField<BannerItemEntity> banner = new ObservableField<>();
     //推荐用户弹窗
     public ObservableField<Integer> sex = new ObservableField<>();
+    //是否显示邀请入口
+    public ObservableField<Boolean> isShowInvite = new ObservableField<>(false);
     public ObservableField<String> albumPrivacyText = new ObservableField<>();
     public ObservableField<UserInfoEntity> userInfoEntity = new ObservableField<>(new UserInfoEntity());
     //点击顶部广告
@@ -297,6 +300,7 @@ public class MineViewModel extends BaseMyPhotoAlbumViewModel<AppRepository> {
     public MineViewModel(@NonNull Application application, AppRepository repository) {
         super(application, repository);
         sex.set(model.readUserData().getSex());
+        isShowInvite.set(model.readSwitches(EaringlSwitchUtil.INVITE_FRIEND) == 1);
     }
 
     //相册属性 1公开 2付费解锁 3查看需要我验证
