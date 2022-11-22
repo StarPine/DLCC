@@ -6,6 +6,7 @@ import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.net.http.HttpResponseCache;
 import android.os.Bundle;
 import android.util.Log;
@@ -161,17 +162,11 @@ public class AppContext extends Application {
 
     @Override
     protected void attachBaseContext(Context newBase) {
-        ElkLogEventUtils.setDefaultLocalLanguage(Locale.getDefault().getLanguage());
-        if(newBase!=null){
-            LocaleManager.setLocal(newBase);
-        }
         super.attachBaseContext(LocaleManager.setLocal(newBase));
-        LocaleManager.setLocal(newBase);
     }
 
     @Override
     public void onCreate() {
-        ElkLogEventUtils.setDefaultLocalLanguage(Locale.getDefault().getLanguage());
         Locale localeCache = LocaleManager.getSystemLocale(this);
         Configuration config = new Configuration();
         config.locale = localeCache;

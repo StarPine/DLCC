@@ -114,7 +114,7 @@ android {
         // 内部调试
         internal {
             dimension "friendly"
-            resConfigs "zh", "en"
+            resConfigs "zh","en","zh-rCN","zh-rHK","zh-rMO","zh-rSG","zh-rTW"
             // 服务端接口HOST
             buildConfigField "String", "DEFAULT_API_URL", "\"http://t-api.playcc.net/\""
             applicationId "com.friendly.test"
