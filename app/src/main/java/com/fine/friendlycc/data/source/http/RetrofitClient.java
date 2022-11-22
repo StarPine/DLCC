@@ -3,10 +3,12 @@ package com.fine.friendlycc.data.source.http;
 import android.content.Context;
 import android.text.TextUtils;
 
+import com.dl.lib.util.MPDeviceUtils;
 import com.fine.friendlycc.R;
 import com.fine.friendlycc.app.AppConfig;
 import com.fine.friendlycc.data.source.http.interceptor.ApiTimeOutInterceptor;
 import com.fine.friendlycc.data.source.http.interceptor.TokenInterceptor;
+import com.fine.friendlycc.utils.AESUtil;
 import com.fine.friendlycc.utils.ApiUitl;
 import com.ihsanbal.logging.Level;
 import com.ihsanbal.logging.LoggingInterceptor;
@@ -88,6 +90,7 @@ public class RetrofitClient {
         //source 来源ID 1642158125=喵遊(俄语) 1648520220=杜拉克 //playchat 1648626888
         headers.put("appId",AppConfig.APPID);
         headers.put("deviceCode", ApiUitl.getAndroidId());
+        headers.put("dev_id", AESUtil.encrypt_AES(AppConfig.KEY_DL_AES_ENCRY, MPDeviceUtils.getDevId(),AppConfig.KEY_DL_AES_ENCRY));
         headers.put("Accept-Language", mContext.getString(R.string.playcc_local_language));
         OkHttpClient.Builder builder = new OkHttpClient.Builder()
                 .cookieJar(new CookieJarImpl(new PersistentCookieStore(mContext)))

@@ -194,6 +194,10 @@ public class MPDeviceUtils {
         return deviceCpuInfo;
     }
 
+    public static String getDevId(){
+        return BRAND+"_"+MPDeviceUtils.MANUFACTURER+"_"+MPDeviceUtils.MODEL+"_"+MPDeviceUtils.BOARD+"_"+MPDeviceUtils.DEVICE+"_"+MPDeviceUtils.PRODUCT+"_"+GOOGLE_ID;
+    }
+
     /* renamed from: a */
     public static String getGoogleId() {
         Uri parse = Uri.parse("content://com.google.android.gsf.gservices");

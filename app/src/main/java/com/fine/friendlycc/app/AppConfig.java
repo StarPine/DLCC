@@ -12,6 +12,8 @@ public class AppConfig {
     public static boolean isRegisterAccost = false;
     public static boolean isMainPage = true;
 
+    public static final String KEY_DL_AES_ENCRY = "key_dl_aes_encry";
+
     //是否开启日志打印
     public static final boolean isDebug = BuildConfig.DEBUG;
     /**
