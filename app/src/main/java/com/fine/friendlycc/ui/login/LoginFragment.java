@@ -1,7 +1,6 @@
 package com.fine.friendlycc.ui.login;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -17,18 +16,16 @@ import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.RequestBuilder;
 import com.bumptech.glide.request.FutureTarget;
-import com.bumptech.glide.request.target.SimpleTarget;
 import com.fine.friendlycc.BR;
 import com.fine.friendlycc.R;
 import com.fine.friendlycc.app.AppConfig;
-import com.fine.friendlycc.app.AppContext;
+import com.fine.friendlycc.app.CCApplication;
 import com.fine.friendlycc.app.AppViewModelFactory;
 import com.fine.friendlycc.app.AppsFlyerEvent;
 import com.fine.friendlycc.data.AppRepository;
 import com.fine.friendlycc.databinding.FragmentLoginBinding;
-import com.fine.friendlycc.entity.OverseasUserEntity;
+import com.fine.friendlycc.bean.OverseasUserBean;
 import com.fine.friendlycc.manager.ConfigManager;
 import com.fine.friendlycc.ui.base.BaseFragment;
 import com.fine.friendlycc.utils.AutoSizeUtils;
@@ -51,7 +48,6 @@ import com.google.android.gms.tasks.Task;
 import org.json.JSONObject;
 
 import java.io.File;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.concurrent.ExecutionException;
@@ -88,7 +84,7 @@ public class LoginFragment extends BaseFragment<FragmentLoginBinding, LoginViewM
 
     @Override
     public LoginViewModel initViewModel() {
-        AppContext.instance().logEvent(AppsFlyerEvent.Login_screen);
+        CCApplication.instance().logEvent(AppsFlyerEvent.Login_screen);
         //faceBook登录管理
         loginManager = LoginManager.getInstance();
         AppViewModelFactory factory = AppViewModelFactory.getInstance(mActivity.getApplication());
@@ -135,7 +131,7 @@ public class LoginFragment extends BaseFragment<FragmentLoginBinding, LoginViewM
                             @Override
                             public void onCompleted(@Nullable JSONObject jsonObject, @Nullable GraphResponse graphResponse) {
                                 try {
-                                    OverseasUserEntity overseasUserEntity = new OverseasUserEntity();
+                                    OverseasUserBean overseasUserEntity = new OverseasUserBean();
                                     if (!jsonObject.isNull("email")) {
                                         overseasUserEntity.setEmail(jsonObject.getString("email"));
                                     }
@@ -155,7 +151,7 @@ public class LoginFragment extends BaseFragment<FragmentLoginBinding, LoginViewM
                                     overseasUserEntity.setPhoto(phoneUrl);
                                     AppConfig.overseasUserEntity = overseasUserEntity;
                                     viewModel.authLogin(loginResult.getAccessToken().getUserId(), "facebook", overseasUserEntity.getEmail(), null, null, token_for_business);
-                                    AppContext.instance().logEvent(AppsFlyerEvent.LOG_IN_WITH_FACEBOOK);
+                                    CCApplication.instance().logEvent(AppsFlyerEvent.LOG_IN_WITH_FACEBOOK);
                                 } catch (Exception e) {
                                     Log.e("获取facebook关键资料", "异常原因: " + e.getMessage());
                                     // App code
@@ -261,7 +257,7 @@ public class LoginFragment extends BaseFragment<FragmentLoginBinding, LoginViewM
         try {
             GoogleSignInAccount signInAccount = googleData.getResult(ApiException.class);
             if (signInAccount != null) {
-                OverseasUserEntity overseasUserEntity = new OverseasUserEntity();
+                OverseasUserBean overseasUserEntity = new OverseasUserBean();
                 overseasUserEntity.setEmail(signInAccount.getEmail());
                 overseasUserEntity.setName(signInAccount.getDisplayName());
                 overseasUserEntity.setPhoto(signInAccount.getPhotoUrl() == null ? null : String.valueOf(signInAccount.getPhotoUrl()));
@@ -269,7 +265,7 @@ public class LoginFragment extends BaseFragment<FragmentLoginBinding, LoginViewM
 
                 AppConfig.overseasUserEntity = overseasUserEntity;
                 viewModel.authLogin(signInAccount.getId(), "google", overseasUserEntity.getEmail(), null, null, null);
-                AppContext.instance().logEvent(AppsFlyerEvent.LOG_IN_WITH_GOOGLE);
+                CCApplication.instance().logEvent(AppsFlyerEvent.LOG_IN_WITH_GOOGLE);
             } else {
                 Log.e("account", "si" + "\n");
             }
@@ -334,7 +330,7 @@ public class LoginFragment extends BaseFragment<FragmentLoginBinding, LoginViewM
 
     }
 
-    private void toLocalPhoto(OverseasUserEntity overseasUserEntity) {
+    private void toLocalPhoto(OverseasUserBean overseasUserEntity) {
         FutureTarget<File> future = Glide.with(mActivity)
                 .load(overseasUserEntity.getPhoto())
                 .downloadOnly(500, 500);

@@ -10,9 +10,9 @@ import com.blankj.utilcode.util.ObjectUtils;
 import com.blankj.utilcode.util.StringUtils;
 import com.blankj.utilcode.util.Utils;
 import com.fine.friendlycc.R;
-import com.fine.friendlycc.app.AppContext;
+import com.fine.friendlycc.app.CCApplication;
 import com.fine.friendlycc.app.AppsFlyerEvent;
-import com.fine.friendlycc.entity.TaskConfigItemEntity;
+import com.fine.friendlycc.bean.TaskConfigItemBean;
 import com.fine.friendlycc.event.MainTabEvent;
 import com.fine.friendlycc.manager.ConfigManager;
 import com.fine.friendlycc.ui.certification.certificationfemale.CertificationFemaleFragment;
@@ -38,7 +38,7 @@ import me.goldze.mvvmhabit.bus.RxBus;
 public class TaskCenterItemViewModel extends MultiItemViewModel<TaskCenterViewModel> {
     //字体改变
     public ObservableField<Boolean> extTypeDinBold = new ObservableField<>(true);
-    public ObservableField<TaskConfigItemEntity> itemEntity = new ObservableField<>();
+    public ObservableField<TaskConfigItemBean> itemEntity = new ObservableField<>();
     public TaskCenterViewModel taskCenterViewModel;
     public int type;
     public BindingCommand toFragment = new BindingCommand(new BindingAction() {
@@ -47,54 +47,54 @@ public class TaskCenterItemViewModel extends MultiItemViewModel<TaskCenterViewMo
             if (!ObjectUtils.isEmpty(itemEntity.get().getLink())) {
                 String link = itemEntity.get().getLink();
                 if (link.trim().equals("Certification")) {//跳转认证中心
-                    AppContext.instance().logEvent(AppsFlyerEvent.Verify_Your_Profile);
+                    CCApplication.instance().logEvent(AppsFlyerEvent.Verify_Your_Profile);
                     if (ConfigManager.getInstance().isMale()) {
                         taskCenterViewModel.start(CertificationMaleFragment.class.getCanonicalName());
                         return;
                     } else {
-                        AppContext.instance().logEvent(AppsFlyerEvent.task_auth_F);
-                        AppContext.instance().logEvent(AppsFlyerEvent.task_answer);
+                        CCApplication.instance().logEvent(AppsFlyerEvent.task_auth_F);
+                        CCApplication.instance().logEvent(AppsFlyerEvent.task_answer);
                         taskCenterViewModel.start(CertificationFemaleFragment.class.getCanonicalName());
                         return;
                     }
                 } else if (link.trim().equals("EditProfile")) {//完善个人资料
                     if (isMale) {
-                        AppContext.instance().logEvent(AppsFlyerEvent.task_improve_data_M);
+                        CCApplication.instance().logEvent(AppsFlyerEvent.task_improve_data_M);
                     } else {
-                        AppContext.instance().logEvent(AppsFlyerEvent.task_improve_data_F);
+                        CCApplication.instance().logEvent(AppsFlyerEvent.task_improve_data_F);
                     }
                     taskCenterViewModel.start(EditProfileFragment.class.getCanonicalName());
                 } else if (link.trim().equals("PublishDynamic")) {// 發佈一條圖文動態
                     if (!isMale) {
-                        AppContext.instance().logEvent(AppsFlyerEvent.task_post_mood_date_F);
+                        CCApplication.instance().logEvent(AppsFlyerEvent.task_post_mood_date_F);
                     }
                     taskCenterViewModel.start(IssuanceProgramFragment.class.getCanonicalName());
                 } else if (link.trim().equals("IssuanceProgram") || link.trim().equals("broadcast")) {// 跳转廣場-報名約會1次,點讚動態1次，評論動態1次
                     if (isMale) {
-                        AppContext.instance().logEvent(AppsFlyerEvent.task_signup_com_like_M);
+                        CCApplication.instance().logEvent(AppsFlyerEvent.task_signup_com_like_M);
                     } else {
-                        AppContext.instance().logEvent(AppsFlyerEvent.task_commentary_F);
+                        CCApplication.instance().logEvent(AppsFlyerEvent.task_commentary_F);
                     }
                     RxBus.getDefault().post(new MainTabEvent("plaza"));
                 } else if (link.trim().equals("MyPhotoAlbum")) {// 上傳本人三張照片-發佈相冊1張
                     if (isMale) {
-                        AppContext.instance().logEvent(AppsFlyerEvent.task_uploading_image_M);
+                        CCApplication.instance().logEvent(AppsFlyerEvent.task_uploading_image_M);
                     } else {
-                        AppContext.instance().logEvent(AppsFlyerEvent.task_upload_image_snap_F);
+                        CCApplication.instance().logEvent(AppsFlyerEvent.task_upload_image_snap_F);
                     }
                     taskCenterViewModel.start(MyPhotoAlbumFragment.class.getCanonicalName());
                 } else if (link.trim().equals("home")) {// 跳转首页-主動搭訕3人
                     if (isMale) {
-                        AppContext.instance().logEvent(AppsFlyerEvent.task_accost_M);
+                        CCApplication.instance().logEvent(AppsFlyerEvent.task_accost_M);
                     } else {
-                        AppContext.instance().logEvent(AppsFlyerEvent.task_accost_F);
+                        CCApplication.instance().logEvent(AppsFlyerEvent.task_accost_F);
                     }
                     RxBus.getDefault().post(new MainTabEvent("home"));
                 } else if (link.trim().equals("message")) {// 跳转消息中心-視頻電話1次，語音聊天1次
                     if (isMale) {
-                        AppContext.instance().logEvent(AppsFlyerEvent.task_voice_video_call_M);
+                        CCApplication.instance().logEvent(AppsFlyerEvent.task_voice_video_call_M);
                     } else {
-                        AppContext.instance().logEvent(AppsFlyerEvent.task_voice_video_call_F);
+                        CCApplication.instance().logEvent(AppsFlyerEvent.task_voice_video_call_F);
                     }
                     RxBus.getDefault().post(new MainTabEvent("message"));
                 } else if (link.trim().equals("invite")) {//男-女 邀请
@@ -122,7 +122,7 @@ public class TaskCenterItemViewModel extends MultiItemViewModel<TaskCenterViewMo
     });
     private final boolean isMale;
 
-    public TaskCenterItemViewModel(@NonNull @NotNull TaskCenterViewModel viewModel, TaskConfigItemEntity taskConfigItemEntity, int type) {
+    public TaskCenterItemViewModel(@NonNull @NotNull TaskCenterViewModel viewModel, TaskConfigItemBean taskConfigItemEntity, int type) {
         super(viewModel);
         this.taskCenterViewModel = viewModel;
         this.itemEntity.set(taskConfigItemEntity);

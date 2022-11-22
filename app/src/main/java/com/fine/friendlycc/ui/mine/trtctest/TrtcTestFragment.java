@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
 
-import com.fine.friendlycc.entity.TokenEntity;
+import com.fine.friendlycc.bean.TokenBean;
 import com.fine.friendlycc.manager.ConfigManager;
 import com.fine.friendlycc.ui.base.BaseToolbarFragment;
 import com.google.firebase.messaging.FirebaseMessaging;
@@ -49,7 +49,7 @@ public class TrtcTestFragment extends BaseToolbarFragment<FragmentTrtcTestBindin
         binding.btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                TokenEntity tokenEntity = ConfigManager.getInstance().getAppRepository().readLoginInfo();
+                TokenBean tokenEntity = ConfigManager.getInstance().getAppRepository().readLoginInfo();
                 sb = new StringBuilder();
                 TRTCCloud.sharedInstance(mActivity).setListener(new TRTCCloudListener() {
                     @Override

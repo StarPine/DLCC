@@ -10,7 +10,7 @@ import androidx.databinding.ObservableField;
 
 import com.blankj.utilcode.util.StringUtils;
 import com.fine.friendlycc.R;
-import com.fine.friendlycc.entity.CommentEntity;
+import com.fine.friendlycc.bean.CommentBean;
 import com.fine.friendlycc.manager.ConfigManager;
 import com.fine.friendlycc.ui.mine.broadcast.mytrends.trenddetail.TrendDetailFragment;
 import com.fine.friendlycc.ui.mine.broadcast.mytrends.trenddetail.TrendDetailViewModel;
@@ -35,7 +35,7 @@ public class CommentItemViewModel extends MultiItemViewModel<BaseViewModel> {
     private final String type;
     private final boolean isSelf;
     private final boolean isMore;
-    public ObservableField<CommentEntity> commentBeanObservableField = new ObservableField<>();
+    public ObservableField<CommentBean> commentBeanObservableField = new ObservableField<>();
     //条目的点击事件
     public BindingCommand itemClick = new BindingCommand(new BindingAction() {
         @Override
@@ -76,7 +76,7 @@ public class CommentItemViewModel extends MultiItemViewModel<BaseViewModel> {
     });
     private boolean isShow;//临时新增变量。用来显示隐藏超过5条数据
 
-    public CommentItemViewModel(@NonNull BaseViewModel viewModel, CommentEntity commentBean, int id, String type, boolean isSelf, boolean isMore) {
+    public CommentItemViewModel(@NonNull BaseViewModel viewModel, CommentBean commentBean, int id, String type, boolean isSelf, boolean isMore) {
         super(viewModel);
         this.commentBeanObservableField.set(commentBean);
         this.id = id;

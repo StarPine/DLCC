@@ -8,7 +8,7 @@ import com.alibaba.sdk.android.oss.model.PutObjectRequest;
 import com.alibaba.sdk.android.oss.model.PutObjectResult;
 import com.blankj.utilcode.util.StringUtils;
 import com.fine.friendlycc.app.AppConfig;
-import com.fine.friendlycc.app.AppContext;
+import com.fine.friendlycc.app.CCApplication;
 import com.fine.friendlycc.manager.OSSWrapper;
 import com.fine.friendlycc.videocompressor.VideoCompress;
 
@@ -42,7 +42,7 @@ public class FileUploadUtils {
         }
         if (fileType == FILE_TYPE_IMAGE) {
             if (filePath.toLowerCase().endsWith(".jpg") || filePath.toLowerCase().endsWith(".jpeg") || filePath.toLowerCase().endsWith(".png")) {
-                List<File> list = Luban.with(AppContext.instance().getApplicationContext()).load(Uri.fromFile(new File(filePath))).setTargetDir(AppContext.instance().getCacheDir().getAbsolutePath()).get();
+                List<File> list = Luban.with(CCApplication.instance().getApplicationContext()).load(Uri.fromFile(new File(filePath))).setTargetDir(CCApplication.instance().getCacheDir().getAbsolutePath()).get();
                 if (list == null || list.isEmpty()) {
                     return null;
                 }
@@ -52,7 +52,7 @@ public class FileUploadUtils {
                 filePath = list.get(0).getAbsolutePath();
             }
         } else if (fileType == FILE_TYPE_VIDEO) {
-            String outPath = String.format("%s/%s", AppContext.instance().getCacheDir().getAbsolutePath(), getFileName(filePath));
+            String outPath = String.format("%s/%s", CCApplication.instance().getCacheDir().getAbsolutePath(), getFileName(filePath));
 
             final CountDownLatch latch = new CountDownLatch(1);
             final boolean[] success = {false};
@@ -112,7 +112,7 @@ public class FileUploadUtils {
             return null;
         }
         if (fileType == FILE_TYPE_VIDEO) {
-            String outPath = String.format("%s/%s", AppContext.instance().getCacheDir().getAbsolutePath(), getFileName(filePath));
+            String outPath = String.format("%s/%s", CCApplication.instance().getCacheDir().getAbsolutePath(), getFileName(filePath));
 
             final CountDownLatch latch = new CountDownLatch(1);
             final boolean[] success = {false};
@@ -204,7 +204,7 @@ public class FileUploadUtils {
             return null;
         }
         if (fileType == FILE_TYPE_IMAGE) {
-            List<File> list = Luban.with(AppContext.instance().getApplicationContext()).load(Uri.fromFile(new File(filePath))).setTargetDir(AppContext.instance().getCacheDir().getAbsolutePath()).get();
+            List<File> list = Luban.with(CCApplication.instance().getApplicationContext()).load(Uri.fromFile(new File(filePath))).setTargetDir(CCApplication.instance().getCacheDir().getAbsolutePath()).get();
             if (list == null || list.isEmpty()) {
                 return null;
             }
@@ -213,7 +213,7 @@ public class FileUploadUtils {
             }
             filePath = list.get(0).getAbsolutePath();
         }else if (fileType == FILE_TYPE_VIDEO) {
-            String outPath = String.format("%s/%s", AppContext.instance().getCacheDir().getAbsolutePath(), getFileName(filePath));
+            String outPath = String.format("%s/%s", CCApplication.instance().getCacheDir().getAbsolutePath(), getFileName(filePath));
 
             final CountDownLatch latch = new CountDownLatch(1);
             final boolean[] success = {false};

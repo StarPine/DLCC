@@ -11,7 +11,7 @@ import com.fine.friendlycc.data.source.http.exception.RequestException;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseDataResponse;
 import com.fine.friendlycc.data.source.http.response.BaseResponse;
-import com.fine.friendlycc.entity.ExchangeIntegraOuterEntity;
+import com.fine.friendlycc.bean.ExchangeIntegraOuterBean;
 import com.fine.friendlycc.viewmodel.BaseViewModel;
 
 import org.jetbrains.annotations.NotNull;
@@ -28,7 +28,7 @@ import me.goldze.mvvmhabit.utils.ToastUtils;
 public class FukubukuroViewModel extends BaseViewModel<AppRepository> {
 
     //弹出钻石兑换弹窗
-    public SingleLiveEvent<ExchangeIntegraOuterEntity> DialogExchangeIntegral = new SingleLiveEvent<>();
+    public SingleLiveEvent<ExchangeIntegraOuterBean> DialogExchangeIntegral = new SingleLiveEvent<>();
 
     public FukubukuroViewModel(@NonNull @NotNull Application application, AppRepository model) {
         super(application, model);
@@ -52,11 +52,11 @@ public class FukubukuroViewModel extends BaseViewModel<AppRepository> {
                 .doOnSubscribe(disposable -> {
                     showHUD();
                 })
-                .subscribe(new BaseObserver<BaseDataResponse<ExchangeIntegraOuterEntity>>(){
+                .subscribe(new BaseObserver<BaseDataResponse<ExchangeIntegraOuterBean>>(){
                     @Override
-                    public void onSuccess(BaseDataResponse<ExchangeIntegraOuterEntity> exchangeIntegraEntityBaseListDataResponse) {
+                    public void onSuccess(BaseDataResponse<ExchangeIntegraOuterBean> exchangeIntegraEntityBaseListDataResponse) {
                         dismissHUD();
-                        ExchangeIntegraOuterEntity listData = exchangeIntegraEntityBaseListDataResponse.getData();
+                        ExchangeIntegraOuterBean listData = exchangeIntegraEntityBaseListDataResponse.getData();
                         if(!ObjectUtils.isEmpty(listData)){
                             if(!ObjectUtils.isEmpty(listData.getData())){
                                 DialogExchangeIntegral.postValue(listData);

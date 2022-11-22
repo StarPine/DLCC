@@ -12,7 +12,7 @@ import com.fine.friendlycc.data.source.http.observer.BaseListEmptyObserver;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseListDataResponse;
 import com.fine.friendlycc.data.source.http.response.BaseResponse;
-import com.fine.friendlycc.entity.CommentMessageEntity;
+import com.fine.friendlycc.bean.CommentMessageBean;
 import com.fine.friendlycc.ui.mine.broadcast.mytrends.trenddetail.TrendDetailFragment;
 import com.fine.friendlycc.viewmodel.BaseRefreshViewModel;
 import com.fine.friendlycc.BR;
@@ -51,7 +51,7 @@ public class CommentMessageViewModel extends BaseRefreshViewModel<AppRepository>
     }
 
     public void itemClick(int position) {
-        CommentMessageEntity itemEntity = observableList.get(position).itemEntity.get();
+        CommentMessageBean itemEntity = observableList.get(position).itemEntity.get();
         if (itemEntity.getRelationType() == 2) {
             //动态
             Bundle bundle = TrendDetailFragment.getStartBundle(itemEntity.getNewsId());
@@ -65,15 +65,15 @@ public class CommentMessageViewModel extends BaseRefreshViewModel<AppRepository>
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(this)
-                .subscribe(new BaseListEmptyObserver<BaseListDataResponse<CommentMessageEntity>>(this) {
+                .subscribe(new BaseListEmptyObserver<BaseListDataResponse<CommentMessageBean>>(this) {
                     @Override
-                    public void onSuccess(BaseListDataResponse<CommentMessageEntity> response) {
+                    public void onSuccess(BaseListDataResponse<CommentMessageBean> response) {
                         super.onSuccess(response);
                         if (page == 1) {
                             observableList.clear();
                         }
-                        List<CommentMessageEntity> list = response.getData().getData();
-                        for (CommentMessageEntity entity : list) {
+                        List<CommentMessageBean> list = response.getData().getData();
+                        for (CommentMessageBean entity : list) {
                             CommentMessageItemViewModel item = new CommentMessageItemViewModel(CommentMessageViewModel.this, entity);
                             observableList.add(item);
                         }

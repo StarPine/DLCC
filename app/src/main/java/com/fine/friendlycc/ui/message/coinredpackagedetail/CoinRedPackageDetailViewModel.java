@@ -12,7 +12,7 @@ import com.fine.friendlycc.data.source.http.observer.BaseEmptyObserver;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseDataResponse;
 import com.fine.friendlycc.data.source.http.response.BaseResponse;
-import com.fine.friendlycc.entity.ChatRedPackageEntity;
+import com.fine.friendlycc.bean.ChatRedPackageBean;
 import com.fine.friendlycc.utils.ChatUtils;
 import com.fine.friendlycc.viewmodel.BaseViewModel;
 import com.fine.friendlycc.R;
@@ -31,7 +31,7 @@ public class CoinRedPackageDetailViewModel extends BaseViewModel<AppRepository> 
     public ObservableField<String> tipText = new ObservableField<>();
     public ObservableField<Boolean> isSender = new ObservableField<>();
 
-    public ObservableField<ChatRedPackageEntity> redpackageDetail = new ObservableField<>();
+    public ObservableField<ChatRedPackageBean> redpackageDetail = new ObservableField<>();
     public BindingCommand receiveOnClickCommand = new BindingCommand(new BindingAction() {
         @Override
         public void call() {
@@ -84,9 +84,9 @@ public class CoinRedPackageDetailViewModel extends BaseViewModel<AppRepository> 
                 .doOnSubscribe(this)
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
-                .subscribe(new BaseEmptyObserver<BaseDataResponse<ChatRedPackageEntity>>(this) {
+                .subscribe(new BaseEmptyObserver<BaseDataResponse<ChatRedPackageBean>>(this) {
                     @Override
-                    public void onSuccess(BaseDataResponse<ChatRedPackageEntity> response) {
+                    public void onSuccess(BaseDataResponse<ChatRedPackageBean> response) {
                         super.onSuccess(response);
                         redpackageDetail.set(response.getData());
                         if (response.getData().getStatus() == 0) {

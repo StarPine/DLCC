@@ -11,7 +11,7 @@ import androidx.databinding.ObservableField;
 
 import com.blankj.utilcode.util.ResourceUtils;
 import com.blankj.utilcode.util.StringUtils;
-import com.fine.friendlycc.app.AppContext;
+import com.fine.friendlycc.app.CCApplication;
 import com.fine.friendlycc.widget.emptyview.EmptyState;
 import com.fine.friendlycc.R;
 import com.fine.friendlycc.exception.EmptyException;
@@ -26,7 +26,7 @@ import me.goldze.mvvmhabit.binding.command.BindingCommand;
 
 public class StateModel extends BaseObservable {
 
-    private final Context mContext = AppContext.instance();
+    private final Context mContext = CCApplication.instance();
 
     public ObservableField<String> emptyText = new ObservableField<>(StringUtils.getString(R.string.playcc_empty_state_no_data));
     public ObservableField<String> retryBtnText = new ObservableField<>("Retry");

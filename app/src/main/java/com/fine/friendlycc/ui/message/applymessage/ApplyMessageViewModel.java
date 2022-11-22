@@ -12,8 +12,8 @@ import com.fine.friendlycc.data.source.http.observer.BaseListEmptyObserver;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseListDataResponse;
 import com.fine.friendlycc.data.source.http.response.BaseResponse;
-import com.fine.friendlycc.entity.AlbumPhotoEntity;
-import com.fine.friendlycc.entity.ApplyMessageEntity;
+import com.fine.friendlycc.bean.AlbumPhotoBean;
+import com.fine.friendlycc.bean.ApplyMessageBean;
 import com.fine.friendlycc.event.ApplyMessagePhotoStatusChangeEvent;
 import com.fine.friendlycc.viewmodel.BaseRefreshViewModel;
 import com.fine.friendlycc.BR;
@@ -52,14 +52,14 @@ public class ApplyMessageViewModel extends BaseRefreshViewModel<AppRepository> {
     }
 
     public void itemClick(int position) {
-        ApplyMessageEntity applyMessageEntity = observableList.get(position).itemEntity.get();
+        ApplyMessageBean applyMessageEntity = observableList.get(position).itemEntity.get();
         Bundle bundle = UserDetailFragment.getStartBundle(applyMessageEntity.getUser().getId());
         start(UserDetailFragment.class.getCanonicalName(), bundle);
     }
 
     public void itemPhotoClick(int position) {
-        ApplyMessageEntity applyMessageEntity = observableList.get(position).itemEntity.get();
-        AlbumPhotoEntity albumPhotoEntity = new AlbumPhotoEntity();
+        ApplyMessageBean applyMessageEntity = observableList.get(position).itemEntity.get();
+        AlbumPhotoBean albumPhotoEntity = new AlbumPhotoBean();
         albumPhotoEntity.setId(applyMessageEntity.getApplyId());
         albumPhotoEntity.setType(1);
         albumPhotoEntity.setSrc(applyMessageEntity.getApply().getImg());
@@ -95,15 +95,15 @@ public class ApplyMessageViewModel extends BaseRefreshViewModel<AppRepository> {
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(this)
-                .subscribe(new BaseListEmptyObserver<BaseListDataResponse<ApplyMessageEntity>>(this) {
+                .subscribe(new BaseListEmptyObserver<BaseListDataResponse<ApplyMessageBean>>(this) {
                     @Override
-                    public void onSuccess(BaseListDataResponse<ApplyMessageEntity> response) {
+                    public void onSuccess(BaseListDataResponse<ApplyMessageBean> response) {
                         super.onSuccess(response);
                         if (page == 1) {
                             observableList.clear();
                         }
-                        List<ApplyMessageEntity> list = response.getData().getData();
-                        for (ApplyMessageEntity entity : list) {
+                        List<ApplyMessageBean> list = response.getData().getData();
+                        for (ApplyMessageBean entity : list) {
                             ApplyMessageItemViewModel item = new ApplyMessageItemViewModel(ApplyMessageViewModel.this, entity);
                             observableList.add(item);
                         }
@@ -137,7 +137,7 @@ public class ApplyMessageViewModel extends BaseRefreshViewModel<AppRepository> {
     }
 
     public void replyApply(int position, boolean apply) {
-        ApplyMessageEntity applyMessageEntity = observableList.get(position).itemEntity.get();
+        ApplyMessageBean applyMessageEntity = observableList.get(position).itemEntity.get();
         model.replyApplyAlubm(applyMessageEntity.getApplyId(), apply)
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())

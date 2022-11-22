@@ -1,16 +1,16 @@
 package com.fine.friendlycc.data.source;
 
-import com.fine.friendlycc.entity.ApiConfigManagerEntity;
-import com.fine.friendlycc.entity.ConfigItemEntity;
-import com.fine.friendlycc.entity.CrystalDetailsConfigEntity;
-import com.fine.friendlycc.entity.EvaluateObjEntity;
-import com.fine.friendlycc.entity.GameConfigEntity;
-import com.fine.friendlycc.entity.LocalGooglePayCache;
-import com.fine.friendlycc.entity.OccupationConfigItemEntity;
-import com.fine.friendlycc.entity.SystemConfigEntity;
-import com.fine.friendlycc.entity.SystemConfigTaskEntity;
-import com.fine.friendlycc.entity.TokenEntity;
-import com.fine.friendlycc.entity.UserDataEntity;
+import com.fine.friendlycc.bean.ApiConfigManagerBean;
+import com.fine.friendlycc.bean.ConfigItemBean;
+import com.fine.friendlycc.bean.CrystalDetailsConfigBean;
+import com.fine.friendlycc.bean.EvaluateObjBean;
+import com.fine.friendlycc.bean.GameConfigBean;
+import com.fine.friendlycc.bean.LocalGooglePayCache;
+import com.fine.friendlycc.bean.OccupationConfigItemBean;
+import com.fine.friendlycc.bean.SystemConfigBean;
+import com.fine.friendlycc.bean.SystemConfigTaskBean;
+import com.fine.friendlycc.bean.TokenBean;
+import com.fine.friendlycc.bean.UserDataBean;
 
 import java.util.List;
 import java.util.Map;
@@ -25,17 +25,17 @@ public interface LocalDataSource {
      *
      * @param configs
      */
-    void saveCityConfigAll(List<ConfigItemEntity> configs);
+    void saveCityConfigAll(List<ConfigItemBean> configs);
     /**
      * 获取所有配置
      *
      * @return
      */
-    List<ConfigItemEntity> readCityConfigAll();
+    List<ConfigItemBean> readCityConfigAll();
     //保存api配置
-    void saveApiConfigManager(ApiConfigManagerEntity apiConfigManager);
+    void saveApiConfigManager(ApiConfigManagerBean apiConfigManager);
     //读取api配置
-    ApiConfigManagerEntity readApiConfigManagerEntity();
+    ApiConfigManagerBean readApiConfigManagerEntity();
 
     //保存键值对
     void putKeyValue(String key, String value);
@@ -95,7 +95,7 @@ public interface LocalDataSource {
      * @parame []
      * @Date 2021/8/26
      */
-    SystemConfigTaskEntity readSystemConfigTask();
+    SystemConfigTaskBean readSystemConfigTask();
 
     /**
      * @return void
@@ -104,7 +104,7 @@ public interface LocalDataSource {
      * @parame []
      * @Date 2021/8/26
      */
-    void saveSystemConfigTask(SystemConfigTaskEntity entity);
+    void saveSystemConfigTask(SystemConfigTaskBean entity);
 
     /**
      * 读取上次推送消息
@@ -155,14 +155,14 @@ public interface LocalDataSource {
      *
      * @param tokenEntity
      */
-    void saveLoginInfo(TokenEntity tokenEntity);
+    void saveLoginInfo(TokenBean tokenEntity);
 
     /**
      * 读取登录信息
      *
      * @return
      */
-    TokenEntity readLoginInfo();
+    TokenBean readLoginInfo();
 
     /**
      * 清除登录信息
@@ -174,14 +174,14 @@ public interface LocalDataSource {
      *
      * @param userDataEntity
      */
-    void saveUserData(UserDataEntity userDataEntity);
+    void saveUserData(UserDataBean userDataEntity);
 
     /**
      * 读取用户信息
      *
      * @return
      */
-    UserDataEntity readUserData();
+    UserDataBean readUserData();
 
     /**
      * 保存是否已认证
@@ -230,67 +230,67 @@ public interface LocalDataSource {
      *
      * @param config
      */
-    void saveSystemConfig(SystemConfigEntity config);
+    void saveSystemConfig(SystemConfigBean config);
 
     /**
      * 读取系统配置
      *
      * @return
      */
-    SystemConfigEntity readSystemConfig();
+    SystemConfigBean readSystemConfig();
 
      /**
      * 游戏图标配置
      *
      * @param configs
      */
-    void saveGameConfig(List<GameConfigEntity> configs);
+    void saveGameConfig(List<GameConfigBean> configs);
 
     /**
      * 读取游戏图标
      * @return
      */
-    List<GameConfigEntity> readGameConfig();
+    List<GameConfigBean> readGameConfig();
 
     /**
      * 保存水晶兌換规则显示标记
      * @param configs
      */
-    void saveCrystalDetailsConfig(CrystalDetailsConfigEntity configs);
+    void saveCrystalDetailsConfig(CrystalDetailsConfigBean configs);
 
     /**
      * 读取水晶兌換规则显示标记
      * @return
      */
-    CrystalDetailsConfigEntity readCrystalDetailsConfig();
+    CrystalDetailsConfigBean readCrystalDetailsConfig();
 
     /**
      * 保存身高配置
      *
      * @param configs
      */
-    void saveHeightConfig(List<ConfigItemEntity> configs);
+    void saveHeightConfig(List<ConfigItemBean> configs);
 
     /**
      * 获取身高配置
      *
      * @return
      */
-    List<ConfigItemEntity> readHeightConfig();
+    List<ConfigItemBean> readHeightConfig();
 
     /**
      * 保存体重配置
      *
      * @param configs
      */
-    void saveWeightConfig(List<ConfigItemEntity> configs);
+    void saveWeightConfig(List<ConfigItemBean> configs);
 
     /**
      * 获取体重配置
      *
      * @return
      */
-    List<ConfigItemEntity> readWeightConfig();
+    List<ConfigItemBean> readWeightConfig();
 
     /**
      * 保存屏蔽關鍵字
@@ -311,91 +311,91 @@ public interface LocalDataSource {
      *
      * @param configs
      */
-    void saveReportReasonConfig(List<ConfigItemEntity> configs);
+    void saveReportReasonConfig(List<ConfigItemBean> configs);
 
     /**
      * 获取举报原因配置
      *
      * @return
      */
-    List<ConfigItemEntity> readReportReasonConfig();
+    List<ConfigItemBean> readReportReasonConfig();
 
     /**
      * 保存女性评价标签配置
      *
      * @param configs
      */
-    void saveFemaleEvaluateConfig(List<EvaluateObjEntity> configs);
+    void saveFemaleEvaluateConfig(List<EvaluateObjBean> configs);
 
     /**
      * 保存男性评价标签配置
      *
      * @param configs
      */
-    void saveMaleEvaluateConfig(List<EvaluateObjEntity> configs);
+    void saveMaleEvaluateConfig(List<EvaluateObjBean> configs);
 
     /**
      * 读取女士评价标签配置
      *
      * @return
      */
-    List<EvaluateObjEntity> readFemaleEvaluateConfig();
+    List<EvaluateObjBean> readFemaleEvaluateConfig();
 
     /**
      * 读取男士评价标签
      *
      * @return
      */
-    List<EvaluateObjEntity> readMaleEvaluateConfig();
+    List<EvaluateObjBean> readMaleEvaluateConfig();
 
     /**
      * 读取评价标签
      *
      * @return
      */
-    List<EvaluateObjEntity> readEvaluateConfig();
+    List<EvaluateObjBean> readEvaluateConfig();
 
     /**
      * 保存期望对象配置
      *
      * @param configs
      */
-    void saveHopeObjectConfig(List<ConfigItemEntity> configs);
+    void saveHopeObjectConfig(List<ConfigItemBean> configs);
 
     /**
      * 获取期望对象配置
      *
      * @return
      */
-    List<ConfigItemEntity> readHopeObjectConfig();
+    List<ConfigItemBean> readHopeObjectConfig();
 
     /**
      * 保存职业配置
      *
      * @param configs
      */
-    void saveOccupationConfig(List<OccupationConfigItemEntity> configs);
+    void saveOccupationConfig(List<OccupationConfigItemBean> configs);
 
     /**
      * 获取职业配置
      *
      * @return
      */
-    List<OccupationConfigItemEntity> readOccupationConfig();
+    List<OccupationConfigItemBean> readOccupationConfig();
 
     /**
      * 保存城市配置
      *
      * @param configs
      */
-    void saveCityConfig(List<ConfigItemEntity> configs);
+    void saveCityConfig(List<ConfigItemBean> configs);
 
     /**
      * 获取城市配置
      *
      * @return
      */
-    List<ConfigItemEntity> readCityConfig();
+    List<ConfigItemBean> readCityConfig();
 
     /**
      * 保存手势密码

@@ -7,11 +7,11 @@ import androidx.annotation.NonNull;
 import androidx.databinding.ObservableField;
 
 import com.fine.friendlycc.R;
-import com.fine.friendlycc.app.AppContext;
+import com.fine.friendlycc.app.CCApplication;
 import com.fine.friendlycc.data.AppRepository;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseDataResponse;
-import com.fine.friendlycc.entity.NoteInfoEntity;
+import com.fine.friendlycc.bean.NoteInfoBean;
 import com.fine.friendlycc.viewmodel.BaseViewModel;
 
 import org.jetbrains.annotations.NotNull;
@@ -53,10 +53,10 @@ public class NotepadViewModel extends BaseViewModel<AppRepository> {
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(this)
                 .doOnSubscribe(disposable -> showHUD())
-                .subscribe(new BaseObserver<BaseDataResponse<NoteInfoEntity>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<NoteInfoBean>>() {
                     @Override
-                    public void onSuccess(BaseDataResponse<NoteInfoEntity> response) {
-                        NoteInfoEntity data = response.getData();
+                    public void onSuccess(BaseDataResponse<NoteInfoBean> response) {
+                        NoteInfoBean data = response.getData();
                         notepadText.set(data.getNote());
                     }
 
@@ -74,10 +74,10 @@ public class NotepadViewModel extends BaseViewModel<AppRepository> {
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(this)
                 .doOnSubscribe(disposable -> showHUD())
-                .subscribe(new BaseObserver<BaseDataResponse<NoteInfoEntity>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<NoteInfoBean>>() {
                     @Override
-                    public void onSuccess(BaseDataResponse<NoteInfoEntity> response) {
-                        Toast.makeText(AppContext.instance(), R.string.save_success, Toast.LENGTH_SHORT).show();
+                    public void onSuccess(BaseDataResponse<NoteInfoBean> response) {
+                        Toast.makeText(CCApplication.instance(), R.string.save_success, Toast.LENGTH_SHORT).show();
                     }
 
                     @Override

@@ -19,8 +19,8 @@ import com.fine.friendlycc.R;
 import com.fine.friendlycc.app.AppConfig;
 import com.fine.friendlycc.app.AppViewModelFactory;
 import com.fine.friendlycc.databinding.FragmentMeSettingBinding;
-import com.fine.friendlycc.entity.VersionEntity;
-import com.fine.friendlycc.kl.view.VideoPresetActivity;
+import com.fine.friendlycc.bean.VersionBean;
+import com.fine.friendlycc.calling.view.VideoPresetActivity;
 import com.fine.friendlycc.ui.base.BaseToolbarFragment;
 import com.fine.friendlycc.widget.dialog.version.view.UpdateDialogView;
 import com.luck.picture.lib.permissions.PermissionChecker;
@@ -84,9 +84,9 @@ public class MeSettingFragment extends BaseToolbarFragment<FragmentMeSettingBind
                 toPermissionIntent.launch(Manifest.permission.CAMERA);
             }
         });
-        viewModel.uc.versionEntitySingl.observe(this, new Observer<VersionEntity>() {
+        viewModel.uc.versionEntitySingl.observe(this, new Observer<VersionBean>() {
             @Override
-            public void onChanged(VersionEntity versionEntity) {
+            public void onChanged(VersionBean versionEntity) {
                 BackgroundTasks.getInstance().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {

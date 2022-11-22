@@ -7,8 +7,8 @@ import androidx.databinding.ObservableField;
 
 import com.blankj.utilcode.util.StringUtils;
 import com.fine.friendlycc.R;
-import com.fine.friendlycc.app.AppContext;
-import com.fine.friendlycc.entity.TraceEntity;
+import com.fine.friendlycc.app.CCApplication;
+import com.fine.friendlycc.bean.TraceBean;
 import com.fine.friendlycc.manager.ConfigManager;
 import com.fine.friendlycc.utils.ExceptionReportUtils;
 import com.fine.friendlycc.utils.Utils;
@@ -30,7 +30,7 @@ public class TraceManItemViewModel extends MultiItemViewModel<TraeManViewModel> 
     public Integer mhWidth = 90;
     public Integer mhHeight = 40;
 
-    public ObservableField<TraceEntity> itemEntity = new ObservableField<>();
+    public ObservableField<TraceBean> itemEntity = new ObservableField<>();
     public TraeManViewModel traeManViewModel;
     public Integer isPlay = -1;
     public BindingCommand AlertVipOnClickCommand = new BindingCommand(() -> {
@@ -49,7 +49,7 @@ public class TraceManItemViewModel extends MultiItemViewModel<TraeManViewModel> 
         traeManViewModel.uc.clickVip.call();
     });
 
-    public TraceManItemViewModel(@NonNull @NotNull TraeManViewModel viewModel, TraceEntity itemEntity, Integer isPlay) {
+    public TraceManItemViewModel(@NonNull @NotNull TraeManViewModel viewModel, TraceBean itemEntity, Integer isPlay) {
         super(viewModel);
         this.traeManViewModel = viewModel;
         this.itemEntity.set(itemEntity);
@@ -103,17 +103,17 @@ public class TraceManItemViewModel extends MultiItemViewModel<TraeManViewModel> 
         return String.format(StringUtils.getString(R.string.playcc_mine_age), itemEntity.get().getAge());
     }
 
-    public Drawable getVipGodsImg(TraceEntity traceEntity) {
+    public Drawable getVipGodsImg(TraceBean traceEntity) {
         if (traceEntity != null) {
             if (traceEntity.getIsVip() == 1) {
                 if (traceEntity.getSex() == 1) {
-                    return AppContext.instance().getDrawable(R.drawable.ic_vip);
+                    return CCApplication.instance().getDrawable(R.drawable.ic_vip);
                 } else {//女生
-                    return AppContext.instance().getDrawable(R.drawable.ic_good_goddess);
+                    return CCApplication.instance().getDrawable(R.drawable.ic_good_goddess);
                 }
             } else {
                 if (traceEntity.getCertification() != null && traceEntity.getCertification() == 1) {
-                    return AppContext.instance().getDrawable(R.drawable.ic_real_people);
+                    return CCApplication.instance().getDrawable(R.drawable.ic_real_people);
                 }
             }
         }

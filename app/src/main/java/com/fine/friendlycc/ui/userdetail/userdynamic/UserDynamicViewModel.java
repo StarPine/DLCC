@@ -11,7 +11,7 @@ import com.fine.friendlycc.data.AppRepository;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseListDataResponse;
 import com.fine.friendlycc.data.source.http.response.BaseResponse;
-import com.fine.friendlycc.entity.NewsEntity;
+import com.fine.friendlycc.bean.NewsBean;
 import com.fine.friendlycc.event.RadioadetailEvent;
 import com.fine.friendlycc.ui.mine.broadcast.mytrends.TrendItemViewModel;
 import com.fine.friendlycc.viewmodel.BaseRefreshViewModel;
@@ -107,9 +107,9 @@ public class UserDynamicViewModel extends BaseRefreshViewModel<AppRepository> {
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(this)
-                .subscribe(new BaseObserver<BaseListDataResponse<NewsEntity>>() {
+                .subscribe(new BaseObserver<BaseListDataResponse<NewsBean>>() {
                     @Override
-                    public void onSuccess(BaseListDataResponse<NewsEntity> response) {
+                    public void onSuccess(BaseListDataResponse<NewsBean> response) {
                         if (response.getData().getData() != null) {
                             if (currentPage == 1) {
                                 observableList.clear();

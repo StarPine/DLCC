@@ -5,10 +5,10 @@ import com.blankj.utilcode.util.ObjectUtils;
 import com.fine.friendlycc.app.EaringlSwitchUtil;
 import com.fine.friendlycc.app.Injection;
 import com.fine.friendlycc.data.AppRepository;
-import com.fine.friendlycc.entity.GameConfigEntity;
-import com.fine.friendlycc.entity.SystemConfigEntity;
-import com.fine.friendlycc.entity.SystemConfigTaskEntity;
-import com.fine.friendlycc.entity.UserDataEntity;
+import com.fine.friendlycc.bean.GameConfigBean;
+import com.fine.friendlycc.bean.SystemConfigBean;
+import com.fine.friendlycc.bean.SystemConfigTaskBean;
+import com.fine.friendlycc.bean.UserDataBean;
 
 import java.util.List;
 
@@ -52,7 +52,7 @@ public class ConfigManager {
      * @Date 2022/6/7
      */
     public String getUserId() {
-        UserDataEntity userDataEntity = getAppRepository().readUserData();
+        UserDataBean userDataEntity = getAppRepository().readUserData();
         if (userDataEntity == null) {
             return null;
         }
@@ -87,7 +87,7 @@ public class ConfigManager {
     }
 
     //获取任务中心配置
-    public SystemConfigTaskEntity getTaskConfig() {
+    public SystemConfigTaskBean getTaskConfig() {
         return getAppRepository().readSystemConfigTask();
     }
 
@@ -112,12 +112,12 @@ public class ConfigManager {
         long snapshotTime = 2;
         int multiply = 3;
         //当前用户信息
-        UserDataEntity userDataEntity = getAppRepository().readUserData();
+        UserDataBean userDataEntity = getAppRepository().readUserData();
         if(userDataEntity==null){
             return snapshotTime;
         }
         //配置标
-        SystemConfigEntity readSystemConfig = getAppRepository().readSystemConfig();
+        SystemConfigBean readSystemConfig = getAppRepository().readSystemConfig();
         if(readSystemConfig==null){
             return snapshotTime;
         }
@@ -283,14 +283,14 @@ public class ConfigManager {
         if (ObjectUtils.isEmpty(gameChannel)){
             return "";
         }
-        List<GameConfigEntity> gameConfigEntities = getAppRepository().readGameConfig();
+        List<GameConfigBean> gameConfigEntities = getAppRepository().readGameConfig();
 
         if (ObjectUtils.isEmpty(gameConfigEntities)){
             return "";
         }
         String gameUrl= "";
         for (int i = 0; i < gameConfigEntities.size(); i++) {
-            GameConfigEntity configItemEntity = gameConfigEntities.get(i);
+            GameConfigBean configItemEntity = gameConfigEntities.get(i);
             if (configItemEntity.getId().equals(gameChannel)){
 //            if (configItemEntity.getId().equals("1642158125")){//模拟显示
                 gameUrl = configItemEntity.getUrl();

@@ -11,7 +11,7 @@ import com.fine.friendlycc.data.source.http.observer.BaseListEmptyObserver;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseListDataResponse;
 import com.fine.friendlycc.data.source.http.response.BaseResponse;
-import com.fine.friendlycc.entity.SystemMessageEntity;
+import com.fine.friendlycc.bean.SystemMessageBean;
 import com.fine.friendlycc.viewmodel.BaseRefreshViewModel;
 import com.fine.friendlycc.BR;
 import com.fine.friendlycc.R;
@@ -50,15 +50,15 @@ public class SystemMessageViewModel extends BaseRefreshViewModel<AppRepository> 
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(this)
-                .subscribe(new BaseListEmptyObserver<BaseListDataResponse<SystemMessageEntity>>(this) {
+                .subscribe(new BaseListEmptyObserver<BaseListDataResponse<SystemMessageBean>>(this) {
                     @Override
-                    public void onSuccess(BaseListDataResponse<SystemMessageEntity> response) {
+                    public void onSuccess(BaseListDataResponse<SystemMessageBean> response) {
                         super.onSuccess(response);
                         if (page == 1) {
                             observableList.clear();
                         }
-                        List<SystemMessageEntity> list = response.getData().getData();
-                        for (SystemMessageEntity entity : list) {
+                        List<SystemMessageBean> list = response.getData().getData();
+                        for (SystemMessageBean entity : list) {
                             SystemMessageItemViewModel item = new SystemMessageItemViewModel(SystemMessageViewModel.this, entity);
                             observableList.add(item);
                         }

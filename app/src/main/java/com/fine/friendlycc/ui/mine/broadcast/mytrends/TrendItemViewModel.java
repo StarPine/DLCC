@@ -14,14 +14,14 @@ import androidx.databinding.ObservableList;
 
 import com.fine.friendlycc.BR;
 import com.fine.friendlycc.R;
-import com.fine.friendlycc.app.AppContext;
+import com.fine.friendlycc.app.CCApplication;
 import com.fine.friendlycc.app.AppsFlyerEvent;
-import com.fine.friendlycc.entity.BaseUserBeanEntity;
-import com.fine.friendlycc.entity.BroadcastBeanEntity;
-import com.fine.friendlycc.entity.BroadcastEntity;
-import com.fine.friendlycc.entity.CommentEntity;
-import com.fine.friendlycc.entity.GiveUserBeanEntity;
-import com.fine.friendlycc.entity.NewsEntity;
+import com.fine.friendlycc.bean.BaseUserBeanBean;
+import com.fine.friendlycc.bean.BroadcastBeanBean;
+import com.fine.friendlycc.bean.BroadcastBean;
+import com.fine.friendlycc.bean.CommentBean;
+import com.fine.friendlycc.bean.GiveUserBeanBean;
+import com.fine.friendlycc.bean.NewsBean;
 import com.fine.friendlycc.event.ZoomInPictureEvent;
 import com.fine.friendlycc.manager.ConfigManager;
 import com.fine.friendlycc.ui.mine.broadcast.myall.MyAllBroadcastViewModel;
@@ -30,7 +30,6 @@ import com.fine.friendlycc.ui.mine.broadcast.mytrends.trenddetail.TrendDetailVie
 import com.fine.friendlycc.ui.radio.radiohome.RadioViewModel;
 import com.fine.friendlycc.ui.userdetail.detail.UserDetailFragment;
 import com.fine.friendlycc.ui.userdetail.userdynamic.UserDynamicViewModel;
-import com.fine.friendlycc.ui.viewmodel.BaseParkItemViewModel;
 import com.fine.friendlycc.utils.ChatUtils;
 import com.fine.friendlycc.utils.ExceptionReportUtils;
 import com.fine.friendlycc.utils.ListUtils;
@@ -61,7 +60,7 @@ public class TrendItemViewModel extends MultiItemViewModel<BaseViewModel> {
     public boolean isSelf = false;
     private String gameChannel;
 
-    public ObservableField<NewsEntity> newsEntityObservableField = new ObservableField<>();
+    public ObservableField<NewsBean> newsEntityObservableField = new ObservableField<>();
     public ObservableField<Boolean> isShowComment = new ObservableField<>(false);
     //    public ObservableField<String> positonStr = new ObservableField<>();
     public ObservableField<Integer> pointPositon = new ObservableField<>(0);
@@ -81,16 +80,16 @@ public class TrendItemViewModel extends MultiItemViewModel<BaseViewModel> {
     //搭讪 or  聊天
     public BindingCommand accostOnClickCommand = new BindingCommand(() -> {
         try {
-            NewsEntity itemEntity = newsEntityObservableField.get();
+            NewsBean itemEntity = newsEntityObservableField.get();
 
             //拿到position
             if (itemEntity.getUser().getIsAccost() == 1) {
                 ChatUtils.chatUser(itemEntity.getImUserId(), itemEntity.getUserId(), itemEntity.getUser().getNickname(), viewModel);
-                AppContext.instance().logEvent(AppsFlyerEvent.homepage_chat);
+                CCApplication.instance().logEvent(AppsFlyerEvent.homepage_chat);
             } else {
                     //男女点击搭讪
-                AppContext.instance().logEvent(ConfigManager.getInstance().isMale() ? AppsFlyerEvent.greet_male : AppsFlyerEvent.greet_female);
-                AppContext.instance().logEvent(AppsFlyerEvent.homepage_accost);
+                CCApplication.instance().logEvent(ConfigManager.getInstance().isMale() ? AppsFlyerEvent.greet_male : AppsFlyerEvent.greet_female);
+                CCApplication.instance().logEvent(AppsFlyerEvent.homepage_accost);
                     if (viewModel instanceof RadioViewModel) {
                         int position = ((RadioViewModel) viewModel).radioItems.indexOf(TrendItemViewModel.this);
                         ((RadioViewModel) viewModel).putAccostFirst(position);
@@ -268,7 +267,7 @@ public class TrendItemViewModel extends MultiItemViewModel<BaseViewModel> {
         }
     });
 
-    public TrendItemViewModel(@NonNull BaseViewModel viewModel, NewsEntity newsEntity) {
+    public TrendItemViewModel(@NonNull BaseViewModel viewModel, NewsBean newsEntity) {
         super(viewModel);
         this.newsEntityObservableField.set(newsEntity);
         if (viewModel instanceof MyTrendsViewModel) {
@@ -277,9 +276,9 @@ public class TrendItemViewModel extends MultiItemViewModel<BaseViewModel> {
         init();
     }
 
-    public TrendItemViewModel(@NonNull BaseViewModel viewModel, BroadcastEntity broadcastEntity) {
+    public TrendItemViewModel(@NonNull BaseViewModel viewModel, BroadcastBean broadcastEntity) {
         super(viewModel);
-        NewsEntity newsEntity = new NewsEntity();
+        NewsBean newsEntity = new NewsBean();
         newsEntity.setId(broadcastEntity.getNews().getId());
         newsEntity.setCreatedAt(broadcastEntity.getCreatedAt());
         newsEntity.setContent(broadcastEntity.getNews().getContent());
@@ -293,7 +292,7 @@ public class TrendItemViewModel extends MultiItemViewModel<BaseViewModel> {
         //自己IMid  对方IM id
         newsEntity.setImUserId(broadcastEntity.getImUserId());
         newsEntity.setImToUserId(broadcastEntity.getImToUserId());
-        BaseUserBeanEntity userBean = new BaseUserBeanEntity();
+        BaseUserBeanBean userBean = new BaseUserBeanBean();
         userBean.setAvatar(broadcastEntity.getAvatar());
         userBean.setId(broadcastEntity.getUserId());
         userBean.setIsVip(broadcastEntity.getIsVip());
@@ -304,14 +303,14 @@ public class TrendItemViewModel extends MultiItemViewModel<BaseViewModel> {
         newsEntity.setUser(userBean);
 
         if (broadcastEntity.getNews().getGive_user() != null) {
-            List<GiveUserBeanEntity> giveUserBeanList = new ArrayList<>();
+            List<GiveUserBeanBean> giveUserBeanList = new ArrayList<>();
             for (int i = 0; i < broadcastEntity.getNews().getGive_user().size(); i++) {
-                giveUserBeanList.add(new GiveUserBeanEntity(broadcastEntity.getNews().getGive_user().get(i).getIdX(), broadcastEntity.getNews().getGive_user().get(i).getAvatar()));
+                giveUserBeanList.add(new GiveUserBeanBean(broadcastEntity.getNews().getGive_user().get(i).getIdX(), broadcastEntity.getNews().getGive_user().get(i).getAvatar()));
             }
             newsEntity.setGive_user(giveUserBeanList);
         }
 
-        BroadcastBeanEntity broadcastBean = new BroadcastBeanEntity();
+        BroadcastBeanBean broadcastBean = new BroadcastBeanBean();
         broadcastBean.setId(broadcastEntity.getId());
         broadcastBean.setIsComment(broadcastEntity.getIsComment());
         broadcastBean.setGiveCount(broadcastEntity.getGiveCount());
@@ -399,7 +398,7 @@ public class TrendItemViewModel extends MultiItemViewModel<BaseViewModel> {
         if (newsEntityObservableField.get().getGive_user() == null) {
             newsEntityObservableField.get().setGive_user(new ArrayList<>());
         }
-        GiveUserBeanEntity giveUserBeanEntity = new GiveUserBeanEntity(userId, avatar);
+        GiveUserBeanBean giveUserBeanEntity = new GiveUserBeanBean(userId, avatar);
         newsEntityObservableField.get().getGive_user().add(giveUserBeanEntity);
         newsEntityObservableField.get().setGiveSize(newsEntityObservableField.get().getGive_user().size());
         newsEntityObservableField.get().setIsGive(1);
@@ -414,22 +413,22 @@ public class TrendItemViewModel extends MultiItemViewModel<BaseViewModel> {
     }
 
     public void addComment(Integer id, String content, Integer toUserId, String toUserName, String userName) {
-        CommentEntity commentEntity = new CommentEntity();
+        CommentBean commentEntity = new CommentBean();
         commentEntity.setContent(content);
         commentEntity.setId(id);
         commentEntity.setUserId(userId);
-        CommentEntity.UserBean userBean = new CommentEntity.UserBean();
+        CommentBean.UserBean userBean = new CommentBean.UserBean();
         userBean.setId(userId);
         userBean.setNickname(userName);
         commentEntity.setUser(userBean);
         if (toUserName != null) {
-            CommentEntity.TouserBean touserBean = new CommentEntity.TouserBean();
+            CommentBean.TouserBean touserBean = new CommentBean.TouserBean();
             touserBean.setId(toUserId);
             touserBean.setNickname(toUserName);
             commentEntity.setTouser(touserBean);
         }
         if (newsEntityObservableField.get().getComment() == null) {
-            List<CommentEntity> commentEntities = new ArrayList<>();
+            List<CommentBean> commentEntities = new ArrayList<>();
             commentEntities.add(commentEntity);
             newsEntityObservableField.get().setComment(commentEntities);
         } else {
@@ -468,16 +467,16 @@ public class TrendItemViewModel extends MultiItemViewModel<BaseViewModel> {
         return position;
     }
 
-    public Drawable onLineColor(BroadcastEntity broadcastEntity){
+    public Drawable onLineColor(BroadcastBean broadcastEntity){
         if (broadcastEntity == null)return null;
         if (broadcastEntity.getCallingStatus() == 0){
             if (broadcastEntity.getIsOnline() == 1) {
-                return AppContext.instance().getResources().getDrawable(R.drawable.mine_radius3);
+                return CCApplication.instance().getResources().getDrawable(R.drawable.mine_radius3);
             }
         }else {
-            return AppContext.instance().getResources().getDrawable(R.drawable.mine_radius2);
+            return CCApplication.instance().getResources().getDrawable(R.drawable.mine_radius2);
         }
-        return AppContext.instance().getResources().getDrawable(R.drawable.mine_radius2);
+        return CCApplication.instance().getResources().getDrawable(R.drawable.mine_radius2);
     }
 
 }

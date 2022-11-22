@@ -1,6 +1,6 @@
 package com.fine.friendlycc.event;
 
-import com.fine.friendlycc.entity.AlbumPhotoEntity;
+import com.fine.friendlycc.bean.AlbumPhotoBean;
 
 import java.util.List;
 
@@ -20,7 +20,7 @@ public class MyPhotoAlbumChangeEvent {
 
     private int type;
     private Integer photoId;
-    private List<AlbumPhotoEntity> photos;
+    private List<AlbumPhotoBean> photos;
 
     public static MyPhotoAlbumChangeEvent genRefreshEvent() {
         MyPhotoAlbumChangeEvent event = new MyPhotoAlbumChangeEvent();
@@ -28,7 +28,7 @@ public class MyPhotoAlbumChangeEvent {
         return event;
     }
 
-    public static MyPhotoAlbumChangeEvent genSetDataEvent(List<AlbumPhotoEntity> photos) {
+    public static MyPhotoAlbumChangeEvent genSetDataEvent(List<AlbumPhotoBean> photos) {
         MyPhotoAlbumChangeEvent event = new MyPhotoAlbumChangeEvent();
         event.setType(TYPE_SET_DATA);
         event.setPhotos(photos);
@@ -87,11 +87,11 @@ public class MyPhotoAlbumChangeEvent {
         this.photoId = photoId;
     }
 
-    public List<AlbumPhotoEntity> getPhotos() {
+    public List<AlbumPhotoBean> getPhotos() {
         return photos;
     }
 
-    public void setPhotos(List<AlbumPhotoEntity> photos) {
+    public void setPhotos(List<AlbumPhotoBean> photos) {
         this.photos = photos;
     }
 }

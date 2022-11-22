@@ -17,7 +17,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.blankj.utilcode.util.StringUtils;
-import com.fine.friendlycc.app.AppContext;
+import com.fine.friendlycc.app.CCApplication;
 import com.fine.friendlycc.app.AppViewModelFactory;
 import com.fine.friendlycc.app.AppsFlyerEvent;
 import com.fine.friendlycc.event.TaskMainTabEvent;
@@ -133,7 +133,7 @@ public class TapeAudioFragment extends BaseFragment<FragentTapeAudioBinding,Tape
                         binding.myTime.setVisibility(View.VISIBLE);
                         startAudio();
                         deleteFlag = false;
-                        AppContext.instance().logEvent(AppsFlyerEvent.voice_record);
+                        CCApplication.instance().logEvent(AppsFlyerEvent.voice_record);
                         break;
                     case MotionEvent.ACTION_UP:
                         stopAudioCall();
@@ -199,7 +199,7 @@ public class TapeAudioFragment extends BaseFragment<FragentTapeAudioBinding,Tape
         binding.audioSub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AppContext.instance().logEvent(AppsFlyerEvent.voice_submit);
+                CCApplication.instance().logEvent(AppsFlyerEvent.voice_submit);
                 viewModel.uploadUserSoundFile(playPath,startTime);
             }
         });

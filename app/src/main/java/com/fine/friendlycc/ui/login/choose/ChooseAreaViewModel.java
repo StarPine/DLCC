@@ -12,8 +12,8 @@ import com.fine.friendlycc.R;
 import com.fine.friendlycc.data.AppRepository;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseDataResponse;
-import com.fine.friendlycc.entity.ChooseAreaEntity;
-import com.fine.friendlycc.entity.ChooseAreaItemEntity;
+import com.fine.friendlycc.bean.ChooseAreaBean;
+import com.fine.friendlycc.bean.ChooseAreaItemBean;
 import com.fine.friendlycc.event.ItemChooseAreaEvent;
 import com.fine.friendlycc.viewmodel.BaseViewModel;
 
@@ -38,7 +38,7 @@ public class ChooseAreaViewModel extends BaseViewModel<AppRepository> {
         super(application, model);
     }
 
-    public void chooseAreaClick(ChooseAreaItemEntity chooseAreaItemEntity) {
+    public void chooseAreaClick(ChooseAreaItemBean chooseAreaItemEntity) {
         RxBus.getDefault().post(new ItemChooseAreaEvent(chooseAreaItemEntity));
         pop();
     }
@@ -49,12 +49,12 @@ public class ChooseAreaViewModel extends BaseViewModel<AppRepository> {
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(disposable -> showHUD())
-                .subscribe(new BaseObserver<BaseDataResponse<ChooseAreaEntity>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<ChooseAreaBean>>() {
                     @Override
-                    public void onSuccess(BaseDataResponse<ChooseAreaEntity> response) {
-                        ChooseAreaEntity chooseAreaEntity = response.getData();
+                    public void onSuccess(BaseDataResponse<ChooseAreaBean> response) {
+                        ChooseAreaBean chooseAreaEntity = response.getData();
                         if (chooseAreaEntity != null && ObjectUtils.isNotEmpty(chooseAreaEntity.getList())) {
-                            for (ChooseAreaItemEntity chooseArea : chooseAreaEntity.getList()) {
+                            for (ChooseAreaItemBean chooseArea : chooseAreaEntity.getList()) {
                                 ItemChooseAreaViewModel itemChooseAreaViewModel = new ItemChooseAreaViewModel(ChooseAreaViewModel.this, chooseArea);
                                 areaObservableList.add(itemChooseAreaViewModel);
                             }

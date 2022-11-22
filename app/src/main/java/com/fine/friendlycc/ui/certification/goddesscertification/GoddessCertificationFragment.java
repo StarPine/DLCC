@@ -12,7 +12,7 @@ import com.fine.friendlycc.R;
 import com.fine.friendlycc.app.AppViewModelFactory;
 import com.fine.friendlycc.databinding.FragmentGoddessCertificationBinding;
 import com.fine.friendlycc.ui.base.BaseToolbarFragment;
-import com.fine.friendlycc.widget.picchoose.PicChooseItemEntity;
+import com.fine.friendlycc.widget.picchoose.PicChooseItemBean;
 import com.fine.friendlycc.widget.picchoose.PicChooseView;
 
 import java.util.List;
@@ -51,12 +51,12 @@ public class GoddessCertificationFragment extends BaseToolbarFragment<FragmentGo
             }
 
             @Override
-            public void onMediaChoosed(List<PicChooseItemEntity> medias) {
+            public void onMediaChoosed(List<PicChooseItemBean> medias) {
                 viewModel.chooseMedias = medias;
             }
 
             @Override
-            public void onMediaDelete(List<PicChooseItemEntity> medias, PicChooseItemEntity delMedia) {
+            public void onMediaDelete(List<PicChooseItemBean> medias, PicChooseItemBean delMedia) {
                 viewModel.chooseMedias = medias;
             }
         });

@@ -7,7 +7,7 @@ import androidx.databinding.ObservableField;
 
 import com.blankj.utilcode.util.StringUtils;
 import com.fine.friendlycc.data.AppRepository;
-import com.fine.friendlycc.entity.AlbumPhotoEntity;
+import com.fine.friendlycc.bean.AlbumPhotoBean;
 import com.fine.friendlycc.event.MyPhotoAlbumChangeEvent;
 import com.fine.friendlycc.R;
 import com.fine.friendlycc.ui.viewmodel.BaseMyPhotoAlbumViewModel;
@@ -76,7 +76,7 @@ public class MyPhotoAlbumViewModel extends BaseMyPhotoAlbumViewModel<AppReposito
                     } else if (event.getType() == MyPhotoAlbumChangeEvent.TYPE_SET_DATA) {
                         observableList.clear();
                         photoEntityList.clear();
-                        for (AlbumPhotoEntity datum : event.getPhotos()) {
+                        for (AlbumPhotoBean datum : event.getPhotos()) {
                             photoEntityList.add(datum);
                             MyPhotoAlbumItemViewModel itemViewModel = new MyPhotoAlbumItemViewModel(MyPhotoAlbumViewModel.this, datum);
                             observableList.add(itemViewModel);

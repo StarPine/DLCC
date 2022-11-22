@@ -25,7 +25,7 @@
 -packageobfuscationdictionary pc-guard.txt
 #------------------------------------------主项目混淆规则----------------------------------------------
 #实体类不参与混淆
--keep class com.fine.friendlycc.entity.** { *; }
+-keep class com.fine.friendlycc.bean.** { *; }
 -keep class com.fine.friendlycc.widget.** { *; }
 -keep class com.fine.friendlycc.data.** { *; }
 -keep class com.fine.friendlycc.app.** { *; }

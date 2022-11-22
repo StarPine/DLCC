@@ -9,7 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.fine.friendlycc.entity.ConfigItemEntity;
+import com.fine.friendlycc.bean.ConfigItemBean;
 import com.fine.friendlycc.R;
 
 import java.util.ArrayList;
@@ -21,7 +21,7 @@ import java.util.List;
 public class CityChooseAdapter extends RecyclerView.Adapter<CityChooseAdapter.RecyclerHolder> {
 
     private final Context mContext;
-    private List<ConfigItemEntity> dataList = new ArrayList<>();
+    private List<ConfigItemBean> dataList = new ArrayList<>();
 
     private CityChooseAdapterListener cityChooseAdapterListener = null;
     private Integer currentChooseCityId;
@@ -44,7 +44,7 @@ public class CityChooseAdapter extends RecyclerView.Adapter<CityChooseAdapter.Re
         this.cityChooseAdapterListener = cityChooseAdapterListener;
     }
 
-    public void setData(List<ConfigItemEntity> dataList) {
+    public void setData(List<ConfigItemBean> dataList) {
         this.dataList = dataList;
         notifyDataSetChanged();
     }
@@ -58,7 +58,7 @@ public class CityChooseAdapter extends RecyclerView.Adapter<CityChooseAdapter.Re
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerHolder holder, int position) {
-        ConfigItemEntity itemEntity = dataList.get(position);
+        ConfigItemBean itemEntity = dataList.get(position);
         holder.tvName.setText(itemEntity.getName());
         holder.itemView.setTag(position);
         if (currentChooseCityId.equals(itemEntity.getId())) {
@@ -80,7 +80,7 @@ public class CityChooseAdapter extends RecyclerView.Adapter<CityChooseAdapter.Re
     }
 
     public interface CityChooseAdapterListener {
-        void onItemClick(ConfigItemEntity itemEntity,int position);
+        void onItemClick(ConfigItemBean itemEntity,int position);
     }
 
     static class RecyclerHolder extends RecyclerView.ViewHolder {

@@ -24,12 +24,11 @@ import com.fine.friendlycc.data.source.http.exception.RequestException;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseDataResponse;
 import com.fine.friendlycc.data.source.http.response.BaseResponse;
-import com.fine.friendlycc.entity.ChatRedPackageEntity;
-import com.fine.friendlycc.entity.CoinWalletEntity;
-import com.fine.friendlycc.entity.CreateOrderEntity;
+import com.fine.friendlycc.bean.ChatRedPackageBean;
+import com.fine.friendlycc.bean.CoinWalletBean;
+import com.fine.friendlycc.bean.CreateOrderBean;
 import com.fine.friendlycc.ui.base.BasePopupWindow;
 import com.fine.friendlycc.ui.mine.wallet.diamond.recharge.DialogDiamondRechargeActivity;
-import com.fine.friendlycc.widget.coinrechargesheet.CoinRechargeSheetView;
 import com.fine.friendlycc.widget.dialog.MVDialog;
 
 import me.goldze.mvvmhabit.utils.RxUtils;
@@ -161,7 +160,7 @@ public class CoinPaySheet {
         private ViewGroup loadingView;
         private int mBalance = -1;
 
-        private CreateOrderEntity mOrderEntity = null;
+        private CreateOrderBean mOrderEntity = null;
 
         public CoinPaySheetView(AppCompatActivity activity, CoinPaySheet bottomSheet) {
             super(activity);
@@ -298,9 +297,9 @@ public class CoinPaySheet {
                     .doOnSubscribe(this)
                     .compose(RxUtils.schedulersTransformer())
                     .compose(RxUtils.exceptionTransformer())
-                    .subscribe(new BaseObserver<BaseDataResponse<CoinWalletEntity>>() {
+                    .subscribe(new BaseObserver<BaseDataResponse<CoinWalletBean>>() {
                         @Override
-                        public void onSuccess(BaseDataResponse<CoinWalletEntity> response) {
+                        public void onSuccess(BaseDataResponse<CoinWalletBean> response) {
                             mBalance = response.getData().getTotalCoin();
                             tvBalance.setText(String.valueOf(response.getData().getTotalCoin()));
                             autoPay();
@@ -324,9 +323,9 @@ public class CoinPaySheet {
                     .doOnSubscribe(this)
                     .compose(RxUtils.schedulersTransformer())
                     .compose(RxUtils.exceptionTransformer())
-                    .subscribe(new BaseObserver<BaseDataResponse<CreateOrderEntity>>() {
+                    .subscribe(new BaseObserver<BaseDataResponse<CreateOrderBean>>() {
                         @Override
-                        public void onSuccess(BaseDataResponse<CreateOrderEntity> response) {
+                        public void onSuccess(BaseDataResponse<CreateOrderBean> response) {
                             mOrderEntity = response.getData();
                             tvPayPrice.setText(String.valueOf(mOrderEntity.getMoney()));
                             autoPay();
@@ -428,9 +427,9 @@ public class CoinPaySheet {
                     .doOnSubscribe(this)
                     .compose(RxUtils.schedulersTransformer())
                     .compose(RxUtils.exceptionTransformer())
-                    .subscribe(new BaseObserver<BaseDataResponse<ChatRedPackageEntity>>() {
+                    .subscribe(new BaseObserver<BaseDataResponse<ChatRedPackageBean>>() {
                         @Override
-                        public void onSuccess(BaseDataResponse<ChatRedPackageEntity> response) {
+                        public void onSuccess(BaseDataResponse<ChatRedPackageBean> response) {
                             if (bottomSheet.builder.coinRedPackagePayDialogListener != null) {
                                 bottomSheet.builder.coinRedPackagePayDialogListener.onPaySuccess(bottomSheet, response.getData().getId());
                             }

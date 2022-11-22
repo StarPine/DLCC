@@ -13,8 +13,8 @@ import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseDataResponse;
 import com.fine.friendlycc.data.source.http.response.BaseListDataResponse;
 import com.fine.friendlycc.data.source.http.response.BaseResponse;
-import com.fine.friendlycc.entity.EvaluateEntity;
-import com.fine.friendlycc.entity.EvaluateMessageEntity;
+import com.fine.friendlycc.bean.EvaluateBean;
+import com.fine.friendlycc.bean.EvaluateMessageBean;
 import com.fine.friendlycc.utils.FileUploadUtils;
 import com.fine.friendlycc.viewmodel.BaseRefreshViewModel;
 import com.fine.friendlycc.BR;
@@ -86,15 +86,15 @@ public class EvaluateMessageViewModel extends BaseRefreshViewModel<AppRepository
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(this)
-                .subscribe(new BaseListEmptyObserver<BaseListDataResponse<EvaluateMessageEntity>>(this) {
+                .subscribe(new BaseListEmptyObserver<BaseListDataResponse<EvaluateMessageBean>>(this) {
                     @Override
-                    public void onSuccess(BaseListDataResponse<EvaluateMessageEntity> response) {
+                    public void onSuccess(BaseListDataResponse<EvaluateMessageBean> response) {
                         super.onSuccess(response);
                         if (page == 1) {
                             observableList.clear();
                         }
-                        List<EvaluateMessageEntity> list = response.getData().getData();
-                        for (EvaluateMessageEntity entity : list) {
+                        List<EvaluateMessageBean> list = response.getData().getData();
+                        for (EvaluateMessageBean entity : list) {
                             if (entity.getRelationType() == 1) {
                                 MultiItemViewModel item = new EvaluateThemMessageItemViewModel(EvaluateMessageViewModel.this, entity);
                                 item.multiItemType(1);
@@ -152,9 +152,9 @@ public class EvaluateMessageViewModel extends BaseRefreshViewModel<AppRepository
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(this)
                 .doOnSubscribe(disposable -> showHUD())
-                .subscribe(new BaseObserver<BaseDataResponse<List<EvaluateEntity>>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<List<EvaluateBean>>>() {
                     @Override
-                    public void onSuccess(BaseDataResponse<List<EvaluateEntity>> response) {
+                    public void onSuccess(BaseDataResponse<List<EvaluateBean>> response) {
                         Map<String, Object> params = new HashMap<>();
                         params.put("sex", sex);
                         params.put("userId", userId);

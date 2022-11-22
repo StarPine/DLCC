@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.fine.friendlycc.entity.EvaluateItemEntity;
+import com.fine.friendlycc.bean.EvaluateItemBean;
 import com.fine.friendlycc.R;
 
 import java.util.ArrayList;
@@ -19,13 +19,13 @@ import java.util.List;
 public class MyEvaluateAdapter extends RecyclerView.Adapter<MyEvaluateAdapter.RecyclerHolder> {
 
     private final Context mContext;
-    private final List<EvaluateItemEntity> dataList = new ArrayList<>();
+    private final List<EvaluateItemBean> dataList = new ArrayList<>();
 
     public MyEvaluateAdapter(RecyclerView recyclerView) {
         this.mContext = recyclerView.getContext();
     }
 
-    public void setData(List<EvaluateItemEntity> dataList) {
+    public void setData(List<EvaluateItemBean> dataList) {
         if (null != dataList) {
             this.dataList.clear();
             this.dataList.addAll(dataList);

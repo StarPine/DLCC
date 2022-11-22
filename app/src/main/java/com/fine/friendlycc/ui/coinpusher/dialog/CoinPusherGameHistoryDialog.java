@@ -16,8 +16,8 @@ import com.fine.friendlycc.R;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseDataResponse;
 import com.fine.friendlycc.databinding.DialogCoinpusherListHistoryBinding;
-import com.fine.friendlycc.entity.CoinPusherRoomDeviceInfo;
-import com.fine.friendlycc.entity.CoinPusherRoomHistoryEntity;
+import com.fine.friendlycc.bean.CoinPusherRoomDeviceInfo;
+import com.fine.friendlycc.bean.CoinPusherRoomHistoryBean;
 import com.fine.friendlycc.manager.ConfigManager;
 import com.fine.friendlycc.ui.base.BaseDialog;
 import com.fine.friendlycc.ui.coinpusher.dialog.adapter.CoinPusherGameHistoryAdapter;
@@ -134,10 +134,10 @@ public class CoinPusherGameHistoryDialog extends BaseDialog {
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(this)
                 .doOnSubscribe(dismiss -> showHud())
-                .subscribe(new BaseObserver<BaseDataResponse<List<CoinPusherRoomHistoryEntity>>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<List<CoinPusherRoomHistoryBean>>>() {
                     @Override
-                    public void onSuccess(BaseDataResponse<List<CoinPusherRoomHistoryEntity>> listBaseDataResponse) {
-                        List<CoinPusherRoomHistoryEntity> listData = listBaseDataResponse.getData();
+                    public void onSuccess(BaseDataResponse<List<CoinPusherRoomHistoryBean>> listBaseDataResponse) {
+                        List<CoinPusherRoomHistoryBean> listData = listBaseDataResponse.getData();
                         if(ObjectUtils.isNotEmpty(listData)){
                             coinPusherCapsuleAdapter.setItemData(listData);
                         }

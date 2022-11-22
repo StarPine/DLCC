@@ -9,7 +9,7 @@ import com.fine.friendlycc.data.AppRepository;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseDataResponse;
 import com.fine.friendlycc.data.source.http.response.BaseResponse;
-import com.fine.friendlycc.entity.PushSettingEntity;
+import com.fine.friendlycc.bean.PushSettingBean;
 import com.fine.friendlycc.viewmodel.BaseViewModel;
 
 import me.goldze.mvvmhabit.binding.command.BindingCommand;
@@ -20,7 +20,7 @@ import me.goldze.mvvmhabit.utils.RxUtils;
  */
 public class PushSettingViewModel extends BaseViewModel<AppRepository> {
 
-    public ObservableField<PushSettingEntity> pushSettingEntity = new ObservableField<>();
+    public ObservableField<PushSettingBean> pushSettingEntity = new ObservableField<>();
     public ObservableField<Boolean> isSound = new ObservableField<>(true);
     public ObservableField<Boolean> isShake = new ObservableField<>(true);
     public BindingCommand switchOnClickCommand = new BindingCommand(() -> {
@@ -50,9 +50,9 @@ public class PushSettingViewModel extends BaseViewModel<AppRepository> {
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(this)
-                .subscribe(new BaseObserver<BaseDataResponse<PushSettingEntity>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<PushSettingBean>>() {
                     @Override
-                    public void onSuccess(BaseDataResponse<PushSettingEntity> response) {
+                    public void onSuccess(BaseDataResponse<PushSettingBean> response) {
                         pushSettingEntity.set(response.getData());
                     }
                 });

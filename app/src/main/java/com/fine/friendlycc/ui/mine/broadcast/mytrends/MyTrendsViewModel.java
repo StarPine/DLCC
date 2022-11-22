@@ -14,7 +14,7 @@ import com.fine.friendlycc.data.source.http.observer.BaseListEmptyObserver;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseListDataResponse;
 import com.fine.friendlycc.data.source.http.response.BaseResponse;
-import com.fine.friendlycc.entity.NewsEntity;
+import com.fine.friendlycc.bean.NewsBean;
 import com.fine.friendlycc.event.BadioEvent;
 import com.fine.friendlycc.event.RadioadetailEvent;
 import com.fine.friendlycc.viewmodel.BaseRefreshViewModel;
@@ -122,9 +122,9 @@ public class MyTrendsViewModel extends BaseRefreshViewModel<AppRepository> {
                 .doOnSubscribe(this)
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
-                .subscribe(new BaseListEmptyObserver<BaseListDataResponse<NewsEntity>>(this) {
+                .subscribe(new BaseListEmptyObserver<BaseListDataResponse<NewsBean>>(this) {
                     @Override
-                    public void onSuccess(BaseListDataResponse<NewsEntity> response) {
+                    public void onSuccess(BaseListDataResponse<NewsBean> response) {
                         super.onSuccess(response);
                         stateModel.setEmptyBroadcastCommand(StringUtils.getString(R.string.playcc_my_all_broadcast_empty), R.drawable.my_all_broadcast_empty_img, R.color.all_broadcast_empty,StringUtils.getString(R.string.playcc_task_fragment_task_new10),toProgramVIew);
                         if (response.getData().getData() != null) {

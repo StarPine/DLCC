@@ -29,7 +29,7 @@ import com.blankj.utilcode.util.StringUtils;
 import com.fine.friendlycc.BR;
 import com.fine.friendlycc.R;
 import com.fine.friendlycc.app.AppConfig;
-import com.fine.friendlycc.app.AppContext;
+import com.fine.friendlycc.app.CCApplication;
 import com.fine.friendlycc.app.AppViewModelFactory;
 import com.fine.friendlycc.app.AppsFlyerEvent;
 import com.fine.friendlycc.databinding.FragmentMyAllBroadcastBinding;
@@ -206,7 +206,7 @@ public class MyAllBroadcastFragment extends BaseRefreshFragment<FragmentMyAllBro
                     if (finalIsSelf) {
                         viewModel.setComment(position, type);
                     } else {
-                        AppContext.instance().logEvent(AppsFlyerEvent.Report);
+                        CCApplication.instance().logEvent(AppsFlyerEvent.Report);
                         Bundle bundle = new Bundle();
                         bundle.putString(ARG_REPORT_TYPE, "broadcast");
                         bundle.putInt(ARG_REPORT_USER_ID, broadcastId);
@@ -244,7 +244,7 @@ public class MyAllBroadcastFragment extends BaseRefreshFragment<FragmentMyAllBro
         viewModel.uc.programSubject.observe(this, new Observer() {
             @Override
             public void onChanged(@Nullable Object o) {
-                AppContext.instance().logEvent(AppsFlyerEvent.Dating);
+                CCApplication.instance().logEvent(AppsFlyerEvent.Dating);
                 viewModel.start(IssuanceProgramFragment.class.getCanonicalName());
             }
         });

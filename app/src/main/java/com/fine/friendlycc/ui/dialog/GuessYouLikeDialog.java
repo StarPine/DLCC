@@ -16,8 +16,8 @@ import androidx.fragment.app.DialogFragment;
 
 import com.fine.friendlycc.app.GlideEngine;
 import com.fine.friendlycc.app.Injection;
-import com.fine.friendlycc.entity.LikeRecommendEntity;
-import com.fine.friendlycc.entity.RecommendUserEntity;
+import com.fine.friendlycc.bean.LikeRecommendBean;
+import com.fine.friendlycc.bean.RecommendUserBean;
 import com.fine.friendlycc.utils.StringUtil;
 import com.fine.friendlycc.R;
 
@@ -43,11 +43,11 @@ public class GuessYouLikeDialog extends BaseDialogFragment implements View.OnCli
     private Button btnCall;
     private TextView tvClose;
 
-    private LikeRecommendEntity likeRecommendEntity;
+    private LikeRecommendBean likeRecommendEntity;
 
     private GuessYouLikeDialogListener guessYouLikeDialogListener;
 
-    public static GuessYouLikeDialog newInstance(LikeRecommendEntity likeRecommendEntity) {
+    public static GuessYouLikeDialog newInstance(LikeRecommendBean likeRecommendEntity) {
         GuessYouLikeDialog dialog = new GuessYouLikeDialog();
         Bundle bundle = new Bundle();
         bundle.putSerializable("like_recommend_entity", likeRecommendEntity);
@@ -66,7 +66,7 @@ public class GuessYouLikeDialog extends BaseDialogFragment implements View.OnCli
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        likeRecommendEntity = (LikeRecommendEntity) getArguments().getSerializable("like_recommend_entity");
+        likeRecommendEntity = (LikeRecommendBean) getArguments().getSerializable("like_recommend_entity");
         setStyle(DialogFragment.STYLE_NORMAL, R.style.MyDialog);
     }
 
@@ -116,7 +116,7 @@ public class GuessYouLikeDialog extends BaseDialogFragment implements View.OnCli
         tvClose.setOnClickListener(this);
 
         try {
-            RecommendUserEntity user1 = likeRecommendEntity.getUser().get(0);
+            RecommendUserBean user1 = likeRecommendEntity.getUser().get(0);
             GlideEngine.createGlideEngine().loadImage(getContext(), StringUtil.getFullThumbImageUrl(user1.getAvatar()), ivAvatar1);
             tvName1.setText(user1.getNickname());
             tvAddress1.setText(String.format(getString(R.string.playcc_age_and_city), user1.getAge(), user1.getCityName()));
@@ -125,7 +125,7 @@ public class GuessYouLikeDialog extends BaseDialogFragment implements View.OnCli
         }
 
         try {
-            RecommendUserEntity user2 = likeRecommendEntity.getUser().get(1);
+            RecommendUserBean user2 = likeRecommendEntity.getUser().get(1);
             GlideEngine.createGlideEngine().loadImage(getContext(), StringUtil.getFullThumbImageUrl(user2.getAvatar()), ivAvatar2);
             tvName2.setText(user2.getNickname());
             tvAddress2.setText(String.format(getString(R.string.playcc_age_and_city), user2.getAge(), user2.getCityName()));
@@ -134,7 +134,7 @@ public class GuessYouLikeDialog extends BaseDialogFragment implements View.OnCli
         }
 
         try {
-            RecommendUserEntity user3 = likeRecommendEntity.getUser().get(2);
+            RecommendUserBean user3 = likeRecommendEntity.getUser().get(2);
             GlideEngine.createGlideEngine().loadImage(getContext(), StringUtil.getFullThumbImageUrl(user3.getAvatar()), ivAvatar3);
             tvName3.setText(user3.getNickname());
             tvAddress3.setText(String.format(getString(R.string.playcc_age_and_city), user3.getAge(), user3.getCityName()));
@@ -143,7 +143,7 @@ public class GuessYouLikeDialog extends BaseDialogFragment implements View.OnCli
         }
 
         try {
-            RecommendUserEntity user4 = likeRecommendEntity.getUser().get(3);
+            RecommendUserBean user4 = likeRecommendEntity.getUser().get(3);
             GlideEngine.createGlideEngine().loadImage(getContext(), StringUtil.getFullThumbImageUrl(user4.getAvatar()), ivAvatar4);
             tvName4.setText(user4.getNickname());
             tvAddress4.setText(String.format(getString(R.string.playcc_age_and_city), user4.getAge(), user4.getCityName()));
@@ -182,7 +182,7 @@ public class GuessYouLikeDialog extends BaseDialogFragment implements View.OnCli
 
     public interface GuessYouLikeDialogListener {
 
-        void onCallClick(GuessYouLikeDialog dialog, LikeRecommendEntity entity);
+        void onCallClick(GuessYouLikeDialog dialog, LikeRecommendBean entity);
 
         void onCloseClick(GuessYouLikeDialog dialog);
 

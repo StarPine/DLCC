@@ -26,11 +26,11 @@ import com.fine.friendlycc.data.source.http.exception.RequestException;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseDataResponse;
 import com.fine.friendlycc.databinding.DialogCoinpusherListBinding;
-import com.fine.friendlycc.entity.CoinPusherBalanceDataEntity;
-import com.fine.friendlycc.entity.CoinPusherDataInfoEntity;
-import com.fine.friendlycc.entity.CoinPusherRoomDeviceInfo;
-import com.fine.friendlycc.entity.CoinPusherRoomInfoEntity;
-import com.fine.friendlycc.entity.CoinPusherRoomTagInfoEntity;
+import com.fine.friendlycc.bean.CoinPusherBalanceDataBean;
+import com.fine.friendlycc.bean.CoinPusherDataInfoBean;
+import com.fine.friendlycc.bean.CoinPusherRoomDeviceInfo;
+import com.fine.friendlycc.bean.CoinPusherRoomInfoBean;
+import com.fine.friendlycc.bean.CoinPusherRoomTagInfoBean;
 import com.fine.friendlycc.manager.ConfigManager;
 import com.fine.friendlycc.ui.base.BaseDialog;
 import com.fine.friendlycc.ui.coinpusher.dialog.adapter.CoinPusherRoomListAdapter;
@@ -139,7 +139,7 @@ public class CoinPusherRoomListDialog extends BaseDialog {
             CoinPusherConvertDialog coinPusherConvertDialog = new CoinPusherConvertDialog(getContext());
             coinPusherConvertDialog.setItemConvertListener(new CoinPusherConvertDialog.ItemConvertListener() {
                 @Override
-                public void convertSuccess(CoinPusherBalanceDataEntity coinPusherDataEntity) {
+                public void convertSuccess(CoinPusherBalanceDataBean coinPusherDataEntity) {
                         totalMoney = coinPusherDataEntity.getTotalGold();
                         tvTotalMoneyRefresh();
                 }
@@ -219,18 +219,18 @@ public class CoinPusherRoomListDialog extends BaseDialog {
                  .doOnSubscribe(this)
                  .compose(RxUtils.schedulersTransformer())
                  .compose(RxUtils.exceptionTransformer())
-                 .subscribe(new BaseObserver<BaseDataResponse<CoinPusherRoomTagInfoEntity>>() {
+                 .subscribe(new BaseObserver<BaseDataResponse<CoinPusherRoomTagInfoBean>>() {
                      @Override
-                     public void onSuccess(BaseDataResponse<CoinPusherRoomTagInfoEntity> coinPusherRoomTagInfoEntityResponse) {
-                         CoinPusherRoomTagInfoEntity coinPusherRoomTagInfoEntity = coinPusherRoomTagInfoEntityResponse.getData();
+                     public void onSuccess(BaseDataResponse<CoinPusherRoomTagInfoBean> coinPusherRoomTagInfoEntityResponse) {
+                         CoinPusherRoomTagInfoBean coinPusherRoomTagInfoEntity = coinPusherRoomTagInfoEntityResponse.getData();
                          if(ObjectUtils.isNotEmpty(coinPusherRoomTagInfoEntity)){
-                             List<CoinPusherRoomTagInfoEntity.DeviceTag> deviceTagList = coinPusherRoomTagInfoEntity.getTypeArr();
+                             List<CoinPusherRoomTagInfoBean.DeviceTag> deviceTagList = coinPusherRoomTagInfoEntity.getTypeArr();
                              totalMoney = coinPusherRoomTagInfoEntity.getTotalGold();
                              tvTotalMoneyRefresh();
                              if(ObjectUtils.isNotEmpty(deviceTagList)){
                                  coinPusherRoomTagAdapter.setItemData(deviceTagList);
                                  int idx = 0;
-                                 for (CoinPusherRoomTagInfoEntity.DeviceTag tagData : deviceTagList) {
+                                 for (CoinPusherRoomTagInfoBean.DeviceTag tagData : deviceTagList) {
                                      if(tagData.getIsRecommend() ==1 ){
                                          checkedTagId = tagData.getId();
                                          break;
@@ -273,10 +273,10 @@ public class CoinPusherRoomListDialog extends BaseDialog {
                 .doOnSubscribe(this)
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
-                .subscribe(new BaseObserver<BaseDataResponse<CoinPusherRoomInfoEntity>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<CoinPusherRoomInfoBean>>() {
                     @Override
-                    public void onSuccess(BaseDataResponse<CoinPusherRoomInfoEntity> coinPusherRoomInfoEntityResponse) {
-                        CoinPusherRoomInfoEntity coinPusherRoomInfoEntity = coinPusherRoomInfoEntityResponse.getData();
+                    public void onSuccess(BaseDataResponse<CoinPusherRoomInfoBean> coinPusherRoomInfoEntityResponse) {
+                        CoinPusherRoomInfoBean coinPusherRoomInfoEntity = coinPusherRoomInfoEntityResponse.getData();
                         List<CoinPusherRoomDeviceInfo> deviceInfoList = coinPusherRoomInfoEntity.getList();
                         if(ObjectUtils.isNotEmpty(deviceInfoList)){
                             coinPusherRoomListAdapter.setItemData(deviceInfoList);
@@ -311,10 +311,10 @@ public class CoinPusherRoomListDialog extends BaseDialog {
                 .doOnSubscribe(this)
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
-                .subscribe(new BaseObserver<BaseDataResponse<CoinPusherDataInfoEntity>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<CoinPusherDataInfoBean>>() {
                     @Override
-                    public void onSuccess(BaseDataResponse<CoinPusherDataInfoEntity> coinPusherDataInfoEntityResponse) {
-                        CoinPusherDataInfoEntity coinPusherDataInfoEntity = coinPusherDataInfoEntityResponse.getData();
+                    public void onSuccess(BaseDataResponse<CoinPusherDataInfoBean> coinPusherDataInfoEntityResponse) {
+                        CoinPusherDataInfoBean coinPusherDataInfoEntity = coinPusherDataInfoEntityResponse.getData();
                         if(ObjectUtils.isNotEmpty(coinPusherDataInfoEntity) && getDialogEventListener()!=null){
                             getDialogEventListener().startViewing(coinPusherDataInfoEntity);
                         }
@@ -384,7 +384,7 @@ public class CoinPusherRoomListDialog extends BaseDialog {
     }
 
     public interface DialogEventListener{
-        void startViewing(CoinPusherDataInfoEntity coinPusherDataInfoEntity);
+        void startViewing(CoinPusherDataInfoBean coinPusherDataInfoEntity);
         void buyErrorPayView();
     }
 }

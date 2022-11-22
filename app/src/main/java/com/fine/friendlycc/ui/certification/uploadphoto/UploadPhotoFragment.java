@@ -8,11 +8,11 @@ import androidx.annotation.Nullable;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
-import com.fine.friendlycc.app.AppContext;
+import com.fine.friendlycc.app.CCApplication;
 import com.fine.friendlycc.app.AppViewModelFactory;
 import com.fine.friendlycc.app.AppsFlyerEvent;
 import com.fine.friendlycc.ui.base.BaseToolbarFragment;
-import com.fine.friendlycc.widget.picchoose.PicChooseItemEntity;
+import com.fine.friendlycc.widget.picchoose.PicChooseItemBean;
 import com.fine.friendlycc.widget.picchoose.PicChooseView;
 import com.fine.friendlycc.BR;
 import com.fine.friendlycc.R;
@@ -63,15 +63,15 @@ public class UploadPhotoFragment extends BaseToolbarFragment<FragmentUploadPhoto
             }
 
             @Override
-            public void onMediaChoosed(List<PicChooseItemEntity> medias) {
+            public void onMediaChoosed(List<PicChooseItemBean> medias) {
                 if (medias != null && !medias.isEmpty()) {
                     viewModel.selectedPhotoPath.set(medias.get(0));
-                    AppContext.instance().logEvent(AppsFlyerEvent.Add_photo);
+                    CCApplication.instance().logEvent(AppsFlyerEvent.Add_photo);
                 }
             }
 
             @Override
-            public void onMediaDelete(List<PicChooseItemEntity> medias, PicChooseItemEntity delMedia) {
+            public void onMediaDelete(List<PicChooseItemBean> medias, PicChooseItemBean delMedia) {
                 viewModel.selectedPhotoPath.set(null);
             }
         });

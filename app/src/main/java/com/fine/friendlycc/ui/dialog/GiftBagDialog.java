@@ -26,8 +26,8 @@ import com.blankj.utilcode.util.StringUtils;
 import com.fine.friendlycc.data.AppRepository;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseDataResponse;
-import com.fine.friendlycc.entity.GiftBagAdapterEntity;
-import com.fine.friendlycc.entity.GiftBagEntity;
+import com.fine.friendlycc.bean.GiftBagAdapterBean;
+import com.fine.friendlycc.bean.GiftBagBean;
 import com.fine.friendlycc.manager.ConfigManager;
 import com.fine.friendlycc.ui.base.BaseDialog;
 import com.fine.friendlycc.ui.dialog.adapter.GiftBagCardDetailAdapter;
@@ -66,7 +66,7 @@ public class GiftBagDialog extends BaseDialog {
 
     private LinearLayout checkGiftLineLayout;
 
-    private GiftBagEntity.giftEntity checkGiftItemEntity;
+    private GiftBagBean.giftEntity checkGiftItemEntity;
 
     private LinearLayout gift_check_number;//礼物数量选择
 
@@ -342,10 +342,10 @@ public class GiftBagDialog extends BaseDialog {
                 .doOnSubscribe(this)
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
-                .subscribe(new BaseObserver<BaseDataResponse<GiftBagEntity>>(){
+                .subscribe(new BaseObserver<BaseDataResponse<GiftBagBean>>(){
                     @Override
-                    public void onSuccess(BaseDataResponse<GiftBagEntity> response) {
-                        GiftBagEntity giftBagEntity = response.getData();
+                    public void onSuccess(BaseDataResponse<GiftBagBean> response) {
+                        GiftBagBean giftBagEntity = response.getData();
                         Integer isFirst = giftBagEntity.getIsFirst();
                         if (isFirst != null && isFirst == 1) {
                             btn_stored.setBackground(mContext.getDrawable(R.drawable.gift_red_border_backdrop));
@@ -355,17 +355,17 @@ public class GiftBagDialog extends BaseDialog {
                         int totalCoin = giftBagEntity.getTotalCoin().intValue();
                         balance_value.setText(String.valueOf(totalCoin >= 0 ? totalCoin : 0));
                         //礼物列表实现
-                        List<GiftBagEntity.giftEntity> listGifEntity = giftBagEntity.getGift();
+                        List<GiftBagBean.giftEntity> listGifEntity = giftBagEntity.getGift();
                         int gifSize = listGifEntity.size();
-                        List<GiftBagEntity.giftEntity> $listData = new ArrayList<>();
-                        List<GiftBagAdapterEntity> listGiftAdapter = new ArrayList<>();
+                        List<GiftBagBean.giftEntity> $listData = new ArrayList<>();
+                        List<GiftBagAdapterBean> listGiftAdapter = new ArrayList<>();
                         if (gifSize / 10 > 0) {
                             int cnt = 0;
                             int idx = 1;
                             for (int i = 0; i < gifSize; i++) {
                                 if (idx / 10 > 0) {
                                     $listData.add(listGifEntity.get(i));
-                                    listGiftAdapter.add(cnt,new GiftBagAdapterEntity(cnt,$listData));
+                                    listGiftAdapter.add(cnt,new GiftBagAdapterBean(cnt,$listData));
                                     $listData = new ArrayList<>();
                                     cnt++;
                                     idx =1;
@@ -373,16 +373,16 @@ public class GiftBagDialog extends BaseDialog {
                                     idx++;
                                     $listData.add(listGifEntity.get(i));
                                     if(i==(gifSize-1)){
-                                        listGiftAdapter.add(cnt,new GiftBagAdapterEntity(cnt,$listData));
+                                        listGiftAdapter.add(cnt,new GiftBagAdapterBean(cnt,$listData));
                                     }
                                 }
                             }
                         }else{
-                            for(GiftBagEntity.giftEntity itemEntity : listGifEntity){
+                            for(GiftBagBean.giftEntity itemEntity : listGifEntity){
                                 $listData.add(itemEntity);
                             }
                             if($listData.size()>0){
-                                GiftBagAdapterEntity giftBagAdapterEntity = new GiftBagAdapterEntity(0,$listData);
+                                GiftBagAdapterBean giftBagAdapterEntity = new GiftBagAdapterBean(0,$listData);
                                 listGiftAdapter.add(giftBagAdapterEntity);
                             }
                         }
@@ -406,7 +406,7 @@ public class GiftBagDialog extends BaseDialog {
                         }
                         giftBagRcvAdapter.setOnClickListener(new GiftBagRcvAdapter.OnClickRcvDetailListener() {
                             @Override
-                            public void clickRcvDetailCheck(int position, GiftBagEntity.giftEntity itemEntity, LinearLayout detail_layout, int rcvPosition) {
+                            public void clickRcvDetailCheck(int position, GiftBagBean.giftEntity itemEntity, LinearLayout detail_layout, int rcvPosition) {
                                 if(checkGiftItemEntity!=null){
                                     if(checkGiftItemEntity.getId().intValue()==itemEntity.getId().intValue()){
                                         return;
@@ -426,7 +426,7 @@ public class GiftBagDialog extends BaseDialog {
                         });
                         //礼物列表实现
                         //背包实现
-                        List<GiftBagEntity.propEntity> propEntity = giftBagEntity.getProp();
+                        List<GiftBagBean.propEntity> propEntity = giftBagEntity.getProp();
                         if(propEntity!=null && propEntity.size()>0) {
                             bag_empty_img.setVisibility(View.GONE);
                             bag_list_page.setVisibility(View.VISIBLE);
@@ -436,7 +436,7 @@ public class GiftBagDialog extends BaseDialog {
                             bag_list_page.setAdapter(giftBagCardDetailAdapter);
                             giftBagCardDetailAdapter.setOnClickListener(new GiftBagCardDetailAdapter.OnClickDetailListener() {
                                 @Override
-                                public void clickDetailCheck(int position, GiftBagEntity.propEntity itemEntity, LinearLayout detail_layout) {
+                                public void clickDetailCheck(int position, GiftBagBean.propEntity itemEntity, LinearLayout detail_layout) {
                                     MessageDetailDialog.BgaCardDialog(mContext, itemEntity.getPropType(), itemEntity.getName(), itemEntity.getDesc())
                                             .show();
                                 }
@@ -465,7 +465,7 @@ public class GiftBagDialog extends BaseDialog {
     }
 
     public interface GiftOnClickListener {
-        void sendGiftClick(Dialog dialog, int number, GiftBagEntity.giftEntity giftEntity);
+        void sendGiftClick(Dialog dialog, int number, GiftBagBean.giftEntity giftEntity);
         void rechargeStored(Dialog dialog);
     }
 

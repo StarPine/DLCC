@@ -10,7 +10,7 @@ import com.fine.friendlycc.data.AppRepository;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseDataResponse;
 import com.fine.friendlycc.data.source.http.response.BaseListDataResponse;
-import com.fine.friendlycc.entity.SoundEntity;
+import com.fine.friendlycc.bean.SoundBean;
 import com.fine.friendlycc.event.RefreshUserDataEvent;
 import com.fine.friendlycc.utils.FileUploadUtils;
 import com.fine.friendlycc.viewmodel.BaseViewModel;
@@ -44,7 +44,7 @@ public class TapeAudioViewModel extends BaseViewModel<AppRepository> {
     //当前录音文案
     public ObservableField<String> audioText = new ObservableField<String>();
     //录音文案集合
-    public List<SoundEntity>  audioDataList = null;
+    public List<SoundBean>  audioDataList = null;
     //录音文案数组坐标
     public int audioPostion = -1;
 
@@ -78,7 +78,7 @@ public class TapeAudioViewModel extends BaseViewModel<AppRepository> {
     */
     public void getUserSound(){
         if(!ObjectUtils.isEmpty(audioDataList) && audioPostion+1<audioDataList.size()-1){
-            SoundEntity soundEntity = audioDataList.get(audioPostion++);
+            SoundBean soundEntity = audioDataList.get(audioPostion++);
             audioTextHint.set(soundEntity.getType());
             audioText.set(soundEntity.getContent());
             return;
@@ -91,16 +91,16 @@ public class TapeAudioViewModel extends BaseViewModel<AppRepository> {
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(disposable -> showHUD())
-                .subscribe(new BaseObserver<BaseListDataResponse<SoundEntity>>(){
+                .subscribe(new BaseObserver<BaseListDataResponse<SoundBean>>(){
 
                     @Override
-                    public void onSuccess(BaseListDataResponse<SoundEntity> baseDataResponse) {
+                    public void onSuccess(BaseListDataResponse<SoundBean> baseDataResponse) {
                         try{
-                            List<SoundEntity> dataList =  baseDataResponse.getData().getData();
+                            List<SoundBean> dataList =  baseDataResponse.getData().getData();
                             if(!ObjectUtils.isEmpty(dataList)){
                                 audioDataList = dataList;
                                 if(audioDataList.size()>1){
-                                    SoundEntity soundEntity = audioDataList.get(0);
+                                    SoundBean soundEntity = audioDataList.get(0);
                                     audioTextHint.set(soundEntity.getType());
                                     audioText.set(soundEntity.getContent());
                                     audioPostion = 0;

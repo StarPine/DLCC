@@ -5,7 +5,6 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -22,16 +21,15 @@ import com.bumptech.glide.Glide;
 import com.fine.friendlycc.BR;
 import com.fine.friendlycc.R;
 import com.fine.friendlycc.app.AppConfig;
-import com.fine.friendlycc.app.AppContext;
+import com.fine.friendlycc.app.CCApplication;
 import com.fine.friendlycc.app.AppViewModelFactory;
 import com.fine.friendlycc.app.AppsFlyerEvent;
 import com.fine.friendlycc.databinding.FragmentHomeMainBinding;
-import com.fine.friendlycc.entity.CoinPusherDataInfoEntity;
-import com.fine.friendlycc.entity.ConfigItemEntity;
-import com.fine.friendlycc.entity.GoodsEntity;
+import com.fine.friendlycc.bean.CoinPusherDataInfoBean;
+import com.fine.friendlycc.bean.ConfigItemBean;
 import com.fine.friendlycc.event.CityChangeEvent;
 import com.fine.friendlycc.event.LocationChangeEvent;
-import com.fine.friendlycc.kl.view.VideoPresetActivity;
+import com.fine.friendlycc.calling.view.VideoPresetActivity;
 import com.fine.friendlycc.manager.ConfigManager;
 import com.fine.friendlycc.manager.LocationManager;
 import com.fine.friendlycc.ui.base.BaseFragment;
@@ -41,12 +39,10 @@ import com.fine.friendlycc.ui.coinpusher.dialog.CoinPusherRoomListDialog;
 import com.fine.friendlycc.ui.dialog.CityChooseDialog;
 import com.fine.friendlycc.ui.home.accost.HomeAccostDialog;
 import com.fine.friendlycc.ui.home.active.HomeFristTabFragment;
-import com.fine.friendlycc.ui.mine.MineFragment;
 import com.fine.friendlycc.ui.mine.wallet.diamond.recharge.DialogDiamondRechargeActivity;
 import com.fine.friendlycc.utils.AutoSizeUtils;
 import com.fine.friendlycc.utils.ImmersionBarUtils;
 import com.fine.friendlycc.widget.AppBarStateChangeListener;
-import com.fine.friendlycc.widget.coinrechargesheet.CoinRechargeSheetView;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
@@ -61,7 +57,7 @@ import me.goldze.mvvmhabit.bus.RxBus;
  */
 public class HomeMainFragment extends BaseFragment<FragmentHomeMainBinding, HomeMainViewModel> {
 
-    private List<ConfigItemEntity> citys;
+    private List<ConfigItemBean> citys;
 
     private CityChooseDialog cityChooseDialog;
     private final BaseFragment[] mFragments = new BaseFragment[2];
@@ -94,9 +90,9 @@ public class HomeMainFragment extends BaseFragment<FragmentHomeMainBinding, Home
                 .error(R.drawable.nearby_accost_tip_img)
                 .placeholder(R.drawable.nearby_accost_tip_img)
                 .into(binding.ivAccost);
-        AppContext.instance().logEvent(AppsFlyerEvent.Nearby);
+        CCApplication.instance().logEvent(AppsFlyerEvent.Nearby);
         citys = ConfigManager.getInstance().getAppRepository().readCityConfig();
-        ConfigItemEntity nearItemEntity = new ConfigItemEntity();
+        ConfigItemBean nearItemEntity = new ConfigItemBean();
         nearItemEntity.setId(-1);
         nearItemEntity.setName(getStringByResId(R.string.playcc_tab_female_1));
         citys.add(0, nearItemEntity);
@@ -200,7 +196,7 @@ public class HomeMainFragment extends BaseFragment<FragmentHomeMainBinding, Home
             CoinPusherRoomListDialog coinersDialog = new CoinPusherRoomListDialog(mActivity);
             coinersDialog.setDialogEventListener(new CoinPusherRoomListDialog.DialogEventListener() {
                 @Override
-                public void startViewing(CoinPusherDataInfoEntity itemEntity) {
+                public void startViewing(CoinPusherDataInfoBean itemEntity) {
                         coinersDialog.dismiss();
                         Intent intent = new Intent(mActivity, CoinPusherGameActivity.class);
                         intent.putExtra("CoinPusherInfo",itemEntity);
@@ -267,7 +263,7 @@ public class HomeMainFragment extends BaseFragment<FragmentHomeMainBinding, Home
 
                     @Override
                     public void onCancelClick(HomeAccostDialog dialog) {
-                        AppContext.instance().logEvent(AppsFlyerEvent.accost_close);
+                        CCApplication.instance().logEvent(AppsFlyerEvent.accost_close);
                         dialog.dismiss();
                     }
                 });
@@ -278,7 +274,7 @@ public class HomeMainFragment extends BaseFragment<FragmentHomeMainBinding, Home
         viewModel.uc.sendAccostFirstError.observe(this, new Observer<Void>() {
             @Override
             public void onChanged(Void unused) {
-                AppContext.instance().logEvent(AppsFlyerEvent.Top_up);
+                CCApplication.instance().logEvent(AppsFlyerEvent.Top_up);
                 toRecharge();
             }
         });
@@ -348,8 +344,8 @@ public class HomeMainFragment extends BaseFragment<FragmentHomeMainBinding, Home
     @Override
     public void onResume() {
         super.onResume();
-        AppContext.isHomePage = true;
-        AppContext.isShowNotPaid = true;
+        CCApplication.isHomePage = true;
+        CCApplication.isShowNotPaid = true;
         //30秒没有投币提示
         if(AppConfig.CoinPusherGameNotPushed){
             AppConfig.CoinPusherGameNotPushed = false;
@@ -357,7 +353,7 @@ public class HomeMainFragment extends BaseFragment<FragmentHomeMainBinding, Home
             CoinPusherRoomListDialog coinersDialog = new CoinPusherRoomListDialog(mActivity);
             coinersDialog.setDialogEventListener(new CoinPusherRoomListDialog.DialogEventListener() {
                 @Override
-                public void startViewing(CoinPusherDataInfoEntity itemEntity) {
+                public void startViewing(CoinPusherDataInfoBean itemEntity) {
                     coinersDialog.dismiss();
                     Intent intent = new Intent(mActivity, CoinPusherGameActivity.class);
                     intent.putExtra("CoinPusherInfo",itemEntity);
@@ -376,8 +372,8 @@ public class HomeMainFragment extends BaseFragment<FragmentHomeMainBinding, Home
     @Override
     public void onPause() {
         super.onPause();
-        AppContext.isHomePage = false;
-        AppContext.isShowNotPaid = false;
+        CCApplication.isHomePage = false;
+        CCApplication.isShowNotPaid = false;
     }
 
     @Override

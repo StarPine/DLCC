@@ -1,7 +1,7 @@
 package com.fine.friendlycc.manager;
 
 import com.danikula.videocache.HttpProxyCacheServer;
-import com.fine.friendlycc.app.AppContext;
+import com.fine.friendlycc.app.CCApplication;
 
 /**
  * @author litchi
@@ -13,7 +13,7 @@ public class VideoProxyCacheManager {
     private final HttpProxyCacheServer proxy;
 
     private VideoProxyCacheManager() {
-        proxy = new HttpProxyCacheServer.Builder(AppContext.instance())
+        proxy = new HttpProxyCacheServer.Builder(CCApplication.instance())
                 .maxCacheSize(1024 * 1024 * 1024)
                 .maxCacheFilesCount(100)
                 .build();

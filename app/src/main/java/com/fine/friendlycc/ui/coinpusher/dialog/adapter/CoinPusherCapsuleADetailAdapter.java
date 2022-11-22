@@ -15,7 +15,7 @@ import com.blankj.utilcode.util.Utils;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.fine.friendlycc.R;
-import com.fine.friendlycc.entity.CoinPusherConverInfoEntity;
+import com.fine.friendlycc.bean.CoinPusherConverInfoBean;
 import com.fine.friendlycc.utils.StringUtil;
 
 import java.util.List;
@@ -27,13 +27,13 @@ import java.util.List;
  */
 public class CoinPusherCapsuleADetailAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
-    private List<CoinPusherConverInfoEntity.GoldCoinInfo.GoldCoinItem> itemData;
+    private List<CoinPusherConverInfoBean.GoldCoinInfo.GoldCoinItem> itemData;
 
     private OnItemClickListener onItemClickListener;
 
     private int defaultItemSel = 0;
 
-    public void setItemData(List<CoinPusherConverInfoEntity.GoldCoinInfo.GoldCoinItem> itemData) {
+    public void setItemData(List<CoinPusherConverInfoBean.GoldCoinInfo.GoldCoinItem> itemData) {
         this.itemData = itemData;
         notifyDataSetChanged();
     }
@@ -49,7 +49,7 @@ public class CoinPusherCapsuleADetailAdapter extends RecyclerView.Adapter<Recycl
         }
     }
 
-    public CoinPusherConverInfoEntity.GoldCoinInfo.GoldCoinItem getItemData(int position) {
+    public CoinPusherConverInfoBean.GoldCoinInfo.GoldCoinItem getItemData(int position) {
         if(itemData != null && itemData.size() > position){
             return itemData.get(position);
         }
@@ -67,7 +67,7 @@ public class CoinPusherCapsuleADetailAdapter extends RecyclerView.Adapter<Recycl
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         ItemViewHolder itemViewHolder = ((ItemViewHolder) holder);
         if (!ObjectUtils.isEmpty(itemData)) {
-            CoinPusherConverInfoEntity.GoldCoinInfo.GoldCoinItem itemEntity = itemData.get(position);
+            CoinPusherConverInfoBean.GoldCoinInfo.GoldCoinItem itemEntity = itemData.get(position);
             if (!ObjectUtils.isEmpty(itemEntity)) {
                 itemViewHolder.tvCoin.setText(String.valueOf(itemEntity.getName()));
 

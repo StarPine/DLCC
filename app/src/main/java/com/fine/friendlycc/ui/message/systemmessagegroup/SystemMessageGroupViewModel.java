@@ -17,7 +17,7 @@ import com.fine.friendlycc.R;
 import com.fine.friendlycc.data.AppRepository;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseDataResponse;
-import com.fine.friendlycc.entity.MessageGroupEntity;
+import com.fine.friendlycc.bean.MessageGroupBean;
 import com.fine.friendlycc.event.PushMessageEvent;
 import com.fine.friendlycc.event.SystemMessageCountChangeEvent;
 import com.fine.friendlycc.ui.message.applymessage.ApplyMessageFragment;
@@ -70,7 +70,7 @@ public class SystemMessageGroupViewModel extends BaseRefreshViewModel<AppReposit
 
     public void onItemClick(int position) {
         try {
-            MessageGroupEntity messageGroupEntity = observableList.get(position).itemEntity.get();
+            MessageGroupBean messageGroupEntity = observableList.get(position).itemEntity.get();
             String mold = messageGroupEntity.getMold();
             notifySystemMessageCount();
             if ("system".equals(mold)) {
@@ -99,11 +99,11 @@ public class SystemMessageGroupViewModel extends BaseRefreshViewModel<AppReposit
                 .doOnSubscribe(this)
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
-                .subscribe(new BaseObserver<BaseDataResponse<List<MessageGroupEntity>>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<List<MessageGroupBean>>>() {
                     @Override
-                    public void onSuccess(BaseDataResponse<List<MessageGroupEntity>> response) {
+                    public void onSuccess(BaseDataResponse<List<MessageGroupBean>> response) {
                         observableList.clear();
-                        for (MessageGroupEntity datum : response.getData()) {
+                        for (MessageGroupBean datum : response.getData()) {
                             SystemMessageGroupItemViewModel item = new SystemMessageGroupItemViewModel(SystemMessageGroupViewModel.this, datum);
                             observableList.add(item);
                         }

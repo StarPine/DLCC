@@ -11,7 +11,7 @@ import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.util.Base64;
 
-import com.fine.friendlycc.app.AppContext;
+import com.fine.friendlycc.app.CCApplication;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -135,7 +135,7 @@ public class ImageUtils {
             if (bitmap == null) {
                 return null;
             }
-            File file = new File(AppContext.instance().getCacheDir().getAbsolutePath() + "/" + UUID.randomUUID().toString() + ".jpg");
+            File file = new File(CCApplication.instance().getCacheDir().getAbsolutePath() + "/" + UUID.randomUUID().toString() + ".jpg");
             FileOutputStream out = new FileOutputStream(file);
             bitmap.compress(Bitmap.CompressFormat.JPEG, 80, out);
             out.flush();

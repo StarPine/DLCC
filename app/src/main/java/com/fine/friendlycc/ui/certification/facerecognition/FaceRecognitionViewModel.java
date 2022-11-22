@@ -6,14 +6,14 @@ import androidx.annotation.NonNull;
 import androidx.databinding.ObservableField;
 
 import com.blankj.utilcode.util.StringUtils;
-import com.fine.friendlycc.app.AppContext;
+import com.fine.friendlycc.app.CCApplication;
 import com.fine.friendlycc.app.AppsFlyerEvent;
 import com.fine.friendlycc.data.AppRepository;
 import com.fine.friendlycc.data.source.http.exception.RequestException;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseDataResponse;
-import com.fine.friendlycc.entity.FaceVerifyResultEntity;
-import com.fine.friendlycc.entity.UserDataEntity;
+import com.fine.friendlycc.bean.FaceVerifyResultBean;
+import com.fine.friendlycc.bean.UserDataBean;
 import com.fine.friendlycc.event.FaceCertificationEvent;
 import com.fine.friendlycc.utils.FileUploadUtils;
 import com.fine.friendlycc.viewmodel.BaseViewModel;
@@ -54,7 +54,7 @@ public class FaceRecognitionViewModel extends BaseViewModel<AppRepository> {
     }
 
     private void startFaceVerify() {
-        AppContext.instance().logEvent(AppsFlyerEvent.Verify);
+        CCApplication.instance().logEvent(AppsFlyerEvent.Verify);
         uc.clickStart.postValue(null);
 //        model.faceVerifyToken()
 //                .compose(RxUtils.schedulersTransformer())
@@ -86,13 +86,13 @@ public class FaceRecognitionViewModel extends BaseViewModel<AppRepository> {
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(this)
                 .doOnSubscribe(disposable -> showHUD())
-                .subscribe(new BaseObserver<BaseDataResponse<FaceVerifyResultEntity>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<FaceVerifyResultBean>>() {
                     @Override
-                    public void onSuccess(BaseDataResponse<FaceVerifyResultEntity> response) {
+                    public void onSuccess(BaseDataResponse<FaceVerifyResultBean> response) {
                         if (response.getData().getVerifyStatus() != 1) {
                             verifyFaceFail.set(true);
                         } else {
-                            UserDataEntity userDataEntity = model.readUserData();
+                            UserDataBean userDataEntity = model.readUserData();
                             userDataEntity.setCertification(1);
                             model.saveUserData(userDataEntity);
                             RxBus.getDefault().post(new FaceCertificationEvent());
@@ -140,7 +140,7 @@ public class FaceRecognitionViewModel extends BaseViewModel<AppRepository> {
                                         String status = map.get("status");
                                         if (status.equals("1")) {
                                             ToastUtils.showShort(R.string.playcc_face_success);
-                                            UserDataEntity userDataEntity = model.readUserData();
+                                            UserDataBean userDataEntity = model.readUserData();
                                             userDataEntity.setCertification(1);
                                             model.saveUserData(userDataEntity);
                                             RxBus.getDefault().post(new FaceCertificationEvent());

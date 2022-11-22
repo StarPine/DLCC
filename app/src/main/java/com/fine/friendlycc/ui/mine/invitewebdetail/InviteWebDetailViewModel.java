@@ -12,9 +12,9 @@ import com.fine.friendlycc.data.source.http.exception.RequestException;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseDataResponse;
 import com.fine.friendlycc.data.source.http.response.BaseResponse;
-import com.fine.friendlycc.entity.SystemConfigEntity;
-import com.fine.friendlycc.entity.SystemRoleMoneyConfigEntity;
-import com.fine.friendlycc.entity.UserDataEntity;
+import com.fine.friendlycc.bean.SystemConfigBean;
+import com.fine.friendlycc.bean.SystemRoleMoneyConfigBean;
+import com.fine.friendlycc.bean.UserDataBean;
 import com.fine.friendlycc.event.UserUpdateVipEvent;
 import com.fine.friendlycc.utils.Utils;
 import com.fine.friendlycc.viewmodel.BaseViewModel;
@@ -101,17 +101,17 @@ public class InviteWebDetailViewModel extends BaseViewModel<AppRepository> {
      */
     public void paySuccessNotify(String packageName, List<String> productId, String token, Integer event) {
         if (event.intValue() == BillingClient.BillingResponseCode.OK) {
-            UserDataEntity userDataEntity = model.readUserData();
+            UserDataBean userDataEntity = model.readUserData();
             userDataEntity.setIsVip(1);
             model.saveUserData(userDataEntity);
-            SystemConfigEntity systemConfigEntity = model.readSystemConfig();
-            SystemRoleMoneyConfigEntity sysManUserConfigEntity = systemConfigEntity.getManUser();
+            SystemConfigBean systemConfigEntity = model.readSystemConfig();
+            SystemRoleMoneyConfigBean sysManUserConfigEntity = systemConfigEntity.getManUser();
             sysManUserConfigEntity.setSendMessagesNumber(-1);
             systemConfigEntity.setManUser(sysManUserConfigEntity);
-            SystemRoleMoneyConfigEntity sysManRealConfigEntity = systemConfigEntity.getManReal();
+            SystemRoleMoneyConfigBean sysManRealConfigEntity = systemConfigEntity.getManReal();
             sysManRealConfigEntity.setSendMessagesNumber(-1);
             systemConfigEntity.setManReal(sysManRealConfigEntity);
-            SystemRoleMoneyConfigEntity sysManVipConfigEntity = systemConfigEntity.getManVip();
+            SystemRoleMoneyConfigBean sysManVipConfigEntity = systemConfigEntity.getManVip();
             sysManVipConfigEntity.setSendMessagesNumber(-1);
             systemConfigEntity.setManVip(sysManVipConfigEntity);
             model.saveSystemConfig(systemConfigEntity);

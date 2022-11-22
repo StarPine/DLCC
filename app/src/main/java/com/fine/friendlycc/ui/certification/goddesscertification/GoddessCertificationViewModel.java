@@ -11,7 +11,7 @@ import com.fine.friendlycc.data.source.http.response.BaseResponse;
 import com.fine.friendlycc.event.GoddessCertificationEvent;
 import com.fine.friendlycc.utils.FileUploadUtils;
 import com.fine.friendlycc.viewmodel.BaseViewModel;
-import com.fine.friendlycc.widget.picchoose.PicChooseItemEntity;
+import com.fine.friendlycc.widget.picchoose.PicChooseItemBean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +33,7 @@ import me.goldze.mvvmhabit.utils.ToastUtils;
 public class GoddessCertificationViewModel extends BaseViewModel<AppRepository> {
 
     private final List<String> photoSrcs = new ArrayList<>();
-    public List<PicChooseItemEntity> chooseMedias = new ArrayList<>();
+    public List<PicChooseItemBean> chooseMedias = new ArrayList<>();
     private int index = 0;
     public BindingCommand commitOnClickCommand = new BindingCommand(new BindingAction() {
         @Override
@@ -64,7 +64,7 @@ public class GoddessCertificationViewModel extends BaseViewModel<AppRepository> 
                 .doOnSubscribe(this)
                 .doOnSubscribe(disposable -> showHUD())
                 .subscribeOn(Schedulers.io())
-                .map((Function<PicChooseItemEntity, String>) entity -> FileUploadUtils.ossUploadFile("certification/", entity.getMediaType(), entity.getSrc()))
+                .map((Function<PicChooseItemBean, String>) entity -> FileUploadUtils.ossUploadFile("certification/", entity.getMediaType(), entity.getSrc()))
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new DisposableObserver<String>() {
                     @Override

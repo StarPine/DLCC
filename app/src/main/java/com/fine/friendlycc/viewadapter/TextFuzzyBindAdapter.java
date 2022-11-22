@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import androidx.databinding.BindingAdapter;
 
-import com.fine.friendlycc.app.AppContext;
+import com.fine.friendlycc.app.CCApplication;
 
 /**
  * Author: 彭石林
@@ -55,7 +55,7 @@ public class TextFuzzyBindAdapter {
     @BindingAdapter(value = {"textTypeDinBold"})
     public static void textTypeDinBold(TextView textView, boolean textTypeDinBold) {
         if (textTypeDinBold) {
-            Typeface typeface = Typeface.createFromAsset(AppContext.instance().getAssets(), "DIN-Bold.TTF");
+            Typeface typeface = Typeface.createFromAsset(CCApplication.instance().getAssets(), "DIN-Bold.TTF");
             textView.setTypeface(typeface);
         }
     }

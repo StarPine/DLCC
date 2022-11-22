@@ -35,7 +35,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.FutureTarget;
 import com.fine.friendlycc.R;
 import com.fine.friendlycc.app.AppConfig;
-import com.fine.friendlycc.app.AppContext;
+import com.fine.friendlycc.app.CCApplication;
 import com.fine.friendlycc.app.AppsFlyerEvent;
 import com.fine.friendlycc.app.BillingClientLifecycle;
 import com.fine.friendlycc.app.Injection;
@@ -43,8 +43,8 @@ import com.fine.friendlycc.data.source.http.exception.RequestException;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseDataResponse;
 import com.fine.friendlycc.data.source.http.response.BaseResponse;
-import com.fine.friendlycc.entity.CreateOrderEntity;
-import com.fine.friendlycc.entity.VipPackageItemEntity;
+import com.fine.friendlycc.bean.CreateOrderBean;
+import com.fine.friendlycc.bean.VipPackageItemBean;
 import com.fine.friendlycc.event.UserUpdateVipEvent;
 import com.fine.friendlycc.ui.base.BaseDialog;
 import com.fine.friendlycc.ui.webview.BrowserView;
@@ -76,7 +76,7 @@ public class WebViewDialog extends BaseDialog {
     private ImageView iv_default;
     //会员天数
     public Integer pay_good_day = 0;
-    private volatile VipPackageItemEntity vipPackageItemEntity = new VipPackageItemEntity();
+    private volatile VipPackageItemBean vipPackageItemEntity = new VipPackageItemBean();
     private String orderNumber = null;
     //是否是购买商品 or  订阅vip
     private boolean GooglePayInApp = false;
@@ -97,7 +97,7 @@ public class WebViewDialog extends BaseDialog {
 
 
     private void initGooglePay(){
-        this.billingClientLifecycle = ((AppContext)mActivity.getApplication()).getBillingClientLifecycle();
+        this.billingClientLifecycle = ((CCApplication)mActivity.getApplication()).getBillingClientLifecycle();
         this.billingClientLifecycle.PAYMENT_SUCCESS.observe(this, billingPurchasesState -> {
             Log.e("BillingClientLifecycle","支付购买成功回调");
             switch (billingPurchasesState.getBillingFlowNode()){
@@ -112,7 +112,7 @@ public class WebViewDialog extends BaseDialog {
                     Purchase purchase = billingPurchasesState.getPurchase();
                     if(purchase!=null){
                         try {
-                            AppContext.instance().logEvent(AppsFlyerEvent.Successful_top_up, vipPackageItemEntity.getPrice(), purchase);
+                            CCApplication.instance().logEvent(AppsFlyerEvent.Successful_top_up, vipPackageItemEntity.getPrice(), purchase);
                         } catch (Exception e) {
 
                         }
@@ -146,7 +146,7 @@ public class WebViewDialog extends BaseDialog {
         } else if (type.endsWith(".jpg") || type.endsWith(".jpeg")) {
             imgtype = Bitmap.CompressFormat.JPEG;
         }
-        FutureTarget<Bitmap> target = Glide.with(AppContext.instance())
+        FutureTarget<Bitmap> target = Glide.with(CCApplication.instance())
                 .asBitmap().dontAnimate().diskCacheStrategy(DiskCacheStrategy.ALL).load(url).submit();
         try {
             Bitmap bitmap = target.get();
@@ -204,7 +204,7 @@ public class WebViewDialog extends BaseDialog {
         // 设置 AppCache 最大缓存值(现在官方已经不提倡使用，已废弃)
         settings.setAppCacheMaxSize(8 * 1024 * 1024);
         // Android 私有缓存存储，如果你不调用setAppCachePath方法，WebView将不会产生这个目录
-        settings.setAppCachePath(AppContext.instance().getCacheDir().getAbsolutePath());
+        settings.setAppCachePath(CCApplication.instance().getCacheDir().getAbsolutePath());
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             // 解决 Android 5.0 上 WebView 默认不允许加载 Http 与 Https 混合内容
@@ -356,9 +356,9 @@ public class WebViewDialog extends BaseDialog {
                 .doOnSubscribe(this)
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
-                .subscribe(new BaseObserver<BaseDataResponse<CreateOrderEntity>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<CreateOrderBean>>() {
                     @Override
-                    public void onSuccess(BaseDataResponse<CreateOrderEntity> response) {
+                    public void onSuccess(BaseDataResponse<CreateOrderBean> response) {
                         loadingView.setVisibility(View.GONE);
                         orderNumber = response.getData().getOrderNumber();
                         //会员天数
@@ -375,7 +375,7 @@ public class WebViewDialog extends BaseDialog {
     }
 
     //支付成功上报
-    public void paySuccessNotify(String packageName, String orderNumber, List<String> productId, String token, Integer event,VipPackageItemEntity vipItemEntity) {
+    public void paySuccessNotify(String packageName, String orderNumber, List<String> productId, String token, Integer event,VipPackageItemBean vipItemEntity) {
         loadingView.setVisibility(View.VISIBLE);
         Injection.provideDemoRepository()
                 .paySuccessNotify(packageName, orderNumber, productId, token, 1, event)
@@ -485,7 +485,7 @@ public class WebViewDialog extends BaseDialog {
             GooglePayInApp = true;
             //购买商品
             //vip充值
-            vipPackageItemEntity = new Gson().fromJson(data, VipPackageItemEntity.class);
+            vipPackageItemEntity = new Gson().fromJson(data, VipPackageItemBean.class);
             if(vipPackageItemEntity!=null && vipPackageItemEntity.getGoogleGoodsId()!=null){
                 String googleGoodsId = vipPackageItemEntity.getGoogleGoodsId();
                 //创建订单
@@ -497,7 +497,7 @@ public class WebViewDialog extends BaseDialog {
         public void vipRechargeDiamond(String data) {
             GooglePayInApp = false;
             //购买商品
-            vipPackageItemEntity = new Gson().fromJson(data, VipPackageItemEntity.class);
+            vipPackageItemEntity = new Gson().fromJson(data, VipPackageItemBean.class);
             if(vipPackageItemEntity!=null && vipPackageItemEntity.getGoogleGoodsId()!=null){
                 String googleGoodsId = vipPackageItemEntity.getGoogleGoodsId();
                 //创建订单

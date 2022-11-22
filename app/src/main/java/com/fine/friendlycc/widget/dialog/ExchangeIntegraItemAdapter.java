@@ -14,7 +14,7 @@ import com.blankj.utilcode.util.ColorUtils;
 import com.blankj.utilcode.util.ObjectUtils;
 import com.blankj.utilcode.util.Utils;
 import com.fine.friendlycc.R;
-import com.fine.friendlycc.entity.ExchangeIntegraEntity;
+import com.fine.friendlycc.bean.ExchangeIntegraBean;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -31,9 +31,9 @@ public class ExchangeIntegraItemAdapter extends RecyclerView.Adapter<RecyclerVie
     private int defaultItemSel = -1;
     private Typeface typeface = null;
 
-    private List<ExchangeIntegraEntity> dataBeanList = null;
+    private List<ExchangeIntegraBean> dataBeanList = null;
 
-    public ExchangeIntegraItemAdapter(List<ExchangeIntegraEntity> list, Typeface typeface) {
+    public ExchangeIntegraItemAdapter(List<ExchangeIntegraBean> list, Typeface typeface) {
         this.dataBeanList = list;
         this.typeface = typeface;
     }
@@ -61,7 +61,7 @@ public class ExchangeIntegraItemAdapter extends RecyclerView.Adapter<RecyclerVie
     public void onBindViewHolder(@NonNull @NotNull RecyclerView.ViewHolder holder, int position) {
         ExchangeIntegraItemViewHolder ItemViewHolder = ((ExchangeIntegraItemViewHolder) holder);
         if (!ObjectUtils.isEmpty(dataBeanList)) {
-            ExchangeIntegraEntity itemEntity = dataBeanList.get(position);
+            ExchangeIntegraBean itemEntity = dataBeanList.get(position);
             if(!ObjectUtils.isEmpty(itemEntity)){
                 ItemViewHolder.title1.setText(itemEntity.getBonusName());
                 ItemViewHolder.title2.setText(itemEntity.getCoinName());

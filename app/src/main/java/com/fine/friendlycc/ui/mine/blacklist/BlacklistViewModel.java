@@ -11,7 +11,7 @@ import com.fine.friendlycc.data.source.http.observer.BaseListEmptyObserver;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseListDataResponse;
 import com.fine.friendlycc.data.source.http.response.BaseResponse;
-import com.fine.friendlycc.entity.BlackEntity;
+import com.fine.friendlycc.bean.BlackBean;
 import com.fine.friendlycc.viewmodel.BaseRefreshViewModel;
 import com.fine.friendlycc.BR;
 import com.fine.friendlycc.R;
@@ -48,15 +48,15 @@ public class BlacklistViewModel extends BaseRefreshViewModel<AppRepository> {
                 .doOnSubscribe(this)
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
-                .subscribe(new BaseListEmptyObserver<BaseListDataResponse<BlackEntity>>(this) {
+                .subscribe(new BaseListEmptyObserver<BaseListDataResponse<BlackBean>>(this) {
                     @Override
-                    public void onSuccess(BaseListDataResponse<BlackEntity> response) {
+                    public void onSuccess(BaseListDataResponse<BlackBean> response) {
                         super.onSuccess(response);
                         if (page == 1) {
                             observableList.clear();
                         }
-                        List<BlackEntity> list = response.getData().getData();
-                        for (BlackEntity blackEntity : list) {
+                        List<BlackBean> list = response.getData().getData();
+                        for (BlackBean blackEntity : list) {
                             BlackListItemViewModel item = new BlackListItemViewModel(BlacklistViewModel.this, blackEntity);
                             observableList.add(item);
                         }

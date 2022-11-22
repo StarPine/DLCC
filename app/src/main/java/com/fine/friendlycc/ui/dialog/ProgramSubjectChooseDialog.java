@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.blankj.utilcode.util.ScreenUtils;
-import com.fine.friendlycc.entity.ThemeItemEntity;
+import com.fine.friendlycc.bean.ThemeItemBean;
 import com.fine.friendlycc.ui.dialog.adapter.ProgramSubjectChooseAdapter;
 import com.fine.friendlycc.R;
 
@@ -26,13 +26,13 @@ import java.util.List;
  */
 public class ProgramSubjectChooseDialog extends BaseDialogFragment implements View.OnClickListener {
 
-    private final List<ThemeItemEntity> datas;
+    private final List<ThemeItemBean> datas;
     private RecyclerView recyclerView;
     private ImageView ivClose;
     private ProgramSubjectChooseAdapter adapter;
     private ProgramSubjectChooseDialogListener programSubjectChooseDialogListener;
 
-    public ProgramSubjectChooseDialog(List<ThemeItemEntity> themes) {
+    public ProgramSubjectChooseDialog(List<ThemeItemBean> themes) {
         this.datas = themes;
     }
 
@@ -127,6 +127,6 @@ public class ProgramSubjectChooseDialog extends BaseDialogFragment implements Vi
     }
 
     public interface ProgramSubjectChooseDialogListener {
-        void onItemClick(ProgramSubjectChooseDialog dialog, ThemeItemEntity itemEntity);
+        void onItemClick(ProgramSubjectChooseDialog dialog, ThemeItemBean itemEntity);
     }
 }

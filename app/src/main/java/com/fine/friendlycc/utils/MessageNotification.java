@@ -9,7 +9,7 @@ import android.os.Build;
 import android.os.Handler;
 import android.util.Log;
 
-import com.fine.friendlycc.app.AppContext;
+import com.fine.friendlycc.app.CCApplication;
 import com.fine.friendlycc.R;
 
 /**
@@ -31,7 +31,7 @@ public class MessageNotification {
 
     private final NotificationManager mManager;
     private final Handler mHandler = new Handler();
-    private final Context mContext = AppContext.instance();
+    private final Context mContext = CCApplication.instance();
 
     private MessageNotification() {
         mManager = (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);

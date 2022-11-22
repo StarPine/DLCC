@@ -29,7 +29,7 @@ import com.blankj.utilcode.util.ObjectUtils;
 import com.fine.friendlycc.BuildConfig;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseResponse;
-import com.fine.friendlycc.entity.UserDataEntity;
+import com.fine.friendlycc.bean.UserDataBean;
 import com.fine.friendlycc.manager.ConfigManager;
 import com.fine.friendlycc.utils.ApiUitl;
 import com.fine.friendlycc.utils.StringUtil;
@@ -201,7 +201,7 @@ public class BillingClientLifecycle implements LifecycleObserver, BillingClientS
                         e.printStackTrace();
                     }
                 }
-                UserDataEntity userDataEntity = ConfigManager.getInstance().getAppRepository().readUserData();
+                UserDataBean userDataEntity = ConfigManager.getInstance().getAppRepository().readUserData();
                 if (userDataEntity == null || userDataEntity.getId() == null) {
                     return;
                 }
@@ -241,7 +241,7 @@ public class BillingClientLifecycle implements LifecycleObserver, BillingClientS
                     //确认购买交易，不然三天后会退款给用户 而且此时也没有支付成功
                     if (!purchase.isAcknowledged()) {
                         try {
-                            AppContext.instance().logEvent(AppsFlyerEvent.pay_success);
+                            CCApplication.instance().logEvent(AppsFlyerEvent.pay_success);
                         }catch (Exception ignored) {
 
                         }

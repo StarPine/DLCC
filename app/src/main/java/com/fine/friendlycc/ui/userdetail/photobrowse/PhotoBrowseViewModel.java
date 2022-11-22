@@ -12,8 +12,8 @@ import com.fine.friendlycc.data.AppRepository;
 import com.fine.friendlycc.data.source.http.exception.RequestException;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseResponse;
-import com.fine.friendlycc.entity.AlbumPhotoEntity;
-import com.fine.friendlycc.entity.SystemConfigEntity;
+import com.fine.friendlycc.bean.AlbumPhotoBean;
+import com.fine.friendlycc.bean.SystemConfigBean;
 import com.fine.friendlycc.event.ApplyMessagePhotoStatusChangeEvent;
 import com.fine.friendlycc.event.TheirPhotoAlbumChangeEvent;
 import com.fine.friendlycc.viewmodel.BaseViewModel;
@@ -59,7 +59,7 @@ public class PhotoBrowseViewModel extends BaseViewModel<AppRepository> {
         }
         viewPagerPreviousPage = index;
     });
-    private AlbumPhotoEntity albumPhotoEntity;
+    private AlbumPhotoBean albumPhotoEntity;
 
     public PhotoBrowseViewModel(@NonNull Application application, AppRepository repository) {
         super(application, repository);
@@ -75,14 +75,14 @@ public class PhotoBrowseViewModel extends BaseViewModel<AppRepository> {
         pop();
     }
 
-    public void setPhotos(int index, List<AlbumPhotoEntity> photos) {
+    public void setPhotos(int index, List<AlbumPhotoBean> photos) {
         if (photos == null || photos.isEmpty()) {
             return;
         }
         this.mIndex = index;
-        for (AlbumPhotoEntity photo : photos) {
+        for (AlbumPhotoBean photo : photos) {
             int price = 999;
-            SystemConfigEntity s = model.readSystemConfig();
+            SystemConfigBean s = model.readSystemConfig();
             if (photo.getType() == 1) {
                 //照片
                 price = model.readSystemConfig().getImageRedPackageMoney();

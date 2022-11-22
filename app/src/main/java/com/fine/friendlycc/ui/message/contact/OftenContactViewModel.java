@@ -12,9 +12,9 @@ import com.fine.friendlycc.data.source.http.exception.RequestException;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseDataResponse;
 import com.fine.friendlycc.data.source.http.response.BaseResponse;
-import com.fine.friendlycc.entity.IMTransUserEntity;
-import com.fine.friendlycc.entity.ImUserSigEntity;
-import com.fine.friendlycc.entity.TokenEntity;
+import com.fine.friendlycc.bean.IMTransUserBean;
+import com.fine.friendlycc.bean.ImUserSigBean;
+import com.fine.friendlycc.bean.TokenBean;
 import com.fine.friendlycc.event.LoginExpiredEvent;
 import com.fine.friendlycc.ui.userdetail.detail.UserDetailFragment;
 import com.fine.friendlycc.utils.ToastCenterUtils;
@@ -46,12 +46,12 @@ public class OftenContactViewModel extends BaseViewModel<AppRepository> {
         model.flushSign()
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
-                .subscribe(new BaseObserver<BaseDataResponse<ImUserSigEntity>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<ImUserSigBean>>() {
 
                     @Override
-                    public void onSuccess(BaseDataResponse<ImUserSigEntity> response) {
-                        ImUserSigEntity data = response.getData();
-                        TokenEntity tokenEntity = model.readLoginInfo();
+                    public void onSuccess(BaseDataResponse<ImUserSigBean> response) {
+                        ImUserSigBean data = response.getData();
+                        TokenBean tokenEntity = model.readLoginInfo();
                         if (data == null || TextUtils.isEmpty(data.getUserSig()) || tokenEntity == null){
                             RxBus.getDefault().post(new LoginExpiredEvent());
                             return;
@@ -96,11 +96,11 @@ public class OftenContactViewModel extends BaseViewModel<AppRepository> {
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(dispose -> showHUD())
-                .subscribe(new BaseObserver<BaseDataResponse<IMTransUserEntity>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<IMTransUserBean>>() {
 
                     @Override
-                    public void onSuccess(BaseDataResponse<IMTransUserEntity> response) {
-                        IMTransUserEntity  imTransUserEntity = response.getData();
+                    public void onSuccess(BaseDataResponse<IMTransUserBean> response) {
+                        IMTransUserBean  imTransUserEntity = response.getData();
                         if(imTransUserEntity!=null && imTransUserEntity.getUserId()!=null){
                             userMessageCollation(imTransUserEntity.getUserId(), userDetailView);
                         }else {

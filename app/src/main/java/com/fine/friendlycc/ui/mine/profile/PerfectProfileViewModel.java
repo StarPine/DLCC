@@ -11,14 +11,14 @@ import com.blankj.utilcode.util.ObjectUtils;
 import com.blankj.utilcode.util.StringUtils;
 import com.fine.friendlycc.R;
 import com.fine.friendlycc.app.AppConfig;
-import com.fine.friendlycc.app.AppContext;
+import com.fine.friendlycc.app.CCApplication;
 import com.fine.friendlycc.app.AppsFlyerEvent;
 import com.fine.friendlycc.data.AppRepository;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseDataResponse;
 import com.fine.friendlycc.data.source.http.response.BaseResponse;
-import com.fine.friendlycc.entity.CheckNicknameEntity;
-import com.fine.friendlycc.entity.UserDataEntity;
+import com.fine.friendlycc.bean.CheckNicknameBean;
+import com.fine.friendlycc.bean.UserDataBean;
 import com.fine.friendlycc.manager.ThirdPushTokenMgr;
 import com.fine.friendlycc.ui.login.LoginFragment;
 import com.fine.friendlycc.ui.login.LoginViewModel;
@@ -151,7 +151,7 @@ public class PerfectProfileViewModel extends BaseViewModel<AppRepository> {
                         //注册邀请码
                         if(!StringUtils.isTrimEmpty(invitationCode.get())){
                             //绑定用户注册时填写邀请码
-                            AppContext.instance().pushInvite(invitationCode.get(), 2, null);
+                            CCApplication.instance().pushInvite(invitationCode.get(), 2, null);
                         }
                         model.clearChannelAF();
                         loadProfile(true);
@@ -189,7 +189,7 @@ public class PerfectProfileViewModel extends BaseViewModel<AppRepository> {
                     String token = task.getResult();
                     KLog.d(LoginViewModel.class.getCanonicalName(), "google fcm getToken = " + token);
                     ThirdPushTokenMgr.getInstance().setThirdPushToken(token);
-                    AppContext.instance().pushDeviceToken(token);
+                    CCApplication.instance().pushDeviceToken(token);
                 });
         //RaJava模拟登录
         model.getUserData()
@@ -197,14 +197,14 @@ public class PerfectProfileViewModel extends BaseViewModel<AppRepository> {
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(this)
                 .doOnSubscribe(disposable -> showHUD())
-                .subscribe(new BaseObserver<BaseDataResponse<UserDataEntity>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<UserDataBean>>() {
                     @Override
-                    public void onSuccess(BaseDataResponse<UserDataEntity> response) {
+                    public void onSuccess(BaseDataResponse<UserDataBean> response) {
                         dismissHUD();
-                        UserDataEntity userDataEntity = response.getData();
+                        UserDataBean userDataEntity = response.getData();
                         model.saveUserData(userDataEntity);
                         AppsFlyerLib.getInstance().setCustomerUserId(String.valueOf(userDataEntity.getId()));
-                        AppContext.instance().mFirebaseAnalytics.setUserId(String.valueOf(userDataEntity.getId()));
+                        CCApplication.instance().mFirebaseAnalytics.setUserId(String.valueOf(userDataEntity.getId()));
                         try {
                             //添加崩溃人员id
                             FirebaseCrashlytics.getInstance().setUserId(String.valueOf(userDataEntity.getId()));
@@ -215,7 +215,7 @@ public class PerfectProfileViewModel extends BaseViewModel<AppRepository> {
                             model.saveNeedVerifyFace(true);
                         }
                         if (goMain) {
-                            AppContext.instance().logEvent(AppsFlyerEvent.LOG_Edit_Profile);
+                            CCApplication.instance().logEvent(AppsFlyerEvent.LOG_Edit_Profile);
                             ToastUtils.showShort(R.string.playcc_submit_success);
                             startWithPopTo(MainFragment.class.getCanonicalName(), LoginFragment.class.getCanonicalName(), true);
                         }
@@ -234,10 +234,10 @@ public class PerfectProfileViewModel extends BaseViewModel<AppRepository> {
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(disposable -> showHUD())
-                .subscribe(new BaseObserver<BaseDataResponse<CheckNicknameEntity>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<CheckNicknameBean>>() {
                     @Override
-                    public void onSuccess(BaseDataResponse<CheckNicknameEntity> checkNicknameEntityBaseDataResponse) {
-                        CheckNicknameEntity checkNicknameEntity = checkNicknameEntityBaseDataResponse.getData();
+                    public void onSuccess(BaseDataResponse<CheckNicknameBean> checkNicknameEntityBaseDataResponse) {
+                        CheckNicknameBean checkNicknameEntity = checkNicknameEntityBaseDataResponse.getData();
                         if (checkNicknameEntity != null && checkNicknameEntity.getStatus() == 1) {
                             uc.nicknameDuplicate.postValue(checkNicknameEntity.getRecommend());
                         } else {

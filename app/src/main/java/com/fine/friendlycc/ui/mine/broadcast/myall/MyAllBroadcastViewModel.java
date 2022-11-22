@@ -7,7 +7,7 @@ import androidx.databinding.ObservableArrayList;
 import androidx.databinding.ObservableList;
 
 import com.blankj.utilcode.util.StringUtils;
-import com.fine.friendlycc.app.AppContext;
+import com.fine.friendlycc.app.CCApplication;
 import com.fine.friendlycc.app.AppsFlyerEvent;
 import com.fine.friendlycc.data.AppRepository;
 import com.fine.friendlycc.data.source.http.exception.RequestException;
@@ -15,8 +15,8 @@ import com.fine.friendlycc.data.source.http.observer.BaseListEmptyObserver;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseListDataResponse;
 import com.fine.friendlycc.data.source.http.response.BaseResponse;
-import com.fine.friendlycc.entity.BroadcastEntity;
-import com.fine.friendlycc.entity.UserDataEntity;
+import com.fine.friendlycc.bean.BroadcastBean;
+import com.fine.friendlycc.bean.UserDataBean;
 import com.fine.friendlycc.viewmodel.BaseRefreshViewModel;
 import com.fine.friendlycc.BR;
 import com.fine.friendlycc.R;
@@ -89,7 +89,7 @@ public class MyAllBroadcastViewModel extends BaseRefreshViewModel<AppRepository>
     }
 
     public void initUserDate() {
-        UserDataEntity userDataEntity = model.readUserData();
+        UserDataBean userDataEntity = model.readUserData();
         userId = userDataEntity.getId();
         avatar = userDataEntity.getAvatar();
     }
@@ -108,16 +108,16 @@ public class MyAllBroadcastViewModel extends BaseRefreshViewModel<AppRepository>
                 .doOnSubscribe(this)
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
-                .subscribe(new BaseListEmptyObserver<BaseListDataResponse<BroadcastEntity>>(this) {
+                .subscribe(new BaseListEmptyObserver<BaseListDataResponse<BroadcastBean>>(this) {
                     @Override
-                    public void onSuccess(BaseListDataResponse<BroadcastEntity> response) {
+                    public void onSuccess(BaseListDataResponse<BroadcastBean> response) {
                         super.onSuccess(response);
                         stateModel.setEmptyBroadcastCommand(StringUtils.getString(R.string.playcc_my_all_broadcast_empty), R.drawable.my_all_broadcast_empty_img, R.color.all_broadcast_empty, StringUtils.getString(R.string.playcc_task_fragment_task_new10), toProgramVIew);
                         if (page == 1) {
                             observableList.clear();
                         }
                         if (response.getData().getData() != null) {
-                            for (BroadcastEntity broadcastEntity : response.getData().getData()) {
+                            for (BroadcastBean broadcastEntity : response.getData().getData()) {
                                 if (broadcastEntity.getNews() != null) {
 //                                动态
                                     TrendItemViewModel trendItemViewModel = new TrendItemViewModel(MyAllBroadcastViewModel.this, broadcastEntity);
@@ -148,7 +148,7 @@ public class MyAllBroadcastViewModel extends BaseRefreshViewModel<AppRepository>
                         dismissHUD();
                         ToastUtils.showShort(R.string.playcc_give_success);
                         ((TrendItemViewModel) observableList.get(posion)).addGiveUser();
-                        AppContext.instance().logEvent(AppsFlyerEvent.Like);
+                        CCApplication.instance().logEvent(AppsFlyerEvent.Like);
                     }
 
                     @Override
@@ -173,7 +173,7 @@ public class MyAllBroadcastViewModel extends BaseRefreshViewModel<AppRepository>
                         for (int i = 0; i < observableList.size(); i++) {
                             if (observableList.get(i) instanceof TrendItemViewModel) {
                                 if (id == ((TrendItemViewModel) observableList.get(i)).newsEntityObservableField.get().getId()) {
-                                    AppContext.instance().logEvent(AppsFlyerEvent.Message);
+                                    CCApplication.instance().logEvent(AppsFlyerEvent.Message);
                                     ((TrendItemViewModel) observableList.get(i)).addComment(id, content, toUserId, toUserName, model.readUserData().getNickname());
                                 }
                             }
@@ -187,7 +187,7 @@ public class MyAllBroadcastViewModel extends BaseRefreshViewModel<AppRepository>
                             for (int i = 0; i < observableList.size(); i++) {
                                 if (observableList.get(i) instanceof TrendItemViewModel) {
                                     if (id == ((TrendItemViewModel) observableList.get(i)).newsEntityObservableField.get().getId()) {
-                                        AppContext.instance().logEvent(AppsFlyerEvent.Message);
+                                        CCApplication.instance().logEvent(AppsFlyerEvent.Message);
                                         ((TrendItemViewModel) observableList.get(i)).newsEntityObservableField.get().getBroadcast().setIsComment(1);
                                     }
                                 }

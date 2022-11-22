@@ -22,16 +22,15 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.fine.friendlycc.BR;
 import com.fine.friendlycc.R;
 import com.fine.friendlycc.app.AppConfig;
-import com.fine.friendlycc.app.AppContext;
+import com.fine.friendlycc.app.CCApplication;
 import com.fine.friendlycc.app.AppViewModelFactory;
 import com.fine.friendlycc.app.AppsFlyerEvent;
 import com.fine.friendlycc.databinding.TaskCenterFragmentBinding;
-import com.fine.friendlycc.entity.BonusGoodsEntity;
-import com.fine.friendlycc.entity.EjectEntity;
-import com.fine.friendlycc.entity.EjectSignInEntity;
-import com.fine.friendlycc.entity.GoodsEntity;
-import com.fine.friendlycc.entity.SystemConfigTaskEntity;
-import com.fine.friendlycc.entity.TaskConfigEntity;
+import com.fine.friendlycc.bean.BonusGoodsBean;
+import com.fine.friendlycc.bean.EjectBean;
+import com.fine.friendlycc.bean.EjectSignInBean;
+import com.fine.friendlycc.bean.GoodsBean;
+import com.fine.friendlycc.bean.TaskConfigBean;
 import com.fine.friendlycc.event.TaskMainTabEvent;
 import com.fine.friendlycc.manager.ConfigManager;
 import com.fine.friendlycc.ui.base.BaseToolbarFragment;
@@ -62,7 +61,7 @@ public class TaskCenterFragment extends BaseToolbarFragment<TaskCenterFragmentBi
 
     //是否首次签到
     private final boolean isFirstSign = false;
-    private TaskConfigEntity.MaleConfigEntity maleConfig7;
+    private TaskConfigBean.MaleConfigEntity maleConfig7;
 
     @Override
     public int initContentView(LayoutInflater inflater, @Nullable @org.jetbrains.annotations.Nullable ViewGroup container, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
@@ -143,7 +142,7 @@ public class TaskCenterFragment extends BaseToolbarFragment<TaskCenterFragmentBi
         super.initData();
         binding.refreshLayout.setEnableLoadMore(false);
         toolbarHeight = binding.taskTitle1.getHeight();
-        AppContext.instance().logEvent(AppsFlyerEvent.task_center);
+        CCApplication.instance().logEvent(AppsFlyerEvent.task_center);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this.getContext()) {
             @Override
             public boolean canScrollVertically() {
@@ -223,9 +222,9 @@ public class TaskCenterFragment extends BaseToolbarFragment<TaskCenterFragmentBi
             }
         });
         //兑换商品成功
-        viewModel.uc.exchangeSuccess.observe(this, new Observer<BonusGoodsEntity>() {
+        viewModel.uc.exchangeSuccess.observe(this, new Observer<BonusGoodsBean>() {
             @Override
-            public void onChanged(BonusGoodsEntity bonusGoodsEntity) {
+            public void onChanged(BonusGoodsBean bonusGoodsEntity) {
                 int totalMoney = viewModel.goldMoney.get().intValue();
                 int money = bonusGoodsEntity.getMoney().intValue();
                 viewModel.goldMoney.set(totalMoney - money);
@@ -248,9 +247,9 @@ public class TaskCenterFragment extends BaseToolbarFragment<TaskCenterFragmentBi
             }
         });
         //选择兑换商品
-        viewModel.uc.AlertBonuClick.observe(this, new Observer<BonusGoodsEntity>() {
+        viewModel.uc.AlertBonuClick.observe(this, new Observer<BonusGoodsBean>() {
             @Override
-            public void onChanged(BonusGoodsEntity bonusGoodsEntity) {
+            public void onChanged(BonusGoodsBean bonusGoodsEntity) {
                 if (ObjectUtils.isEmpty(viewModel.goldMoney.get()) || viewModel.goldMoney.get().intValue() == 0) {
                     TraceDialog.getInstance(TaskCenterFragment.this.getContext())
                             .setTitle(getString(R.string.task_fragment_bonus_dialog_5))
@@ -319,22 +318,22 @@ public class TaskCenterFragment extends BaseToolbarFragment<TaskCenterFragmentBi
             }
         });
         //加载每日签到积分
-        viewModel.uc.EjectDay.observe(this, new Observer<EjectEntity>() {
+        viewModel.uc.EjectDay.observe(this, new Observer<EjectBean>() {
             @Override
-            public void onChanged(EjectEntity ejectEntity) {
+            public void onChanged(EjectBean ejectEntity) {
                 //isFirstSign = ejectEntity.getFirstSign() == 1;
                 initSignDay(ejectEntity);
             }
         });
         //签到成功
-        viewModel.uc.reporSignInSuccess.observe(this, new Observer<EjectSignInEntity>() {
+        viewModel.uc.reporSignInSuccess.observe(this, new Observer<EjectSignInBean>() {
             @Override
-            public void onChanged(EjectSignInEntity ejectSignInEntity) {
+            public void onChanged(EjectSignInBean ejectSignInEntity) {
                 if (isFirstSign) {
                     ToastUtils.showShort(R.string.radio_daily_atendance_day_text);
                     return;
                 }
-                AppContext.instance().logEvent(AppsFlyerEvent.sign_day + ejectSignInEntity.getDayNumber());
+                CCApplication.instance().logEvent(AppsFlyerEvent.sign_day + ejectSignInEntity.getDayNumber());
                 Integer isCard = ejectSignInEntity.getIsCard();
                 String text = ejectSignInEntity.getText();
                 String message = ejectSignInEntity.getMsg();
@@ -384,7 +383,7 @@ public class TaskCenterFragment extends BaseToolbarFragment<TaskCenterFragmentBi
     }
 
     //初始化签到天数奖励配置
-    public void initSignDay(EjectEntity ejectEntity) {
+    public void initSignDay(EjectBean ejectEntity) {
         Typeface typeface = Typeface.createFromAsset(TaskCenterFragment.this.getContext().getAssets(), "DIN-Bold.TTF");
         binding.day1Fen.setTypeface(typeface);
         binding.day2Fen.setTypeface(typeface);
@@ -422,13 +421,13 @@ public class TaskCenterFragment extends BaseToolbarFragment<TaskCenterFragmentBi
         int defaultSize = 17;
         if (sexMale) {//男生
             binding.day7Back.setBackground(TaskCenterFragment.this.getResources().getDrawable(R.drawable.task_sign_male_day7_no));
-            List<TaskConfigEntity.MaleConfigEntity> maleSignConfig = ejectEntity.getMaleConfig();
-            TaskConfigEntity.MaleConfigEntity maleConfig1 = maleSignConfig.get(0);
-            TaskConfigEntity.MaleConfigEntity maleConfig2 = maleSignConfig.get(1);
-            TaskConfigEntity.MaleConfigEntity maleConfig3 = maleSignConfig.get(2);
-            TaskConfigEntity.MaleConfigEntity maleConfig4 = maleSignConfig.get(3);
-            TaskConfigEntity.MaleConfigEntity maleConfig5 = maleSignConfig.get(4);
-            TaskConfigEntity.MaleConfigEntity maleConfig6 = maleSignConfig.get(5);
+            List<TaskConfigBean.MaleConfigEntity> maleSignConfig = ejectEntity.getMaleConfig();
+            TaskConfigBean.MaleConfigEntity maleConfig1 = maleSignConfig.get(0);
+            TaskConfigBean.MaleConfigEntity maleConfig2 = maleSignConfig.get(1);
+            TaskConfigBean.MaleConfigEntity maleConfig3 = maleSignConfig.get(2);
+            TaskConfigBean.MaleConfigEntity maleConfig4 = maleSignConfig.get(3);
+            TaskConfigBean.MaleConfigEntity maleConfig5 = maleSignConfig.get(4);
+            TaskConfigBean.MaleConfigEntity maleConfig6 = maleSignConfig.get(5);
             maleConfig7 = maleSignConfig.get(6);
             //类型 1钻石 2卡
             if (maleConfig1.getType() == 1) {
@@ -768,7 +767,7 @@ public class TaskCenterFragment extends BaseToolbarFragment<TaskCenterFragmentBi
         CoinExchargeItegralDialog coinExchargeItegralSheetView = new CoinExchargeItegralDialog(TaskCenterFragment.this.getContext(), mActivity);
         coinExchargeItegralSheetView.setCoinRechargeSheetViewListener(new CoinExchargeItegralDialog.CoinExchargeIntegralAdapterListener() {
             @Override
-            public void onPaySuccess(CoinExchargeItegralDialog sheetView, GoodsEntity sel_goodsEntity) {
+            public void onPaySuccess(CoinExchargeItegralDialog sheetView, GoodsBean sel_goodsEntity) {
                 coinExchargeItegralSheetView.dismiss();
                 dialog.dismiss();
                 //ToastUtils.showShort(R.string.dialog_exchange_integral_success);
@@ -780,7 +779,7 @@ public class TaskCenterFragment extends BaseToolbarFragment<TaskCenterFragmentBi
             public void onPayFailed(CoinExchargeItegralDialog sheetView, String msg) {
                 coinExchargeItegralSheetView.dismiss();
                 ToastUtils.showShort(msg);
-                AppContext.instance().logEvent(AppsFlyerEvent.Failed_to_top_up);
+                CCApplication.instance().logEvent(AppsFlyerEvent.Failed_to_top_up);
             }
         });
         coinExchargeItegralSheetView.show();

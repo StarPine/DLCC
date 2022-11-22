@@ -10,7 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.fine.friendlycc.entity.EvaluateItemEntity;
+import com.fine.friendlycc.bean.EvaluateItemBean;
 import com.fine.friendlycc.R;
 
 import java.util.ArrayList;
@@ -19,7 +19,7 @@ import java.util.List;
 public class CommitEvaluateAdapter extends RecyclerView.Adapter<CommitEvaluateAdapter.RecyclerHolder> {
 
     private final Context mContext;
-    private final List<EvaluateItemEntity> dataList = new ArrayList<>();
+    private final List<EvaluateItemBean> dataList = new ArrayList<>();
 
     private OnItemClickListener onItemClickListener = null;
 
@@ -32,7 +32,7 @@ public class CommitEvaluateAdapter extends RecyclerView.Adapter<CommitEvaluateAd
         this.onItemClickListener = onItemClickListener;
     }
 
-    public void setData(List<EvaluateItemEntity> dataList) {
+    public void setData(List<EvaluateItemBean> dataList) {
         if (null != dataList) {
             this.dataList.clear();
             this.dataList.addAll(dataList);
@@ -50,7 +50,7 @@ public class CommitEvaluateAdapter extends RecyclerView.Adapter<CommitEvaluateAd
     @SuppressLint("NewApi")
     @Override
     public void onBindViewHolder(@NonNull RecyclerHolder holder, int position) {
-        EvaluateItemEntity itemEntity = dataList.get(position);
+        EvaluateItemBean itemEntity = dataList.get(position);
         holder.tvName.setText(itemEntity.getName());
         if (!itemEntity.isSelected()) {
             holder.tvName.setBackground(mContext.getResources().getDrawable(R.drawable.elevation_gray_round_background));

@@ -7,14 +7,14 @@ import androidx.annotation.NonNull;
 
 import com.blankj.utilcode.util.GsonUtils;
 import com.fine.friendlycc.R;
-import com.fine.friendlycc.app.AppContext;
+import com.fine.friendlycc.app.CCApplication;
 import com.fine.friendlycc.app.AppsFlyerEvent;
 import com.fine.friendlycc.data.AppRepository;
 import com.fine.friendlycc.data.source.http.exception.RequestException;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseDataResponse;
-import com.fine.friendlycc.entity.CallingInviteInfo;
-import com.fine.friendlycc.kl.Utils;
+import com.fine.friendlycc.bean.CallingInviteInfo;
+import com.fine.friendlycc.calling.Utils;
 import com.fine.friendlycc.manager.ConfigManager;
 import com.fine.friendlycc.viewmodel.BaseViewModel;
 import com.google.gson.Gson;
@@ -48,10 +48,10 @@ public class WebHomeViewModel extends BaseViewModel<AppRepository> {
     public void getCallingInvitedInfo(int callingType, String IMUserId, String toIMUserId, int callingSource) {
         if(callingType==1){
             //男女点击拨打语音
-            AppContext.instance().logEvent(ConfigManager.getInstance().isMale() ? AppsFlyerEvent.call_voice_male : AppsFlyerEvent.call_voice_female);
+            CCApplication.instance().logEvent(ConfigManager.getInstance().isMale() ? AppsFlyerEvent.call_voice_male : AppsFlyerEvent.call_voice_female);
         }else{
             //男女点击拨打视频
-            AppContext.instance().logEvent(ConfigManager.getInstance().isMale() ? AppsFlyerEvent.call_video_male : AppsFlyerEvent.call_video_female);
+            CCApplication.instance().logEvent(ConfigManager.getInstance().isMale() ? AppsFlyerEvent.call_video_male : AppsFlyerEvent.call_video_female);
         }
         model.callingInviteInfo(callingType, IMUserId, toIMUserId, callingSource)
                 .doOnSubscribe(this)
@@ -66,7 +66,7 @@ public class WebHomeViewModel extends BaseViewModel<AppRepository> {
                             return;
                         }
                         if (callingInviteInfoBaseDataResponse.getCode() == 22001) {//游戏中
-                            Toast.makeText(AppContext.instance(), R.string.playcc_in_game, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(CCApplication.instance(), R.string.playcc_in_game, Toast.LENGTH_SHORT).show();
                             return;
                         }
                         CallingInviteInfo callingInviteInfo = callingInviteInfoBaseDataResponse.getData();

@@ -8,7 +8,7 @@ import com.dl.lib.util.MPDeviceUtils;
 import com.dl.lib.util.emulator.EmulatorDetector;
 import com.fine.friendlycc.app.AppConfig;
 import com.fine.friendlycc.data.AppRepository;
-import com.fine.friendlycc.entity.UserDataEntity;
+import com.fine.friendlycc.bean.UserDataBean;
 import com.fine.friendlycc.manager.ConfigManager;
 import com.fine.friendlycc.manager.LocaleManager;
 
@@ -46,7 +46,7 @@ public class ElkLogEventUtils {
     */
     public static String getUserDataEvent(){
         StringBuilder value = new StringBuilder();
-        UserDataEntity userDataEntity = ConfigManager.getInstance().getAppRepository().readUserData();
+        UserDataBean userDataEntity = ConfigManager.getInstance().getAppRepository().readUserData();
         if(ObjectUtils.isNotEmpty(userDataEntity)){
             //用户的平台id
             //当前用户是否是vip

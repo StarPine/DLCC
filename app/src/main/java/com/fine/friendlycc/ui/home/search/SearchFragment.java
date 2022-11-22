@@ -17,14 +17,13 @@ import com.airbnb.lottie.LottieAnimationView;
 import com.blankj.utilcode.util.KeyboardUtils;
 import com.fine.friendlycc.BR;
 import com.fine.friendlycc.R;
-import com.fine.friendlycc.app.AppContext;
+import com.fine.friendlycc.app.CCApplication;
 import com.fine.friendlycc.app.AppViewModelFactory;
 import com.fine.friendlycc.app.AppsFlyerEvent;
 import com.fine.friendlycc.databinding.FragmentSearchBinding;
 import com.fine.friendlycc.ui.base.BaseRefreshToolbarFragment;
 import com.fine.friendlycc.ui.mine.wallet.diamond.recharge.DialogDiamondRechargeActivity;
 import com.fine.friendlycc.utils.ImmersionBarUtils;
-import com.fine.friendlycc.widget.coinrechargesheet.CoinRechargeSheetView;
 
 /**
  * 搜索
@@ -77,7 +76,7 @@ public class SearchFragment extends BaseRefreshToolbarFragment<FragmentSearchBin
         viewModel.sendAccostFirstError.observe(this, new Observer<Void>() {
             @Override
             public void onChanged(Void unused) {
-                AppContext.instance().logEvent(AppsFlyerEvent.Top_up);
+                CCApplication.instance().logEvent(AppsFlyerEvent.Top_up);
                 toRecharge();
             }
         });

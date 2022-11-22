@@ -1,7 +1,7 @@
 package com.fine.friendlycc.event;
 
 
-import com.fine.friendlycc.entity.ChooseAreaItemEntity;
+import com.fine.friendlycc.bean.ChooseAreaItemBean;
 
 /**
  * Author: 彭石林
@@ -9,17 +9,17 @@ import com.fine.friendlycc.entity.ChooseAreaItemEntity;
  * Description: This is ItemChooseAreaEvent
  */
 public class ItemChooseAreaEvent {
-    private ChooseAreaItemEntity chooseAreaItemEntity;
+    private ChooseAreaItemBean chooseAreaItemEntity;
 
-    public ItemChooseAreaEvent(ChooseAreaItemEntity chooseAreaItemEntity) {
+    public ItemChooseAreaEvent(ChooseAreaItemBean chooseAreaItemEntity) {
         this.chooseAreaItemEntity = chooseAreaItemEntity;
     }
 
-    public ChooseAreaItemEntity getChooseAreaItemEntity() {
+    public ChooseAreaItemBean getChooseAreaItemEntity() {
         return chooseAreaItemEntity;
     }
 
-    public void setChooseAreaItemEntity(ChooseAreaItemEntity chooseAreaItemEntity) {
+    public void setChooseAreaItemEntity(ChooseAreaItemBean chooseAreaItemEntity) {
         this.chooseAreaItemEntity = chooseAreaItemEntity;
     }
 }

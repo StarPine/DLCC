@@ -19,7 +19,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
-import com.fine.friendlycc.entity.AddressEntity;
+import com.fine.friendlycc.bean.AddressBean;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -52,7 +52,7 @@ public class ApiUitl {
     private static List<Field> sMetricsFields;
     public static boolean isShow = false;
     public static boolean issendMessageTag = false;
-    public static AddressEntity $address = null;
+    public static AddressBean $address = null;
 
     //刷新签到天数
     public static boolean taskRefresh = false;

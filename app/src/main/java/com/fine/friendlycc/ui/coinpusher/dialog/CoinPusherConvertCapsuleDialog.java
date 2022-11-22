@@ -17,8 +17,8 @@ import com.fine.friendlycc.data.source.http.exception.RequestException;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseDataResponse;
 import com.fine.friendlycc.databinding.DialogCoinpusherConverDetailBinding;
-import com.fine.friendlycc.entity.CoinPusherConverInfoEntity;
-import com.fine.friendlycc.entity.CoinPusherBalanceDataEntity;
+import com.fine.friendlycc.bean.CoinPusherConverInfoBean;
+import com.fine.friendlycc.bean.CoinPusherBalanceDataBean;
 import com.fine.friendlycc.manager.ConfigManager;
 import com.fine.friendlycc.ui.base.BaseDialog;
 import com.fine.friendlycc.ui.coinpusher.dialog.adapter.CoinPusherCapsuleADetailAdapter;
@@ -60,7 +60,7 @@ public class CoinPusherConvertCapsuleDialog extends BaseDialog {
         this.itemConvertListener = itemConvertListener;
     }
 
-    public CoinPusherConvertCapsuleDialog(Context context,Integer convertConfigId,String convertItemTitle,String convertItemContent, List<CoinPusherConverInfoEntity.GoldCoinInfo.GoldCoinItem> itemData) {
+    public CoinPusherConvertCapsuleDialog(Context context,Integer convertConfigId,String convertItemTitle,String convertItemContent, List<CoinPusherConverInfoBean.GoldCoinInfo.GoldCoinItem> itemData) {
         super(context);
         this.mContext = context;
         this.convertItemTitle = convertItemTitle;
@@ -92,7 +92,7 @@ public class CoinPusherConvertCapsuleDialog extends BaseDialog {
         });
         binding.tvSub.setOnClickListener(v -> {
             if(SEL_COIN_PUSHER_CAPSULE!=-1){
-                CoinPusherConverInfoEntity.GoldCoinInfo.GoldCoinItem itemEntity = coinPusherCapsuleADetailAdapter.getItemData(SEL_COIN_PUSHER_CAPSULE);
+                CoinPusherConverInfoBean.GoldCoinInfo.GoldCoinItem itemEntity = coinPusherCapsuleADetailAdapter.getItemData(SEL_COIN_PUSHER_CAPSULE);
                 if(itemEntity!=null){
                     convertCoinPusherGoldsCoin(convertConfigId,itemEntity.getValue(),itemEntity.getType());
                 }
@@ -158,10 +158,10 @@ public class CoinPusherConvertCapsuleDialog extends BaseDialog {
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(disposable -> showHud())
-                .subscribe(new BaseObserver<BaseDataResponse<CoinPusherBalanceDataEntity>>(){
+                .subscribe(new BaseObserver<BaseDataResponse<CoinPusherBalanceDataBean>>(){
                     @Override
-                    public void onSuccess(BaseDataResponse<CoinPusherBalanceDataEntity> coinPusherDataEntityBaseDataResponse) {
-                        CoinPusherBalanceDataEntity coinPusherBalanceDataEntity = coinPusherDataEntityBaseDataResponse.getData();
+                    public void onSuccess(BaseDataResponse<CoinPusherBalanceDataBean> coinPusherDataEntityBaseDataResponse) {
+                        CoinPusherBalanceDataBean coinPusherBalanceDataEntity = coinPusherDataEntityBaseDataResponse.getData();
                         if(coinPusherBalanceDataEntity !=null && getItemConvertListener()!=null){
                             getItemConvertListener().success(coinPusherBalanceDataEntity);
                         }
@@ -187,7 +187,7 @@ public class CoinPusherConvertCapsuleDialog extends BaseDialog {
     }
 
     public interface ItemConvertListener {
-        void success(CoinPusherBalanceDataEntity coinPusherBalanceDataEntity);
+        void success(CoinPusherBalanceDataBean coinPusherBalanceDataEntity);
 
         default void buyError() {
 

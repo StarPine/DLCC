@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.fine.friendlycc.BR;
 import com.fine.friendlycc.R;
-import com.fine.friendlycc.app.AppContext;
+import com.fine.friendlycc.app.CCApplication;
 import com.fine.friendlycc.app.AppViewModelFactory;
 import com.fine.friendlycc.app.AppsFlyerEvent;
 import com.fine.friendlycc.databinding.FragmentMessageMainBinding;
@@ -52,7 +52,7 @@ public class MessageMainFragment extends BaseFragment<FragmentMessageMainBinding
     @Override
     public void initData() {
         super.initData();
-        AppContext.instance().logEvent(AppsFlyerEvent.Messages);
+        CCApplication.instance().logEvent(AppsFlyerEvent.Messages);
         viewModel.onViewCreated();
         viewModel.loadDatas();
 
@@ -84,10 +84,10 @@ public class MessageMainFragment extends BaseFragment<FragmentMessageMainBinding
         super.initViewObservable();
         viewModel.tabSelectEvent.observe(this, flag -> {
             if (flag) {
-                AppContext.instance().logEvent(AppsFlyerEvent.System_Messages);
+                CCApplication.instance().logEvent(AppsFlyerEvent.System_Messages);
                 binding.viewPager.setCurrentItem(0, false);
             } else {
-                AppContext.instance().logEvent(AppsFlyerEvent.Chat);
+                CCApplication.instance().logEvent(AppsFlyerEvent.Chat);
                 binding.viewPager.setCurrentItem(1, false);
             }
 
@@ -113,12 +113,12 @@ public class MessageMainFragment extends BaseFragment<FragmentMessageMainBinding
     @Override
     public void onResume() {
         super.onResume();
-        AppContext.isShowNotPaid = true;
+        CCApplication.isShowNotPaid = true;
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        AppContext.isShowNotPaid = false;
+        CCApplication.isShowNotPaid = false;
     }
 }

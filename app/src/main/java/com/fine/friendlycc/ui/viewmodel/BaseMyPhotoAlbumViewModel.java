@@ -12,7 +12,7 @@ import com.fine.friendlycc.data.AppRepository;
 import com.fine.friendlycc.data.source.http.observer.BaseListEmptyObserver;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseListDataResponse;
-import com.fine.friendlycc.entity.AlbumPhotoEntity;
+import com.fine.friendlycc.bean.AlbumPhotoBean;
 import com.fine.friendlycc.event.PhotoCallCoverEvent;
 import com.fine.friendlycc.manager.ConfigManager;
 import com.fine.friendlycc.ui.mine.myphotoalbum.MyPhotoAlbumItemViewModel;
@@ -40,7 +40,7 @@ public abstract class BaseMyPhotoAlbumViewModel<T extends AppRepository> extends
     public ObservableList<MyPhotoAlbumItemViewModel> observableList = new ObservableArrayList<>();
 
     public ItemBinding<MyPhotoAlbumItemViewModel> itemBinding = ItemBinding.of(BR.viewModel, R.layout.item_my_photo_album);
-    protected ArrayList<AlbumPhotoEntity> photoEntityList = new ArrayList<>();
+    protected ArrayList<AlbumPhotoBean> photoEntityList = new ArrayList<>();
 
     private Disposable photoCallCoverEventSub;
 
@@ -66,15 +66,15 @@ public abstract class BaseMyPhotoAlbumViewModel<T extends AppRepository> extends
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(this)
-                .subscribe(new BaseObserver<BaseListDataResponse<AlbumPhotoEntity>>() {
+                .subscribe(new BaseObserver<BaseListDataResponse<AlbumPhotoBean>>() {
                     @Override
-                    public void onSuccess(BaseListDataResponse<AlbumPhotoEntity> response) {
+                    public void onSuccess(BaseListDataResponse<AlbumPhotoBean> response) {
                         totalPhoto.set(response.getData().getTotal());
                         observableList.clear();
                         photoEntityList.clear();
                         if (showMaxCount != null && response.getData().getData().size() > showMaxCount) {
                             for (int i = 0; i < showMaxCount; i++) {
-                                AlbumPhotoEntity datum = response.getData().getData().get(i);
+                                AlbumPhotoBean datum = response.getData().getData().get(i);
                                 photoEntityList.add(datum);
                                 MyPhotoAlbumItemViewModel itemViewModel = new MyPhotoAlbumItemViewModel(BaseMyPhotoAlbumViewModel.this, datum);
                                 observableList.add(itemViewModel);
@@ -83,7 +83,7 @@ public abstract class BaseMyPhotoAlbumViewModel<T extends AppRepository> extends
                                 }
                             }
                         } else {
-                            for (AlbumPhotoEntity datum : response.getData().getData()) {
+                            for (AlbumPhotoBean datum : response.getData().getData()) {
                                 photoEntityList.add(datum);
                                 MyPhotoAlbumItemViewModel itemViewModel = new MyPhotoAlbumItemViewModel(BaseMyPhotoAlbumViewModel.this, datum);
                                 observableList.add(itemViewModel);
@@ -104,14 +104,14 @@ public abstract class BaseMyPhotoAlbumViewModel<T extends AppRepository> extends
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(this)
-                .subscribe(new BaseListEmptyObserver<BaseListDataResponse<AlbumPhotoEntity>>(this) {
+                .subscribe(new BaseListEmptyObserver<BaseListDataResponse<AlbumPhotoBean>>(this) {
                     @Override
-                    public void onSuccess(BaseListDataResponse<AlbumPhotoEntity> response) {
+                    public void onSuccess(BaseListDataResponse<AlbumPhotoBean> response) {
                         super.onSuccess(response);
                         totalPhoto.set(response.getData().getTotal());
                         observableList.clear();
                         photoEntityList.clear();
-                        for (AlbumPhotoEntity datum : response.getData().getData()) {
+                        for (AlbumPhotoBean datum : response.getData().getData()) {
                             photoEntityList.add(datum);
                             MyPhotoAlbumItemViewModel itemViewModel = new MyPhotoAlbumItemViewModel(BaseMyPhotoAlbumViewModel.this, datum);
                             observableList.add(itemViewModel);
@@ -136,7 +136,7 @@ public abstract class BaseMyPhotoAlbumViewModel<T extends AppRepository> extends
                     if(observableList!=null && itemEntity!=null && itemEntity.getAlbumPhotoEntity()!=null){
                         int albumId = itemEntity.getAlbumPhotoEntity().getId();
                         for (int j = 0; j < observableList.size(); j++) {
-                            AlbumPhotoEntity albumPhotoEntity = observableList.get(j).itemEntity.get();
+                            AlbumPhotoBean albumPhotoEntity = observableList.get(j).itemEntity.get();
                             if(albumPhotoEntity!=null){
                                 //不为null  并且是本人
                                 if(albumPhotoEntity.getVerificationType()==1 && !ConfigManager.getInstance().isMale()){

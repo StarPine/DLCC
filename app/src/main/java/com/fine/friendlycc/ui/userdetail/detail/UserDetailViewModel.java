@@ -12,7 +12,7 @@ import androidx.databinding.ObservableField;
 
 import com.blankj.utilcode.util.ObjectUtils;
 import com.blankj.utilcode.util.StringUtils;
-import com.fine.friendlycc.app.AppContext;
+import com.fine.friendlycc.app.CCApplication;
 import com.fine.friendlycc.app.AppsFlyerEvent;
 import com.fine.friendlycc.app.Injection;
 import com.fine.friendlycc.data.AppRepository;
@@ -21,21 +21,21 @@ import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.observer.BaseUserDetailEmptyObserver;
 import com.fine.friendlycc.data.source.http.response.BaseDataResponse;
 import com.fine.friendlycc.data.source.http.response.BaseResponse;
-import com.fine.friendlycc.entity.AlbumPhotoEntity;
-import com.fine.friendlycc.entity.CallingInviteInfo;
-import com.fine.friendlycc.entity.EvaluateEntity;
-import com.fine.friendlycc.entity.EvaluateItemEntity;
-import com.fine.friendlycc.entity.EvaluateObjEntity;
-import com.fine.friendlycc.entity.IsChatEntity;
-import com.fine.friendlycc.entity.StatusEntity;
-import com.fine.friendlycc.entity.UserDetailEntity;
+import com.fine.friendlycc.bean.AlbumPhotoBean;
+import com.fine.friendlycc.bean.CallingInviteInfo;
+import com.fine.friendlycc.bean.EvaluateBean;
+import com.fine.friendlycc.bean.EvaluateItemBean;
+import com.fine.friendlycc.bean.EvaluateObjBean;
+import com.fine.friendlycc.bean.IsChatBean;
+import com.fine.friendlycc.bean.StatusBean;
+import com.fine.friendlycc.bean.UserDetailBean;
 import com.fine.friendlycc.event.AccostEvent;
 import com.fine.friendlycc.event.AddBlackListEvent;
 import com.fine.friendlycc.event.LikeChangeEvent;
 import com.fine.friendlycc.event.TheirPhotoAlbumChangeEvent;
 import com.fine.friendlycc.event.UserRemarkChangeEvent;
 import com.fine.friendlycc.event.UserUpdateVipEvent;
-import com.fine.friendlycc.kl.Utils;
+import com.fine.friendlycc.calling.Utils;
 import com.fine.friendlycc.manager.ConfigManager;
 import com.fine.friendlycc.manager.LocationManager;
 import com.fine.friendlycc.utils.ChatUtils;
@@ -79,7 +79,7 @@ public class UserDetailViewModel extends BaseTheirPhotoAlbumViewModel<AppReposit
     public ObservableField<String> distanceText = new ObservableField<>();
     public ObservableField<String> onlineStatusText = new ObservableField<>();
 
-    public ObservableField<UserDetailEntity> detailEntity = new ObservableField<>();
+    public ObservableField<UserDetailBean> detailEntity = new ObservableField<>();
 
     public ObservableField<String> lineAccount = new ObservableField<>();
     public ObservableField<String> remark = new ObservableField<>();
@@ -114,7 +114,7 @@ public class UserDetailViewModel extends BaseTheirPhotoAlbumViewModel<AppReposit
         if (ObjectUtils.isEmpty(detailEntity.get().getNews()) || ObjectUtils.isEmpty(detailEntity.get().getNews())) {
             return;
         }
-        AppContext.instance().logEvent(AppsFlyerEvent.His_Her_Monents);
+        CCApplication.instance().logEvent(AppsFlyerEvent.His_Her_Monents);
         Bundle bundle = UserDynamicFragment.getStartBundle(userId.get(), detailEntity.get().getSex());
         start(UserDynamicFragment.class.getCanonicalName(), bundle);
     });
@@ -125,7 +125,7 @@ public class UserDetailViewModel extends BaseTheirPhotoAlbumViewModel<AppReposit
         if (detailEntity.get() == null) {
             return;
         }
-        AppContext.instance().logEvent(AppsFlyerEvent.Following_2);
+        CCApplication.instance().logEvent(AppsFlyerEvent.Following_2);
         if (!detailEntity.get().getCollect()) {
             addLike();
         } else {
@@ -181,7 +181,7 @@ public class UserDetailViewModel extends BaseTheirPhotoAlbumViewModel<AppReposit
             return;
         }
         if (detailEntity.get().getIsAccost() == 1){
-            AppContext.instance().logEvent(AppsFlyerEvent.Send_message);
+            CCApplication.instance().logEvent(AppsFlyerEvent.Send_message);
             ChatUtils.chatUser(detailEntity.get().getImToUserId(),userId.get(), detailEntity.get().getNickname(), this);
         }else {
             putAccostFirst();
@@ -190,7 +190,7 @@ public class UserDetailViewModel extends BaseTheirPhotoAlbumViewModel<AppReposit
     });
     //申请查看相册
     public BindingCommand applyCheckAlbumOnClickCommand = new BindingCommand(() -> {
-        AppContext.instance().logEvent(AppsFlyerEvent.View_photos);
+        CCApplication.instance().logEvent(AppsFlyerEvent.View_photos);
         isChat(userId.get(), 2);
     }
     );
@@ -222,7 +222,7 @@ public class UserDetailViewModel extends BaseTheirPhotoAlbumViewModel<AppReposit
                     if (detailEntity.get() == null) {
                         return;
                     }
-                    for (AlbumPhotoEntity albumPhotoEntity : detailEntity.get().getAlbum()) {
+                    for (AlbumPhotoBean albumPhotoEntity : detailEntity.get().getAlbum()) {
                         if (event.getType() == TheirPhotoAlbumChangeEvent.TYPE_BURN) {
                             if (albumPhotoEntity.getId().intValue() == event.getPhotoId().intValue()) {
                                 if (albumPhotoEntity.getBurnStatus() != 1) {
@@ -258,7 +258,7 @@ public class UserDetailViewModel extends BaseTheirPhotoAlbumViewModel<AppReposit
         RxSubscriptions.remove(mPhotoStateChangeSubscription);
     }
 
-    public boolean personalInfoIsEmpty(UserDetailEntity userDetailEntity){
+    public boolean personalInfoIsEmpty(UserDetailBean userDetailEntity){
         if (userDetailEntity != null){
             if (TextUtils.isEmpty(userDetailEntity.getDesc())
                     && (userDetailEntity.getWeight() == null || userDetailEntity.getWeight() <= 0)
@@ -321,9 +321,9 @@ public class UserDetailViewModel extends BaseTheirPhotoAlbumViewModel<AppReposit
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(disposable -> showHUD())
-                .subscribe(new BaseUserDetailEmptyObserver<BaseDataResponse<UserDetailEntity>>(this) {
+                .subscribe(new BaseUserDetailEmptyObserver<BaseDataResponse<UserDetailBean>>(this) {
                     @Override
-                    public void onSuccess(BaseDataResponse<UserDetailEntity> response) {
+                    public void onSuccess(BaseDataResponse<UserDetailBean> response) {
                         super.onSuccess(response);
 //                        if (response.getData().getMoreNumber() <= 0) {
 //                            uc.todayCheckNumber.postValue(0);
@@ -449,7 +449,7 @@ public class UserDetailViewModel extends BaseTheirPhotoAlbumViewModel<AppReposit
                         if (detailEntity.get() == null) {
                             return;
                         }
-                        UserDetailEntity userDisable = detailEntity.get();
+                        UserDetailBean userDisable = detailEntity.get();
                         userDisable.setCollect(true);
                         detailEntity.set(null);
                         detailEntity.set(userDisable);
@@ -575,9 +575,9 @@ public class UserDetailViewModel extends BaseTheirPhotoAlbumViewModel<AppReposit
                 .doOnSubscribe(this)
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
-                .subscribe(new BaseObserver<BaseDataResponse<StatusEntity>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<StatusBean>>() {
                     @Override
-                    public void onSuccess(BaseDataResponse<StatusEntity> response) {
+                    public void onSuccess(BaseDataResponse<StatusBean> response) {
                         canEvaluate.set(response.getData().getStatus() == 1);
                         if(response.getData().getStatus() == 1){
                             getUserEvaluate();
@@ -602,10 +602,10 @@ public class UserDetailViewModel extends BaseTheirPhotoAlbumViewModel<AppReposit
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(disposable -> showHUD())
-                .subscribe(new BaseObserver<BaseDataResponse<List<EvaluateEntity>>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<List<EvaluateBean>>>() {
                     @Override
-                    public void onSuccess(BaseDataResponse<List<EvaluateEntity>> response) {
-                        AppContext.instance().logEvent(AppsFlyerEvent.Impression_2);
+                    public void onSuccess(BaseDataResponse<List<EvaluateBean>> response) {
+                        CCApplication.instance().logEvent(AppsFlyerEvent.Impression_2);
                         uc.clickEvaluate.postValue(response.getData());
                     }
 
@@ -626,18 +626,18 @@ public class UserDetailViewModel extends BaseTheirPhotoAlbumViewModel<AppReposit
         }
     }
 
-    public Drawable onLineDrawables(UserDetailEntity detailEntity) {
+    public Drawable onLineDrawables(UserDetailBean detailEntity) {
         if (detailEntity == null) return null;
         if (detailEntity.getCallingStatus() == 0) {
             if (detailEntity.getIsOnline() == 1) {
-                return AppContext.instance().getResources().getDrawable(R.drawable.user_detail_online);
+                return CCApplication.instance().getResources().getDrawable(R.drawable.user_detail_online);
             }
         } else if (detailEntity.getCallingStatus() == 1) {
-            return AppContext.instance().getResources().getDrawable(R.drawable.user_detail_calling);
+            return CCApplication.instance().getResources().getDrawable(R.drawable.user_detail_calling);
         } else if (detailEntity.getCallingStatus() == 2) {
-            return AppContext.instance().getResources().getDrawable(R.drawable.user_detail_video);
+            return CCApplication.instance().getResources().getDrawable(R.drawable.user_detail_video);
         }
-        return AppContext.instance().getResources().getDrawable(R.drawable.user_detail_online);
+        return CCApplication.instance().getResources().getDrawable(R.drawable.user_detail_online);
     }
 
     /**
@@ -709,9 +709,9 @@ public class UserDetailViewModel extends BaseTheirPhotoAlbumViewModel<AppReposit
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(disposable -> showHUD())
-                .subscribe(new BaseObserver<BaseDataResponse<IsChatEntity>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<IsChatBean>>() {
                     @Override
-                    public void onSuccess(BaseDataResponse<IsChatEntity> response) {
+                    public void onSuccess(BaseDataResponse<IsChatBean> response) {
                         if (type == 2) {
                             //查看相册
                             if (response.getData().getIsVip() == 1) {
@@ -864,21 +864,21 @@ public class UserDetailViewModel extends BaseTheirPhotoAlbumViewModel<AppReposit
                 .doOnSubscribe(this)
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
-                .subscribe(new BaseObserver<BaseDataResponse<List<EvaluateEntity>>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<List<EvaluateBean>>>() {
                     @Override
-                    public void onSuccess(BaseDataResponse<List<EvaluateEntity>> response) {
+                    public void onSuccess(BaseDataResponse<List<EvaluateBean>> response) {
 
-                        List<EvaluateObjEntity> list = null;
+                        List<EvaluateObjBean> list = null;
                         if (detailEntity.get().getSex() == 1) {
                             list = Injection.provideDemoRepository().readMaleEvaluateConfig();
                         } else {
                             list = Injection.provideDemoRepository().readFemaleEvaluateConfig();
                         }
                         boolean flag = false;
-                        List<EvaluateItemEntity> list1 = new ArrayList<EvaluateItemEntity>();
-                        for (EvaluateObjEntity configEntity : list) {
-                            EvaluateItemEntity evaluateItemEntity = new EvaluateItemEntity(configEntity.getId(), configEntity.getName(), configEntity.getType() == 1);
-                            for (EvaluateEntity evaluateEntity : response.getData()) {
+                        List<EvaluateItemBean> list1 = new ArrayList<EvaluateItemBean>();
+                        for (EvaluateObjBean configEntity : list) {
+                            EvaluateItemBean evaluateItemEntity = new EvaluateItemBean(configEntity.getId(), configEntity.getName(), configEntity.getType() == 1);
+                            for (EvaluateBean evaluateEntity : response.getData()) {
                                 flag = evaluateEntity.getNumber() > 0;
                                 if (configEntity.getId() == evaluateEntity.getTagId()) {
                                     evaluateItemEntity.setNumber(evaluateEntity.getNumber());
@@ -908,10 +908,10 @@ public class UserDetailViewModel extends BaseTheirPhotoAlbumViewModel<AppReposit
     public void getCallingInvitedInfo(int callingType, String IMUserId, String toIMUserId) {
         if(callingType==1){
             //男女点击拨打语音
-            AppContext.instance().logEvent(ConfigManager.getInstance().isMale() ? AppsFlyerEvent.call_voice_male : AppsFlyerEvent.call_voice_female);
+            CCApplication.instance().logEvent(ConfigManager.getInstance().isMale() ? AppsFlyerEvent.call_voice_male : AppsFlyerEvent.call_voice_female);
         }else{
             //男女点击拨打视频
-            AppContext.instance().logEvent(ConfigManager.getInstance().isMale() ? AppsFlyerEvent.call_video_male : AppsFlyerEvent.call_video_female);
+            CCApplication.instance().logEvent(ConfigManager.getInstance().isMale() ? AppsFlyerEvent.call_video_male : AppsFlyerEvent.call_video_female);
         }
         model.callingInviteInfo(callingType, IMUserId, toIMUserId, 0)
                 .doOnSubscribe(this)
@@ -926,7 +926,7 @@ public class UserDetailViewModel extends BaseTheirPhotoAlbumViewModel<AppReposit
                             return;
                         }
                         if (callingInviteInfoBaseDataResponse.getCode() == 22001) {//游戏中
-                            Toast.makeText(AppContext.instance(), R.string.playcc_in_game, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(CCApplication.instance(), R.string.playcc_in_game, Toast.LENGTH_SHORT).show();
                             return;
                         }
                         CallingInviteInfo callingInviteInfo = callingInviteInfoBaseDataResponse.getData();
@@ -971,7 +971,7 @@ public class UserDetailViewModel extends BaseTheirPhotoAlbumViewModel<AppReposit
         //对方忙线
         public SingleLiveEvent otherBusy = new SingleLiveEvent<>();
         public SingleLiveEvent<String> clickApplyCheckDetail = new SingleLiveEvent<>();
-        public SingleLiveEvent<List<EvaluateEntity>> clickEvaluate = new SingleLiveEvent<>();
+        public SingleLiveEvent<List<EvaluateBean>> clickEvaluate = new SingleLiveEvent<>();
         public SingleLiveEvent<Integer> clickPayAlbum = new SingleLiveEvent<>();
         public SingleLiveEvent<Integer> clickVipCheckAlbum = new SingleLiveEvent<>();
         public SingleLiveEvent<Integer> clickVipChat = new SingleLiveEvent<>();
@@ -980,7 +980,7 @@ public class UserDetailViewModel extends BaseTheirPhotoAlbumViewModel<AppReposit
         public SingleLiveEvent<Void> isAlertVipMonetyunlock = new SingleLiveEvent<>();
         public SingleLiveEvent VipSuccessFlag = new SingleLiveEvent();
 
-        public SingleLiveEvent<List<EvaluateItemEntity>> evaluateItemEntityList = new SingleLiveEvent<List<EvaluateItemEntity>>();
+        public SingleLiveEvent<List<EvaluateItemBean>> evaluateItemEntityList = new SingleLiveEvent<List<EvaluateItemBean>>();
         //下拉刷新完成
         public SingleLiveEvent<Void> finishRefreshing = new SingleLiveEvent<>();
         //钻石不足。唤起充值

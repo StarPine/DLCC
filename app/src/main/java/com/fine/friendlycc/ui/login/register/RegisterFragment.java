@@ -18,12 +18,12 @@ import androidx.lifecycle.ViewModelProviders;
 import com.fine.friendlycc.BR;
 import com.fine.friendlycc.R;
 import com.fine.friendlycc.app.AppConfig;
-import com.fine.friendlycc.app.AppContext;
+import com.fine.friendlycc.app.CCApplication;
 import com.fine.friendlycc.app.AppViewModelFactory;
 import com.fine.friendlycc.app.AppsFlyerEvent;
 import com.fine.friendlycc.databinding.FragmentRegisterBinding;
-import com.fine.friendlycc.entity.ChooseAreaItemEntity;
-import com.fine.friendlycc.entity.OverseasUserEntity;
+import com.fine.friendlycc.bean.ChooseAreaItemBean;
+import com.fine.friendlycc.bean.OverseasUserBean;
 import com.fine.friendlycc.manager.ConfigManager;
 import com.fine.friendlycc.ui.base.BaseToolbarFragment;
 import com.fine.friendlycc.ui.login.LoginViewModel;
@@ -109,7 +109,7 @@ public class RegisterFragment extends BaseToolbarFragment<FragmentRegisterBindin
         super.initData();
         AppConfig.overseasUserEntity = null;
         showInput(binding.etPhone);
-        ChooseAreaItemEntity areaCodeInfo = getAreaCodeInfo();
+        ChooseAreaItemBean areaCodeInfo = getAreaCodeInfo();
         if (areaCodeInfo == null){
             viewModel.getUserIpCode();
         }else {
@@ -117,13 +117,13 @@ public class RegisterFragment extends BaseToolbarFragment<FragmentRegisterBindin
         }
     }
 
-    private ChooseAreaItemEntity getAreaCodeInfo() {
+    private ChooseAreaItemBean getAreaCodeInfo() {
         String areaCode = ConfigManager.getInstance().getAppRepository().readKeyValue("areaCode");
         if (StringUtil.isEmpty(areaCode)) {
             return null;
         }
         try {
-            return new Gson().fromJson(areaCode, ChooseAreaItemEntity.class);
+            return new Gson().fromJson(areaCode, ChooseAreaItemBean.class);
         }catch (Exception e){
 
         }
@@ -173,7 +173,7 @@ public class RegisterFragment extends BaseToolbarFragment<FragmentRegisterBindin
                             @Override
                             public void onCompleted(@Nullable JSONObject jsonObject, @Nullable GraphResponse graphResponse) {
                                 try {
-                                    OverseasUserEntity overseasUserEntity = new OverseasUserEntity();
+                                    OverseasUserBean overseasUserEntity = new OverseasUserBean();
                                     if(!jsonObject.isNull("email")){
                                         overseasUserEntity.setEmail(jsonObject.getString("email"));
                                     }
@@ -194,7 +194,7 @@ public class RegisterFragment extends BaseToolbarFragment<FragmentRegisterBindin
                                     overseasUserEntity.setPhoto(phoneUrl);
                                     AppConfig.overseasUserEntity = overseasUserEntity;
                                     viewModel.authLogin(loginResult.getAccessToken().getUserId(), "facebook", overseasUserEntity.getEmail(), null, null, token_for_business);
-                                    AppContext.instance().logEvent(AppsFlyerEvent.LOG_IN_WITH_FACEBOOK);
+                                    CCApplication.instance().logEvent(AppsFlyerEvent.LOG_IN_WITH_FACEBOOK);
                                 } catch (Exception e) {
                                     Log.e("获取facebook关键资料", "异常原因: " + e.getMessage());
                                     // App code
@@ -253,13 +253,13 @@ public class RegisterFragment extends BaseToolbarFragment<FragmentRegisterBindin
         try {
             GoogleSignInAccount signInAccount = googleData.getResult(ApiException.class);
             if (signInAccount != null) {
-                OverseasUserEntity overseasUserEntity = new OverseasUserEntity();
+                OverseasUserBean overseasUserEntity = new OverseasUserBean();
                 overseasUserEntity.setEmail(signInAccount.getEmail());
                 overseasUserEntity.setName(signInAccount.getDisplayName());
                 overseasUserEntity.setPhoto(signInAccount.getPhotoUrl() == null ? null : String.valueOf(signInAccount.getPhotoUrl()));
                 AppConfig.overseasUserEntity = overseasUserEntity;
                 viewModel.authLogin(signInAccount.getId(), "google", overseasUserEntity.getEmail(), null, null, null);
-                AppContext.instance().logEvent(AppsFlyerEvent.LOG_IN_WITH_GOOGLE);
+                CCApplication.instance().logEvent(AppsFlyerEvent.LOG_IN_WITH_GOOGLE);
             } else {
                 Log.e("account", "si为空:" + "\n");
             }

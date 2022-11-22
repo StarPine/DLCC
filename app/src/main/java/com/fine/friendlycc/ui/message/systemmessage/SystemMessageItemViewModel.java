@@ -5,7 +5,7 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.databinding.ObservableField;
 
-import com.fine.friendlycc.entity.SystemMessageEntity;
+import com.fine.friendlycc.bean.SystemMessageBean;
 import com.fine.friendlycc.ui.mine.vipsubscribe.VipSubscribeFragment;
 import com.fine.friendlycc.utils.ExceptionReportUtils;
 import com.fine.friendlycc.R;
@@ -19,7 +19,7 @@ import me.goldze.mvvmhabit.utils.StringUtils;
  */
 public class SystemMessageItemViewModel extends MultiItemViewModel<SystemMessageViewModel> {
 
-    public ObservableField<SystemMessageEntity> itemEntity = new ObservableField<>();
+    public ObservableField<SystemMessageBean> itemEntity = new ObservableField<>();
     public BindingCommand itemClickClick = new BindingCommand(() -> {
         try {
             if (itemEntity.get().getType() == 3) {
@@ -38,7 +38,7 @@ public class SystemMessageItemViewModel extends MultiItemViewModel<SystemMessage
         }
     });
 
-    public SystemMessageItemViewModel(@NonNull SystemMessageViewModel viewModel, SystemMessageEntity messageEntity) {
+    public SystemMessageItemViewModel(@NonNull SystemMessageViewModel viewModel, SystemMessageBean messageEntity) {
         super(viewModel);
         this.itemEntity.set(messageEntity);
     }

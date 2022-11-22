@@ -3,7 +3,7 @@ package com.fine.friendlycc.ui.message.chatdetail;
 import androidx.annotation.NonNull;
 import androidx.databinding.ObservableField;
 
-import com.fine.friendlycc.entity.ThemeItemEntity;
+import com.fine.friendlycc.bean.ThemeItemBean;
 import com.fine.friendlycc.ui.radio.radiohome.RadioViewModel;
 import com.fine.friendlycc.utils.ExceptionReportUtils;
 
@@ -21,7 +21,7 @@ import me.goldze.mvvmhabit.binding.command.BindingCommand;
  **/
 public class SwiftMessageItemViewModel extends ItemViewModel {
 
-    public ObservableField<ThemeItemEntity> itemEntity = new ObservableField<>();
+    public ObservableField<ThemeItemBean> itemEntity = new ObservableField<>();
     //条目的点击事件
     public BindingCommand itemClick = new BindingCommand(() -> {
         try {
@@ -31,7 +31,7 @@ public class SwiftMessageItemViewModel extends ItemViewModel {
         }
     });
 
-    public SwiftMessageItemViewModel(@NonNull RadioViewModel viewModel, ThemeItemEntity itemEntity) {
+    public SwiftMessageItemViewModel(@NonNull RadioViewModel viewModel, ThemeItemBean itemEntity) {
         super(viewModel);
         this.itemEntity.set(itemEntity);
     }

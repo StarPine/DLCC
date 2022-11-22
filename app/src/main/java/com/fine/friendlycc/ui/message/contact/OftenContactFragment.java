@@ -16,7 +16,7 @@ import com.fine.friendlycc.app.AppConfig;
 import com.fine.friendlycc.app.AppViewModelFactory;
 import com.fine.friendlycc.app.Injection;
 import com.fine.friendlycc.databinding.FragmentOftenContactBinding;
-import com.fine.friendlycc.entity.TokenEntity;
+import com.fine.friendlycc.bean.TokenBean;
 import com.fine.friendlycc.event.MessageCountChangeContactEvent;
 import com.fine.friendlycc.manager.ThirdPushTokenMgr;
 import com.fine.friendlycc.ui.base.BaseFragment;
@@ -65,7 +65,7 @@ public class OftenContactFragment extends BaseFragment<FragmentOftenContactBindi
     public void initData() {
         super.initData();
         //腾讯IM登录
-        TokenEntity tokenEntity = Injection.provideDemoRepository().readLoginInfo();
+        TokenBean tokenEntity = Injection.provideDemoRepository().readLoginInfo();
         if (tokenEntity != null) {
             if(TUILogin.isUserLogined()){
                 initIM();

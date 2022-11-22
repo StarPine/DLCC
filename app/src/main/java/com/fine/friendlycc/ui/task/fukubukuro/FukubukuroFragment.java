@@ -30,13 +30,13 @@ import com.bumptech.glide.request.FutureTarget;
 import com.fine.friendlycc.BR;
 import com.fine.friendlycc.R;
 import com.fine.friendlycc.app.AppConfig;
-import com.fine.friendlycc.app.AppContext;
+import com.fine.friendlycc.app.CCApplication;
 import com.fine.friendlycc.app.AppViewModelFactory;
 import com.fine.friendlycc.app.AppsFlyerEvent;
 import com.fine.friendlycc.databinding.FragmentFukubukuroBinding;
-import com.fine.friendlycc.entity.ExchangeIntegraEntity;
-import com.fine.friendlycc.entity.ExchangeIntegraOuterEntity;
-import com.fine.friendlycc.entity.GoodsEntity;
+import com.fine.friendlycc.bean.ExchangeIntegraBean;
+import com.fine.friendlycc.bean.ExchangeIntegraOuterBean;
+import com.fine.friendlycc.bean.GoodsBean;
 import com.fine.friendlycc.event.TaskMainTabEvent;
 import com.fine.friendlycc.ui.base.BaseFragment;
 import com.fine.friendlycc.ui.task.webview.FukuokaViewFragment;
@@ -97,7 +97,7 @@ public class FukubukuroFragment extends BaseFragment<FragmentFukubukuroBinding, 
         } else if (type.endsWith(".jpg") || type.endsWith(".jpeg")) {
             imgtype = Bitmap.CompressFormat.JPEG;
         }
-        FutureTarget<Bitmap> target = Glide.with(AppContext.instance())
+        FutureTarget<Bitmap> target = Glide.with(CCApplication.instance())
                 .asBitmap().dontAnimate().diskCacheStrategy(DiskCacheStrategy.ALL).load(url).submit();
         try {
             Bitmap bitmap = target.get();
@@ -146,7 +146,7 @@ public class FukubukuroFragment extends BaseFragment<FragmentFukubukuroBinding, 
         // 设置 AppCache 最大缓存值(现在官方已经不提倡使用，已废弃)
         settings.setAppCacheMaxSize(8 * 1024 * 1024);
         // Android 私有缓存存储，如果你不调用setAppCachePath方法，WebView将不会产生这个目录
-        settings.setAppCachePath(AppContext.instance().getCacheDir().getAbsolutePath());
+        settings.setAppCachePath(CCApplication.instance().getCacheDir().getAbsolutePath());
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             // 解决 Android 5.0 上 WebView 默认不允许加载 Http 与 Https 混合内容
@@ -204,15 +204,15 @@ public class FukubukuroFragment extends BaseFragment<FragmentFukubukuroBinding, 
     @Override
     public void initViewObservable() {
         super.initViewObservable();
-        viewModel.DialogExchangeIntegral.observe(this, new Observer<ExchangeIntegraOuterEntity>() {
+        viewModel.DialogExchangeIntegral.observe(this, new Observer<ExchangeIntegraOuterBean>() {
             @Override
-            public void onChanged(ExchangeIntegraOuterEntity listData) {
+            public void onChanged(ExchangeIntegraOuterBean listData) {
                 TaskFukubukuroDialog.exchangeIntegralDialog(FukubukuroFragment.this.getContext(),
                         true, String.valueOf(listData.getTotalBonus()),String.valueOf(listData.getTotalCoin()),0,
                         listData.getData(),
                         new TaskFukubukuroDialog.ExchangeIntegraleClick() {
                             @Override
-                            public void clickSelectItem(Dialog dialog, ExchangeIntegraEntity itemEntity) {
+                            public void clickSelectItem(Dialog dialog, ExchangeIntegraBean itemEntity) {
                                 if(!ObjectUtils.isEmpty(itemEntity)){
                                     if(listData.getTotalCoin().intValue()>=itemEntity.getCoinValue().intValue()){
                                         dialog.dismiss();
@@ -281,7 +281,7 @@ public class FukubukuroFragment extends BaseFragment<FragmentFukubukuroBinding, 
         CoinExchargeItegralDialog coinExchargeItegralSheetView = new CoinExchargeItegralDialog(FukubukuroFragment.this.getContext(),mActivity);
         coinExchargeItegralSheetView.setCoinRechargeSheetViewListener(new CoinExchargeItegralDialog.CoinExchargeIntegralAdapterListener() {
             @Override
-            public void onPaySuccess(CoinExchargeItegralDialog sheetView, GoodsEntity sel_goodsEntity) {
+            public void onPaySuccess(CoinExchargeItegralDialog sheetView, GoodsBean sel_goodsEntity) {
                 coinExchargeItegralSheetView.dismiss();
                 dialog.dismiss();
                 ToastUtils.showShort(R.string.dialog_exchange_integral_success);
@@ -290,7 +290,7 @@ public class FukubukuroFragment extends BaseFragment<FragmentFukubukuroBinding, 
             public void onPayFailed(CoinExchargeItegralDialog sheetView, String msg) {
                 coinExchargeItegralSheetView.dismiss();
                 ToastUtils.showShort(msg);
-                AppContext.instance().logEvent(AppsFlyerEvent.Failed_to_top_up);
+                CCApplication.instance().logEvent(AppsFlyerEvent.Failed_to_top_up);
             }
         });
         coinExchargeItegralSheetView.show();

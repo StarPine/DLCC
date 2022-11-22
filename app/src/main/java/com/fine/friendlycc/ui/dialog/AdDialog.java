@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.fine.friendlycc.app.GlideEngine;
-import com.fine.friendlycc.entity.BannerItemEntity;
+import com.fine.friendlycc.bean.BannerItemBean;
 import com.fine.friendlycc.utils.StringUtil;
 import com.fine.friendlycc.R;
 
@@ -26,11 +26,11 @@ public class AdDialog extends  BaseDialogFragment implements View.OnClickListene
     private ImageView ivImage;
     private ImageView ivClose;
 
-    private BannerItemEntity bannerItemEntity;
+    private BannerItemBean bannerItemEntity;
 
     private AdDialogListener adDialogListener;
 
-    public static AdDialog newInstance(BannerItemEntity bannerItemEntity) {
+    public static AdDialog newInstance(BannerItemBean bannerItemEntity) {
         AdDialog dialog = new AdDialog();
         Bundle bundle = new Bundle();
         bundle.putSerializable("banner", bannerItemEntity);
@@ -49,7 +49,7 @@ public class AdDialog extends  BaseDialogFragment implements View.OnClickListene
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        bannerItemEntity = (BannerItemEntity) getArguments().getSerializable("banner");
+        bannerItemEntity = (BannerItemBean) getArguments().getSerializable("banner");
         setStyle(STYLE_NORMAL, R.style.MyDialog);
     }
 
@@ -110,9 +110,9 @@ public class AdDialog extends  BaseDialogFragment implements View.OnClickListene
 
     public interface AdDialogListener {
 
-        void onImageClick(AdDialog dialog, BannerItemEntity entity);
+        void onImageClick(AdDialog dialog, BannerItemBean entity);
 
-        void onCloseClick(AdDialog dialog, BannerItemEntity entity);
+        void onCloseClick(AdDialog dialog, BannerItemBean entity);
 
     }
 }

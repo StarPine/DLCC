@@ -9,7 +9,7 @@ import androidx.databinding.ObservableList;
 import com.fine.friendlycc.data.AppRepository;
 import com.fine.friendlycc.data.source.http.observer.BaseListEmptyObserver;
 import com.fine.friendlycc.data.source.http.response.BaseListDataResponse;
-import com.fine.friendlycc.entity.BaseUserBeanEntity;
+import com.fine.friendlycc.bean.BaseUserBeanBean;
 import com.fine.friendlycc.ui.mine.broadcast.mytrends.HeadItemViewModel;
 import com.fine.friendlycc.utils.ListUtils;
 import com.fine.friendlycc.viewmodel.BaseRefreshViewModel;
@@ -61,15 +61,15 @@ public class GiveListViewModel extends BaseRefreshViewModel<AppRepository> {
                 .doOnSubscribe(this)
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
-                .subscribe(new BaseListEmptyObserver<BaseListDataResponse<BaseUserBeanEntity>>(this) {
+                .subscribe(new BaseListEmptyObserver<BaseListDataResponse<BaseUserBeanBean>>(this) {
                     @Override
-                    public void onSuccess(BaseListDataResponse<BaseUserBeanEntity> response) {
+                    public void onSuccess(BaseListDataResponse<BaseUserBeanBean> response) {
                         super.onSuccess(response);
                         if (page == 1) {
                             observableList.clear();
                         }
                         if (!ListUtils.isEmpty(response.getData().getData())) {
-                            for (BaseUserBeanEntity baseUser : response.getData().getData()) {
+                            for (BaseUserBeanBean baseUser : response.getData().getData()) {
                                 GiveListItemViewModel giveListItemViewModel = new GiveListItemViewModel(GiveListViewModel.this, baseUser);
                                 observableList.add(giveListItemViewModel);
                             }
@@ -89,15 +89,15 @@ public class GiveListViewModel extends BaseRefreshViewModel<AppRepository> {
                 .doOnSubscribe(this)
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
-                .subscribe(new BaseListEmptyObserver<BaseListDataResponse<BaseUserBeanEntity>>(this) {
+                .subscribe(new BaseListEmptyObserver<BaseListDataResponse<BaseUserBeanBean>>(this) {
                     @Override
-                    public void onSuccess(BaseListDataResponse<BaseUserBeanEntity> response) {
+                    public void onSuccess(BaseListDataResponse<BaseUserBeanBean> response) {
                         super.onSuccess(response);
                         if (page == 1) {
                             observableList.clear();
                         }
                         if (!ListUtils.isEmpty(response.getData().getData())) {
-                            for (BaseUserBeanEntity baseUser : response.getData().getData()) {
+                            for (BaseUserBeanBean baseUser : response.getData().getData()) {
                                 GiveListItemViewModel giveListItemViewModel = new GiveListItemViewModel(GiveListViewModel.this, baseUser);
                                 observableList.add(giveListItemViewModel);
                             }

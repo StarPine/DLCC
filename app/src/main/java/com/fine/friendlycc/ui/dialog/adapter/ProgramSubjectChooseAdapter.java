@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
-import com.fine.friendlycc.entity.ThemeItemEntity;
+import com.fine.friendlycc.bean.ThemeItemBean;
 import com.fine.friendlycc.utils.StringUtil;
 import com.fine.friendlycc.R;
 
@@ -25,7 +25,7 @@ import java.util.List;
 public class ProgramSubjectChooseAdapter extends RecyclerView.Adapter<ProgramSubjectChooseAdapter.RecyclerHolder> {
 
     private final Context mContext;
-    private List<ThemeItemEntity> dataList = new ArrayList<>();
+    private List<ThemeItemBean> dataList = new ArrayList<>();
 
     private ProgramSubjectChooseAdapterListener programSubjectChooseAdapterListener = null;
 
@@ -41,7 +41,7 @@ public class ProgramSubjectChooseAdapter extends RecyclerView.Adapter<ProgramSub
         this.programSubjectChooseAdapterListener = programSubjectChooseAdapterListener;
     }
 
-    public void setData(List<ThemeItemEntity> dataList) {
+    public void setData(List<ThemeItemBean> dataList) {
         this.dataList = dataList;
         notifyDataSetChanged();
     }
@@ -55,7 +55,7 @@ public class ProgramSubjectChooseAdapter extends RecyclerView.Adapter<ProgramSub
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerHolder holder, int position) {
-        ThemeItemEntity itemEntity = dataList.get(position);
+        ThemeItemBean itemEntity = dataList.get(position);
         holder.tvName.setText(itemEntity.getTitle());
         Glide.with(mContext)
                 .load(StringUtil.getFullImageUrl(itemEntity.getSmallIcon()))
@@ -78,7 +78,7 @@ public class ProgramSubjectChooseAdapter extends RecyclerView.Adapter<ProgramSub
     }
 
     public interface ProgramSubjectChooseAdapterListener {
-        void onItemClick(ThemeItemEntity itemEntity);
+        void onItemClick(ThemeItemBean itemEntity);
     }
 
     class RecyclerHolder extends RecyclerView.ViewHolder {

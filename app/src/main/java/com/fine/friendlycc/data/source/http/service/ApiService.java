@@ -4,102 +4,102 @@ import com.fine.friendlycc.data.RetrofitHeadersConfig;
 import com.fine.friendlycc.data.source.http.response.BaseDataResponse;
 import com.fine.friendlycc.data.source.http.response.BaseListDataResponse;
 import com.fine.friendlycc.data.source.http.response.BaseResponse;
-import com.fine.friendlycc.entity.AccostEntity;
-import com.fine.friendlycc.entity.AdBannerEntity;
-import com.fine.friendlycc.entity.AdUserBannerEntity;
-import com.fine.friendlycc.entity.AddressEntity;
-import com.fine.friendlycc.entity.AlbumPhotoEntity;
-import com.fine.friendlycc.entity.AllConfigEntity;
-import com.fine.friendlycc.entity.ApiConfigManagerEntity;
-import com.fine.friendlycc.entity.ApplyMessageEntity;
-import com.fine.friendlycc.entity.BaseUserBeanEntity;
-import com.fine.friendlycc.entity.BlackEntity;
-import com.fine.friendlycc.entity.BonusGoodsEntity;
-import com.fine.friendlycc.entity.BoradCastMessageEntity;
-import com.fine.friendlycc.entity.BroadcastEntity;
-import com.fine.friendlycc.entity.BroadcastListEntity;
-import com.fine.friendlycc.entity.BrowseNumberEntity;
-import com.fine.friendlycc.entity.BubbleEntity;
-import com.fine.friendlycc.entity.CallingInfoEntity;
-import com.fine.friendlycc.entity.CallingInviteInfo;
-import com.fine.friendlycc.entity.CallingStatusEntity;
-import com.fine.friendlycc.entity.CashWalletEntity;
-import com.fine.friendlycc.entity.ChatDetailCoinEntity;
-import com.fine.friendlycc.entity.ChatRedPackageEntity;
-import com.fine.friendlycc.entity.CheckNicknameEntity;
-import com.fine.friendlycc.entity.ChooseAreaEntity;
-import com.fine.friendlycc.entity.CityAllEntity;
-import com.fine.friendlycc.entity.CoinExchangeBoxInfo;
-import com.fine.friendlycc.entity.CoinPusherBalanceDataEntity;
-import com.fine.friendlycc.entity.CoinPusherConverInfoEntity;
-import com.fine.friendlycc.entity.CoinPusherDataInfoEntity;
-import com.fine.friendlycc.entity.CoinPusherRoomHistoryEntity;
-import com.fine.friendlycc.entity.CoinPusherRoomInfoEntity;
-import com.fine.friendlycc.entity.CoinPusherRoomTagInfoEntity;
-import com.fine.friendlycc.entity.CoinWalletEntity;
-import com.fine.friendlycc.entity.CommentMessageEntity;
-import com.fine.friendlycc.entity.ConfigItemEntity;
-import com.fine.friendlycc.entity.CreateOrderEntity;
-import com.fine.friendlycc.entity.DayRewardInfoEntity;
-import com.fine.friendlycc.entity.DiamondInfoEntity;
-import com.fine.friendlycc.entity.EjectEntity;
-import com.fine.friendlycc.entity.EjectSignInEntity;
-import com.fine.friendlycc.entity.EvaluateEntity;
-import com.fine.friendlycc.entity.EvaluateMessageEntity;
-import com.fine.friendlycc.entity.ExchangeEntity;
-import com.fine.friendlycc.entity.ExchangeIntegraOuterEntity;
-import com.fine.friendlycc.entity.ExclusiveAccostInfoEntity;
-import com.fine.friendlycc.entity.FaceVerifyResultEntity;
-import com.fine.friendlycc.entity.GameCoinBuy;
-import com.fine.friendlycc.entity.GameCoinWalletEntity;
-import com.fine.friendlycc.entity.GamePhotoAlbumEntity;
-import com.fine.friendlycc.entity.GiftBagEntity;
-import com.fine.friendlycc.entity.GiveMessageEntity;
-import com.fine.friendlycc.entity.GoldDetailEntity;
-import com.fine.friendlycc.entity.GoodsEntity;
-import com.fine.friendlycc.entity.GoogleNearPoiBean;
-import com.fine.friendlycc.entity.GooglePoiBean;
-import com.fine.friendlycc.entity.IMTransUserEntity;
-import com.fine.friendlycc.entity.ImUserSigEntity;
-import com.fine.friendlycc.entity.IsChatEntity;
-import com.fine.friendlycc.entity.LevelApiEntity;
-import com.fine.friendlycc.entity.LevelPageInfoEntity;
-import com.fine.friendlycc.entity.MallWithdrawTipsInfoEntity;
-import com.fine.friendlycc.entity.MessageGroupEntity;
-import com.fine.friendlycc.entity.MessageRuleEntity;
-import com.fine.friendlycc.entity.NewsEntity;
-import com.fine.friendlycc.entity.NoteInfoEntity;
-import com.fine.friendlycc.entity.OccupationConfigItemEntity;
-import com.fine.friendlycc.entity.ParkItemEntity;
-import com.fine.friendlycc.entity.PhotoAlbumEntity;
-import com.fine.friendlycc.entity.PriceConfigEntity;
-import com.fine.friendlycc.entity.PrivacyEntity;
-import com.fine.friendlycc.entity.ProfitMessageEntity;
-import com.fine.friendlycc.entity.PushSettingEntity;
-import com.fine.friendlycc.entity.RadioTwoFilterItemEntity;
-import com.fine.friendlycc.entity.SignMessageEntity;
-import com.fine.friendlycc.entity.SoundEntity;
-import com.fine.friendlycc.entity.StatusEntity;
-import com.fine.friendlycc.entity.SwiftMessageEntity;
-import com.fine.friendlycc.entity.SystemMessageEntity;
-import com.fine.friendlycc.entity.TagEntity;
-import com.fine.friendlycc.entity.TaskAdEntity;
-import com.fine.friendlycc.entity.TaskConfigEntity;
-import com.fine.friendlycc.entity.TaskConfigItemEntity;
-import com.fine.friendlycc.entity.TaskRewardReceiveEntity;
-import com.fine.friendlycc.entity.TokenEntity;
-import com.fine.friendlycc.entity.TopicalListEntity;
-import com.fine.friendlycc.entity.TraceEntity;
-import com.fine.friendlycc.entity.UnReadMessageNumEntity;
-import com.fine.friendlycc.entity.UserCoinItemEntity;
-import com.fine.friendlycc.entity.UserConnMicStatusEntity;
-import com.fine.friendlycc.entity.UserDataEntity;
-import com.fine.friendlycc.entity.UserDetailEntity;
-import com.fine.friendlycc.entity.UserInfoEntity;
-import com.fine.friendlycc.entity.UserProfitPageEntity;
-import com.fine.friendlycc.entity.UserRemarkEntity;
-import com.fine.friendlycc.entity.VersionEntity;
-import com.fine.friendlycc.entity.VipInfoEntity;
+import com.fine.friendlycc.bean.AccostBean;
+import com.fine.friendlycc.bean.AdBannerBean;
+import com.fine.friendlycc.bean.AdUserBannerBean;
+import com.fine.friendlycc.bean.AddressBean;
+import com.fine.friendlycc.bean.AlbumPhotoBean;
+import com.fine.friendlycc.bean.AllConfigBean;
+import com.fine.friendlycc.bean.ApiConfigManagerBean;
+import com.fine.friendlycc.bean.ApplyMessageBean;
+import com.fine.friendlycc.bean.BaseUserBeanBean;
+import com.fine.friendlycc.bean.BlackBean;
+import com.fine.friendlycc.bean.BonusGoodsBean;
+import com.fine.friendlycc.bean.BoradCastMessageBean;
+import com.fine.friendlycc.bean.BroadcastBean;
+import com.fine.friendlycc.bean.BroadcastListBean;
+import com.fine.friendlycc.bean.BrowseNumberBean;
+import com.fine.friendlycc.bean.BubbleBean;
+import com.fine.friendlycc.bean.CallingInfoBean;
+import com.fine.friendlycc.bean.CallingInviteInfo;
+import com.fine.friendlycc.bean.CallingStatusBean;
+import com.fine.friendlycc.bean.CashWalletBean;
+import com.fine.friendlycc.bean.ChatDetailCoinBean;
+import com.fine.friendlycc.bean.ChatRedPackageBean;
+import com.fine.friendlycc.bean.CheckNicknameBean;
+import com.fine.friendlycc.bean.ChooseAreaBean;
+import com.fine.friendlycc.bean.CityAllBean;
+import com.fine.friendlycc.bean.CoinExchangeBoxInfo;
+import com.fine.friendlycc.bean.CoinPusherBalanceDataBean;
+import com.fine.friendlycc.bean.CoinPusherConverInfoBean;
+import com.fine.friendlycc.bean.CoinPusherDataInfoBean;
+import com.fine.friendlycc.bean.CoinPusherRoomHistoryBean;
+import com.fine.friendlycc.bean.CoinPusherRoomInfoBean;
+import com.fine.friendlycc.bean.CoinPusherRoomTagInfoBean;
+import com.fine.friendlycc.bean.CoinWalletBean;
+import com.fine.friendlycc.bean.CommentMessageBean;
+import com.fine.friendlycc.bean.ConfigItemBean;
+import com.fine.friendlycc.bean.CreateOrderBean;
+import com.fine.friendlycc.bean.DayRewardInfoBean;
+import com.fine.friendlycc.bean.DiamondInfoBean;
+import com.fine.friendlycc.bean.EjectBean;
+import com.fine.friendlycc.bean.EjectSignInBean;
+import com.fine.friendlycc.bean.EvaluateBean;
+import com.fine.friendlycc.bean.EvaluateMessageBean;
+import com.fine.friendlycc.bean.ExchangeBean;
+import com.fine.friendlycc.bean.ExchangeIntegraOuterBean;
+import com.fine.friendlycc.bean.ExclusiveAccostInfoBean;
+import com.fine.friendlycc.bean.FaceVerifyResultBean;
+import com.fine.friendlycc.bean.GameCoinBuy;
+import com.fine.friendlycc.bean.GameCoinWalletBean;
+import com.fine.friendlycc.bean.GamePhotoAlbumBean;
+import com.fine.friendlycc.bean.GiftBagBean;
+import com.fine.friendlycc.bean.GiveMessageBean;
+import com.fine.friendlycc.bean.GoldDetailBean;
+import com.fine.friendlycc.bean.GoodsBean;
+import com.fine.friendlycc.bean.GoogleNearPoiBean;
+import com.fine.friendlycc.bean.GooglePoiBean;
+import com.fine.friendlycc.bean.IMTransUserBean;
+import com.fine.friendlycc.bean.ImUserSigBean;
+import com.fine.friendlycc.bean.IsChatBean;
+import com.fine.friendlycc.bean.LevelApiBean;
+import com.fine.friendlycc.bean.LevelPageInfoBean;
+import com.fine.friendlycc.bean.MallWithdrawTipsInfoBean;
+import com.fine.friendlycc.bean.MessageGroupBean;
+import com.fine.friendlycc.bean.MessageRuleBean;
+import com.fine.friendlycc.bean.NewsBean;
+import com.fine.friendlycc.bean.NoteInfoBean;
+import com.fine.friendlycc.bean.OccupationConfigItemBean;
+import com.fine.friendlycc.bean.ParkItemBean;
+import com.fine.friendlycc.bean.PhotoAlbumBean;
+import com.fine.friendlycc.bean.PriceConfigBean;
+import com.fine.friendlycc.bean.PrivacyBean;
+import com.fine.friendlycc.bean.ProfitMessageBean;
+import com.fine.friendlycc.bean.PushSettingBean;
+import com.fine.friendlycc.bean.RadioTwoFilterItemBean;
+import com.fine.friendlycc.bean.SignMessageBean;
+import com.fine.friendlycc.bean.SoundBean;
+import com.fine.friendlycc.bean.StatusBean;
+import com.fine.friendlycc.bean.SwiftMessageBean;
+import com.fine.friendlycc.bean.SystemMessageBean;
+import com.fine.friendlycc.bean.TagBean;
+import com.fine.friendlycc.bean.TaskAdBean;
+import com.fine.friendlycc.bean.TaskConfigBean;
+import com.fine.friendlycc.bean.TaskConfigItemBean;
+import com.fine.friendlycc.bean.TaskRewardReceiveBean;
+import com.fine.friendlycc.bean.TokenBean;
+import com.fine.friendlycc.bean.TopicalListBean;
+import com.fine.friendlycc.bean.TraceBean;
+import com.fine.friendlycc.bean.UnReadMessageNumBean;
+import com.fine.friendlycc.bean.UserCoinItemBean;
+import com.fine.friendlycc.bean.UserConnMicStatusBean;
+import com.fine.friendlycc.bean.UserDataBean;
+import com.fine.friendlycc.bean.UserDetailBean;
+import com.fine.friendlycc.bean.UserInfoBean;
+import com.fine.friendlycc.bean.UserProfitPageBean;
+import com.fine.friendlycc.bean.UserRemarkBean;
+import com.fine.friendlycc.bean.VersionBean;
+import com.fine.friendlycc.bean.VipInfoBean;
 
 import java.util.List;
 import java.util.Map;
@@ -137,7 +137,7 @@ public interface ApiService {
     */
     @Headers(RetrofitHeadersConfig.PlayChat_API_URL)
     @GET("api/iscan/balance")
-    Observable<BaseDataResponse<CoinPusherBalanceDataEntity>> qryUserGameBalance();
+    Observable<BaseDataResponse<CoinPusherBalanceDataBean>> qryUserGameBalance();
     /**
     * @Desc TODO(获取红包相片/影片评价)
     * @author 彭石林
@@ -197,7 +197,7 @@ public interface ApiService {
     */
     @Headers(RetrofitHeadersConfig.PlayChat_API_URL)
     @GET("api/iscan/history")
-    Observable<BaseDataResponse<List<CoinPusherRoomHistoryEntity>>> qryCoinPusherRoomHistory(@Query("roomId")Integer roomId);
+    Observable<BaseDataResponse<List<CoinPusherRoomHistoryBean>>> qryCoinPusherRoomHistory(@Query("roomId")Integer roomId);
     /**
     * @Desc TODO(推币机-开始游戏)
     * @author 彭石林
@@ -208,7 +208,7 @@ public interface ApiService {
     @POST("api/iscan/start")
     @Headers(RetrofitHeadersConfig.PlayChat_API_URL)
     @FormUrlEncoded
-    Observable<BaseDataResponse<CoinPusherDataInfoEntity>> playingCoinPusherStart(@Field("roomId")Integer roomId);
+    Observable<BaseDataResponse<CoinPusherDataInfoBean>> playingCoinPusherStart(@Field("roomId")Integer roomId);
 
     /**
     * @Desc TODO(推币机-结束游戏)
@@ -242,7 +242,7 @@ public interface ApiService {
     @Headers({RetrofitHeadersConfig.CoinPUsherConfig.API_TIMEOUT_HEADER,RetrofitHeadersConfig.PlayChat_API_URL})
     @FormUrlEncoded
     @POST("api/iscan/throwCoin")
-    Observable<BaseDataResponse<CoinPusherBalanceDataEntity>> playingCoinPusherThrowCoin(@Field("roomId")Integer roomId);
+    Observable<BaseDataResponse<CoinPusherBalanceDataBean>> playingCoinPusherThrowCoin(@Field("roomId")Integer roomId);
     /**
     * @Desc TODO(推币机-钻石兑金币)
     * @author 彭石林
@@ -256,7 +256,7 @@ public interface ApiService {
     @FormUrlEncoded
     @Headers({RetrofitHeadersConfig.CoinPUsherConfig.API_TIMEOUT_HEADER,RetrofitHeadersConfig.PlayChat_API_URL})
     @POST("api/iscan/goldCoin")
-    Observable<BaseDataResponse<CoinPusherBalanceDataEntity>> convertCoinPusherGoldsCoin(@Field("id")Integer id, @Field("type") Integer type);
+    Observable<BaseDataResponse<CoinPusherBalanceDataBean>> convertCoinPusherGoldsCoin(@Field("id")Integer id, @Field("type") Integer type);
     /**
     * @Desc TODO(推币机-兑换钻石)
     * @author 彭石林
@@ -267,7 +267,7 @@ public interface ApiService {
     @POST("api/iscan/diamonds")
     @Headers({RetrofitHeadersConfig.CoinPUsherConfig.API_TIMEOUT_HEADER,RetrofitHeadersConfig.PlayChat_API_URL})
     @FormUrlEncoded
-    Observable<BaseDataResponse<CoinPusherBalanceDataEntity>> convertCoinPusherDiamonds(@Field("id") Integer id);
+    Observable<BaseDataResponse<CoinPusherBalanceDataBean>> convertCoinPusherDiamonds(@Field("id") Integer id);
     /**
     * @Desc TODO(推币机-等级列表)
     * @author 彭石林
@@ -277,7 +277,7 @@ public interface ApiService {
     */
     @Headers(RetrofitHeadersConfig.PlayChat_API_URL)
     @GET("api/iscan/tag")
-    Observable<BaseDataResponse<CoinPusherRoomTagInfoEntity>> qryCoinPusherRoomTagList();
+    Observable<BaseDataResponse<CoinPusherRoomTagInfoBean>> qryCoinPusherRoomTagList();
     /**
     * @Desc TODO(推币机-设备列表)
     * @author 彭石林
@@ -287,7 +287,7 @@ public interface ApiService {
     */
     @Headers(RetrofitHeadersConfig.PlayChat_API_URL)
     @GET("api/iscan")
-    Observable<BaseDataResponse<CoinPusherRoomInfoEntity>> qryCoinPusherRoomList(@Query("tagId") Integer tagId);
+    Observable<BaseDataResponse<CoinPusherRoomInfoBean>> qryCoinPusherRoomList(@Query("tagId") Integer tagId);
     /**
     * @Desc TODO(推币机-兑换列表)
     * @author 彭石林
@@ -297,7 +297,7 @@ public interface ApiService {
     */
     @Headers(RetrofitHeadersConfig.PlayChat_API_URL)
     @GET("api/iscan/exchange")
-    Observable<BaseDataResponse<CoinPusherConverInfoEntity>> qryCoinPusherConverList();
+    Observable<BaseDataResponse<CoinPusherConverInfoBean>> qryCoinPusherConverList();
     /*=====================================推币机模块=====================================*/
     /**
     * @Desc TODO(添加常联系人)
@@ -325,7 +325,7 @@ public interface ApiService {
      * @return
      */
     @GET("api/getExclusiveAccost")
-    Observable<BaseDataResponse<List<ExclusiveAccostInfoEntity>>> getExclusiveAccost();
+    Observable<BaseDataResponse<List<ExclusiveAccostInfoBean>>> getExclusiveAccost();
 
     /**
      * 获取昵称
@@ -339,14 +339,14 @@ public interface ApiService {
      * @return
      */
     @GET("api/getDayReward")
-    Observable<BaseDataResponse<DayRewardInfoEntity>> getDayReward();
+    Observable<BaseDataResponse<DayRewardInfoBean>> getDayReward();
 
     /**
      * 注册奖励
      * @return
      */
     @GET("api/getRegisterReward")
-    Observable<BaseDataResponse<DayRewardInfoEntity>> getRegisterReward();
+    Observable<BaseDataResponse<DayRewardInfoBean>> getRegisterReward();
 
     /**
      * 删除专属搭讪
@@ -384,7 +384,7 @@ public interface ApiService {
      * @author 彭石林
      */
     @GET("api/v2/city")
-    Observable<BaseDataResponse<CityAllEntity>> getCityConfigAll();
+    Observable<BaseDataResponse<CityAllBean>> getCityConfigAll();
 
     /**
      * 检查昵称是否被占用
@@ -394,7 +394,7 @@ public interface ApiService {
      */
     @FormUrlEncoded
     @POST("api/user/checkNickname")
-    Observable<BaseDataResponse<CheckNicknameEntity>> checkNickname(
+    Observable<BaseDataResponse<CheckNicknameBean>> checkNickname(
             @Field("nickname") String nickname
     );
     /*
@@ -405,7 +405,7 @@ public interface ApiService {
      * @Date 2022/7/7
      */
     @GET("calling/region/getList")
-    Observable<BaseDataResponse<ChooseAreaEntity>> getChooseAreaList();
+    Observable<BaseDataResponse<ChooseAreaBean>> getChooseAreaList();
     /**
      * @Desc TODO(广告列表获取  1：首页 2：广场页)
      * @author 彭石林
@@ -414,7 +414,7 @@ public interface ApiService {
      * @Date 2022/7/25
      */
     @GET("friendly/commercial/list")
-    Observable<BaseDataResponse<AdBannerEntity>> getRadioAdBannerList(@Query("position") int position);
+    Observable<BaseDataResponse<AdBannerBean>> getRadioAdBannerList(@Query("position") int position);
     /**
     * @Desc TODO(用户广告位)
     * @author 彭石林
@@ -423,7 +423,7 @@ public interface ApiService {
     * @Date 2022/7/26
     */
     @GET("friendly/plazaRecommend")
-    Observable<BaseDataResponse<AdUserBannerEntity>> getUserAdList(@Query("position") Integer position);
+    Observable<BaseDataResponse<AdUserBannerBean>> getUserAdList(@Query("position") Integer position);
     /**
      * @Desc TODO(广告列表获取  1：首页 2：广场页)
      * @author 彭石林
@@ -432,7 +432,7 @@ public interface ApiService {
      * @Date 2022/7/25
      */
     @GET("friendly/homeRecommend")
-    Observable<BaseDataResponse<AdBannerEntity>> getMainAdBannerList(@Query("position") int position);
+    Observable<BaseDataResponse<AdBannerBean>> getMainAdBannerList(@Query("position") int position);
     /**
      * 保存个人笔记内容
      * @param to_user_id
@@ -449,7 +449,7 @@ public interface ApiService {
      * @return
      */
     @GET("/api/v2/user/note")
-    Observable<BaseDataResponse<NoteInfoEntity>> getNoteText(@Query("to_user_id") int to_user_id);
+    Observable<BaseDataResponse<NoteInfoBean>> getNoteText(@Query("to_user_id") int to_user_id);
 
     /***
      * 水晶兑换弹窗提示
@@ -457,7 +457,7 @@ public interface ApiService {
      * @return
      */
     @GET("/calling/mall/getMallWithdrawTipsInfo")
-    Observable<BaseDataResponse<MallWithdrawTipsInfoEntity>> getMallWithdrawTipsInfo(@Query("channel") Integer channel);
+    Observable<BaseDataResponse<MallWithdrawTipsInfoBean>> getMallWithdrawTipsInfo(@Query("channel") Integer channel);
 
     /**
     * @Desc TODO(初始化api接口)
@@ -468,7 +468,7 @@ public interface ApiService {
     */
     @Headers(RetrofitHeadersConfig.DEFAULT_API_INIT_URL)
     @GET("friendly/open")
-    Observable<BaseDataResponse<ApiConfigManagerEntity>> initApiConfig();
+    Observable<BaseDataResponse<ApiConfigManagerBean>> initApiConfig();
 
     /**
      * 注销账号
@@ -499,7 +499,7 @@ public interface ApiService {
      */
     @Headers(RetrofitHeadersConfig.PlayChat_API_URL)
     @GET("api/v2/bonus/list")
-    Observable<BaseDataResponse<ExchangeIntegraOuterEntity>> getExchangeIntegraListData();
+    Observable<BaseDataResponse<ExchangeIntegraOuterBean>> getExchangeIntegraListData();
     /**
      * @return io.reactivex.Observable<com.dl.play.chat.data.source.http.response.BaseListDataResponse>
      * @Desc TODO(任务中心广告位)
@@ -509,7 +509,7 @@ public interface ApiService {
      */
     @Headers(RetrofitHeadersConfig.PlayChat_API_URL)
     @GET("api/v2/task/ad")
-    Observable<BaseListDataResponse<TaskAdEntity>> taskAdList();
+    Observable<BaseListDataResponse<TaskAdBean>> taskAdList();
 
     /**
      * @return io.reactivex.Observable<com.dl.play.chat.data.source.http.response.BaseResponse>
@@ -543,7 +543,7 @@ public interface ApiService {
      */
     @Headers(RetrofitHeadersConfig.PlayChat_API_URL)
     @GET("api/v2/address/view")
-    Observable<BaseDataResponse<AddressEntity>> getAddress(@Query("id") Integer id);
+    Observable<BaseDataResponse<AddressBean>> getAddress(@Query("id") Integer id);
 
     /**
      * @return io.reactivex.Observable<com.dl.play.chat.data.source.http.response.BaseListDataResponse < com.dl.play.chat.entity.AddressEntity>>
@@ -554,7 +554,7 @@ public interface ApiService {
      */
     @Headers(RetrofitHeadersConfig.PlayChat_API_URL)
     @GET("api/v2/address")
-    Observable<BaseListDataResponse<AddressEntity>> getAddressList(@Query("page") Integer page);
+    Observable<BaseListDataResponse<AddressBean>> getAddressList(@Query("page") Integer page);
 
     /**
      * @return io.reactivex.Observable<com.dl.play.chat.data.source.http.response.BaseResponse>
@@ -600,7 +600,7 @@ public interface ApiService {
      */
     @Headers(RetrofitHeadersConfig.PlayChat_API_URL)
     @GET("api/v2/exchange")
-    Observable<BaseListDataResponse<ExchangeEntity>> qryExchange(@Query("page") Integer page, @Query("status") Integer status);
+    Observable<BaseListDataResponse<ExchangeBean>> qryExchange(@Query("page") Integer page, @Query("status") Integer status);
 
     /**
      * @return io.reactivex.Observable<com.dl.play.chat.data.source.http.response.BaseResponse>
@@ -622,7 +622,7 @@ public interface ApiService {
      */
     @Headers(RetrofitHeadersConfig.PlayChat_API_URL)
     @GET("api/v2/bonusGoods")
-    Observable<BaseListDataResponse<BonusGoodsEntity>> getBonusGoods(@Query("page") Integer page);
+    Observable<BaseListDataResponse<BonusGoodsBean>> getBonusGoods(@Query("page") Integer page);
 
     /**
      * @return io.reactivex.Observable<com.dl.play.chat.data.source.http.response.BaseResponse>
@@ -633,7 +633,7 @@ public interface ApiService {
      */
     @Headers(RetrofitHeadersConfig.PlayChat_API_URL)
     @GET("api/v2/bonus")
-    Observable<BaseListDataResponse<GoldDetailEntity>> getGoldList(@Query("page") Integer page);
+    Observable<BaseListDataResponse<GoldDetailBean>> getGoldList(@Query("page") Integer page);
 
     /**
      * @return io.reactivex.Observable<com.dl.play.chat.data.source.http.response.BaseResponse>
@@ -653,7 +653,7 @@ public interface ApiService {
      */
     @Headers(RetrofitHeadersConfig.PlayChat_API_URL)
     @POST("api/v4/task/receive")
-    Observable<BaseDataResponse<TaskRewardReceiveEntity>> TaskRewardReceive(@Query("slug") String key);
+    Observable<BaseDataResponse<TaskRewardReceiveBean>> TaskRewardReceive(@Query("slug") String key);
 
     /**
      * @return io.reactivex.Observable<com.dl.play.chat.data.source.http.response.BaseDataResponse < com.dl.play.chat.entity.TaskConfigListEntity>>
@@ -664,10 +664,10 @@ public interface ApiService {
      */
     @Headers(RetrofitHeadersConfig.PlayChat_API_URL)
     @GET("api/v4/task/list")
-    Observable<BaseDataResponse<List<TaskConfigItemEntity>>> getTaskListConfig();
+    Observable<BaseDataResponse<List<TaskConfigItemBean>>> getTaskListConfig();
 
     /**
-     * @return io.reactivex.Observable<com.dl.play.chat.data.source.http.response.BaseDataResponse < TaskConfigEntity>>
+     * @return io.reactivex.Observable<com.dl.play.chat.data.source.http.response.BaseDataResponse < TaskConfigBean>>
      * @Desc TODO(获取任务中心配置)
      * @author 彭石林
      * @parame []
@@ -675,7 +675,7 @@ public interface ApiService {
      */
     @Headers(RetrofitHeadersConfig.PlayChat_API_URL)
     @GET("api/v4/task")
-    Observable<BaseDataResponse<TaskConfigEntity>> getTaskConfig();
+    Observable<BaseDataResponse<TaskConfigBean>> getTaskConfig();
 
     /**
      * @return io.reactivex.Observable<com.dl.play.chat.data.source.http.response.BaseDataResponse < com.dl.play.chat.entity.EjectSignInEntity>>
@@ -686,7 +686,7 @@ public interface ApiService {
      */
     @Headers(RetrofitHeadersConfig.PlayChat_API_URL)
     @POST("api/v4/signIn")
-    Observable<BaseDataResponse<EjectSignInEntity>> reportEjectSignIn();
+    Observable<BaseDataResponse<EjectSignInBean>> reportEjectSignIn();
 
     /**
      * @return io.reactivex.Observable<com.dl.play.chat.data.source.http.response.BaseDataResponse < com.dl.play.chat.entity.EjectEntity>>
@@ -697,7 +697,7 @@ public interface ApiService {
      */
     @Headers(RetrofitHeadersConfig.PlayChat_API_URL)
     @GET("api/v2/signIn/eject")
-    Observable<BaseDataResponse<EjectEntity>> getEjectconfig();
+    Observable<BaseDataResponse<EjectBean>> getEjectconfig();
 
     /*=====================================================任务中心相关接口=================================================*/
 
@@ -734,7 +734,7 @@ public interface ApiService {
      */
     @POST("calling/userLevel/adjustPrice")
     @Headers("Content-Type: application/json")
-    Observable<BaseDataResponse<LevelApiEntity>> adjustLevelPrice(@Body RequestBody requestBody);
+    Observable<BaseDataResponse<LevelApiBean>> adjustLevelPrice(@Body RequestBody requestBody);
 
     /**
      * @return io.reactivex.Observable<com.dl.play.chat.data.source.http.response.BaseDataResponse < com.dl.play.chat.entity.UserLevelPageInfoEntity>>
@@ -744,7 +744,7 @@ public interface ApiService {
      * @Date 2022/6/21
      */
     @GET("/calling/userLevel/getUserLevelPageInfo")
-    Observable<BaseDataResponse<LevelPageInfoEntity>> getUserLevelPageInfo();
+    Observable<BaseDataResponse<LevelPageInfoBean>> getUserLevelPageInfo();
 
     /**
     * @Desc TODO(根据邮箱发送验证码)
@@ -782,7 +782,7 @@ public interface ApiService {
     */
     @FormUrlEncoded
     @POST("api/email/login")
-    Observable<BaseDataResponse<UserDataEntity>> loginEmail(
+    Observable<BaseDataResponse<UserDataBean>> loginEmail(
             @Field("email")String email, //邮箱账号
             @Field("code") String code, //验证码/密码
             @Field("type") Integer type //1验证码登陆 2密码登陆
@@ -796,7 +796,7 @@ public interface ApiService {
      * @return
      */
     @GET("/calling/getCallingStatus")
-    Observable<BaseDataResponse<CallingStatusEntity>> getCallingStatus(
+    Observable<BaseDataResponse<CallingStatusBean>> getCallingStatus(
             @Query("roomId") Integer roomId //房间号
     );
 
@@ -807,7 +807,7 @@ public interface ApiService {
      * @return
      */
     @GET("/calling/getRoomStatus")
-    Observable<BaseDataResponse<CallingStatusEntity>> getRoomStatus(
+    Observable<BaseDataResponse<CallingStatusBean>> getRoomStatus(
             @Query("roomId") Integer roomId //房间号
     );
 
@@ -820,7 +820,7 @@ public interface ApiService {
      */
     @FormUrlEncoded
     @POST("api/im/transUser")
-    Observable<BaseDataResponse<IMTransUserEntity>> transUserIM(@Field("imId") String IMUserId);
+    Observable<BaseDataResponse<IMTransUserBean>> transUserIM(@Field("imId") String IMUserId);
 
 
     /**
@@ -841,7 +841,7 @@ public interface ApiService {
      * @Date 2022/3/21
      */
     @GET("calling/userAccount/getTotalCoins")
-    Observable<BaseDataResponse<ChatDetailCoinEntity>> getTotalCoins(@Query("dismissRoom") Integer dismissRoom);
+    Observable<BaseDataResponse<ChatDetailCoinBean>> getTotalCoins(@Query("dismissRoom") Integer dismissRoom);
 
     /**
      * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseResponse>
@@ -871,7 +871,7 @@ public interface ApiService {
      * @Date 2022/1/21
      */
     @GET("/calling/albumImage/list")
-    Observable<BaseDataResponse<GamePhotoAlbumEntity>> getGamePhotoAlbumList(@Query("serverId") String serverId, @Query("roleId") String roleId);
+    Observable<BaseDataResponse<GamePhotoAlbumBean>> getGamePhotoAlbumList(@Query("serverId") String serverId, @Query("roleId") String roleId);
 
     /**
      * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseResponse>
@@ -907,7 +907,7 @@ public interface ApiService {
      */
     @FormUrlEncoded
     @POST("api/auth/login")
-    Observable<BaseDataResponse<UserDataEntity>> authLoginPost(
+    Observable<BaseDataResponse<UserDataBean>> authLoginPost(
             @Field("id") String id,
             @Field("type") String type
     );
@@ -933,7 +933,7 @@ public interface ApiService {
      */
     @FormUrlEncoded
     @POST("api/order")
-    Observable<BaseDataResponse<CreateOrderEntity>> createChatDetailOrder(
+    Observable<BaseDataResponse<CreateOrderBean>> createChatDetailOrder(
             @Field("id") Integer id,
             @Field("type") Integer type,
             @Field("pay_type") Integer payType,
@@ -949,7 +949,7 @@ public interface ApiService {
      * @Date 2021/12/29
      */
     @GET("api/refundMsg")
-    Observable<BaseDataResponse<PriceConfigEntity.Current>> getMaleRefundMsg(@Query("to_user_id") Integer toUserId, @Query("type") Integer type);
+    Observable<BaseDataResponse<PriceConfigBean.Current>> getMaleRefundMsg(@Query("to_user_id") Integer toUserId, @Query("type") Integer type);
 
 
     /**
@@ -993,7 +993,7 @@ public interface ApiService {
      * @Date 2021/12/20
      */
     @GET("api/priceConfig")
-    Observable<BaseDataResponse<PriceConfigEntity>> getPriceConfig(@Query("to_user_id") Integer to_user_id);
+    Observable<BaseDataResponse<PriceConfigBean>> getPriceConfig(@Query("to_user_id") Integer to_user_id);
 
     /**
      * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseDataResponse < com.dl.playcc.entity.CallingInfoEntity.SayHiList>>
@@ -1003,7 +1003,7 @@ public interface ApiService {
      * @Date 2021/12/18
      */
     @GET("/calling/listSayHis")
-    Observable<BaseDataResponse<CallingInfoEntity.SayHiList>> getSayHiList(@Query("page") Integer page, @Query("perPage") Integer perPage);
+    Observable<BaseDataResponse<CallingInfoBean.SayHiList>> getSayHiList(@Query("page") Integer page, @Query("perPage") Integer perPage);
 
     /**
      * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseDataResponse < com.dl.playcc.entity.CallingInfoEntity>>
@@ -1013,7 +1013,7 @@ public interface ApiService {
      * @Date 2021/12/13
      */
     @GET("/calling/getCallingInfo/v2")
-    Observable<BaseDataResponse<CallingInfoEntity>> getCallingInfo(
+    Observable<BaseDataResponse<CallingInfoBean>> getCallingInfo(
             @Query("roomId") Integer roomId, //房间号
             @Query("callingType") Integer callingType, //通话类型：1=语音，2=视频
             @Query("inviterImId") String inviterImId, //拔打人用户ID
@@ -1085,14 +1085,14 @@ public interface ApiService {
      * @Date 2021/12/7
      */
     @GET("api/gift")
-    Observable<BaseDataResponse<GiftBagEntity>> getBagGiftInfo();
+    Observable<BaseDataResponse<GiftBagBean>> getBagGiftInfo();
 
     /**
      * 刷新im凭证
      * @return
      */
     @GET("api/flushSign")
-    Observable<BaseDataResponse<ImUserSigEntity>> flushSign();
+    Observable<BaseDataResponse<ImUserSigBean>> flushSign();
 
     /**
      * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseDataResponse>
@@ -1102,7 +1102,7 @@ public interface ApiService {
      * @Date 2021/12/6
      */
     @GET("calling/userProfit/getUserProfitPageInfo")
-    Observable<BaseDataResponse<UserProfitPageEntity>> getUserProfitPageInfo(@Query("currentUserId") Long currentUserId, @Query("page") Integer page, @Query("perPage") Integer perPage);
+    Observable<BaseDataResponse<UserProfitPageBean>> getUserProfitPageInfo(@Query("currentUserId") Long currentUserId, @Query("page") Integer page, @Query("perPage") Integer perPage);
 
     /**
      * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseDataResponse < com.dl.playcc.entity.CoinWalletEntity>>
@@ -1112,7 +1112,7 @@ public interface ApiService {
      * @Date 2021/12/6
      */
     @GET("api/account")
-    Observable<BaseDataResponse<CoinWalletEntity>> getUserAccount();
+    Observable<BaseDataResponse<CoinWalletBean>> getUserAccount();
 
     /**
      * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseDataResponse < com.dl.playcc.entity.GameCoinWalletEntity>>
@@ -1121,7 +1121,7 @@ public interface ApiService {
      * @parame []
      */
     @GET("calling/userAccount/getUserAccountPageInfo")
-    Observable<BaseDataResponse<GameCoinWalletEntity>> getUserAccountPageInfo();
+    Observable<BaseDataResponse<GameCoinWalletBean>> getUserAccountPageInfo();
 
     /**
      * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseDataResponse < com.dl.playcc.entity.BubbleEntity>>
@@ -1131,7 +1131,7 @@ public interface ApiService {
      * @Date 2021/12/2
      */
     @GET("api/bubble")
-    Observable<BaseDataResponse<BubbleEntity>> getBubbleEntity();
+    Observable<BaseDataResponse<BubbleBean>> getBubbleEntity();
 
     /**
      * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseDataResponse < com.dl.playcc.entity.AccostEntity>>
@@ -1141,7 +1141,7 @@ public interface ApiService {
      * @Date 2021/11/30
      */
     @GET("api/accost")
-    Observable<BaseDataResponse<AccostEntity>> getAccostList(@Query("page") Integer page);
+    Observable<BaseDataResponse<AccostBean>> getAccostList(@Query("page") Integer page);
 
     /**
      * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseResponse>
@@ -1179,7 +1179,7 @@ public interface ApiService {
      * @Date 2021/10/26
      */
     @GET("friendly/v4/plaza/info")
-    Observable<BaseDataResponse<BroadcastListEntity>> getBroadcastHome(
+    Observable<BaseDataResponse<BroadcastListBean>> getBroadcastHome(
             @Query("sex") Integer sex,
             @Query("city_id") Integer city_id,
             @Query("game_channel") Integer game_id,
@@ -1197,7 +1197,7 @@ public interface ApiService {
      * @Date 2021/10/22
      */
     @GET("api/v2/user/rule")
-    Observable<BaseDataResponse<List<MessageRuleEntity>>> getMessageRule();
+    Observable<BaseDataResponse<List<MessageRuleBean>>> getMessageRule();
 
     /**
      * 屏蔽關鍵字
@@ -1215,7 +1215,7 @@ public interface ApiService {
      * @Date 2021/10/22
      */
     @GET("api/user/im/image")
-    Observable<BaseDataResponse<PhotoAlbumEntity>> getPhotoAlbum(@Query("user_id") Integer user_id);
+    Observable<BaseDataResponse<PhotoAlbumBean>> getPhotoAlbum(@Query("user_id") Integer user_id);
 
     /**
      * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseResponse>
@@ -1246,7 +1246,7 @@ public interface ApiService {
      * @Date 2021/10/21
      */
     @GET("api/v2/userSound")
-    Observable<BaseListDataResponse<SoundEntity>> getUserSound(@Query("page") Integer page);
+    Observable<BaseListDataResponse<SoundBean>> getUserSound(@Query("page") Integer page);
 
     /**
      * 发布节目
@@ -1320,7 +1320,7 @@ public interface ApiService {
      * @return
      */
     @GET("api/v2/broadcast/news")
-    Observable<BaseListDataResponse<BroadcastEntity>> broadcastAll(@Query("page") Integer page);
+    Observable<BaseListDataResponse<BroadcastBean>> broadcastAll(@Query("page") Integer page);
 
     /**
      * 商品列表
@@ -1329,7 +1329,7 @@ public interface ApiService {
      * @return
      */
     @GET("api/goods")
-    Observable<BaseDataResponse<List<GoodsEntity>>> pointsGoodList(@Query("type") String type);
+    Observable<BaseDataResponse<List<GoodsBean>>> pointsGoodList(@Query("type") String type);
 
     /**
      * 推送状态提交 type  1今日 2钻石 3VIP
@@ -1358,7 +1358,7 @@ public interface ApiService {
      * @Date 2021/9/14
      */
     @GET("api/v2/user/recharge")
-    Observable<BaseListDataResponse<TaskAdEntity>> rechargeVipList();
+    Observable<BaseListDataResponse<TaskAdBean>> rechargeVipList();
 
     /**
      * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseDataResponse < java.util.Map < java.lang.String, java.lang.String>>>
@@ -1371,14 +1371,14 @@ public interface ApiService {
     Observable<BaseDataResponse<Map<String, String>>> isOnlineUser(@Query("user_id") String userId);
 
     /**
-     * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseDataResponse < BrowseNumberEntity>>
+     * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseDataResponse < BrowseNumberBean>>
      * @Desc TODO(新增谁看我及粉丝数)
      * @author 彭石林
      * @parame []
      * @Date 2021/8/4
      */
     @GET("friendly/v4/user/peopleNumber")
-    Observable<BaseDataResponse<BrowseNumberEntity>> newsBrowseNumber();
+    Observable<BaseDataResponse<BrowseNumberBean>> newsBrowseNumber();
 
     /**
      * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseListDataResponse < com.dl.playcc.entity.TraceEntity>>
@@ -1388,7 +1388,7 @@ public interface ApiService {
      * @Date 2021/8/4
      */
     @GET("api/collect/toBrowse")
-    Observable<BaseListDataResponse<TraceEntity>> toBrowse(@Query("page") Integer page);
+    Observable<BaseListDataResponse<TraceBean>> toBrowse(@Query("page") Integer page);
 
     /**
      * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseListDataResponse < com.dl.playcc.entity.TraceEntity>>
@@ -1398,17 +1398,17 @@ public interface ApiService {
      * @Date 2021/8/3
      */
     @GET("api/collect/fans")
-    Observable<BaseListDataResponse<TraceEntity>> collectFans(@Query("page") Integer page);
+    Observable<BaseListDataResponse<TraceBean>> collectFans(@Query("page") Integer page);
 
     /**
-     * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseListDataResponse < TraceEntity>>
+     * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseListDataResponse < TraceBean>>
      * @Desc TODO(查询追踪列表)
      * @author 彭石林
      * @parame [page]
      * @Date 2021/8/3
      */
     @GET("api/collect")
-    Observable<BaseListDataResponse<TraceEntity>> collect(@Query("page") Integer page);
+    Observable<BaseListDataResponse<TraceBean>> collect(@Query("page") Integer page);
 
     /**
      * 主动上报用户当前定位信息。用于完善用户资料
@@ -1440,7 +1440,7 @@ public interface ApiService {
      */
     @FormUrlEncoded
     @POST("api/order")
-    Observable<BaseDataResponse<CreateOrderEntity>> createOrderUserDetail(
+    Observable<BaseDataResponse<CreateOrderBean>> createOrderUserDetail(
             @Field("id") Integer id,
             @Field("type") Integer type,
             @Field("pay_type") Integer payType,
@@ -1463,7 +1463,7 @@ public interface ApiService {
      * @return
      */
     @GET("api/v2/user/tag")
-    Observable<BaseDataResponse<TagEntity>> tag(@Query("to_user_id") String to_user_id);
+    Observable<BaseDataResponse<TagBean>> tag(@Query("to_user_id") String to_user_id);
 
     /**
      * 绑定用户关系
@@ -1494,7 +1494,7 @@ public interface ApiService {
      * @return
      */
     @POST("api/v2/user")
-    Observable<BaseDataResponse<UserDataEntity>> regUser(@Query("nickname") String nickname, @Query("avatar") String avatar, @Query("birthday") String birthday, @Query("sex") Integer sex, @Query("channel") String channel);
+    Observable<BaseDataResponse<UserDataBean>> regUser(@Query("nickname") String nickname, @Query("avatar") String avatar, @Query("birthday") String birthday, @Query("sex") Integer sex, @Query("channel") String channel);
 
     /**
      * 上报用户当前坐标
@@ -1515,7 +1515,7 @@ public interface ApiService {
      * Param []
      **/
     @GET("api/chat/text")
-    Observable<BaseDataResponse<SwiftMessageEntity>> getSwiftMessage(@Query("page") Integer page);
+    Observable<BaseDataResponse<SwiftMessageBean>> getSwiftMessage(@Query("page") Integer page);
 
     /**
      * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseResponse>
@@ -1550,7 +1550,7 @@ public interface ApiService {
      * Param [phone, code]
      **/
     @POST("api/v2/login")
-    Observable<BaseDataResponse<UserDataEntity>> v2Login(@Query("phone") String phone, @Query("code") String code, @Query("device_code") String device_code, @Query("region_code") String region_code);
+    Observable<BaseDataResponse<UserDataBean>> v2Login(@Query("phone") String phone, @Query("code") String code, @Query("device_code") String device_code, @Query("region_code") String region_code);
 
     /**
      * @return io.reactivex.Observable<com.dl.playcc.entity.VersionEntity>
@@ -1562,7 +1562,7 @@ public interface ApiService {
      * Param [client]
      **/
     @GET("friendly/version")
-    Observable<BaseDataResponse<VersionEntity>> detectionVersion(@Query("client") String client);
+    Observable<BaseDataResponse<VersionBean>> detectionVersion(@Query("client") String client);
 
     /**
      * GoogleMaps附近搜索
@@ -1603,7 +1603,7 @@ public interface ApiService {
     @Headers(RetrofitHeadersConfig.NO_TOKEN_CHECK)
     @FormUrlEncoded
     @POST("api/register")
-    Observable<BaseDataResponse<TokenEntity>> registerPost(
+    Observable<BaseDataResponse<TokenBean>> registerPost(
             @Field("phone") String phone,
             @Field("password") String password,
             @Field("code") String code
@@ -1631,7 +1631,7 @@ public interface ApiService {
     @Headers(RetrofitHeadersConfig.NO_TOKEN_CHECK)
     @FormUrlEncoded
     @POST("api/login")
-    Observable<BaseDataResponse<TokenEntity>> loginPost(
+    Observable<BaseDataResponse<TokenBean>> loginPost(
             @Field("phone") String phone,
             @Field("password") String password
     );
@@ -1649,7 +1649,7 @@ public interface ApiService {
      * @return
      */
     @GET("friendly/frist")
-    Observable<BaseListDataResponse<ParkItemEntity>> homeListGet(
+    Observable<BaseListDataResponse<ParkItemBean>> homeListGet(
             @Query("city_id") Integer cityId,
             @Query("type") Integer type,
             @Query("is_online") Integer isOnline,
@@ -1666,7 +1666,7 @@ public interface ApiService {
      * @return 邀请码版本 0原有版本 1新版本
      */
     @GET("friendly/user/info")
-    Observable<BaseDataResponse<UserInfoEntity>> getUserInfo(@Query("invite_version") Integer invite_version);
+    Observable<BaseDataResponse<UserInfoBean>> getUserInfo(@Query("invite_version") Integer invite_version);
 
     /**
      * 个人资料
@@ -1674,7 +1674,7 @@ public interface ApiService {
      * @return
      */
     @GET("friendly/user/data")
-    Observable<BaseDataResponse<UserDataEntity>> getUserData(@Query("invite_version") Integer invite_version);
+    Observable<BaseDataResponse<UserDataBean>> getUserData(@Query("invite_version") Integer invite_version);
 
     /**
      * 给用户加备注
@@ -1699,7 +1699,7 @@ public interface ApiService {
      * @return
      */
     @GET("api/user/remark")
-    Observable<BaseDataResponse<UserRemarkEntity>> getUserRemark(
+    Observable<BaseDataResponse<UserRemarkBean>> getUserRemark(
             @Query("user_id") Integer userId
     );
 
@@ -1755,7 +1755,7 @@ public interface ApiService {
      * @return
      */
     @GET("api/user/{id}")
-    Observable<BaseDataResponse<UserDetailEntity>> userMain(
+    Observable<BaseDataResponse<UserDetailBean>> userMain(
             @Path("id") int id,
             @Query("longitude") Double longitude,
             @Query("latitude") Double latitude
@@ -1769,7 +1769,7 @@ public interface ApiService {
      * @return
      */
     @GET("api/topical/{id}")
-    Observable<BaseDataResponse<TopicalListEntity>> topicalDetail(@Path("id") Integer id);
+    Observable<BaseDataResponse<TopicalListBean>> topicalDetail(@Path("id") Integer id);
 
     /**
      * 报名
@@ -1791,7 +1791,7 @@ public interface ApiService {
      * @return
      */
     @GET("api/blacklist")
-    Observable<BaseListDataResponse<BlackEntity>> getBlackList(@Query("page") Integer page);
+    Observable<BaseListDataResponse<BlackBean>> getBlackList(@Query("page") Integer page);
 
     /**
      * 加入黑名单
@@ -1832,7 +1832,7 @@ public interface ApiService {
      * @return
      */
     @GET("api/collect")
-    Observable<BaseListDataResponse<ParkItemEntity>> getCollectList(
+    Observable<BaseListDataResponse<ParkItemBean>> getCollectList(
             @Query("page") Integer page,
             @Query("latitude") Double latitude,
             @Query("longitude") Double longitude
@@ -1885,7 +1885,7 @@ public interface ApiService {
      * @return
      */
     @GET("api/news/{id}")
-    Observable<BaseDataResponse<NewsEntity>> newsDetail(@Path("id") Integer id);
+    Observable<BaseDataResponse<NewsBean>> newsDetail(@Path("id") Integer id);
 
     /**
      * 删除动态
@@ -1910,7 +1910,7 @@ public interface ApiService {
      * @return
      */
     @GET("api/v2/broadcast")
-    Observable<BaseListDataResponse<BroadcastEntity>> broadcast(
+    Observable<BaseListDataResponse<BroadcastBean>> broadcast(
             @Query("type") Integer type,
             @Query("theme_id") Integer theme_id,
             @Query("is_online") Integer is_online,
@@ -1925,7 +1925,7 @@ public interface ApiService {
      * @return
      */
     @GET("api/news")
-    Observable<BaseListDataResponse<NewsEntity>> getNewsList(
+    Observable<BaseListDataResponse<NewsBean>> getNewsList(
             @Query("user_id") Integer user_id,
             @Query("page") Integer page);
 
@@ -1937,7 +1937,7 @@ public interface ApiService {
      * @return
      */
     @GET("/api/topical")
-    Observable<BaseListDataResponse<TopicalListEntity>> getTopicalList(
+    Observable<BaseListDataResponse<TopicalListBean>> getTopicalList(
             @Query("user_id") Integer user_id,
             @Query("page") Integer page);
 
@@ -2002,7 +2002,7 @@ public interface ApiService {
      * @return
      */
     @GET("api/evaluate/{id}")
-    Observable<BaseDataResponse<StatusEntity>> evaluateStatus(
+    Observable<BaseDataResponse<StatusBean>> evaluateStatus(
             @Path("id") Integer userId
     );
 
@@ -2028,7 +2028,7 @@ public interface ApiService {
      * @return
      */
     @GET("api/evaluate")
-    Observable<BaseDataResponse<List<EvaluateEntity>>> evaluate(
+    Observable<BaseDataResponse<List<EvaluateBean>>> evaluate(
             @Query("user_id") Integer userId
     );
 
@@ -2052,7 +2052,7 @@ public interface ApiService {
      */
     @FormUrlEncoded
     @POST("api/user/isChat")
-    Observable<BaseDataResponse<IsChatEntity>> isChat(
+    Observable<BaseDataResponse<IsChatBean>> isChat(
             @Field("user_id") Integer userId
     );
 
@@ -2098,7 +2098,7 @@ public interface ApiService {
      * @return
      */
     @GET("api/config")
-    Observable<BaseDataResponse<AllConfigEntity>> getAllConfig();
+    Observable<BaseDataResponse<AllConfigBean>> getAllConfig();
 
     /**
      * 获取系统配置
@@ -2107,7 +2107,7 @@ public interface ApiService {
      * @return
      */
     @GET("api/config")
-    Observable<BaseDataResponse<List<ConfigItemEntity>>> getSystemConfig(
+    Observable<BaseDataResponse<List<ConfigItemBean>>> getSystemConfig(
             @Query("type") String type
     );
 
@@ -2119,7 +2119,7 @@ public interface ApiService {
      */
     @GET("api/config")
 //@GET("api/config")
-    Observable<BaseDataResponse<List<OccupationConfigItemEntity>>> getOccupationConfig(
+    Observable<BaseDataResponse<List<OccupationConfigItemBean>>> getOccupationConfig(
             @Query("type") String type
     );
 
@@ -2130,7 +2130,7 @@ public interface ApiService {
      * @return
      */
     @GET("api/config")
-    Observable<BaseDataResponse<List<ConfigItemEntity>>> getThemeConfig(
+    Observable<BaseDataResponse<List<ConfigItemBean>>> getThemeConfig(
             @Query("type") String type
     );
 
@@ -2141,7 +2141,7 @@ public interface ApiService {
      * @return
      */
     @GET("api/config")
-    Observable<BaseDataResponse<List<RadioTwoFilterItemEntity>>> getGameCity(
+    Observable<BaseDataResponse<List<RadioTwoFilterItemBean>>> getGameCity(
             @Query("type") String type
     );
 
@@ -2167,7 +2167,7 @@ public interface ApiService {
      * @return
      */
     @GET("api/goods")
-    Observable<BaseDataResponse<DiamondInfoEntity>> goods(
+    Observable<BaseDataResponse<DiamondInfoBean>> goods(
             @Query("type") String type);
 
 
@@ -2178,7 +2178,7 @@ public interface ApiService {
      * @return
      */
     @GET("api/goods")
-    Observable<BaseDataResponse<VipInfoEntity>> vipPackages(
+    Observable<BaseDataResponse<VipInfoBean>> vipPackages(
             @Query("type") String type);
 
 
@@ -2238,7 +2238,7 @@ public interface ApiService {
      * @return
      */
     @GET("api/user/AlbumImage")
-    Observable<BaseListDataResponse<AlbumPhotoEntity>> albumImage(
+    Observable<BaseListDataResponse<AlbumPhotoBean>> albumImage(
             @Query("user_id") Integer userId,
             @Query("type") Integer type
     );
@@ -2285,7 +2285,7 @@ public interface ApiService {
      * @return
      */
     @DELETE("api/user/AlbumImage/{id}")
-    Observable<BaseDataResponse<List<AlbumPhotoEntity>>> delAlbumImage(
+    Observable<BaseDataResponse<List<AlbumPhotoBean>>> delAlbumImage(
             @Path("id") Integer id
     );
 
@@ -2297,7 +2297,7 @@ public interface ApiService {
      * @return
      */
     @GET("api/aliyun/verifyResult/{BizId}")
-    Observable<BaseDataResponse<FaceVerifyResultEntity>> faceVerifyResult(
+    Observable<BaseDataResponse<FaceVerifyResultBean>> faceVerifyResult(
             @Path("BizId") String bizId
     );
 
@@ -2307,7 +2307,7 @@ public interface ApiService {
      * @return
      */
     @GET("api/user/isCertification")
-    Observable<BaseDataResponse<StatusEntity>> faceIsCertification();
+    Observable<BaseDataResponse<StatusBean>> faceIsCertification();
 
     /**
      * 获取用户隐私设置
@@ -2315,7 +2315,7 @@ public interface ApiService {
      * @return
      */
     @GET("friendly/user/private")
-    Observable<BaseDataResponse<PrivacyEntity>> getPrivacy();
+    Observable<BaseDataResponse<PrivacyBean>> getPrivacy();
 
     /**
      * 保存用户隐私设置
@@ -2376,7 +2376,7 @@ public interface ApiService {
      * @return
      */
     @GET("api/apply_goddess/show")
-    Observable<BaseDataResponse<StatusEntity>> applyGoddessResult();
+    Observable<BaseDataResponse<StatusBean>> applyGoddessResult();
 
     /**
      * 重置密码
@@ -2413,7 +2413,7 @@ public interface ApiService {
      * @return
      */
     @GET("api/userAccount/account")
-    Observable<BaseDataResponse<CashWalletEntity>> cashWallet();
+    Observable<BaseDataResponse<CashWalletBean>> cashWallet();
 
     /**
      * 币账户
@@ -2421,7 +2421,7 @@ public interface ApiService {
      * @return
      */
     @GET("api/userCoin/account")
-    Observable<BaseDataResponse<CoinWalletEntity>> coinWallet();
+    Observable<BaseDataResponse<CoinWalletBean>> coinWallet();
 
     /**
      * 设置提现账号
@@ -2472,7 +2472,7 @@ public interface ApiService {
      * @return
      */
     @GET("api/message/apply")
-    Observable<BaseListDataResponse<ApplyMessageEntity>> getMessageApply(
+    Observable<BaseListDataResponse<ApplyMessageBean>> getMessageApply(
             @Query("page") Integer page
     );
 
@@ -2482,7 +2482,7 @@ public interface ApiService {
      * @return
      */
     @GET("api/message/broadcast")
-    Observable<BaseListDataResponse<BoradCastMessageEntity>> getMessageBoradcast(
+    Observable<BaseListDataResponse<BoradCastMessageBean>> getMessageBoradcast(
             @Query("page") Integer page
     );
 
@@ -2492,7 +2492,7 @@ public interface ApiService {
      * @return
      */
     @GET("api/message/comment")
-    Observable<BaseListDataResponse<CommentMessageEntity>> getMessageComment(
+    Observable<BaseListDataResponse<CommentMessageBean>> getMessageComment(
             @Query("page") Integer page
     );
 
@@ -2502,7 +2502,7 @@ public interface ApiService {
      * @return
      */
     @GET("api/message/evaluate")
-    Observable<BaseListDataResponse<EvaluateMessageEntity>> getMessageEvaluate(
+    Observable<BaseListDataResponse<EvaluateMessageBean>> getMessageEvaluate(
             @Query("page") Integer page
     );
 
@@ -2512,7 +2512,7 @@ public interface ApiService {
      * @return
      */
     @GET("api/message/give")
-    Observable<BaseListDataResponse<GiveMessageEntity>> getMessageGive(
+    Observable<BaseListDataResponse<GiveMessageBean>> getMessageGive(
             @Query("page") Integer page
     );
 
@@ -2522,7 +2522,7 @@ public interface ApiService {
      * @return
      */
     @GET("api/message/sign")
-    Observable<BaseListDataResponse<SignMessageEntity>> getMessageSign(
+    Observable<BaseListDataResponse<SignMessageBean>> getMessageSign(
             @Query("page") Integer page
     );
 
@@ -2532,7 +2532,7 @@ public interface ApiService {
      * @return
      */
     @GET("api/message/system")
-    Observable<BaseListDataResponse<SystemMessageEntity>> getMessageSystem(
+    Observable<BaseListDataResponse<SystemMessageBean>> getMessageSystem(
             @Query("page") Integer page
     );
 
@@ -2542,7 +2542,7 @@ public interface ApiService {
      * @return
      */
     @GET("api/message/profit")
-    Observable<BaseListDataResponse<ProfitMessageEntity>> getMessageProfit(
+    Observable<BaseListDataResponse<ProfitMessageBean>> getMessageProfit(
             @Query("page") Integer page
     );
 
@@ -2552,7 +2552,7 @@ public interface ApiService {
      * @return
      */
     @GET("friendly/chat")
-    Observable<BaseDataResponse<List<MessageGroupEntity>>> getMessageList();
+    Observable<BaseDataResponse<List<MessageGroupBean>>> getMessageList();
 
 
     /**
@@ -2664,7 +2664,7 @@ public interface ApiService {
      * @return
      */
     @GET("api/user/push")
-    Observable<BaseDataResponse<PushSettingEntity>> getPushSetting();
+    Observable<BaseDataResponse<PushSettingBean>> getPushSetting();
 
     /**
      * 保存推送设置
@@ -2735,7 +2735,7 @@ public interface ApiService {
      */
     @FormUrlEncoded
     @POST("api/order")
-    Observable<BaseDataResponse<CreateOrderEntity>> createOrder(
+    Observable<BaseDataResponse<CreateOrderBean>> createOrder(
             @Field("id") Integer id,
             @Field("type") Integer type,
             @Field("pay_type") Integer payType,
@@ -2761,7 +2761,7 @@ public interface ApiService {
      * @return
      */
     @GET("api/news/give/{id}")
-    Observable<BaseListDataResponse<BaseUserBeanEntity>> getNewsGiveList(
+    Observable<BaseListDataResponse<BaseUserBeanBean>> getNewsGiveList(
             @Path("id") Integer id,
             @Query("page") Integer page
     );
@@ -2773,7 +2773,7 @@ public interface ApiService {
      * @return
      */
     @GET("api/topical/give/{id}")
-    Observable<BaseListDataResponse<BaseUserBeanEntity>> getTopicalGiveList(
+    Observable<BaseListDataResponse<BaseUserBeanBean>> getTopicalGiveList(
             @Path("id") Integer id,
             @Query("page") Integer page
     );
@@ -2806,7 +2806,7 @@ public interface ApiService {
      */
     @FormUrlEncoded
     @POST("api/redPackage/send")
-    Observable<BaseDataResponse<ChatRedPackageEntity>> sendCoinRedPackage(
+    Observable<BaseDataResponse<ChatRedPackageBean>> sendCoinRedPackage(
             @Field("user_id") Integer userId,
             @Field("money") Integer money,
             @Field("desc") String desc
@@ -2819,7 +2819,7 @@ public interface ApiService {
      * @return
      */
     @GET("api/redPackage/{id}")
-    Observable<BaseDataResponse<ChatRedPackageEntity>> getCoinRedPackage(
+    Observable<BaseDataResponse<ChatRedPackageBean>> getCoinRedPackage(
             @Path("id") int id
     );
 
@@ -2841,7 +2841,7 @@ public interface ApiService {
      * @return
      */
     @GET("api/userCoin")
-    Observable<BaseListDataResponse<UserCoinItemEntity>> userCoinEarnings(
+    Observable<BaseListDataResponse<UserCoinItemBean>> userCoinEarnings(
             @Query("page") int page
     );
 
@@ -2852,7 +2852,7 @@ public interface ApiService {
      * @return
      */
     @GET("api/user/isConnection")
-    Observable<BaseDataResponse<UserConnMicStatusEntity>> userIsConnMic(
+    Observable<BaseDataResponse<UserConnMicStatusBean>> userIsConnMic(
             @Query("user_id") int userId
     );
 
@@ -2924,12 +2924,12 @@ public interface ApiService {
      */
     @FormUrlEncoded
     @POST("api/news/publishCheck")
-    Observable<BaseDataResponse<StatusEntity>> publishCheck(
+    Observable<BaseDataResponse<StatusBean>> publishCheck(
             @Field("type") int type
     );
 
     @GET("api/message/unread")
-    Observable<BaseDataResponse<UnReadMessageNumEntity>> getUnreadMessageNum();
+    Observable<BaseDataResponse<UnReadMessageNumBean>> getUnreadMessageNum();
 
 
     /**

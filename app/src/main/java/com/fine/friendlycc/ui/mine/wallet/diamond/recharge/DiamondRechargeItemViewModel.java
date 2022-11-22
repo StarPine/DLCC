@@ -7,7 +7,7 @@ import androidx.databinding.ObservableField;
 
 import com.blankj.utilcode.util.Utils;
 import com.fine.friendlycc.R;
-import com.fine.friendlycc.entity.GoodsEntity;
+import com.fine.friendlycc.bean.GoodsBean;
 import com.fine.friendlycc.utils.ExceptionReportUtils;
 
 import me.goldze.mvvmhabit.base.MultiItemViewModel;
@@ -20,10 +20,10 @@ import me.goldze.mvvmhabit.binding.command.BindingCommand;
  */
 public class DiamondRechargeItemViewModel extends MultiItemViewModel<DiamondRechargeViewModel> {
 
-    public ObservableField<GoodsEntity> itemEntity = new ObservableField<>();
+    public ObservableField<GoodsBean> itemEntity = new ObservableField<>();
 
 
-    public DiamondRechargeItemViewModel(@NonNull DiamondRechargeViewModel viewModel, GoodsEntity itemEntity) {
+    public DiamondRechargeItemViewModel(@NonNull DiamondRechargeViewModel viewModel, GoodsBean itemEntity) {
         super(viewModel);
         this.itemEntity.set(itemEntity);
     }
@@ -38,7 +38,7 @@ public class DiamondRechargeItemViewModel extends MultiItemViewModel<DiamondRech
         }
     });
 
-    public String getPriceText(GoodsEntity itemEntity){
+    public String getPriceText(GoodsBean itemEntity){
         return itemEntity.getSymbol() + itemEntity.getSalePrice();
     }
 

@@ -15,11 +15,11 @@ import com.fine.friendlycc.R;
 import com.fine.friendlycc.data.AppRepository;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseDataResponse;
-import com.fine.friendlycc.entity.LevelApiEntity;
-import com.fine.friendlycc.entity.LevelCoinOptionInfo;
-import com.fine.friendlycc.entity.LevelCoinSelectInfo;
-import com.fine.friendlycc.entity.LevelPageInfoEntity;
-import com.fine.friendlycc.entity.LevelSelectInfoEntity;
+import com.fine.friendlycc.bean.LevelApiBean;
+import com.fine.friendlycc.bean.LevelCoinOptionInfo;
+import com.fine.friendlycc.bean.LevelCoinSelectInfo;
+import com.fine.friendlycc.bean.LevelPageInfoBean;
+import com.fine.friendlycc.bean.LevelSelectInfoBean;
 import com.fine.friendlycc.utils.ApiUitl;
 import com.fine.friendlycc.viewmodel.BaseViewModel;
 
@@ -55,7 +55,7 @@ public class LevelEquityViewModel extends BaseViewModel<AppRepository> {
 
     public ObservableField<String> currentTextHint = new ObservableField<>();
     public ObservableField<String> hintTv = new ObservableField<>();
-    public ObservableField<LevelPageInfoEntity.UserLevelInfo> userLevelInfo = new ObservableField<>();
+    public ObservableField<LevelPageInfoBean.UserLevelInfo> userLevelInfo = new ObservableField<>();
 
     public ObservableField<String> Tv_ChatCoins = new ObservableField<>();
     public ObservableField<String> Tv_ChatProfits = new ObservableField<>();
@@ -78,8 +78,8 @@ public class LevelEquityViewModel extends BaseViewModel<AppRepository> {
     public LevelCoinSelectInfo levelVideoSelectInfo;
     public LevelCoinSelectInfo levelAudioSelectInfo;
 
-    public LevelSelectInfoEntity levelSelectInfoEntity;
-    public List<LevelSelectInfoEntity.LevelTips> listLevelTips;
+    public LevelSelectInfoBean levelSelectInfoEntity;
+    public List<LevelSelectInfoBean.LevelTips> listLevelTips;
 
     public int lastTitleClickIdx = -1;
 
@@ -156,17 +156,17 @@ public class LevelEquityViewModel extends BaseViewModel<AppRepository> {
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(disposable -> showHUD())
-                .subscribe(new BaseObserver<BaseDataResponse<LevelPageInfoEntity>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<LevelPageInfoBean>>() {
                     @Override
-                    public void onSuccess(BaseDataResponse<LevelPageInfoEntity> responseData) {
-                        LevelPageInfoEntity LevelPageInfoEntity = responseData.getData();
-                        hintTv.set(LevelPageInfoEntity.getModifyRestrictionTips());
-                        levelSelectInfoEntity = LevelPageInfoEntity.getLevelSelectInfo();
+                    public void onSuccess(BaseDataResponse<LevelPageInfoBean> responseData) {
+                        LevelPageInfoBean LevelPageInfoBean = responseData.getData();
+                        hintTv.set(LevelPageInfoBean.getModifyRestrictionTips());
+                        levelSelectInfoEntity = LevelPageInfoBean.getLevelSelectInfo();
                         //权益列表
-                        List<LevelSelectInfoEntity.LevelInfo> levelInfoList = levelSelectInfoEntity.getLevelList();
+                        List<LevelSelectInfoBean.LevelInfo> levelInfoList = levelSelectInfoEntity.getLevelList();
                         listLevelTips = levelSelectInfoEntity.getLevelTipsList();
-                        LevelPageInfoEntity.UserLevelInfo $UserLevelInfo = LevelPageInfoEntity.getUserLevelInfo();
-                        userLevelInfo.set(LevelPageInfoEntity.getUserLevelInfo());
+                        LevelPageInfoBean.UserLevelInfo $UserLevelInfo = LevelPageInfoBean.getUserLevelInfo();
+                        userLevelInfo.set(LevelPageInfoBean.getUserLevelInfo());
                         //讯息每条收益
                         Tv_ChatCoins.set(String.format(StringUtils.getString(R.string.fragment_level_text_chat1), $UserLevelInfo.getChatCoins()));
                         //讯息水晶奖励
@@ -182,7 +182,7 @@ public class LevelEquityViewModel extends BaseViewModel<AppRepository> {
                         Tv_ChatMoney.set(String.valueOf($UserLevelInfo.getChatProfits()));
                         Tv_VoiceMoney.set(String.valueOf($UserLevelInfo.getVoiceProfits()));
                         Tv_VideoMoney.set(String.valueOf($UserLevelInfo.getVideoProfits()));
-                        for (LevelSelectInfoEntity.LevelTips levelTips : listLevelTips) {
+                        for (LevelSelectInfoBean.LevelTips levelTips : listLevelTips) {
                             if (levelTips.level == levelSelectInfoEntity.getUserLevel()) {
                                 currentTextHint.set(levelTips.getTips());
                                 break;
@@ -202,7 +202,7 @@ public class LevelEquityViewModel extends BaseViewModel<AppRepository> {
                         }
                         observableListTitle.addAll(levelEquityItemTitleViewModelList);
                         observableListBanner.addAll(levelEquityItemTitleViewModelList);
-                        uc.levelInfoPageInfoEvent.setValue(LevelPageInfoEntity);
+                        uc.levelInfoPageInfoEvent.setValue(LevelPageInfoBean);
                         uc.scrollBannerIndex.setValue(lastTitleClickIdx);
                     }
 
@@ -223,10 +223,10 @@ public class LevelEquityViewModel extends BaseViewModel<AppRepository> {
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(disposable -> showHUD())
-                .subscribe(new BaseObserver<BaseDataResponse<LevelApiEntity>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<LevelApiBean>>() {
                     @Override
-                    public void onSuccess(BaseDataResponse<LevelApiEntity> response) {
-                        LevelApiEntity levelApiEntity = response.getData();
+                    public void onSuccess(BaseDataResponse<LevelApiBean> response) {
+                        LevelApiBean levelApiEntity = response.getData();
                         if (levelApiEntity != null && levelApiEntity.getEnableChangeAgain() == 1) {
                             //可以继续修改
                             switch (state) {
@@ -299,7 +299,7 @@ public class LevelEquityViewModel extends BaseViewModel<AppRepository> {
     }
 
     public class UIChangeObservable {
-        public SingleLiveEvent<LevelPageInfoEntity> levelInfoPageInfoEvent = new SingleLiveEvent<>();
+        public SingleLiveEvent<LevelPageInfoBean> levelInfoPageInfoEvent = new SingleLiveEvent<>();
         public SingleLiveEvent<Integer> scrollBannerIndex = new SingleLiveEvent<>();
     }
 }

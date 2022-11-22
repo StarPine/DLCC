@@ -7,7 +7,7 @@
     <data>
         <variable
             name="itemEntity"
-            type="com.fine.friendlycc.entity.CoinPusherRoomDeviceInfo" />
+            type="com.fine.friendlycc.bean.CoinPusherRoomDeviceInfo" />
         <import type="com.fine.friendlycc.R" />
     </data>
     <FrameLayout

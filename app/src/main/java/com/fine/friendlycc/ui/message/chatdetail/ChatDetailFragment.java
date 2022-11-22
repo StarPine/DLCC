@@ -34,20 +34,20 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.fine.friendlycc.BR;
 import com.fine.friendlycc.R;
 import com.fine.friendlycc.app.AppConfig;
-import com.fine.friendlycc.app.AppContext;
+import com.fine.friendlycc.app.CCApplication;
 import com.fine.friendlycc.app.AppViewModelFactory;
 import com.fine.friendlycc.app.AppsFlyerEvent;
 import com.fine.friendlycc.data.source.local.LocalDataSourceImpl;
 import com.fine.friendlycc.databinding.FragmentChatDetailBinding;
-import com.fine.friendlycc.entity.CrystalDetailsConfigEntity;
-import com.fine.friendlycc.entity.EvaluateItemEntity;
-import com.fine.friendlycc.entity.GiftBagEntity;
-import com.fine.friendlycc.entity.LocalMessageIMEntity;
-import com.fine.friendlycc.entity.MediaGallerySwitchEntity;
-import com.fine.friendlycc.entity.MediaPayPerConfigEntity;
-import com.fine.friendlycc.entity.PhotoAlbumEntity;
-import com.fine.friendlycc.entity.TagEntity;
-import com.fine.friendlycc.entity.UserDataEntity;
+import com.fine.friendlycc.bean.CrystalDetailsConfigBean;
+import com.fine.friendlycc.bean.EvaluateItemBean;
+import com.fine.friendlycc.bean.GiftBagBean;
+import com.fine.friendlycc.bean.LocalMessageIMBean;
+import com.fine.friendlycc.bean.MediaGallerySwitchBean;
+import com.fine.friendlycc.bean.MediaPayPerConfigBean;
+import com.fine.friendlycc.bean.PhotoAlbumBean;
+import com.fine.friendlycc.bean.TagBean;
+import com.fine.friendlycc.bean.UserDataBean;
 import com.fine.friendlycc.event.MessageGiftNewEvent;
 import com.fine.friendlycc.manager.ConfigManager;
 import com.fine.friendlycc.ui.base.BaseToolbarFragment;
@@ -70,7 +70,6 @@ import com.fine.friendlycc.utils.LogUtils;
 import com.fine.friendlycc.utils.PictureSelectorUtil;
 import com.fine.friendlycc.utils.StringUtil;
 import com.fine.friendlycc.utils.Utils;
-import com.fine.friendlycc.widget.coinrechargesheet.CoinRechargeSheetView;
 import com.fine.friendlycc.widget.dialog.MMAlertDialog;
 import com.fine.friendlycc.widget.dialog.MVDialog;
 import com.fine.friendlycc.widget.dialog.MessageDetailDialog;
@@ -236,7 +235,7 @@ public class ChatDetailFragment extends BaseToolbarFragment<FragmentChatDetailBi
      * 隐藏水晶兑换规则弹框
      */
     private void hideExchangeRules() {
-        CrystalDetailsConfigEntity crystalDetailsConfig = ConfigManager.getInstance().getAppRepository().readCrystalDetailsConfig();
+        CrystalDetailsConfigBean crystalDetailsConfig = ConfigManager.getInstance().getAppRepository().readCrystalDetailsConfig();
         boolean isHideExchangeRules = ConfigManagerUtil.getInstance().getExchangeRulesFlag();
         boolean isMale = ConfigManager.getInstance().isMale();
         if (isMale){
@@ -309,7 +308,7 @@ public class ChatDetailFragment extends BaseToolbarFragment<FragmentChatDetailBi
                         .request(Manifest.permission.RECORD_AUDIO, Manifest.permission.CAMERA)
                         .subscribe(granted -> {
                             if (granted) {
-                                AppContext.instance().logEvent(AppsFlyerEvent.im_video_call);
+                                CCApplication.instance().logEvent(AppsFlyerEvent.im_video_call);
                                 viewModel.getCallingInvitedInfo(2, getUserIdIM(), mChatInfo.getId());
                             } else {
                                 TraceDialog.getInstance(mActivity)
@@ -320,7 +319,7 @@ public class ChatDetailFragment extends BaseToolbarFragment<FragmentChatDetailBi
                                                 .request(Manifest.permission.RECORD_AUDIO, Manifest.permission.CAMERA)
                                                 .subscribe(granted1 -> {
                                                     if (granted1) {
-                                                        AppContext.instance().logEvent(AppsFlyerEvent.im_video_call);
+                                                        CCApplication.instance().logEvent(AppsFlyerEvent.im_video_call);
                                                         viewModel.getCallingInvitedInfo(2, getUserIdIM(), mChatInfo.getId());
                                                     }
                                                 }))
@@ -357,16 +356,16 @@ public class ChatDetailFragment extends BaseToolbarFragment<FragmentChatDetailBi
             @Override
             public void onChanged(Void unused) {
                 String eventId = mChatInfo.getId() + "_evaluate";
-                LocalMessageIMEntity localMessageIMEntity = LocalDataSourceImpl.getInstance().readLocalMessageIM(eventId);
+                LocalMessageIMBean localMessageIMEntity = LocalDataSourceImpl.getInstance().readLocalMessageIM(eventId);
                 if (localMessageIMEntity != null) {
                     removeLocalMessage(localMessageIMEntity, eventId, true);
                 }
             }
         });
         //点击更多评价
-        viewModel.uc.AlertMEvaluate.observe(this, new Observer<List<EvaluateItemEntity>>() {
+        viewModel.uc.AlertMEvaluate.observe(this, new Observer<List<EvaluateItemBean>>() {
             @Override
-            public void onChanged(List<EvaluateItemEntity> evaluateItemEntities) {
+            public void onChanged(List<EvaluateItemBean> evaluateItemEntities) {
                 MMAlertDialog.DialogChatDetail(getContext(), false, 0, evaluateItemEntities, new MMAlertDialog.DilodAlertInterface() {
                     @Override
                     public void confirm(DialogInterface dialog, int which, int sel_Index) {
@@ -381,11 +380,11 @@ public class ChatDetailFragment extends BaseToolbarFragment<FragmentChatDetailBi
             }
         });
         //发送IM评价插入
-        viewModel.uc.sendIMEvaluate.observe(this, new Observer<List<EvaluateItemEntity>>() {
+        viewModel.uc.sendIMEvaluate.observe(this, new Observer<List<EvaluateItemBean>>() {
             @Override
-            public void onChanged(List<EvaluateItemEntity> evaluateItemEntities) {
+            public void onChanged(List<EvaluateItemBean> evaluateItemEntities) {
                 String eventId = mChatInfo.getId() + "_evaluate";
-                LocalMessageIMEntity localMessageIMEntity = LocalDataSourceImpl.getInstance().readLocalMessageIM(eventId);
+                LocalMessageIMBean localMessageIMEntity = LocalDataSourceImpl.getInstance().readLocalMessageIM(eventId);
                 //if(localMessageIMEntity==null) {
                 try {
                     addLocalMessage("message_evaluate", eventId, GsonUtils.toJson(evaluateItemEntities, List.class));
@@ -405,7 +404,7 @@ public class ChatDetailFragment extends BaseToolbarFragment<FragmentChatDetailBi
                     viewModel.getUserEvaluate(getTaUserIdIM(), true);
                 } else {
                     String eventId = mChatInfo.getId() + "_evaluate";
-                    LocalMessageIMEntity localMessageIMEntity = LocalDataSourceImpl.getInstance().readLocalMessageIM(eventId);
+                    LocalMessageIMBean localMessageIMEntity = LocalDataSourceImpl.getInstance().readLocalMessageIM(eventId);
                     if (localMessageIMEntity != null) {
                         removeLocalMessage(localMessageIMEntity, eventId, true);
                     }
@@ -413,9 +412,9 @@ public class ChatDetailFragment extends BaseToolbarFragment<FragmentChatDetailBi
             }
         });
         //插入相册
-        viewModel.uc.putPhotoAlbumEntity.observe(this, new Observer<PhotoAlbumEntity>() {
+        viewModel.uc.putPhotoAlbumEntity.observe(this, new Observer<PhotoAlbumBean>() {
             @Override
-            public void onChanged(PhotoAlbumEntity photoAlbumEntity) {
+            public void onChanged(PhotoAlbumBean photoAlbumEntity) {
                 try {
 //                    String eventId = mChatInfo.getId() + "_photoAlbum";
 //                    addLocalMessage("message_photo", eventId, GsonUtils.toJson(photoAlbumEntity));
@@ -444,9 +443,9 @@ public class ChatDetailFragment extends BaseToolbarFragment<FragmentChatDetailBi
                 }
             }
         });
-        viewModel.uc.loadTag.observe(this, new Observer<TagEntity>() {
+        viewModel.uc.loadTag.observe(this, new Observer<TagBean>() {
             @Override
-            public void onChanged(TagEntity tagEntity) {
+            public void onChanged(TagBean tagEntity) {
                 if (tagEntity.getThisIsGg().intValue() == 1) {//当前用户是GG
                     viewModel.isTagShow.set(true);
                     if (tagEntity.getToIsInvite().intValue() == 1) {//是否填写邀请码 0否 1是
@@ -717,7 +716,7 @@ public class ChatDetailFragment extends BaseToolbarFragment<FragmentChatDetailBi
 
             @Override
             public void onTextReadUnlock(TextView textView, View view, TUIMessageBean messageInfo) {
-                AppContext.instance().logEvent(AppsFlyerEvent.IM_Unlock);
+                CCApplication.instance().logEvent(AppsFlyerEvent.IM_Unlock);
             }
 
             @Override
@@ -746,7 +745,7 @@ public class ChatDetailFragment extends BaseToolbarFragment<FragmentChatDetailBi
                 if (userId == ConfigManager.getInstance().getAppRepository().readUserData().getId()) {
                     return;
                 }
-                AppContext.instance().logEvent(AppsFlyerEvent.Pchat_photo);
+                CCApplication.instance().logEvent(AppsFlyerEvent.Pchat_photo);
                 Bundle bundle = UserDetailFragment.getStartBundle(userId);
                 viewModel.start(UserDetailFragment.class.getCanonicalName(), bundle);
             }
@@ -762,7 +761,7 @@ public class ChatDetailFragment extends BaseToolbarFragment<FragmentChatDetailBi
             //评价
             @Override
             public void onClickEvaluate(int position, TUIMessageBean messageInfo, com.tencent.custom.EvaluateItemEntity evaluateItemEntity, boolean more) {
-                AppContext.instance().logEvent(AppsFlyerEvent.Pchat_Evaluation);
+                CCApplication.instance().logEvent(AppsFlyerEvent.Pchat_Evaluation);
                 try {
                     if (more) {//更多
                         long dayTime = System.currentTimeMillis();
@@ -786,19 +785,19 @@ public class ChatDetailFragment extends BaseToolbarFragment<FragmentChatDetailBi
             public void onClickCustomText(int position, TUIMessageBean messageInfo, CustomIMTextEntity customIMTextEntity) {
                 if (customIMTextEntity != null) {
                     if (customIMTextEntity.getEvent() == 1) {//上传照片
-                        AppContext.instance().logEvent(AppsFlyerEvent.im_tips_photo);
+                        CCApplication.instance().logEvent(AppsFlyerEvent.im_tips_photo);
                         viewModel.start(MyPhotoAlbumFragment.class.getCanonicalName());
                     } else if (customIMTextEntity.getEvent() == 2) {//送礼物
-                        AppContext.instance().logEvent(AppsFlyerEvent.im_tips_gifts);
+                        CCApplication.instance().logEvent(AppsFlyerEvent.im_tips_gifts);
                         giftBagDialogShow();
                     } else if (customIMTextEntity.getEvent() == 3) {//追踪
-                        AppContext.instance().logEvent(AppsFlyerEvent.im_tips_follow);
+                        CCApplication.instance().logEvent(AppsFlyerEvent.im_tips_follow);
                         viewModel.addLike(getTaUserIdIM(), messageInfo.getId());
                     } else if (customIMTextEntity.getEvent() == 4) {//唤醒语音视频聊天
-                        AppContext.instance().logEvent(AppsFlyerEvent.im_tips_vv);
+                        CCApplication.instance().logEvent(AppsFlyerEvent.im_tips_vv);
                         DialogCallPlayUser(null, true);
                     } else if (customIMTextEntity.getEvent() == 11) {//真人认证
-                        AppContext.instance().logEvent(AppsFlyerEvent.im_tips_auth);
+                        CCApplication.instance().logEvent(AppsFlyerEvent.im_tips_auth);
                         if (ConfigManager.getInstance().isMale()) {
                             viewModel.start(CertificationMaleFragment.class.getCanonicalName());
                         } else {
@@ -825,7 +824,7 @@ public class ChatDetailFragment extends BaseToolbarFragment<FragmentChatDetailBi
 
             @Override
             public void onClickCustomText() {
-                AppContext.instance().logEvent(AppsFlyerEvent.im_tips_auth);
+                CCApplication.instance().logEvent(AppsFlyerEvent.im_tips_auth);
                 if (ConfigManager.getInstance().isMale()) {
                     viewModel.start(CertificationMaleFragment.class.getCanonicalName());
                 } else {
@@ -963,7 +962,7 @@ public class ChatDetailFragment extends BaseToolbarFragment<FragmentChatDetailBi
         PictureSelectorUtil.selectImage(mActivity, true, 1, new OnResultCallbackListener<LocalMedia>() {
             @Override
             public void onResult(List<LocalMedia> result) {
-                MediaPayPerConfigEntity.itemTagEntity mediaPriceTmpConfig = null;
+                MediaPayPerConfigBean.itemTagEntity mediaPriceTmpConfig = null;
                 if(viewModel.priceConfigEntityField!=null){
                     if(viewModel.priceConfigEntityField.getCurrent()!=null && viewModel.priceConfigEntityField.getCurrent().getMediaPayPerConfig()!=null){
                         if(viewModel.priceConfigEntityField.getCurrent().getMediaPayPerConfig().getPhoto()!=null){
@@ -1056,7 +1055,7 @@ public class ChatDetailFragment extends BaseToolbarFragment<FragmentChatDetailBi
                     path = localMedia.getPath();
                 }
 
-                MediaPayPerConfigEntity.itemTagEntity mediaPriceTmpConfig = null;
+                MediaPayPerConfigBean.itemTagEntity mediaPriceTmpConfig = null;
                 if(viewModel.priceConfigEntityField!=null){
                     if(viewModel.priceConfigEntityField.getCurrent()!=null && viewModel.priceConfigEntityField.getCurrent().getMediaPayPerConfig()!=null){
                         if(viewModel.priceConfigEntityField.getCurrent().getMediaPayPerConfig().getVideo()!=null){
@@ -1126,7 +1125,7 @@ public class ChatDetailFragment extends BaseToolbarFragment<FragmentChatDetailBi
             ToastUtils.showShort(R.string.audio_in_call);
             return;
         }
-        MediaGallerySwitchEntity mediaGallerySwitchEntity = null;
+        MediaGallerySwitchBean mediaGallerySwitchEntity = null;
         if(viewModel.priceConfigEntityField!=null && viewModel.priceConfigEntityField.getCurrent()!=null){
             mediaGallerySwitchEntity = viewModel.priceConfigEntityField.getCurrent().getMediaPayDenyPer();
         }
@@ -1159,7 +1158,7 @@ public class ChatDetailFragment extends BaseToolbarFragment<FragmentChatDetailBi
                 Toast.makeText(mActivity, R.string.playcc_chat_detail_blocked2, Toast.LENGTH_SHORT).show();
                 return;
             }
-            AppContext.instance().logEvent(AppsFlyerEvent.im_gifts);
+            CCApplication.instance().logEvent(AppsFlyerEvent.im_gifts);
             giftBagDialogShow();
         }
     }
@@ -1209,15 +1208,15 @@ public class ChatDetailFragment extends BaseToolbarFragment<FragmentChatDetailBi
         GiftBagDialog giftBagDialog = new GiftBagDialog(getContext(), false, viewModel.maleBalance, 0);
         giftBagDialog.setGiftOnClickListener(new GiftBagDialog.GiftOnClickListener() {
             @Override
-            public void sendGiftClick(Dialog dialog, int number, GiftBagEntity.giftEntity giftEntity) {
+            public void sendGiftClick(Dialog dialog, int number, GiftBagBean.giftEntity giftEntity) {
                 dialog.dismiss();
-                AppContext.instance().logEvent(AppsFlyerEvent.im_send_gifts);
+                CCApplication.instance().logEvent(AppsFlyerEvent.im_send_gifts);
                 viewModel.sendUserGift(dialog, giftEntity, getTaUserIdIM(), number);
             }
 
             @Override
             public void rechargeStored(Dialog dialog) {
-                AppContext.instance().logEvent(AppsFlyerEvent.im_gifts_topup);
+                CCApplication.instance().logEvent(AppsFlyerEvent.im_gifts_topup);
                 dialog.dismiss();
 //                dialogRechargeShow(false);
                 paySelectionboxChoose(false);
@@ -1291,7 +1290,7 @@ public class ChatDetailFragment extends BaseToolbarFragment<FragmentChatDetailBi
                 .request(Manifest.permission.RECORD_AUDIO, Manifest.permission.CAMERA)
                 .subscribe(granted -> {
                     if (granted) {
-                        AppContext.instance().logEvent(AppsFlyerEvent.im_video_call);
+                        CCApplication.instance().logEvent(AppsFlyerEvent.im_video_call);
                         viewModel.getCallingInvitedInfo(2, getUserIdIM(), mChatInfo.getId());
                     } else {
                         TraceDialog.getInstance(mActivity)
@@ -1308,7 +1307,7 @@ public class ChatDetailFragment extends BaseToolbarFragment<FragmentChatDetailBi
                                                 .request(Manifest.permission.RECORD_AUDIO, Manifest.permission.CAMERA)
                                                 .subscribe(granted -> {
                                                     if (granted) {
-                                                        AppContext.instance().logEvent(AppsFlyerEvent.im_video_call);
+                                                        CCApplication.instance().logEvent(AppsFlyerEvent.im_video_call);
                                                         viewModel.getCallingInvitedInfo(2, getUserIdIM(), mChatInfo.getId());
                                                     }
                                                 });
@@ -1324,7 +1323,7 @@ public class ChatDetailFragment extends BaseToolbarFragment<FragmentChatDetailBi
                 .request(Manifest.permission.RECORD_AUDIO)
                 .subscribe(granted -> {
                     if (granted) {
-                        AppContext.instance().logEvent(AppsFlyerEvent.im_voice_call);
+                        CCApplication.instance().logEvent(AppsFlyerEvent.im_voice_call);
                         viewModel.getCallingInvitedInfo(1, getUserIdIM(), mChatInfo.getId());
                     } else {
                         TraceDialog.getInstance(mActivity)
@@ -1341,7 +1340,7 @@ public class ChatDetailFragment extends BaseToolbarFragment<FragmentChatDetailBi
                                                 .request(Manifest.permission.RECORD_AUDIO)
                                                 .subscribe(granted -> {
                                                     if (granted) {
-                                                        AppContext.instance().logEvent(AppsFlyerEvent.im_voice_call);
+                                                        CCApplication.instance().logEvent(AppsFlyerEvent.im_voice_call);
                                                         viewModel.getCallingInvitedInfo(1, getUserIdIM(), mChatInfo.getId());
                                                     }
                                                 });
@@ -1353,9 +1352,9 @@ public class ChatDetailFragment extends BaseToolbarFragment<FragmentChatDetailBi
 
     private void showLoaclRecharge(boolean isGiftSend) {
         if (!isGiftSend) {
-            AppContext.instance().logEvent(AppsFlyerEvent.im_topup);
+            CCApplication.instance().logEvent(AppsFlyerEvent.im_topup);
         }
-        AppContext.instance().logEvent(AppsFlyerEvent.Top_up);
+        CCApplication.instance().logEvent(AppsFlyerEvent.Top_up);
         Intent intent = new Intent(mActivity, DialogDiamondRechargeActivity.class);
         mActivity.startActivity(intent);
         mActivity.overridePendingTransition(R.anim.pop_enter_anim, 0);
@@ -1364,7 +1363,7 @@ public class ChatDetailFragment extends BaseToolbarFragment<FragmentChatDetailBi
     @Override
     public void sendOnClickCallbackOk(InputView.MessageHandler messageHandler, TUIMessageBean messageInfo) {
         if (messageHandler != null) {
-            UserDataEntity userDataEntity = viewModel.getLocalUserDataEntity();
+            UserDataBean userDataEntity = viewModel.getLocalUserDataEntity();
             if (userDataEntity == null) {
                 return;
             }
@@ -1461,7 +1460,7 @@ public class ChatDetailFragment extends BaseToolbarFragment<FragmentChatDetailBi
         custom_local_data.put("type", type);
         custom_local_data.put("data", objData);
         String str = GsonUtils.toJson(custom_local_data);
-        LocalMessageIMEntity localMessageIMEntity = LocalDataSourceImpl.getInstance().readLocalMessageIM(EventId);
+        LocalMessageIMBean localMessageIMEntity = LocalDataSourceImpl.getInstance().readLocalMessageIM(EventId);
         MessageRecyclerView messageRecyclerView = binding.chatLayout.getMessageLayout();
         if (messageRecyclerView != null) {
             if (ObjectUtils.isEmpty(localMessageIMEntity)) {//没有历史消息
@@ -1546,7 +1545,7 @@ public class ChatDetailFragment extends BaseToolbarFragment<FragmentChatDetailBi
         return ConfigManager.getInstance().getUserImID();
     }
 
-    public synchronized void removeLocalMessage(LocalMessageIMEntity localMessageIMEntity, String eventId, boolean updateView) {
+    public synchronized void removeLocalMessage(LocalMessageIMBean localMessageIMEntity, String eventId, boolean updateView) {
         List<String> list = new ArrayList<>();
         list.add(localMessageIMEntity.getMsgId());
         V2TIMManager.getMessageManager().findMessages(list, new V2TIMValueCallback() {

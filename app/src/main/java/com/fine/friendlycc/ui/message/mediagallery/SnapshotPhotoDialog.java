@@ -14,7 +14,7 @@ import androidx.databinding.DataBindingUtil;
 import com.blankj.utilcode.util.ObjectUtils;
 import com.fine.friendlycc.R;
 import com.fine.friendlycc.databinding.DialogSnapshotPhotoSettingBinding;
-import com.fine.friendlycc.entity.MediaPayPerConfigEntity;
+import com.fine.friendlycc.bean.MediaPayPerConfigBean;
 import com.fine.friendlycc.ui.base.BaseDialog;
 
 import java.util.ArrayList;
@@ -29,16 +29,16 @@ public class SnapshotPhotoDialog extends BaseDialog {
 
     private final DialogSnapshotPhotoSettingBinding binding;
 
-    private final MediaPayPerConfigEntity.itemTagEntity mediaPriceTmpConfig;
+    private final MediaPayPerConfigBean.itemTagEntity mediaPriceTmpConfig;
 
     private SnapshotListener snapshotListener;
 
-    private MediaPayPerConfigEntity.ItemEntity checkItemEntity;
+    private MediaPayPerConfigBean.ItemEntity checkItemEntity;
     private Integer configId;
 
     private boolean isSnapshot = true;
 
-    private MediaPayPerConfigEntity.ItemEntity localCheckItemEntity;
+    private MediaPayPerConfigBean.ItemEntity localCheckItemEntity;
 
     public SnapshotListener getSnapshotListener() {
         return snapshotListener;
@@ -65,11 +65,11 @@ public class SnapshotPhotoDialog extends BaseDialog {
         binding.snapshotCheckbox.setChecked(check);
     }
 
-    public void setLocalCheckItemEntity(MediaPayPerConfigEntity.ItemEntity localCheckItemEntity) {
+    public void setLocalCheckItemEntity(MediaPayPerConfigBean.ItemEntity localCheckItemEntity) {
         this.localCheckItemEntity = localCheckItemEntity;
     }
 
-    public SnapshotPhotoDialog(Context context, MediaPayPerConfigEntity.itemTagEntity mediaPriceTmpConfig, MediaPayPerConfigEntity.ItemEntity localCheckItemEntity) {
+    public SnapshotPhotoDialog(Context context, MediaPayPerConfigBean.itemTagEntity mediaPriceTmpConfig, MediaPayPerConfigBean.ItemEntity localCheckItemEntity) {
         super(context);
         this.mediaPriceTmpConfig = mediaPriceTmpConfig;
         this.localCheckItemEntity = localCheckItemEntity;
@@ -81,7 +81,7 @@ public class SnapshotPhotoDialog extends BaseDialog {
     public void init() {
         ArrayList<String> listData = new ArrayList<>();
         if(ObjectUtils.isNotEmpty(mediaPriceTmpConfig)){
-            List<MediaPayPerConfigEntity.ItemEntity> itemData = mediaPriceTmpConfig.getContent();
+            List<MediaPayPerConfigBean.ItemEntity> itemData = mediaPriceTmpConfig.getContent();
             int checkedIdx = 0;
             for (int i = 0; i < itemData.size(); i++) {
                 listData.add(itemData.get(i).getCoin());
@@ -124,7 +124,7 @@ public class SnapshotPhotoDialog extends BaseDialog {
                 binding.seekbarPhoto.setProgress(seekBar.getProgress());
                 if(getSnapshotListener()!=null){
                     if(ObjectUtils.isNotEmpty(mediaPriceTmpConfig) && ObjectUtils.isNotEmpty(mediaPriceTmpConfig.getContent())){
-                        MediaPayPerConfigEntity.ItemEntity itemEntity = mediaPriceTmpConfig.getContent().get(seekBar.getProgress());
+                        MediaPayPerConfigBean.ItemEntity itemEntity = mediaPriceTmpConfig.getContent().get(seekBar.getProgress());
                         checkItemEntity = itemEntity;
                         binding.tvCoin.setText(itemEntity.getCoin());
                         binding.tvMoney.setText("+"+String.valueOf(itemEntity.getProfit()));
@@ -166,6 +166,6 @@ public class SnapshotPhotoDialog extends BaseDialog {
     }
 
     public interface SnapshotListener{
-        void confirm(MediaPayPerConfigEntity.ItemEntity itemEntity, Integer configId,boolean isSnapshot);
+        void confirm(MediaPayPerConfigBean.ItemEntity itemEntity, Integer configId,boolean isSnapshot);
     }
 }

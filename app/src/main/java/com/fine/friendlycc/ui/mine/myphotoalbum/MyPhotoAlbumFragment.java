@@ -10,7 +10,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.fine.friendlycc.app.AppViewModelFactory;
-import com.fine.friendlycc.entity.AlbumPhotoEntity;
+import com.fine.friendlycc.bean.AlbumPhotoBean;
 import com.fine.friendlycc.ui.base.BaseRefreshToolbarFragment;
 import com.fine.friendlycc.ui.mine.photosetting.PhotoSettingFragment;
 import com.fine.friendlycc.utils.PictureSelectorUtil;
@@ -113,9 +113,9 @@ public class MyPhotoAlbumFragment extends BaseRefreshToolbarFragment<FragmentMyP
                 if (result.isEmpty()) {
                     return;
                 }
-                ArrayList<AlbumPhotoEntity> albumPhotoList = new ArrayList<>();
+                ArrayList<AlbumPhotoBean> albumPhotoList = new ArrayList<>();
                 for (LocalMedia localMedia : result) {
-                    AlbumPhotoEntity albumPhotoEntity = new AlbumPhotoEntity();
+                    AlbumPhotoBean albumPhotoEntity = new AlbumPhotoBean();
                     albumPhotoEntity.setIsBurn(1);
                     if (PictureMimeType.MIME_TYPE_IMAGE.equals(localMedia.getMimeType()) || PictureMimeType.PNG_Q.equals(localMedia.getMimeType())) {
                         albumPhotoEntity.setType(1);
@@ -154,9 +154,9 @@ public class MyPhotoAlbumFragment extends BaseRefreshToolbarFragment<FragmentMyP
                 if (result.isEmpty()) {
                     return;
                 }
-                ArrayList<AlbumPhotoEntity> albumPhotoList = new ArrayList<>();
+                ArrayList<AlbumPhotoBean> albumPhotoList = new ArrayList<>();
                 for (LocalMedia localMedia : result) {
-                    AlbumPhotoEntity albumPhotoEntity = new AlbumPhotoEntity();
+                    AlbumPhotoBean albumPhotoEntity = new AlbumPhotoBean();
                     if (PictureMimeType.MIME_TYPE_IMAGE.equals(localMedia.getMimeType())) {
                         albumPhotoEntity.setSrc(localMedia.getRealPath());
                         albumPhotoEntity.setType(1);

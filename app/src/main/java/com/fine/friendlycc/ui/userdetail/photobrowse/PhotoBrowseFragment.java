@@ -13,11 +13,10 @@ import com.fine.friendlycc.BR;
 import com.fine.friendlycc.R;
 import com.fine.friendlycc.app.AppViewModelFactory;
 import com.fine.friendlycc.databinding.FragmentPhotoBrowseBinding;
-import com.fine.friendlycc.entity.AlbumPhotoEntity;
+import com.fine.friendlycc.bean.AlbumPhotoBean;
 import com.fine.friendlycc.ui.base.BaseFragment;
 import com.fine.friendlycc.ui.mine.wallet.diamond.recharge.DialogDiamondRechargeActivity;
 import com.fine.friendlycc.widget.coinpaysheet.CoinPaySheet;
-import com.fine.friendlycc.widget.coinrechargesheet.CoinRechargeSheetView;
 import com.shuyu.gsyvideoplayer.GSYVideoManager;
 
 import java.util.ArrayList;
@@ -40,9 +39,9 @@ public class PhotoBrowseFragment extends BaseFragment<FragmentPhotoBrowseBinding
 
     private int type;
     private int index;
-    private ArrayList<AlbumPhotoEntity> photos;
+    private ArrayList<AlbumPhotoBean> photos;
 
-    public static Bundle getStartBundle(int index, ArrayList<AlbumPhotoEntity> photos) {
+    public static Bundle getStartBundle(int index, ArrayList<AlbumPhotoBean> photos) {
         Bundle bundle = new Bundle();
         bundle.putInt(ARG_BROWSE_TYPE, TYPE_ALBUM);
         bundle.putInt(ARG_BROWSE_INDEX, index);
@@ -50,21 +49,21 @@ public class PhotoBrowseFragment extends BaseFragment<FragmentPhotoBrowseBinding
         return bundle;
     }
 
-    public static Bundle getStartChatBundle(AlbumPhotoEntity albumPhotoEntity) {
+    public static Bundle getStartChatBundle(AlbumPhotoBean albumPhotoEntity) {
         Bundle bundle = new Bundle();
         bundle.putInt(ARG_BROWSE_TYPE, TYPE_CHAT);
         bundle.putInt(ARG_BROWSE_INDEX, 0);
-        ArrayList<AlbumPhotoEntity> list = new ArrayList<>();
+        ArrayList<AlbumPhotoBean> list = new ArrayList<>();
         list.add(albumPhotoEntity);
         bundle.putParcelableArrayList(ARG_BROWSE_PHOTOS, list);
         return bundle;
     }
 
-    public static Bundle getStartApplyMessageBundle(AlbumPhotoEntity albumPhotoEntity) {
+    public static Bundle getStartApplyMessageBundle(AlbumPhotoBean albumPhotoEntity) {
         Bundle bundle = new Bundle();
         bundle.putInt(ARG_BROWSE_TYPE, TYPE_APPLY_MESSAGE);
         bundle.putInt(ARG_BROWSE_INDEX, 0);
-        ArrayList<AlbumPhotoEntity> list = new ArrayList<>();
+        ArrayList<AlbumPhotoBean> list = new ArrayList<>();
         list.add(albumPhotoEntity);
         bundle.putParcelableArrayList(ARG_BROWSE_PHOTOS, list);
         return bundle;

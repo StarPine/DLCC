@@ -21,16 +21,16 @@ import com.android.billingclient.api.BillingClient;
 import com.android.billingclient.api.Purchase;
 import com.android.billingclient.api.SkuDetailsParams;
 import com.fine.friendlycc.R;
-import com.fine.friendlycc.app.AppContext;
+import com.fine.friendlycc.app.CCApplication;
 import com.fine.friendlycc.app.BillingClientLifecycle;
 import com.fine.friendlycc.app.Injection;
 import com.fine.friendlycc.data.source.http.exception.RequestException;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseDataResponse;
 import com.fine.friendlycc.data.source.http.response.BaseResponse;
-import com.fine.friendlycc.entity.CoinWalletEntity;
-import com.fine.friendlycc.entity.CreateOrderEntity;
-import com.fine.friendlycc.entity.GoodsEntity;
+import com.fine.friendlycc.bean.CoinWalletBean;
+import com.fine.friendlycc.bean.CreateOrderBean;
+import com.fine.friendlycc.bean.GoodsBean;
 import com.fine.friendlycc.ui.base.BaseDialog;
 import com.fine.friendlycc.ui.dialog.adapter.CoinExchargeIntegralAdapter;
 
@@ -49,7 +49,7 @@ public class CoinExchargeItegralDialog extends BaseDialog implements View.OnClic
 
     public static final String TAG = "CoinExchargeItegralDialog";
     private static CoinExchargeIntegralAdapterListener coinExchargeIntegralAdapterListener;
-    private static GoodsEntity sel_goodsEntity;
+    private static GoodsBean sel_goodsEntity;
     private final AppCompatActivity mActivity;
     private View mPopView;
     private RecyclerView recyclerView;
@@ -58,13 +58,13 @@ public class CoinExchargeItegralDialog extends BaseDialog implements View.OnClic
     private ViewGroup loadingView;
     private CoinExchargeIntegralAdapter adapter;
     private BillingClientLifecycle billingClientLifecycle;
-    private List<GoodsEntity> mGoodsList;
+    private List<GoodsBean> mGoodsList;
     private String orderNumber;
 
     public CoinExchargeItegralDialog(@NonNull Context context, AppCompatActivity activity) {
         super(context);
         this.mActivity = activity;
-        this.billingClientLifecycle = ((AppContext)activity.getApplication()).getBillingClientLifecycle();
+        this.billingClientLifecycle = ((CCApplication)activity.getApplication()).getBillingClientLifecycle();
         init(activity);
     }
 
@@ -95,7 +95,7 @@ public class CoinExchargeItegralDialog extends BaseDialog implements View.OnClic
         adapter.setCoinExchargeIntegralAdapterListener(new CoinExchargeIntegralAdapter.CoinExchargeIntegralAdapterListener() {
             @Override
             public void onBuyClick(View view, int position) {
-                GoodsEntity goodsEntity = mGoodsList.get(position);
+                GoodsBean goodsEntity = mGoodsList.get(position);
                 sel_goodsEntity = goodsEntity;
                 createOrder(goodsEntity);
             }
@@ -183,9 +183,9 @@ public class CoinExchargeItegralDialog extends BaseDialog implements View.OnClic
                 .doOnSubscribe(this)
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
-                .subscribe(new BaseObserver<BaseDataResponse<CoinWalletEntity>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<CoinWalletBean>>() {
                     @Override
-                    public void onSuccess(BaseDataResponse<CoinWalletEntity> response) {
+                    public void onSuccess(BaseDataResponse<CoinWalletBean> response) {
                         tvBalance.setText(String.format(mActivity.getResources().getString(R.string.playcc_x_coin), response.getData().getTotalCoin()));
                     }
 
@@ -207,9 +207,9 @@ public class CoinExchargeItegralDialog extends BaseDialog implements View.OnClic
                 .doOnSubscribe(this)
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
-                .subscribe(new BaseObserver<BaseDataResponse<List<GoodsEntity>>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<List<GoodsBean>>>() {
                     @Override
-                    public void onSuccess(BaseDataResponse<List<GoodsEntity>> response) {
+                    public void onSuccess(BaseDataResponse<List<GoodsBean>> response) {
                         loadingView.setVisibility(View.GONE);
                         mGoodsList = response.getData();
                         adapter.setData(mGoodsList);
@@ -222,20 +222,20 @@ public class CoinExchargeItegralDialog extends BaseDialog implements View.OnClic
                 });
     }
 
-    public void createOrder(GoodsEntity goodsEntity) {
+    public void createOrder(GoodsBean goodsEntity) {
         loadingView.setVisibility(View.VISIBLE);
         Injection.provideDemoRepository()
                 .createOrder(goodsEntity.getId(), 14, 2, null)
                 .doOnSubscribe(this)
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
-                .subscribe(new BaseObserver<BaseDataResponse<CreateOrderEntity>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<CreateOrderBean>>() {
                     @Override
-                    public void onSuccess(BaseDataResponse<CreateOrderEntity> response) {
+                    public void onSuccess(BaseDataResponse<CreateOrderBean> response) {
                         loadingView.setVisibility(View.GONE);
                         orderNumber = response.getData().getOrderNumber();
                         // dialog.show(mActivity.getSupportFragmentManager(), PayMethodDialog.class.getCanonicalName());
-                        List<GoodsEntity> goodsEntityList = new ArrayList<>();
+                        List<GoodsBean> goodsEntityList = new ArrayList<>();
                         goodsEntityList.add(goodsEntity);
                         querySkuList(goodsEntityList);
                     }
@@ -292,12 +292,12 @@ public class CoinExchargeItegralDialog extends BaseDialog implements View.OnClic
         }
     }
 
-    private void querySkuList(List<GoodsEntity> goodsList) {
+    private void querySkuList(List<GoodsBean> goodsList) {
 
         if (goodsList != null && !goodsList.isEmpty()) {
             List<String> skus = new ArrayList();
 
-            for (GoodsEntity datum : goodsList) {
+            for (GoodsBean datum : goodsList) {
                 skus.add(datum.getGoogleGoodsId());
             }
 
@@ -310,7 +310,7 @@ public class CoinExchargeItegralDialog extends BaseDialog implements View.OnClic
     }
 
     public interface CoinExchargeIntegralAdapterListener {
-        void onPaySuccess(CoinExchargeItegralDialog sheetView, GoodsEntity goodsEntity);
+        void onPaySuccess(CoinExchargeItegralDialog sheetView, GoodsBean goodsEntity);
 
         void onPayFailed(CoinExchargeItegralDialog sheetView, String msg);
     }

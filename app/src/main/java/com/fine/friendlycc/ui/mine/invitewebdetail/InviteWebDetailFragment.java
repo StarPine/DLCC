@@ -32,7 +32,7 @@ import com.appsflyer.share.ShareInviteHelper;
 import com.blankj.utilcode.util.IntentUtils;
 import com.fine.friendlycc.BR;
 import com.fine.friendlycc.R;
-import com.fine.friendlycc.app.AppContext;
+import com.fine.friendlycc.app.CCApplication;
 import com.fine.friendlycc.app.AppViewModelFactory;
 import com.fine.friendlycc.app.BillingClientLifecycle;
 import com.fine.friendlycc.databinding.FragmentInviteWebDetailBinding;
@@ -167,7 +167,7 @@ public class InviteWebDetailFragment extends BaseToolbarFragment<FragmentInviteW
     @Override
     public void initData() {
         super.initData();
-        this.billingClientLifecycle = ((AppContext)mActivity.getApplication()).getBillingClientLifecycle();
+        this.billingClientLifecycle = ((CCApplication)mActivity.getApplication()).getBillingClientLifecycle();
         WebSettings settings = binding.webView.getSettings();
 //        settings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
         settings.setJavaScriptEnabled(true);

@@ -8,8 +8,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.fine.friendlycc.app.AppContext;
-import com.fine.friendlycc.entity.EvaluateItemEntity;
+import com.fine.friendlycc.app.CCApplication;
+import com.fine.friendlycc.bean.EvaluateItemBean;
 import com.fine.friendlycc.R;
 
 import java.util.ArrayList;
@@ -23,10 +23,10 @@ import java.util.List;
 public class ChatDetailEvaluateAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
     public OnItemClickListener onItemListener;
-    List<EvaluateItemEntity> dataBeanList = new ArrayList<>();
+    List<EvaluateItemBean> dataBeanList = new ArrayList<>();
     private int defItem = -1;
 
-    public ChatDetailEvaluateAdapter(List<EvaluateItemEntity> list) {
+    public ChatDetailEvaluateAdapter(List<EvaluateItemBean> list) {
         dataBeanList = list;
     }
 
@@ -43,10 +43,10 @@ public class ChatDetailEvaluateAdapter extends RecyclerView.Adapter<RecyclerView
         ItemViewHolder itemViewHolder = ((ItemViewHolder) holder);
         if (dataBeanList != null && dataBeanList.size() > 0) {
             if (defItem == position) {
-                itemViewHolder.evaluation_tag.setTextColor(AppContext.instance().getResources().getColor(R.color.white));
+                itemViewHolder.evaluation_tag.setTextColor(CCApplication.instance().getResources().getColor(R.color.white));
                 itemViewHolder.evaluation_tag.setBackgroundResource(R.drawable.radius_purple_ed);
             } else {
-                itemViewHolder.evaluation_tag.setTextColor(AppContext.instance().getResources().getColor(R.color.purple1));
+                itemViewHolder.evaluation_tag.setTextColor(CCApplication.instance().getResources().getColor(R.color.purple1));
                 itemViewHolder.evaluation_tag.setBackgroundResource(R.drawable.radius_purple);
             }
             itemViewHolder.evaluation_tag.setText(dataBeanList.get(position).getName());
@@ -74,7 +74,7 @@ public class ChatDetailEvaluateAdapter extends RecyclerView.Adapter<RecyclerView
     }
 
     public interface OnItemClickListener {
-        void onClick(View v, int pos, EvaluateItemEntity itemEntity);
+        void onClick(View v, int pos, EvaluateItemBean itemEntity);
     }
 
     public class ItemViewHolder extends RecyclerView.ViewHolder {

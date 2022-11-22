@@ -5,7 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.databinding.ObservableField;
 
-import com.fine.friendlycc.entity.AdItemEntity;
+import com.fine.friendlycc.bean.AdItemBean;
 import com.fine.friendlycc.event.TaskMainTabEvent;
 import com.fine.friendlycc.ui.mine.vipsubscribe.VipSubscribeFragment;
 import com.fine.friendlycc.ui.mine.wallet.diamond.recharge.DiamondRechargeActivity;
@@ -22,16 +22,16 @@ import me.goldze.mvvmhabit.bus.RxBus;
  */
 public class HomeMainBannerItemViewModel extends MultiItemViewModel<HomeMainViewModel> {
 
-    public ObservableField<AdItemEntity> itemEntity = new ObservableField<>();
+    public ObservableField<AdItemBean> itemEntity = new ObservableField<>();
 
-    public HomeMainBannerItemViewModel(@NonNull HomeMainViewModel viewModel,AdItemEntity adItemEntity) {
+    public HomeMainBannerItemViewModel(@NonNull HomeMainViewModel viewModel,AdItemBean adItemEntity) {
         super(viewModel);
         this.itemEntity.set(adItemEntity);
     }
 
     public BindingCommand clickBanner = new BindingCommand(() -> {
         try {
-            AdItemEntity adItemEntity = itemEntity.get();
+            AdItemBean adItemEntity = itemEntity.get();
             int typeAct = adItemEntity.getType();
             if(typeAct!=0){
                 //客户端跳转类型 1:会员中心 2：任务中心 3：天天福袋 4：推币机 5:钻石储值

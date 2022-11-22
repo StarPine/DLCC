@@ -3,7 +3,7 @@ package com.fine.friendlycc.ui.message.applymessage;
 import androidx.annotation.NonNull;
 import androidx.databinding.ObservableField;
 
-import com.fine.friendlycc.entity.ApplyMessageEntity;
+import com.fine.friendlycc.bean.ApplyMessageBean;
 import com.fine.friendlycc.utils.ExceptionReportUtils;
 
 import me.goldze.mvvmhabit.base.MultiItemViewModel;
@@ -14,7 +14,7 @@ import me.goldze.mvvmhabit.binding.command.BindingCommand;
  */
 public class ApplyMessageItemViewModel extends MultiItemViewModel<ApplyMessageViewModel> {
 
-    public ObservableField<ApplyMessageEntity> itemEntity = new ObservableField<>();
+    public ObservableField<ApplyMessageBean> itemEntity = new ObservableField<>();
     public ObservableField<Integer> photoIsView = new ObservableField<>(0);
     public BindingCommand itemClick = new BindingCommand(() -> {
         try {
@@ -57,7 +57,7 @@ public class ApplyMessageItemViewModel extends MultiItemViewModel<ApplyMessageVi
         }
     });
 
-    public ApplyMessageItemViewModel(@NonNull ApplyMessageViewModel viewModel, ApplyMessageEntity applyMessageEntity) {
+    public ApplyMessageItemViewModel(@NonNull ApplyMessageViewModel viewModel, ApplyMessageBean applyMessageEntity) {
         super(viewModel);
         this.itemEntity.set(applyMessageEntity);
         if (applyMessageEntity.getApply() != null) {

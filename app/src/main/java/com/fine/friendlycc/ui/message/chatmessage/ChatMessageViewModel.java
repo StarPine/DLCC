@@ -8,17 +8,17 @@ import androidx.annotation.NonNull;
 import androidx.databinding.ObservableField;
 
 import com.fine.friendlycc.R;
-import com.fine.friendlycc.app.AppContext;
+import com.fine.friendlycc.app.CCApplication;
 import com.fine.friendlycc.app.AppsFlyerEvent;
 import com.fine.friendlycc.data.AppRepository;
 import com.fine.friendlycc.data.source.http.exception.RequestException;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseDataResponse;
 import com.fine.friendlycc.data.source.http.response.BaseResponse;
-import com.fine.friendlycc.entity.BrowseNumberEntity;
-import com.fine.friendlycc.entity.IMTransUserEntity;
-import com.fine.friendlycc.entity.ImUserSigEntity;
-import com.fine.friendlycc.entity.TokenEntity;
+import com.fine.friendlycc.bean.BrowseNumberBean;
+import com.fine.friendlycc.bean.IMTransUserBean;
+import com.fine.friendlycc.bean.ImUserSigBean;
+import com.fine.friendlycc.bean.TokenBean;
 import com.fine.friendlycc.event.LoginExpiredEvent;
 import com.fine.friendlycc.ui.mine.trace.man.TraceManFragment;
 import com.fine.friendlycc.ui.userdetail.detail.UserDetailFragment;
@@ -46,7 +46,7 @@ public class ChatMessageViewModel extends BaseViewModel<AppRepository> {
     public BindingCommand traceOnClickCommand = new BindingCommand(new BindingAction() {
         @Override
         public void call() {
-            AppContext.instance().logEvent(AppsFlyerEvent.chat_seen_me);
+            CCApplication.instance().logEvent(AppsFlyerEvent.chat_seen_me);
             Bundle bundle = new Bundle();
             bundle.putInt("userId", model.readUserData().getId());
             start(TraceManFragment.class.getCanonicalName(), bundle);
@@ -72,9 +72,9 @@ public class ChatMessageViewModel extends BaseViewModel<AppRepository> {
                 .doOnSubscribe(this)
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
-                .subscribe(new BaseObserver<BaseDataResponse<BrowseNumberEntity>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<BrowseNumberBean>>() {
                     @Override
-                    public void onSuccess(BaseDataResponse<BrowseNumberEntity> browseNumberEntity) {
+                    public void onSuccess(BaseDataResponse<BrowseNumberBean> browseNumberEntity) {
                         uc.loadBrowseNumber.setValue(browseNumberEntity.getData());
                     }
                 });
@@ -92,11 +92,11 @@ public class ChatMessageViewModel extends BaseViewModel<AppRepository> {
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(dispose -> showHUD())
-                .subscribe(new BaseObserver<BaseDataResponse<IMTransUserEntity>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<IMTransUserBean>>() {
 
                     @Override
-                    public void onSuccess(BaseDataResponse<IMTransUserEntity> response) {
-                        IMTransUserEntity  imTransUserEntity = response.getData();
+                    public void onSuccess(BaseDataResponse<IMTransUserBean> response) {
+                        IMTransUserBean  imTransUserEntity = response.getData();
                         if(imTransUserEntity!=null && imTransUserEntity.getUserId()!=null){
                             userMessageCollation(imTransUserEntity.getUserId(), userDetailView);
                         }else {
@@ -149,12 +149,12 @@ public class ChatMessageViewModel extends BaseViewModel<AppRepository> {
         model.flushSign()
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
-                .subscribe(new BaseObserver<BaseDataResponse<ImUserSigEntity>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<ImUserSigBean>>() {
 
                     @Override
-                    public void onSuccess(BaseDataResponse<ImUserSigEntity> response) {
-                        ImUserSigEntity data = response.getData();
-                        TokenEntity tokenEntity = model.readLoginInfo();
+                    public void onSuccess(BaseDataResponse<ImUserSigBean> response) {
+                        ImUserSigBean data = response.getData();
+                        TokenBean tokenEntity = model.readLoginInfo();
                         if (data == null || TextUtils.isEmpty(data.getUserSig()) || tokenEntity == null){
                             RxBus.getDefault().post(new LoginExpiredEvent());
                             return;
@@ -187,7 +187,7 @@ public class ChatMessageViewModel extends BaseViewModel<AppRepository> {
     }
 
     public static class UIChangeObservable {
-        public SingleLiveEvent<BrowseNumberEntity> loadBrowseNumber = new SingleLiveEvent<>();
+        public SingleLiveEvent<BrowseNumberBean> loadBrowseNumber = new SingleLiveEvent<>();
         //跳转进入私聊页面
         public SingleLiveEvent<Integer> startChatUserView = new SingleLiveEvent<>();
         public SingleLiveEvent<Void> loginSuccess = new SingleLiveEvent<>();

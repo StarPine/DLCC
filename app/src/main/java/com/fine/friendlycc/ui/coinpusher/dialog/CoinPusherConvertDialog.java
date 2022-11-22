@@ -26,8 +26,8 @@ import com.fine.friendlycc.data.source.http.exception.RequestException;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseDataResponse;
 import com.fine.friendlycc.databinding.DialogCoinpusherConverBinding;
-import com.fine.friendlycc.entity.CoinPusherBalanceDataEntity;
-import com.fine.friendlycc.entity.CoinPusherConverInfoEntity;
+import com.fine.friendlycc.bean.CoinPusherBalanceDataBean;
+import com.fine.friendlycc.bean.CoinPusherConverInfoBean;
 import com.fine.friendlycc.manager.ConfigManager;
 import com.fine.friendlycc.ui.base.BaseDialog;
 import com.fine.friendlycc.ui.coinpusher.dialog.adapter.CoinPusherCapsuleAdapter;
@@ -127,7 +127,7 @@ public class CoinPusherConvertDialog  extends BaseDialog {
             CoinPusherConvertCapsuleDialog pusherConvertCapsuleDialog = new CoinPusherConvertCapsuleDialog(getContext(),coinPusherCapsuleAdapter.getItemData(SEL_COIN_PUSHER_CAPSULE).getId(),convertItemTitle,convertItemContent,coinPusherCapsuleAdapter.getItemData(SEL_COIN_PUSHER_CAPSULE).getItem());
             pusherConvertCapsuleDialog.setItemConvertListener(new CoinPusherConvertCapsuleDialog.ItemConvertListener() {
                 @Override
-                public void success(CoinPusherBalanceDataEntity coinPusherDataEntity) {
+                public void success(CoinPusherBalanceDataBean coinPusherDataEntity) {
                         ToastUtils.showShort(R.string.playcc_coinpusher_text_5);
                         //购买成功数据相加
                         totalMoney = coinPusherDataEntity.getTotalGold();
@@ -217,10 +217,10 @@ public class CoinPusherConvertDialog  extends BaseDialog {
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(disposable -> showHud())
-                .subscribe(new BaseObserver<BaseDataResponse<CoinPusherConverInfoEntity>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<CoinPusherConverInfoBean>>() {
                     @Override
-                    public void onSuccess(BaseDataResponse<CoinPusherConverInfoEntity> converInfoEntityResponse) {
-                        CoinPusherConverInfoEntity coinPusherConvertInfo = converInfoEntityResponse.getData();
+                    public void onSuccess(BaseDataResponse<CoinPusherConverInfoBean> converInfoEntityResponse) {
+                        CoinPusherConverInfoBean coinPusherConvertInfo = converInfoEntityResponse.getData();
                         if(ObjectUtils.isNotEmpty(coinPusherConvertInfo)){
                             //给宝盒列表数据-展示
                             if(ObjectUtils.isNotEmpty(coinPusherConvertInfo.getGoldCoinList())){
@@ -278,17 +278,17 @@ public class CoinPusherConvertDialog  extends BaseDialog {
     }
     //金币兑换砖石礼包
     private void convertCoinPusherDiamonds(final Integer id){
-        Observable<BaseDataResponse<CoinPusherBalanceDataEntity>> convertCoinPusherDiamonds= ConfigManager.getInstance().getAppRepository().convertCoinPusherDiamonds(id);
+        Observable<BaseDataResponse<CoinPusherBalanceDataBean>> convertCoinPusherDiamonds= ConfigManager.getInstance().getAppRepository().convertCoinPusherDiamonds(id);
         ConfigManager.getInstance().getAppRepository().convertCoinPusherDiamonds(id)
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(this)
                 .doOnSubscribe(disposable -> showHud())
-                .subscribe(new BaseObserver<BaseDataResponse<CoinPusherBalanceDataEntity>>(){
+                .subscribe(new BaseObserver<BaseDataResponse<CoinPusherBalanceDataBean>>(){
 
                     @Override
-                    public void onSuccess(BaseDataResponse<CoinPusherBalanceDataEntity> coinPusherDataEntityResponse) {
-                        CoinPusherBalanceDataEntity coinPusherDataEntity = coinPusherDataEntityResponse.getData();
+                    public void onSuccess(BaseDataResponse<CoinPusherBalanceDataBean> coinPusherDataEntityResponse) {
+                        CoinPusherBalanceDataBean coinPusherDataEntity = coinPusherDataEntityResponse.getData();
                         if(ObjectUtils.isNotEmpty(coinPusherDataEntity)){
                             totalMoney = coinPusherDataEntity.getTotalGold();
                             coinPusherConvertAdapter.setMaxValuerSelect(totalMoney);
@@ -328,7 +328,7 @@ public class CoinPusherConvertDialog  extends BaseDialog {
     }
 
     public interface ItemConvertListener{
-        void convertSuccess(CoinPusherBalanceDataEntity coinPusherDataEntity);
+        void convertSuccess(CoinPusherBalanceDataBean coinPusherDataEntity);
         default void buyError() {
 
         }

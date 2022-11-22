@@ -12,7 +12,7 @@ import com.fine.friendlycc.data.source.http.observer.BaseListEmptyObserver;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseListDataResponse;
 import com.fine.friendlycc.data.source.http.response.BaseResponse;
-import com.fine.friendlycc.entity.GiveMessageEntity;
+import com.fine.friendlycc.bean.GiveMessageBean;
 import com.fine.friendlycc.ui.mine.broadcast.mytrends.trenddetail.TrendDetailFragment;
 import com.fine.friendlycc.viewmodel.BaseRefreshViewModel;
 import com.fine.friendlycc.BR;
@@ -46,7 +46,7 @@ public class GiveMessageViewModel extends BaseRefreshViewModel<AppRepository> {
     }
 
     public void itemClick(int position) {
-        GiveMessageEntity itemEntity = observableList.get(position).itemEntity.get();
+        GiveMessageBean itemEntity = observableList.get(position).itemEntity.get();
         if (itemEntity.getRelationType() == 2) {
             //动态
             Bundle bundle = TrendDetailFragment.getStartBundle(itemEntity.getRelationId());
@@ -60,15 +60,15 @@ public class GiveMessageViewModel extends BaseRefreshViewModel<AppRepository> {
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(this)
-                .subscribe(new BaseListEmptyObserver<BaseListDataResponse<GiveMessageEntity>>(this) {
+                .subscribe(new BaseListEmptyObserver<BaseListDataResponse<GiveMessageBean>>(this) {
                     @Override
-                    public void onSuccess(BaseListDataResponse<GiveMessageEntity> response) {
+                    public void onSuccess(BaseListDataResponse<GiveMessageBean> response) {
                         super.onSuccess(response);
                         if (page == 1) {
                             observableList.clear();
                         }
-                        List<GiveMessageEntity> list = response.getData().getData();
-                        for (GiveMessageEntity entity : list) {
+                        List<GiveMessageBean> list = response.getData().getData();
+                        for (GiveMessageBean entity : list) {
                             GiveMessageItemViewModel item = new GiveMessageItemViewModel(GiveMessageViewModel.this, entity);
                             observableList.add(item);
                         }

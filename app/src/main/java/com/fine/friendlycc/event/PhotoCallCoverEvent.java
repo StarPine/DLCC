@@ -1,6 +1,6 @@
 package com.fine.friendlycc.event;
 
-import com.fine.friendlycc.entity.AlbumPhotoEntity;
+import com.fine.friendlycc.bean.AlbumPhotoBean;
 
 /**
  * Author: 彭石林
@@ -9,17 +9,17 @@ import com.fine.friendlycc.entity.AlbumPhotoEntity;
  */
 public class PhotoCallCoverEvent {
 
-    private AlbumPhotoEntity albumPhotoEntity;
+    private AlbumPhotoBean albumPhotoEntity;
 
-    public AlbumPhotoEntity getAlbumPhotoEntity() {
+    public AlbumPhotoBean getAlbumPhotoEntity() {
         return albumPhotoEntity;
     }
 
-    public void setAlbumPhotoEntity(AlbumPhotoEntity albumPhotoEntity) {
+    public void setAlbumPhotoEntity(AlbumPhotoBean albumPhotoEntity) {
         this.albumPhotoEntity = albumPhotoEntity;
     }
 
-    public PhotoCallCoverEvent(AlbumPhotoEntity albumPhotoEntity) {
+    public PhotoCallCoverEvent(AlbumPhotoBean albumPhotoEntity) {
         this.albumPhotoEntity = albumPhotoEntity;
     }
 }

@@ -9,11 +9,10 @@ import androidx.databinding.ObservableField;
 
 import com.blankj.utilcode.util.StringUtils;
 import com.fine.friendlycc.R;
-import com.fine.friendlycc.app.AppContext;
+import com.fine.friendlycc.app.CCApplication;
 import com.fine.friendlycc.app.AppsFlyerEvent;
-import com.fine.friendlycc.entity.AdItemEntity;
-import com.fine.friendlycc.entity.CallingInfoEntity;
-import com.fine.friendlycc.entity.ParkItemEntity;
+import com.fine.friendlycc.bean.AdItemBean;
+import com.fine.friendlycc.bean.ParkItemBean;
 import com.fine.friendlycc.manager.ConfigManager;
 import com.fine.friendlycc.ui.mine.wallet.diamond.recharge.DiamondRechargeActivity;
 import com.fine.friendlycc.ui.userdetail.detail.UserDetailFragment;
@@ -33,16 +32,16 @@ import me.goldze.mvvmhabit.binding.command.BindingCommand;
  */
 public class BaseParkItemViewModel extends MultiItemViewModel<BaseParkViewModel> {
     //新增广告轮播类型
-    public ObservableField<List<AdItemEntity>> itemBannerEntity = new ObservableField<>();
+    public ObservableField<List<AdItemBean>> itemBannerEntity = new ObservableField<>();
 
     public ObservableField<Boolean> collectEnable = new ObservableField<>();
-    public ObservableField<ParkItemEntity> itemEntity = new ObservableField<>();
+    public ObservableField<ParkItemBean> itemEntity = new ObservableField<>();
     //单次搭讪成功
     public ObservableField<Boolean> accountCollect = new ObservableField<>();
     //条目的点击事件
     public final BindingCommand itemClick = new BindingCommand(() -> {
         try {
-            AppContext.instance().logEvent(AppsFlyerEvent.Nearby_Follow);
+            CCApplication.instance().logEvent(AppsFlyerEvent.Nearby_Follow);
             int position = viewModel.observableList.indexOf(BaseParkItemViewModel.this);
             Bundle bundle = UserDetailFragment.getStartBundle(itemEntity.get().getId());
             bundle.putInt(UserDetailFragment.ARG_USER_DETAIL_POSITION,position);
@@ -57,17 +56,17 @@ public class BaseParkItemViewModel extends MultiItemViewModel<BaseParkViewModel>
             //拿到position
             if (itemEntity.get().getIsAccost() == 1) {
                 ChatUtils.chatUser(itemEntity.get().getImUserId(), itemEntity.get().getId(), itemEntity.get().getNickname(), viewModel);
-                AppContext.instance().logEvent(AppsFlyerEvent.homepage_chat);
+                CCApplication.instance().logEvent(AppsFlyerEvent.homepage_chat);
             } else {
                 try {
                     //男女点击搭讪
-                    AppContext.instance().logEvent(ConfigManager.getInstance().isMale() ? AppsFlyerEvent.greet_male : AppsFlyerEvent.greet_female);
+                    CCApplication.instance().logEvent(ConfigManager.getInstance().isMale() ? AppsFlyerEvent.greet_male : AppsFlyerEvent.greet_female);
                 }catch (Exception ignored){
 
                 }
                 int position = viewModel.observableList.indexOf(BaseParkItemViewModel.this);
                 viewModel.putAccostFirst(position);
-                AppContext.instance().logEvent(AppsFlyerEvent.homepage_accost);
+                CCApplication.instance().logEvent(AppsFlyerEvent.homepage_accost);
             }
 
         } catch (Exception e) {
@@ -75,20 +74,20 @@ public class BaseParkItemViewModel extends MultiItemViewModel<BaseParkViewModel>
         }
     });
 
-    public BaseParkItemViewModel(@NonNull BaseParkViewModel viewModel, int sex, ParkItemEntity itemEntity) {
+    public BaseParkItemViewModel(@NonNull BaseParkViewModel viewModel, int sex, ParkItemBean itemEntity) {
         super(viewModel);
         this.collectEnable.set(itemEntity.getSex() != sex);
         this.itemEntity.set(itemEntity);
     }
 
-    public BaseParkItemViewModel(@NonNull BaseParkViewModel viewModel, List<AdItemEntity> itemBannerEntity) {
+    public BaseParkItemViewModel(@NonNull BaseParkViewModel viewModel, List<AdItemBean> itemBannerEntity) {
         super(viewModel);
         this.itemBannerEntity.set(itemBannerEntity);
     }
     //banner点击
     public BindingCommand<Integer> onBannerClickCommand = new BindingCommand<>(index -> {
         try {
-            AdItemEntity adItemEntity = itemBannerEntity.get().get(index);
+            AdItemBean adItemEntity = itemBannerEntity.get().get(index);
             int typeAct = adItemEntity.getType();
             if(typeAct!=0){
                 switch (typeAct){
@@ -149,16 +148,16 @@ public class BaseParkItemViewModel extends MultiItemViewModel<BaseParkViewModel>
         return distance;
     }
 
-    public int onLineColor(ParkItemEntity itemEntity){
+    public int onLineColor(ParkItemBean itemEntity){
         if (itemEntity == null)return -1;
         if (itemEntity.getCallingStatus() == 0){
             if (itemEntity.getIsOnline() == 1) {
-                return AppContext.instance().getResources().getColor(R.color.green2);
+                return CCApplication.instance().getResources().getColor(R.color.green2);
             }
         }else {
-            return AppContext.instance().getResources().getColor(R.color.red_9);
+            return CCApplication.instance().getResources().getColor(R.color.red_9);
         }
-        return AppContext.instance().getResources().getColor(R.color.text_9EA1B0);
+        return CCApplication.instance().getResources().getColor(R.color.text_9EA1B0);
     }
 
     public String getOnlineStatus() {
@@ -246,22 +245,22 @@ public class BaseParkItemViewModel extends MultiItemViewModel<BaseParkViewModel>
         return SystemDictUtils.getOccupationByIdOnNull(occupationId);
     }
 
-    public Drawable getVipGodsImg(ParkItemEntity itemEntity) {
+    public Drawable getVipGodsImg(ParkItemBean itemEntity) {
         if (itemEntity != null) {
             if (itemEntity.getSex() == 1) {
                 if (itemEntity.getIsVip() == 1) {
-                    return AppContext.instance().getDrawable(R.drawable.ic_vip);
+                    return CCApplication.instance().getDrawable(R.drawable.ic_vip);
                 } else {
                     if (itemEntity.getCertification() == 1) {
-                        return AppContext.instance().getDrawable(R.drawable.ic_real_people);
+                        return CCApplication.instance().getDrawable(R.drawable.ic_real_people);
                     }
                 }
             } else {//女生
                 if (itemEntity.getIsVip() == 1) {
-                    return AppContext.instance().getDrawable(R.drawable.ic_good_goddess);
+                    return CCApplication.instance().getDrawable(R.drawable.ic_good_goddess);
                 } else {
                     if (itemEntity.getCertification() == 1) {
-                        return AppContext.instance().getDrawable(R.drawable.ic_real_people);
+                        return CCApplication.instance().getDrawable(R.drawable.ic_real_people);
                     }
                 }
             }

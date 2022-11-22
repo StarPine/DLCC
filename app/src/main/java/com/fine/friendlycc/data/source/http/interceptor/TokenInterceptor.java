@@ -7,7 +7,7 @@ import com.fine.friendlycc.app.AppConfig;
 import com.fine.friendlycc.data.RetrofitHeadersConfig;
 import com.fine.friendlycc.data.source.LocalDataSource;
 import com.fine.friendlycc.data.source.local.LocalDataSourceImpl;
-import com.fine.friendlycc.entity.ApiConfigManagerEntity;
+import com.fine.friendlycc.bean.ApiConfigManagerBean;
 import com.fine.friendlycc.utils.LogUtils;
 
 import java.io.IOException;
@@ -37,7 +37,7 @@ public class TokenInterceptor implements Interceptor {
                 .newBuilder();
         Request request = builder.build();
         int upUrlFlag = -1;
-        ApiConfigManagerEntity apiServerUrl = localDataSource.readApiConfigManagerEntity();
+        ApiConfigManagerBean apiServerUrl = localDataSource.readApiConfigManagerEntity();
         if(request!=null){
             Headers headers = request.headers();
             if(headers!=null){

@@ -49,7 +49,7 @@
         android:xlargeScreens="false" />
 
     <application
-        android:name="com.fine.friendlycc.app.AppContext"
+        android:name="com.fine.friendlycc.app.CCApplication"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -157,7 +157,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.fine.friendlycc.kl.view.DialingAudioActivity"
+            android:name="com.fine.friendlycc.calling.view.CCLineAudioActivity"
             android:exported="true"
             android:launchMode="singleTop"
             android:requestLegacyExternalStorage="true"
@@ -174,7 +174,7 @@
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan|adjustResize|stateHidden" />
         <activity
-            android:name="com.fine.friendlycc.kl.view.CallingVideoActivity"
+            android:name="com.fine.friendlycc.calling.view.CCLineVideoActivity"
             android:exported="true"
             android:launchMode="singleTop"
             android:requestLegacyExternalStorage="true"
@@ -217,7 +217,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
-            android:name="com.fine.friendlycc.kl.view.AudioCallChatingActivity"
+            android:name="com.fine.friendlycc.calling.view.AudioCallChatingActivity"
             android:exported="true"
             android:launchMode="singleTop"
             android:requestLegacyExternalStorage="true"
@@ -225,7 +225,7 @@
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan|adjustResize|stateHidden" /><!--" adjustResize|stateHidden"-->
         <activity
-            android:name="com.fine.friendlycc.kl.view.VideoPresetActivity"
+            android:name="com.fine.friendlycc.calling.view.VideoPresetActivity"
             android:exported="true"
             android:launchMode="singleTop"
             android:requestLegacyExternalStorage="true"

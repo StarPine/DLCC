@@ -15,8 +15,8 @@ import com.fine.friendlycc.data.source.http.observer.BaseListEmptyObserver;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseDataResponse;
 import com.fine.friendlycc.data.source.http.response.BaseListDataResponse;
-import com.fine.friendlycc.entity.CoinWalletEntity;
-import com.fine.friendlycc.entity.UserCoinItemEntity;
+import com.fine.friendlycc.bean.CoinWalletBean;
+import com.fine.friendlycc.bean.UserCoinItemBean;
 import com.fine.friendlycc.manager.ConfigManager;
 import com.fine.friendlycc.ui.main.MainFragment;
 import com.fine.friendlycc.viewmodel.BaseRefreshViewModel;
@@ -37,7 +37,7 @@ public class CoinViewModel extends BaseRefreshViewModel<AppRepository> {
 
     public BindingRecyclerViewAdapter<CoinItemViewModel> adapter = new BindingRecyclerViewAdapter<>();
 
-    public ObservableField<CoinWalletEntity> coinWalletEntity = new ObservableField<>();
+    public ObservableField<CoinWalletBean> coinWalletEntity = new ObservableField<>();
 
     public ObservableList<CoinItemViewModel> observableList = new ObservableArrayList<>();
 
@@ -82,9 +82,9 @@ public class CoinViewModel extends BaseRefreshViewModel<AppRepository> {
                 .doOnSubscribe(this)
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
-                .subscribe(new BaseListEmptyObserver<BaseListDataResponse<UserCoinItemEntity>>(this) {
+                .subscribe(new BaseListEmptyObserver<BaseListDataResponse<UserCoinItemBean>>(this) {
                     @Override
-                    public void onSuccess(BaseListDataResponse<UserCoinItemEntity> response) {
+                    public void onSuccess(BaseListDataResponse<UserCoinItemBean> response) {
                         if (response.getData() == null || response.getData().getTotal() == 0) {
                             isShowEmpty.set(true);
                             stateModel.setEmptyState(EmptyState.EMPTY);
@@ -96,7 +96,7 @@ public class CoinViewModel extends BaseRefreshViewModel<AppRepository> {
                         if (page == 1) {
                             observableList.clear();
                         }
-                        for (UserCoinItemEntity entity : response.getData().getData()) {
+                        for (UserCoinItemBean entity : response.getData().getData()) {
                             CoinItemViewModel item = new CoinItemViewModel(CoinViewModel.this, entity);
                             observableList.add(item);
                         }
@@ -121,9 +121,9 @@ public class CoinViewModel extends BaseRefreshViewModel<AppRepository> {
                 .doOnSubscribe(this)
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
-                .subscribe(new BaseObserver<BaseDataResponse<CoinWalletEntity>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<CoinWalletBean>>() {
                     @Override
-                    public void onSuccess(BaseDataResponse<CoinWalletEntity> response) {
+                    public void onSuccess(BaseDataResponse<CoinWalletBean> response) {
                         coinWalletEntity.set(response.getData());
                         if (!StringUtils.isEmpty(response.getData().getAccountNumber())) {
                             paypalAccount.set(String.format("%s(%s)", response.getData().getAccountNumber(), response.getData().getRealName()));

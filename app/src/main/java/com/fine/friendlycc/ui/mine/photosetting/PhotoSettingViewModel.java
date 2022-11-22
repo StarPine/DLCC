@@ -8,13 +8,13 @@ import androidx.databinding.ObservableField;
 import androidx.databinding.ObservableList;
 
 import com.blankj.utilcode.util.StringUtils;
-import com.fine.friendlycc.app.AppContext;
+import com.fine.friendlycc.app.CCApplication;
 import com.fine.friendlycc.app.AppsFlyerEvent;
 import com.fine.friendlycc.data.AppRepository;
 import com.fine.friendlycc.data.source.http.exception.RequestException;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseResponse;
-import com.fine.friendlycc.entity.AlbumPhotoEntity;
+import com.fine.friendlycc.bean.AlbumPhotoBean;
 import com.fine.friendlycc.event.MyPhotoAlbumChangeEvent;
 import com.fine.friendlycc.event.PhotoCallCoverEvent;
 import com.fine.friendlycc.manager.ConfigManager;
@@ -61,7 +61,7 @@ public class PhotoSettingViewModel extends BaseViewModel<AppRepository> {
     public BindingCommand burnOnClickCommand = new BindingCommand(new BindingAction() {
         @Override
         public void call() {
-            AlbumPhotoEntity entity = items.get(mIndex).itemEntity.get();
+            AlbumPhotoBean entity = items.get(mIndex).itemEntity.get();
             if (mType == PhotoSettingFragment.TYPE_PHOTO_SETTING) {
                 setBurnImage(entity.getId(), isBurn.get());
                 entity.setIsBurn(isBurn.get() ? 1 : 0);
@@ -110,10 +110,10 @@ public class PhotoSettingViewModel extends BaseViewModel<AppRepository> {
         currentItem.set(mIndex);
     }
 
-    public void setPhotos(int type, int index, List<AlbumPhotoEntity> photos) {
+    public void setPhotos(int type, int index, List<AlbumPhotoBean> photos) {
         this.mIndex = index;
         this.mType = type;
-        for (AlbumPhotoEntity photo : photos) {
+        for (AlbumPhotoBean photo : photos) {
             PhotoSettingItemViewModel photoSettingItemViewModel = new PhotoSettingItemViewModel(PhotoSettingViewModel.this, photo);
             //不为null  并且是本人
             if(photo.getVerificationType()==1 && !ConfigManager.getInstance().isMale()){
@@ -151,16 +151,16 @@ public class PhotoSettingViewModel extends BaseViewModel<AppRepository> {
             pop();
             return;
         }
-        AlbumPhotoEntity albumPhotoEntity = items.get(i).itemEntity.get();
+        AlbumPhotoBean albumPhotoEntity = items.get(i).itemEntity.get();
         if (albumPhotoEntity == null) {
             return;
         }
-        AppContext.instance().logEvent(AppsFlyerEvent.me_Upload_Photo);
+        CCApplication.instance().logEvent(AppsFlyerEvent.me_Upload_Photo);
         Observable.just(albumPhotoEntity)
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(this)
                 .subscribeOn(Schedulers.io())
-                .map((Function<AlbumPhotoEntity, String>) entity -> FileUploadUtils.ossUploadFile(String.format("album/%s/", model.readUserData().getId()), entity.getType(), entity.getSrc(), new FileUploadUtils.FileUploadProgressListener() {
+                .map((Function<AlbumPhotoBean, String>) entity -> FileUploadUtils.ossUploadFile(String.format("album/%s/", model.readUserData().getId()), entity.getType(), entity.getSrc(), new FileUploadUtils.FileUploadProgressListener() {
                     @Override
                     public void fileCompressProgress(int progress) {
                         showProgressHUD(String.format(StringUtils.getString(R.string.playcc_compressing), progress), progress);
@@ -188,7 +188,7 @@ public class PhotoSettingViewModel extends BaseViewModel<AppRepository> {
                                     public void onSuccess(BaseResponse baseResponse) {
 //                                        dismissHUD();
                                         i++;
-                                        AppContext.instance().logEvent(AppsFlyerEvent.me_Upload_Photo_succeed);
+                                        CCApplication.instance().logEvent(AppsFlyerEvent.me_Upload_Photo_succeed);
                                         uploadPhoto();
                                     }
 
@@ -287,7 +287,7 @@ public class PhotoSettingViewModel extends BaseViewModel<AppRepository> {
                     public void onSuccess(BaseResponse baseResponse) {
                         if(items!=null){
                             for (int j = 0; j < items.size(); j++) {
-                                AlbumPhotoEntity albumPhotoEntity = items.get(j).itemEntity.get();
+                                AlbumPhotoBean albumPhotoEntity = items.get(j).itemEntity.get();
                                 if(albumPhotoEntity!=null){
                                     //不为null  并且是本人
                                     if(albumPhotoEntity.getVerificationType()==1 && !ConfigManager.getInstance().isMale()){

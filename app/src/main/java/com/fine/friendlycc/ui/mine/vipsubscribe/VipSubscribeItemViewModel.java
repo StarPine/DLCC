@@ -9,7 +9,7 @@ import androidx.databinding.ObservableField;
 
 import com.android.billingclient.api.SkuDetails;
 import com.blankj.utilcode.util.StringUtils;
-import com.fine.friendlycc.entity.VipPackageItemEntity;
+import com.fine.friendlycc.bean.VipPackageItemBean;
 import com.fine.friendlycc.utils.ExceptionReportUtils;
 import com.fine.friendlycc.R;
 
@@ -23,7 +23,7 @@ import me.goldze.mvvmhabit.binding.command.BindingCommand;
  */
 public class VipSubscribeItemViewModel extends MultiItemViewModel<VipSubscribeViewModel> {
 
-    public ObservableField<VipPackageItemEntity> itemEntity = new ObservableField<>();
+    public ObservableField<VipPackageItemBean> itemEntity = new ObservableField<>();
     public ObservableField<SkuDetails> skuDetails = new ObservableField<>();
 
     public String num_ling = "0";
@@ -37,7 +37,7 @@ public class VipSubscribeItemViewModel extends MultiItemViewModel<VipSubscribeVi
         }
     });
 
-    public VipSubscribeItemViewModel(@NonNull VipSubscribeViewModel viewModel, VipPackageItemEntity itemEntity, SkuDetails skuDetails) {
+    public VipSubscribeItemViewModel(@NonNull VipSubscribeViewModel viewModel, VipPackageItemBean itemEntity, SkuDetails skuDetails) {
         super(viewModel);
         this.itemEntity.set(itemEntity);
         this.skuDetails.set(skuDetails);
@@ -45,7 +45,7 @@ public class VipSubscribeItemViewModel extends MultiItemViewModel<VipSubscribeVi
 
     //获取标题文字
     public String getTitleText(){
-        VipPackageItemEntity entity = itemEntity.get();
+        VipPackageItemBean entity = itemEntity.get();
         if (StringUtils.isEmpty(entity.getGoodsTab())) {
             return "";
         } else {
@@ -54,7 +54,7 @@ public class VipSubscribeItemViewModel extends MultiItemViewModel<VipSubscribeVi
     }
     //控制标题是否隐藏
     public int getTitleShow(){
-        VipPackageItemEntity entity = itemEntity.get();
+        VipPackageItemBean entity = itemEntity.get();
         if (!StringUtils.isEmpty(entity.getDiscountLabel())) {
             return View.VISIBLE;
         } else {
@@ -63,7 +63,7 @@ public class VipSubscribeItemViewModel extends MultiItemViewModel<VipSubscribeVi
     }
     //推荐角标显示隐藏
     public Integer isRecommendShow(){
-        VipPackageItemEntity entity = itemEntity.get();
+        VipPackageItemBean entity = itemEntity.get();
         if(entity.getIsRecommend()!=null && entity.getIsRecommend()==1){
             return View.VISIBLE;
         }
@@ -72,7 +72,7 @@ public class VipSubscribeItemViewModel extends MultiItemViewModel<VipSubscribeVi
 
     //获取原价
     public Spanned getOriginalPrice() {
-        VipPackageItemEntity entity = itemEntity.get();
+        VipPackageItemBean entity = itemEntity.get();
         if (entity != null && entity.getOriginalPrice() != null) {
             return Html.fromHtml(String.format(StringUtils.getString(R.string.playcc_vip_alert_gold_tag, entity.getOriginalPrice())));
         }
@@ -80,7 +80,7 @@ public class VipSubscribeItemViewModel extends MultiItemViewModel<VipSubscribeVi
     }
 
     public String getDayPrice() {
-        VipPackageItemEntity entity = itemEntity.get();
+        VipPackageItemBean entity = itemEntity.get();
         if (entity != null && entity.getDiscountLabel() != null) {
             return entity.getDiscountLabel();
         }

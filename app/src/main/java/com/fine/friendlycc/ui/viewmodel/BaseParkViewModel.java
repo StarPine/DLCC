@@ -12,7 +12,7 @@ import com.fine.friendlycc.data.AppRepository;
 import com.fine.friendlycc.data.source.http.exception.RequestException;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseResponse;
-import com.fine.friendlycc.entity.ParkItemEntity;
+import com.fine.friendlycc.bean.ParkItemBean;
 import com.fine.friendlycc.event.AccostEvent;
 import com.fine.friendlycc.event.LikeChangeEvent;
 import com.fine.friendlycc.event.TaskListEvent;
@@ -75,7 +75,7 @@ public abstract class BaseParkViewModel<T extends AppRepository> extends BaseRef
         mSubscription2 = RxBus.getDefault().toObservable(UserRemarkChangeEvent.class)
                 .subscribe(event -> {
                     for (BaseParkItemViewModel itemViewModel : observableList) {
-                        ParkItemEntity parkItemEntity =  itemViewModel.itemEntity.get();
+                        ParkItemBean parkItemEntity =  itemViewModel.itemEntity.get();
                         if (parkItemEntity!=null && parkItemEntity.getId()  == event.getUserId()) {
                             itemViewModel.itemEntity.get().setNickname(event.getRemarkName());
                             break;
@@ -86,7 +86,7 @@ public abstract class BaseParkViewModel<T extends AppRepository> extends BaseRef
                 .subscribe(event -> {
                     if (event.getFrom() == null || event.getFrom() != this) {
                         for (BaseParkItemViewModel itemViewModel : observableList) {
-                            ParkItemEntity parkItemEntity =  itemViewModel.itemEntity.get();
+                            ParkItemBean parkItemEntity =  itemViewModel.itemEntity.get();
                             if (parkItemEntity!=null && parkItemEntity.getId() == event.getUserId()) {
                                 itemViewModel.itemEntity.get().setCollect(event.isLike());
                                 break;
@@ -129,7 +129,7 @@ public abstract class BaseParkViewModel<T extends AppRepository> extends BaseRef
     }
 
     public void addLike(int position) {
-        ParkItemEntity parkItemEntity = observableList.get(position).itemEntity.get();
+        ParkItemBean parkItemEntity = observableList.get(position).itemEntity.get();
         model.addCollect(parkItemEntity.getId())
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
@@ -158,7 +158,7 @@ public abstract class BaseParkViewModel<T extends AppRepository> extends BaseRef
     }
 
     public void delLike(int position) {
-        ParkItemEntity parkItemEntity = observableList.get(position).itemEntity.get();
+        ParkItemBean parkItemEntity = observableList.get(position).itemEntity.get();
         model.deleteCollect(parkItemEntity.getId())
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
@@ -188,7 +188,7 @@ public abstract class BaseParkViewModel<T extends AppRepository> extends BaseRef
 
     //搭讪
     public void putAccostFirst(int position) {
-        ParkItemEntity parkItemEntity = observableList.get(position).itemEntity.get();
+        ParkItemBean parkItemEntity = observableList.get(position).itemEntity.get();
         model.putAccostFirst(parkItemEntity.getId())
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
@@ -226,6 +226,6 @@ public abstract class BaseParkViewModel<T extends AppRepository> extends BaseRef
                 });
     }
 
-    public abstract void AccostFirstSuccess(ParkItemEntity itemEntity, int position);
+    public abstract void AccostFirstSuccess(ParkItemBean itemEntity, int position);
 
 }

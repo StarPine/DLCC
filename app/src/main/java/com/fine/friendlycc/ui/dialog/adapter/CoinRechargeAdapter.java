@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.blankj.utilcode.util.ColorUtils;
 import com.blankj.utilcode.util.ObjectUtils;
 import com.fine.friendlycc.R;
-import com.fine.friendlycc.entity.GoodsEntity;
+import com.fine.friendlycc.bean.GoodsBean;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -27,7 +27,7 @@ import java.util.List;
 public class CoinRechargeAdapter extends RecyclerView.Adapter<CoinRechargeAdapter.RecyclerHolder> {
 
     private final Context mContext;
-    private List<GoodsEntity> dataList = new ArrayList<>();
+    private List<GoodsBean> dataList = new ArrayList<>();
 
     private CoinRechargeAdapterListener coinRechargeAdapterListener = null;
 
@@ -43,7 +43,7 @@ public class CoinRechargeAdapter extends RecyclerView.Adapter<CoinRechargeAdapte
         this.coinRechargeAdapterListener = coinRechargeAdapterListener;
     }
 
-    public void setData(List<GoodsEntity> goodsList) {
+    public void setData(List<GoodsBean> goodsList) {
         this.dataList = goodsList;
         notifyDataSetChanged();
     }
@@ -58,7 +58,7 @@ public class CoinRechargeAdapter extends RecyclerView.Adapter<CoinRechargeAdapte
     @SuppressLint("ResourceAsColor")
     @Override
     public void onBindViewHolder(@NonNull RecyclerHolder holder, int position) {
-        GoodsEntity goodsEntity = dataList.get(position);
+        GoodsBean goodsEntity = dataList.get(position);
         holder.good_text.setText(goodsEntity.getGiveCoinTitle());
         holder.good_name.setText(goodsEntity.getSymbol() + goodsEntity.getSalePrice());
         //是否vip
@@ -114,7 +114,7 @@ public class CoinRechargeAdapter extends RecyclerView.Adapter<CoinRechargeAdapte
         });
     }
 
-    private void setTipsBg(@NotNull RecyclerHolder holder, GoodsEntity goodsEntity) {
+    private void setTipsBg(@NotNull RecyclerHolder holder, GoodsBean goodsEntity) {
         if (!ObjectUtils.isEmpty(goodsEntity.getGoodsDesc())) {
             holder.recharge_tips.setText(goodsEntity.getGoodsDesc());
             holder.recharge_tips.setVisibility(View.VISIBLE);

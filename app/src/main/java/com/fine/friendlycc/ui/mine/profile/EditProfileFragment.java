@@ -19,11 +19,11 @@ import com.bigkoo.pickerview.listener.OnOptionsSelectListener;
 import com.bigkoo.pickerview.view.OptionsPickerView;
 import com.bigkoo.pickerview.view.TimePickerView;
 import com.contrarywind.view.WheelView;
-import com.fine.friendlycc.app.AppContext;
+import com.fine.friendlycc.app.CCApplication;
 import com.fine.friendlycc.app.AppViewModelFactory;
 import com.fine.friendlycc.app.AppsFlyerEvent;
-import com.fine.friendlycc.entity.OccupationConfigItemEntity;
-import com.fine.friendlycc.entity.UserDataEntity;
+import com.fine.friendlycc.bean.OccupationConfigItemBean;
+import com.fine.friendlycc.bean.UserDataBean;
 import com.fine.friendlycc.ui.base.BaseToolbarFragment;
 import com.fine.friendlycc.utils.DateUtil;
 import com.fine.friendlycc.utils.ImmersionBarUtils;
@@ -79,7 +79,7 @@ public class EditProfileFragment extends BaseToolbarFragment<FragmentEditProfile
     @Override
     public void initData() {
         super.initData();
-        AppContext.instance().logEvent(AppsFlyerEvent.Edit_Profile);
+        CCApplication.instance().logEvent(AppsFlyerEvent.Edit_Profile);
     }
 
     private void clearNicknameFocus() {
@@ -172,25 +172,25 @@ public class EditProfileFragment extends BaseToolbarFragment<FragmentEditProfile
         }
 //        MVDialog.ChooseOccupation chooseOccupation = new MVDialog.ChooseOccupation() {
 //            @Override
-//            public void clickListItem(Dialog dialog, OccupationConfigItemEntity item) {
+//            public void clickListItem(Dialog dialog, OccupationConfigItemBean item) {
 //                viewModel.userDataEntity.get().setOccupationId(item.getId());
 //            }
 //        };
 //        MVDialog.getOccupationDialog(this.getContext(), viewModel.occupation, viewModel.userDataEntity.get().getOccupationId(), chooseOccupation);
         MVDialog.ChooseOccupation chooseOccupation = new MVDialog.ChooseOccupation() {
             @Override
-            public void clickListItem(Dialog dialog, OccupationConfigItemEntity.ItemEntity item) {
+            public void clickListItem(Dialog dialog, OccupationConfigItemBean.ItemEntity item) {
                 viewModel.userDataEntity.get().setOccupationId(item.getId());
 
             }
 
 //            @Override
-//            public void clickListItem(Dialog dialog, OccupationConfigItemEntity item) {
+//            public void clickListItem(Dialog dialog, OccupationConfigItemBean item) {
 //                viewModel.userDataEntity.get().setOccupationId(item.getId());
 //            }
 
 //            @Override
-//            public void clickListItem(Dialog dialog, OccupationConfigItemEntity.ItemEntity item) {
+//            public void clickListItem(Dialog dialog, OccupationConfigItemBean.ItemEntity item) {
 //                viewModel.userDataEntity.get().setOccupationId(item.getId());
 //            }
         };
@@ -215,7 +215,7 @@ public class EditProfileFragment extends BaseToolbarFragment<FragmentEditProfile
         Calendar endDate = Calendar.getInstance();
         endDate.set(DateUtil.getYear() - 18, DateUtil.getMonth() - 1, DateUtil.getCurrentMonthDay());
         TimePickerView pvTime = new TimePickerBuilder(this.getContext(), (date, v) -> {
-            UserDataEntity userEntity = viewModel.userDataEntity.get();
+            UserDataBean userEntity = viewModel.userDataEntity.get();
             userEntity.setBirthday(Utils.formatday.format(date));
             viewModel.userDataEntity.set(userEntity);
             viewModel.userDataEntity.notifyChange();

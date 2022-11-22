@@ -8,8 +8,8 @@ import androidx.databinding.ObservableField;
 import com.fine.friendlycc.data.AppRepository;
 import com.fine.friendlycc.data.source.http.observer.BaseListEmptyObserver;
 import com.fine.friendlycc.data.source.http.response.BaseListDataResponse;
-import com.fine.friendlycc.entity.ConfigItemEntity;
-import com.fine.friendlycc.entity.ParkItemEntity;
+import com.fine.friendlycc.bean.ConfigItemBean;
+import com.fine.friendlycc.bean.ParkItemBean;
 import com.fine.friendlycc.event.CityChangeEvent;
 import com.fine.friendlycc.event.GenderToggleEvent;
 import com.fine.friendlycc.ui.viewmodel.BaseParkItemViewModel;
@@ -41,7 +41,7 @@ public class HomeFristTabViewModel extends BaseParkViewModel<AppRepository> {
     public ObservableField<Boolean> online = new ObservableField<>(true);
     public ObservableField<Double> lat = new ObservableField<>();//纬度
     public ObservableField<Double> lng = new ObservableField<>();//经度
-    public List<ConfigItemEntity> list_chooseCityItem = new ArrayList<>();
+    public List<ConfigItemBean> list_chooseCityItem = new ArrayList<>();
     public ObservableField<Integer> type = new ObservableField<>(1);//男女-选项卡内容
     public int index;
 
@@ -58,7 +58,7 @@ public class HomeFristTabViewModel extends BaseParkViewModel<AppRepository> {
     }
 
     @Override
-    public void AccostFirstSuccess(ParkItemEntity itemEntity, int position) {
+    public void AccostFirstSuccess(ParkItemBean itemEntity, int position) {
 
     }
 
@@ -81,12 +81,12 @@ public class HomeFristTabViewModel extends BaseParkViewModel<AppRepository> {
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(this)
-                .subscribe(new BaseListEmptyObserver<BaseListDataResponse<ParkItemEntity>>(this) {
+                .subscribe(new BaseListEmptyObserver<BaseListDataResponse<ParkItemBean>>(this) {
                     @Override
-                    public void onSuccess(BaseListDataResponse<ParkItemEntity> response) {
+                    public void onSuccess(BaseListDataResponse<ParkItemBean> response) {
                         super.onSuccess(response);
                         int sex = model.readUserData().getSex();
-                        for (ParkItemEntity itemEntity : response.getData().getData()) {
+                        for (ParkItemBean itemEntity : response.getData().getData()) {
                             Integer itemType = itemEntity.getType();
                             if (itemType != null) {
                                 BaseParkItemViewModel item;
@@ -131,7 +131,7 @@ public class HomeFristTabViewModel extends BaseParkViewModel<AppRepository> {
         super.registerRxBus();
         mCitySubscription = RxBus.getDefault().toObservable(CityChangeEvent.class)
                 .subscribe(cityChangeEvent -> {
-                    ConfigItemEntity cityEntity = cityChangeEvent.getCityEntity();
+                    ConfigItemBean cityEntity = cityChangeEvent.getCityEntity();
                     if (cityEntity != null) {
                         if (cityEntity.getId() != null && cityEntity.getId() == -1) {
                             cityId.set(null);

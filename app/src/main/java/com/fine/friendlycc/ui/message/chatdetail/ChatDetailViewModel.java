@@ -14,7 +14,7 @@ import androidx.databinding.ObservableField;
 import com.blankj.utilcode.util.GsonUtils;
 import com.blankj.utilcode.util.ObjectUtils;
 import com.fine.friendlycc.R;
-import com.fine.friendlycc.app.AppContext;
+import com.fine.friendlycc.app.CCApplication;
 import com.fine.friendlycc.app.AppsFlyerEvent;
 import com.fine.friendlycc.app.Injection;
 import com.fine.friendlycc.data.AppRepository;
@@ -22,21 +22,21 @@ import com.fine.friendlycc.data.source.http.exception.RequestException;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseDataResponse;
 import com.fine.friendlycc.data.source.http.response.BaseResponse;
-import com.fine.friendlycc.entity.CallingInviteInfo;
-import com.fine.friendlycc.entity.ChatDetailCoinEntity;
-import com.fine.friendlycc.entity.EvaluateEntity;
-import com.fine.friendlycc.entity.EvaluateItemEntity;
-import com.fine.friendlycc.entity.EvaluateObjEntity;
-import com.fine.friendlycc.entity.GiftBagEntity;
-import com.fine.friendlycc.entity.IMTransUserEntity;
-import com.fine.friendlycc.entity.MallWithdrawTipsInfoEntity;
-import com.fine.friendlycc.entity.PhotoAlbumEntity;
-import com.fine.friendlycc.entity.PriceConfigEntity;
-import com.fine.friendlycc.entity.PrivacyEntity;
-import com.fine.friendlycc.entity.ShowFloatWindowEntity;
-import com.fine.friendlycc.entity.TagEntity;
-import com.fine.friendlycc.entity.UserConnMicStatusEntity;
-import com.fine.friendlycc.entity.UserDataEntity;
+import com.fine.friendlycc.bean.CallingInviteInfo;
+import com.fine.friendlycc.bean.ChatDetailCoinBean;
+import com.fine.friendlycc.bean.EvaluateBean;
+import com.fine.friendlycc.bean.EvaluateItemBean;
+import com.fine.friendlycc.bean.EvaluateObjBean;
+import com.fine.friendlycc.bean.GiftBagBean;
+import com.fine.friendlycc.bean.IMTransUserBean;
+import com.fine.friendlycc.bean.MallWithdrawTipsInfoBean;
+import com.fine.friendlycc.bean.PhotoAlbumBean;
+import com.fine.friendlycc.bean.PriceConfigBean;
+import com.fine.friendlycc.bean.PrivacyBean;
+import com.fine.friendlycc.bean.ShowFloatWindowBean;
+import com.fine.friendlycc.bean.TagBean;
+import com.fine.friendlycc.bean.UserConnMicStatusBean;
+import com.fine.friendlycc.bean.UserDataBean;
 import com.fine.friendlycc.event.AddBlackListEvent;
 import com.fine.friendlycc.event.CallChatingHangupEvent;
 import com.fine.friendlycc.event.MessageGiftNewEvent;
@@ -84,14 +84,14 @@ public class ChatDetailViewModel extends BaseViewModel<AppRepository> {
     public ObservableField<Boolean> isShoweCallingVideo = new ObservableField<>(false);//是否显示马上视讯入口
     public ObservableField<String> menuTrack = new ObservableField<>();//追踪
     public ObservableField<String> menuBlockade = new ObservableField<>();//封锁
-    public ObservableField<TagEntity> tagEntitys = new ObservableField<>();
+    public ObservableField<TagBean> tagEntitys = new ObservableField<>();
     public ObservableField<List<String>> sensitiveWords = new ObservableField<>();
     public boolean mySelfVideoFlag;
     public boolean mySelfAudioFlag;
     //聊天对方IM 用户ID
     public String TMToUserId;
     //IM聊天价格配置
-    public PriceConfigEntity priceConfigEntityField = null;
+    public PriceConfigBean priceConfigEntityField = null;
     //男生钻石总额
     public Integer maleBalance = 0;
 
@@ -112,7 +112,7 @@ public class ChatDetailViewModel extends BaseViewModel<AppRepository> {
     private String lastClickFunName;
     private long lastClickTime;
 
-    private PhotoAlbumEntity photoAlbumEntity;
+    private PhotoAlbumBean photoAlbumEntity;
 
     //点击与它视频
     public BindingCommand callVideoClick = new BindingCommand(() -> uc.callVideoViewEvent.call());
@@ -193,10 +193,10 @@ public class ChatDetailViewModel extends BaseViewModel<AppRepository> {
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(disposable -> showHUD())
-                .subscribe(new BaseObserver<BaseDataResponse<TagEntity>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<TagBean>>() {
                     @Override
-                    public void onSuccess(BaseDataResponse<TagEntity> tagEntityBaseDataResponse) {
-                        TagEntity tagEntity = tagEntityBaseDataResponse.getData();
+                    public void onSuccess(BaseDataResponse<TagBean> tagEntityBaseDataResponse) {
+                        TagBean tagEntity = tagEntityBaseDataResponse.getData();
                         if (tagEntity != null) {
                             uc.loadTag.postValue(tagEntity);
                             tagEntitys.set(tagEntity);
@@ -216,7 +216,7 @@ public class ChatDetailViewModel extends BaseViewModel<AppRepository> {
 
 
     //获取当前用户数据
-    public UserDataEntity getLocalUserDataEntity() {
+    public UserDataBean getLocalUserDataEntity() {
         return model.readUserData();
     }
 
@@ -278,9 +278,9 @@ public class ChatDetailViewModel extends BaseViewModel<AppRepository> {
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(this)
                 .doOnSubscribe(disposable -> showHUD())
-                .subscribe(new BaseObserver<BaseDataResponse<UserConnMicStatusEntity>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<UserConnMicStatusBean>>() {
                     @Override
-                    public void onSuccess(BaseDataResponse<UserConnMicStatusEntity> response) {
+                    public void onSuccess(BaseDataResponse<UserConnMicStatusBean> response) {
                         if (response.getData().getConnection()) {
                             uc.clickConnMic.call();
                         } else {
@@ -301,9 +301,9 @@ public class ChatDetailViewModel extends BaseViewModel<AppRepository> {
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(this)
-                .subscribe(new BaseObserver<BaseDataResponse<PhotoAlbumEntity>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<PhotoAlbumBean>>() {
                     @Override
-                    public void onSuccess(BaseDataResponse<PhotoAlbumEntity> photoAlbumEntityBaseDataResponse) {
+                    public void onSuccess(BaseDataResponse<PhotoAlbumBean> photoAlbumEntityBaseDataResponse) {
                         if(photoAlbumEntityBaseDataResponse.getData()!=null && photoAlbumEntityBaseDataResponse.getData().getImg()!=null && photoAlbumEntityBaseDataResponse.getData().getImg().size()>0){
                             photoAlbumEntity = photoAlbumEntityBaseDataResponse.getData();
                         }
@@ -321,7 +321,7 @@ public class ChatDetailViewModel extends BaseViewModel<AppRepository> {
      * @param detailEntity
      * @return
      */
-    public Drawable onLineDrawables(TagEntity detailEntity) {
+    public Drawable onLineDrawables(TagBean detailEntity) {
         if (detailEntity == null
                 || detailEntity.getCallingStatus() == null
                 || detailEntity.getIsOnline() == null)return null;
@@ -345,25 +345,25 @@ public class ChatDetailViewModel extends BaseViewModel<AppRepository> {
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(dispose -> showHUD())
-                .subscribe(new BaseObserver<BaseDataResponse<List<EvaluateEntity>>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<List<EvaluateBean>>>() {
                     @Override
-                    public void onSuccess(BaseDataResponse<List<EvaluateEntity>> response) {
+                    public void onSuccess(BaseDataResponse<List<EvaluateBean>> response) {
                         if(response.getData()!=null){
-                            List<EvaluateEntity> evaluateEntityList = response.getData();
-                            List<EvaluateObjEntity> list = null;
+                            List<EvaluateBean> evaluateEntityList = response.getData();
+                            List<EvaluateObjBean> list = null;
                             if (!ConfigManager.getInstance().isMale()) {
                                 list = Injection.provideDemoRepository().readMaleEvaluateConfig();
                             } else {
                                 list = Injection.provideDemoRepository().readFemaleEvaluateConfig();
                             }
-                            List<EvaluateItemEntity> items = new ArrayList<>();
+                            List<EvaluateItemBean> items = new ArrayList<>();
                             if(sendIM){
-                                for (EvaluateObjEntity configEntity : list) {
+                                for (EvaluateObjBean configEntity : list) {
                                     //好的评价
                                     if(configEntity.getType()==0){
-                                        EvaluateItemEntity evaluateItemEntity = new EvaluateItemEntity(configEntity.getId(), configEntity.getName(), configEntity.getType() == 1);
+                                        EvaluateItemBean evaluateItemEntity = new EvaluateItemBean(configEntity.getId(), configEntity.getName(), configEntity.getType() == 1);
                                         items.add(evaluateItemEntity);
-                                        for (EvaluateEntity evaluateEntity : evaluateEntityList) {
+                                        for (EvaluateBean evaluateEntity : evaluateEntityList) {
                                             if (configEntity.getId() == evaluateEntity.getTagId()) {
                                                 evaluateItemEntity.setNumber(evaluateEntity.getNumber());
                                             }
@@ -372,8 +372,8 @@ public class ChatDetailViewModel extends BaseViewModel<AppRepository> {
                                 }
                                 uc.sendIMEvaluate.setValue(items);
                             }else{
-                                for (EvaluateObjEntity configEntity : list) {
-                                    EvaluateItemEntity evaluateItemEntity = new EvaluateItemEntity(configEntity.getId(), configEntity.getName(), configEntity.getType() == 1);
+                                for (EvaluateObjBean configEntity : list) {
+                                    EvaluateItemBean evaluateItemEntity = new EvaluateItemBean(configEntity.getId(), configEntity.getName(), configEntity.getType() == 1);
                                     items.add(evaluateItemEntity);
                                 }
                                 uc.AlertMEvaluate.setValue(items);
@@ -417,7 +417,7 @@ public class ChatDetailViewModel extends BaseViewModel<AppRepository> {
                 });
     }
 
-    public void sendUserGift(Dialog dialog, GiftBagEntity.giftEntity giftEntity, Integer to_user_id, Integer amount) {
+    public void sendUserGift(Dialog dialog, GiftBagBean.giftEntity giftEntity, Integer to_user_id, Integer amount) {
         HashMap<String, Integer> map = new HashMap<>();
         map.put("giftId", giftEntity.getId());
         map.put("toUserId", to_user_id);
@@ -447,7 +447,7 @@ public class ChatDetailViewModel extends BaseViewModel<AppRepository> {
                         dismissHUD();
                         if (e.getCode() != null && e.getCode().intValue() == 21001) {
                             ToastCenterUtils.showToast(R.string.playcc_dialog_exchange_integral_total_text1);
-                            AppContext.instance().logEvent(AppsFlyerEvent.im_gifts_Insufficient_topup);
+                            CCApplication.instance().logEvent(AppsFlyerEvent.im_gifts_Insufficient_topup);
                             uc.sendUserGiftError.call();
                         }
                     }
@@ -465,10 +465,10 @@ public class ChatDetailViewModel extends BaseViewModel<AppRepository> {
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(disposable -> showHUD())
-                .subscribe(new BaseObserver<BaseDataResponse<MallWithdrawTipsInfoEntity>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<MallWithdrawTipsInfoBean>>() {
                     @Override
-                    public void onSuccess(BaseDataResponse<MallWithdrawTipsInfoEntity> response) {
-                        MallWithdrawTipsInfoEntity data = response.getData();
+                    public void onSuccess(BaseDataResponse<MallWithdrawTipsInfoBean> response) {
+                        MallWithdrawTipsInfoBean data = response.getData();
                         LogUtils.i("onSuccess: "+data);
                         uc.clickCrystalExchange.setValue(data);
 
@@ -489,10 +489,10 @@ public class ChatDetailViewModel extends BaseViewModel<AppRepository> {
         }
         if(callingType==1){
             //男女点击拨打语音
-            AppContext.instance().logEvent(ConfigManager.getInstance().isMale() ? AppsFlyerEvent.call_voice_male : AppsFlyerEvent.call_voice_female);
+            CCApplication.instance().logEvent(ConfigManager.getInstance().isMale() ? AppsFlyerEvent.call_voice_male : AppsFlyerEvent.call_voice_female);
         }else{
             //男女点击拨打视频
-            AppContext.instance().logEvent(ConfigManager.getInstance().isMale() ? AppsFlyerEvent.call_video_male : AppsFlyerEvent.call_video_female);
+            CCApplication.instance().logEvent(ConfigManager.getInstance().isMale() ? AppsFlyerEvent.call_video_male : AppsFlyerEvent.call_video_female);
         }
         model.callingInviteInfo(callingType, IMUserId, toIMUserId, 0)
                 .doOnSubscribe(this)
@@ -507,13 +507,13 @@ public class ChatDetailViewModel extends BaseViewModel<AppRepository> {
                             return;
                         }
                         if (callingInviteInfoBaseDataResponse.getCode() == 22001) {//游戏中
-                            Toast.makeText(AppContext.instance(), R.string.playcc_in_game, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(CCApplication.instance(), R.string.playcc_in_game, Toast.LENGTH_SHORT).show();
                             return;
                         }
 
                         CallingInviteInfo callingInviteInfo = callingInviteInfoBaseDataResponse.getData();
                         if (callingInviteInfo != null) {
-                            com.fine.friendlycc.kl.Utils.tryStartCallSomeone(callingType, toIMUserId, callingInviteInfo.getRoomId(), new Gson().toJson(callingInviteInfo));
+                            com.fine.friendlycc.calling.Utils.tryStartCallSomeone(callingType, toIMUserId, callingInviteInfo.getRoomId(), new Gson().toJson(callingInviteInfo));
                         }
                     }
 
@@ -539,10 +539,10 @@ public class ChatDetailViewModel extends BaseViewModel<AppRepository> {
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(disposable -> showHUD())
-                .subscribe(new BaseObserver<BaseDataResponse<PriceConfigEntity>>(){
+                .subscribe(new BaseObserver<BaseDataResponse<PriceConfigBean>>(){
                     @Override
-                    public void onSuccess(BaseDataResponse<PriceConfigEntity> response) {
-                        PriceConfigEntity priceConfigEntity = response.getData();
+                    public void onSuccess(BaseDataResponse<PriceConfigBean> response) {
+                        PriceConfigBean priceConfigEntity = response.getData();
                         if(priceConfigEntity != null){
                             priceConfigEntityField = priceConfigEntity;
                             mySelfAudioFlag = priceConfigEntity.getCurrent().getAllowAudio() == 1;
@@ -605,7 +605,7 @@ public class ChatDetailViewModel extends BaseViewModel<AppRepository> {
                     public void onSuccess(BaseResponse response) {
                         dismissHUD();
                         isTrack.set(true);
-                        Toast.makeText(AppContext.instance(), R.string.playcc_cancel_zuizong_3, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(CCApplication.instance(), R.string.playcc_cancel_zuizong_3, Toast.LENGTH_SHORT).show();
                         uc.addLikeSuccess.postValue(msgId);
                     }
 
@@ -665,11 +665,11 @@ public class ChatDetailViewModel extends BaseViewModel<AppRepository> {
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(disposable -> showHUD())
-                .subscribe(new BaseObserver<BaseDataResponse<ChatDetailCoinEntity>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<ChatDetailCoinBean>>() {
                     @Override
-                    public void onSuccess(BaseDataResponse<ChatDetailCoinEntity> responseBody) {
+                    public void onSuccess(BaseDataResponse<ChatDetailCoinBean> responseBody) {
                         if (responseBody.getData() != null) {
-                            ChatDetailCoinEntity chatDetailCoinEntity = responseBody.getData();
+                            ChatDetailCoinBean chatDetailCoinEntity = responseBody.getData();
                             Integer totalCoins = chatDetailCoinEntity.getTotalCoins();
                             if (totalCoins != null) {
                                 if (totalCoins <= 0) {
@@ -712,11 +712,11 @@ public class ChatDetailViewModel extends BaseViewModel<AppRepository> {
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(dispose -> showHUD())
-                .subscribe(new BaseObserver<BaseDataResponse<IMTransUserEntity>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<IMTransUserBean>>() {
 
                     @Override
-                    public void onSuccess(BaseDataResponse<IMTransUserEntity> response) {
-                        IMTransUserEntity  imTransUserEntity = response.getData();
+                    public void onSuccess(BaseDataResponse<IMTransUserBean> response) {
+                        IMTransUserBean  imTransUserEntity = response.getData();
                         if(imTransUserEntity!=null && imTransUserEntity.getUserId()!=null){
                             Bundle bundle = UserDetailFragment.getStartBundle(imTransUserEntity.getUserId());
                             start(UserDetailFragment.class.getCanonicalName(), bundle);
@@ -808,7 +808,7 @@ public class ChatDetailViewModel extends BaseViewModel<AppRepository> {
     }
 
     public void setAllowPrivacy(String type) {
-        PrivacyEntity entity = new PrivacyEntity();
+        PrivacyBean entity = new PrivacyBean();
         if (type.equals(ALLOW_TYPE_AUDIO)){
             if (mySelfAudioFlag)return;
             entity.setAllowAudio(true);
@@ -865,7 +865,7 @@ public class ChatDetailViewModel extends BaseViewModel<AppRepository> {
             }
         });
         CallChatingHangupSubscriber = RxBus.getDefault().toObservable(CallChatingHangupEvent.class).subscribe(event -> {
-            UserDataEntity localUser = getLocalUserDataEntity();
+            UserDataBean localUser = getLocalUserDataEntity();
             if (localUser != null && localUser.getSex() != null && localUser.getSex().intValue() == 1) {
                 getTotalCoins();
             }
@@ -876,7 +876,7 @@ public class ChatDetailViewModel extends BaseViewModel<AppRepository> {
             //调起储值界面
             uc.sendDialogViewEvent.call();
         });
-        ShowFloatWindowEntitySubscriber = RxBus.getDefault().toObservable(ShowFloatWindowEntity.class).subscribe(event -> {
+        ShowFloatWindowEntitySubscriber = RxBus.getDefault().toObservable(ShowFloatWindowBean.class).subscribe(event -> {
             isShoweCallingVideo.set(!event.isShow);
         });
 
@@ -897,7 +897,7 @@ public class ChatDetailViewModel extends BaseViewModel<AppRepository> {
         public SingleLiveEvent<Void> clickConnMic = new SingleLiveEvent<>();
         public SingleLiveEvent<Void> imProfit = new SingleLiveEvent<>();
         public SingleLiveEvent clickMore = new SingleLiveEvent<>();
-        public SingleLiveEvent<MallWithdrawTipsInfoEntity> clickCrystalExchange = new SingleLiveEvent<>();
+        public SingleLiveEvent<MallWithdrawTipsInfoBean> clickCrystalExchange = new SingleLiveEvent<>();
         //对方忙线
         public SingleLiveEvent otherBusy = new SingleLiveEvent<>();
         //新增
@@ -906,18 +906,18 @@ public class ChatDetailViewModel extends BaseViewModel<AppRepository> {
         //查询对方资料 判断是否为机器人、最后在线时间-判断用户是否在线
         public SingleLiveEvent<Map<String, String>> ChatUserDetailEntity = new SingleLiveEvent<>();
 
-        public SingleLiveEvent<TagEntity> loadTag = new SingleLiveEvent<>();
+        public SingleLiveEvent<TagBean> loadTag = new SingleLiveEvent<>();
 
         //刷新页面数据
         public SingleLiveEvent<Boolean> loadMessage = new SingleLiveEvent<>();
         //插入相扑数据
-        public SingleLiveEvent<PhotoAlbumEntity> putPhotoAlbumEntity = new SingleLiveEvent<>();
+        public SingleLiveEvent<PhotoAlbumBean> putPhotoAlbumEntity = new SingleLiveEvent<>();
         //是否可以评价
         public SingleLiveEvent<Boolean> canEvaluate = new SingleLiveEvent<>();
         //发送IM评价插入
-        public SingleLiveEvent<List<EvaluateItemEntity>> sendIMEvaluate = new SingleLiveEvent<>();
+        public SingleLiveEvent<List<EvaluateItemBean>> sendIMEvaluate = new SingleLiveEvent<>();
         //弹出评价框等待用户评价
-        public SingleLiveEvent<List<EvaluateItemEntity>> AlertMEvaluate = new SingleLiveEvent<>();
+        public SingleLiveEvent<List<EvaluateItemBean>> AlertMEvaluate = new SingleLiveEvent<>();
         //删除评价窗体
         public SingleLiveEvent<Void> removeEvaluateMessage = new SingleLiveEvent<>();
         //发送礼物失败。充值钻石

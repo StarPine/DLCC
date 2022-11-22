@@ -19,12 +19,11 @@ import com.blankj.utilcode.util.ColorUtils;
 import com.fine.friendlycc.BR;
 import com.fine.friendlycc.R;
 import com.fine.friendlycc.app.AppConfig;
-import com.fine.friendlycc.app.AppContext;
+import com.fine.friendlycc.app.CCApplication;
 import com.fine.friendlycc.app.AppViewModelFactory;
 import com.fine.friendlycc.databinding.ActivityCoinpusherGameBinding;
-import com.fine.friendlycc.entity.CoinPusherBalanceDataEntity;
-import com.fine.friendlycc.entity.CoinPusherDataInfoEntity;
-import com.fine.friendlycc.entity.GoodsEntity;
+import com.fine.friendlycc.bean.CoinPusherBalanceDataBean;
+import com.fine.friendlycc.bean.CoinPusherDataInfoBean;
 import com.fine.friendlycc.manager.ConfigManager;
 import com.fine.friendlycc.manager.LocaleManager;
 import com.fine.friendlycc.ui.base.BaseActivity;
@@ -36,7 +35,6 @@ import com.fine.friendlycc.ui.mine.wallet.diamond.recharge.DialogDiamondRecharge
 import com.fine.friendlycc.utils.AutoSizeUtils;
 import com.fine.friendlycc.utils.CoinPusherApiUtil;
 import com.fine.friendlycc.utils.ImmersionBarUtils;
-import com.fine.friendlycc.widget.coinrechargesheet.CoinRechargeSheetView;
 import com.jakewharton.rxbinding2.view.RxView;
 import com.misterp.toast.SnackUtils;
 import com.tencent.liteav.trtccalling.ui.floatwindow.FloatWindowService;
@@ -76,7 +74,7 @@ public class CoinPusherGameActivity extends BaseActivity<ActivityCoinpusherGameB
     //提示状态标识
     private boolean downTimeMillisHintFlag = false;
 
-    private CoinPusherDataInfoEntity coinPusherDataInfoEntity;
+    private CoinPusherDataInfoBean coinPusherDataInfoEntity;
 
     @Override
     protected void attachBaseContext(Context newBase) {
@@ -105,7 +103,7 @@ public class CoinPusherGameActivity extends BaseActivity<ActivityCoinpusherGameB
     protected void onResume() {
         super.onResume();
         FloatWindowService.stopService(this);
-        AppContext.isCalling = true;
+        CCApplication.isCalling = true;
         ImmersionBarUtils.setupStatusBar(this, false, true);
     }
 
@@ -133,7 +131,7 @@ public class CoinPusherGameActivity extends BaseActivity<ActivityCoinpusherGameB
         super.initParam();
        Intent intent =  getIntent();
        if(intent!=null){
-           coinPusherDataInfoEntity = (CoinPusherDataInfoEntity) intent.getSerializableExtra("CoinPusherInfo");
+           coinPusherDataInfoEntity = (CoinPusherDataInfoBean) intent.getSerializableExtra("CoinPusherInfo");
            //倒计时多少时间结束游戏
            downTimeMillisInFuture = coinPusherDataInfoEntity.getOutTime();
            ////倒计时剩余多少时间提示
@@ -333,7 +331,7 @@ public class CoinPusherGameActivity extends BaseActivity<ActivityCoinpusherGameB
             coinPusherConvertDialog.setCanceledOnTouchOutside(false);
             coinPusherConvertDialog.setItemConvertListener(new CoinPusherConvertDialog.ItemConvertListener() {
                 @Override
-                public void convertSuccess(CoinPusherBalanceDataEntity coinPusherBalanceDataEntity) {
+                public void convertSuccess(CoinPusherBalanceDataBean coinPusherBalanceDataEntity) {
                     viewModel.totalMoney.set(coinPusherBalanceDataEntity.getTotalGold());
                     //取消倒计时
                     cancelDownTimer();

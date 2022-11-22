@@ -14,7 +14,7 @@ import com.aliyun.svideo.crop.bean.AlivcCropOutputParam;
 import com.blankj.utilcode.util.ObjectUtils;
 import com.blankj.utilcode.util.StringUtils;
 import com.blankj.utilcode.util.Utils;
-import com.fine.friendlycc.app.AppContext;
+import com.fine.friendlycc.app.CCApplication;
 import com.fine.friendlycc.app.AppsFlyerEvent;
 import com.fine.friendlycc.data.AppRepository;
 import com.fine.friendlycc.data.source.http.exception.RequestException;
@@ -22,12 +22,12 @@ import com.fine.friendlycc.data.source.http.observer.BaseDisposableObserver;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseDataResponse;
 import com.fine.friendlycc.data.source.http.response.BaseResponse;
-import com.fine.friendlycc.entity.ConfigItemEntity;
-import com.fine.friendlycc.entity.DatingObjItemEntity;
-import com.fine.friendlycc.entity.DiamondPaySuccessEntity;
-import com.fine.friendlycc.entity.StatusEntity;
-import com.fine.friendlycc.entity.ThemeItemEntity;
-import com.fine.friendlycc.entity.UserDataEntity;
+import com.fine.friendlycc.bean.ConfigItemBean;
+import com.fine.friendlycc.bean.DatingObjItemBean;
+import com.fine.friendlycc.bean.DiamondPaySuccessBean;
+import com.fine.friendlycc.bean.StatusBean;
+import com.fine.friendlycc.bean.ThemeItemBean;
+import com.fine.friendlycc.bean.UserDataBean;
 import com.fine.friendlycc.event.BadioEvent;
 import com.fine.friendlycc.event.SelectMediaSourcesEvent;
 import com.fine.friendlycc.manager.ConfigManager;
@@ -72,14 +72,14 @@ public class IssuanceProgramViewModel extends BaseViewModel<AppRepository> {
     //心情选中
     public ObservableBoolean moolCheck = new ObservableBoolean(true);
     public ObservableField<String> selThemeItemName = new ObservableField<>("#" + StringUtils.getString(R.string.playcc_mood_item_id1));
-    public DatingObjItemEntity $datingObjItemEntity;
+    public DatingObjItemBean $datingObjItemEntity;
     //约会对象
     public BindingRecyclerViewAdapter<RadioDatingItemViewModel> objAdapter = new BindingRecyclerViewAdapter<>();
     public ItemBinding<RadioDatingItemViewModel> objItemBinding = ItemBinding.of(BR.viewModel, R.layout.item_radio_dating);
     public ObservableList<RadioDatingItemViewModel> objItems = new ObservableArrayList<>();
     //内容
     public ObservableField<String> programDesc = new ObservableField<>();
-    public ObservableField<ConfigItemEntity> chooseCityItem = new ObservableField<>();
+    public ObservableField<ConfigItemBean> chooseCityItem = new ObservableField<>();
     public ObservableField<String> addressName = new ObservableField<>();
     public ObservableField<String> address = new ObservableField<>();
     public ObservableField<Double> lat = new ObservableField<>();
@@ -89,7 +89,7 @@ public class IssuanceProgramViewModel extends BaseViewModel<AppRepository> {
     public ObservableField<Integer> is_comment = new ObservableField<>(0);
     public ObservableField<Integer> is_hide = new ObservableField<>(0);
     //    城市
-    public List<ConfigItemEntity> list_chooseCityItem = new ArrayList<>();
+    public List<ConfigItemBean> list_chooseCityItem = new ArrayList<>();
     public Integer sex;
     public ConfigManager configManager;
 
@@ -111,12 +111,12 @@ public class IssuanceProgramViewModel extends BaseViewModel<AppRepository> {
             uc.startVideoActivity.call();
         }
     });
-    ThemeItemEntity selThemeItem;
+    ThemeItemBean selThemeItem;
     //发布
     public BindingCommand issuanceClickCommand = new BindingCommand(new BindingAction() {
         @Override
         public void call() {
-            AppContext.instance().logEvent(AppsFlyerEvent.Post2);
+            CCApplication.instance().logEvent(AppsFlyerEvent.Post2);
             publishCheck(1);
         }
     });
@@ -143,9 +143,9 @@ public class IssuanceProgramViewModel extends BaseViewModel<AppRepository> {
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(this)
                 .doOnSubscribe(disposable -> showHUD())
-                .subscribe(new BaseObserver<BaseDataResponse<StatusEntity>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<StatusBean>>() {
                     @Override
-                    public void onSuccess(BaseDataResponse<StatusEntity> response) {
+                    public void onSuccess(BaseDataResponse<StatusBean> response) {
                         dismissHUD();
                         if (response.getData().getStatus() == 1) {
                             sendConfirm();
@@ -233,7 +233,7 @@ public class IssuanceProgramViewModel extends BaseViewModel<AppRepository> {
                 });
     }
 
-    public void OnClickItem(DatingObjItemEntity datingObjItemEntity) {
+    public void OnClickItem(DatingObjItemBean datingObjItemEntity) {
         selThemeItemName.set("#" + datingObjItemEntity.getName());
         $datingObjItemEntity = datingObjItemEntity;
     }
@@ -255,7 +255,7 @@ public class IssuanceProgramViewModel extends BaseViewModel<AppRepository> {
                     public void onSuccess(BaseResponse response) {
                         ToastUtils.showShort(R.string.playcc_issuance_success);
                         RxBus.getDefault().post(new BadioEvent(1));
-                        UserDataEntity userDataEntity = model.readUserData();
+                        UserDataBean userDataEntity = model.readUserData();
                         if (ObjectUtils.isEmpty(userDataEntity.getPermanentCityIds())) {
                             List<Integer> list = new ArrayList<>();
                             list.add(1);
@@ -299,7 +299,7 @@ public class IssuanceProgramViewModel extends BaseViewModel<AppRepository> {
         AlivcCropOutputDisposable = RxBus.getDefault().toObservable(AlivcCropOutputParam.class).subscribe(alivcCropOutputParam -> {
             selectMediaPath.set(alivcCropOutputParam.getOutputPath());
         });
-        paySuccessSubscriber = RxBus.getDefault().toObservable(DiamondPaySuccessEntity.class).subscribe(event -> {
+        paySuccessSubscriber = RxBus.getDefault().toObservable(DiamondPaySuccessBean.class).subscribe(event -> {
             sendConfirm();
         });
         //将订阅者加入管理站

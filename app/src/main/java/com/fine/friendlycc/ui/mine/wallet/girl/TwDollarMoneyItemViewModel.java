@@ -3,7 +3,7 @@ package com.fine.friendlycc.ui.mine.wallet.girl;
 import androidx.annotation.NonNull;
 import androidx.databinding.ObservableField;
 
-import com.fine.friendlycc.entity.UserProfitPageInfoEntity;
+import com.fine.friendlycc.bean.UserProfitPageInfoBean;
 import com.fine.friendlycc.manager.ConfigManager;
 import com.fine.friendlycc.utils.ExceptionReportUtils;
 
@@ -18,9 +18,9 @@ import me.goldze.mvvmhabit.binding.command.BindingCommand;
  * Description: This is TwDollarMoneyItemViewModel
  */
 public class TwDollarMoneyItemViewModel extends MultiItemViewModel<TwDollarMoneyViewModel> {
-    public ObservableField<UserProfitPageInfoEntity> itemEntity = new ObservableField<>();
+    public ObservableField<UserProfitPageInfoBean> itemEntity = new ObservableField<>();
 
-    public TwDollarMoneyItemViewModel(@NonNull TwDollarMoneyViewModel viewModel,UserProfitPageInfoEntity userProfitPageInfoEntity) {
+    public TwDollarMoneyItemViewModel(@NonNull TwDollarMoneyViewModel viewModel,UserProfitPageInfoBean userProfitPageInfoEntity) {
         super(viewModel);
         this.itemEntity.set(userProfitPageInfoEntity);
     }

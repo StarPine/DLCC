@@ -10,7 +10,7 @@
         <import type="com.fine.friendlycc.R" />
         <variable
             name="viewModel"
-            type="com.fine.friendlycc.kl.viewmodel.AudioCallChatingViewModel" />
+            type="com.fine.friendlycc.calling.viewmodel.AudioCallChatingViewModel" />
 
         <import type="me.tatarka.bindingcollectionadapter2.LayoutManagers" />
 

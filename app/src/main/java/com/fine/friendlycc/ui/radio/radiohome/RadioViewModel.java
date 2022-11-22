@@ -17,22 +17,22 @@ import com.blankj.utilcode.util.ObjectUtils;
 import com.blankj.utilcode.util.StringUtils;
 import com.fine.friendlycc.BR;
 import com.fine.friendlycc.R;
-import com.fine.friendlycc.app.AppContext;
+import com.fine.friendlycc.app.CCApplication;
 import com.fine.friendlycc.app.AppsFlyerEvent;
 import com.fine.friendlycc.data.AppRepository;
 import com.fine.friendlycc.data.source.http.exception.RequestException;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseDataResponse;
 import com.fine.friendlycc.data.source.http.response.BaseResponse;
-import com.fine.friendlycc.entity.AdBannerEntity;
-import com.fine.friendlycc.entity.AdItemEntity;
-import com.fine.friendlycc.entity.AdUserBannerEntity;
-import com.fine.friendlycc.entity.AdUserItemEntity;
-import com.fine.friendlycc.entity.BroadcastEntity;
-import com.fine.friendlycc.entity.BroadcastListEntity;
-import com.fine.friendlycc.entity.CallingInviteInfo;
-import com.fine.friendlycc.entity.ConfigItemEntity;
-import com.fine.friendlycc.entity.UserDataEntity;
+import com.fine.friendlycc.bean.AdBannerBean;
+import com.fine.friendlycc.bean.AdItemBean;
+import com.fine.friendlycc.bean.AdUserBannerBean;
+import com.fine.friendlycc.bean.AdUserItemBean;
+import com.fine.friendlycc.bean.BroadcastBean;
+import com.fine.friendlycc.bean.BroadcastListBean;
+import com.fine.friendlycc.bean.CallingInviteInfo;
+import com.fine.friendlycc.bean.ConfigItemBean;
+import com.fine.friendlycc.bean.UserDataBean;
 import com.fine.friendlycc.event.BadioEvent;
 import com.fine.friendlycc.event.LikeChangeEvent;
 import com.fine.friendlycc.event.RadioadetailEvent;
@@ -40,7 +40,7 @@ import com.fine.friendlycc.event.TaskListEvent;
 import com.fine.friendlycc.event.TaskMainTabEvent;
 import com.fine.friendlycc.event.TaskTypeStatusEvent;
 import com.fine.friendlycc.event.ZoomInPictureEvent;
-import com.fine.friendlycc.kl.Utils;
+import com.fine.friendlycc.calling.Utils;
 import com.fine.friendlycc.manager.ConfigManager;
 import com.fine.friendlycc.ui.mine.broadcast.mytrends.TrendItemViewModel;
 import com.fine.friendlycc.ui.mine.wallet.diamond.recharge.DiamondRechargeActivity;
@@ -67,15 +67,13 @@ import me.tatarka.bindingcollectionadapter2.BindingRecyclerViewAdapter;
 import me.tatarka.bindingcollectionadapter2.ItemBinding;
 import me.tatarka.bindingcollectionadapter2.OnItemBind;
 
-import static com.blankj.utilcode.util.SnackbarUtils.dismiss;
-
 /**
  * @author wulei
  */
 public class RadioViewModel extends BaseRefreshViewModel<AppRepository> {
     public static final String RadioRecycleType_New = "new";
     public static final String RadioRecycleType_trace = "emptyTrace";
-    public ObservableField<UserDataEntity> userDataEntity = new ObservableField<>(new UserDataEntity());
+    public ObservableField<UserDataBean> userDataEntity = new ObservableField<>(new UserDataBean());
     public ObservableField<String> area = new ObservableField<>();
     public int userId;
     public String avatar;
@@ -93,7 +91,7 @@ public class RadioViewModel extends BaseRefreshViewModel<AppRepository> {
     public Integer lastClickAudioPlayer = -1;
 
     //新增广告轮播类型
-    public ObservableField<List<AdItemEntity>> itemBannerEntity = new ObservableField<>();
+    public ObservableField<List<AdItemBean>> itemBannerEntity = new ObservableField<>();
     public ObservableBoolean itemBannerShow = new ObservableBoolean(false);
 
     //位置选择文字
@@ -134,7 +132,7 @@ public class RadioViewModel extends BaseRefreshViewModel<AppRepository> {
     //banner点击
     public BindingCommand<Integer> onBannerClickCommand = new BindingCommand<>(index -> {
         try {
-            AdItemEntity adItemEntity = itemBannerEntity.get().get(index);
+            AdItemBean adItemEntity = itemBannerEntity.get().get(index);
             int typeAct = adItemEntity.getType();
             if (typeAct != 0) {
                 switch (typeAct) {
@@ -158,9 +156,9 @@ public class RadioViewModel extends BaseRefreshViewModel<AppRepository> {
     }
 
     //item拨打视频电话
-    public void itemClickCallVideo(AdUserItemEntity adUserItemEntity) {
+    public void itemClickCallVideo(AdUserItemBean adUserItemEntity) {
         //逻辑判断。有可能挤掉账号 没有下线。但是本地已经清空
-        UserDataEntity userDataEntity = model.readUserData();
+        UserDataBean userDataEntity = model.readUserData();
         if (userDataEntity != null && adUserItemEntity != null && adUserItemEntity.getToImId() != null) {
             //视频拨打
             getCallingInvitedInfo(2, model.readUserData().getImUserId(), adUserItemEntity.getToImId());
@@ -347,7 +345,7 @@ public class RadioViewModel extends BaseRefreshViewModel<AppRepository> {
     }
 
     public void getArea() {//地区
-        List<ConfigItemEntity> cityConfig = model.readCityConfig();
+        List<ConfigItemBean> cityConfig = model.readCityConfig();
         if (ObjectUtils.isEmpty(userDataEntity) || ObjectUtils.isEmpty(cityConfig) || ObjectUtils.isEmpty(userDataEntity.get()) || ObjectUtils.isEmpty(userDataEntity.get().getCityId())) {
             return;
         }
@@ -371,9 +369,9 @@ public class RadioViewModel extends BaseRefreshViewModel<AppRepository> {
                 .doOnSubscribe(this)
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
-                .subscribe(new BaseObserver<BaseDataResponse<BroadcastListEntity>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<BroadcastListBean>>() {
                     @Override
-                    public void onSuccess(BaseDataResponse<BroadcastListEntity> response) {
+                    public void onSuccess(BaseDataResponse<BroadcastListBean> response) {
                         isLoading = true;
                         if (!CollectFlag) {
                             if (page == 1) {
@@ -383,9 +381,9 @@ public class RadioViewModel extends BaseRefreshViewModel<AppRepository> {
                         if (response.getData() != null) {
                             //真人集合
                             int realIndex = 0;
-                            List<BroadcastEntity> listReal = response.getData().getRealData();
+                            List<BroadcastBean> listReal = response.getData().getRealData();
                             //机器人集合
-                            List<BroadcastEntity> listUntrue = response.getData().getUntrueData();
+                            List<BroadcastBean> listUntrue = response.getData().getUntrueData();
                             //是否有追踪的人
                             Integer collectListEmpty = response.getData().getIsCollect();
                             if (listReal.size() <= 0 && listUntrue.size() <= 0 && IsCollect == 0 && radioItems.size() <= 1){
@@ -421,7 +419,7 @@ public class RadioViewModel extends BaseRefreshViewModel<AppRepository> {
 
                             //机器人不为空
                             if (!ObjectUtils.isEmpty(listUntrue) && listUntrue.size() > 0) {
-                                for (BroadcastEntity broadcastEntity : listUntrue) {
+                                for (BroadcastBean broadcastEntity : listUntrue) {
                                     position++;
                                     if (broadcastEntity.getNews() != null) {
 //                                动态
@@ -431,7 +429,7 @@ public class RadioViewModel extends BaseRefreshViewModel<AppRepository> {
                                     }
                                     if (position % 2 == 0) {
                                         if (listReal.size() > realIndex + 1) {
-                                            BroadcastEntity broadcastEntityReal = listReal.get(realIndex);
+                                            BroadcastBean broadcastEntityReal = listReal.get(realIndex);
                                             if (broadcastEntityReal.getNews() != null) {
                                                 //动态
                                                 TrendItemViewModel trendItemViewModelReal = new TrendItemViewModel(RadioViewModel.this, broadcastEntityReal);
@@ -443,7 +441,7 @@ public class RadioViewModel extends BaseRefreshViewModel<AppRepository> {
                                     }
                                 }
                                 if (realIndex == 0 && listReal.size() > 1) {
-                                    for (BroadcastEntity broadcastEntity : listReal) {
+                                    for (BroadcastBean broadcastEntity : listReal) {
                                         if (broadcastEntity.getNews() != null) {
                                             // 动态
                                             TrendItemViewModel trendItemViewModel = new TrendItemViewModel(RadioViewModel.this, broadcastEntity);
@@ -455,7 +453,7 @@ public class RadioViewModel extends BaseRefreshViewModel<AppRepository> {
                             } else {
                                 //真人集合不为空
                                 if (!ObjectUtils.isEmpty(listReal) && listReal.size() > 0) {
-                                    for (BroadcastEntity broadcastEntity : listReal) {
+                                    for (BroadcastBean broadcastEntity : listReal) {
                                         if (broadcastEntity.getNews() != null) {
                                             // 动态
                                             TrendItemViewModel trendItemViewModel = new TrendItemViewModel(RadioViewModel.this, broadcastEntity);
@@ -555,15 +553,15 @@ public class RadioViewModel extends BaseRefreshViewModel<AppRepository> {
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(disposable -> showHUD())
-                .subscribe(new BaseObserver<BaseDataResponse<AdUserBannerEntity>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<AdUserBannerBean>>() {
                     @Override
-                    public void onSuccess(BaseDataResponse<AdUserBannerEntity> listBaseDataResponse) {
-                        AdUserBannerEntity adUserBanner = listBaseDataResponse.getData();
+                    public void onSuccess(BaseDataResponse<AdUserBannerBean> listBaseDataResponse) {
+                        AdUserBannerBean adUserBanner = listBaseDataResponse.getData();
                         if (adUserBanner != null) {
-                            List<AdUserItemEntity> listData = adUserBanner.getDataList();
+                            List<AdUserItemBean> listData = adUserBanner.getDataList();
                             if (ObjectUtils.isNotEmpty(listData)) {
                                 ObservableList<RadioItemBannerVideoViewModel> listReal = new ObservableArrayList<>();
-                                for (AdUserItemEntity adUserItemEntity : listData) {
+                                for (AdUserItemBean adUserItemEntity : listData) {
                                     RadioItemBannerVideoViewModel radioItemBannerVideoViewModel = new RadioItemBannerVideoViewModel(RadioViewModel.this, adUserItemEntity);
                                     listReal.add(radioItemBannerVideoViewModel);
                                 }
@@ -601,12 +599,12 @@ public class RadioViewModel extends BaseRefreshViewModel<AppRepository> {
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(disposable -> showHUD())
-                .subscribe(new BaseObserver<BaseDataResponse<AdBannerEntity>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<AdBannerBean>>() {
                     @Override
-                    public void onSuccess(BaseDataResponse<AdBannerEntity> adBannerEntityDataResponse) {
-                        AdBannerEntity adBannerEntity = adBannerEntityDataResponse.getData();
+                    public void onSuccess(BaseDataResponse<AdBannerBean> adBannerEntityDataResponse) {
+                        AdBannerBean adBannerEntity = adBannerEntityDataResponse.getData();
                         if (adBannerEntity != null) {
-                            List<AdItemEntity> listData = adBannerEntity.getDataList();
+                            List<AdItemBean> listData = adBannerEntity.getDataList();
                             if (listData != null && listData.size() > 0) {
                                 itemBannerEntity.set(listData);
                                 itemBannerShow.set(true);
@@ -642,7 +640,7 @@ public class RadioViewModel extends BaseRefreshViewModel<AppRepository> {
                             RxBus.getDefault().post(new TaskListEvent());
                         }
                         ((TrendItemViewModel) radioItems.get(posion)).addGiveUser();
-                        AppContext.instance().logEvent(AppsFlyerEvent.Like);
+                        CCApplication.instance().logEvent(AppsFlyerEvent.Like);
                     }
 
                     @Override
@@ -670,7 +668,7 @@ public class RadioViewModel extends BaseRefreshViewModel<AppRepository> {
                         for (int i = 0; i < radioItems.size(); i++) {
                             if (radioItems.get(i) instanceof TrendItemViewModel) {
                                 if (id == ((TrendItemViewModel) radioItems.get(i)).newsEntityObservableField.get().getId()) {
-                                    AppContext.instance().logEvent(AppsFlyerEvent.Message);
+                                    CCApplication.instance().logEvent(AppsFlyerEvent.Message);
                                     ((TrendItemViewModel) radioItems.get(i)).addComment(id, content, toUserId, toUserName, model.readUserData().getNickname());
                                 }
                             }
@@ -684,7 +682,7 @@ public class RadioViewModel extends BaseRefreshViewModel<AppRepository> {
                             for (int i = 0; i < radioItems.size(); i++) {
                                 if (radioItems.get(i) instanceof TrendItemViewModel) {
                                     if (id == ((TrendItemViewModel) radioItems.get(i)).newsEntityObservableField.get().getId()) {
-                                        AppContext.instance().logEvent(AppsFlyerEvent.Message);
+                                        CCApplication.instance().logEvent(AppsFlyerEvent.Message);
                                         ((TrendItemViewModel) radioItems.get(i)).newsEntityObservableField.get().getBroadcast().setIsComment(1);
                                     }
                                 }
@@ -765,10 +763,10 @@ public class RadioViewModel extends BaseRefreshViewModel<AppRepository> {
     public void getCallingInvitedInfo(int callingType, String IMUserId, String toIMUserId) {
         if (callingType == 1) {
             //男女点击拨打语音
-            AppContext.instance().logEvent(ConfigManager.getInstance().isMale() ? AppsFlyerEvent.call_voice_male : AppsFlyerEvent.call_voice_female);
+            CCApplication.instance().logEvent(ConfigManager.getInstance().isMale() ? AppsFlyerEvent.call_voice_male : AppsFlyerEvent.call_voice_female);
         } else {
             //男女点击拨打视频
-            AppContext.instance().logEvent(ConfigManager.getInstance().isMale() ? AppsFlyerEvent.call_video_male : AppsFlyerEvent.call_video_female);
+            CCApplication.instance().logEvent(ConfigManager.getInstance().isMale() ? AppsFlyerEvent.call_video_male : AppsFlyerEvent.call_video_female);
         }
         model.callingInviteInfo(callingType, IMUserId, toIMUserId, 0)
                 .doOnSubscribe(this)
@@ -783,7 +781,7 @@ public class RadioViewModel extends BaseRefreshViewModel<AppRepository> {
                             return;
                         }
                         if (callingInviteInfoBaseDataResponse.getCode() == 22001) {//游戏中
-                            Toast.makeText(AppContext.instance(), R.string.playcc_in_game, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(CCApplication.instance(), R.string.playcc_in_game, Toast.LENGTH_SHORT).show();
                             return;
                         }
                         CallingInviteInfo callingInviteInfo = callingInviteInfoBaseDataResponse.getData();

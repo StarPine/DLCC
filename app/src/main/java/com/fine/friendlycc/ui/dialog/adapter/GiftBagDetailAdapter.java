@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.fine.friendlycc.entity.GiftBagEntity;
+import com.fine.friendlycc.bean.GiftBagBean;
 import com.fine.friendlycc.utils.StringUtil;
 import com.fine.friendlycc.R;
 import com.tencent.qcloud.tuikit.tuichat.TUIChatService;
@@ -29,13 +29,13 @@ import java.util.List;
 public class GiftBagDetailAdapter extends RecyclerView.Adapter<GiftBagDetailAdapter.ItemViewHolder>{
 
     private final Context mContext;
-    private List<GiftBagEntity.giftEntity> listData = null;
+    private List<GiftBagBean.giftEntity> listData = null;
 
     private OnClickDetailListener onClickDetailListener = null;
     private boolean isDarkShow = false;
 
 
-    public GiftBagDetailAdapter(RecyclerView recyclerView, List<GiftBagEntity.giftEntity> data, boolean isDarkShow) {
+    public GiftBagDetailAdapter(RecyclerView recyclerView, List<GiftBagBean.giftEntity> data, boolean isDarkShow) {
         this.mContext = recyclerView.getContext();
         this.listData = data;
         this.isDarkShow = isDarkShow;
@@ -53,7 +53,7 @@ public class GiftBagDetailAdapter extends RecyclerView.Adapter<GiftBagDetailAdap
         ItemViewHolder itemViewHolder = holder;
         if (listData != null && listData.size() > 0) {
             int index = position;
-            GiftBagEntity.giftEntity itemEntity = listData.get(index);
+            GiftBagBean.giftEntity itemEntity = listData.get(index);
             itemViewHolder.title.setText(itemEntity.getName());
             if (isDarkShow) {
                 itemViewHolder.title.setTextColor(Color.parseColor("#F1F2F9"));
@@ -106,6 +106,6 @@ public class GiftBagDetailAdapter extends RecyclerView.Adapter<GiftBagDetailAdap
     }
 
     public interface  OnClickDetailListener{
-        void clickDetailCheck(int position,GiftBagEntity.giftEntity itemEntity,LinearLayout detail_layout);
+        void clickDetailCheck(int position,GiftBagBean.giftEntity itemEntity,LinearLayout detail_layout);
     }
 }

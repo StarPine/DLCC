@@ -21,14 +21,14 @@ import com.blankj.utilcode.util.StringUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.fine.friendlycc.app.AppContext;
+import com.fine.friendlycc.app.CCApplication;
 import com.fine.friendlycc.app.AppsFlyerEvent;
 import com.fine.friendlycc.data.source.http.exception.RequestException;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseDataResponse;
 import com.fine.friendlycc.data.source.http.response.BaseResponse;
-import com.fine.friendlycc.entity.AccostEntity;
-import com.fine.friendlycc.entity.AccostItemEntity;
+import com.fine.friendlycc.bean.AccostBean;
+import com.fine.friendlycc.bean.AccostItemBean;
 import com.fine.friendlycc.event.LoadEvent;
 import com.fine.friendlycc.manager.ConfigManager;
 import com.fine.friendlycc.ui.base.BaseDialog;
@@ -58,7 +58,7 @@ public class HomeAccostDialog extends BaseDialog {
     public static CountDownTimer downChangeTimer = null;
     private int page = 1;
     private final Context mContext;
-    List<AccostItemEntity> $listData;
+    List<AccostItemBean> $listData;
     private boolean submit = false;
     private boolean isCountdown = false;
     //搭讪冷却时间
@@ -251,7 +251,7 @@ public class HomeAccostDialog extends BaseDialog {
         refresh_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AppContext.instance().logEvent(AppsFlyerEvent.accost_change);
+                CCApplication.instance().logEvent(AppsFlyerEvent.accost_change);
                 //有冷却时间
                 if (changeDownTime != null) {
                     try {
@@ -304,11 +304,11 @@ public class HomeAccostDialog extends BaseDialog {
                 .doOnSubscribe(this)
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
-                .subscribe(new BaseObserver<BaseDataResponse<AccostEntity>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<AccostBean>>() {
                     @Override
-                    public void onSuccess(BaseDataResponse<AccostEntity> accostEntityBaseDataResponse) {
+                    public void onSuccess(BaseDataResponse<AccostBean> accostEntityBaseDataResponse) {
                         RxBus.getDefault().post(new LoadEvent(false));
-                        AccostEntity accostEntity = accostEntityBaseDataResponse.getData();
+                        AccostBean accostEntity = accostEntityBaseDataResponse.getData();
                         if (!ObjectUtils.isEmpty(accostEntity)) {
                             submit = accostEntity.getSubmit() == 1;
                             expirationTime = accostEntity.getExpirationTime();
@@ -364,7 +364,7 @@ public class HomeAccostDialog extends BaseDialog {
                             if ($listData != null) {
                                 int size = $listData.size();
                                 if (size > 0) {
-                                    AccostItemEntity itemEntity1 = $listData.get(0);
+                                    AccostItemBean itemEntity1 = $listData.get(0);
                                     loadImage(itemEntity1.getAvatar(), item_entity_img1);
                                     item_entity_name1.setText(itemEntity1.getNickname());
                                     item_entity_text1.setText(String.format(StringUtils.getString(R.string.playcc_mine_age), itemEntity1.getAge()));
@@ -380,7 +380,7 @@ public class HomeAccostDialog extends BaseDialog {
                                 }
 
                                 if (size > 1) {
-                                    AccostItemEntity itemEntity2 = $listData.get(1);
+                                    AccostItemBean itemEntity2 = $listData.get(1);
                                     loadImage(itemEntity2.getAvatar(), item_entity_img2);
                                     item_entity_name2.setText(itemEntity2.getNickname());
                                     item_entity_text2.setText(String.format(StringUtils.getString(R.string.playcc_mine_age), itemEntity2.getAge()) );
@@ -395,7 +395,7 @@ public class HomeAccostDialog extends BaseDialog {
                                     itemEntityLayout2.setVisibility(View.GONE);
                                 }
                                 if (size > 2) {
-                                    AccostItemEntity itemEntity3 = $listData.get(2);
+                                    AccostItemBean itemEntity3 = $listData.get(2);
                                     loadImage(itemEntity3.getAvatar(), item_entity_img3);
                                     item_entity_name3.setText(itemEntity3.getNickname());
                                     item_entity_text3.setText(String.format(StringUtils.getString(R.string.playcc_mine_age), itemEntity3.getAge()));
@@ -410,7 +410,7 @@ public class HomeAccostDialog extends BaseDialog {
                                     itemEntityLayout3.setVisibility(View.GONE);
                                 }
                                 if (size > 3) {
-                                    AccostItemEntity itemEntity4 = $listData.get(3);
+                                    AccostItemBean itemEntity4 = $listData.get(3);
                                     loadImage(itemEntity4.getAvatar(), item_entity_img4);
                                     item_entity_name4.setText(itemEntity4.getNickname());
                                     item_entity_text4.setText(String.format(StringUtils.getString(R.string.playcc_mine_age), itemEntity4.getAge()));
@@ -427,7 +427,7 @@ public class HomeAccostDialog extends BaseDialog {
                                 }
                                 if (size > 4) {
                                     itemEntityLayout5.setVisibility(View.VISIBLE);
-                                    AccostItemEntity itemEntity5 = $listData.get(4);
+                                    AccostItemBean itemEntity5 = $listData.get(4);
                                     loadImage(itemEntity5.getAvatar(), item_entity_img5);
                                     item_entity_name5.setText(itemEntity5.getNickname());
                                     item_entity_text5.setText(String.format(StringUtils.getString(R.string.playcc_mine_age), itemEntity5.getAge()));
@@ -443,7 +443,7 @@ public class HomeAccostDialog extends BaseDialog {
                                 }
                                 if (size > 5) {
                                     itemEntityLayout6.setVisibility(View.VISIBLE);
-                                    AccostItemEntity itemEntity6 = $listData.get(5);
+                                    AccostItemBean itemEntity6 = $listData.get(5);
                                     loadImage(itemEntity6.getAvatar(), item_entity_img6);
                                     item_entity_name6.setText(itemEntity6.getNickname());
                                     item_entity_text6.setText(String.format(StringUtils.getString(R.string.playcc_mine_age), itemEntity6.getAge()));
@@ -635,7 +635,7 @@ public class HomeAccostDialog extends BaseDialog {
     public void putAccostList(List<Integer> userIds) {
         try {
             //男女点击一键搭讪
-            AppContext.instance().logEvent(ConfigManager.getInstance().isMale() ? AppsFlyerEvent.one_click_greet_male : AppsFlyerEvent.one_click_greet_female);
+            CCApplication.instance().logEvent(ConfigManager.getInstance().isMale() ? AppsFlyerEvent.one_click_greet_male : AppsFlyerEvent.one_click_greet_female);
         }catch (Exception ignored){
 
         }
@@ -646,7 +646,7 @@ public class HomeAccostDialog extends BaseDialog {
                 .subscribe(new BaseObserver<BaseResponse>() {
                     @Override
                     public void onSuccess(BaseResponse baseResponse) {
-                        AppContext.instance().logEvent(AppsFlyerEvent.accost_chatup);
+                        CCApplication.instance().logEvent(AppsFlyerEvent.accost_chatup);
                         lottieAnimationView();
                         ToastUtils.showShort(R.string.playcc_text_accost_success);
                         getAccountList(false);

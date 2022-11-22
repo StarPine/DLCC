@@ -5,7 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.databinding.ObservableField;
 
-import com.fine.friendlycc.entity.UserCoinItemEntity;
+import com.fine.friendlycc.bean.UserCoinItemBean;
 import com.fine.friendlycc.manager.ConfigManager;
 import com.fine.friendlycc.utils.ExceptionReportUtils;
 import com.fine.friendlycc.ui.userdetail.detail.UserDetailFragment;
@@ -18,7 +18,7 @@ import me.goldze.mvvmhabit.binding.command.BindingCommand;
  */
 public class CoinItemViewModel extends MultiItemViewModel<CoinViewModel> {
 
-    public ObservableField<UserCoinItemEntity> itemEntity = new ObservableField<>();
+    public ObservableField<UserCoinItemBean> itemEntity = new ObservableField<>();
 
     public ObservableField<Boolean> isCancel = new ObservableField<>(false);
     public BindingCommand itemClick = new BindingCommand(() -> {
@@ -36,7 +36,7 @@ public class CoinItemViewModel extends MultiItemViewModel<CoinViewModel> {
         }
     });
 
-    public CoinItemViewModel(@NonNull CoinViewModel viewModel, UserCoinItemEntity itemEntity) {
+    public CoinItemViewModel(@NonNull CoinViewModel viewModel, UserCoinItemBean itemEntity) {
         super(viewModel);
         this.itemEntity.set(itemEntity);
     }

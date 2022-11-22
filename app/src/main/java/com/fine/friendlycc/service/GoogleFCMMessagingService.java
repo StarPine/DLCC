@@ -14,7 +14,7 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.core.app.NotificationCompat;
 
-import com.fine.friendlycc.app.AppContext;
+import com.fine.friendlycc.app.CCApplication;
 import com.fine.friendlycc.event.PushMessageEvent;
 import com.fine.friendlycc.MainActivity;
 import com.google.firebase.messaging.FirebaseMessagingService;
@@ -35,7 +35,7 @@ public class GoogleFCMMessagingService extends FirebaseMessagingService {
         Log.d("GoogleFCMMessaging", "Refreshed token: " + token);
         super.onNewToken(token);
         ThirdPushTokenMgr.getInstance().setThirdPushToken(token);
-        AppContext.instance().pushDeviceToken(token);
+        CCApplication.instance().pushDeviceToken(token);
     }
 
     @Override
@@ -78,7 +78,7 @@ public class GoogleFCMMessagingService extends FirebaseMessagingService {
 
 
         //跳转到你想要跳转到页面
-        Intent intent = new Intent(AppContext.instance(), MainActivity.class);
+        Intent intent = new Intent(CCApplication.instance(), MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent;
         //兼容安卓12判断通知栏

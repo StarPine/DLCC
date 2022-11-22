@@ -8,8 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
@@ -18,18 +16,16 @@ import com.blankj.utilcode.util.ObjectUtils;
 import com.blankj.utilcode.util.StringUtils;
 import com.fine.friendlycc.BR;
 import com.fine.friendlycc.R;
-import com.fine.friendlycc.app.AppContext;
+import com.fine.friendlycc.app.CCApplication;
 import com.fine.friendlycc.app.AppViewModelFactory;
 import com.fine.friendlycc.app.AppsFlyerEvent;
 import com.fine.friendlycc.databinding.FragmentMineTraceManBinding;
-import com.fine.friendlycc.entity.GoodsEntity;
 import com.fine.friendlycc.event.TraceEmptyEvent;
 import com.fine.friendlycc.manager.ConfigManager;
 import com.fine.friendlycc.ui.base.BaseToolbarFragment;
 import com.fine.friendlycc.ui.mine.wallet.diamond.recharge.DialogDiamondRechargeActivity;
 import com.fine.friendlycc.utils.AutoSizeUtils;
 import com.fine.friendlycc.widget.coinpaysheet.CoinPaySheet;
-import com.fine.friendlycc.widget.coinrechargesheet.CoinRechargeSheetView;
 import com.fine.friendlycc.widget.dialog.TraceDialog;
 
 import me.goldze.mvvmhabit.bus.RxBus;
@@ -118,12 +114,12 @@ public class TraceManFragment extends BaseToolbarFragment<FragmentMineTraceManBi
                     binding.refreshLayout.setEnableRefresh(true);
                     binding.refreshLayout.setEnableLoadMore(true);
                     binding.btnConfirm.setVisibility(View.GONE);
-                    AppContext.instance().logEvent(AppsFlyerEvent.visitor_unlocked);
+                    CCApplication.instance().logEvent(AppsFlyerEvent.visitor_unlocked);
                 } else {
                     binding.refreshLayout.setEnableRefresh(false);
                     binding.refreshLayout.setEnableLoadMore(false);
                     binding.btnConfirm.setVisibility(View.VISIBLE);
-                    AppContext.instance().logEvent(AppsFlyerEvent.visitor_locked);
+                    CCApplication.instance().logEvent(AppsFlyerEvent.visitor_locked);
                 }
                 if (ObjectUtils.isEmpty(viewModel.observableList) || viewModel.observableList.size() < 1) {
                     binding.btnConfirm.setVisibility(View.GONE);
@@ -155,7 +151,7 @@ public class TraceManFragment extends BaseToolbarFragment<FragmentMineTraceManBi
                                     @Override
                                     public void onPaySuccess(CoinPaySheet sheet, String orderNo, Integer payPrice) {
                                         sheet.dismiss();
-                                        AppContext.instance().logEvent(AppsFlyerEvent.unlock_my_visitor);
+                                        CCApplication.instance().logEvent(AppsFlyerEvent.unlock_my_visitor);
                                         ToastUtils.showShort(R.string.playcc_pay_success);
                                         viewModel.isPlay = 1;
                                         viewModel.currentPage = 1;
@@ -202,7 +198,7 @@ public class TraceManFragment extends BaseToolbarFragment<FragmentMineTraceManBi
             @Override
             public void onChanged(@Nullable Object o) {
                 Log.e("支付成功","===============");
-                AppContext.instance().logEvent(AppsFlyerEvent.unlock_my_visitor);
+                CCApplication.instance().logEvent(AppsFlyerEvent.unlock_my_visitor);
                 viewModel.isPlay = 1;
                 viewModel.currentPage = 1;
                 binding.btnConfirm.setVisibility(View.GONE);

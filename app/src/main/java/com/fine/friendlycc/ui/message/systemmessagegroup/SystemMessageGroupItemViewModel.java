@@ -7,7 +7,7 @@ import androidx.databinding.BindingAdapter;
 import androidx.databinding.ObservableField;
 
 import com.blankj.utilcode.util.StringUtils;
-import com.fine.friendlycc.entity.MessageGroupEntity;
+import com.fine.friendlycc.bean.MessageGroupBean;
 import com.fine.friendlycc.utils.ExceptionReportUtils;
 import com.fine.friendlycc.R;
 
@@ -19,7 +19,7 @@ import me.goldze.mvvmhabit.binding.command.BindingCommand;
  */
 public class SystemMessageGroupItemViewModel extends MultiItemViewModel<SystemMessageGroupViewModel> {
 
-    public ObservableField<MessageGroupEntity> itemEntity = new ObservableField<>();
+    public ObservableField<MessageGroupBean> itemEntity = new ObservableField<>();
     public ObservableField<Integer> unreadCount = new ObservableField<>(0);
     public BindingCommand itemClick = new BindingCommand(() -> {
         try {
@@ -31,7 +31,7 @@ public class SystemMessageGroupItemViewModel extends MultiItemViewModel<SystemMe
         }
     });
 
-    public SystemMessageGroupItemViewModel(@NonNull SystemMessageGroupViewModel viewModel, MessageGroupEntity itemEntity) {
+    public SystemMessageGroupItemViewModel(@NonNull SystemMessageGroupViewModel viewModel, MessageGroupBean itemEntity) {
         super(viewModel);
         this.itemEntity.set(itemEntity);
         unreadCount.set(itemEntity.getUnreadNumber());

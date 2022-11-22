@@ -7,7 +7,7 @@ import androidx.databinding.ObservableField;
 
 import com.blankj.utilcode.util.ObjectUtils;
 import com.blankj.utilcode.util.StringUtils;
-import com.fine.friendlycc.entity.TraceEntity;
+import com.fine.friendlycc.bean.TraceBean;
 import com.fine.friendlycc.manager.ConfigManager;
 import com.fine.friendlycc.R;
 
@@ -24,7 +24,7 @@ import me.goldze.mvvmhabit.binding.command.BindingCommand;
 public class LikeItemViewModel extends MultiItemViewModel<LikeListViewModel> {
 
     private final LikeListViewModel likeListViewModel;
-    public ObservableField<TraceEntity> itemEntity = new ObservableField<>();
+    public ObservableField<TraceBean> itemEntity = new ObservableField<>();
     public ObservableField<Integer> grend = new ObservableField<>();
     public BindingCommand traceOnClickCommand = new BindingCommand(() -> {
         if (!ObjectUtils.isEmpty(grend.get())) {
@@ -48,7 +48,7 @@ public class LikeItemViewModel extends MultiItemViewModel<LikeListViewModel> {
         viewModel.toUserDetails(itemEntity.get().getId());
     });
 
-    public LikeItemViewModel(@NonNull @NotNull LikeListViewModel viewModel, TraceEntity traceEntity, Integer grend) {
+    public LikeItemViewModel(@NonNull @NotNull LikeListViewModel viewModel, TraceBean traceEntity, Integer grend) {
         super(viewModel);
         likeListViewModel = viewModel;
         this.itemEntity.set(traceEntity);

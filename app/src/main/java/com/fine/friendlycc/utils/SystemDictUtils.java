@@ -3,8 +3,8 @@ package com.fine.friendlycc.utils;
 import com.blankj.utilcode.util.StringUtils;
 import com.fine.friendlycc.R;
 import com.fine.friendlycc.app.Injection;
-import com.fine.friendlycc.entity.ConfigItemEntity;
-import com.fine.friendlycc.entity.OccupationConfigItemEntity;
+import com.fine.friendlycc.bean.ConfigItemBean;
+import com.fine.friendlycc.bean.OccupationConfigItemBean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,10 +18,10 @@ public class SystemDictUtils {
         if (ids == null) {
             return "";
         }
-        List<ConfigItemEntity> data = Injection.provideDemoRepository().readCityConfig();
+        List<ConfigItemBean> data = Injection.provideDemoRepository().readCityConfig();
         StringBuffer sb = new StringBuffer();
         if (data != null && !data.isEmpty()) {
-            for (ConfigItemEntity config : data) {
+            for (ConfigItemBean config : data) {
                 for (int i = 0; i < ids.size(); i++) {
                     if (ids.get(i).intValue() == config.getId()) {
                         if (i == ids.size() - 1) {
@@ -42,10 +42,10 @@ public class SystemDictUtils {
         if (ids == null) {
             return "";
         }
-        List<ConfigItemEntity> data = Injection.provideDemoRepository().readCityConfigAll();
+        List<ConfigItemBean> data = Injection.provideDemoRepository().readCityConfigAll();
         StringBuffer sb = new StringBuffer();
         if (data != null && !data.isEmpty()) {
-            for (ConfigItemEntity config : data) {
+            for (ConfigItemBean config : data) {
                 for (int i = 0; i < ids.size(); i++) {
                     if (ids.get(i).intValue() == config.getId()) {
                         if (i == ids.size() - 1) {
@@ -62,13 +62,13 @@ public class SystemDictUtils {
     }
 
     public static String getCityById(Integer id) {
-        List<ConfigItemEntity> data = Injection.provideDemoRepository().readCityConfig();
+        List<ConfigItemBean> data = Injection.provideDemoRepository().readCityConfig();
         StringBuffer sb = new StringBuffer();
         if (id == null) {
             sb.append(StringUtils.getString(R.string.playcc_unknown));
         } else {
             if (data != null && !data.isEmpty()) {
-                for (ConfigItemEntity config : data) {
+                for (ConfigItemBean config : data) {
                     if (id.intValue() == config.getId()) {
                         sb.append(config.getName());
                     }
@@ -88,10 +88,10 @@ public class SystemDictUtils {
         if (ids == null) {
             return "";
         }
-        List<ConfigItemEntity> data = Injection.provideDemoRepository().readHopeObjectConfig();
+        List<ConfigItemBean> data = Injection.provideDemoRepository().readHopeObjectConfig();
         StringBuffer sb = new StringBuffer();
         if (data != null && !data.isEmpty()) {
-            for (ConfigItemEntity config : data) {
+            for (ConfigItemBean config : data) {
                 for (int i = 0; i < ids.size(); i++) {
                     if (ids.get(i) == null || config.getId() == null) {
                         continue;
@@ -115,9 +115,9 @@ public class SystemDictUtils {
         if (id == null) {
             return "";
         }
-        List<ConfigItemEntity> data = Injection.provideDemoRepository().readWeightConfig();
+        List<ConfigItemBean> data = Injection.provideDemoRepository().readWeightConfig();
         StringBuffer sb = new StringBuffer();
-        for (ConfigItemEntity c : data) {
+        for (ConfigItemBean c : data) {
             if (c.getId().intValue() == id.intValue()) {
                 sb.append(c.getName());
             }
@@ -129,9 +129,9 @@ public class SystemDictUtils {
         if (id == null) {
             return "";
         }
-        List<ConfigItemEntity> data = Injection.provideDemoRepository().readHeightConfig();
+        List<ConfigItemBean> data = Injection.provideDemoRepository().readHeightConfig();
         StringBuffer sb = new StringBuffer();
-        for (ConfigItemEntity c : data) {
+        for (ConfigItemBean c : data) {
             if (c.getId().intValue() == id.intValue()) {
                 sb.append(c.getName());
             }
@@ -146,11 +146,11 @@ public class SystemDictUtils {
      * @return
      */
     public static String getOccupationById(int id) {
-        List<OccupationConfigItemEntity> list = Injection.provideDemoRepository().readOccupationConfig();
+        List<OccupationConfigItemBean> list = Injection.provideDemoRepository().readOccupationConfig();
         String name = StringUtils.getString(R.string.playcc_unknown);
-        for (OccupationConfigItemEntity occupationConfigItemEntity : list) {
+        for (OccupationConfigItemBean occupationConfigItemEntity : list) {
             boolean find = false;
-            for (OccupationConfigItemEntity.ItemEntity itemEntity : occupationConfigItemEntity.getItem()) {
+            for (OccupationConfigItemBean.ItemEntity itemEntity : occupationConfigItemEntity.getItem()) {
                 if (itemEntity.getId() == id) {
                     find = true;
                     name = itemEntity.getName();
@@ -171,11 +171,11 @@ public class SystemDictUtils {
      * @return
      */
     public static String getOccupationByIdOnNull(int id) {
-        List<OccupationConfigItemEntity> list = Injection.provideDemoRepository().readOccupationConfig();
+        List<OccupationConfigItemBean> list = Injection.provideDemoRepository().readOccupationConfig();
         String name = null;
-        for (OccupationConfigItemEntity occupationConfigItemEntity : list) {
+        for (OccupationConfigItemBean occupationConfigItemEntity : list) {
             boolean find = false;
-            for (OccupationConfigItemEntity.ItemEntity itemEntity : occupationConfigItemEntity.getItem()) {
+            for (OccupationConfigItemBean.ItemEntity itemEntity : occupationConfigItemEntity.getItem()) {
                 if (itemEntity.getId() == id) {
                     find = true;
                     name = itemEntity.getName();
@@ -196,9 +196,9 @@ public class SystemDictUtils {
      * @return
      */
     public static String getHeightById(int id) {
-        List<ConfigItemEntity> list = Injection.provideDemoRepository().readHeightConfig();
+        List<ConfigItemBean> list = Injection.provideDemoRepository().readHeightConfig();
         String name = StringUtils.getString(R.string.playcc_unknown);
-        for (ConfigItemEntity configItemEntity : list) {
+        for (ConfigItemBean configItemEntity : list) {
             if (configItemEntity.getId().intValue() == id) {
                 name = configItemEntity.getName();
                 break;
@@ -214,9 +214,9 @@ public class SystemDictUtils {
      * @return
      */
     public static String getWidthById(int id) {
-        List<ConfigItemEntity> list = Injection.provideDemoRepository().readWeightConfig();
+        List<ConfigItemBean> list = Injection.provideDemoRepository().readWeightConfig();
         String name = StringUtils.getString(R.string.playcc_unknown);
-        for (ConfigItemEntity configItemEntity : list) {
+        for (ConfigItemBean configItemEntity : list) {
             if (configItemEntity.getId().intValue() == id) {
                 name = configItemEntity.getName();
                 break;

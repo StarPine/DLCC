@@ -10,7 +10,7 @@ import androidx.databinding.ObservableList;
 import com.fine.friendlycc.data.AppRepository;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseResponse;
-import com.fine.friendlycc.entity.ConfigItemEntity;
+import com.fine.friendlycc.bean.ConfigItemBean;
 import com.fine.friendlycc.utils.FileUploadUtils;
 import com.fine.friendlycc.utils.ListUtils;
 import com.fine.friendlycc.viewmodel.BaseViewModel;
@@ -38,7 +38,7 @@ import me.tatarka.bindingcollectionadapter2.ItemBinding;
  */
 public class ReportUserViewModel extends BaseViewModel<AppRepository> {
 
-    private final List<ConfigItemEntity> reportList = new ArrayList<>();
+    private final List<ConfigItemBean> reportList = new ArrayList<>();
     public List<String> images = new ArrayList<>();
     public List<String> filePaths = new ArrayList<>();
     public String type;
@@ -75,7 +75,7 @@ public class ReportUserViewModel extends BaseViewModel<AppRepository> {
         super(application, repository);
         reportList.addAll(model.readReportReasonConfig());
         if (reportList.size() != 0) {
-            for (ConfigItemEntity config : reportList) {
+            for (ConfigItemBean config : reportList) {
                 ReportItemViewModel reportItemViewModel = new ReportItemViewModel(this, config);
                 reportItemViewModels.add(reportItemViewModel);
             }

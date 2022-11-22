@@ -14,7 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
-import com.fine.friendlycc.app.AppContext;
+import com.fine.friendlycc.app.CCApplication;
 import com.fine.friendlycc.app.AppViewModelFactory;
 import com.fine.friendlycc.app.AppsFlyerEvent;
 import com.fine.friendlycc.ui.base.BaseToolbarFragment;
@@ -106,7 +106,7 @@ public class FaceRecognitionFragment extends BaseToolbarFragment<FragmentFaceRec
                             dialog.dismiss();
                             String path = FileUtil.saveBitmap("face_image", bitmap);
                             viewModel.uc.imageUrlFace.postValue(path);
-                            AppContext.instance().logEvent(AppsFlyerEvent.Confirm);
+                            CCApplication.instance().logEvent(AppsFlyerEvent.Confirm);
                         }
 
                         @Override

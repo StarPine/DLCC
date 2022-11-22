@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.fine.friendlycc.R;
 import com.fine.friendlycc.databinding.DialogCityChooseBinding;
-import com.fine.friendlycc.entity.ConfigItemEntity;
+import com.fine.friendlycc.bean.ConfigItemBean;
 import com.fine.friendlycc.ui.base.BaseDialog;
 import com.fine.friendlycc.ui.dialog.adapter.CityChooseAdapter;
 import com.fine.friendlycc.widget.recyclerview.LineManagers;
@@ -31,11 +31,11 @@ import java.util.Objects;
 public class CityChooseDialog extends BaseDialog implements View.OnClickListener {
 
     private final Context mContext;
-    private final List<ConfigItemEntity> citys;
+    private final List<ConfigItemBean> citys;
     private RecyclerView recyclerView;
     private TextView btnConfirm;
     private TextView btnCancel;
-    private ConfigItemEntity currentChooseEntity;
+    private ConfigItemBean currentChooseEntity;
     private CityChooseAdapter adapter;
     private CityChooseDialogListener cityChooseDialogListener;
 
@@ -45,7 +45,7 @@ public class CityChooseDialog extends BaseDialog implements View.OnClickListener
 
 
 
-    public CityChooseDialog(Context context,List<ConfigItemEntity> citys,Integer cityId) {
+    public CityChooseDialog(Context context,List<ConfigItemBean> citys,Integer cityId) {
         super(context);
         this.mContext = context;
         this.citys = citys;
@@ -115,6 +115,6 @@ public class CityChooseDialog extends BaseDialog implements View.OnClickListener
     }
 
     public interface CityChooseDialogListener {
-        void onItemClick(CityChooseDialog dialog, ConfigItemEntity itemEntity);
+        void onItemClick(CityChooseDialog dialog, ConfigItemBean itemEntity);
     }
 }

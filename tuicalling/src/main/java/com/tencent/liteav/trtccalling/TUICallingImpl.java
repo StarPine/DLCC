@@ -37,9 +37,9 @@ import java.util.Map;
 public final class TUICallingImpl implements TUICalling, TRTCCallingDelegate {
     private static final String TAG = "TUICallingImpl";
     //语音通话页面
-    public final String AUDIO_ACTIVITY_VIEW_NAME = "com.fine.friendlycc.kl.view.DialingAudioActivity";
+    public final String AUDIO_ACTIVITY_VIEW_NAME = "com.fine.friendlycc.calling.view.CCLineAudioActivity";
     //视频通话页面
-    public final String VIDEO_ACTIVITY_VIEW_NAME = "com.fine.friendlycc.kl.view.CallingVideoActivity";
+    public final String VIDEO_ACTIVITY_VIEW_NAME = "com.fine.friendlycc.calling.view.CCLineVideoActivity";
 
     private static final int MAX_USERS = 8; //最大通话数为9(需包含自己)
 

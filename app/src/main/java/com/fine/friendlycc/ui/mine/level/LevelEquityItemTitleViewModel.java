@@ -4,7 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.databinding.ObservableBoolean;
 import androidx.databinding.ObservableField;
 
-import com.fine.friendlycc.entity.LevelSelectInfoEntity;
+import com.fine.friendlycc.bean.LevelSelectInfoBean;
 
 import me.goldze.mvvmhabit.base.MultiItemViewModel;
 import me.goldze.mvvmhabit.binding.command.BindingCommand;
@@ -17,14 +17,14 @@ import me.goldze.mvvmhabit.binding.command.BindingCommand;
 public class LevelEquityItemTitleViewModel extends MultiItemViewModel<LevelEquityViewModel> {
 
     public ObservableBoolean checkCurrent = new ObservableBoolean(false);
-    public ObservableField<LevelSelectInfoEntity.LevelInfo> levelInfoData = new ObservableField<>();
+    public ObservableField<LevelSelectInfoBean.LevelInfo> levelInfoData = new ObservableField<>();
 
     public BindingCommand itemClick = new BindingCommand(() -> {
         int idx = viewModel.observableListTitle.indexOf(LevelEquityItemTitleViewModel.this);
         viewModel.titleRcvItemClick(idx, true);
     });
 
-    public LevelEquityItemTitleViewModel(@NonNull LevelEquityViewModel viewModel, boolean check, LevelSelectInfoEntity.LevelInfo levelInfo) {
+    public LevelEquityItemTitleViewModel(@NonNull LevelEquityViewModel viewModel, boolean check, LevelSelectInfoBean.LevelInfo levelInfo) {
         super(viewModel);
         checkCurrent.set(check);
         levelInfoData.set(levelInfo);

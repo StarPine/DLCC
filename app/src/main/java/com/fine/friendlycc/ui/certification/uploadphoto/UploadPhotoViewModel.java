@@ -5,7 +5,7 @@ import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.databinding.ObservableField;
 
-import com.fine.friendlycc.app.AppContext;
+import com.fine.friendlycc.app.CCApplication;
 import com.fine.friendlycc.app.AppsFlyerEvent;
 import com.fine.friendlycc.data.AppRepository;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
@@ -13,7 +13,7 @@ import com.fine.friendlycc.data.source.http.response.BaseResponse;
 import com.fine.friendlycc.ui.certification.facerecognition.FaceRecognitionFragment;
 import com.fine.friendlycc.utils.FileUploadUtils;
 import com.fine.friendlycc.viewmodel.BaseViewModel;
-import com.fine.friendlycc.widget.picchoose.PicChooseItemEntity;
+import com.fine.friendlycc.widget.picchoose.PicChooseItemBean;
 import com.fine.friendlycc.R;
 
 import io.reactivex.Observable;
@@ -31,7 +31,7 @@ import me.goldze.mvvmhabit.utils.ToastUtils;
  */
 public class UploadPhotoViewModel extends BaseViewModel<AppRepository> {
 
-    public ObservableField<PicChooseItemEntity> selectedPhotoPath = new ObservableField<>();
+    public ObservableField<PicChooseItemBean> selectedPhotoPath = new ObservableField<>();
     public BindingCommand nextOnClickCommand = new BindingCommand(() -> uploadPhoto());
     UIChangeObservable uc = new UIChangeObservable();
 
@@ -50,7 +50,7 @@ public class UploadPhotoViewModel extends BaseViewModel<AppRepository> {
                 .doOnSubscribe(this)
                 .doOnSubscribe(disposable -> showHUD())
                 .subscribeOn(Schedulers.io())
-                .map((Function<PicChooseItemEntity, String>) s -> FileUploadUtils.ossUploadFile("certification/", s.getMediaType(), s.getSrc()))
+                .map((Function<PicChooseItemBean, String>) s -> FileUploadUtils.ossUploadFile("certification/", s.getMediaType(), s.getSrc()))
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new DisposableObserver<String>() {
                     @Override
@@ -63,7 +63,7 @@ public class UploadPhotoViewModel extends BaseViewModel<AppRepository> {
                                     @Override
                                     public void onSuccess(BaseResponse baseResponse) {
                                         dismissHUD();
-                                        AppContext.instance().logEvent(AppsFlyerEvent.Next_step);
+                                        CCApplication.instance().logEvent(AppsFlyerEvent.Next_step);
                                         start(FaceRecognitionFragment.class.getCanonicalName());
                                     }
 

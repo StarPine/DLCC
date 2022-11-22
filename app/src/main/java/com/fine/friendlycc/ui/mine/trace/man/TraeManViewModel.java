@@ -8,14 +8,12 @@ import androidx.databinding.ObservableArrayList;
 import androidx.databinding.ObservableField;
 import androidx.databinding.ObservableList;
 
-import com.aliyun.svideo.crop.bean.AlivcCropOutputParam;
 import com.fine.friendlycc.BR;
 import com.fine.friendlycc.data.AppRepository;
 import com.fine.friendlycc.data.source.http.observer.BaseListEmptyObserver;
 import com.fine.friendlycc.data.source.http.response.BaseListDataResponse;
-import com.fine.friendlycc.entity.DiamondPaySuccessEntity;
-import com.fine.friendlycc.entity.TraceEntity;
-import com.fine.friendlycc.event.SelectMediaSourcesEvent;
+import com.fine.friendlycc.bean.DiamondPaySuccessBean;
+import com.fine.friendlycc.bean.TraceBean;
 import com.fine.friendlycc.viewmodel.BaseViewModel;
 import com.fine.friendlycc.R;
 import com.fine.friendlycc.ui.userdetail.detail.UserDetailFragment;
@@ -97,7 +95,7 @@ public class TraeManViewModel extends BaseViewModel<AppRepository> {
     @Override
     public void registerRxBus() {
         super.registerRxBus();
-        paySuccessSubscriber = RxBus.getDefault().toObservable(DiamondPaySuccessEntity.class).subscribe(event -> {
+        paySuccessSubscriber = RxBus.getDefault().toObservable(DiamondPaySuccessBean.class).subscribe(event -> {
             uc.paySuccess.call();
         });
         //将订阅者加入管理站
@@ -115,9 +113,9 @@ public class TraeManViewModel extends BaseViewModel<AppRepository> {
                 .doOnSubscribe(this)
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
-                .subscribe(new BaseListEmptyObserver<BaseListDataResponse<TraceEntity>>(this) {
+                .subscribe(new BaseListEmptyObserver<BaseListDataResponse<TraceBean>>(this) {
                     @Override
-                    public void onSuccess(BaseListDataResponse<TraceEntity> response) {
+                    public void onSuccess(BaseListDataResponse<TraceBean> response) {
                         super.onSuccess(response);
                         if (currentPage == 1) {
                             observableList.clear();
@@ -135,7 +133,7 @@ public class TraeManViewModel extends BaseViewModel<AppRepository> {
                             isPlay = 0;
                         }
                         synchronized (observableList) {
-                            for (TraceEntity itemEntity : response.getData().getData()) {
+                            for (TraceBean itemEntity : response.getData().getData()) {
                                 TraceManItemViewModel item = new TraceManItemViewModel(TraeManViewModel.this, itemEntity, isPlay);
                                 observableList.add(item);
                             }

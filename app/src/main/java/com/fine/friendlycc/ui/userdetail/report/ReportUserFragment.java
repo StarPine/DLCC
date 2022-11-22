@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.fine.friendlycc.app.AppViewModelFactory;
 import com.fine.friendlycc.ui.base.BaseToolbarFragment;
-import com.fine.friendlycc.widget.picchoose.PicChooseItemEntity;
+import com.fine.friendlycc.widget.picchoose.PicChooseItemBean;
 import com.fine.friendlycc.widget.picchoose.PicChooseView;
 import com.fine.friendlycc.BR;
 import com.fine.friendlycc.R;
@@ -76,10 +76,10 @@ public class ReportUserFragment extends BaseToolbarFragment<FragmentReportUserBi
             }
 
             @Override
-            public void onMediaChoosed(List<PicChooseItemEntity> medias) {
+            public void onMediaChoosed(List<PicChooseItemBean> medias) {
                 if (medias != null && !medias.isEmpty()) {
                     List<String> filePaths = new ArrayList<>();
-                    for (PicChooseItemEntity media : medias) {
+                    for (PicChooseItemBean media : medias) {
                         filePaths.add(media.getSrc());
                     }
                     viewModel.setFilePaths(filePaths);
@@ -87,7 +87,7 @@ public class ReportUserFragment extends BaseToolbarFragment<FragmentReportUserBi
             }
 
             @Override
-            public void onMediaDelete(List<PicChooseItemEntity> medias, PicChooseItemEntity delMedia) {
+            public void onMediaDelete(List<PicChooseItemBean> medias, PicChooseItemBean delMedia) {
 
             }
 

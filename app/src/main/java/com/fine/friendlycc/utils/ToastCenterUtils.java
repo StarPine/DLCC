@@ -17,7 +17,7 @@ import androidx.annotation.StringRes;
 
 import com.blankj.utilcode.util.ColorUtils;
 import com.fine.friendlycc.R;
-import com.fine.friendlycc.app.AppContext;
+import com.fine.friendlycc.app.CCApplication;
 
 import java.lang.ref.WeakReference;
 
@@ -124,7 +124,7 @@ public class ToastCenterUtils {
      * @param duration 显示时长
      */
     private static void show(@StringRes int resId, int duration) {
-        show(AppContext.instance().getResources().getText(resId).toString(), duration);
+        show(CCApplication.instance().getResources().getText(resId).toString(), duration);
     }
 
     /**
@@ -135,7 +135,7 @@ public class ToastCenterUtils {
      * @param args     参数
      */
     private static void show(@StringRes int resId, int duration, Object... args) {
-        show(String.format(AppContext.instance().getResources().getString(resId), args), duration);
+        show(String.format(CCApplication.instance().getResources().getString(resId), args), duration);
     }
 
     /**
@@ -160,10 +160,10 @@ public class ToastCenterUtils {
         SpannableString spannableString = new SpannableString(text);
         ForegroundColorSpan colorSpan = new ForegroundColorSpan(ColorUtils.getColor(R.color.white));
         spannableString.setSpan(colorSpan, 0, spannableString.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        sToast = Toast.makeText(AppContext.instance(), spannableString, duration);
+        sToast = Toast.makeText(CCApplication.instance(), spannableString, duration);
         View view = sToast.getView();
         if(view!=null){
-            view.setBackground(AppContext.instance().getDrawable(R.drawable.toast_center_back));
+            view.setBackground(CCApplication.instance().getDrawable(R.drawable.toast_center_back));
         }
         //view.setBackgroundColor(ColorUtils.getColor(R.color.hud_background));
         sToast.setGravity(gravity, xOffset, yOffset);
@@ -181,7 +181,7 @@ public class ToastCenterUtils {
     }
 
     public static void showToast(@StringRes int ResId) {
-        Context context = AppContext.instance();
+        Context context = CCApplication.instance();
         //加载Toast布局
         View toastRoot = LayoutInflater.from(context).inflate(R.layout.toast_layout, null);
         //初始化布局控件
@@ -203,7 +203,7 @@ public class ToastCenterUtils {
     }
 
     public static void showToast(String message) {
-        Context context = AppContext.instance();
+        Context context = CCApplication.instance();
         //加载Toast布局
         View toastRoot = LayoutInflater.from(context).inflate(R.layout.toast_layout, null);
         //初始化布局控件

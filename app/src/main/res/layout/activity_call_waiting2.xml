@@ -11,7 +11,7 @@
 
         <variable
             name="viewModel"
-            type="com.fine.friendlycc.kl.viewmodel.AudioCallingViewModel2" />
+            type="com.fine.friendlycc.calling.viewmodel.AudioCallingViewModel2" />
     </data>
 
     <FrameLayout

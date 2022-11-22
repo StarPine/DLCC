@@ -2,7 +2,7 @@ package com.fine.friendlycc.viewadapter;
 
 import androidx.databinding.BindingAdapter;
 
-import com.fine.friendlycc.entity.AlbumPhotoEntity;
+import com.fine.friendlycc.bean.AlbumPhotoBean;
 import com.fine.friendlycc.widget.BurnImageView;
 
 import me.goldze.mvvmhabit.binding.command.BindingCommand;
@@ -12,7 +12,7 @@ import me.goldze.mvvmhabit.binding.command.BindingCommand;
  */
 public class BurnImageViewAdapter {
     @BindingAdapter(value = {"burnImgEnt", "addWaterMark", "burnCommand", "tapCommand"}, requireAll = false)
-    public static void setImageUri(BurnImageView burnImageView, AlbumPhotoEntity burnImgEnt, boolean addWaterMark, final BindingCommand burnCommand, final BindingCommand tapCommand) {
+    public static void setImageUri(BurnImageView burnImageView, AlbumPhotoBean burnImgEnt, boolean addWaterMark, final BindingCommand burnCommand, final BindingCommand tapCommand) {
         burnImageView.setAll(burnImgEnt, addWaterMark, burnCommand, tapCommand);
 //        try {
 //            String url = StringUtil.getFullImageUrl(burnImgPath);

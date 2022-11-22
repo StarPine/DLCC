@@ -5,12 +5,12 @@ import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.databinding.ObservableField;
 
-import com.fine.friendlycc.app.AppContext;
+import com.fine.friendlycc.app.CCApplication;
 import com.fine.friendlycc.app.AppsFlyerEvent;
 import com.fine.friendlycc.data.AppRepository;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseDataResponse;
-import com.fine.friendlycc.entity.StatusEntity;
+import com.fine.friendlycc.bean.StatusBean;
 import com.fine.friendlycc.event.FaceCertificationEvent;
 import com.fine.friendlycc.ui.certification.updateface.UpdateFaceFragment;
 import com.fine.friendlycc.ui.certification.uploadphoto.UploadPhotoFragment;
@@ -34,7 +34,7 @@ public class CertificationMaleViewModel extends BaseViewModel<AppRepository> {
         if (faceCertification.get()) {
             start(UpdateFaceFragment.class.getCanonicalName());
         } else {
-            AppContext.instance().logEvent(AppsFlyerEvent.Identity_Verification);
+            CCApplication.instance().logEvent(AppsFlyerEvent.Identity_Verification);
             start(UploadPhotoFragment.class.getCanonicalName());
         }
     });
@@ -71,9 +71,9 @@ public class CertificationMaleViewModel extends BaseViewModel<AppRepository> {
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(this)
                 .doOnSubscribe(disposable -> showHUD())
-                .subscribe(new BaseObserver<BaseDataResponse<StatusEntity>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<StatusBean>>() {
                     @Override
-                    public void onSuccess(BaseDataResponse<StatusEntity> response) {
+                    public void onSuccess(BaseDataResponse<StatusBean> response) {
                         faceCertification.set(response.getData().getStatus() == 1);
                     }
 

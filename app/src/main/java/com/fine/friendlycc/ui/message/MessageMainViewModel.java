@@ -9,7 +9,7 @@ import androidx.databinding.ObservableField;
 import com.fine.friendlycc.data.AppRepository;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseDataResponse;
-import com.fine.friendlycc.entity.MessageGroupEntity;
+import com.fine.friendlycc.bean.MessageGroupBean;
 import com.fine.friendlycc.event.MainTabEvent;
 import com.fine.friendlycc.event.MessageCountChangeContactEvent;
 import com.fine.friendlycc.event.MessageCountChangeEvent;
@@ -160,10 +160,10 @@ public class MessageMainViewModel extends BaseViewModel<AppRepository> {
                 .doOnSubscribe(this)
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
-                .subscribe(new BaseObserver<BaseDataResponse<List<MessageGroupEntity>>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<List<MessageGroupBean>>>() {
                     @Override
-                    public void onSuccess(BaseDataResponse<List<MessageGroupEntity>> response) {
-                        for (MessageGroupEntity datum : response.getData()) {
+                    public void onSuccess(BaseDataResponse<List<MessageGroupBean>> response) {
+                        for (MessageGroupBean datum : response.getData()) {
                             systemMessageCount.set(systemMessageCount.get() + datum.getUnreadNumber());
                         }
                     }

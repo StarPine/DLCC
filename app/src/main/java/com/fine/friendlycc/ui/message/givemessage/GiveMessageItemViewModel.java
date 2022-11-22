@@ -3,7 +3,7 @@ package com.fine.friendlycc.ui.message.givemessage;
 import androidx.annotation.NonNull;
 import androidx.databinding.ObservableField;
 
-import com.fine.friendlycc.entity.GiveMessageEntity;
+import com.fine.friendlycc.bean.GiveMessageBean;
 import com.fine.friendlycc.utils.ExceptionReportUtils;
 
 import me.goldze.mvvmhabit.base.ItemViewModel;
@@ -14,7 +14,7 @@ import me.goldze.mvvmhabit.binding.command.BindingCommand;
  */
 public class GiveMessageItemViewModel extends ItemViewModel<GiveMessageViewModel> {
 
-    public ObservableField<GiveMessageEntity> itemEntity = new ObservableField<>();
+    public ObservableField<GiveMessageBean> itemEntity = new ObservableField<>();
     //条目的点击事件
     public BindingCommand itemClick = new BindingCommand(() -> {
         try {
@@ -33,7 +33,7 @@ public class GiveMessageItemViewModel extends ItemViewModel<GiveMessageViewModel
         }
     });
 
-    public GiveMessageItemViewModel(@NonNull GiveMessageViewModel viewModel, GiveMessageEntity messageEntity) {
+    public GiveMessageItemViewModel(@NonNull GiveMessageViewModel viewModel, GiveMessageBean messageEntity) {
         super(viewModel);
         this.itemEntity.set(messageEntity);
     }

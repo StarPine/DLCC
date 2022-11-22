@@ -3,7 +3,7 @@ package com.fine.friendlycc.utils;
 import android.annotation.SuppressLint;
 
 import com.blankj.utilcode.util.StringUtils;
-import com.fine.friendlycc.app.AppContext;
+import com.fine.friendlycc.app.CCApplication;
 import com.fine.friendlycc.R;
 
 import java.text.ParseException;
@@ -287,7 +287,7 @@ public class TimeUtils {
     }
 
     public static SimpleDateFormat getSimpleDateFormat() {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy" + StringUtils.getString(R.string.playcc_year) + "M" + AppContext.instance().getResources().getString(R.string.playcc_month) + "d" + AppContext.instance().getResources().getString(R.string.playcc_daily));
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy" + StringUtils.getString(R.string.playcc_year) + "M" + CCApplication.instance().getResources().getString(R.string.playcc_month) + "d" + CCApplication.instance().getResources().getString(R.string.playcc_daily));
         return sdf;
     }
 

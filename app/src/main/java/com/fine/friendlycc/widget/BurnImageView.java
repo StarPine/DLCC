@@ -21,7 +21,7 @@ import com.bumptech.glide.request.target.Target;
 import com.fine.friendlycc.app.Injection;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseResponse;
-import com.fine.friendlycc.entity.AlbumPhotoEntity;
+import com.fine.friendlycc.bean.AlbumPhotoBean;
 import com.fine.friendlycc.manager.ConfigManager;
 import com.fine.friendlycc.utils.StringUtil;
 import com.github.chrisbanes.photoview.PhotoView;
@@ -59,7 +59,7 @@ public class BurnImageView extends RelativeLayout {
     private boolean imgLoadSuccess;
     private int maxProgress;
     private boolean sended;
-    private AlbumPhotoEntity burnImgEnt;
+    private AlbumPhotoBean burnImgEnt;
     private boolean addWaterMark;
     private BindingCommand burnCommand;
     private BindingCommand tapCommand;
@@ -184,7 +184,7 @@ public class BurnImageView extends RelativeLayout {
         });
     }
 
-    public void setAll(AlbumPhotoEntity burnImgEnt, boolean addWaterMark, BindingCommand burnCommand, BindingCommand tapCommand) {
+    public void setAll(AlbumPhotoBean burnImgEnt, boolean addWaterMark, BindingCommand burnCommand, BindingCommand tapCommand) {
         this.burnImgEnt = burnImgEnt;
         this.addWaterMark = addWaterMark;
         this.burnCommand = burnCommand;

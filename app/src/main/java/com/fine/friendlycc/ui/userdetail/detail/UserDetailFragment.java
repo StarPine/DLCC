@@ -22,16 +22,16 @@ import com.bumptech.glide.Glide;
 import com.fine.friendlycc.BR;
 import com.fine.friendlycc.R;
 import com.fine.friendlycc.app.AppConfig;
-import com.fine.friendlycc.app.AppContext;
+import com.fine.friendlycc.app.CCApplication;
 import com.fine.friendlycc.app.AppViewModelFactory;
 import com.fine.friendlycc.app.AppsFlyerEvent;
 import com.fine.friendlycc.app.Injection;
 import com.fine.friendlycc.databinding.FragmentUserDetailBinding;
-import com.fine.friendlycc.entity.ApiConfigManagerEntity;
-import com.fine.friendlycc.entity.EvaluateEntity;
-import com.fine.friendlycc.entity.EvaluateItemEntity;
-import com.fine.friendlycc.entity.EvaluateObjEntity;
-import com.fine.friendlycc.entity.UserDetailEntity;
+import com.fine.friendlycc.bean.ApiConfigManagerBean;
+import com.fine.friendlycc.bean.EvaluateBean;
+import com.fine.friendlycc.bean.EvaluateItemBean;
+import com.fine.friendlycc.bean.EvaluateObjBean;
+import com.fine.friendlycc.bean.UserDetailBean;
 import com.fine.friendlycc.helper.DialogHelper;
 import com.fine.friendlycc.manager.ConfigManager;
 import com.fine.friendlycc.ui.base.BaseToolbarFragment;
@@ -50,7 +50,6 @@ import com.fine.friendlycc.utils.StringUtil;
 import com.fine.friendlycc.widget.AppBarStateChangeListener;
 import com.fine.friendlycc.widget.bottomsheet.BottomSheet;
 import com.fine.friendlycc.widget.coinpaysheet.CoinPaySheet;
-import com.fine.friendlycc.widget.coinrechargesheet.CoinRechargeSheetView;
 import com.fine.friendlycc.widget.custom.FlowAdapter;
 import com.fine.friendlycc.widget.dialog.MMAlertDialog;
 import com.fine.friendlycc.widget.dialog.MVDialog;
@@ -134,7 +133,7 @@ public class UserDetailFragment extends BaseToolbarFragment<FragmentUserDetailBi
     @Override
     public void onPause() {
         super.onPause();
-        AppContext.isShowNotPaid = false;
+        CCApplication.isShowNotPaid = false;
     }
 
     @Override
@@ -152,7 +151,7 @@ public class UserDetailFragment extends BaseToolbarFragment<FragmentUserDetailBi
         viewModel.uc.sendAccostFirstError.observe(this, new Observer<Void>() {
             @Override
             public void onChanged(Void unused) {
-                AppContext.instance().logEvent(AppsFlyerEvent.Top_up);
+                CCApplication.instance().logEvent(AppsFlyerEvent.Top_up);
                 toRecharge();
             }
         });
@@ -182,9 +181,9 @@ public class UserDetailFragment extends BaseToolbarFragment<FragmentUserDetailBi
                 binding.refreshLayout.finishRefresh(100);
             }
         });
-        viewModel.uc.evaluateItemEntityList.observe(this, new Observer<List<EvaluateItemEntity>>() {
+        viewModel.uc.evaluateItemEntityList.observe(this, new Observer<List<EvaluateItemBean>>() {
             @Override
-            public void onChanged(List<EvaluateItemEntity> evaluateItemEntities) {
+            public void onChanged(List<EvaluateItemBean> evaluateItemEntities) {
                 if (!ListUtils.isEmpty(evaluateItemEntities)) {
                     // 设置 Adapter
                     FlowAdapter adapter = new FlowAdapter(UserDetailFragment.this.getContext(), evaluateItemEntities);
@@ -256,17 +255,17 @@ public class UserDetailFragment extends BaseToolbarFragment<FragmentUserDetailBi
             if (viewModel.detailEntity.get() == null) {
                 return;
             }
-            List<EvaluateObjEntity> list = null;
+            List<EvaluateObjBean> list = null;
             if (viewModel.detailEntity.get().getSex() == 1) {
                 list = Injection.provideDemoRepository().readMaleEvaluateConfig();
             } else {
                 list = Injection.provideDemoRepository().readFemaleEvaluateConfig();
             }
-            List<EvaluateItemEntity> items = new ArrayList<>();
-            for (EvaluateObjEntity configEntity : list) {
-                EvaluateItemEntity evaluateItemEntity = new EvaluateItemEntity(configEntity.getId(), configEntity.getName(), configEntity.getType() == 1);
+            List<EvaluateItemBean> items = new ArrayList<>();
+            for (EvaluateObjBean configEntity : list) {
+                EvaluateItemBean evaluateItemEntity = new EvaluateItemBean(configEntity.getId(), configEntity.getName(), configEntity.getType() == 1);
                 items.add(evaluateItemEntity);
-                for (EvaluateEntity evaluateEntity : evaluateEntities) {
+                for (EvaluateBean evaluateEntity : evaluateEntities) {
                     if (configEntity.getId() == evaluateEntity.getTagId()) {
                         evaluateItemEntity.setNumber(evaluateEntity.getNumber());
                     }
@@ -390,7 +389,7 @@ public class UserDetailFragment extends BaseToolbarFragment<FragmentUserDetailBi
     @Override
     public void onResume() {
         super.onResume();
-        AppContext.isShowNotPaid = true;
+        CCApplication.isShowNotPaid = true;
     }
 
     @Override
@@ -430,7 +429,7 @@ public class UserDetailFragment extends BaseToolbarFragment<FragmentUserDetailBi
                 .request(Manifest.permission.RECORD_AUDIO, Manifest.permission.CAMERA)
                 .subscribe(granted -> {
                     if (granted) {
-                        AppContext.instance().logEvent(AppsFlyerEvent.im_video_call);
+                        CCApplication.instance().logEvent(AppsFlyerEvent.im_video_call);
                         viewModel.getCallingInvitedInfo(2, viewModel.detailEntity.get().getImUserId(), viewModel.detailEntity.get().getImToUserId());
                     } else {
                         TraceDialog.getInstance(mActivity)
@@ -447,7 +446,7 @@ public class UserDetailFragment extends BaseToolbarFragment<FragmentUserDetailBi
                                                 .request(Manifest.permission.RECORD_AUDIO, Manifest.permission.CAMERA)
                                                 .subscribe(granted -> {
                                                     if (granted) {
-                                                        AppContext.instance().logEvent(AppsFlyerEvent.im_video_call);
+                                                        CCApplication.instance().logEvent(AppsFlyerEvent.im_video_call);
                                                         viewModel.getCallingInvitedInfo(2, viewModel.detailEntity.get().getImUserId(), viewModel.detailEntity.get().getImToUserId());
                                                     }
                                                 });
@@ -463,7 +462,7 @@ public class UserDetailFragment extends BaseToolbarFragment<FragmentUserDetailBi
                 .request(Manifest.permission.RECORD_AUDIO)
                 .subscribe(granted -> {
                     if (granted) {
-                        AppContext.instance().logEvent(AppsFlyerEvent.im_voice_call);
+                        CCApplication.instance().logEvent(AppsFlyerEvent.im_voice_call);
                         viewModel.getCallingInvitedInfo(1, viewModel.detailEntity.get().getImUserId(), viewModel.detailEntity.get().getImToUserId());
                     } else {
                         TraceDialog.getInstance(mActivity)
@@ -480,7 +479,7 @@ public class UserDetailFragment extends BaseToolbarFragment<FragmentUserDetailBi
                                                 .request(Manifest.permission.RECORD_AUDIO)
                                                 .subscribe(granted -> {
                                                     if (granted) {
-                                                        AppContext.instance().logEvent(AppsFlyerEvent.im_voice_call);
+                                                        CCApplication.instance().logEvent(AppsFlyerEvent.im_voice_call);
                                                         viewModel.getCallingInvitedInfo(1, viewModel.detailEntity.get().getImUserId(), viewModel.detailEntity.get().getImToUserId());
                                                     }
                                                 });
@@ -498,7 +497,7 @@ public class UserDetailFragment extends BaseToolbarFragment<FragmentUserDetailBi
         if (!ConfigManager.getInstance().isMale()) {
             return;
         }
-        UserDetailEntity userDetailEntity = viewModel.detailEntity.get();
+        UserDetailBean userDetailEntity = viewModel.detailEntity.get();
         if (!ObjectUtils.isEmpty(userDetailEntity.getIsView()) && userDetailEntity.getIsView().intValue() == 1 && userDetailEntity.isBrowse()) {
             return;
         }
@@ -528,7 +527,7 @@ public class UserDetailFragment extends BaseToolbarFragment<FragmentUserDetailBi
             @Override
             public void confirm(DialogInterface dialog, int which) {
                 dialog.dismiss();
-                AppContext.instance().logEvent(AppsFlyerEvent.Become_A_VIP);
+                CCApplication.instance().logEvent(AppsFlyerEvent.Become_A_VIP);
                 viewModel.start(VipSubscribeFragment.class.getCanonicalName());
             }
 
@@ -542,7 +541,7 @@ public class UserDetailFragment extends BaseToolbarFragment<FragmentUserDetailBi
                     new CoinPaySheetUserMain.Builder(mActivity).setPayParams(12, userId, MoreNumber, false, new CoinPaySheetUserMain.UserdetailUnlockListener() {
                         @Override
                         public void onPaySuccess(CoinPaySheetUserMain sheet, String orderNo, Integer payPrice) {
-                            AppContext.instance().logEvent(AppsFlyerEvent.Unlock_Now);
+                            CCApplication.instance().logEvent(AppsFlyerEvent.Unlock_Now);
                             flagShow = true;
                             sheet.dismiss2(1);
                             dialog.dismiss();
@@ -837,7 +836,7 @@ public class UserDetailFragment extends BaseToolbarFragment<FragmentUserDetailBi
 
     //弹出钻石充值
     private void dialogRechargeShow() {
-        ApiConfigManagerEntity apiConfigManagerEntity = ConfigManager.getInstance().getAppRepository().readApiConfigManagerEntity();
+        ApiConfigManagerBean apiConfigManagerEntity = ConfigManager.getInstance().getAppRepository().readApiConfigManagerEntity();
         if(apiConfigManagerEntity!=null && apiConfigManagerEntity.getPlayFunWebUrl()!=null){
             String url = apiConfigManagerEntity.getPlayFunWebUrl() + AppConfig.PAY_RECHARGE_URL;
             new WebViewDialog(getContext(), mActivity, url, new WebViewDialog.ConfirmOnclick() {

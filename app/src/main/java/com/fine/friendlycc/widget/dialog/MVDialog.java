@@ -28,8 +28,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.blankj.utilcode.util.StringUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.listener.OnItemClickListener;
-import com.fine.friendlycc.entity.ConfigItemEntity;
-import com.fine.friendlycc.entity.OccupationConfigItemEntity;
+import com.fine.friendlycc.bean.ConfigItemBean;
+import com.fine.friendlycc.bean.OccupationConfigItemBean;
 import com.fine.friendlycc.utils.ListUtils;
 import com.fine.friendlycc.utils.StringUtil;
 import com.fine.friendlycc.R;
@@ -109,10 +109,10 @@ public class MVDialog {
      *
      * @return
      */
-    public static Dialog getOccupationDialog(Context context, List<OccupationConfigItemEntity> configEntities, int id, ChooseOccupation chooseOccupation) {
+    public static Dialog getOccupationDialog(Context context, List<OccupationConfigItemBean> configEntities, int id, ChooseOccupation chooseOccupation) {
         int itemPosion = 0;
         for (int i = 0; i < configEntities.size(); i++) {
-            for (OccupationConfigItemEntity.ItemEntity item : configEntities.get(i).getItem()) {
+            for (OccupationConfigItemBean.ItemEntity item : configEntities.get(i).getItem()) {
                 if (item.getId() == id) {
                     configEntities.get(i).setChoose(true);
                     item.setChoose(true);
@@ -156,7 +156,7 @@ public class MVDialog {
             @Override
             public void onSimpleItemClick(BaseQuickAdapter baseQuickAdapter, View view, int i) {
                 for (int j = 0; j < configEntities.size(); j++) {
-                    for (OccupationConfigItemEntity.ItemEntity item : configEntities.get(j).getItem()) {
+                    for (OccupationConfigItemBean.ItemEntity item : configEntities.get(j).getItem()) {
                         item.setChoose(false);
                     }
                 }
@@ -179,7 +179,7 @@ public class MVDialog {
      * @param chooseCity
      * @return
      */
-    public static Dialog getCityDialog(Context context, List<ConfigItemEntity> configEntities, Integer ids, raDioChooseCity chooseCity) {
+    public static Dialog getCityDialog(Context context, List<ConfigItemBean> configEntities, Integer ids, raDioChooseCity chooseCity) {
         for (int i = 0; i < configEntities.size(); i++) {
             //控件多次调用后原来值已经发生变化。不是上次选中的默认去掉
             configEntities.get(i).setIsChoose(ids != null && configEntities.get(i).getId().intValue() == ids.intValue());
@@ -228,7 +228,7 @@ public class MVDialog {
      * @param chooseCity
      * @return
      */
-    public static Dialog getCityDialogs(Context context, List<ConfigItemEntity> configEntities, Integer ids, raDioChooseCity chooseCity) {
+    public static Dialog getCityDialogs(Context context, List<ConfigItemBean> configEntities, Integer ids, raDioChooseCity chooseCity) {
         for (int i = 0; i < configEntities.size(); i++) {
             //控件多次调用后原来值已经发生变化。不是上次选中的默认去掉
             configEntities.get(i).setIsChoose(ids != null && configEntities.get(i).getId().intValue() == ids.intValue());
@@ -273,7 +273,7 @@ public class MVDialog {
      *
      * @return
      */
-    public static Dialog getCityDialog(Context context, List<ConfigItemEntity> configEntities, List<Integer> ids, ChooseCity chooseCity) {
+    public static Dialog getCityDialog(Context context, List<ConfigItemBean> configEntities, List<Integer> ids, ChooseCity chooseCity) {
         for (int i = 0; i < configEntities.size(); i++) {
             configEntities.get(i).setIsChoose(false);
             if (!ListUtils.isEmpty(ids)) {
@@ -309,7 +309,7 @@ public class MVDialog {
             @Override
             public void onClick(View v) {
                 List<Integer> id = new ArrayList<>();
-                for (ConfigItemEntity config : configEntities) {
+                for (ConfigItemBean config : configEntities) {
                     if (config.getIsChoose()) {
                         id.add(config.getId());
                     }
@@ -394,8 +394,8 @@ public class MVDialog {
      *
      * @return
      */
-    public static Dialog getEndTimeDialog(Context context, List<ConfigItemEntity> data, Integer id, ChooseEndTime chooseEndTime) {
-        for (ConfigItemEntity c : data) {
+    public static Dialog getEndTimeDialog(Context context, List<ConfigItemBean> data, Integer id, ChooseEndTime chooseEndTime) {
+        for (ConfigItemBean c : data) {
             c.setIsChoose(id != null && c.getId().intValue() == id.intValue());
         }
         Dialog bottomDialog = new Dialog(context, R.style.BottomDialog);
@@ -594,7 +594,7 @@ public class MVDialog {
      *
      * @return
      */
-//    public static Dialog getOccupationDialog(Context context, List<OccupationConfigItemEntity> configEntities, int id, ChooseOccupation chooseOccupation) {
+//    public static Dialog getOccupationDialog(Context context, List<OccupationConfigItemBean> configEntities, int id, ChooseOccupation chooseOccupation) {
 //        for (int i = 0; i < configEntities.size(); i++) {
 //            if (configEntities.get(i).getId() == id) {
 //                configEntities.get(i).setChoose(true);
@@ -1179,8 +1179,8 @@ public class MVDialog {
     }
 
     public interface ChooseOccupation {
-        //void clickListItem(Dialog dialog, OccupationConfigItemEntity item);
-        void clickListItem(Dialog dialog, OccupationConfigItemEntity.ItemEntity item);
+        //void clickListItem(Dialog dialog, OccupationConfigItemBean item);
+        void clickListItem(Dialog dialog, OccupationConfigItemBean.ItemEntity item);
     }
 
     public interface ChooseOccupations {
@@ -1192,7 +1192,7 @@ public class MVDialog {
     }
 
     public interface raDioChooseCity {
-        void clickListItem(Dialog dialog, ConfigItemEntity ids);
+        void clickListItem(Dialog dialog, ConfigItemBean ids);
     }
 
     public interface ChooseDay {

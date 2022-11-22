@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.blankj.utilcode.util.ObjectUtils;
 import com.fine.friendlycc.R;
 import com.fine.friendlycc.databinding.ItemCoinpusherRoomListBinding;
-import com.fine.friendlycc.entity.CoinPusherRoomDeviceInfo;
+import com.fine.friendlycc.bean.CoinPusherRoomDeviceInfo;
 
 import java.util.List;
 

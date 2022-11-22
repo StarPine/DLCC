@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.fine.friendlycc.entity.EvaluateItemEntity;
+import com.fine.friendlycc.bean.EvaluateItemBean;
 import com.fine.friendlycc.R;
 
 import java.util.List;
@@ -19,9 +19,9 @@ public class FlowAdapter extends FlowLayout.Adapter<FlowAdapter.FlowViewHolder> 
     private static final String TAG = "FlowAdapter";
 
     private final Context mContext;
-    private final List<EvaluateItemEntity> mContentList;
+    private final List<EvaluateItemBean> mContentList;
 
-    public FlowAdapter(Context mContext, List<EvaluateItemEntity> mContentList) {
+    public FlowAdapter(Context mContext, List<EvaluateItemBean> mContentList) {
         this.mContext = mContext;
         this.mContentList = mContentList;
     }
@@ -42,7 +42,7 @@ public class FlowAdapter extends FlowLayout.Adapter<FlowAdapter.FlowViewHolder> 
         holder.content.setText(spannableString);
     }
 
-    public String getTag(EvaluateItemEntity evaluateEntity) {
+    public String getTag(EvaluateItemBean evaluateEntity) {
         String name = evaluateEntity.getName();
         int number = evaluateEntity.getNumber();
         if (number > 999) {

@@ -13,7 +13,7 @@ import com.blankj.utilcode.util.ColorUtils;
 import com.blankj.utilcode.util.ObjectUtils;
 import com.blankj.utilcode.util.Utils;
 import com.fine.friendlycc.R;
-import com.fine.friendlycc.entity.CoinPusherConverInfoEntity;
+import com.fine.friendlycc.bean.CoinPusherConverInfoBean;
 
 import java.util.List;
 
@@ -24,13 +24,13 @@ import java.util.List;
  */
 public class CoinPusherConvertAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
-    private List<CoinPusherConverInfoEntity.DiamondsInfo> itemData;
+    private List<CoinPusherConverInfoBean.DiamondsInfo> itemData;
     private CoinPusherCapsuleADetailAdapter.OnItemClickListener onItemClickListener;
     private int defaultItemSel = -1;
 
     private int maxValue = 0;
 
-    public void setItemData(List<CoinPusherConverInfoEntity.DiamondsInfo> itemData,int maxValue) {
+    public void setItemData(List<CoinPusherConverInfoBean.DiamondsInfo> itemData,int maxValue) {
         this.itemData = itemData;
         this.maxValue = maxValue;
         notifyDataSetChanged();
@@ -54,7 +54,7 @@ public class CoinPusherConvertAdapter extends RecyclerView.Adapter<RecyclerView.
         }
     }
 
-    public CoinPusherConverInfoEntity.DiamondsInfo getItemData(int position) {
+    public CoinPusherConverInfoBean.DiamondsInfo getItemData(int position) {
         if(itemData != null && itemData.size() > position){
             return itemData.get(position);
         }
@@ -72,7 +72,7 @@ public class CoinPusherConvertAdapter extends RecyclerView.Adapter<RecyclerView.
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         ItemViewHolder itemViewHolder = ((ItemViewHolder) holder);
         if (!ObjectUtils.isEmpty(itemData)) {
-            CoinPusherConverInfoEntity.DiamondsInfo itemEntity = itemData.get(position);
+            CoinPusherConverInfoBean.DiamondsInfo itemEntity = itemData.get(position);
             if (!ObjectUtils.isEmpty(itemEntity)) {
                 itemViewHolder.tvCoin.setText(String.valueOf(itemEntity.getGoldValue()));
                 if(defaultItemSel!=-1){

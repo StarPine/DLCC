@@ -5,7 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.databinding.ObservableField;
 
-import com.fine.friendlycc.entity.TaskAdEntity;
+import com.fine.friendlycc.bean.TaskAdBean;
 import com.fine.friendlycc.ui.task.fukubukuro.FukubukuroFragment;
 
 import org.jetbrains.annotations.NotNull;
@@ -20,9 +20,9 @@ import me.goldze.mvvmhabit.binding.command.BindingCommand;
  * Description: This is TaskCenterADItemViewModel
  */
 public class TaskCenterADItemViewModel extends MultiItemViewModel<TaskCenterViewModel> {
-    public ObservableField<TaskAdEntity> itemEntity = new ObservableField<>();
+    public ObservableField<TaskAdBean> itemEntity = new ObservableField<>();
 
-    public TaskCenterADItemViewModel(@NonNull @NotNull TaskCenterViewModel viewModel, TaskAdEntity taskAdEntity) {
+    public TaskCenterADItemViewModel(@NonNull @NotNull TaskCenterViewModel viewModel, TaskAdBean taskAdEntity) {
         super(viewModel);
         itemEntity.set(taskAdEntity);
     }

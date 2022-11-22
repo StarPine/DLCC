@@ -1,7 +1,7 @@
 package com.fine.friendlycc.app;
 
 import com.fine.friendlycc.BuildConfig;
-import com.fine.friendlycc.entity.OverseasUserEntity;
+import com.fine.friendlycc.bean.OverseasUserBean;
 
 /**
  * @author wulei
@@ -67,7 +67,7 @@ public class AppConfig {
     public static final String BUCKET_NAME = BuildConfig.BUCKET_NAME;
 
     //临时存放第三方登录用户信息。用来注册默认读取
-    public static OverseasUserEntity overseasUserEntity = null;
+    public static OverseasUserBean overseasUserEntity = null;
     //记录推币机离开页面没有投币的状态展示弹窗
     public static boolean CoinPusherGameNotPushed = false;
     /**

@@ -27,12 +27,12 @@ import com.blankj.utilcode.util.StringUtils;
 import com.fine.friendlycc.BR;
 import com.fine.friendlycc.R;
 import com.fine.friendlycc.app.AppConfig;
-import com.fine.friendlycc.app.AppContext;
+import com.fine.friendlycc.app.CCApplication;
 import com.fine.friendlycc.app.AppViewModelFactory;
 import com.fine.friendlycc.app.AppsFlyerEvent;
 import com.fine.friendlycc.databinding.FragmentRadioBinding;
-import com.fine.friendlycc.entity.ConfigItemEntity;
-import com.fine.friendlycc.entity.RadioFilterItemEntity;
+import com.fine.friendlycc.bean.ConfigItemBean;
+import com.fine.friendlycc.bean.RadioFilterItemBean;
 import com.fine.friendlycc.helper.DialogHelper;
 import com.fine.friendlycc.manager.ConfigManager;
 import com.fine.friendlycc.ui.base.BaseRefreshFragment;
@@ -42,9 +42,7 @@ import com.fine.friendlycc.ui.mine.wallet.diamond.recharge.DialogDiamondRecharge
 import com.fine.friendlycc.ui.userdetail.report.ReportUserFragment;
 import com.fine.friendlycc.utils.AutoSizeUtils;
 import com.fine.friendlycc.utils.PictureSelectorUtil;
-import com.fine.friendlycc.viewadapter.CustomRefreshHeader;
 import com.fine.friendlycc.widget.AppBarStateChangeListener;
-import com.fine.friendlycc.widget.coinrechargesheet.CoinRechargeSheetView;
 import com.fine.friendlycc.widget.dialog.MMAlertDialog;
 import com.fine.friendlycc.widget.dialog.MVDialog;
 import com.fine.friendlycc.widget.dialog.TraceDialog;
@@ -72,10 +70,10 @@ public class RadioFragment extends BaseRefreshFragment<FragmentRadioBinding, Rad
 
     private CityChooseDialog cityChooseDialog;
 
-    private List<RadioFilterItemEntity> radioFilterListData;
+    private List<RadioFilterItemBean> radioFilterListData;
     private DropDownFilterPopupWindow radioFilterPopup;
     private Integer radioFilterCheckIndex;
-    private List<ConfigItemEntity> citys;
+    private List<ConfigItemBean> citys;
 
     private RadioFragmentLifecycle radioFragmentLifecycle;
 
@@ -146,36 +144,36 @@ public class RadioFragment extends BaseRefreshFragment<FragmentRadioBinding, Rad
         //让radioFragmentLifecycle拥有View的生命周期感应
         getLifecycle().addObserver(radioFragmentLifecycle);
         citys = ConfigManager.getInstance().getAppRepository().readCityConfig();
-        ConfigItemEntity nearItemEntity = new ConfigItemEntity();
+        ConfigItemBean nearItemEntity = new ConfigItemBean();
         nearItemEntity.setId(-1);
         nearItemEntity.setName(getStringByResId(R.string.playcc_tab_female_1));
         citys.add(0, nearItemEntity);
 
         radioFilterListData = new ArrayList<>();
-        radioFilterListData.add(new RadioFilterItemEntity<>(getString(R.string.playcc_radio_selected_zuiz),2));
-        radioFilterListData.add(new RadioFilterItemEntity<>(getString(R.string.playcc_just_look_lady), 0));
-        radioFilterListData.add(new RadioFilterItemEntity<>(getString(R.string.playcc_just_look_man), 1));
+        radioFilterListData.add(new RadioFilterItemBean<>(getString(R.string.playcc_radio_selected_zuiz),2));
+        radioFilterListData.add(new RadioFilterItemBean<>(getString(R.string.playcc_just_look_lady), 0));
+        radioFilterListData.add(new RadioFilterItemBean<>(getString(R.string.playcc_just_look_man), 1));
         radioFilterPopup =  new DropDownFilterPopupWindow(mActivity, radioFilterListData);
         radioFilterCheckIndex = 0;
         radioFilterPopup.setSelectedPosition(radioFilterCheckIndex);
         radioFilterPopup.setOnItemClickListener((popupWindow, position) -> {
             popupWindow.dismiss();
-            RadioFilterItemEntity obj =radioFilterListData.get(position);
+            RadioFilterItemBean obj =radioFilterListData.get(position);
             radioFilterCheckIndex = position;
             if (obj.getData() == null) {
                 viewModel.setSexId(null);
             } else {
                 if (((Integer) obj.getData()).intValue() == 0) {
-                    AppContext.instance().logEvent(AppsFlyerEvent.Male_Only);
+                    CCApplication.instance().logEvent(AppsFlyerEvent.Male_Only);
                 } else {
-                    AppContext.instance().logEvent(AppsFlyerEvent.Female_Only);
+                    CCApplication.instance().logEvent(AppsFlyerEvent.Female_Only);
                 }
                 if(((Integer)obj.getData()).intValue() == 2){//追踪的人
                     viewModel.type = 1;//发布时间
                     viewModel.cityId = null;
                     viewModel.gameId = null;
                     viewModel.setIsCollect(1);
-                    AppContext.instance().logEvent(AppsFlyerEvent.Follow_Only);
+                    CCApplication.instance().logEvent(AppsFlyerEvent.Follow_Only);
                 }else{
                     viewModel.setSexId((Integer) obj.getData());
                 }
@@ -202,7 +200,7 @@ public class RadioFragment extends BaseRefreshFragment<FragmentRadioBinding, Rad
     @Override
     public void initViewObservable() {
         super.initViewObservable();
-        AppContext.instance().logEvent(AppsFlyerEvent.Broadcast);
+        CCApplication.instance().logEvent(AppsFlyerEvent.Broadcast);
         mContext = this.getContext();
         //开始播放
         viewModel.radioUC.startBannerEvent.observe(this, unused -> {
@@ -310,7 +308,7 @@ public class RadioFragment extends BaseRefreshFragment<FragmentRadioBinding, Rad
                     if (finalIsSelf) {
                         viewModel.setComment(position, type);
                     } else {
-                        AppContext.instance().logEvent(AppsFlyerEvent.Report);
+                        CCApplication.instance().logEvent(AppsFlyerEvent.Report);
                         Bundle bundle = new Bundle();
                         bundle.putString(ARG_REPORT_TYPE, "broadcast");
                         bundle.putInt(ARG_REPORT_USER_ID, broadcastId);
@@ -438,7 +436,7 @@ public class RadioFragment extends BaseRefreshFragment<FragmentRadioBinding, Rad
 
     //支付弹窗
     private void googleCoinValueBox() {
-        AppContext.instance().logEvent(AppsFlyerEvent.Top_up);
+        CCApplication.instance().logEvent(AppsFlyerEvent.Top_up);
         Intent intent = new Intent(mActivity, DialogDiamondRechargeActivity.class);
         mActivity.startActivity(intent);
         mActivity.overridePendingTransition(R.anim.pop_enter_anim, 0);

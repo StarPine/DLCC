@@ -11,7 +11,7 @@ import com.fine.friendlycc.data.AppRepository;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseDataResponse;
 import com.fine.friendlycc.data.source.http.response.BaseResponse;
-import com.fine.friendlycc.entity.PrivacyEntity;
+import com.fine.friendlycc.bean.PrivacyBean;
 import com.fine.friendlycc.event.IsAuthBindingEvent;
 import com.fine.friendlycc.viewmodel.BaseViewModel;
 
@@ -34,7 +34,7 @@ import me.goldze.mvvmhabit.utils.ToastUtils;
 public class CommunityAccountModel extends BaseViewModel<AppRepository> {
 
 
-    public ObservableField<PrivacyEntity> privacyEntity = new ObservableField<>(new PrivacyEntity());
+    public ObservableField<PrivacyBean> privacyEntity = new ObservableField<>(new PrivacyBean());
 
     public ObservableField<Boolean> deleteAccountFlag = new ObservableField<>(false);
 
@@ -95,9 +95,9 @@ public class CommunityAccountModel extends BaseViewModel<AppRepository> {
                 .doOnSubscribe(this)
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
-                .subscribe(new BaseObserver<BaseDataResponse<PrivacyEntity>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<PrivacyBean>>() {
                     @Override
-                    public void onSuccess(BaseDataResponse<PrivacyEntity> response) {
+                    public void onSuccess(BaseDataResponse<PrivacyBean> response) {
                         privacyEntity.set(response.getData());
                     }
                 });

@@ -11,9 +11,9 @@ import androidx.lifecycle.ViewModelProviders;
 import com.blankj.utilcode.util.StringUtils;
 import com.fine.friendlycc.app.AppViewModelFactory;
 import com.fine.friendlycc.app.Injection;
-import com.fine.friendlycc.entity.EvaluateEntity;
-import com.fine.friendlycc.entity.EvaluateItemEntity;
-import com.fine.friendlycc.entity.EvaluateObjEntity;
+import com.fine.friendlycc.bean.EvaluateBean;
+import com.fine.friendlycc.bean.EvaluateItemBean;
+import com.fine.friendlycc.bean.EvaluateObjBean;
 import com.fine.friendlycc.ui.base.BaseRefreshToolbarFragment;
 import com.fine.friendlycc.ui.dialog.CommitEvaluateDialog;
 import com.fine.friendlycc.ui.dialog.MyEvaluateDialog;
@@ -55,19 +55,19 @@ public class EvaluateMessageFragment extends BaseRefreshToolbarFragment<Fragment
         super.initViewObservable();
 
         viewModel.uc.clickEvaluate.observe(this, map -> {
-            List<EvaluateObjEntity> list = null;
+            List<EvaluateObjBean> list = null;
             int sex = (int) map.get("sex");
             if (sex == 1) {
                 list = Injection.provideDemoRepository().readMaleEvaluateConfig();
             } else {
                 list = Injection.provideDemoRepository().readFemaleEvaluateConfig();
             }
-            List<EvaluateItemEntity> items = new ArrayList<>();
-            for (EvaluateObjEntity configEntity : list) {
-                EvaluateItemEntity evaluateItemEntity = new EvaluateItemEntity(configEntity.getId(), configEntity.getName(), configEntity.getType() == 1);
+            List<EvaluateItemBean> items = new ArrayList<>();
+            for (EvaluateObjBean configEntity : list) {
+                EvaluateItemBean evaluateItemEntity = new EvaluateItemBean(configEntity.getId(), configEntity.getName(), configEntity.getType() == 1);
                 items.add(evaluateItemEntity);
-                List<EvaluateEntity> evaluateEntities = (List<EvaluateEntity>) map.get("evaluates");
-                for (EvaluateEntity evaluateEntity : evaluateEntities) {
+                List<EvaluateBean> evaluateEntities = (List<EvaluateBean>) map.get("evaluates");
+                for (EvaluateBean evaluateEntity : evaluateEntities) {
                     if (configEntity.getId() == evaluateEntity.getTagId()) {
                         evaluateItemEntity.setNumber(evaluateEntity.getNumber());
                     }

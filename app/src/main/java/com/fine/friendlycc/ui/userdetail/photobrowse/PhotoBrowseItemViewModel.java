@@ -3,7 +3,7 @@ package com.fine.friendlycc.ui.userdetail.photobrowse;
 import androidx.annotation.NonNull;
 import androidx.databinding.ObservableField;
 
-import com.fine.friendlycc.entity.AlbumPhotoEntity;
+import com.fine.friendlycc.bean.AlbumPhotoBean;
 import com.fine.friendlycc.utils.ExceptionReportUtils;
 
 import me.goldze.mvvmhabit.base.ItemViewModel;
@@ -13,7 +13,7 @@ import me.goldze.mvvmhabit.binding.command.BindingCommand;
  * @author wulei
  */
 public class PhotoBrowseItemViewModel extends ItemViewModel<PhotoBrowseViewModel> {
-    public ObservableField<AlbumPhotoEntity> itemEntity = new ObservableField<>();
+    public ObservableField<AlbumPhotoBean> itemEntity = new ObservableField<>();
     public ObservableField<Integer> redPackagePrice = new ObservableField<>();
     public ObservableField<Integer> playStatus = new ObservableField<>(0);
     public BindingCommand itemClick = new BindingCommand(() -> {
@@ -44,7 +44,7 @@ public class PhotoBrowseItemViewModel extends ItemViewModel<PhotoBrowseViewModel
         }
     });
 
-    public PhotoBrowseItemViewModel(@NonNull PhotoBrowseViewModel viewModel, AlbumPhotoEntity itemEntity, Integer redPackagePrice) {
+    public PhotoBrowseItemViewModel(@NonNull PhotoBrowseViewModel viewModel, AlbumPhotoBean itemEntity, Integer redPackagePrice) {
         super(viewModel);
         this.itemEntity.set(itemEntity);
         this.redPackagePrice.set(redPackagePrice);

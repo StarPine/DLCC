@@ -10,9 +10,9 @@ import androidx.databinding.ObservableField;
 
 import com.blankj.utilcode.util.StringUtils;
 import com.fine.friendlycc.R;
-import com.fine.friendlycc.app.AppContext;
+import com.fine.friendlycc.app.CCApplication;
 import com.fine.friendlycc.app.AppsFlyerEvent;
-import com.fine.friendlycc.entity.AdUserItemEntity;
+import com.fine.friendlycc.bean.AdUserItemBean;
 import com.fine.friendlycc.ui.radio.radiohome.RadioViewModel;
 import com.fine.friendlycc.ui.userdetail.detail.UserDetailFragment;
 import com.fine.friendlycc.utils.ExceptionReportUtils;
@@ -34,10 +34,10 @@ import me.goldze.mvvmhabit.utils.Utils;
  */
 public class RadioItemBannerVideoViewModel extends MultiItemViewModel<RadioViewModel> {
 
-    public ObservableField<AdUserItemEntity> adUserItemEntity = new ObservableField<>();
+    public ObservableField<AdUserItemBean> adUserItemEntity = new ObservableField<>();
     public ObservableBoolean isPlaying = new ObservableBoolean(false);
 
-    public RadioItemBannerVideoViewModel(@NonNull RadioViewModel viewModel,AdUserItemEntity adUserItemEntity) {
+    public RadioItemBannerVideoViewModel(@NonNull RadioViewModel viewModel,AdUserItemBean adUserItemEntity) {
         super(viewModel);
         this.adUserItemEntity.set(adUserItemEntity);
     }
@@ -48,7 +48,7 @@ public class RadioItemBannerVideoViewModel extends MultiItemViewModel<RadioViewM
             viewModel.itemClickChangeIdx(position);
         }
         try {
-            AppContext.instance().logEvent(AppsFlyerEvent.Nearby_Follow);
+            CCApplication.instance().logEvent(AppsFlyerEvent.Nearby_Follow);
             Bundle bundle = UserDetailFragment.getStartBundle(adUserItemEntity.get().getUserId());
             viewModel.start(UserDetailFragment.class.getCanonicalName(), bundle);
         } catch (Exception e) {

@@ -6,7 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.databinding.ObservableField;
 
 import com.blankj.utilcode.util.StringUtils;
-import com.fine.friendlycc.entity.AlbumPhotoEntity;
+import com.fine.friendlycc.bean.AlbumPhotoBean;
 import com.fine.friendlycc.manager.ConfigManager;
 import com.fine.friendlycc.utils.ExceptionReportUtils;
 import com.fine.friendlycc.R;
@@ -20,7 +20,7 @@ import me.goldze.mvvmhabit.binding.command.BindingCommand;
 @SuppressLint("SupportAnnotationUsage")
 public class SetRedPackageVideoItemViewModel extends MultiItemViewModel<SetRedPackageVideoViewModel> {
 
-    public ObservableField<AlbumPhotoEntity> itemEntity = new ObservableField<>();
+    public ObservableField<AlbumPhotoBean> itemEntity = new ObservableField<>();
 
     public ObservableField<Integer> moreCount = new ObservableField<>(0);
     //条目的点击事件
@@ -33,7 +33,7 @@ public class SetRedPackageVideoItemViewModel extends MultiItemViewModel<SetRedPa
         }
     });
 
-    public SetRedPackageVideoItemViewModel(@NonNull SetRedPackageVideoViewModel viewModel, AlbumPhotoEntity itemEntity) {
+    public SetRedPackageVideoItemViewModel(@NonNull SetRedPackageVideoViewModel viewModel, AlbumPhotoBean itemEntity) {
         super(viewModel);
         this.itemEntity.set(itemEntity);
     }

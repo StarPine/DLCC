@@ -3,7 +3,7 @@ package com.fine.friendlycc.ui.message.evaluatemessage;
 import androidx.annotation.NonNull;
 import androidx.databinding.ObservableField;
 
-import com.fine.friendlycc.entity.EvaluateMessageEntity;
+import com.fine.friendlycc.bean.EvaluateMessageBean;
 import com.fine.friendlycc.utils.ExceptionReportUtils;
 
 import me.goldze.mvvmhabit.base.MultiItemViewModel;
@@ -15,7 +15,7 @@ import me.goldze.mvvmhabit.binding.command.BindingCommand;
  */
 public class EvaluateMessageItemViewModel extends MultiItemViewModel<EvaluateMessageViewModel> {
 
-    public ObservableField<EvaluateMessageEntity> itemEntity = new ObservableField<>();
+    public ObservableField<EvaluateMessageBean> itemEntity = new ObservableField<>();
     public ObservableField<String> statusText = new ObservableField<>();
     public BindingCommand itemClick = new BindingCommand(new BindingAction() {
         @Override
@@ -45,7 +45,7 @@ public class EvaluateMessageItemViewModel extends MultiItemViewModel<EvaluateMes
         }
     });
 
-    public EvaluateMessageItemViewModel(@NonNull EvaluateMessageViewModel viewModel, EvaluateMessageEntity messageEntity) {
+    public EvaluateMessageItemViewModel(@NonNull EvaluateMessageViewModel viewModel, EvaluateMessageBean messageEntity) {
         super(viewModel);
         this.itemEntity.set(messageEntity);
         this.statusText.set(viewModel.getStatusText(messageEntity.getStatus()));

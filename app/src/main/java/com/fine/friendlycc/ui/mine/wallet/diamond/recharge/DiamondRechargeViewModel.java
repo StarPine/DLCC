@@ -10,16 +10,16 @@ import androidx.databinding.ObservableList;
 import com.blankj.utilcode.util.StringUtils;
 import com.fine.friendlycc.BR;
 import com.fine.friendlycc.R;
-import com.fine.friendlycc.app.AppContext;
+import com.fine.friendlycc.app.CCApplication;
 import com.fine.friendlycc.app.AppsFlyerEvent;
 import com.fine.friendlycc.data.AppRepository;
 import com.fine.friendlycc.data.source.http.exception.RequestException;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseDataResponse;
 import com.fine.friendlycc.data.source.http.response.BaseResponse;
-import com.fine.friendlycc.entity.CreateOrderEntity;
-import com.fine.friendlycc.entity.DiamondInfoEntity;
-import com.fine.friendlycc.entity.GoodsEntity;
+import com.fine.friendlycc.bean.CreateOrderBean;
+import com.fine.friendlycc.bean.DiamondInfoBean;
+import com.fine.friendlycc.bean.GoodsBean;
 import com.fine.friendlycc.manager.ConfigManager;
 import com.fine.friendlycc.ui.mine.vipsubscribe.VipSubscribeFragment;
 import com.fine.friendlycc.ui.mine.wallet.coin.CoinFragment;
@@ -50,12 +50,12 @@ public class DiamondRechargeViewModel extends BaseViewModel<AppRepository> {
     public ObservableList<DiamondRechargeItemViewModel> diamondRechargeList = new ObservableArrayList<>();
     public ItemBinding<DiamondRechargeItemViewModel> diamondRechargeItem = ItemBinding.of(BR.viewModel, R.layout.item_diamond_recharge);
 
-    public ObservableField<GoodsEntity> selectedGoodsEntity = new ObservableField<>();
-    public ObservableField<DiamondInfoEntity> diamondInfo = new ObservableField<>();
+    public ObservableField<GoodsBean> selectedGoodsEntity = new ObservableField<>();
+    public ObservableField<DiamondInfoBean> diamondInfo = new ObservableField<>();
     public String orderNumber = null;
     public int selectedPosition = -1;
     public SingleLiveEvent<String> payOnClick = new SingleLiveEvent();
-    public SingleLiveEvent<GoodsEntity> paySuccess = new SingleLiveEvent();
+    public SingleLiveEvent<GoodsBean> paySuccess = new SingleLiveEvent();
     public SingleLiveEvent<Void> stopRefresh = new SingleLiveEvent();
 
     /**
@@ -77,7 +77,7 @@ public class DiamondRechargeViewModel extends BaseViewModel<AppRepository> {
             return;
         }
         if (diamondInfo.get().getIsVip() == 0 && isMale()){
-            AppContext.instance().logEvent(AppsFlyerEvent.VIP_Center);
+            CCApplication.instance().logEvent(AppsFlyerEvent.VIP_Center);
             start(VipSubscribeFragment.class.getCanonicalName());
         }
     });
@@ -96,12 +96,12 @@ public class DiamondRechargeViewModel extends BaseViewModel<AppRepository> {
         super(application, model);
     }
 
-    public void itemClick(int position, GoodsEntity goodsEntity) {
+    public void itemClick(int position, GoodsBean goodsEntity) {
         for (DiamondRechargeItemViewModel itemViewModel : diamondRechargeList) {
             itemViewModel.itemEntity.get().setSelected(false);
         }
         selectedGoodsEntity.set(goodsEntity);
-        AppContext.instance().logEvent(AppsFlyerEvent.Top_up + (position + 1));
+        CCApplication.instance().logEvent(AppsFlyerEvent.Top_up + (position + 1));
         diamondRechargeList.get(position).itemEntity.get().setSelected(true);
         selectedPosition = position;
     }
@@ -117,9 +117,9 @@ public class DiamondRechargeViewModel extends BaseViewModel<AppRepository> {
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(disposable -> showHUD())
-                .subscribe(new BaseObserver<BaseDataResponse<CreateOrderEntity>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<CreateOrderBean>>() {
                     @Override
-                    public void onSuccess(BaseDataResponse<CreateOrderEntity> response) {
+                    public void onSuccess(BaseDataResponse<CreateOrderBean> response) {
                         orderNumber = response.getData().getOrderNumber();
                         payOnClick.postValue(selectedGoodsEntity.get().getGoogleGoodsId());
                     }
@@ -175,7 +175,7 @@ public class DiamondRechargeViewModel extends BaseViewModel<AppRepository> {
         return ConfigManager.getInstance().isMale();
     }
 
-    public String getTotalCoin(DiamondInfoEntity diamondInfoEntity) {
+    public String getTotalCoin(DiamondInfoBean diamondInfoEntity) {
         String total = "";
         if (diamondInfoEntity == null) {
             return total;
@@ -198,17 +198,17 @@ public class DiamondRechargeViewModel extends BaseViewModel<AppRepository> {
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(disposable -> showHUD())
-                .subscribe(new BaseObserver<BaseDataResponse<DiamondInfoEntity>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<DiamondInfoBean>>() {
                     @Override
-                    public void onSuccess(BaseDataResponse<DiamondInfoEntity> response) {
+                    public void onSuccess(BaseDataResponse<DiamondInfoBean> response) {
                         diamondRechargeList.clear();
-                        DiamondInfoEntity infoEntity = response.getData();
+                        DiamondInfoBean infoEntity = response.getData();
                         diamondInfo.set(infoEntity);
-                        List<GoodsEntity> data = infoEntity.getList();
+                        List<GoodsBean> data = infoEntity.getList();
                         if (data == null || data.size() <= 0){
                             return;
                         }
-                        for (GoodsEntity goodsEntity : data) {
+                        for (GoodsBean goodsEntity : data) {
                             DiamondRechargeItemViewModel itemViewModel = new DiamondRechargeItemViewModel(DiamondRechargeViewModel.this, goodsEntity);
                             diamondRechargeList.add(itemViewModel);
                         }

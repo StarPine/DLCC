@@ -14,7 +14,7 @@ import com.fine.friendlycc.app.AppViewModelFactory;
 import com.fine.friendlycc.app.GlideEngine;
 import com.fine.friendlycc.data.AppRepository;
 import com.fine.friendlycc.databinding.ActivitySnapshotPhotoSettingBinding;
-import com.fine.friendlycc.entity.MediaPayPerConfigEntity;
+import com.fine.friendlycc.bean.MediaPayPerConfigBean;
 import com.fine.friendlycc.manager.ConfigManager;
 import com.tencent.qcloud.tuicore.custom.entity.MediaGalleryEditEntity;
 import com.fine.friendlycc.ui.base.BaseActivity;
@@ -40,15 +40,15 @@ public class SnapshotPhotoActivity extends BaseActivity<ActivitySnapshotPhotoSet
     //本地缓存上次选择快照模板id
     private final String localSnapshotConfigIdSettingKey = "MediaGalleryPhotoConfigIdSettingKey";
     private boolean localSnapshotCheck = false;
-    private MediaPayPerConfigEntity.ItemEntity localCheckItemEntity = null;
+    private MediaPayPerConfigBean.ItemEntity localCheckItemEntity = null;
 
     private String srcLocalPath = null;
     private boolean isPayState = false;
 
-    private MediaPayPerConfigEntity.itemTagEntity mediaPriceTmpConfig;
+    private MediaPayPerConfigBean.itemTagEntity mediaPriceTmpConfig;
     private SnapshotPhotoDialog snapshotPhotoDialog;
 
-    private MediaPayPerConfigEntity.ItemEntity checkItemEntity;
+    private MediaPayPerConfigBean.ItemEntity checkItemEntity;
     private Integer configId;
 
     private boolean isAdmin = false;
@@ -60,7 +60,7 @@ public class SnapshotPhotoActivity extends BaseActivity<ActivitySnapshotPhotoSet
     * @return android.content.Intent
     * @Date 2022/9/14
     */
-    public static Intent createIntent(Context mContext, boolean isPayState, String srcPath,boolean isAdmin,MediaPayPerConfigEntity.itemTagEntity mediaPriceTmpConfig){
+    public static Intent createIntent(Context mContext, boolean isPayState, String srcPath,boolean isAdmin,MediaPayPerConfigBean.itemTagEntity mediaPriceTmpConfig){
         Intent snapshotIntent = new Intent(mContext,SnapshotPhotoActivity.class);
         snapshotIntent.putExtra("isPayState",isPayState);
         snapshotIntent.putExtra("srcPath",srcPath);
@@ -100,7 +100,7 @@ public class SnapshotPhotoActivity extends BaseActivity<ActivitySnapshotPhotoSet
             srcLocalPath = intent.getStringExtra("srcPath");
             isPayState = intent.getBooleanExtra("isPayState",false);
             isAdmin = intent.getBooleanExtra("isAdmin",false);
-            mediaPriceTmpConfig = (MediaPayPerConfigEntity.itemTagEntity) intent.getSerializableExtra("mediaPriceTmpConfig");
+            mediaPriceTmpConfig = (MediaPayPerConfigBean.itemTagEntity) intent.getSerializableExtra("mediaPriceTmpConfig");
         }
     }
 
@@ -129,7 +129,7 @@ public class SnapshotPhotoActivity extends BaseActivity<ActivitySnapshotPhotoSet
             String localConfigId = appRepository.readKeyValue(localSnapshotConfigIdSettingKey);
             configId = StringUtils.isEmpty(localConfigId) ? null : Integer.parseInt(localConfigId);
             if(!StringUtils.isEmpty(localPriceValue)){
-                localCheckItemEntity = GsonUtils.fromJson(localPriceValue, MediaPayPerConfigEntity.ItemEntity.class);
+                localCheckItemEntity = GsonUtils.fromJson(localPriceValue, MediaPayPerConfigBean.ItemEntity.class);
             }
             if(ObjectUtils.isNotEmpty(localCheckItemEntity)){
                 checkItemEntity = localCheckItemEntity;

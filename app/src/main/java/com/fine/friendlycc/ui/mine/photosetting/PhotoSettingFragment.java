@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.fine.friendlycc.app.AppViewModelFactory;
-import com.fine.friendlycc.entity.AlbumPhotoEntity;
+import com.fine.friendlycc.bean.AlbumPhotoBean;
 import com.fine.friendlycc.ui.base.BaseToolbarFragment;
 import com.fine.friendlycc.ui.dialog.PhotoDialog;
 import com.fine.friendlycc.utils.AutoSizeUtils;
@@ -35,9 +35,9 @@ public class PhotoSettingFragment extends BaseToolbarFragment<FragmentPhotoSetti
 
     private int type;
     private int index;
-    private ArrayList<AlbumPhotoEntity> photos;
+    private ArrayList<AlbumPhotoBean> photos;
 
-    public static Bundle getStartBundle(int type, int index, ArrayList<AlbumPhotoEntity> albumPhotoList) {
+    public static Bundle getStartBundle(int type, int index, ArrayList<AlbumPhotoBean> albumPhotoList) {
         Bundle bundle = new Bundle();
         bundle.putInt(ARG_TYPE, type);
         bundle.putInt(ARG_PHOTOS_INDEX, index);

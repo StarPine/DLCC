@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.fine.friendlycc.entity.GiftBagEntity;
+import com.fine.friendlycc.bean.GiftBagBean;
 import com.fine.friendlycc.utils.StringUtil;
 import com.fine.friendlycc.R;
 import com.tencent.qcloud.tuikit.tuichat.TUIChatService;
@@ -29,7 +29,7 @@ import java.util.List;
 public class GiftBagCardDetailAdapter extends RecyclerView.Adapter<GiftBagCardDetailAdapter.ItemViewHolder> {
 
     private final Context mContext;
-    private final List<GiftBagEntity.propEntity> listData;
+    private final List<GiftBagBean.propEntity> listData;
 
     private OnClickDetailListener onClickDetailListener = null;
     private boolean isDarkShow = false;
@@ -37,7 +37,7 @@ public class GiftBagCardDetailAdapter extends RecyclerView.Adapter<GiftBagCardDe
     //道具卡类型 1啪啪卡 2聊天卡 3语音卡 4視頻卡
     private int propType = 0;
 
-    public GiftBagCardDetailAdapter(RecyclerView recyclerView, List<GiftBagEntity.propEntity> data, boolean isDarkShow, int prop_type) {
+    public GiftBagCardDetailAdapter(RecyclerView recyclerView, List<GiftBagBean.propEntity> data, boolean isDarkShow, int prop_type) {
         this.mContext = recyclerView.getContext();
         this.listData = data;
         this.isDarkShow = isDarkShow;
@@ -56,7 +56,7 @@ public class GiftBagCardDetailAdapter extends RecyclerView.Adapter<GiftBagCardDe
         ItemViewHolder itemViewHolder = holder;
         if(listData!=null && listData.size() > 0) {
             int index = position;
-            GiftBagEntity.propEntity propEntity = listData.get(index);
+            GiftBagBean.propEntity propEntity = listData.get(index);
             if (isDarkShow) {
                 itemViewHolder.title.setTextColor(Color.parseColor("#F1F2F9"));
             } else {
@@ -116,6 +116,6 @@ public class GiftBagCardDetailAdapter extends RecyclerView.Adapter<GiftBagCardDe
     }
 
     public interface  OnClickDetailListener{
-        void clickDetailCheck(int position,GiftBagEntity.propEntity itemEntity,LinearLayout detail_layout);
+        void clickDetailCheck(int position,GiftBagBean.propEntity itemEntity,LinearLayout detail_layout);
     }
 }

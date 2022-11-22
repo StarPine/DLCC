@@ -16,8 +16,8 @@ import com.fine.friendlycc.app.AppConfig;
 import com.fine.friendlycc.data.AppRepository;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseDataResponse;
-import com.fine.friendlycc.entity.UserProfitPageEntity;
-import com.fine.friendlycc.entity.UserProfitPageInfoEntity;
+import com.fine.friendlycc.bean.UserProfitPageBean;
+import com.fine.friendlycc.bean.UserProfitPageInfoBean;
 import com.fine.friendlycc.ui.main.MainFragment;
 import com.fine.friendlycc.ui.mine.webview.WebViewFragment;
 import com.fine.friendlycc.viewmodel.BaseViewModel;
@@ -129,20 +129,20 @@ public class TwDollarMoneyViewModel extends BaseViewModel<AppRepository> {
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(disposable -> showHUD())
-                .subscribe(new BaseObserver<BaseDataResponse<UserProfitPageEntity>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<UserProfitPageBean>>() {
                     @Override
-                    public void onSuccess(BaseDataResponse<UserProfitPageEntity> response) {
-                        UserProfitPageEntity data = response.getData();
+                    public void onSuccess(BaseDataResponse<UserProfitPageBean> response) {
+                        UserProfitPageBean data = response.getData();
                         totalProfits.set(String.format("%.2f", data.getTotalProfits()));
                         isShowProfitTips.set(data.getDisplayProfitTips()==1);
                         currencyName.set(data.getCurrencyName());
-                        UserProfitPageEntity.CustomProfitList pageData = data.getUserProfitList();
-                        List<UserProfitPageInfoEntity> listData = pageData.getData();
+                        UserProfitPageBean.CustomProfitList pageData = data.getUserProfitList();
+                        List<UserProfitPageInfoBean> listData = pageData.getData();
                         if (!ObjectUtils.isEmpty(listData) && listData.size() > 0) {
                             isShowEmpty.set(false);
                             withdrawString.set(StringUtils.getString(R.string.playcc_withdraw));
                             stateModel.setEmptyState(EmptyState.NORMAL);
-                            for (UserProfitPageInfoEntity itemEntity : listData) {
+                            for (UserProfitPageInfoBean itemEntity : listData) {
                                 TwDollarMoneyItemViewModel twDollarMoneyItemViewModel = new TwDollarMoneyItemViewModel(TwDollarMoneyViewModel.this, itemEntity);
                                 observableList.add(twDollarMoneyItemViewModel);
                             }

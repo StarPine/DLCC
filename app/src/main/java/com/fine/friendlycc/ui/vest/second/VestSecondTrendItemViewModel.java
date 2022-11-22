@@ -3,7 +3,7 @@ package com.fine.friendlycc.ui.vest.second;
 import androidx.annotation.NonNull;
 import androidx.databinding.ObservableField;
 
-import com.fine.friendlycc.entity.BroadcastEntity;
+import com.fine.friendlycc.bean.BroadcastBean;
 import com.fine.friendlycc.viewmodel.BaseViewModel;
 
 import me.goldze.mvvmhabit.base.MultiItemViewModel;
@@ -13,9 +13,9 @@ import me.goldze.mvvmhabit.base.MultiItemViewModel;
  */
 public class VestSecondTrendItemViewModel extends MultiItemViewModel<BaseViewModel> {
 
-    public ObservableField<BroadcastEntity> broadcastEntity = new ObservableField<>();
+    public ObservableField<BroadcastBean> broadcastEntity = new ObservableField<>();
 
-    public VestSecondTrendItemViewModel(@NonNull VestSecondViewModel viewModel, BroadcastEntity broadcastEntity) {
+    public VestSecondTrendItemViewModel(@NonNull VestSecondViewModel viewModel, BroadcastBean broadcastEntity) {
         super(viewModel);
         this.broadcastEntity.set(broadcastEntity);
     }

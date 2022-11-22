@@ -19,7 +19,7 @@ import com.blankj.utilcode.util.StringUtils;
 import com.bumptech.glide.Glide;
 import com.fine.friendlycc.R;
 import com.fine.friendlycc.databinding.DialogCheckImgVideoBinding;
-import com.fine.friendlycc.entity.MediaGallerySwitchEntity;
+import com.fine.friendlycc.bean.MediaGallerySwitchBean;
 import com.fine.friendlycc.manager.ConfigManager;
 import com.fine.friendlycc.utils.StringUtil;
 import com.fine.friendlycc.utils.Utils;
@@ -41,7 +41,7 @@ public class MessageDetailDialog {
      * @parame [context, touchOutside, audioCallHintOnClickListener]
      * @Date 2022/3/1
      */
-    public static Dialog CheckImgViewFile(Context context, boolean touchOutside,boolean isAdmin, MediaGallerySwitchEntity mediaGallerySwitchEntity, SelectedSnapshotListener selectedSnapshotListener) {
+    public static Dialog CheckImgViewFile(Context context, boolean touchOutside,boolean isAdmin, MediaGallerySwitchBean mediaGallerySwitchEntity, SelectedSnapshotListener selectedSnapshotListener) {
         Dialog dialog = new Dialog(context);
         dialog.setCanceledOnTouchOutside(touchOutside);
         dialog.setCancelable(true);

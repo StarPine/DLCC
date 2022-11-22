@@ -15,16 +15,16 @@ import com.blankj.utilcode.util.ObjectUtils;
 import com.blankj.utilcode.util.StringUtils;
 import com.fine.friendlycc.R;
 import com.fine.friendlycc.app.AppConfig;
-import com.fine.friendlycc.app.AppContext;
+import com.fine.friendlycc.app.CCApplication;
 import com.fine.friendlycc.app.AppsFlyerEvent;
 import com.fine.friendlycc.data.AppRepository;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseDataResponse;
 import com.fine.friendlycc.data.source.http.response.BaseResponse;
-import com.fine.friendlycc.entity.ChooseAreaItemEntity;
-import com.fine.friendlycc.entity.SystemConfigEntity;
-import com.fine.friendlycc.entity.TokenEntity;
-import com.fine.friendlycc.entity.UserDataEntity;
+import com.fine.friendlycc.bean.ChooseAreaItemBean;
+import com.fine.friendlycc.bean.SystemConfigBean;
+import com.fine.friendlycc.bean.TokenBean;
+import com.fine.friendlycc.bean.UserDataBean;
 import com.fine.friendlycc.event.ItemChooseAreaEvent;
 import com.fine.friendlycc.manager.ThirdPushTokenMgr;
 import com.fine.friendlycc.ui.login.choose.ChooseAreaFragment;
@@ -58,7 +58,7 @@ import me.goldze.mvvmhabit.utils.ToastUtils;
 public class LoginViewModel extends BaseViewModel<AppRepository>  {
 
     public ObservableField<String> mobile = new ObservableField<>();
-    public ObservableField<ChooseAreaItemEntity> areaCode = new ObservableField<>();
+    public ObservableField<ChooseAreaItemBean> areaCode = new ObservableField<>();
     public ObservableField<String> code = new ObservableField<>();
     public ObservableField<Boolean> agree = new ObservableField<>(true);
 
@@ -126,20 +126,20 @@ public class LoginViewModel extends BaseViewModel<AppRepository>  {
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(disposable -> showHUD())
-                .subscribe(new BaseObserver<BaseDataResponse<UserDataEntity>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<UserDataBean>>() {
                     @Override
-                    public void onSuccess(BaseDataResponse<UserDataEntity> response) {
+                    public void onSuccess(BaseDataResponse<UserDataBean> response) {
                         dismissHUD();
-                        UserDataEntity authLoginUserEntity = response.getData();
-                        TokenEntity tokenEntity = new TokenEntity(authLoginUserEntity.getToken(),authLoginUserEntity.getUserID(),authLoginUserEntity.getUserSig(), authLoginUserEntity.getIsContract());
+                        UserDataBean authLoginUserEntity = response.getData();
+                        TokenBean tokenEntity = new TokenBean(authLoginUserEntity.getToken(),authLoginUserEntity.getUserID(),authLoginUserEntity.getUserSig(), authLoginUserEntity.getIsContract());
                         model.saveLoginInfo(tokenEntity);
                         model.putKeyValue("areaCode",new Gson().toJson(areaCode.get()));
                         model.putKeyValue(AppConfig.LOGIN_TYPE,"phone");
                         if (response.getData() != null && response.getData().getIsNewUser() != null && response.getData().getIsNewUser().intValue() == 1) {
-                            AppContext.instance().logEvent(AppsFlyerEvent.register_start);
+                            CCApplication.instance().logEvent(AppsFlyerEvent.register_start);
                             model.saveIsNewUser(true);
                         }
-                        AppContext.instance().logEvent(AppsFlyerEvent.LOG_IN_WITH_PHONE_NUMBER);
+                        CCApplication.instance().logEvent(AppsFlyerEvent.LOG_IN_WITH_PHONE_NUMBER);
                         loadProfile();
                     }
 
@@ -185,9 +185,9 @@ public class LoginViewModel extends BaseViewModel<AppRepository>  {
                     public void onSuccess(BaseDataResponse<Map<String, String>> mapBaseDataResponse) {
                         dismissHUD();
                         Map<String, String> dataToken = mapBaseDataResponse.getData();
-                        TokenEntity tokenEntity = new TokenEntity(dataToken.get("token"), dataToken.get("userID"), dataToken.get("userSig"), Integer.parseInt(dataToken.get("is_contract")));
+                        TokenBean tokenEntity = new TokenBean(dataToken.get("token"), dataToken.get("userID"), dataToken.get("userSig"), Integer.parseInt(dataToken.get("is_contract")));
                         if (mapBaseDataResponse.getData() != null && mapBaseDataResponse.getData().get("is_new_user") != null && mapBaseDataResponse.getData().get("is_new_user").equals("1")) {
-                            AppContext.instance().logEvent(AppsFlyerEvent.register_start);
+                            CCApplication.instance().logEvent(AppsFlyerEvent.register_start);
                         }
                         model.saveLoginInfo(tokenEntity);
                         model.putKeyValue(AppConfig.LOGIN_TYPE,type);
@@ -215,7 +215,7 @@ public class LoginViewModel extends BaseViewModel<AppRepository>  {
                     String token = task.getResult();
                     KLog.d(LoginViewModel.class.getCanonicalName(), "google fcm getToken = " + token);
                     ThirdPushTokenMgr.getInstance().setThirdPushToken(token);
-                    AppContext.instance().pushDeviceToken(token);
+                    CCApplication.instance().pushDeviceToken(token);
                 });
         //RaJava模拟登录
         model.getUserData()
@@ -223,15 +223,15 @@ public class LoginViewModel extends BaseViewModel<AppRepository>  {
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(disposable -> showHUD())
-                .subscribe(new BaseObserver<BaseDataResponse<UserDataEntity>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<UserDataBean>>() {
                     @Override
-                    public void onSuccess(BaseDataResponse<UserDataEntity> response) {
+                    public void onSuccess(BaseDataResponse<UserDataBean> response) {
                         dismissHUD();
-                        UserDataEntity userDataEntity = response.getData();
+                        UserDataBean userDataEntity = response.getData();
                         //友盟登录统计
                         // MobclickAgent.onProfileSignIn(String.valueOf(userDataEntity.getId()));
                         AppsFlyerLib.getInstance().setCustomerUserId(String.valueOf(userDataEntity.getId()));
-                        AppContext.instance().mFirebaseAnalytics.setUserId(String.valueOf(userDataEntity.getId()));
+                        CCApplication.instance().mFirebaseAnalytics.setUserId(String.valueOf(userDataEntity.getId()));
                         try {
                             //添加崩溃人员id
                             FirebaseCrashlytics.getInstance().setUserId(String.valueOf(userDataEntity.getId()));
@@ -314,15 +314,15 @@ public class LoginViewModel extends BaseViewModel<AppRepository>  {
 
     //获取用户ip地址区号
     public void getUserIpCode() {
-        SystemConfigEntity systemConfigEntity = model.readSystemConfig();
+        SystemConfigBean systemConfigEntity = model.readSystemConfig();
         if (systemConfigEntity != null) {
-            ChooseAreaItemEntity chooseAreaItemEntity = new ChooseAreaItemEntity();
+            ChooseAreaItemBean chooseAreaItemEntity = new ChooseAreaItemBean();
             chooseAreaItemEntity.setCode(systemConfigEntity.getRegionCode());
             areaCode.set(chooseAreaItemEntity);
         }
     }
 
-    public String getAreaPhoneCode(ChooseAreaItemEntity chooseAreaItem) {
+    public String getAreaPhoneCode(ChooseAreaItemBean chooseAreaItem) {
         if (chooseAreaItem != null) {
             if (chooseAreaItem.getCode() != null) {
                 return "+" + chooseAreaItem.getCode();

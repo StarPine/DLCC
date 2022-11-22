@@ -22,8 +22,8 @@ import java.util.List;
 public class PicChooseView extends RecyclerView implements PicChooseAdapter.PicChooseAdapterListener {
 
     private final PicChooseAdapter adapter;
-    private final List<PicChooseItemEntity> datas;
-    private final List<PicChooseItemEntity> chooseMedias;
+    private final List<PicChooseItemBean> datas;
+    private final List<PicChooseItemBean> chooseMedias;
 
     private boolean showCamera;
     private int maxSelectNum = 9;
@@ -52,7 +52,7 @@ public class PicChooseView extends RecyclerView implements PicChooseAdapter.PicC
 
         datas = new ArrayList<>();
         chooseMedias = new ArrayList<>();
-        PicChooseItemEntity itemEntity = new PicChooseItemEntity(PicChooseItemEntity.TYPE_ADD, "");
+        PicChooseItemBean itemEntity = new PicChooseItemBean(PicChooseItemBean.TYPE_ADD, "");
         datas.add(itemEntity);
         adapter.setData(datas);
     }
@@ -83,7 +83,7 @@ public class PicChooseView extends RecyclerView implements PicChooseAdapter.PicC
         this.setLayoutManager(layoutManage);
     }
 
-    public List<PicChooseItemEntity> getChooseMedias() {
+    public List<PicChooseItemBean> getChooseMedias() {
         return chooseMedias;
     }
 
@@ -97,7 +97,7 @@ public class PicChooseView extends RecyclerView implements PicChooseAdapter.PicC
 
     private void addPic() {
         int curMaxSelectNum = maxSelectNum;
-        if (datas.get(datas.size() - 1).getType() == PicChooseItemEntity.TYPE_ADD){
+        if (datas.get(datas.size() - 1).getType() == PicChooseItemBean.TYPE_ADD){
             curMaxSelectNum = maxSelectNum - datas.size() + 1;
         }
         PictureSelectorUtil.selectImage((Activity) getContext(), showCamera, curMaxSelectNum, 50, new OnResultCallbackListener<LocalMedia>() {
@@ -106,11 +106,11 @@ public class PicChooseView extends RecyclerView implements PicChooseAdapter.PicC
                 if (onMediaOperateListener != null) {
                     for (LocalMedia localMedia : result) {
 
-                        PicChooseItemEntity picChooseItemEntity = new PicChooseItemEntity(PicChooseItemEntity.TYPE_IMG, localMedia.getCompressPath());
+                        PicChooseItemBean picChooseItemEntity = new PicChooseItemBean(PicChooseItemBean.TYPE_IMG, localMedia.getCompressPath());
                         if (PictureMimeType.MIME_TYPE_IMAGE.equals(localMedia.getMimeType()) || PictureMimeType.PNG_Q.equals(localMedia.getMimeType())) {
-                            picChooseItemEntity.setMediaType(PicChooseItemEntity.MEDIA_TYPE_IMG);
+                            picChooseItemEntity.setMediaType(PicChooseItemBean.MEDIA_TYPE_IMG);
                         } else if (PictureMimeType.MIME_TYPE_VIDEO.equals(localMedia.getMimeType())) {
-                            picChooseItemEntity.setMediaType(PicChooseItemEntity.MEDIA_TYPE_VIDEO);
+                            picChooseItemEntity.setMediaType(PicChooseItemBean.MEDIA_TYPE_VIDEO);
                         }
                         datas.add(datas.size() - 1, picChooseItemEntity);
                         chooseMedias.add(picChooseItemEntity);
@@ -134,13 +134,13 @@ public class PicChooseView extends RecyclerView implements PicChooseAdapter.PicC
 
     @Override
     public void onItemDelClick(View view, int position) {
-        PicChooseItemEntity delPic = datas.get(position);
+        PicChooseItemBean delPic = datas.get(position);
         datas.remove(position);
         chooseMedias.remove(position);
         if (datas.size() == 0) {
-            datas.add(new PicChooseItemEntity(PicChooseItemEntity.TYPE_ADD, ""));
-        } else if (datas.get(datas.size() - 1).getType() != PicChooseItemEntity.TYPE_ADD) {
-            datas.add(new PicChooseItemEntity(PicChooseItemEntity.TYPE_ADD, ""));
+            datas.add(new PicChooseItemBean(PicChooseItemBean.TYPE_ADD, ""));
+        } else if (datas.get(datas.size() - 1).getType() != PicChooseItemBean.TYPE_ADD) {
+            datas.add(new PicChooseItemBean(PicChooseItemBean.TYPE_ADD, ""));
         }
         adapter.notifyDataSetChanged();
         if (onMediaOperateListener != null) {
@@ -162,9 +162,9 @@ public class PicChooseView extends RecyclerView implements PicChooseAdapter.PicC
 
         void onMediaChooseCancel();
 
-        void onMediaChoosed(List<PicChooseItemEntity> medias);
+        void onMediaChoosed(List<PicChooseItemBean> medias);
 
-        void onMediaDelete(List<PicChooseItemEntity> medias, PicChooseItemEntity delMedia);
+        void onMediaDelete(List<PicChooseItemBean> medias, PicChooseItemBean delMedia);
 
 //        void onMediaUploadSuccess(int index, String filePath);
 //

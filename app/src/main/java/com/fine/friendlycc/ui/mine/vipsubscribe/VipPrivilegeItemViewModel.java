@@ -3,7 +3,7 @@ package com.fine.friendlycc.ui.mine.vipsubscribe;
 import androidx.annotation.NonNull;
 import androidx.databinding.ObservableField;
 
-import com.fine.friendlycc.entity.VipPackageItemEntity;
+import com.fine.friendlycc.bean.VipPackageItemBean;
 
 import me.goldze.mvvmhabit.base.MultiItemViewModel;
 
@@ -14,10 +14,10 @@ import me.goldze.mvvmhabit.base.MultiItemViewModel;
  */
 public class VipPrivilegeItemViewModel extends MultiItemViewModel<VipSubscribeViewModel> {
 
-    public ObservableField<VipPackageItemEntity.PrivilegesBean> itemEntity = new ObservableField<>();
+    public ObservableField<VipPackageItemBean.PrivilegesBean> itemEntity = new ObservableField<>();
 
 
-    public VipPrivilegeItemViewModel(@NonNull VipSubscribeViewModel viewModel, VipPackageItemEntity.PrivilegesBean itemEntity) {
+    public VipPrivilegeItemViewModel(@NonNull VipSubscribeViewModel viewModel, VipPackageItemBean.PrivilegesBean itemEntity) {
         super(viewModel);
         this.itemEntity.set(itemEntity);
     }

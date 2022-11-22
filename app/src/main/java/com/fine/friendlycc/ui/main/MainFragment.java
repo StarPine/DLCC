@@ -31,15 +31,15 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.fine.friendlycc.BR;
 import com.fine.friendlycc.R;
 import com.fine.friendlycc.app.AppConfig;
-import com.fine.friendlycc.app.AppContext;
+import com.fine.friendlycc.app.CCApplication;
 import com.fine.friendlycc.app.AppViewModelFactory;
 import com.fine.friendlycc.app.AppsFlyerEvent;
 import com.fine.friendlycc.app.Injection;
 import com.fine.friendlycc.app.config.TbarCenterImgConfig;
 import com.fine.friendlycc.databinding.FragmentMainBinding;
-import com.fine.friendlycc.entity.MqBroadcastGiftEntity;
-import com.fine.friendlycc.entity.MqBroadcastGiftUserEntity;
-import com.fine.friendlycc.entity.VersionEntity;
+import com.fine.friendlycc.bean.MqBroadcastGiftBean;
+import com.fine.friendlycc.bean.MqBroadcastGiftUserBean;
+import com.fine.friendlycc.bean.VersionBean;
 import com.fine.friendlycc.event.DailyAccostEvent;
 import com.fine.friendlycc.event.GenderToggleEvent;
 import com.fine.friendlycc.event.MainTabEvent;
@@ -57,7 +57,6 @@ import com.fine.friendlycc.ui.task.TaskCenterFragment;
 import com.fine.friendlycc.ui.userdetail.detail.UserDetailFragment;
 import com.fine.friendlycc.utils.ImmersionBarUtils;
 import com.fine.friendlycc.utils.StringUtil;
-import com.fine.friendlycc.widget.coinrechargesheet.CoinRechargeSheetView;
 import com.fine.friendlycc.widget.dialog.MVDialog;
 import com.fine.friendlycc.widget.dialog.TraceDialog;
 import com.fine.friendlycc.widget.dialog.WebViewDialog;
@@ -66,7 +65,6 @@ import com.fine.friendlycc.widget.pageview.FragmentAdapter;
 import com.tencent.qcloud.tuicore.custom.entity.VideoEvaluationEntity;
 import com.tencent.qcloud.tuicore.custom.entity.VideoPushEntity;
 import com.tencent.qcloud.tuicore.util.BackgroundTasks;
-import com.tencent.qcloud.tuikit.tuiconversation.ui.view.ConversationCommonHolder;
 
 import me.goldze.mvvmhabit.bus.RxBus;
 
@@ -140,7 +138,7 @@ public class MainFragment extends BaseFragment<FragmentMainBinding, MainViewMode
             setVideoPushDialog(videoPushEntity);
         });
 
-        AppContext.instance().logEvent(AppsFlyerEvent.main_open);
+        CCApplication.instance().logEvent(AppsFlyerEvent.main_open);
         //未付费弹窗
         viewModel.uc.notPaidDialog.observe(this,s -> {
             String url = Injection.provideDemoRepository().readApiConfigManagerEntity().getPlayFunWebUrl();
@@ -191,8 +189,8 @@ public class MainFragment extends BaseFragment<FragmentMainBinding, MainViewMode
         });
         //主页公屏礼物
         viewModel.uc.giftBanner.observe(this,mqttMessageEntity -> {
-            MqBroadcastGiftUserEntity leftUser = mqttMessageEntity.getFromUser();
-            MqBroadcastGiftUserEntity rightUser = mqttMessageEntity.getToUser();
+            MqBroadcastGiftUserBean leftUser = mqttMessageEntity.getFromUser();
+            MqBroadcastGiftUserBean rightUser = mqttMessageEntity.getToUser();
             View streamerView = View.inflate(MainFragment.this.getContext(), R.layout.fragment_main_gift_banner, null);
             setGiftViewBanner(mqttMessageEntity, leftUser, rightUser, streamerView);
             Animation animation = AnimationUtils
@@ -266,9 +264,9 @@ public class MainFragment extends BaseFragment<FragmentMainBinding, MainViewMode
             }
         });
         //版本更新提示
-        viewModel.uc.versionEntitySingl.observe(this, new Observer<VersionEntity>() {
+        viewModel.uc.versionEntitySingl.observe(this, new Observer<VersionBean>() {
             @Override
-            public void onChanged(VersionEntity versionEntity) {
+            public void onChanged(VersionBean versionEntity) {
                 BackgroundTasks.getInstance().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -481,7 +479,7 @@ public class MainFragment extends BaseFragment<FragmentMainBinding, MainViewMode
                 .show();
     }
 
-    private void setGiftViewBanner(MqBroadcastGiftEntity mqttMessageEntity, MqBroadcastGiftUserEntity leftUser, MqBroadcastGiftUserEntity rightUser, View streamerView) {
+    private void setGiftViewBanner(MqBroadcastGiftBean mqttMessageEntity, MqBroadcastGiftUserBean leftUser, MqBroadcastGiftUserBean rightUser, View streamerView) {
         ImageView leftUserImg = streamerView.findViewById(R.id.left_user_img);
         TextView leftUserName = streamerView.findViewById(R.id.left_user_name);
         leftUserName.setText(leftUser.getNickname());
@@ -563,7 +561,7 @@ public class MainFragment extends BaseFragment<FragmentMainBinding, MainViewMode
         }
     }
 
-    private void broadcastGiftImg(MqBroadcastGiftUserEntity giftUserEntity,ImageView userImg){
+    private void broadcastGiftImg(MqBroadcastGiftUserBean giftUserEntity,ImageView userImg){
         if (giftUserEntity.getSex()!=null
                 && giftUserEntity.getIsVip()!=null
                 && giftUserEntity.getCertification()!= null){

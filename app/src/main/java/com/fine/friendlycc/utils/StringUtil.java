@@ -5,8 +5,8 @@ import android.content.Context;
 import com.blankj.utilcode.util.StringUtils;
 import com.fine.friendlycc.app.AppConfig;
 import com.fine.friendlycc.R;
-import com.fine.friendlycc.entity.ConfigItemEntity;
-import com.fine.friendlycc.entity.OccupationConfigItemEntity;
+import com.fine.friendlycc.bean.ConfigItemBean;
+import com.fine.friendlycc.bean.OccupationConfigItemBean;
 import com.fine.friendlycc.manager.ConfigManager;
 import com.google.gson.Gson;
 import com.tencent.qcloud.tuikit.tuichat.bean.message.TUIMessageBean;
@@ -52,13 +52,13 @@ public class StringUtil {
     }
 
     //
-    public static String getConfigValue(List<Integer> ids, List<ConfigItemEntity> data) {
+    public static String getConfigValue(List<Integer> ids, List<ConfigItemBean> data) {
         if (ids == null) {
             return "";
         }
         String result = "";
         if (data.size() != 0) {
-            for (ConfigItemEntity config : data) {
+            for (ConfigItemBean config : data) {
                 for (int i = 0; i < ids.size(); i++) {
                     if (ids.get(i).intValue() == config.getId()) {
                         if (i == ids.size() - 1) {
@@ -74,11 +74,11 @@ public class StringUtil {
         return result;
     }
 
-    public static String getOccputionValue(int id, List<OccupationConfigItemEntity> data) {
+    public static String getOccputionValue(int id, List<OccupationConfigItemBean> data) {
         String result = "";
         if (data.size() != 0) {
-            for (OccupationConfigItemEntity config : data) {
-                for (OccupationConfigItemEntity.ItemEntity item : config.getItem()
+            for (OccupationConfigItemBean config : data) {
+                for (OccupationConfigItemBean.ItemEntity item : config.getItem()
                 ) {
                     if (id == item.getId()) {
                         result = item.getName();

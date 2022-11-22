@@ -10,8 +10,8 @@ import com.fine.friendlycc.data.AppRepository;
 import com.fine.friendlycc.data.source.http.exception.RequestException;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseDataResponse;
-import com.fine.friendlycc.entity.FaceVerifyResultEntity;
-import com.fine.friendlycc.entity.UserDataEntity;
+import com.fine.friendlycc.bean.FaceVerifyResultBean;
+import com.fine.friendlycc.bean.UserDataBean;
 import com.fine.friendlycc.event.FaceCertificationEvent;
 import com.fine.friendlycc.ui.certification.updatefacesuccess.UpdateFaceSuccessFragment;
 import com.fine.friendlycc.ui.certification.verifysuccess.FaceVerifySuccessFragment;
@@ -72,13 +72,13 @@ public class UpdateFaceViewModel extends BaseViewModel<AppRepository> {
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(this)
                 .doOnSubscribe(disposable -> showHUD())
-                .subscribe(new BaseObserver<BaseDataResponse<FaceVerifyResultEntity>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<FaceVerifyResultBean>>() {
                     @Override
-                    public void onSuccess(BaseDataResponse<FaceVerifyResultEntity> response) {
+                    public void onSuccess(BaseDataResponse<FaceVerifyResultBean> response) {
                         RxBus.getDefault().post(new FaceCertificationEvent());
                         if (response.getData().getVerifyStatus() != 1) {
                             verifyFaceFail.set(true);
-                            UserDataEntity userDataEntity = model.readUserData();
+                            UserDataBean userDataEntity = model.readUserData();
                             userDataEntity.setCertification(1);
                             model.saveUserData(userDataEntity);
                         } else {
@@ -126,7 +126,7 @@ public class UpdateFaceViewModel extends BaseViewModel<AppRepository> {
                                         String status = map.get("status");
                                         if (status.equals("1")) {
                                             ToastUtils.showShort(R.string.playcc_face_success);
-                                            UserDataEntity userDataEntity = model.readUserData();
+                                            UserDataBean userDataEntity = model.readUserData();
                                             userDataEntity.setCertification(1);
                                             model.saveUserData(userDataEntity);
                                             RxBus.getDefault().post(new FaceCertificationEvent());

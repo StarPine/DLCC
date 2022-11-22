@@ -8,7 +8,7 @@ import com.fine.friendlycc.data.source.LocalDataSource;
 import com.fine.friendlycc.data.source.http.response.BaseDataResponse;
 import com.fine.friendlycc.data.source.http.response.BaseListDataResponse;
 import com.fine.friendlycc.data.source.http.response.BaseResponse;
-import com.fine.friendlycc.entity.*;
+import com.fine.friendlycc.bean.*;
 
 import java.util.List;
 import java.util.Map;
@@ -53,7 +53,7 @@ public class AppRepository extends BaseModel implements HttpDataSource, LocalDat
     }
 
     @Override
-    public Observable<BaseDataResponse<IMTransUserEntity>> transUserIM(String IMUserId) {
+    public Observable<BaseDataResponse<IMTransUserBean>> transUserIM(String IMUserId) {
         return mHttpDataSource.transUserIM(IMUserId);
     }
 
@@ -63,7 +63,7 @@ public class AppRepository extends BaseModel implements HttpDataSource, LocalDat
     }
 
     @Override
-    public Observable<BaseDataResponse<ChatDetailCoinEntity>> getTotalCoins(Integer dismissRoom) {
+    public Observable<BaseDataResponse<ChatDetailCoinBean>> getTotalCoins(Integer dismissRoom) {
         return mHttpDataSource.getTotalCoins(dismissRoom);
     }
 
@@ -73,7 +73,7 @@ public class AppRepository extends BaseModel implements HttpDataSource, LocalDat
     }
 
     @Override
-    public Observable<BaseDataResponse<GamePhotoAlbumEntity>> getGamePhotoAlbumList(String serverId, String roleId) {
+    public Observable<BaseDataResponse<GamePhotoAlbumBean>> getGamePhotoAlbumList(String serverId, String roleId) {
         return mHttpDataSource.getGamePhotoAlbumList(serverId, roleId);
     }
 
@@ -93,12 +93,12 @@ public class AppRepository extends BaseModel implements HttpDataSource, LocalDat
     }
 
     @Override
-    public Observable<BaseDataResponse<CreateOrderEntity>> createChatDetailOrder(Integer id, Integer type, Integer payType, Integer toUserId, Integer channel) {
+    public Observable<BaseDataResponse<CreateOrderBean>> createChatDetailOrder(Integer id, Integer type, Integer payType, Integer toUserId, Integer channel) {
         return mHttpDataSource.createChatDetailOrder(id, type, payType, toUserId, channel);
     }
 
     @Override
-    public Observable<BaseDataResponse<PriceConfigEntity.Current>> getMaleRefundMsg(Integer toUserId, Integer type) {
+    public Observable<BaseDataResponse<PriceConfigBean.Current>> getMaleRefundMsg(Integer toUserId, Integer type) {
         return mHttpDataSource.getMaleRefundMsg(toUserId, type);
     }
 
@@ -118,17 +118,17 @@ public class AppRepository extends BaseModel implements HttpDataSource, LocalDat
     }
 
     @Override
-    public Observable<BaseDataResponse<PriceConfigEntity>> getPriceConfig(Integer to_user_id) {
+    public Observable<BaseDataResponse<PriceConfigBean>> getPriceConfig(Integer to_user_id) {
         return mHttpDataSource.getPriceConfig(to_user_id);
     }
 
     @Override
-    public Observable<BaseDataResponse<CallingInfoEntity.SayHiList>> getSayHiList(Integer page, Integer perPage) {
+    public Observable<BaseDataResponse<CallingInfoBean.SayHiList>> getSayHiList(Integer page, Integer perPage) {
         return mHttpDataSource.getSayHiList(page, perPage);
     }
 
     @Override
-    public Observable<BaseDataResponse<CallingInfoEntity>> getCallingInfo(Integer roomId, Integer callingType, String fromUserId, String toUserId) {
+    public Observable<BaseDataResponse<CallingInfoBean>> getCallingInfo(Integer roomId, Integer callingType, String fromUserId, String toUserId) {
         return mHttpDataSource.getCallingInfo(roomId, callingType, fromUserId, toUserId);
     }
 
@@ -158,37 +158,37 @@ public class AppRepository extends BaseModel implements HttpDataSource, LocalDat
     }
 
     @Override
-    public Observable<BaseDataResponse<GiftBagEntity>> getBagGiftInfo() {
+    public Observable<BaseDataResponse<GiftBagBean>> getBagGiftInfo() {
         return mHttpDataSource.getBagGiftInfo();
     }
 
     @Override
-    public Observable<BaseDataResponse<ImUserSigEntity>> flushSign() {
+    public Observable<BaseDataResponse<ImUserSigBean>> flushSign() {
         return mHttpDataSource.flushSign();
     }
 
     @Override
-    public Observable<BaseDataResponse<UserProfitPageEntity>> getUserProfitPageInfo(Long currentUserId, Integer page, Integer perPage) {
+    public Observable<BaseDataResponse<UserProfitPageBean>> getUserProfitPageInfo(Long currentUserId, Integer page, Integer perPage) {
         return mHttpDataSource.getUserProfitPageInfo(currentUserId, page, perPage);
     }
 
     @Override
-    public Observable<BaseDataResponse<CoinWalletEntity>> getUserAccount() {
+    public Observable<BaseDataResponse<CoinWalletBean>> getUserAccount() {
         return mHttpDataSource.getUserAccount();
     }
 
     @Override
-    public Observable<BaseDataResponse<GameCoinWalletEntity>> getUserAccountPageInfo() {
+    public Observable<BaseDataResponse<GameCoinWalletBean>> getUserAccountPageInfo() {
         return mHttpDataSource.getUserAccountPageInfo();
     }
 
     @Override
-    public Observable<BaseDataResponse<BubbleEntity>> getBubbleEntity() {
+    public Observable<BaseDataResponse<BubbleBean>> getBubbleEntity() {
         return mHttpDataSource.getBubbleEntity();
     }
 
     @Override
-    public Observable<BaseDataResponse<AccostEntity>> getAccostList(Integer page) {
+    public Observable<BaseDataResponse<AccostBean>> getAccostList(Integer page) {
         return mHttpDataSource.getAccostList(page);
     }
 
@@ -203,12 +203,12 @@ public class AppRepository extends BaseModel implements HttpDataSource, LocalDat
     }
 
     @Override
-    public Observable<BaseDataResponse<BroadcastListEntity>> getBroadcastHome(Integer sex, Integer city_id, Integer game_id, Integer is_online, Integer is_collect, Integer type, Integer page) {
+    public Observable<BaseDataResponse<BroadcastListBean>> getBroadcastHome(Integer sex, Integer city_id, Integer game_id, Integer is_online, Integer is_collect, Integer type, Integer page) {
         return mHttpDataSource.getBroadcastHome(sex, city_id, game_id, is_online, is_collect, type, page);
     }
 
     @Override
-    public Observable<BaseDataResponse<List<MessageRuleEntity>>> getMessageRule() {
+    public Observable<BaseDataResponse<List<MessageRuleBean>>> getMessageRule() {
         return mHttpDataSource.getMessageRule();
     }
 
@@ -218,7 +218,7 @@ public class AppRepository extends BaseModel implements HttpDataSource, LocalDat
     }
 
     @Override
-    public Observable<BaseDataResponse<PhotoAlbumEntity>> getPhotoAlbum(Integer user_id) {
+    public Observable<BaseDataResponse<PhotoAlbumBean>> getPhotoAlbum(Integer user_id) {
         return mHttpDataSource.getPhotoAlbum(user_id);
     }
 
@@ -233,7 +233,7 @@ public class AppRepository extends BaseModel implements HttpDataSource, LocalDat
     }
 
     @Override
-    public Observable<BaseListDataResponse<SoundEntity>> getUserSound(Integer page) {
+    public Observable<BaseListDataResponse<SoundBean>> getUserSound(Integer page) {
         return mHttpDataSource.getUserSound(page);
     }
 
@@ -243,12 +243,12 @@ public class AppRepository extends BaseModel implements HttpDataSource, LocalDat
     }
 
     @Override
-    public Observable<BaseListDataResponse<BroadcastEntity>> broadcastAll(Integer page) {
+    public Observable<BaseListDataResponse<BroadcastBean>> broadcastAll(Integer page) {
         return mHttpDataSource.broadcastAll(page);
     }
 
     @Override
-    public Observable<BaseDataResponse<List<GoodsEntity>>> pointsGoodList() {
+    public Observable<BaseDataResponse<List<GoodsBean>>> pointsGoodList() {
         return mHttpDataSource.pointsGoodList();
     }
 
@@ -264,7 +264,7 @@ public class AppRepository extends BaseModel implements HttpDataSource, LocalDat
     }
 
     @Override
-    public Observable<BaseListDataResponse<TaskAdEntity>> rechargeVipList() {
+    public Observable<BaseListDataResponse<TaskAdBean>> rechargeVipList() {
         return mHttpDataSource.rechargeVipList();
     }
 
@@ -274,22 +274,22 @@ public class AppRepository extends BaseModel implements HttpDataSource, LocalDat
     }
 
     @Override
-    public Observable<BaseDataResponse<BrowseNumberEntity>> newsBrowseNumber() {
+    public Observable<BaseDataResponse<BrowseNumberBean>> newsBrowseNumber() {
         return mHttpDataSource.newsBrowseNumber();
     }
 
     @Override
-    public Observable<BaseListDataResponse<TraceEntity>> toBrowse(Integer page) {
+    public Observable<BaseListDataResponse<TraceBean>> toBrowse(Integer page) {
         return mHttpDataSource.toBrowse(page);
     }
 
     @Override
-    public Observable<BaseListDataResponse<TraceEntity>> collectFans(Integer page) {
+    public Observable<BaseListDataResponse<TraceBean>> collectFans(Integer page) {
         return mHttpDataSource.collectFans(page);
     }
 
     @Override
-    public Observable<BaseListDataResponse<TraceEntity>> collect(Integer page) {
+    public Observable<BaseListDataResponse<TraceBean>> collect(Integer page) {
         return mHttpDataSource.collect(page);
     }
 
@@ -304,7 +304,7 @@ public class AppRepository extends BaseModel implements HttpDataSource, LocalDat
     }
 
     @Override
-    public Observable<BaseDataResponse<CreateOrderEntity>> createOrderUserDetail(Integer id, Integer type, Integer payType, Integer number) {
+    public Observable<BaseDataResponse<CreateOrderBean>> createOrderUserDetail(Integer id, Integer type, Integer payType, Integer number) {
         return mHttpDataSource.createOrderUserDetail(id, type, payType, number);
     }
 
@@ -314,7 +314,7 @@ public class AppRepository extends BaseModel implements HttpDataSource, LocalDat
     }
 
     @Override
-    public Observable<BaseDataResponse<TagEntity>> tag(String to_user_id) {
+    public Observable<BaseDataResponse<TagBean>> tag(String to_user_id) {
         return mHttpDataSource.tag(to_user_id);
     }
 
@@ -329,7 +329,7 @@ public class AppRepository extends BaseModel implements HttpDataSource, LocalDat
     }
 
     @Override
-    public Observable<BaseDataResponse<UserDataEntity>> regUser(String nickname, String avatar, String birthday, Integer sex, String channel) {
+    public Observable<BaseDataResponse<UserDataBean>> regUser(String nickname, String avatar, String birthday, Integer sex, String channel) {
         return mHttpDataSource.regUser(nickname, avatar, birthday, sex, channel);
     }
 
@@ -339,7 +339,7 @@ public class AppRepository extends BaseModel implements HttpDataSource, LocalDat
     }
 
     @Override
-    public Observable<BaseDataResponse<SwiftMessageEntity>> getSwiftMessage(Integer page) {
+    public Observable<BaseDataResponse<SwiftMessageBean>> getSwiftMessage(Integer page) {
         return mHttpDataSource.getSwiftMessage(page);
     }
 
@@ -349,7 +349,7 @@ public class AppRepository extends BaseModel implements HttpDataSource, LocalDat
     }
 
     @Override
-    public Observable<BaseDataResponse<UserDataEntity>> v2Login(String phone, String code, String device_code, String region_code) {
+    public Observable<BaseDataResponse<UserDataBean>> v2Login(String phone, String code, String device_code, String region_code) {
         return mHttpDataSource.v2Login(phone, code, device_code,region_code);
     }
 
@@ -359,7 +359,7 @@ public class AppRepository extends BaseModel implements HttpDataSource, LocalDat
     }
 
     @Override
-    public Observable<BaseDataResponse<VersionEntity>> detectionVersion(String client) {
+    public Observable<BaseDataResponse<VersionBean>> detectionVersion(String client) {
         return mHttpDataSource.detectionVersion(client);
     }
 
@@ -374,22 +374,22 @@ public class AppRepository extends BaseModel implements HttpDataSource, LocalDat
     }
 
     @Override
-    public void saveCityConfigAll(List<ConfigItemEntity> configs) {
+    public void saveCityConfigAll(List<ConfigItemBean> configs) {
         mLocalDataSource.saveCityConfigAll(configs);
     }
 
     @Override
-    public List<ConfigItemEntity> readCityConfigAll() {
+    public List<ConfigItemBean> readCityConfigAll() {
         return mLocalDataSource.readCityConfigAll();
     }
 
     @Override
-    public void saveApiConfigManager(ApiConfigManagerEntity apiConfigManager) {
+    public void saveApiConfigManager(ApiConfigManagerBean apiConfigManager) {
         mLocalDataSource.saveApiConfigManager(apiConfigManager);
     }
 
     @Override
-    public ApiConfigManagerEntity readApiConfigManagerEntity() {
+    public ApiConfigManagerBean readApiConfigManagerEntity() {
         return mLocalDataSource.readApiConfigManagerEntity();
     }
 
@@ -459,12 +459,12 @@ public class AppRepository extends BaseModel implements HttpDataSource, LocalDat
     }
 
     @Override
-    public SystemConfigTaskEntity readSystemConfigTask() {
+    public SystemConfigTaskBean readSystemConfigTask() {
         return mLocalDataSource.readSystemConfigTask();
     }
 
     @Override
-    public void saveSystemConfigTask(SystemConfigTaskEntity entity) {
+    public void saveSystemConfigTask(SystemConfigTaskBean entity) {
         mLocalDataSource.saveSystemConfigTask(entity);
     }
 
@@ -509,12 +509,12 @@ public class AppRepository extends BaseModel implements HttpDataSource, LocalDat
     }
 
     @Override
-    public void saveLoginInfo(TokenEntity tokenEntity) {
+    public void saveLoginInfo(TokenBean tokenEntity) {
         mLocalDataSource.saveLoginInfo(tokenEntity);
     }
 
     @Override
-    public TokenEntity readLoginInfo() {
+    public TokenBean readLoginInfo() {
         return mLocalDataSource.readLoginInfo();
     }
 
@@ -524,12 +524,12 @@ public class AppRepository extends BaseModel implements HttpDataSource, LocalDat
     }
 
     @Override
-    public void saveUserData(UserDataEntity userDataEntity) {
+    public void saveUserData(UserDataBean userDataEntity) {
         mLocalDataSource.saveUserData(userDataEntity);
     }
 
     @Override
-    public UserDataEntity readUserData() {
+    public UserDataBean readUserData() {
         return mLocalDataSource.readUserData();
     }
 
@@ -564,54 +564,54 @@ public class AppRepository extends BaseModel implements HttpDataSource, LocalDat
     }
 
     @Override
-    public void saveSystemConfig(SystemConfigEntity config) {
+    public void saveSystemConfig(SystemConfigBean config) {
         mLocalDataSource.saveSystemConfig(config);
     }
 
     @Override
-    public void saveGameConfig(List<GameConfigEntity> configs) {
+    public void saveGameConfig(List<GameConfigBean> configs) {
         mLocalDataSource.saveGameConfig(configs);
     }
 
     @Override
-    public List<GameConfigEntity> readGameConfig() {
+    public List<GameConfigBean> readGameConfig() {
         return mLocalDataSource.readGameConfig();
     }
 
 
     @Override
-    public void saveCrystalDetailsConfig(CrystalDetailsConfigEntity configs) {
+    public void saveCrystalDetailsConfig(CrystalDetailsConfigBean configs) {
         mLocalDataSource.saveCrystalDetailsConfig(configs);
     }
 
     @Override
-    public CrystalDetailsConfigEntity readCrystalDetailsConfig() {
+    public CrystalDetailsConfigBean readCrystalDetailsConfig() {
         return mLocalDataSource.readCrystalDetailsConfig();
     }
 
 
     @Override
-    public SystemConfigEntity readSystemConfig() {
+    public SystemConfigBean readSystemConfig() {
         return mLocalDataSource.readSystemConfig();
     }
 
     @Override
-    public void saveHeightConfig(List<ConfigItemEntity> configs) {
+    public void saveHeightConfig(List<ConfigItemBean> configs) {
         mLocalDataSource.saveHeightConfig(configs);
     }
 
     @Override
-    public List<ConfigItemEntity> readHeightConfig() {
+    public List<ConfigItemBean> readHeightConfig() {
         return mLocalDataSource.readHeightConfig();
     }
 
     @Override
-    public void saveWeightConfig(List<ConfigItemEntity> configs) {
+    public void saveWeightConfig(List<ConfigItemBean> configs) {
         mLocalDataSource.saveWeightConfig(configs);
     }
 
     @Override
-    public List<ConfigItemEntity> readWeightConfig() {
+    public List<ConfigItemBean> readWeightConfig() {
         return mLocalDataSource.readWeightConfig();
     }
 
@@ -626,67 +626,67 @@ public class AppRepository extends BaseModel implements HttpDataSource, LocalDat
     }
 
     @Override
-    public void saveReportReasonConfig(List<ConfigItemEntity> configs) {
+    public void saveReportReasonConfig(List<ConfigItemBean> configs) {
         mLocalDataSource.saveReportReasonConfig(configs);
     }
 
     @Override
-    public List<ConfigItemEntity> readReportReasonConfig() {
+    public List<ConfigItemBean> readReportReasonConfig() {
         return mLocalDataSource.readReportReasonConfig();
     }
 
     @Override
-    public void saveFemaleEvaluateConfig(List<EvaluateObjEntity> configs) {
+    public void saveFemaleEvaluateConfig(List<EvaluateObjBean> configs) {
         mLocalDataSource.saveFemaleEvaluateConfig(configs);
     }
 
     @Override
-    public void saveMaleEvaluateConfig(List<EvaluateObjEntity> configs) {
+    public void saveMaleEvaluateConfig(List<EvaluateObjBean> configs) {
         mLocalDataSource.saveMaleEvaluateConfig(configs);
     }
 
     @Override
-    public List<EvaluateObjEntity> readFemaleEvaluateConfig() {
+    public List<EvaluateObjBean> readFemaleEvaluateConfig() {
         return mLocalDataSource.readFemaleEvaluateConfig();
     }
 
     @Override
-    public List<EvaluateObjEntity> readMaleEvaluateConfig() {
+    public List<EvaluateObjBean> readMaleEvaluateConfig() {
         return mLocalDataSource.readMaleEvaluateConfig();
     }
 
     @Override
-    public List<EvaluateObjEntity> readEvaluateConfig() {
+    public List<EvaluateObjBean> readEvaluateConfig() {
         return mLocalDataSource.readEvaluateConfig();
     }
 
     @Override
-    public void saveHopeObjectConfig(List<ConfigItemEntity> configs) {
+    public void saveHopeObjectConfig(List<ConfigItemBean> configs) {
         mLocalDataSource.saveHopeObjectConfig(configs);
     }
 
     @Override
-    public List<ConfigItemEntity> readHopeObjectConfig() {
+    public List<ConfigItemBean> readHopeObjectConfig() {
         return mLocalDataSource.readHopeObjectConfig();
     }
 
     @Override
-    public void saveOccupationConfig(List<OccupationConfigItemEntity> configs) {
+    public void saveOccupationConfig(List<OccupationConfigItemBean> configs) {
         mLocalDataSource.saveOccupationConfig(configs);
     }
 
     @Override
-    public List<OccupationConfigItemEntity> readOccupationConfig() {
+    public List<OccupationConfigItemBean> readOccupationConfig() {
         return mLocalDataSource.readOccupationConfig();
     }
 
     @Override
-    public void saveCityConfig(List<ConfigItemEntity> configs) {
+    public void saveCityConfig(List<ConfigItemBean> configs) {
         mLocalDataSource.saveCityConfig(configs);
     }
 
     @Override
-    public List<ConfigItemEntity> readCityConfig() {
+    public List<ConfigItemBean> readCityConfig() {
         return mLocalDataSource.readCityConfig();
     }
 
@@ -750,7 +750,7 @@ public class AppRepository extends BaseModel implements HttpDataSource, LocalDat
     }
 
     @Override
-    public Observable<BaseDataResponse<TokenEntity>> register(String phone, String password, String code) {
+    public Observable<BaseDataResponse<TokenBean>> register(String phone, String password, String code) {
         return mHttpDataSource.register(phone, password, code);
     }
 
@@ -760,33 +760,33 @@ public class AppRepository extends BaseModel implements HttpDataSource, LocalDat
     }
 
     @Override
-    public Observable<BaseDataResponse<TokenEntity>> login(String phone, String password) {
+    public Observable<BaseDataResponse<TokenBean>> login(String phone, String password) {
         return mHttpDataSource.login(phone, password);
     }
 
     @Override
-    public Observable<BaseDataResponse<UserDataEntity>> authLoginPost(String id, String type) {
+    public Observable<BaseDataResponse<UserDataBean>> authLoginPost(String id, String type) {
         return mHttpDataSource.authLoginPost(id, type);
     }
 
     @Override
-    public Observable<BaseListDataResponse<ParkItemEntity>> homeList(Integer cityId, Integer type, Integer isOnline, Integer sex, String searchName, Double longitude, Double latitude, Integer page) {
+    public Observable<BaseListDataResponse<ParkItemBean>> homeList(Integer cityId, Integer type, Integer isOnline, Integer sex, String searchName, Double longitude, Double latitude, Integer page) {
         return mHttpDataSource.homeList(cityId, type, isOnline, sex, searchName, longitude, latitude, page);
     }
 
     @Override
-    public Observable<BaseDataResponse<UserInfoEntity>> getUserInfo() {
+    public Observable<BaseDataResponse<UserInfoBean>> getUserInfo() {
         return mHttpDataSource.getUserInfo();
     }
 
     @Override
-    public Observable<BaseDataResponse<List<RadioTwoFilterItemEntity>>> getGameCity() {
+    public Observable<BaseDataResponse<List<RadioTwoFilterItemBean>>> getGameCity() {
         return mHttpDataSource.getGameCity();
     }
 
 
     @Override
-    public Observable<BaseDataResponse<UserDataEntity>> getUserData() {
+    public Observable<BaseDataResponse<UserDataBean>> getUserData() {
         return mHttpDataSource.getUserData();
     }
 
@@ -796,7 +796,7 @@ public class AppRepository extends BaseModel implements HttpDataSource, LocalDat
     }
 
     @Override
-    public Observable<BaseDataResponse<UserRemarkEntity>> getUserRemark(Integer userId) {
+    public Observable<BaseDataResponse<UserRemarkBean>> getUserRemark(Integer userId) {
         return mHttpDataSource.getUserRemark(userId);
     }
 
@@ -811,7 +811,7 @@ public class AppRepository extends BaseModel implements HttpDataSource, LocalDat
     }
 
     @Override
-    public Observable<BaseDataResponse<UserDetailEntity>> userMain(Integer id, Double longitude, Double latitude) {
+    public Observable<BaseDataResponse<UserDetailBean>> userMain(Integer id, Double longitude, Double latitude) {
         return mHttpDataSource.userMain(id, longitude, latitude);
     }
 
@@ -826,7 +826,7 @@ public class AppRepository extends BaseModel implements HttpDataSource, LocalDat
     }
 
     @Override
-    public Observable<BaseListDataResponse<BlackEntity>> getBlackList(Integer page) {
+    public Observable<BaseListDataResponse<BlackBean>> getBlackList(Integer page) {
         return mHttpDataSource.getBlackList(page);
     }
 
@@ -846,7 +846,7 @@ public class AppRepository extends BaseModel implements HttpDataSource, LocalDat
     }
 
     @Override
-    public Observable<BaseListDataResponse<ParkItemEntity>> getCollectList(int page, Double latitude, Double longitude) {
+    public Observable<BaseListDataResponse<ParkItemBean>> getCollectList(int page, Double latitude, Double longitude) {
         return mHttpDataSource.getCollectList(page, latitude, longitude);
     }
 
@@ -866,7 +866,7 @@ public class AppRepository extends BaseModel implements HttpDataSource, LocalDat
     }
 
     @Override
-    public Observable<BaseDataResponse<NewsEntity>> newsDetail(Integer id) {
+    public Observable<BaseDataResponse<NewsBean>> newsDetail(Integer id) {
         return mHttpDataSource.newsDetail(id);
     }
 
@@ -876,18 +876,18 @@ public class AppRepository extends BaseModel implements HttpDataSource, LocalDat
     }
 
     @Override
-    public Observable<BaseListDataResponse<BroadcastEntity>> broadcast(Integer type, Integer theme_id, Integer is_online, Integer city_id, Integer sex, Integer page) {
+    public Observable<BaseListDataResponse<BroadcastBean>> broadcast(Integer type, Integer theme_id, Integer is_online, Integer city_id, Integer sex, Integer page) {
         return mHttpDataSource.broadcast(type, theme_id, is_online, city_id, sex, page);
     }
 
     @Override
-    public Observable<BaseListDataResponse<NewsEntity>> getNewsList(Integer user_id, Integer page) {
+    public Observable<BaseListDataResponse<NewsBean>> getNewsList(Integer user_id, Integer page) {
         return mHttpDataSource.getNewsList(user_id, page);
     }
 
 
     @Override
-    public Observable<BaseListDataResponse<TopicalListEntity>> getTopicalList(Integer userId, Integer page) {
+    public Observable<BaseListDataResponse<TopicalListBean>> getTopicalList(Integer userId, Integer page) {
         return mHttpDataSource.getTopicalList(userId, page);
     }
 
@@ -907,7 +907,7 @@ public class AppRepository extends BaseModel implements HttpDataSource, LocalDat
     }
 
     @Override
-    public Observable<BaseDataResponse<StatusEntity>> evaluateStatus(Integer userId) {
+    public Observable<BaseDataResponse<StatusBean>> evaluateStatus(Integer userId) {
         return mHttpDataSource.evaluateStatus(userId);
     }
 
@@ -917,7 +917,7 @@ public class AppRepository extends BaseModel implements HttpDataSource, LocalDat
     }
 
     @Override
-    public Observable<BaseDataResponse<List<EvaluateEntity>>> evaluate(Integer userId) {
+    public Observable<BaseDataResponse<List<EvaluateBean>>> evaluate(Integer userId) {
         return mHttpDataSource.evaluate(userId);
     }
 
@@ -927,7 +927,7 @@ public class AppRepository extends BaseModel implements HttpDataSource, LocalDat
     }
 
     @Override
-    public Observable<BaseDataResponse<IsChatEntity>> isChat(Integer userId) {
+    public Observable<BaseDataResponse<IsChatBean>> isChat(Integer userId) {
         return mHttpDataSource.isChat(userId);
     }
 
@@ -947,52 +947,52 @@ public class AppRepository extends BaseModel implements HttpDataSource, LocalDat
     }
 
     @Override
-    public Observable<BaseDataResponse<AllConfigEntity>> getAllConfig() {
+    public Observable<BaseDataResponse<AllConfigBean>> getAllConfig() {
         return mHttpDataSource.getAllConfig();
     }
 
     @Override
-    public Observable<BaseDataResponse<List<ConfigItemEntity>>> getProgramTimeConfig() {
+    public Observable<BaseDataResponse<List<ConfigItemBean>>> getProgramTimeConfig() {
         return mHttpDataSource.getProgramTimeConfig();
     }
 
     @Override
-    public Observable<BaseDataResponse<List<ConfigItemEntity>>> getHeightConfig() {
+    public Observable<BaseDataResponse<List<ConfigItemBean>>> getHeightConfig() {
         return mHttpDataSource.getHeightConfig();
     }
 
     @Override
-    public Observable<BaseDataResponse<List<ConfigItemEntity>>> getWeightConfig() {
+    public Observable<BaseDataResponse<List<ConfigItemBean>>> getWeightConfig() {
         return mHttpDataSource.getWeightConfig();
     }
 
     @Override
-    public Observable<BaseDataResponse<List<ConfigItemEntity>>> getReportReasonConfig() {
+    public Observable<BaseDataResponse<List<ConfigItemBean>>> getReportReasonConfig() {
         return mHttpDataSource.getReportReasonConfig();
     }
 
     @Override
-    public Observable<BaseDataResponse<List<ConfigItemEntity>>> getEvaluateConfig() {
+    public Observable<BaseDataResponse<List<ConfigItemBean>>> getEvaluateConfig() {
         return mHttpDataSource.getEvaluateConfig();
     }
 
     @Override
-    public Observable<BaseDataResponse<List<ConfigItemEntity>>> getHopeObjectConfig() {
+    public Observable<BaseDataResponse<List<ConfigItemBean>>> getHopeObjectConfig() {
         return mHttpDataSource.getHopeObjectConfig();
     }
 
     @Override
-    public Observable<BaseDataResponse<List<OccupationConfigItemEntity>>> getOccupationConfig() {
+    public Observable<BaseDataResponse<List<OccupationConfigItemBean>>> getOccupationConfig() {
         return mHttpDataSource.getOccupationConfig();
     }
 
     @Override
-    public Observable<BaseDataResponse<List<ConfigItemEntity>>> getThemeConfig() {
+    public Observable<BaseDataResponse<List<ConfigItemBean>>> getThemeConfig() {
         return mHttpDataSource.getThemeConfig();
     }
 
     @Override
-    public Observable<BaseDataResponse<List<ConfigItemEntity>>> getCityConfig() {
+    public Observable<BaseDataResponse<List<ConfigItemBean>>> getCityConfig() {
         return mHttpDataSource.getCityConfig();
     }
 
@@ -1002,12 +1002,12 @@ public class AppRepository extends BaseModel implements HttpDataSource, LocalDat
     }
 
     @Override
-    public Observable<BaseDataResponse<DiamondInfoEntity>> goods() {
+    public Observable<BaseDataResponse<DiamondInfoBean>> goods() {
         return mHttpDataSource.goods();
     }
 
     @Override
-    public Observable<BaseDataResponse<VipInfoEntity>> vipPackages() {
+    public Observable<BaseDataResponse<VipInfoBean>> vipPackages() {
         return mHttpDataSource.vipPackages();
     }
 
@@ -1027,7 +1027,7 @@ public class AppRepository extends BaseModel implements HttpDataSource, LocalDat
     }
 
     @Override
-    public Observable<BaseListDataResponse<AlbumPhotoEntity>> albumImage(Integer userId, Integer type) {
+    public Observable<BaseListDataResponse<AlbumPhotoBean>> albumImage(Integer userId, Integer type) {
         return mHttpDataSource.albumImage(userId, type);
     }
 
@@ -1037,7 +1037,7 @@ public class AppRepository extends BaseModel implements HttpDataSource, LocalDat
     }
 
     @Override
-    public Observable<BaseDataResponse<List<AlbumPhotoEntity>>> delAlbumImage(Integer id) {
+    public Observable<BaseDataResponse<List<AlbumPhotoBean>>> delAlbumImage(Integer id) {
         return mHttpDataSource.delAlbumImage(id);
     }
 
@@ -1057,22 +1057,22 @@ public class AppRepository extends BaseModel implements HttpDataSource, LocalDat
     }
 
     @Override
-    public Observable<BaseDataResponse<FaceVerifyResultEntity>> faceVerifyResult(String bizId) {
+    public Observable<BaseDataResponse<FaceVerifyResultBean>> faceVerifyResult(String bizId) {
         return mHttpDataSource.faceVerifyResult(bizId);
     }
 
     @Override
-    public Observable<BaseDataResponse<StatusEntity>> faceIsCertification() {
+    public Observable<BaseDataResponse<StatusBean>> faceIsCertification() {
         return mHttpDataSource.faceIsCertification();
     }
 
     @Override
-    public Observable<BaseDataResponse<PrivacyEntity>> getPrivacy() {
+    public Observable<BaseDataResponse<PrivacyBean>> getPrivacy() {
         return mHttpDataSource.getPrivacy();
     }
 
     @Override
-    public Observable<BaseResponse> setPrivacy(PrivacyEntity privacyEntity) {
+    public Observable<BaseResponse> setPrivacy(PrivacyBean privacyEntity) {
         return mHttpDataSource.setPrivacy(privacyEntity);
     }
 
@@ -1087,7 +1087,7 @@ public class AppRepository extends BaseModel implements HttpDataSource, LocalDat
     }
 
     @Override
-    public Observable<BaseDataResponse<StatusEntity>> applyGoddessResult() {
+    public Observable<BaseDataResponse<StatusBean>> applyGoddessResult() {
         return mHttpDataSource.applyGoddessResult();
     }
 
@@ -1102,12 +1102,12 @@ public class AppRepository extends BaseModel implements HttpDataSource, LocalDat
     }
 
     @Override
-    public Observable<BaseDataResponse<CashWalletEntity>> cashWallet() {
+    public Observable<BaseDataResponse<CashWalletBean>> cashWallet() {
         return mHttpDataSource.cashWallet();
     }
 
     @Override
-    public Observable<BaseDataResponse<CoinWalletEntity>> coinWallet() {
+    public Observable<BaseDataResponse<CoinWalletBean>> coinWallet() {
         return mHttpDataSource.coinWallet();
     }
 
@@ -1127,42 +1127,42 @@ public class AppRepository extends BaseModel implements HttpDataSource, LocalDat
     }
 
     @Override
-    public Observable<BaseListDataResponse<ApplyMessageEntity>> getMessageApply(Integer page) {
+    public Observable<BaseListDataResponse<ApplyMessageBean>> getMessageApply(Integer page) {
         return mHttpDataSource.getMessageApply(page);
     }
 
     @Override
-    public Observable<BaseListDataResponse<BoradCastMessageEntity>> getMessageBoradcast(Integer page) {
+    public Observable<BaseListDataResponse<BoradCastMessageBean>> getMessageBoradcast(Integer page) {
         return mHttpDataSource.getMessageBoradcast(page);
     }
 
     @Override
-    public Observable<BaseListDataResponse<CommentMessageEntity>> getMessageComment(Integer page) {
+    public Observable<BaseListDataResponse<CommentMessageBean>> getMessageComment(Integer page) {
         return mHttpDataSource.getMessageComment(page);
     }
 
     @Override
-    public Observable<BaseListDataResponse<EvaluateMessageEntity>> getMessageEvaluate(Integer page) {
+    public Observable<BaseListDataResponse<EvaluateMessageBean>> getMessageEvaluate(Integer page) {
         return mHttpDataSource.getMessageEvaluate(page);
     }
 
     @Override
-    public Observable<BaseListDataResponse<GiveMessageEntity>> getMessageGive(Integer page) {
+    public Observable<BaseListDataResponse<GiveMessageBean>> getMessageGive(Integer page) {
         return mHttpDataSource.getMessageGive(page);
     }
 
     @Override
-    public Observable<BaseListDataResponse<SignMessageEntity>> getMessageSign(Integer page) {
+    public Observable<BaseListDataResponse<SignMessageBean>> getMessageSign(Integer page) {
         return mHttpDataSource.getMessageSign(page);
     }
 
     @Override
-    public Observable<BaseListDataResponse<SystemMessageEntity>> getMessageSystem(Integer page) {
+    public Observable<BaseListDataResponse<SystemMessageBean>> getMessageSystem(Integer page) {
         return mHttpDataSource.getMessageSystem(page);
     }
 
     @Override
-    public Observable<BaseListDataResponse<ProfitMessageEntity>> getMessageProfit(Integer page) {
+    public Observable<BaseListDataResponse<ProfitMessageBean>> getMessageProfit(Integer page) {
         return mHttpDataSource.getMessageProfit(page);
     }
 
@@ -1172,7 +1172,7 @@ public class AppRepository extends BaseModel implements HttpDataSource, LocalDat
     }
 
     @Override
-    public Observable<BaseDataResponse<List<MessageGroupEntity>>> getMessageList() {
+    public Observable<BaseDataResponse<List<MessageGroupBean>>> getMessageList() {
         return mHttpDataSource.getMessageList();
     }
 
@@ -1182,12 +1182,12 @@ public class AppRepository extends BaseModel implements HttpDataSource, LocalDat
     }
 
     @Override
-    public Observable<BaseDataResponse<PushSettingEntity>> getPushSetting() {
+    public Observable<BaseDataResponse<PushSettingBean>> getPushSetting() {
         return mHttpDataSource.getPushSetting();
     }
 
     @Override
-    public Observable<BaseResponse> savePushSetting(PushSettingEntity pushSettingEntity) {
+    public Observable<BaseResponse> savePushSetting(PushSettingBean pushSettingEntity) {
         return mHttpDataSource.savePushSetting(pushSettingEntity);
     }
 
@@ -1207,7 +1207,7 @@ public class AppRepository extends BaseModel implements HttpDataSource, LocalDat
     }
 
     @Override
-    public Observable<BaseDataResponse<CreateOrderEntity>> createOrder(Integer id, Integer type, Integer payType, Integer toUserId) {
+    public Observable<BaseDataResponse<CreateOrderBean>> createOrder(Integer id, Integer type, Integer payType, Integer toUserId) {
         return mHttpDataSource.createOrder(id, type, payType, toUserId);
     }
 
@@ -1217,17 +1217,17 @@ public class AppRepository extends BaseModel implements HttpDataSource, LocalDat
     }
 
     @Override
-    public Observable<BaseListDataResponse<BaseUserBeanEntity>> getNewsGiveList(Integer id, Integer page) {
+    public Observable<BaseListDataResponse<BaseUserBeanBean>> getNewsGiveList(Integer id, Integer page) {
         return mHttpDataSource.getNewsGiveList(id, page);
     }
 
     @Override
-    public Observable<BaseListDataResponse<BaseUserBeanEntity>> getTopicalGiveList(Integer id, Integer page) {
+    public Observable<BaseListDataResponse<BaseUserBeanBean>> getTopicalGiveList(Integer id, Integer page) {
         return mHttpDataSource.getTopicalGiveList(id, page);
     }
 
     @Override
-    public Observable<BaseDataResponse<TopicalListEntity>> topicalDetail(Integer id) {
+    public Observable<BaseDataResponse<TopicalListBean>> topicalDetail(Integer id) {
         return mHttpDataSource.topicalDetail(id);
     }
 
@@ -1242,12 +1242,12 @@ public class AppRepository extends BaseModel implements HttpDataSource, LocalDat
     }
 
     @Override
-    public Observable<BaseDataResponse<ChatRedPackageEntity>> sendCoinRedPackage(Integer userId, Integer money, String desc) {
+    public Observable<BaseDataResponse<ChatRedPackageBean>> sendCoinRedPackage(Integer userId, Integer money, String desc) {
         return mHttpDataSource.sendCoinRedPackage(userId, money, desc);
     }
 
     @Override
-    public Observable<BaseDataResponse<ChatRedPackageEntity>> getCoinRedPackage(int id) {
+    public Observable<BaseDataResponse<ChatRedPackageBean>> getCoinRedPackage(int id) {
         return mHttpDataSource.getCoinRedPackage(id);
     }
 
@@ -1257,12 +1257,12 @@ public class AppRepository extends BaseModel implements HttpDataSource, LocalDat
     }
 
     @Override
-    public Observable<BaseListDataResponse<UserCoinItemEntity>> userCoinEarnings(int page) {
+    public Observable<BaseListDataResponse<UserCoinItemBean>> userCoinEarnings(int page) {
         return mHttpDataSource.userCoinEarnings(page);
     }
 
     @Override
-    public Observable<BaseDataResponse<UserConnMicStatusEntity>> userIsConnMic(int userId) {
+    public Observable<BaseDataResponse<UserConnMicStatusBean>> userIsConnMic(int userId) {
         return mHttpDataSource.userIsConnMic(userId);
     }
 
@@ -1287,12 +1287,12 @@ public class AppRepository extends BaseModel implements HttpDataSource, LocalDat
     }
 
     @Override
-    public Observable<BaseDataResponse<StatusEntity>> publishCheck(int type) {
+    public Observable<BaseDataResponse<StatusBean>> publishCheck(int type) {
         return mHttpDataSource.publishCheck(type);
     }
 
     @Override
-    public Observable<BaseDataResponse<UnReadMessageNumEntity>> getUnreadMessageNum() {
+    public Observable<BaseDataResponse<UnReadMessageNumBean>> getUnreadMessageNum() {
         return mHttpDataSource.getUnreadMessageNum();
     }
 
@@ -1312,7 +1312,7 @@ public class AppRepository extends BaseModel implements HttpDataSource, LocalDat
     }
 
     @Override
-    public Observable<BaseDataResponse<ApiConfigManagerEntity>> initApiConfig() {
+    public Observable<BaseDataResponse<ApiConfigManagerBean>> initApiConfig() {
         return mHttpDataSource.initApiConfig();
     }
 
@@ -1327,12 +1327,12 @@ public class AppRepository extends BaseModel implements HttpDataSource, LocalDat
     }
 
     @Override
-    public Observable<BaseDataResponse<ExchangeIntegraOuterEntity>> getExchangeIntegraListData() {
+    public Observable<BaseDataResponse<ExchangeIntegraOuterBean>> getExchangeIntegraListData() {
         return mHttpDataSource.getExchangeIntegraListData();
     }
 
     @Override
-    public Observable<BaseListDataResponse<TaskAdEntity>> taskAdList() {
+    public Observable<BaseListDataResponse<TaskAdBean>> taskAdList() {
         return mHttpDataSource.taskAdList();
     }
 
@@ -1347,12 +1347,12 @@ public class AppRepository extends BaseModel implements HttpDataSource, LocalDat
     }
 
     @Override
-    public Observable<BaseDataResponse<AddressEntity>> getAddress(Integer id) {
+    public Observable<BaseDataResponse<AddressBean>> getAddress(Integer id) {
         return mHttpDataSource.getAddress(id);
     }
 
     @Override
-    public Observable<BaseListDataResponse<AddressEntity>> getAddressList(Integer page) {
+    public Observable<BaseListDataResponse<AddressBean>> getAddressList(Integer page) {
         return mHttpDataSource.getAddressList(page);
     }
 
@@ -1367,7 +1367,7 @@ public class AppRepository extends BaseModel implements HttpDataSource, LocalDat
     }
 
     @Override
-    public Observable<BaseListDataResponse<ExchangeEntity>> qryExchange(Integer page, Integer status) {
+    public Observable<BaseListDataResponse<ExchangeBean>> qryExchange(Integer page, Integer status) {
         return mHttpDataSource.qryExchange(page, status);
     }
 
@@ -1377,12 +1377,12 @@ public class AppRepository extends BaseModel implements HttpDataSource, LocalDat
     }
 
     @Override
-    public Observable<BaseListDataResponse<BonusGoodsEntity>> getBonusGoods(Integer page) {
+    public Observable<BaseListDataResponse<BonusGoodsBean>> getBonusGoods(Integer page) {
         return mHttpDataSource.getBonusGoods(page);
     }
 
     @Override
-    public Observable<BaseListDataResponse<GoldDetailEntity>> getGoldList(Integer page) {
+    public Observable<BaseListDataResponse<GoldDetailBean>> getGoldList(Integer page) {
         return mHttpDataSource.getGoldList(page);
     }
 
@@ -1392,27 +1392,27 @@ public class AppRepository extends BaseModel implements HttpDataSource, LocalDat
     }
 
     @Override
-    public Observable<BaseDataResponse<TaskRewardReceiveEntity>> TaskRewardReceive(String key) {
+    public Observable<BaseDataResponse<TaskRewardReceiveBean>> TaskRewardReceive(String key) {
         return mHttpDataSource.TaskRewardReceive(key);
     }
 
     @Override
-    public Observable<BaseDataResponse<List<TaskConfigItemEntity>>> getTaskListConfig() {
+    public Observable<BaseDataResponse<List<TaskConfigItemBean>>> getTaskListConfig() {
         return mHttpDataSource.getTaskListConfig();
     }
 
     @Override
-    public Observable<BaseDataResponse<TaskConfigEntity>> getTaskConfig() {
+    public Observable<BaseDataResponse<TaskConfigBean>> getTaskConfig() {
         return mHttpDataSource.getTaskConfig();
     }
 
     @Override
-    public Observable<BaseDataResponse<EjectSignInEntity>> reportEjectSignIn() {
+    public Observable<BaseDataResponse<EjectSignInBean>> reportEjectSignIn() {
         return mHttpDataSource.reportEjectSignIn();
     }
 
     @Override
-    public Observable<BaseDataResponse<EjectEntity>> getEjectconfig() {
+    public Observable<BaseDataResponse<EjectBean>> getEjectconfig() {
         return mHttpDataSource.getEjectconfig();
     }
 
@@ -1422,12 +1422,12 @@ public class AppRepository extends BaseModel implements HttpDataSource, LocalDat
     }
 
     @Override
-    public Observable<BaseDataResponse<LevelApiEntity>> adjustLevelPrice(RequestBody requestBody) {
+    public Observable<BaseDataResponse<LevelApiBean>> adjustLevelPrice(RequestBody requestBody) {
         return mHttpDataSource.adjustLevelPrice(requestBody);
     }
 
     @Override
-    public Observable<BaseDataResponse<LevelPageInfoEntity>> getUserLevelPageInfo() {
+    public Observable<BaseDataResponse<LevelPageInfoBean>> getUserLevelPageInfo() {
         return mHttpDataSource.getUserLevelPageInfo();
     }
 
@@ -1442,27 +1442,27 @@ public class AppRepository extends BaseModel implements HttpDataSource, LocalDat
     }
 
     @Override
-    public Observable<BaseDataResponse<UserDataEntity>> loginEmail(String email, String code, Integer type) {
+    public Observable<BaseDataResponse<UserDataBean>> loginEmail(String email, String code, Integer type) {
         return mHttpDataSource.loginEmail(email, code, type);
     }
 
     @Override
-    public Observable<BaseDataResponse<CallingStatusEntity>> getCallingStatus(Integer roomId) {
+    public Observable<BaseDataResponse<CallingStatusBean>> getCallingStatus(Integer roomId) {
         return mHttpDataSource.getCallingStatus(roomId);
     }
 
     @Override
-    public Observable<BaseDataResponse<CallingStatusEntity>> getRoomStatus(Integer roomId) {
+    public Observable<BaseDataResponse<CallingStatusBean>> getRoomStatus(Integer roomId) {
         return mHttpDataSource.getRoomStatus(roomId);
     }
 
     @Override
-    public Observable<BaseDataResponse<AdBannerEntity>> getMainAdBannerList(int position) {
+    public Observable<BaseDataResponse<AdBannerBean>> getMainAdBannerList(int position) {
         return mHttpDataSource.getMainAdBannerList(position);
     }
 
     @Override
-    public Observable<BaseDataResponse<MallWithdrawTipsInfoEntity>> getMallWithdrawTipsInfo(Integer channel) {
+    public Observable<BaseDataResponse<MallWithdrawTipsInfoBean>> getMallWithdrawTipsInfo(Integer channel) {
         return mHttpDataSource.getMallWithdrawTipsInfo(channel);
     }
 
@@ -1472,27 +1472,27 @@ public class AppRepository extends BaseModel implements HttpDataSource, LocalDat
     }
 
     @Override
-    public Observable<BaseDataResponse<CityAllEntity>> getCityConfigAll() {
+    public Observable<BaseDataResponse<CityAllBean>> getCityConfigAll() {
         return mHttpDataSource.getCityConfigAll();
     }
 
     @Override
-    public Observable<BaseDataResponse<CheckNicknameEntity>> checkNickname(String nickname) {
+    public Observable<BaseDataResponse<CheckNicknameBean>> checkNickname(String nickname) {
         return mHttpDataSource.checkNickname(nickname);
     }
 
     @Override
-    public Observable<BaseDataResponse<ChooseAreaEntity>> getChooseAreaList() {
+    public Observable<BaseDataResponse<ChooseAreaBean>> getChooseAreaList() {
         return mHttpDataSource.getChooseAreaList();
     }
 
     @Override
-    public Observable<BaseDataResponse<AdBannerEntity>> getRadioAdBannerList(int position) {
+    public Observable<BaseDataResponse<AdBannerBean>> getRadioAdBannerList(int position) {
         return mHttpDataSource.getRadioAdBannerList(position);
     }
 
     @Override
-    public Observable<BaseDataResponse<AdUserBannerEntity>> getUserAdList(Integer position) {
+    public Observable<BaseDataResponse<AdUserBannerBean>> getUserAdList(Integer position) {
         return mHttpDataSource.getUserAdList(position);
     }
 
@@ -1502,13 +1502,13 @@ public class AppRepository extends BaseModel implements HttpDataSource, LocalDat
     }
 
     @Override
-    public Observable<BaseDataResponse<NoteInfoEntity>> getNoteText(int user_id) {
+    public Observable<BaseDataResponse<NoteInfoBean>> getNoteText(int user_id) {
         return mHttpDataSource.getNoteText(user_id);
     }
 
 
     @Override
-    public Observable<BaseDataResponse<CoinPusherBalanceDataEntity>> qryUserGameBalance() {
+    public Observable<BaseDataResponse<CoinPusherBalanceDataBean>> qryUserGameBalance() {
         return mHttpDataSource.qryUserGameBalance();
     }
 
@@ -1533,12 +1533,12 @@ public class AppRepository extends BaseModel implements HttpDataSource, LocalDat
     }
 
     @Override
-    public Observable<BaseDataResponse<List<CoinPusherRoomHistoryEntity>>> qryCoinPusherRoomHistory(Integer roomId) {
+    public Observable<BaseDataResponse<List<CoinPusherRoomHistoryBean>>> qryCoinPusherRoomHistory(Integer roomId) {
         return mHttpDataSource.qryCoinPusherRoomHistory(roomId);
     }
 
     @Override
-    public Observable<BaseDataResponse<CoinPusherDataInfoEntity>> playingCoinPusherStart(Integer roomId) {
+    public Observable<BaseDataResponse<CoinPusherDataInfoBean>> playingCoinPusherStart(Integer roomId) {
         return mHttpDataSource.playingCoinPusherStart(roomId);
     }
 
@@ -1553,32 +1553,32 @@ public class AppRepository extends BaseModel implements HttpDataSource, LocalDat
     }
 
     @Override
-    public Observable<BaseDataResponse<CoinPusherBalanceDataEntity>> playingCoinPusherThrowCoin(Integer roomId) {
+    public Observable<BaseDataResponse<CoinPusherBalanceDataBean>> playingCoinPusherThrowCoin(Integer roomId) {
         return mHttpDataSource.playingCoinPusherThrowCoin(roomId);
     }
 
     @Override
-    public Observable<BaseDataResponse<CoinPusherBalanceDataEntity>> convertCoinPusherGoldsCoin(Integer id, Integer type) {
+    public Observable<BaseDataResponse<CoinPusherBalanceDataBean>> convertCoinPusherGoldsCoin(Integer id, Integer type) {
         return mHttpDataSource.convertCoinPusherGoldsCoin(id, type);
     }
 
     @Override
-    public Observable<BaseDataResponse<CoinPusherBalanceDataEntity>> convertCoinPusherDiamonds(Integer id) {
+    public Observable<BaseDataResponse<CoinPusherBalanceDataBean>> convertCoinPusherDiamonds(Integer id) {
         return mHttpDataSource.convertCoinPusherDiamonds(id);
     }
 
     @Override
-    public Observable<BaseDataResponse<CoinPusherRoomTagInfoEntity>> qryCoinPusherRoomTagList() {
+    public Observable<BaseDataResponse<CoinPusherRoomTagInfoBean>> qryCoinPusherRoomTagList() {
         return mHttpDataSource.qryCoinPusherRoomTagList();
     }
 
     @Override
-    public Observable<BaseDataResponse<CoinPusherRoomInfoEntity>> qryCoinPusherRoomList(Integer tagId) {
+    public Observable<BaseDataResponse<CoinPusherRoomInfoBean>> qryCoinPusherRoomList(Integer tagId) {
         return mHttpDataSource.qryCoinPusherRoomList(tagId);
     }
 
     @Override
-    public Observable<BaseDataResponse<CoinPusherConverInfoEntity>> qryCoinPusherConverList() {
+    public Observable<BaseDataResponse<CoinPusherConverInfoBean>> qryCoinPusherConverList() {
         return mHttpDataSource.qryCoinPusherConverList();
     }
 
@@ -1593,7 +1593,7 @@ public class AppRepository extends BaseModel implements HttpDataSource, LocalDat
     }
 
     @Override
-    public Observable<BaseDataResponse<List<ExclusiveAccostInfoEntity>>> getExclusiveAccost() {
+    public Observable<BaseDataResponse<List<ExclusiveAccostInfoBean>>> getExclusiveAccost() {
         return mHttpDataSource.getExclusiveAccost();
     }
 
@@ -1608,7 +1608,7 @@ public class AppRepository extends BaseModel implements HttpDataSource, LocalDat
     }
 
     @Override
-    public Observable<BaseDataResponse<DayRewardInfoEntity>> getDayReward() {
+    public Observable<BaseDataResponse<DayRewardInfoBean>> getDayReward() {
         return mHttpDataSource.getDayReward();
     }
 
@@ -1618,7 +1618,7 @@ public class AppRepository extends BaseModel implements HttpDataSource, LocalDat
     }
 
     @Override
-    public Observable<BaseDataResponse<DayRewardInfoEntity>> getRegisterReward() {
+    public Observable<BaseDataResponse<DayRewardInfoBean>> getRegisterReward() {
         return mHttpDataSource.getRegisterReward();
     }
 

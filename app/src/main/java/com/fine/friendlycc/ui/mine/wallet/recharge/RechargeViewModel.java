@@ -12,8 +12,8 @@ import com.fine.friendlycc.data.source.http.exception.RequestException;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseDataResponse;
 import com.fine.friendlycc.data.source.http.response.BaseResponse;
-import com.fine.friendlycc.entity.CreateOrderEntity;
-import com.fine.friendlycc.entity.GoodsEntity;
+import com.fine.friendlycc.bean.CreateOrderBean;
+import com.fine.friendlycc.bean.GoodsBean;
 import com.fine.friendlycc.viewmodel.BaseViewModel;
 
 import org.jetbrains.annotations.NotNull;
@@ -35,10 +35,10 @@ import me.goldze.mvvmhabit.utils.ToastUtils;
 public class RechargeViewModel extends BaseViewModel<AppRepository> {
 
     public ObservableField<Boolean> isGooglepay = new ObservableField<>(false);
-    public ObservableField<GoodsEntity> goodsEntity = new ObservableField<>();
+    public ObservableField<GoodsBean> goodsEntity = new ObservableField<>();
     public String orderNumber = null;
     public SingleLiveEvent<String> clickPay = new SingleLiveEvent();
-    public SingleLiveEvent<GoodsEntity> finsh = new SingleLiveEvent();
+    public SingleLiveEvent<GoodsBean> finsh = new SingleLiveEvent();
 
     /**
      * 选择水晶支付
@@ -75,9 +75,9 @@ public class RechargeViewModel extends BaseViewModel<AppRepository> {
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(disposable -> showHUD())
-                .subscribe(new BaseObserver<BaseDataResponse<CreateOrderEntity>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<CreateOrderBean>>() {
                     @Override
-                    public void onSuccess(BaseDataResponse<CreateOrderEntity> response) {
+                    public void onSuccess(BaseDataResponse<CreateOrderBean> response) {
                         orderNumber = response.getData().getOrderNumber();
                         clickPay.postValue(goodsEntity.get().getGoogleGoodsId());
                     }

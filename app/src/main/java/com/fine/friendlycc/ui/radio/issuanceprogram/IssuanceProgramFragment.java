@@ -6,9 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
@@ -29,14 +27,13 @@ import com.blankj.utilcode.util.StringUtils;
 import com.fine.friendlycc.BR;
 import com.fine.friendlycc.R;
 import com.fine.friendlycc.app.AppConfig;
-import com.fine.friendlycc.app.AppContext;
+import com.fine.friendlycc.app.CCApplication;
 import com.fine.friendlycc.app.AppViewModelFactory;
 import com.fine.friendlycc.app.AppsFlyerEvent;
 import com.fine.friendlycc.databinding.FragmentIssuanceProgramBinding;
-import com.fine.friendlycc.entity.ConfigItemEntity;
-import com.fine.friendlycc.entity.DatingObjItemEntity;
-import com.fine.friendlycc.entity.GoodsEntity;
-import com.fine.friendlycc.entity.ThemeItemEntity;
+import com.fine.friendlycc.bean.ConfigItemBean;
+import com.fine.friendlycc.bean.DatingObjItemBean;
+import com.fine.friendlycc.bean.ThemeItemBean;
 import com.fine.friendlycc.manager.ConfigManager;
 import com.fine.friendlycc.ui.base.BaseToolbarFragment;
 import com.fine.friendlycc.ui.certification.certificationfemale.CertificationFemaleFragment;
@@ -45,7 +42,6 @@ import com.fine.friendlycc.ui.mine.vipsubscribe.VipSubscribeFragment;
 import com.fine.friendlycc.ui.mine.wallet.diamond.recharge.DialogDiamondRechargeActivity;
 import com.fine.friendlycc.utils.AutoSizeUtils;
 import com.fine.friendlycc.widget.coinpaysheet.CoinPaySheet;
-import com.fine.friendlycc.widget.coinrechargesheet.CoinRechargeSheetView;
 import com.fine.friendlycc.widget.dialog.MVDialog;
 import com.luck.picture.lib.permissions.PermissionChecker;
 
@@ -62,14 +58,14 @@ public class IssuanceProgramFragment extends BaseToolbarFragment<FragmentIssuanc
     public static final String ARG_ADDRESS_LAT = "arg_address_lat";
     public static final String ARG_ADDRESS_LNG = "arg_address_lng";
 
-    private ThemeItemEntity themeItemEntity;
-    private ConfigItemEntity city;
+    private ThemeItemBean themeItemEntity;
+    private ConfigItemBean city;
     private String addressName, address;
     private Double lat, lng;
 
     private TimePickerView pvTime;
 
-    public static Bundle getStartBundle(ThemeItemEntity program, ConfigItemEntity city) {
+    public static Bundle getStartBundle(ThemeItemBean program, ConfigItemBean city) {
         if (program == null) {
             ToastUtils.showShort(R.string.playcc_parameter_error);
             return null;
@@ -82,7 +78,7 @@ public class IssuanceProgramFragment extends BaseToolbarFragment<FragmentIssuanc
         return bundle;
     }
 
-    public static Bundle getStartBundle(ThemeItemEntity program, ConfigItemEntity city, String addressName, String address, Double lat, Double lng) {
+    public static Bundle getStartBundle(ThemeItemBean program, ConfigItemBean city, String addressName, String address, Double lat, Double lng) {
         if (program == null || city == null || addressName == null) {
             ToastUtils.showShort(R.string.playcc_parameter_error);
             return null;
@@ -264,9 +260,9 @@ public class IssuanceProgramFragment extends BaseToolbarFragment<FragmentIssuanc
                 MVDialog.raDioChooseCity chooseOccupation = new MVDialog.raDioChooseCity() {
 
                     @Override
-                    public void clickListItem(Dialog dialog, ConfigItemEntity configItemEntity) {
+                    public void clickListItem(Dialog dialog, ConfigItemBean configItemEntity) {
                         try {
-                            AppContext.instance().logEvent(AppsFlyerEvent.Location);
+                            CCApplication.instance().logEvent(AppsFlyerEvent.Location);
                             city = configItemEntity;
                             viewModel.chooseCityItem.set(city);
                         } catch (Exception e) {
@@ -303,36 +299,36 @@ public class IssuanceProgramFragment extends BaseToolbarFragment<FragmentIssuanc
 
     private void loadDatingDetail() {
 
-        DatingObjItemEntity datingObjItemEntity5 = new DatingObjItemEntity();
+        DatingObjItemBean datingObjItemEntity5 = new DatingObjItemBean();
         datingObjItemEntity5.setType(0);
         datingObjItemEntity5.setId(1);
         datingObjItemEntity5.setName(StringUtils.getString(R.string.playcc_mood_item_id1));
         datingObjItemEntity5.setSelect(true);
         datingObjItemEntity5.setIconChecked(getResources().getResourceName(R.mipmap.dating_obj_mood1_img));
         viewModel.$datingObjItemEntity = datingObjItemEntity5;
-        DatingObjItemEntity datingObjItemEntity1 = new DatingObjItemEntity();
+        DatingObjItemBean datingObjItemEntity1 = new DatingObjItemBean();
         datingObjItemEntity1.setType(0);
         datingObjItemEntity1.setId(2);
         datingObjItemEntity1.setName(StringUtils.getString(R.string.playcc_mood_item_id2));
         datingObjItemEntity1.setIconChecked(getResources().getResourceName(R.mipmap.dating_obj_mood2_img));
-        DatingObjItemEntity datingObjItemEntity2 = new DatingObjItemEntity();
+        DatingObjItemBean datingObjItemEntity2 = new DatingObjItemBean();
         datingObjItemEntity2.setType(0);
         datingObjItemEntity2.setId(3);
         datingObjItemEntity2.setName(StringUtils.getString(R.string.playcc_mood_item_id3));
         datingObjItemEntity2.setIconChecked(getResources().getResourceName(R.mipmap.dating_obj_mood3_img));
-        DatingObjItemEntity datingObjItemEntity3 = new DatingObjItemEntity();
+        DatingObjItemBean datingObjItemEntity3 = new DatingObjItemBean();
         datingObjItemEntity3.setType(0);
         datingObjItemEntity3.setId(4);
         datingObjItemEntity3.setName(StringUtils.getString(R.string.playcc_mood_item_id4));
         datingObjItemEntity3.setIconChecked(getResources().getResourceName(R.mipmap.dating_obj_mood4_img));
-        DatingObjItemEntity datingObjItemEntity4 = new DatingObjItemEntity();
+        DatingObjItemBean datingObjItemEntity4 = new DatingObjItemBean();
         datingObjItemEntity4.setType(0);
         datingObjItemEntity4.setId(5);
         datingObjItemEntity4.setName(StringUtils.getString(R.string.playcc_mood_item_id5));
         datingObjItemEntity4.setIconChecked(getResources().getResourceName(R.mipmap.dating_obj_mood5_img));
 
 
-        DatingObjItemEntity datingObjItemEntity = new DatingObjItemEntity();
+        DatingObjItemBean datingObjItemEntity = new DatingObjItemBean();
         datingObjItemEntity.setType(0);
         datingObjItemEntity.setId(6);
         datingObjItemEntity.setName(StringUtils.getString(R.string.playcc_mood_item_id6));

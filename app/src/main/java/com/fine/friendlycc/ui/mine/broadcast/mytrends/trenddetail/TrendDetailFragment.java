@@ -17,10 +17,10 @@ import androidx.lifecycle.ViewModelProviders;
 import com.blankj.utilcode.util.GsonUtils;
 import com.blankj.utilcode.util.StringUtils;
 import com.fine.friendlycc.app.AppConfig;
-import com.fine.friendlycc.app.AppContext;
+import com.fine.friendlycc.app.CCApplication;
 import com.fine.friendlycc.app.AppViewModelFactory;
 import com.fine.friendlycc.app.AppsFlyerEvent;
-import com.fine.friendlycc.entity.NewsEntity;
+import com.fine.friendlycc.bean.NewsBean;
 import com.fine.friendlycc.helper.DialogHelper;
 import com.fine.friendlycc.manager.ConfigManager;
 import com.fine.friendlycc.ui.base.BaseToolbarFragment;
@@ -82,7 +82,7 @@ public class TrendDetailFragment extends BaseToolbarFragment<FragmentTrendDetail
     public TrendDetailViewModel initViewModel() {
         AppViewModelFactory factory = AppViewModelFactory.getInstance(mActivity.getApplication());
         TrendDetailViewModel trendDetailViewModel = ViewModelProviders.of(this, factory).get(TrendDetailViewModel.class);
-        trendDetailViewModel.newsEntityObservableField.set(new NewsEntity());
+        trendDetailViewModel.newsEntityObservableField.set(new NewsBean());
         trendDetailViewModel.newsEntityObservableField.get().setId(id);
         return trendDetailViewModel;
     }
@@ -100,13 +100,13 @@ public class TrendDetailFragment extends BaseToolbarFragment<FragmentTrendDetail
     @Override
     public void onResume() {
         super.onResume();
-        AppContext.isShowNotPaid = true;
+        CCApplication.isShowNotPaid = true;
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        AppContext.isShowNotPaid = false;
+        CCApplication.isShowNotPaid = false;
     }
 
     @Override
@@ -155,7 +155,7 @@ public class TrendDetailFragment extends BaseToolbarFragment<FragmentTrendDetail
                         if (viewModel.userId == viewModel.newsEntityObservableField.get().getUser().getId()) {
                             viewModel.setComment();
                         } else {
-                            AppContext.instance().logEvent(AppsFlyerEvent.Report_2);
+                            CCApplication.instance().logEvent(AppsFlyerEvent.Report_2);
                             Bundle bundle = new Bundle();
                             bundle.putString(ARG_REPORT_TYPE, "broadcast");
                             bundle.putInt(ARG_REPORT_USER_ID, viewModel.newsEntityObservableField.get().getBroadcast().getId());

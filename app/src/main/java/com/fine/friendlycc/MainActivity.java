@@ -1,24 +1,19 @@
 package com.fine.friendlycc;
 
-import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.view.MotionEvent;
-import android.view.View;
-import android.widget.EditText;
 
 import androidx.annotation.Nullable;
 import androidx.lifecycle.Observer;
 
 import com.aliyun.svideo.crop.bean.AlivcCropOutputParam;
 import com.android.billingclient.api.BillingClient;
-import com.blankj.utilcode.util.KeyboardUtils;
 import com.fine.friendlycc.app.AppConfig;
-import com.fine.friendlycc.app.AppContext;
+import com.fine.friendlycc.app.CCApplication;
 import com.fine.friendlycc.app.BillingClientLifecycle;
 import com.fine.friendlycc.event.LoginExpiredEvent;
 import com.fine.friendlycc.event.UserDisableEvent;
@@ -121,7 +116,7 @@ public class MainActivity extends MySupportActivity {
         ConfigManagerUtil.getInstance().putPlayGameFlag(false);
         registerRxBus();
 
-        this.billingClientLifecycle = ((AppContext)getApplication()).getBillingClientLifecycle();
+        this.billingClientLifecycle = ((CCApplication)getApplication()).getBillingClientLifecycle();
         if(!billingClientLifecycle.isConnectionSuccessful()){
             queryAndConsumePurchase();
         }
@@ -273,7 +268,7 @@ public class MainActivity extends MySupportActivity {
     public void onResume() {
         super.onResume();
         try{
-            AppContext.instance().mFirebaseAnalytics.setCurrentScreen(this, "Screen Name", this.getClass().getSimpleName());
+            CCApplication.instance().mFirebaseAnalytics.setCurrentScreen(this, "Screen Name", this.getClass().getSimpleName());
             //页面处于可见状态最后依次连接时间
 //            long onResumeLastTime = System.currentTimeMillis() / 1000;
 //            if(onCreateTime != 0L){

@@ -1,6 +1,5 @@
 package com.fine.friendlycc.ui.mine.wallet.diamond.recharge;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -13,13 +12,12 @@ import com.android.billingclient.api.SkuDetailsParams;
 import com.blankj.utilcode.util.StringUtils;
 import com.fine.friendlycc.BR;
 import com.fine.friendlycc.R;
-import com.fine.friendlycc.app.AppContext;
+import com.fine.friendlycc.app.CCApplication;
 import com.fine.friendlycc.app.AppViewModelFactory;
 import com.fine.friendlycc.app.BillingClientLifecycle;
 import com.fine.friendlycc.databinding.ActivityDialogDiamondBinding;
-import com.fine.friendlycc.databinding.ActivityDiamondRechargeBinding;
-import com.fine.friendlycc.entity.DiamondPaySuccessEntity;
-import com.fine.friendlycc.entity.GoodsEntity;
+import com.fine.friendlycc.bean.DiamondPaySuccessBean;
+import com.fine.friendlycc.bean.GoodsBean;
 import com.fine.friendlycc.ui.base.BaseActivity;
 import com.fine.friendlycc.utils.ImmersionBarUtils;
 import com.fine.friendlycc.widget.BasicToolbar;
@@ -70,7 +68,7 @@ public class DialogDiamondRechargeActivity extends BaseActivity<ActivityDialogDi
     @Override
     public void initData() {
         super.initData();
-        this.billingClientLifecycle = ((AppContext)getApplication()).getBillingClientLifecycle();
+        this.billingClientLifecycle = ((CCApplication)getApplication()).getBillingClientLifecycle();
         if(billingClientLifecycle!=null){
             //查询并消耗本地历史订单类型： INAPP 支付购买  SUBS订阅
             //billingClientLifecycle.queryAndConsumePurchase(BillingClient.SkuType.INAPP);
@@ -179,7 +177,7 @@ public class DialogDiamondRechargeActivity extends BaseActivity<ActivityDialogDi
      * 显示奖励dialog
      */
     private void showRewardDialog() {
-        GoodsEntity goodsEntity = viewModel.selectedGoodsEntity.get();
+        GoodsBean goodsEntity = viewModel.selectedGoodsEntity.get();
         if (goodsEntity == null) {
             finishActivity(goodsEntity);
             return;
@@ -204,10 +202,10 @@ public class DialogDiamondRechargeActivity extends BaseActivity<ActivityDialogDi
                 .show();
     }
 
-    private void finishActivity(GoodsEntity goodsEntity) {
+    private void finishActivity(GoodsBean goodsEntity) {
         isFinsh = true;
         finish();
-        RxBus.getDefault().post(new DiamondPaySuccessEntity());
+        RxBus.getDefault().post(new DiamondPaySuccessBean());
     }
 
     @Override
@@ -251,4 +249,3 @@ public class DialogDiamondRechargeActivity extends BaseActivity<ActivityDialogDi
         onBackPressed();
     }
 }
-

@@ -10,7 +10,7 @@ import androidx.databinding.ObservableList;
 
 import com.blankj.utilcode.util.ObjectUtils;
 import com.blankj.utilcode.util.StringUtils;
-import com.fine.friendlycc.app.AppContext;
+import com.fine.friendlycc.app.CCApplication;
 import com.fine.friendlycc.app.AppsFlyerEvent;
 import com.fine.friendlycc.data.AppRepository;
 import com.fine.friendlycc.data.source.http.exception.RequestException;
@@ -18,9 +18,9 @@ import com.fine.friendlycc.data.source.http.observer.BaseDisposableObserver;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseDataResponse;
 import com.fine.friendlycc.data.source.http.response.BaseResponse;
-import com.fine.friendlycc.entity.CommentEntity;
-import com.fine.friendlycc.entity.GiveUserBeanEntity;
-import com.fine.friendlycc.entity.NewsEntity;
+import com.fine.friendlycc.bean.CommentBean;
+import com.fine.friendlycc.bean.GiveUserBeanBean;
+import com.fine.friendlycc.bean.NewsBean;
 import com.fine.friendlycc.event.RadioadetailEvent;
 import com.fine.friendlycc.event.ZoomInPictureEvent;
 import com.fine.friendlycc.manager.ConfigManager;
@@ -49,7 +49,7 @@ import me.tatarka.bindingcollectionadapter2.ItemBinding;
 import static com.fine.friendlycc.ui.radio.radiohome.RadioViewModel.RadioRecycleType_New;
 
 public class TrendDetailViewModel extends BaseViewModel<AppRepository> {
-    public ObservableField<NewsEntity> newsEntityObservableField = new ObservableField<>();
+    public ObservableField<NewsBean> newsEntityObservableField = new ObservableField<>();
     public int userId;
     public String avatar;
     public int sex;
@@ -96,7 +96,7 @@ public class TrendDetailViewModel extends BaseViewModel<AppRepository> {
         @Override
         public void call() {
             if (newsEntityObservableField.get().getIsGive() == 0) {
-                AppContext.instance().logEvent(AppsFlyerEvent.Like_2);
+                CCApplication.instance().logEvent(AppsFlyerEvent.Like_2);
                 newsGive();
             } else {
                 ToastUtils.showShort(R.string.playcc_already);
@@ -117,7 +117,7 @@ public class TrendDetailViewModel extends BaseViewModel<AppRepository> {
             if (userId == newsEntityObservableField.get().getUser().getId()) {
                 ToastUtils.showShort(R.string.playcc_self_ont_comment_broadcast);
             } else {
-                AppContext.instance().logEvent(AppsFlyerEvent.Message_2);
+                CCApplication.instance().logEvent(AppsFlyerEvent.Message_2);
                 Map<String, String> data = new HashMap<>();
                 data.put("id", String.valueOf(newsEntityObservableField.get().getId()));
                 data.put("toUseriD", null);
@@ -132,7 +132,7 @@ public class TrendDetailViewModel extends BaseViewModel<AppRepository> {
             if (String.valueOf(newsEntityObservableField.get().getUser().getId()).equals(ConfigManager.getInstance().getUserId())) {
                 return;
             }
-            AppContext.instance().logEvent(AppsFlyerEvent.User_Page_1);
+            CCApplication.instance().logEvent(AppsFlyerEvent.User_Page_1);
             Bundle bundle = UserDetailFragment.getStartBundle(newsEntityObservableField.get().getUser().getId());
             start(UserDetailFragment.class.getCanonicalName(), bundle);
         }
@@ -230,9 +230,9 @@ public class TrendDetailViewModel extends BaseViewModel<AppRepository> {
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(disposable -> showHUD())
-                .subscribe(new BaseDisposableObserver<BaseDataResponse<NewsEntity>>() {
+                .subscribe(new BaseDisposableObserver<BaseDataResponse<NewsBean>>() {
                     @Override
-                    public void onSuccess(BaseDataResponse<NewsEntity> response) {
+                    public void onSuccess(BaseDataResponse<NewsBean> response) {
                         newsEntityObservableField.set(response.getData());
                         isDetele.set(false);
                         if (response.isSuccess() && response.getData() != null && response.getData().getUser().getId() == userId) {
@@ -331,7 +331,7 @@ public class TrendDetailViewModel extends BaseViewModel<AppRepository> {
                         if (newsEntityObservableField.get().getGive_user() == null) {
                             newsEntityObservableField.get().setGive_user(new ArrayList<>());
                         }
-                        GiveUserBeanEntity giveUserBeanEntity = new GiveUserBeanEntity(userId, avatar);
+                        GiveUserBeanBean giveUserBeanEntity = new GiveUserBeanBean(userId, avatar);
                         newsEntityObservableField.get().getGive_user().add(giveUserBeanEntity);
                         newsEntityObservableField.get().setGiveSize(newsEntityObservableField.get().getGive_user().size());
                         newsEntityObservableField.get().setIsGive(1);
@@ -373,16 +373,16 @@ public class TrendDetailViewModel extends BaseViewModel<AppRepository> {
                         if (newsEntityObservableField.get().getComment() == null) {
                             newsEntityObservableField.get().setComment(new ArrayList<>());
                         }
-                        CommentEntity commentEntity = new CommentEntity();
+                        CommentBean commentEntity = new CommentBean();
                         commentEntity.setContent(content);
                         commentEntity.setId(id);
                         commentEntity.setUserId(userId);
-                        CommentEntity.UserBean userBean = new CommentEntity.UserBean();
+                        CommentBean.UserBean userBean = new CommentBean.UserBean();
                         userBean.setId(userId);
                         userBean.setNickname(model.readUserData().getNickname());
                         commentEntity.setUser(userBean);
                         if (toUserName != null) {
-                            CommentEntity.TouserBean touserBean = new CommentEntity.TouserBean();
+                            CommentBean.TouserBean touserBean = new CommentBean.TouserBean();
                             touserBean.setId(toUserId);
                             touserBean.setNickname(toUserName);
                             commentEntity.setTouser(touserBean);

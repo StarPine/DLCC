@@ -13,8 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.listener.OnItemClickListener;
-import com.fine.friendlycc.entity.AddressCityEntity;
-import com.fine.friendlycc.entity.AddressCityItemEntity;
+import com.fine.friendlycc.bean.AddressCityBean;
+import com.fine.friendlycc.bean.AddressCityItemBean;
 import com.fine.friendlycc.R;
 
 import java.util.List;
@@ -34,7 +34,7 @@ public class AddressDialog {
      * @param chooseCity
      * @return
      */
-    public static Dialog getCityDialogs(Context context, List<AddressCityEntity> configEntities, String ids, AddessCityChooseCity chooseCity) {
+    public static Dialog getCityDialogs(Context context, List<AddressCityBean> configEntities, String ids, AddessCityChooseCity chooseCity) {
         for (int i = 0; i < configEntities.size(); i++) {
             //控件多次调用后原来值已经发生变化。不是上次选中的默认去掉
             configEntities.get(i).setIsChoose(ids != null && configEntities.get(i).getCity().equals(ids));
@@ -81,7 +81,7 @@ public class AddressDialog {
      * @param chooseCity
      * @return
      */
-    public static Dialog getCityItemDialogs(Context context, List<AddressCityItemEntity> configEntities, String ids, AddessCityItemChooseCity chooseCity) {
+    public static Dialog getCityItemDialogs(Context context, List<AddressCityItemBean> configEntities, String ids, AddessCityItemChooseCity chooseCity) {
         for (int i = 0; i < configEntities.size(); i++) {
             //控件多次调用后原来值已经发生变化。不是上次选中的默认去掉
             configEntities.get(i).setIsChoose(ids != null && configEntities.get(i).getPostalCode().equals(ids));
@@ -120,10 +120,10 @@ public class AddressDialog {
     }
 
     public interface AddessCityChooseCity {
-        void clickListItem(Dialog dialog, AddressCityEntity address);
+        void clickListItem(Dialog dialog, AddressCityBean address);
     }
 
     public interface AddessCityItemChooseCity {
-        void clickListItem(Dialog dialog, AddressCityItemEntity address);
+        void clickListItem(Dialog dialog, AddressCityItemBean address);
     }
 }

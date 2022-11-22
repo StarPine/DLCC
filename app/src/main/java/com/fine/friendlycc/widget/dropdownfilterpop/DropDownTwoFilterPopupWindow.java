@@ -17,7 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.fine.friendlycc.entity.RadioTwoFilterItemEntity;
+import com.fine.friendlycc.bean.RadioTwoFilterItemBean;
 import com.fine.friendlycc.R;
 
 import java.util.ArrayList;
@@ -37,13 +37,13 @@ public class DropDownTwoFilterPopupWindow extends PopupWindow {
 
     private OnTwoFItemClickListener mListener;
 
-    private List<RadioTwoFilterItemEntity> mDatas = new ArrayList<>();
-    private List<RadioTwoFilterItemEntity.CityBean> mRightDatas = new ArrayList<>();
+    private List<RadioTwoFilterItemBean> mDatas = new ArrayList<>();
+    private List<RadioTwoFilterItemBean.CityBean> mRightDatas = new ArrayList<>();
 
     private int selectedPositionLeft = 0;
     public int selectedPositionRigth = 0;
 
-    public DropDownTwoFilterPopupWindow(Activity activity, List<RadioTwoFilterItemEntity> datas) {
+    public DropDownTwoFilterPopupWindow(Activity activity, List<RadioTwoFilterItemBean> datas) {
         super(activity);
         this.mActivity = activity;
         this.mDatas = datas;
@@ -51,14 +51,14 @@ public class DropDownTwoFilterPopupWindow extends PopupWindow {
         setPopupWindow();
     }
 
-    public void setDatas(List<RadioTwoFilterItemEntity> mDatas) {
+    public void setDatas(List<RadioTwoFilterItemBean> mDatas) {
         this.mDatas = mDatas;
         leftAdapter.notifyDataSetChanged();
     }
     
     
     
-    public void setRightDatas(List<RadioTwoFilterItemEntity.CityBean> mDatas) {
+    public void setRightDatas(List<RadioTwoFilterItemBean.CityBean> mDatas) {
         this.mRightDatas = mDatas;
         rightAdapter.notifyDataSetChanged();
     }
@@ -157,7 +157,7 @@ public class DropDownTwoFilterPopupWindow extends PopupWindow {
 
         @Override
         public void onBindViewHolder(@NonNull LeftRecyclerHolder holder, int position) {
-            RadioTwoFilterItemEntity twoFilterItemEntity = mDatas.get(position);
+            RadioTwoFilterItemBean twoFilterItemEntity = mDatas.get(position);
             holder.tvName.setText(twoFilterItemEntity.getName());
             holder.itemView.setTag(position);
             setTextColor(holder,position);

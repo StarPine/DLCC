@@ -9,7 +9,7 @@ import com.fine.friendlycc.R;
 import com.fine.friendlycc.data.AppRepository;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseDataResponse;
-import com.fine.friendlycc.entity.ExclusiveAccostInfoEntity;
+import com.fine.friendlycc.bean.ExclusiveAccostInfoBean;
 import com.fine.friendlycc.manager.ConfigManager;
 import com.fine.friendlycc.utils.FileUploadUtils;
 import com.fine.friendlycc.utils.ToastCenterUtils;
@@ -46,7 +46,7 @@ public class ExclusiveCallViewModel extends BaseViewModel<AppRepository> {
 
     public final int TEXT_TYPE = 1;
     public final int AUDIO_TYPE = 2;
-    public ObservableField<List<ExclusiveAccostInfoEntity>> accostInfoEntity = new ObservableField<>();
+    public ObservableField<List<ExclusiveAccostInfoBean>> accostInfoEntity = new ObservableField<>();
     public ObservableField<String> textContent = new ObservableField<>();
     public ObservableField<String> audioContent = new ObservableField<>();
     public ObservableField<String> audioSecond = new ObservableField<>();
@@ -107,13 +107,13 @@ public class ExclusiveCallViewModel extends BaseViewModel<AppRepository> {
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(this)
                 .doOnSubscribe(disposable -> showHUD())
-                .subscribe(new BaseObserver<BaseDataResponse<List<ExclusiveAccostInfoEntity>>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<List<ExclusiveAccostInfoBean>>>() {
                     @Override
-                    public void onSuccess(BaseDataResponse<List<ExclusiveAccostInfoEntity>> response) {
-                        List<ExclusiveAccostInfoEntity> data = response.getData();
+                    public void onSuccess(BaseDataResponse<List<ExclusiveAccostInfoBean>> response) {
+                        List<ExclusiveAccostInfoBean> data = response.getData();
 
                         if (data != null) {
-                            for (ExclusiveAccostInfoEntity accostInfo : data) {
+                            for (ExclusiveAccostInfoBean accostInfo : data) {
                                 int type = accostInfo.getType();
                                 if (type == TEXT_TYPE) {
                                     textContent.set(accostInfo.getContent());

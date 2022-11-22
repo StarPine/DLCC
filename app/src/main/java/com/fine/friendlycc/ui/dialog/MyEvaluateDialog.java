@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.blankj.utilcode.util.ConvertUtils;
-import com.fine.friendlycc.entity.EvaluateItemEntity;
+import com.fine.friendlycc.bean.EvaluateItemBean;
 import com.fine.friendlycc.ui.dialog.adapter.MyEvaluateAdapter;
 import com.fine.friendlycc.R;
 
@@ -32,7 +32,7 @@ public class MyEvaluateDialog extends BaseDialogFragment implements View.OnClick
     public static final int TYPE_USER_MALE = 2;
     public static final int TYPE_USER_FEMALE = 3;
     private final int type;
-    private final List<EvaluateItemEntity> evaluateList;
+    private final List<EvaluateItemBean> evaluateList;
     private TextView tvTitle;
     private RecyclerView recyclerView;
     private Button btnEvaluate;
@@ -41,7 +41,7 @@ public class MyEvaluateDialog extends BaseDialogFragment implements View.OnClick
     private MyEvaluateAdapter myEvaluateAdapter;
     private EvaluateDialogListener evaluateDialogListener;
 
-    public MyEvaluateDialog(int type, List<EvaluateItemEntity> evaluateList) {
+    public MyEvaluateDialog(int type, List<EvaluateItemBean> evaluateList) {
         this.type = type;
         this.evaluateList = evaluateList;
     }

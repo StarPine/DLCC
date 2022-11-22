@@ -12,7 +12,7 @@ import com.fine.friendlycc.data.source.http.observer.BaseListEmptyObserver;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseListDataResponse;
 import com.fine.friendlycc.data.source.http.response.BaseResponse;
-import com.fine.friendlycc.entity.AlbumPhotoEntity;
+import com.fine.friendlycc.bean.AlbumPhotoBean;
 import com.fine.friendlycc.event.MyPhotoAlbumChangeEvent;
 import com.fine.friendlycc.viewmodel.BaseViewModel;
 import com.fine.friendlycc.BR;
@@ -70,12 +70,12 @@ public class SetRedPackageVideoViewModel extends BaseViewModel<AppRepository> {
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(this)
-                .subscribe(new BaseListEmptyObserver<BaseListDataResponse<AlbumPhotoEntity>>(this) {
+                .subscribe(new BaseListEmptyObserver<BaseListDataResponse<AlbumPhotoBean>>(this) {
                     @Override
-                    public void onSuccess(BaseListDataResponse<AlbumPhotoEntity> response) {
+                    public void onSuccess(BaseListDataResponse<AlbumPhotoBean> response) {
                         super.onSuccess(response);
                         items.clear();
-                        for (AlbumPhotoEntity datum : response.getData().getData()) {
+                        for (AlbumPhotoBean datum : response.getData().getData()) {
                             items.add(new SetRedPackageVideoItemViewModel(SetRedPackageVideoViewModel.this, datum));
                         }
                     }
@@ -83,7 +83,7 @@ public class SetRedPackageVideoViewModel extends BaseViewModel<AppRepository> {
     }
 
     public void itemClick(int position) {
-        AlbumPhotoEntity entity = items.get(position).itemEntity.get();
+        AlbumPhotoBean entity = items.get(position).itemEntity.get();
         if (entity.getVerificationType() != 1) {
             return;
         }

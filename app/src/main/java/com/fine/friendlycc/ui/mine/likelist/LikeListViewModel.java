@@ -15,7 +15,7 @@ import com.fine.friendlycc.data.source.http.observer.BaseListEmptyObserver;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseListDataResponse;
 import com.fine.friendlycc.data.source.http.response.BaseResponse;
-import com.fine.friendlycc.entity.TraceEntity;
+import com.fine.friendlycc.bean.TraceBean;
 import com.fine.friendlycc.event.LikeChangeEvent;
 import com.fine.friendlycc.event.TraceEvent;
 import com.fine.friendlycc.ui.userdetail.detail.UserDetailFragment;
@@ -93,14 +93,14 @@ public class LikeListViewModel extends BaseViewModel<AppRepository> {
                 .doOnSubscribe(this)
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
-                .subscribe(new BaseListEmptyObserver<BaseListDataResponse<TraceEntity>>(this) {
+                .subscribe(new BaseListEmptyObserver<BaseListDataResponse<TraceBean>>(this) {
                     @Override
-                    public void onSuccess(BaseListDataResponse<TraceEntity> response) {
+                    public void onSuccess(BaseListDataResponse<TraceBean> response) {
                         super.onSuccess(response);
                         if (currentPage == 1) {
                             observableList.clear();
                         }
-                        for (TraceEntity itemEntity : response.getData().getData()) {
+                        for (TraceBean itemEntity : response.getData().getData()) {
                             LikeItemViewModel item = new LikeItemViewModel(LikeListViewModel.this, itemEntity, 0);
                             observableList.add(item);
                         }
@@ -117,7 +117,7 @@ public class LikeListViewModel extends BaseViewModel<AppRepository> {
     }
 
     public void delLike(int position) {
-        TraceEntity traceEntity = observableList.get(position).itemEntity.get();
+        TraceBean traceEntity = observableList.get(position).itemEntity.get();
         model.deleteCollect(traceEntity.getId())
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
@@ -147,7 +147,7 @@ public class LikeListViewModel extends BaseViewModel<AppRepository> {
     }
 
     public void addLike(int position) {
-        TraceEntity traceEntity = observableList.get(position).itemEntity.get();
+        TraceBean traceEntity = observableList.get(position).itemEntity.get();
         model.addCollect(traceEntity.getId())
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())

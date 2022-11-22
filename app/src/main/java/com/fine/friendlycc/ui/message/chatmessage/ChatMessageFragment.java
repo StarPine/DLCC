@@ -19,9 +19,9 @@ import com.fine.friendlycc.app.AppViewModelFactory;
 import com.fine.friendlycc.app.Injection;
 import com.fine.friendlycc.data.AppRepository;
 import com.fine.friendlycc.databinding.FragmentChatMessageBinding;
-import com.fine.friendlycc.entity.BrowseNumberEntity;
-import com.fine.friendlycc.entity.SystemConfigEntity;
-import com.fine.friendlycc.entity.TokenEntity;
+import com.fine.friendlycc.bean.BrowseNumberBean;
+import com.fine.friendlycc.bean.SystemConfigBean;
+import com.fine.friendlycc.bean.TokenBean;
 import com.fine.friendlycc.event.MessageCountChangeTagEvent;
 import com.fine.friendlycc.manager.ConfigManager;
 import com.fine.friendlycc.manager.ThirdPushTokenMgr;
@@ -75,7 +75,7 @@ public class ChatMessageFragment extends BaseFragment<FragmentChatMessageBinding
         super.initData();
         //会话列表展示最多消息数量
         AppRepository appRepository = ConfigManager.getInstance().getAppRepository();
-        SystemConfigEntity systemConfigEntity = appRepository.readSystemConfig();
+        SystemConfigBean systemConfigEntity = appRepository.readSystemConfig();
         if (systemConfigEntity != null) {
             Integer visibleCount = systemConfigEntity.getConversationAstrictCount();
             if (visibleCount != null) {
@@ -86,7 +86,7 @@ public class ChatMessageFragment extends BaseFragment<FragmentChatMessageBinding
             }
         }
         //腾讯IM登录
-        TokenEntity tokenEntity = Injection.provideDemoRepository().readLoginInfo();
+        TokenBean tokenEntity = Injection.provideDemoRepository().readLoginInfo();
         if (tokenEntity != null) {
             if(TUILogin.isUserLogined()){
                 initIM();
@@ -250,9 +250,9 @@ public class ChatMessageFragment extends BaseFragment<FragmentChatMessageBinding
                 }
             }
         });
-        viewModel.uc.loadBrowseNumber.observe(this, new Observer<BrowseNumberEntity>() {
+        viewModel.uc.loadBrowseNumber.observe(this, new Observer<BrowseNumberBean>() {
             @Override
-            public void onChanged(BrowseNumberEntity browseNumberEntity) {
+            public void onChanged(BrowseNumberBean browseNumberEntity) {
                 if (!ObjectUtils.isEmpty(browseNumberEntity)) {
                     if (ConfigManager.getInstance().isMale()) {
                         if (ObjectUtils.isEmpty(browseNumberEntity.getBrowseNumber()) || browseNumberEntity.getBrowseNumber().intValue() < 1) {

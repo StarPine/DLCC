@@ -19,7 +19,7 @@
         <import type="androidx.recyclerview.widget.LinearLayoutManager" />
         <variable
             name="viewModel"
-            type="com.fine.friendlycc.kl.viewmodel.VideoCallViewModel" />
+            type="com.fine.friendlycc.calling.viewmodel.VideoCallViewModel" />
 
     </data>
 

@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.blankj.utilcode.util.ColorUtils;
 import com.blankj.utilcode.util.ObjectUtils;
 import com.fine.friendlycc.R;
-import com.fine.friendlycc.entity.CoinPusherRoomTagInfoEntity;
+import com.fine.friendlycc.bean.CoinPusherRoomTagInfoBean;
 
 import java.util.List;
 
@@ -25,14 +25,14 @@ public class CoinPusherRoomTagAdapter extends RecyclerView.Adapter<RecyclerView.
 
 
 
-    private List<CoinPusherRoomTagInfoEntity.DeviceTag> itemData;
+    private List<CoinPusherRoomTagInfoBean.DeviceTag> itemData;
 
     private OnItemClickListener onItemClickListener;
 
     private int defaultItemSel = -1;
 
 
-    public void setItemData(List<CoinPusherRoomTagInfoEntity.DeviceTag> itemData) {
+    public void setItemData(List<CoinPusherRoomTagInfoBean.DeviceTag> itemData) {
         this.itemData = itemData;
         notifyDataSetChanged();
     }
@@ -48,7 +48,7 @@ public class CoinPusherRoomTagAdapter extends RecyclerView.Adapter<RecyclerView.
         }
     }
 
-    public CoinPusherRoomTagInfoEntity.DeviceTag getItemData(int position) {
+    public CoinPusherRoomTagInfoBean.DeviceTag getItemData(int position) {
         if(itemData != null && itemData.size() > position){
             return itemData.get(position);
         }
@@ -67,7 +67,7 @@ public class CoinPusherRoomTagAdapter extends RecyclerView.Adapter<RecyclerView.
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         ItemViewHolder itemViewHolder = ((ItemViewHolder) holder);
         if (!ObjectUtils.isEmpty(itemData)) {
-            CoinPusherRoomTagInfoEntity.DeviceTag itemEntity = itemData.get(position);
+            CoinPusherRoomTagInfoBean.DeviceTag itemEntity = itemData.get(position);
             if (!ObjectUtils.isEmpty(itemEntity)) {
                 itemViewHolder.tvName.setText(itemEntity.getName());
                 if(itemEntity.getIsRecommend()==1){

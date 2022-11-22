@@ -1,29 +1,25 @@
 package com.fine.friendlycc.ui.mine.setting;
 
 import android.app.Application;
-import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.ObservableBoolean;
 import androidx.databinding.ObservableField;
 
-import com.blankj.utilcode.util.ObjectUtils;
 import com.fine.friendlycc.R;
 import com.fine.friendlycc.app.AppConfig;
 import com.fine.friendlycc.data.AppRepository;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseDataResponse;
-import com.fine.friendlycc.entity.PrivacyEntity;
-import com.fine.friendlycc.entity.UserInfoEntity;
+import com.fine.friendlycc.bean.PrivacyBean;
+import com.fine.friendlycc.bean.UserInfoBean;
 import com.fine.friendlycc.event.IsAuthBindingEvent;
-import com.fine.friendlycc.manager.ConfigManager;
 import com.fine.friendlycc.manager.GlideCacheManager;
 import com.fine.friendlycc.ui.login.LoginFragment;
 import com.fine.friendlycc.ui.main.MainFragment;
 import com.fine.friendlycc.ui.message.pushsetting.PushSettingFragment;
 import com.fine.friendlycc.ui.mine.creenlock.ScreenLockFragment;
 import com.fine.friendlycc.ui.mine.setting.account.CommunityAccountFragment;
-import com.fine.friendlycc.ui.mine.webdetail.WebDetailFragment;
 import com.fine.friendlycc.viewmodel.BaseViewModel;
 
 import io.reactivex.disposables.Disposable;
@@ -33,7 +29,6 @@ import me.goldze.mvvmhabit.bus.RxBus;
 import me.goldze.mvvmhabit.bus.RxSubscriptions;
 import me.goldze.mvvmhabit.bus.event.SingleLiveEvent;
 import me.goldze.mvvmhabit.utils.RxUtils;
-import me.goldze.mvvmhabit.utils.StringUtils;
 import me.goldze.mvvmhabit.utils.ToastUtils;
 
 /**
@@ -41,7 +36,7 @@ import me.goldze.mvvmhabit.utils.ToastUtils;
  */
 public class SettingViewModel extends BaseViewModel<AppRepository> {
 
-    public ObservableField<PrivacyEntity> privacyEntity = new ObservableField<>(new PrivacyEntity());
+    public ObservableField<PrivacyBean> privacyEntity = new ObservableField<>(new PrivacyBean());
     public ObservableField<String> cacheSize = new ObservableField<>();
     public ObservableField<Integer> isAuth = new ObservableField<>(0);
     //服务条款
@@ -101,9 +96,9 @@ public class SettingViewModel extends BaseViewModel<AppRepository> {
                 .doOnSubscribe(this)
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
-                .subscribe(new BaseObserver<BaseDataResponse<PrivacyEntity>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<PrivacyBean>>() {
                     @Override
-                    public void onSuccess(BaseDataResponse<PrivacyEntity> response) {
+                    public void onSuccess(BaseDataResponse<PrivacyBean> response) {
                         privacyEntity.set(response.getData());
                     }
                 });
@@ -127,9 +122,9 @@ public class SettingViewModel extends BaseViewModel<AppRepository> {
                 .doOnSubscribe(disposable -> {
                     showHUD();
                 })
-                .subscribe(new BaseObserver<BaseDataResponse<UserInfoEntity>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<UserInfoBean>>() {
                     @Override
-                    public void onSuccess(BaseDataResponse<UserInfoEntity> response) {
+                    public void onSuccess(BaseDataResponse<UserInfoBean> response) {
                         isAuth.set(response.getData().getIsAuth());
                     }
 

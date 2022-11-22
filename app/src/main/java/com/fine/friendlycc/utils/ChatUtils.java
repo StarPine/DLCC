@@ -4,7 +4,7 @@ import static com.fine.friendlycc.ui.message.chatdetail.ChatDetailFragment.CHAT_
 
 import android.os.Bundle;
 
-import com.fine.friendlycc.app.AppContext;
+import com.fine.friendlycc.app.CCApplication;
 import com.fine.friendlycc.app.AppsFlyerEvent;
 import com.fine.friendlycc.ui.message.chatdetail.ChatDetailFragment;
 import com.fine.friendlycc.viewmodel.BaseViewModel;
@@ -53,7 +53,7 @@ public class ChatUtils {
         chatInfo.setType(V2TIMConversation.V2TIM_C2C);
         chatInfo.setId(serviceUserId);
         chatInfo.setChatName(name);
-        AppContext.instance().logEvent(AppsFlyerEvent.IM);
+        CCApplication.instance().logEvent(AppsFlyerEvent.IM);
         Bundle bundle = new Bundle();
         bundle.putSerializable(CHAT_INFO, chatInfo);
         bundle.putInt("toUserId", userId);
@@ -83,7 +83,7 @@ public class ChatUtils {
         chatInfo.setType(V2TIMConversation.V2TIM_C2C);
         chatInfo.setId(conversationInfo.getId());
         chatInfo.setChatName(conversationInfo.getTitle());
-        AppContext.instance().logEvent(AppsFlyerEvent.IM);
+        CCApplication.instance().logEvent(AppsFlyerEvent.IM);
         Bundle bundle = new Bundle();
         bundle.putSerializable(ChatDetailFragment.CHAT_INFO, chatInfo);
         bundle.putSerializable("toUserId", toUserId);

@@ -15,7 +15,7 @@ import com.fine.friendlycc.data.AppRepository;
 import com.fine.friendlycc.data.source.http.exception.RequestException;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseListDataResponse;
-import com.fine.friendlycc.entity.ParkItemEntity;
+import com.fine.friendlycc.bean.ParkItemBean;
 import com.fine.friendlycc.manager.LocationManager;
 import com.fine.friendlycc.widget.emptyview.EmptyState;
 import com.fine.friendlycc.R;
@@ -63,7 +63,7 @@ public class SearchViewModel extends BaseParkViewModel<AppRepository> {
     }
 
     @Override
-    public void AccostFirstSuccess(ParkItemEntity itemEntity, int position) {
+    public void AccostFirstSuccess(ParkItemBean itemEntity, int position) {
         if (itemEntity == null) {//提醒充值钻石
             sendAccostFirstError.call();
         } else {
@@ -100,10 +100,10 @@ public class SearchViewModel extends BaseParkViewModel<AppRepository> {
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(this)
                 .doOnSubscribe(disposable -> showHUD())
-                .subscribe(new BaseObserver<BaseListDataResponse<ParkItemEntity>>() {
+                .subscribe(new BaseObserver<BaseListDataResponse<ParkItemBean>>() {
 
                     @Override
-                    public void onSuccess(BaseListDataResponse<ParkItemEntity> response) {
+                    public void onSuccess(BaseListDataResponse<ParkItemBean> response) {
                         if (currentPage == 1) {
                             observableList.clear();
                             if (response.getData().getData().isEmpty()) {
@@ -116,7 +116,7 @@ public class SearchViewModel extends BaseParkViewModel<AppRepository> {
                             return;
                         }
                         int sex = model.readUserData().getSex();
-                        for (ParkItemEntity itemEntity : response.getData().getData()) {
+                        for (ParkItemBean itemEntity : response.getData().getData()) {
                             BaseParkItemViewModel item = new BaseParkItemViewModel(SearchViewModel.this, sex, itemEntity);
                             if (observableList.indexOf(item) == -1) {
                                 observableList.add(item);

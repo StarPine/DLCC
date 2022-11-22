@@ -18,7 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.blankj.utilcode.util.ColorUtils;
 import com.blankj.utilcode.util.StringUtils;
 import com.fine.friendlycc.R;
-import com.fine.friendlycc.entity.ExchangeIntegraEntity;
+import com.fine.friendlycc.bean.ExchangeIntegraBean;
 
 import java.util.List;
 
@@ -38,7 +38,7 @@ public class TaskFukubukuroDialog {
     * @return android.app.Dialog
     * @Date 2021/9/22
     */
-    public static Dialog exchangeIntegralDialog(Context context, boolean touchOutside,String memoney,String meCoinValue,int selected, List<ExchangeIntegraEntity> dataList,ExchangeIntegraleClick exchangeIntegraleClick) {
+    public static Dialog exchangeIntegralDialog(Context context, boolean touchOutside,String memoney,String meCoinValue,int selected, List<ExchangeIntegraBean> dataList,ExchangeIntegraleClick exchangeIntegraleClick) {
         Dialog dialog = new Dialog(context);
         dialog.setCanceledOnTouchOutside(touchOutside);
         //设置不能点击外部隐藏
@@ -99,7 +99,7 @@ public class TaskFukubukuroDialog {
         return dialog;
     }
     public interface ExchangeIntegraleClick {
-        void clickSelectItem(Dialog dialog, ExchangeIntegraEntity itemEntity);
+        void clickSelectItem(Dialog dialog, ExchangeIntegraBean itemEntity);
     }
 
 

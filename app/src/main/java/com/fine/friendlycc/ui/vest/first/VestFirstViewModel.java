@@ -11,7 +11,7 @@ import com.fine.friendlycc.R;
 import com.fine.friendlycc.data.AppRepository;
 import com.fine.friendlycc.data.source.http.observer.BaseListEmptyObserver;
 import com.fine.friendlycc.data.source.http.response.BaseListDataResponse;
-import com.fine.friendlycc.entity.ParkItemEntity;
+import com.fine.friendlycc.bean.ParkItemBean;
 import com.fine.friendlycc.utils.LogUtils;
 import com.fine.friendlycc.viewmodel.BaseRefreshViewModel;
 
@@ -52,12 +52,12 @@ public class VestFirstViewModel extends BaseRefreshViewModel<AppRepository> {
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(this)
-                .subscribe(new BaseListEmptyObserver<BaseListDataResponse<ParkItemEntity>>(this) {
+                .subscribe(new BaseListEmptyObserver<BaseListDataResponse<ParkItemBean>>(this) {
                     @Override
-                    public void onSuccess(BaseListDataResponse<ParkItemEntity> response) {
+                    public void onSuccess(BaseListDataResponse<ParkItemBean> response) {
                         super.onSuccess(response);
                         LogUtils.i("onSuccess: "+response.getData().getData().toString());
-                        for (ParkItemEntity itemEntity : response.getData().getData()) {
+                        for (ParkItemBean itemEntity : response.getData().getData()) {
                             observableList.add(new VestFirstTabItemViewModel(VestFirstViewModel.this,itemEntity));
                         }
                     }

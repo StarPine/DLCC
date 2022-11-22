@@ -13,7 +13,7 @@ import com.fine.friendlycc.data.source.http.observer.BaseListEmptyObserver;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseListDataResponse;
 import com.fine.friendlycc.data.source.http.response.BaseResponse;
-import com.fine.friendlycc.entity.BoradCastMessageEntity;
+import com.fine.friendlycc.bean.BoradCastMessageBean;
 import com.fine.friendlycc.viewmodel.BaseRefreshViewModel;
 
 import java.util.List;
@@ -49,15 +49,15 @@ public class BroadcastMessageViewModel extends BaseRefreshViewModel<AppRepositor
                 .doOnSubscribe(this)
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
-                .subscribe(new BaseListEmptyObserver<BaseListDataResponse<BoradCastMessageEntity>>(this) {
+                .subscribe(new BaseListEmptyObserver<BaseListDataResponse<BoradCastMessageBean>>(this) {
                     @Override
-                    public void onSuccess(BaseListDataResponse<BoradCastMessageEntity> response) {
+                    public void onSuccess(BaseListDataResponse<BoradCastMessageBean> response) {
                         super.onSuccess(response);
                         if (page == 1) {
                             observableList.clear();
                         }
-                        List<BoradCastMessageEntity> list = response.getData().getData();
-                        for (BoradCastMessageEntity entity : list) {
+                        List<BoradCastMessageBean> list = response.getData().getData();
+                        for (BoradCastMessageBean entity : list) {
                             BroadcastMessageItemViewModel item = new BroadcastMessageItemViewModel(BroadcastMessageViewModel.this, entity);
                             observableList.add(item);
                         }

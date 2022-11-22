@@ -27,7 +27,7 @@ import com.blankj.utilcode.util.StringUtils;
 import com.bumptech.glide.Glide;
 import com.fine.friendlycc.R;
 import com.fine.friendlycc.app.GlideEngine;
-import com.fine.friendlycc.entity.MallWithdrawTipsInfoEntity;
+import com.fine.friendlycc.bean.MallWithdrawTipsInfoBean;
 import com.fine.friendlycc.event.DailyAccostEvent;
 import com.fine.friendlycc.ui.mine.vipsubscribe.VipPrivilegeItemViewModel;
 import com.fine.friendlycc.utils.ImmersionBarUtils;
@@ -327,7 +327,7 @@ public class TraceDialog {
      * @return
      * @param data
      */
-    public Dialog getCrystalExchange(MallWithdrawTipsInfoEntity data) {
+    public Dialog getCrystalExchange(MallWithdrawTipsInfoBean data) {
         Dialog bottomDialog = new Dialog(context, R.style.BottomDialog);
         View contentView = LayoutInflater.from(context).inflate(R.layout.dialog_crystal_exchange, null);
         bottomDialog.setContentView(contentView);

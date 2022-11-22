@@ -19,8 +19,8 @@ import com.fine.friendlycc.R;
 import com.fine.friendlycc.app.AppConfig;
 import com.fine.friendlycc.data.AppRepository;
 import com.fine.friendlycc.databinding.DialogCoinpusherHelpBinding;
-import com.fine.friendlycc.entity.TokenEntity;
-import com.fine.friendlycc.entity.WebViewDataEntity;
+import com.fine.friendlycc.bean.TokenBean;
+import com.fine.friendlycc.bean.WebViewDataBean;
 import com.fine.friendlycc.manager.ConfigManager;
 import com.fine.friendlycc.ui.base.BaseDialog;
 import com.fine.friendlycc.utils.WebViewUtils;
@@ -108,14 +108,14 @@ public class CoinPusherHelpDialog extends BaseDialog {
         }
         @JavascriptInterface
         public String getCurrentUserInfo() {
-            WebViewDataEntity webViewDataEntity = new WebViewDataEntity();
+            WebViewDataBean webViewDataEntity = new WebViewDataBean();
             //当前配置
-            WebViewDataEntity.SettingInfo settingInfo = new WebViewDataEntity.SettingInfo();
+            WebViewDataBean.SettingInfo settingInfo = new WebViewDataBean.SettingInfo();
             settingInfo.setAppId(AppConfig.APPID);
             settingInfo.setCurrentLanguage(StringUtils.getString(R.string.playcc_local_language));
             AppRepository appRepository = ConfigManager.getInstance().getAppRepository();
             String userToken = null;
-            TokenEntity tokenEntity = appRepository.readLoginInfo();
+            TokenBean tokenEntity = appRepository.readLoginInfo();
             if(ObjectUtils.isNotEmpty(tokenEntity)){
                 userToken = tokenEntity.getToken();
             }

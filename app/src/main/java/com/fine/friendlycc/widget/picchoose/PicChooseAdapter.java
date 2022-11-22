@@ -25,7 +25,7 @@ public class PicChooseAdapter extends RecyclerView.Adapter {
     public final static int IMAGE = 1002;
 
     private final Context mContext;
-    private List<PicChooseItemEntity> dataList = new ArrayList<>();
+    private List<PicChooseItemBean> dataList = new ArrayList<>();
 
     private PicChooseAdapterListener picChooseAdapterListener = null;
 
@@ -41,14 +41,14 @@ public class PicChooseAdapter extends RecyclerView.Adapter {
         this.picChooseAdapterListener = picChooseAdapterListener;
     }
 
-    public void setData(List<PicChooseItemEntity> dataList) {
+    public void setData(List<PicChooseItemBean> dataList) {
         this.dataList = dataList;
         notifyDataSetChanged();
     }
 
     @Override
     public int getItemViewType(int position) {
-        return dataList.get(position).getType() == PicChooseItemEntity.TYPE_ADD ? ADD : IMAGE;
+        return dataList.get(position).getType() == PicChooseItemBean.TYPE_ADD ? ADD : IMAGE;
     }
 
     @NonNull

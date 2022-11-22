@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.blankj.utilcode.util.ObjectUtils;
 import com.fine.friendlycc.R;
 import com.fine.friendlycc.databinding.ItemCoinpusherRoomHistoryBinding;
-import com.fine.friendlycc.entity.CoinPusherRoomHistoryEntity;
+import com.fine.friendlycc.bean.CoinPusherRoomHistoryBean;
 
 import java.util.List;
 
@@ -21,9 +21,9 @@ import java.util.List;
  */
 public class CoinPusherGameHistoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
-    private List<CoinPusherRoomHistoryEntity> itemData;
+    private List<CoinPusherRoomHistoryBean> itemData;
 
-    public void setItemData(List<CoinPusherRoomHistoryEntity> itemData) {
+    public void setItemData(List<CoinPusherRoomHistoryBean> itemData) {
         this.itemData = itemData;
         notifyDataSetChanged();
     }
@@ -40,7 +40,7 @@ public class CoinPusherGameHistoryAdapter extends RecyclerView.Adapter<RecyclerV
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         ItemViewHolder itemViewHolder = ((ItemViewHolder) holder);
         if (!ObjectUtils.isEmpty(itemData)) {
-            CoinPusherRoomHistoryEntity itemEntity = itemData.get(position);
+            CoinPusherRoomHistoryBean itemEntity = itemData.get(position);
             if (!ObjectUtils.isEmpty(itemEntity)) {
                 itemViewHolder.binding.setItemEntity(itemEntity);
             }

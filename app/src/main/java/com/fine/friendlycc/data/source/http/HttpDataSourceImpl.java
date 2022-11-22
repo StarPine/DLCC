@@ -6,102 +6,102 @@ import com.fine.friendlycc.data.source.http.response.BaseDataResponse;
 import com.fine.friendlycc.data.source.http.response.BaseListDataResponse;
 import com.fine.friendlycc.data.source.http.response.BaseResponse;
 import com.fine.friendlycc.data.source.http.service.ApiService;
-import com.fine.friendlycc.entity.AccostEntity;
-import com.fine.friendlycc.entity.AdBannerEntity;
-import com.fine.friendlycc.entity.AdUserBannerEntity;
-import com.fine.friendlycc.entity.AddressEntity;
-import com.fine.friendlycc.entity.AlbumPhotoEntity;
-import com.fine.friendlycc.entity.AllConfigEntity;
-import com.fine.friendlycc.entity.ApiConfigManagerEntity;
-import com.fine.friendlycc.entity.ApplyMessageEntity;
-import com.fine.friendlycc.entity.BaseUserBeanEntity;
-import com.fine.friendlycc.entity.BlackEntity;
-import com.fine.friendlycc.entity.BonusGoodsEntity;
-import com.fine.friendlycc.entity.BoradCastMessageEntity;
-import com.fine.friendlycc.entity.BroadcastEntity;
-import com.fine.friendlycc.entity.BroadcastListEntity;
-import com.fine.friendlycc.entity.BrowseNumberEntity;
-import com.fine.friendlycc.entity.BubbleEntity;
-import com.fine.friendlycc.entity.CallingInfoEntity;
-import com.fine.friendlycc.entity.CallingInviteInfo;
-import com.fine.friendlycc.entity.CallingStatusEntity;
-import com.fine.friendlycc.entity.CashWalletEntity;
-import com.fine.friendlycc.entity.ChatDetailCoinEntity;
-import com.fine.friendlycc.entity.ChatRedPackageEntity;
-import com.fine.friendlycc.entity.CheckNicknameEntity;
-import com.fine.friendlycc.entity.ChooseAreaEntity;
-import com.fine.friendlycc.entity.CityAllEntity;
-import com.fine.friendlycc.entity.CoinExchangeBoxInfo;
-import com.fine.friendlycc.entity.CoinPusherBalanceDataEntity;
-import com.fine.friendlycc.entity.CoinPusherConverInfoEntity;
-import com.fine.friendlycc.entity.CoinPusherDataInfoEntity;
-import com.fine.friendlycc.entity.CoinPusherRoomHistoryEntity;
-import com.fine.friendlycc.entity.CoinPusherRoomInfoEntity;
-import com.fine.friendlycc.entity.CoinPusherRoomTagInfoEntity;
-import com.fine.friendlycc.entity.CoinWalletEntity;
-import com.fine.friendlycc.entity.CommentMessageEntity;
-import com.fine.friendlycc.entity.ConfigItemEntity;
-import com.fine.friendlycc.entity.CreateOrderEntity;
-import com.fine.friendlycc.entity.DayRewardInfoEntity;
-import com.fine.friendlycc.entity.DiamondInfoEntity;
-import com.fine.friendlycc.entity.EjectEntity;
-import com.fine.friendlycc.entity.EjectSignInEntity;
-import com.fine.friendlycc.entity.EvaluateEntity;
-import com.fine.friendlycc.entity.EvaluateMessageEntity;
-import com.fine.friendlycc.entity.ExchangeEntity;
-import com.fine.friendlycc.entity.ExchangeIntegraOuterEntity;
-import com.fine.friendlycc.entity.ExclusiveAccostInfoEntity;
-import com.fine.friendlycc.entity.FaceVerifyResultEntity;
-import com.fine.friendlycc.entity.GameCoinBuy;
-import com.fine.friendlycc.entity.GameCoinWalletEntity;
-import com.fine.friendlycc.entity.GamePhotoAlbumEntity;
-import com.fine.friendlycc.entity.GiftBagEntity;
-import com.fine.friendlycc.entity.GiveMessageEntity;
-import com.fine.friendlycc.entity.GoldDetailEntity;
-import com.fine.friendlycc.entity.GoodsEntity;
-import com.fine.friendlycc.entity.GoogleNearPoiBean;
-import com.fine.friendlycc.entity.GooglePoiBean;
-import com.fine.friendlycc.entity.IMTransUserEntity;
-import com.fine.friendlycc.entity.ImUserSigEntity;
-import com.fine.friendlycc.entity.IsChatEntity;
-import com.fine.friendlycc.entity.LevelApiEntity;
-import com.fine.friendlycc.entity.LevelPageInfoEntity;
-import com.fine.friendlycc.entity.MallWithdrawTipsInfoEntity;
-import com.fine.friendlycc.entity.MessageGroupEntity;
-import com.fine.friendlycc.entity.MessageRuleEntity;
-import com.fine.friendlycc.entity.NewsEntity;
-import com.fine.friendlycc.entity.NoteInfoEntity;
-import com.fine.friendlycc.entity.OccupationConfigItemEntity;
-import com.fine.friendlycc.entity.ParkItemEntity;
-import com.fine.friendlycc.entity.PhotoAlbumEntity;
-import com.fine.friendlycc.entity.PriceConfigEntity;
-import com.fine.friendlycc.entity.PrivacyEntity;
-import com.fine.friendlycc.entity.ProfitMessageEntity;
-import com.fine.friendlycc.entity.PushSettingEntity;
-import com.fine.friendlycc.entity.RadioTwoFilterItemEntity;
-import com.fine.friendlycc.entity.SignMessageEntity;
-import com.fine.friendlycc.entity.SoundEntity;
-import com.fine.friendlycc.entity.StatusEntity;
-import com.fine.friendlycc.entity.SwiftMessageEntity;
-import com.fine.friendlycc.entity.SystemMessageEntity;
-import com.fine.friendlycc.entity.TagEntity;
-import com.fine.friendlycc.entity.TaskAdEntity;
-import com.fine.friendlycc.entity.TaskConfigEntity;
-import com.fine.friendlycc.entity.TaskConfigItemEntity;
-import com.fine.friendlycc.entity.TaskRewardReceiveEntity;
-import com.fine.friendlycc.entity.TokenEntity;
-import com.fine.friendlycc.entity.TopicalListEntity;
-import com.fine.friendlycc.entity.TraceEntity;
-import com.fine.friendlycc.entity.UnReadMessageNumEntity;
-import com.fine.friendlycc.entity.UserCoinItemEntity;
-import com.fine.friendlycc.entity.UserConnMicStatusEntity;
-import com.fine.friendlycc.entity.UserDataEntity;
-import com.fine.friendlycc.entity.UserDetailEntity;
-import com.fine.friendlycc.entity.UserInfoEntity;
-import com.fine.friendlycc.entity.UserProfitPageEntity;
-import com.fine.friendlycc.entity.UserRemarkEntity;
-import com.fine.friendlycc.entity.VersionEntity;
-import com.fine.friendlycc.entity.VipInfoEntity;
+import com.fine.friendlycc.bean.AccostBean;
+import com.fine.friendlycc.bean.AdBannerBean;
+import com.fine.friendlycc.bean.AdUserBannerBean;
+import com.fine.friendlycc.bean.AddressBean;
+import com.fine.friendlycc.bean.AlbumPhotoBean;
+import com.fine.friendlycc.bean.AllConfigBean;
+import com.fine.friendlycc.bean.ApiConfigManagerBean;
+import com.fine.friendlycc.bean.ApplyMessageBean;
+import com.fine.friendlycc.bean.BaseUserBeanBean;
+import com.fine.friendlycc.bean.BlackBean;
+import com.fine.friendlycc.bean.BonusGoodsBean;
+import com.fine.friendlycc.bean.BoradCastMessageBean;
+import com.fine.friendlycc.bean.BroadcastBean;
+import com.fine.friendlycc.bean.BroadcastListBean;
+import com.fine.friendlycc.bean.BrowseNumberBean;
+import com.fine.friendlycc.bean.BubbleBean;
+import com.fine.friendlycc.bean.CallingInfoBean;
+import com.fine.friendlycc.bean.CallingInviteInfo;
+import com.fine.friendlycc.bean.CallingStatusBean;
+import com.fine.friendlycc.bean.CashWalletBean;
+import com.fine.friendlycc.bean.ChatDetailCoinBean;
+import com.fine.friendlycc.bean.ChatRedPackageBean;
+import com.fine.friendlycc.bean.CheckNicknameBean;
+import com.fine.friendlycc.bean.ChooseAreaBean;
+import com.fine.friendlycc.bean.CityAllBean;
+import com.fine.friendlycc.bean.CoinExchangeBoxInfo;
+import com.fine.friendlycc.bean.CoinPusherBalanceDataBean;
+import com.fine.friendlycc.bean.CoinPusherConverInfoBean;
+import com.fine.friendlycc.bean.CoinPusherDataInfoBean;
+import com.fine.friendlycc.bean.CoinPusherRoomHistoryBean;
+import com.fine.friendlycc.bean.CoinPusherRoomInfoBean;
+import com.fine.friendlycc.bean.CoinPusherRoomTagInfoBean;
+import com.fine.friendlycc.bean.CoinWalletBean;
+import com.fine.friendlycc.bean.CommentMessageBean;
+import com.fine.friendlycc.bean.ConfigItemBean;
+import com.fine.friendlycc.bean.CreateOrderBean;
+import com.fine.friendlycc.bean.DayRewardInfoBean;
+import com.fine.friendlycc.bean.DiamondInfoBean;
+import com.fine.friendlycc.bean.EjectBean;
+import com.fine.friendlycc.bean.EjectSignInBean;
+import com.fine.friendlycc.bean.EvaluateBean;
+import com.fine.friendlycc.bean.EvaluateMessageBean;
+import com.fine.friendlycc.bean.ExchangeBean;
+import com.fine.friendlycc.bean.ExchangeIntegraOuterBean;
+import com.fine.friendlycc.bean.ExclusiveAccostInfoBean;
+import com.fine.friendlycc.bean.FaceVerifyResultBean;
+import com.fine.friendlycc.bean.GameCoinBuy;
+import com.fine.friendlycc.bean.GameCoinWalletBean;
+import com.fine.friendlycc.bean.GamePhotoAlbumBean;
+import com.fine.friendlycc.bean.GiftBagBean;
+import com.fine.friendlycc.bean.GiveMessageBean;
+import com.fine.friendlycc.bean.GoldDetailBean;
+import com.fine.friendlycc.bean.GoodsBean;
+import com.fine.friendlycc.bean.GoogleNearPoiBean;
+import com.fine.friendlycc.bean.GooglePoiBean;
+import com.fine.friendlycc.bean.IMTransUserBean;
+import com.fine.friendlycc.bean.ImUserSigBean;
+import com.fine.friendlycc.bean.IsChatBean;
+import com.fine.friendlycc.bean.LevelApiBean;
+import com.fine.friendlycc.bean.LevelPageInfoBean;
+import com.fine.friendlycc.bean.MallWithdrawTipsInfoBean;
+import com.fine.friendlycc.bean.MessageGroupBean;
+import com.fine.friendlycc.bean.MessageRuleBean;
+import com.fine.friendlycc.bean.NewsBean;
+import com.fine.friendlycc.bean.NoteInfoBean;
+import com.fine.friendlycc.bean.OccupationConfigItemBean;
+import com.fine.friendlycc.bean.ParkItemBean;
+import com.fine.friendlycc.bean.PhotoAlbumBean;
+import com.fine.friendlycc.bean.PriceConfigBean;
+import com.fine.friendlycc.bean.PrivacyBean;
+import com.fine.friendlycc.bean.ProfitMessageBean;
+import com.fine.friendlycc.bean.PushSettingBean;
+import com.fine.friendlycc.bean.RadioTwoFilterItemBean;
+import com.fine.friendlycc.bean.SignMessageBean;
+import com.fine.friendlycc.bean.SoundBean;
+import com.fine.friendlycc.bean.StatusBean;
+import com.fine.friendlycc.bean.SwiftMessageBean;
+import com.fine.friendlycc.bean.SystemMessageBean;
+import com.fine.friendlycc.bean.TagBean;
+import com.fine.friendlycc.bean.TaskAdBean;
+import com.fine.friendlycc.bean.TaskConfigBean;
+import com.fine.friendlycc.bean.TaskConfigItemBean;
+import com.fine.friendlycc.bean.TaskRewardReceiveBean;
+import com.fine.friendlycc.bean.TokenBean;
+import com.fine.friendlycc.bean.TopicalListBean;
+import com.fine.friendlycc.bean.TraceBean;
+import com.fine.friendlycc.bean.UnReadMessageNumBean;
+import com.fine.friendlycc.bean.UserCoinItemBean;
+import com.fine.friendlycc.bean.UserConnMicStatusBean;
+import com.fine.friendlycc.bean.UserDataBean;
+import com.fine.friendlycc.bean.UserDetailBean;
+import com.fine.friendlycc.bean.UserInfoBean;
+import com.fine.friendlycc.bean.UserProfitPageBean;
+import com.fine.friendlycc.bean.UserRemarkBean;
+import com.fine.friendlycc.bean.VersionBean;
+import com.fine.friendlycc.bean.VipInfoBean;
 import com.fine.friendlycc.utils.ApiUitl;
 
 import java.util.HashMap;
@@ -139,7 +139,7 @@ public class HttpDataSourceImpl implements HttpDataSource {
     }
 
     @Override
-    public Observable<BaseDataResponse<IMTransUserEntity>> transUserIM(String IMUserId) {
+    public Observable<BaseDataResponse<IMTransUserBean>> transUserIM(String IMUserId) {
         return apiService.transUserIM(IMUserId);
     }
 
@@ -149,7 +149,7 @@ public class HttpDataSourceImpl implements HttpDataSource {
     }
 
     @Override
-    public Observable<BaseDataResponse<ChatDetailCoinEntity>> getTotalCoins(Integer dismissRoom) {
+    public Observable<BaseDataResponse<ChatDetailCoinBean>> getTotalCoins(Integer dismissRoom) {
         return apiService.getTotalCoins(dismissRoom);
     }
 
@@ -159,7 +159,7 @@ public class HttpDataSourceImpl implements HttpDataSource {
     }
 
     @Override
-    public Observable<BaseDataResponse<GamePhotoAlbumEntity>> getGamePhotoAlbumList(String serverId, String roleId) {
+    public Observable<BaseDataResponse<GamePhotoAlbumBean>> getGamePhotoAlbumList(String serverId, String roleId) {
         return apiService.getGamePhotoAlbumList(serverId, roleId);
     }
 
@@ -179,12 +179,12 @@ public class HttpDataSourceImpl implements HttpDataSource {
     }
 
     @Override
-    public Observable<BaseDataResponse<CreateOrderEntity>> createChatDetailOrder(Integer id, Integer type, Integer payType, Integer toUserId, Integer channel) {
+    public Observable<BaseDataResponse<CreateOrderBean>> createChatDetailOrder(Integer id, Integer type, Integer payType, Integer toUserId, Integer channel) {
         return apiService.createChatDetailOrder(id, type, payType, toUserId, channel);
     }
 
     @Override
-    public Observable<BaseDataResponse<PriceConfigEntity.Current>> getMaleRefundMsg(Integer toUserId, Integer type) {
+    public Observable<BaseDataResponse<PriceConfigBean.Current>> getMaleRefundMsg(Integer toUserId, Integer type) {
         return apiService.getMaleRefundMsg(toUserId, type);
     }
 
@@ -204,17 +204,17 @@ public class HttpDataSourceImpl implements HttpDataSource {
     }
 
     @Override
-    public Observable<BaseDataResponse<PriceConfigEntity>> getPriceConfig(Integer to_user_id) {
+    public Observable<BaseDataResponse<PriceConfigBean>> getPriceConfig(Integer to_user_id) {
         return apiService.getPriceConfig(to_user_id);
     }
 
     @Override
-    public Observable<BaseDataResponse<CallingInfoEntity.SayHiList>> getSayHiList(Integer page, Integer perPage) {
+    public Observable<BaseDataResponse<CallingInfoBean.SayHiList>> getSayHiList(Integer page, Integer perPage) {
         return apiService.getSayHiList(page, perPage);
     }
 
     @Override
-    public Observable<BaseDataResponse<CallingInfoEntity>> getCallingInfo(Integer roomId, Integer callingType, String fromUserId, String toUserId) {
+    public Observable<BaseDataResponse<CallingInfoBean>> getCallingInfo(Integer roomId, Integer callingType, String fromUserId, String toUserId) {
         return apiService.getCallingInfo(roomId, callingType, fromUserId, toUserId);
     }
 
@@ -248,37 +248,37 @@ public class HttpDataSourceImpl implements HttpDataSource {
     }
 
     @Override
-    public Observable<BaseDataResponse<GiftBagEntity>> getBagGiftInfo() {
+    public Observable<BaseDataResponse<GiftBagBean>> getBagGiftInfo() {
         return apiService.getBagGiftInfo();
     }
 
     @Override
-    public Observable<BaseDataResponse<ImUserSigEntity>> flushSign() {
+    public Observable<BaseDataResponse<ImUserSigBean>> flushSign() {
         return apiService.flushSign();
     }
 
     @Override
-    public Observable<BaseDataResponse<UserProfitPageEntity>> getUserProfitPageInfo(Long currentUserId, Integer page, Integer perPage) {
+    public Observable<BaseDataResponse<UserProfitPageBean>> getUserProfitPageInfo(Long currentUserId, Integer page, Integer perPage) {
         return apiService.getUserProfitPageInfo(currentUserId, page, perPage);
     }
 
     @Override
-    public Observable<BaseDataResponse<CoinWalletEntity>> getUserAccount() {
+    public Observable<BaseDataResponse<CoinWalletBean>> getUserAccount() {
         return apiService.getUserAccount();
     }
 
     @Override
-    public Observable<BaseDataResponse<GameCoinWalletEntity>> getUserAccountPageInfo() {
+    public Observable<BaseDataResponse<GameCoinWalletBean>> getUserAccountPageInfo() {
         return apiService.getUserAccountPageInfo();
     }
 
     @Override
-    public Observable<BaseDataResponse<BubbleEntity>> getBubbleEntity() {
+    public Observable<BaseDataResponse<BubbleBean>> getBubbleEntity() {
         return apiService.getBubbleEntity();
     }
 
     @Override
-    public Observable<BaseDataResponse<AccostEntity>> getAccostList(Integer page) {
+    public Observable<BaseDataResponse<AccostBean>> getAccostList(Integer page) {
         return apiService.getAccostList(page);
     }
 
@@ -293,12 +293,12 @@ public class HttpDataSourceImpl implements HttpDataSource {
     }
 
     @Override
-    public Observable<BaseDataResponse<BroadcastListEntity>> getBroadcastHome(Integer sex, Integer city_id, Integer game_id, Integer is_online, Integer is_collect, Integer type, Integer page) {
+    public Observable<BaseDataResponse<BroadcastListBean>> getBroadcastHome(Integer sex, Integer city_id, Integer game_id, Integer is_online, Integer is_collect, Integer type, Integer page) {
         return apiService.getBroadcastHome(sex, city_id, game_id, is_online, is_collect, type, page);
     }
 
     @Override
-    public Observable<BaseDataResponse<List<MessageRuleEntity>>> getMessageRule() {
+    public Observable<BaseDataResponse<List<MessageRuleBean>>> getMessageRule() {
         return apiService.getMessageRule();
     }
 
@@ -308,7 +308,7 @@ public class HttpDataSourceImpl implements HttpDataSource {
     }
 
     @Override
-    public Observable<BaseDataResponse<PhotoAlbumEntity>> getPhotoAlbum(Integer user_id) {
+    public Observable<BaseDataResponse<PhotoAlbumBean>> getPhotoAlbum(Integer user_id) {
         return apiService.getPhotoAlbum(user_id);
     }
 
@@ -323,7 +323,7 @@ public class HttpDataSourceImpl implements HttpDataSource {
     }
 
     @Override
-    public Observable<BaseListDataResponse<SoundEntity>> getUserSound(Integer page) {
+    public Observable<BaseListDataResponse<SoundBean>> getUserSound(Integer page) {
         return apiService.getUserSound(page);
     }
 
@@ -333,12 +333,12 @@ public class HttpDataSourceImpl implements HttpDataSource {
     }
 
     @Override
-    public Observable<BaseListDataResponse<BroadcastEntity>> broadcastAll(Integer page) {
+    public Observable<BaseListDataResponse<BroadcastBean>> broadcastAll(Integer page) {
         return apiService.broadcastAll(page);
     }
 
     @Override
-    public Observable<BaseDataResponse<List<GoodsEntity>>> pointsGoodList() {
+    public Observable<BaseDataResponse<List<GoodsBean>>> pointsGoodList() {
         return apiService.pointsGoodList("points");
     }
 
@@ -353,7 +353,7 @@ public class HttpDataSourceImpl implements HttpDataSource {
     }
 
     @Override
-    public Observable<BaseListDataResponse<TaskAdEntity>> rechargeVipList() {
+    public Observable<BaseListDataResponse<TaskAdBean>> rechargeVipList() {
         return apiService.rechargeVipList();
     }
 
@@ -364,22 +364,22 @@ public class HttpDataSourceImpl implements HttpDataSource {
 
 
     @Override
-    public Observable<BaseDataResponse<BrowseNumberEntity>> newsBrowseNumber() {
+    public Observable<BaseDataResponse<BrowseNumberBean>> newsBrowseNumber() {
         return apiService.newsBrowseNumber();
     }
 
     @Override
-    public Observable<BaseListDataResponse<TraceEntity>> toBrowse(Integer page) {
+    public Observable<BaseListDataResponse<TraceBean>> toBrowse(Integer page) {
         return apiService.toBrowse(page);
     }
 
     @Override
-    public Observable<BaseListDataResponse<TraceEntity>> collectFans(Integer page) {
+    public Observable<BaseListDataResponse<TraceBean>> collectFans(Integer page) {
         return apiService.collectFans(page);
     }
 
     @Override
-    public Observable<BaseListDataResponse<TraceEntity>> collect(Integer page) {
+    public Observable<BaseListDataResponse<TraceBean>> collect(Integer page) {
         return apiService.collect(page);
     }
 
@@ -394,7 +394,7 @@ public class HttpDataSourceImpl implements HttpDataSource {
     }
 
     @Override
-    public Observable<BaseDataResponse<CreateOrderEntity>> createOrderUserDetail(Integer id, Integer type, Integer payType, Integer number) {
+    public Observable<BaseDataResponse<CreateOrderBean>> createOrderUserDetail(Integer id, Integer type, Integer payType, Integer number) {
         return apiService.createOrderUserDetail(id, type, payType, number);
     }
 
@@ -404,7 +404,7 @@ public class HttpDataSourceImpl implements HttpDataSource {
     }
 
     @Override
-    public Observable<BaseDataResponse<TagEntity>> tag(String to_user_id) {
+    public Observable<BaseDataResponse<TagBean>> tag(String to_user_id) {
         return apiService.tag(to_user_id);
     }
 
@@ -419,7 +419,7 @@ public class HttpDataSourceImpl implements HttpDataSource {
     }
 
     @Override
-    public Observable<BaseDataResponse<UserDataEntity>> regUser(String nickname, String avatar, String birthday, Integer sex, String channel) {
+    public Observable<BaseDataResponse<UserDataBean>> regUser(String nickname, String avatar, String birthday, Integer sex, String channel) {
         return apiService.regUser(nickname, avatar, birthday, sex, channel);
     }
 
@@ -429,7 +429,7 @@ public class HttpDataSourceImpl implements HttpDataSource {
     }
 
     @Override
-    public Observable<BaseDataResponse<SwiftMessageEntity>> getSwiftMessage(Integer page) {
+    public Observable<BaseDataResponse<SwiftMessageBean>> getSwiftMessage(Integer page) {
         return apiService.getSwiftMessage(page);
     }
 
@@ -439,7 +439,7 @@ public class HttpDataSourceImpl implements HttpDataSource {
     }
 
     @Override
-    public Observable<BaseDataResponse<UserDataEntity>> v2Login(String phone, String code, String device_code, String region_code) {
+    public Observable<BaseDataResponse<UserDataBean>> v2Login(String phone, String code, String device_code, String region_code) {
         return apiService.v2Login(phone, code, device_code,region_code);
     }
 
@@ -449,7 +449,7 @@ public class HttpDataSourceImpl implements HttpDataSource {
     }
 
     @Override
-    public Observable<BaseDataResponse<VersionEntity>> detectionVersion(String client) {
+    public Observable<BaseDataResponse<VersionBean>> detectionVersion(String client) {
         return apiService.detectionVersion(client);
     }
 
@@ -477,7 +477,7 @@ public class HttpDataSourceImpl implements HttpDataSource {
      * @return
      */
     @Override
-    public Observable<BaseDataResponse<TokenEntity>> register(String phone, String password, String code) {
+    public Observable<BaseDataResponse<TokenBean>> register(String phone, String password, String code) {
         return apiService.registerPost(phone, password, code);
     }
 
@@ -499,12 +499,12 @@ public class HttpDataSourceImpl implements HttpDataSource {
      * @return
      */
     @Override
-    public Observable<BaseDataResponse<TokenEntity>> login(String phone, String password) {
+    public Observable<BaseDataResponse<TokenBean>> login(String phone, String password) {
         return apiService.loginPost(phone, password);
     }
 
     @Override
-    public Observable<BaseDataResponse<UserDataEntity>> authLoginPost(String id, String type) {
+    public Observable<BaseDataResponse<UserDataBean>> authLoginPost(String id, String type) {
         return apiService.authLoginPost(id, type);
     }
 
@@ -521,7 +521,7 @@ public class HttpDataSourceImpl implements HttpDataSource {
      * @return
      */
     @Override
-    public Observable<BaseListDataResponse<ParkItemEntity>> homeList(
+    public Observable<BaseListDataResponse<ParkItemBean>> homeList(
             Integer cityId,
             Integer type,
             Integer isOnline,
@@ -534,7 +534,7 @@ public class HttpDataSourceImpl implements HttpDataSource {
     }
 
     @Override
-    public Observable<BaseDataResponse<UserInfoEntity>> getUserInfo() {
+    public Observable<BaseDataResponse<UserInfoBean>> getUserInfo() {
         return apiService.getUserInfo(1);
     }
 
@@ -544,7 +544,7 @@ public class HttpDataSourceImpl implements HttpDataSource {
      * @return
      */
     @Override
-    public Observable<BaseDataResponse<UserDataEntity>> getUserData() {
+    public Observable<BaseDataResponse<UserDataBean>> getUserData() {
         return apiService.getUserData(1);
     }
 
@@ -554,7 +554,7 @@ public class HttpDataSourceImpl implements HttpDataSource {
      * @return
      */
     @Override
-    public Observable<BaseDataResponse<List<RadioTwoFilterItemEntity>>> getGameCity() {
+    public Observable<BaseDataResponse<List<RadioTwoFilterItemBean>>> getGameCity() {
         return apiService.getGameCity("gameCity");
     }
 
@@ -565,7 +565,7 @@ public class HttpDataSourceImpl implements HttpDataSource {
     }
 
     @Override
-    public Observable<BaseDataResponse<UserRemarkEntity>> getUserRemark(Integer userId) {
+    public Observable<BaseDataResponse<UserRemarkBean>> getUserRemark(Integer userId) {
         return apiService.getUserRemark(userId);
     }
 
@@ -581,7 +581,7 @@ public class HttpDataSourceImpl implements HttpDataSource {
     }
 
     @Override
-    public Observable<BaseDataResponse<UserDetailEntity>> userMain(Integer id, Double longitude, Double latitude) {
+    public Observable<BaseDataResponse<UserDetailBean>> userMain(Integer id, Double longitude, Double latitude) {
         return apiService.userMain(id, longitude, latitude);
     }
 
@@ -596,7 +596,7 @@ public class HttpDataSourceImpl implements HttpDataSource {
     }
 
     @Override
-    public Observable<BaseListDataResponse<BlackEntity>> getBlackList(Integer page) {
+    public Observable<BaseListDataResponse<BlackBean>> getBlackList(Integer page) {
         return apiService.getBlackList(page);
     }
 
@@ -616,7 +616,7 @@ public class HttpDataSourceImpl implements HttpDataSource {
     }
 
     @Override
-    public Observable<BaseListDataResponse<ParkItemEntity>> getCollectList(int page, Double latitude, Double longitude) {
+    public Observable<BaseListDataResponse<ParkItemBean>> getCollectList(int page, Double latitude, Double longitude) {
         return apiService.getCollectList(page, latitude, longitude);
     }
 
@@ -636,7 +636,7 @@ public class HttpDataSourceImpl implements HttpDataSource {
     }
 
     @Override
-    public Observable<BaseDataResponse<NewsEntity>> newsDetail(Integer id) {
+    public Observable<BaseDataResponse<NewsBean>> newsDetail(Integer id) {
         return apiService.newsDetail(id);
     }
 
@@ -646,18 +646,18 @@ public class HttpDataSourceImpl implements HttpDataSource {
     }
 
     @Override
-    public Observable<BaseListDataResponse<BroadcastEntity>> broadcast(Integer type, Integer theme_id, Integer is_online, Integer city_id, Integer sex, Integer page) {
+    public Observable<BaseListDataResponse<BroadcastBean>> broadcast(Integer type, Integer theme_id, Integer is_online, Integer city_id, Integer sex, Integer page) {
         return apiService.broadcast(type, theme_id, is_online, city_id, sex, page);
     }
 
     @Override
-    public Observable<BaseListDataResponse<NewsEntity>> getNewsList(Integer user_id, Integer page) {
+    public Observable<BaseListDataResponse<NewsBean>> getNewsList(Integer user_id, Integer page) {
         return apiService.getNewsList(user_id, page);
     }
 
 
     @Override
-    public Observable<BaseListDataResponse<TopicalListEntity>> getTopicalList(Integer userId, Integer page) {
+    public Observable<BaseListDataResponse<TopicalListBean>> getTopicalList(Integer userId, Integer page) {
         return apiService.getTopicalList(userId, page);
     }
 
@@ -677,7 +677,7 @@ public class HttpDataSourceImpl implements HttpDataSource {
     }
 
     @Override
-    public Observable<BaseDataResponse<StatusEntity>> evaluateStatus(Integer userId) {
+    public Observable<BaseDataResponse<StatusBean>> evaluateStatus(Integer userId) {
         return apiService.evaluateStatus(userId);
     }
 
@@ -687,7 +687,7 @@ public class HttpDataSourceImpl implements HttpDataSource {
     }
 
     @Override
-    public Observable<BaseDataResponse<List<EvaluateEntity>>> evaluate(Integer userId) {
+    public Observable<BaseDataResponse<List<EvaluateBean>>> evaluate(Integer userId) {
         return apiService.evaluate(userId);
     }
 
@@ -697,7 +697,7 @@ public class HttpDataSourceImpl implements HttpDataSource {
     }
 
     @Override
-    public Observable<BaseDataResponse<IsChatEntity>> isChat(Integer userId) {
+    public Observable<BaseDataResponse<IsChatBean>> isChat(Integer userId) {
         return apiService.isChat(userId);
     }
 
@@ -717,52 +717,52 @@ public class HttpDataSourceImpl implements HttpDataSource {
     }
 
     @Override
-    public Observable<BaseDataResponse<AllConfigEntity>> getAllConfig() {
+    public Observable<BaseDataResponse<AllConfigBean>> getAllConfig() {
         return apiService.getAllConfig();
     }
 
     @Override
-    public Observable<BaseDataResponse<List<ConfigItemEntity>>> getProgramTimeConfig() {
+    public Observable<BaseDataResponse<List<ConfigItemBean>>> getProgramTimeConfig() {
         return apiService.getSystemConfig("program_time");
     }
 
     @Override
-    public Observable<BaseDataResponse<List<ConfigItemEntity>>> getHeightConfig() {
+    public Observable<BaseDataResponse<List<ConfigItemBean>>> getHeightConfig() {
         return apiService.getSystemConfig("height");
     }
 
     @Override
-    public Observable<BaseDataResponse<List<ConfigItemEntity>>> getWeightConfig() {
+    public Observable<BaseDataResponse<List<ConfigItemBean>>> getWeightConfig() {
         return apiService.getSystemConfig("weight");
     }
 
     @Override
-    public Observable<BaseDataResponse<List<ConfigItemEntity>>> getReportReasonConfig() {
+    public Observable<BaseDataResponse<List<ConfigItemBean>>> getReportReasonConfig() {
         return apiService.getSystemConfig("report_reason");
     }
 
     @Override
-    public Observable<BaseDataResponse<List<ConfigItemEntity>>> getEvaluateConfig() {
+    public Observable<BaseDataResponse<List<ConfigItemBean>>> getEvaluateConfig() {
         return apiService.getSystemConfig("evaluate");
     }
 
     @Override
-    public Observable<BaseDataResponse<List<ConfigItemEntity>>> getHopeObjectConfig() {
+    public Observable<BaseDataResponse<List<ConfigItemBean>>> getHopeObjectConfig() {
         return apiService.getSystemConfig("hope_object");
     }
 
     @Override
-    public Observable<BaseDataResponse<List<OccupationConfigItemEntity>>> getOccupationConfig() {
+    public Observable<BaseDataResponse<List<OccupationConfigItemBean>>> getOccupationConfig() {
         return apiService.getOccupationConfig("occupation");
     }
 
     @Override
-    public Observable<BaseDataResponse<List<ConfigItemEntity>>> getThemeConfig() {
+    public Observable<BaseDataResponse<List<ConfigItemBean>>> getThemeConfig() {
         return apiService.getThemeConfig("theme");
     }
 
     @Override
-    public Observable<BaseDataResponse<List<ConfigItemEntity>>> getCityConfig() {
+    public Observable<BaseDataResponse<List<ConfigItemBean>>> getCityConfig() {
         return apiService.getSystemConfig("city");
     }
 
@@ -772,12 +772,12 @@ public class HttpDataSourceImpl implements HttpDataSource {
     }
 
     @Override
-    public Observable<BaseDataResponse<DiamondInfoEntity>> goods() {
+    public Observable<BaseDataResponse<DiamondInfoBean>> goods() {
         return apiService.goods("recharge");
     }
 
     @Override
-    public Observable<BaseDataResponse<VipInfoEntity>> vipPackages() {
+    public Observable<BaseDataResponse<VipInfoBean>> vipPackages() {
         return apiService.vipPackages("vip");
     }
 
@@ -797,7 +797,7 @@ public class HttpDataSourceImpl implements HttpDataSource {
     }
 
     @Override
-    public Observable<BaseListDataResponse<AlbumPhotoEntity>> albumImage(Integer userId, Integer type) {
+    public Observable<BaseListDataResponse<AlbumPhotoBean>> albumImage(Integer userId, Integer type) {
         return apiService.albumImage(userId, type);
     }
 
@@ -807,7 +807,7 @@ public class HttpDataSourceImpl implements HttpDataSource {
     }
 
     @Override
-    public Observable<BaseDataResponse<List<AlbumPhotoEntity>>> delAlbumImage(Integer id) {
+    public Observable<BaseDataResponse<List<AlbumPhotoBean>>> delAlbumImage(Integer id) {
         return apiService.delAlbumImage(id);
     }
 
@@ -827,22 +827,22 @@ public class HttpDataSourceImpl implements HttpDataSource {
     }
 
     @Override
-    public Observable<BaseDataResponse<FaceVerifyResultEntity>> faceVerifyResult(String bizId) {
+    public Observable<BaseDataResponse<FaceVerifyResultBean>> faceVerifyResult(String bizId) {
         return apiService.faceVerifyResult(bizId);
     }
 
     @Override
-    public Observable<BaseDataResponse<StatusEntity>> faceIsCertification() {
+    public Observable<BaseDataResponse<StatusBean>> faceIsCertification() {
         return apiService.faceIsCertification();
     }
 
     @Override
-    public Observable<BaseDataResponse<PrivacyEntity>> getPrivacy() {
+    public Observable<BaseDataResponse<PrivacyBean>> getPrivacy() {
         return apiService.getPrivacy();
     }
 
     @Override
-    public Observable<BaseResponse> setPrivacy(PrivacyEntity privacyEntity) {
+    public Observable<BaseResponse> setPrivacy(PrivacyBean privacyEntity) {
         return apiService.setPrivacy(
                 privacyEntity.getHome() == null ? null : privacyEntity.getHome() ? 1 : 0,
                 privacyEntity.getDistance() == null ? null : privacyEntity.getDistance() ? 1 : 0,
@@ -865,7 +865,7 @@ public class HttpDataSourceImpl implements HttpDataSource {
     }
 
     @Override
-    public Observable<BaseDataResponse<StatusEntity>> applyGoddessResult() {
+    public Observable<BaseDataResponse<StatusBean>> applyGoddessResult() {
         return apiService.applyGoddessResult();
     }
 
@@ -880,12 +880,12 @@ public class HttpDataSourceImpl implements HttpDataSource {
     }
 
     @Override
-    public Observable<BaseDataResponse<CashWalletEntity>> cashWallet() {
+    public Observable<BaseDataResponse<CashWalletBean>> cashWallet() {
         return apiService.cashWallet();
     }
 
     @Override
-    public Observable<BaseDataResponse<CoinWalletEntity>> coinWallet() {
+    public Observable<BaseDataResponse<CoinWalletBean>> coinWallet() {
         return apiService.coinWallet();
     }
 
@@ -905,37 +905,37 @@ public class HttpDataSourceImpl implements HttpDataSource {
     }
 
     @Override
-    public Observable<BaseListDataResponse<ApplyMessageEntity>> getMessageApply(Integer page) {
+    public Observable<BaseListDataResponse<ApplyMessageBean>> getMessageApply(Integer page) {
         return apiService.getMessageApply(page);
     }
 
     @Override
-    public Observable<BaseListDataResponse<BoradCastMessageEntity>> getMessageBoradcast(Integer page) {
+    public Observable<BaseListDataResponse<BoradCastMessageBean>> getMessageBoradcast(Integer page) {
         return apiService.getMessageBoradcast(page);
     }
 
     @Override
-    public Observable<BaseListDataResponse<CommentMessageEntity>> getMessageComment(Integer page) {
+    public Observable<BaseListDataResponse<CommentMessageBean>> getMessageComment(Integer page) {
         return apiService.getMessageComment(page);
     }
 
     @Override
-    public Observable<BaseListDataResponse<EvaluateMessageEntity>> getMessageEvaluate(Integer page) {
+    public Observable<BaseListDataResponse<EvaluateMessageBean>> getMessageEvaluate(Integer page) {
         return apiService.getMessageEvaluate(page);
     }
 
     @Override
-    public Observable<BaseListDataResponse<GiveMessageEntity>> getMessageGive(Integer page) {
+    public Observable<BaseListDataResponse<GiveMessageBean>> getMessageGive(Integer page) {
         return apiService.getMessageGive(page);
     }
 
     @Override
-    public Observable<BaseListDataResponse<SignMessageEntity>> getMessageSign(Integer page) {
+    public Observable<BaseListDataResponse<SignMessageBean>> getMessageSign(Integer page) {
         return apiService.getMessageSign(page);
     }
 
     @Override
-    public Observable<BaseListDataResponse<ProfitMessageEntity>> getMessageProfit(Integer page) {
+    public Observable<BaseListDataResponse<ProfitMessageBean>> getMessageProfit(Integer page) {
         return apiService.getMessageProfit(page);
     }
 
@@ -945,7 +945,7 @@ public class HttpDataSourceImpl implements HttpDataSource {
     }
 
     @Override
-    public Observable<BaseListDataResponse<SystemMessageEntity>> getMessageSystem(Integer page) {
+    public Observable<BaseListDataResponse<SystemMessageBean>> getMessageSystem(Integer page) {
         return apiService.getMessageSystem(page);
     }
 
@@ -972,17 +972,17 @@ public class HttpDataSourceImpl implements HttpDataSource {
     }
 
     @Override
-    public Observable<BaseDataResponse<List<MessageGroupEntity>>> getMessageList() {
+    public Observable<BaseDataResponse<List<MessageGroupBean>>> getMessageList() {
         return apiService.getMessageList();
     }
 
     @Override
-    public Observable<BaseDataResponse<PushSettingEntity>> getPushSetting() {
+    public Observable<BaseDataResponse<PushSettingBean>> getPushSetting() {
         return apiService.getPushSetting();
     }
 
     @Override
-    public Observable<BaseResponse> savePushSetting(PushSettingEntity pushSettingEntity) {
+    public Observable<BaseResponse> savePushSetting(PushSettingBean pushSettingEntity) {
         return apiService.savePushSetting(
                 pushSettingEntity.getChat() == null ? null : pushSettingEntity.getChat() ? 1 : 0,
                 pushSettingEntity.getSign() == null ? null : pushSettingEntity.getSign() ? 1 : 0,
@@ -1012,7 +1012,7 @@ public class HttpDataSourceImpl implements HttpDataSource {
     }
 
     @Override
-    public Observable<BaseDataResponse<CreateOrderEntity>> createOrder(Integer id, Integer type, Integer payType, Integer toUserId) {
+    public Observable<BaseDataResponse<CreateOrderBean>> createOrder(Integer id, Integer type, Integer payType, Integer toUserId) {
         return apiService.createOrder(id, type, payType, toUserId);
     }
 
@@ -1022,17 +1022,17 @@ public class HttpDataSourceImpl implements HttpDataSource {
     }
 
     @Override
-    public Observable<BaseListDataResponse<BaseUserBeanEntity>> getNewsGiveList(Integer id, Integer page) {
+    public Observable<BaseListDataResponse<BaseUserBeanBean>> getNewsGiveList(Integer id, Integer page) {
         return apiService.getNewsGiveList(id, page);
     }
 
     @Override
-    public Observable<BaseListDataResponse<BaseUserBeanEntity>> getTopicalGiveList(Integer id, Integer page) {
+    public Observable<BaseListDataResponse<BaseUserBeanBean>> getTopicalGiveList(Integer id, Integer page) {
         return apiService.getTopicalGiveList(id, page);
     }
 
     @Override
-    public Observable<BaseDataResponse<TopicalListEntity>> topicalDetail(Integer id) {
+    public Observable<BaseDataResponse<TopicalListBean>> topicalDetail(Integer id) {
         return apiService.topicalDetail(id);
     }
 
@@ -1047,12 +1047,12 @@ public class HttpDataSourceImpl implements HttpDataSource {
     }
 
     @Override
-    public Observable<BaseDataResponse<ChatRedPackageEntity>> sendCoinRedPackage(Integer userId, Integer money, String desc) {
+    public Observable<BaseDataResponse<ChatRedPackageBean>> sendCoinRedPackage(Integer userId, Integer money, String desc) {
         return apiService.sendCoinRedPackage(userId, money, desc);
     }
 
     @Override
-    public Observable<BaseDataResponse<ChatRedPackageEntity>> getCoinRedPackage(int id) {
+    public Observable<BaseDataResponse<ChatRedPackageBean>> getCoinRedPackage(int id) {
         return apiService.getCoinRedPackage(id);
     }
 
@@ -1062,12 +1062,12 @@ public class HttpDataSourceImpl implements HttpDataSource {
     }
 
     @Override
-    public Observable<BaseListDataResponse<UserCoinItemEntity>> userCoinEarnings(int page) {
+    public Observable<BaseListDataResponse<UserCoinItemBean>> userCoinEarnings(int page) {
         return apiService.userCoinEarnings(page);
     }
 
     @Override
-    public Observable<BaseDataResponse<UserConnMicStatusEntity>> userIsConnMic(int userId) {
+    public Observable<BaseDataResponse<UserConnMicStatusBean>> userIsConnMic(int userId) {
         return apiService.userIsConnMic(userId);
     }
 
@@ -1092,12 +1092,12 @@ public class HttpDataSourceImpl implements HttpDataSource {
     }
 
     @Override
-    public Observable<BaseDataResponse<StatusEntity>> publishCheck(int type) {
+    public Observable<BaseDataResponse<StatusBean>> publishCheck(int type) {
         return apiService.publishCheck(type);
     }
 
     @Override
-    public Observable<BaseDataResponse<UnReadMessageNumEntity>> getUnreadMessageNum() {
+    public Observable<BaseDataResponse<UnReadMessageNumBean>> getUnreadMessageNum() {
         return apiService.getUnreadMessageNum();
     }
 
@@ -1119,7 +1119,7 @@ public class HttpDataSourceImpl implements HttpDataSource {
     }
 
     @Override
-    public Observable<BaseDataResponse<ApiConfigManagerEntity>> initApiConfig() {
+    public Observable<BaseDataResponse<ApiConfigManagerBean>> initApiConfig() {
         return apiService.initApiConfig();
     }
 
@@ -1134,12 +1134,12 @@ public class HttpDataSourceImpl implements HttpDataSource {
     }
 
     @Override
-    public Observable<BaseDataResponse<ExchangeIntegraOuterEntity>> getExchangeIntegraListData() {
+    public Observable<BaseDataResponse<ExchangeIntegraOuterBean>> getExchangeIntegraListData() {
         return apiService.getExchangeIntegraListData();
     }
 
     @Override
-    public Observable<BaseListDataResponse<TaskAdEntity>> taskAdList() {
+    public Observable<BaseListDataResponse<TaskAdBean>> taskAdList() {
         return apiService.taskAdList();
     }
 
@@ -1154,12 +1154,12 @@ public class HttpDataSourceImpl implements HttpDataSource {
     }
 
     @Override
-    public Observable<BaseDataResponse<AddressEntity>> getAddress(Integer id) {
+    public Observable<BaseDataResponse<AddressBean>> getAddress(Integer id) {
         return apiService.getAddress(id);
     }
 
     @Override
-    public Observable<BaseListDataResponse<AddressEntity>> getAddressList(Integer page) {
+    public Observable<BaseListDataResponse<AddressBean>> getAddressList(Integer page) {
         return apiService.getAddressList(page);
     }
 
@@ -1174,7 +1174,7 @@ public class HttpDataSourceImpl implements HttpDataSource {
     }
 
     @Override
-    public Observable<BaseListDataResponse<ExchangeEntity>> qryExchange(Integer page, Integer status) {
+    public Observable<BaseListDataResponse<ExchangeBean>> qryExchange(Integer page, Integer status) {
         return apiService.qryExchange(page, status);
     }
 
@@ -1184,12 +1184,12 @@ public class HttpDataSourceImpl implements HttpDataSource {
     }
 
     @Override
-    public Observable<BaseListDataResponse<BonusGoodsEntity>> getBonusGoods(Integer page) {
+    public Observable<BaseListDataResponse<BonusGoodsBean>> getBonusGoods(Integer page) {
         return apiService.getBonusGoods(page);
     }
 
     @Override
-    public Observable<BaseListDataResponse<GoldDetailEntity>> getGoldList(Integer page) {
+    public Observable<BaseListDataResponse<GoldDetailBean>> getGoldList(Integer page) {
         return apiService.getGoldList(page);
     }
 
@@ -1199,27 +1199,27 @@ public class HttpDataSourceImpl implements HttpDataSource {
     }
 
     @Override
-    public Observable<BaseDataResponse<TaskRewardReceiveEntity>> TaskRewardReceive(String key) {
+    public Observable<BaseDataResponse<TaskRewardReceiveBean>> TaskRewardReceive(String key) {
         return apiService.TaskRewardReceive(key);
     }
 
     @Override
-    public Observable<BaseDataResponse<List<TaskConfigItemEntity>>> getTaskListConfig() {
+    public Observable<BaseDataResponse<List<TaskConfigItemBean>>> getTaskListConfig() {
         return apiService.getTaskListConfig();
     }
 
     @Override
-    public Observable<BaseDataResponse<TaskConfigEntity>> getTaskConfig() {
+    public Observable<BaseDataResponse<TaskConfigBean>> getTaskConfig() {
         return apiService.getTaskConfig();
     }
 
     @Override
-    public Observable<BaseDataResponse<EjectSignInEntity>> reportEjectSignIn() {
+    public Observable<BaseDataResponse<EjectSignInBean>> reportEjectSignIn() {
         return apiService.reportEjectSignIn();
     }
 
     @Override
-    public Observable<BaseDataResponse<EjectEntity>> getEjectconfig() {
+    public Observable<BaseDataResponse<EjectBean>> getEjectconfig() {
         return apiService.getEjectconfig();
     }
 
@@ -1229,12 +1229,12 @@ public class HttpDataSourceImpl implements HttpDataSource {
     }
 
     @Override
-    public Observable<BaseDataResponse<LevelApiEntity>> adjustLevelPrice(RequestBody requestBody) {
+    public Observable<BaseDataResponse<LevelApiBean>> adjustLevelPrice(RequestBody requestBody) {
         return apiService.adjustLevelPrice(requestBody);
     }
 
     @Override
-    public Observable<BaseDataResponse<LevelPageInfoEntity>> getUserLevelPageInfo() {
+    public Observable<BaseDataResponse<LevelPageInfoBean>> getUserLevelPageInfo() {
         return apiService.getUserLevelPageInfo();
     }
 
@@ -1249,27 +1249,27 @@ public class HttpDataSourceImpl implements HttpDataSource {
     }
 
     @Override
-    public Observable<BaseDataResponse<UserDataEntity>> loginEmail(String email, String code, Integer type) {
+    public Observable<BaseDataResponse<UserDataBean>> loginEmail(String email, String code, Integer type) {
         return apiService.loginEmail(email, code, type);
     }
 
     @Override
-    public Observable<BaseDataResponse<CallingStatusEntity>> getCallingStatus(Integer roomId) {
+    public Observable<BaseDataResponse<CallingStatusBean>> getCallingStatus(Integer roomId) {
         return apiService.getCallingStatus(roomId);
     }
 
     @Override
-    public Observable<BaseDataResponse<CallingStatusEntity>> getRoomStatus(Integer roomId) {
+    public Observable<BaseDataResponse<CallingStatusBean>> getRoomStatus(Integer roomId) {
         return apiService.getRoomStatus(roomId);
     }
 
     @Override
-    public Observable<BaseDataResponse<AdBannerEntity>> getMainAdBannerList(int position) {
+    public Observable<BaseDataResponse<AdBannerBean>> getMainAdBannerList(int position) {
         return apiService.getMainAdBannerList(position);
     }
 
     @Override
-    public Observable<BaseDataResponse<MallWithdrawTipsInfoEntity>> getMallWithdrawTipsInfo(Integer channel) {
+    public Observable<BaseDataResponse<MallWithdrawTipsInfoBean>> getMallWithdrawTipsInfo(Integer channel) {
         return apiService.getMallWithdrawTipsInfo(channel);
     }
 
@@ -1279,27 +1279,27 @@ public class HttpDataSourceImpl implements HttpDataSource {
     }
 
     @Override
-    public Observable<BaseDataResponse<CityAllEntity>> getCityConfigAll() {
+    public Observable<BaseDataResponse<CityAllBean>> getCityConfigAll() {
         return apiService.getCityConfigAll();
     }
 
     @Override
-    public Observable<BaseDataResponse<CheckNicknameEntity>> checkNickname(String nickname) {
+    public Observable<BaseDataResponse<CheckNicknameBean>> checkNickname(String nickname) {
         return apiService.checkNickname(nickname);
     }
 
     @Override
-    public Observable<BaseDataResponse<ChooseAreaEntity>> getChooseAreaList() {
+    public Observable<BaseDataResponse<ChooseAreaBean>> getChooseAreaList() {
         return apiService.getChooseAreaList();
     }
 
     @Override
-    public Observable<BaseDataResponse<AdBannerEntity>> getRadioAdBannerList(int position) {
+    public Observable<BaseDataResponse<AdBannerBean>> getRadioAdBannerList(int position) {
         return apiService.getRadioAdBannerList(position);
     }
 
     @Override
-    public Observable<BaseDataResponse<AdUserBannerEntity>> getUserAdList(Integer position) {
+    public Observable<BaseDataResponse<AdUserBannerBean>> getUserAdList(Integer position) {
         return apiService.getUserAdList(position);
     }
 
@@ -1309,12 +1309,12 @@ public class HttpDataSourceImpl implements HttpDataSource {
     }
 
     @Override
-    public Observable<BaseDataResponse<NoteInfoEntity>> getNoteText(int user_id) {
+    public Observable<BaseDataResponse<NoteInfoBean>> getNoteText(int user_id) {
         return apiService.getNoteText(user_id);
     }
 
     @Override
-    public Observable<BaseDataResponse<CoinPusherBalanceDataEntity>> qryUserGameBalance() {
+    public Observable<BaseDataResponse<CoinPusherBalanceDataBean>> qryUserGameBalance() {
         return apiService.qryUserGameBalance();
     }
 
@@ -1339,12 +1339,12 @@ public class HttpDataSourceImpl implements HttpDataSource {
     }
 
     @Override
-    public Observable<BaseDataResponse<List<CoinPusherRoomHistoryEntity>>> qryCoinPusherRoomHistory(Integer roomId) {
+    public Observable<BaseDataResponse<List<CoinPusherRoomHistoryBean>>> qryCoinPusherRoomHistory(Integer roomId) {
         return apiService.qryCoinPusherRoomHistory(roomId);
     }
 
     @Override
-    public Observable<BaseDataResponse<CoinPusherDataInfoEntity>> playingCoinPusherStart(Integer roomId) {
+    public Observable<BaseDataResponse<CoinPusherDataInfoBean>> playingCoinPusherStart(Integer roomId) {
         return apiService.playingCoinPusherStart(roomId);
     }
 
@@ -1359,32 +1359,32 @@ public class HttpDataSourceImpl implements HttpDataSource {
     }
 
     @Override
-    public Observable<BaseDataResponse<CoinPusherBalanceDataEntity>> playingCoinPusherThrowCoin(Integer roomId) {
+    public Observable<BaseDataResponse<CoinPusherBalanceDataBean>> playingCoinPusherThrowCoin(Integer roomId) {
         return apiService.playingCoinPusherThrowCoin(roomId);
     }
 
     @Override
-    public Observable<BaseDataResponse<CoinPusherBalanceDataEntity>> convertCoinPusherGoldsCoin(Integer id, Integer type) {
+    public Observable<BaseDataResponse<CoinPusherBalanceDataBean>> convertCoinPusherGoldsCoin(Integer id, Integer type) {
         return apiService.convertCoinPusherGoldsCoin(id, type);
     }
 
     @Override
-    public Observable<BaseDataResponse<CoinPusherBalanceDataEntity>> convertCoinPusherDiamonds(Integer id) {
+    public Observable<BaseDataResponse<CoinPusherBalanceDataBean>> convertCoinPusherDiamonds(Integer id) {
         return apiService.convertCoinPusherDiamonds(id);
     }
 
     @Override
-    public Observable<BaseDataResponse<CoinPusherRoomTagInfoEntity>> qryCoinPusherRoomTagList() {
+    public Observable<BaseDataResponse<CoinPusherRoomTagInfoBean>> qryCoinPusherRoomTagList() {
         return apiService.qryCoinPusherRoomTagList();
     }
 
     @Override
-    public Observable<BaseDataResponse<CoinPusherRoomInfoEntity>> qryCoinPusherRoomList(Integer tagId) {
+    public Observable<BaseDataResponse<CoinPusherRoomInfoBean>> qryCoinPusherRoomList(Integer tagId) {
         return apiService.qryCoinPusherRoomList(tagId);
     }
 
     @Override
-    public Observable<BaseDataResponse<CoinPusherConverInfoEntity>> qryCoinPusherConverList() {
+    public Observable<BaseDataResponse<CoinPusherConverInfoBean>> qryCoinPusherConverList() {
         return apiService.qryCoinPusherConverList();
     }
 
@@ -1399,7 +1399,7 @@ public class HttpDataSourceImpl implements HttpDataSource {
     }
 
     @Override
-    public Observable<BaseDataResponse<List<ExclusiveAccostInfoEntity>>> getExclusiveAccost() {
+    public Observable<BaseDataResponse<List<ExclusiveAccostInfoBean>>> getExclusiveAccost() {
         return apiService.getExclusiveAccost();
     }
 
@@ -1414,7 +1414,7 @@ public class HttpDataSourceImpl implements HttpDataSource {
     }
 
     @Override
-    public Observable<BaseDataResponse<DayRewardInfoEntity>> getDayReward() {
+    public Observable<BaseDataResponse<DayRewardInfoBean>> getDayReward() {
         return apiService.getDayReward();
     }
 
@@ -1424,7 +1424,7 @@ public class HttpDataSourceImpl implements HttpDataSource {
     }
 
     @Override
-    public Observable<BaseDataResponse<DayRewardInfoEntity>> getRegisterReward() {
+    public Observable<BaseDataResponse<DayRewardInfoBean>> getRegisterReward() {
         return apiService.getRegisterReward();
     }
 }

@@ -3,7 +3,7 @@ package com.fine.friendlycc.ui.message.profitmessage;
 import androidx.annotation.NonNull;
 import androidx.databinding.ObservableField;
 
-import com.fine.friendlycc.entity.ProfitMessageEntity;
+import com.fine.friendlycc.bean.ProfitMessageBean;
 import com.fine.friendlycc.utils.ExceptionReportUtils;
 
 import me.goldze.mvvmhabit.base.ItemViewModel;
@@ -14,7 +14,7 @@ import me.goldze.mvvmhabit.binding.command.BindingCommand;
  */
 public class ProfitMessageItemViewModel extends ItemViewModel<ProfitMessageViewModel> {
 
-    public ObservableField<ProfitMessageEntity> itemEntity = new ObservableField<>();
+    public ObservableField<ProfitMessageBean> itemEntity = new ObservableField<>();
     public BindingCommand itemClick = new BindingCommand(() -> {
         try {
             int position = viewModel.observableList.indexOf(ProfitMessageItemViewModel.this);
@@ -32,7 +32,7 @@ public class ProfitMessageItemViewModel extends ItemViewModel<ProfitMessageViewM
         }
     });
 
-    public ProfitMessageItemViewModel(@NonNull ProfitMessageViewModel viewModel, ProfitMessageEntity messageEntity) {
+    public ProfitMessageItemViewModel(@NonNull ProfitMessageViewModel viewModel, ProfitMessageBean messageEntity) {
         super(viewModel);
         this.itemEntity.set(messageEntity);
     }

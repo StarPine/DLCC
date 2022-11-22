@@ -10,7 +10,7 @@ import android.util.Log;
 
 import androidx.core.app.ActivityCompat;
 
-import com.fine.friendlycc.app.AppContext;
+import com.fine.friendlycc.app.CCApplication;
 import com.fine.friendlycc.event.LocationChangeEvent;
 import com.fine.friendlycc.utils.ExceptionReportUtils;
 import com.google.android.gms.common.ConnectionResult;
@@ -39,7 +39,7 @@ public class LocationManager {
     private Double lng;
 
     private LocationManager() {
-        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(AppContext.instance().getApplicationContext());
+        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(CCApplication.instance().getApplicationContext());
     }
 
     public static LocationManager getInstance() {
@@ -72,15 +72,15 @@ public class LocationManager {
 
     public void getLastLocation(LocationListener locationListener) {
         try {
-            int i = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(AppContext.instance().getApplicationContext());
+            int i = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(CCApplication.instance().getApplicationContext());
             if (i == ConnectionResult.SERVICE_INVALID) {
                 if (locationListener != null) {
                     locationListener.onLocationFailed();
                 }
                 return;
             }
-            if (ActivityCompat.checkSelfPermission(AppContext.instance().getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED ||
-                    ActivityCompat.checkSelfPermission(AppContext.instance().getApplicationContext(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.checkSelfPermission(CCApplication.instance().getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED ||
+                    ActivityCompat.checkSelfPermission(CCApplication.instance().getApplicationContext(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
                 mFusedLocationClient.getLastLocation().addOnCompleteListener(task -> {
                     try {
                         Location location = task.getResult();
@@ -114,8 +114,8 @@ public class LocationManager {
 
     public void startLocation(LocationListener locationListener) {
         try {
-            if (ActivityCompat.checkSelfPermission(AppContext.instance().getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED ||
-                    ActivityCompat.checkSelfPermission(AppContext.instance().getApplicationContext(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.checkSelfPermission(CCApplication.instance().getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED ||
+                    ActivityCompat.checkSelfPermission(CCApplication.instance().getApplicationContext(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
                 LocationRequest mLocationRequest = new LocationRequest();
                 mLocationRequest.setNumUpdates(1);
                 //mLocationRequest.setInterval(10*1000); // two minute interval
@@ -168,7 +168,7 @@ public class LocationManager {
             @Override
             public void run() {
                 try {
-                    Geocoder geocoder = new Geocoder(AppContext.instance().getApplicationContext(), Locale.TAIWAN);
+                    Geocoder geocoder = new Geocoder(CCApplication.instance().getApplicationContext(), Locale.TAIWAN);
                     List<Address> addresses = geocoder.getFromLocation(lat, lng, 1);
                     if (addresses.size() > 0) {
                         Address address = addresses.get(0);
@@ -193,12 +193,12 @@ public class LocationManager {
 
     public void initloadLocation(LocationListener locationListener) {
         try {
-            int i = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(AppContext.instance().getApplicationContext());
+            int i = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(CCApplication.instance().getApplicationContext());
             if (i == ConnectionResult.SERVICE_INVALID) {
                 return;
             }
-            if (ActivityCompat.checkSelfPermission(AppContext.instance().getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED ||
-                    ActivityCompat.checkSelfPermission(AppContext.instance().getApplicationContext(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.checkSelfPermission(CCApplication.instance().getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED ||
+                    ActivityCompat.checkSelfPermission(CCApplication.instance().getApplicationContext(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
                 mFusedLocationClient.getLastLocation().addOnCompleteListener(task -> {
                     Location location = task.getResult();
                     if (location != null) {

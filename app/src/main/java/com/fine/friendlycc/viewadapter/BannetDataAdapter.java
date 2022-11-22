@@ -9,8 +9,8 @@ import androidx.databinding.BindingAdapter;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.fine.friendlycc.R;
-import com.fine.friendlycc.entity.AdItemEntity;
-import com.fine.friendlycc.entity.TaskAdEntity;
+import com.fine.friendlycc.bean.AdItemBean;
+import com.fine.friendlycc.bean.TaskAdBean;
 import com.fine.friendlycc.utils.StringUtil;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
@@ -32,7 +32,7 @@ import me.goldze.mvvmhabit.binding.command.BindingCommand;
 public class BannetDataAdapter {
 
     @BindingAdapter(value = {"BannerTaskAdData", "onBannerClickCommand"}, requireAll = false)
-    public static void setTaskAdImageUri(Banner banner, List<TaskAdEntity> adItemEntities, BindingCommand<Integer> OnBannerClickCommand) {
+    public static void setTaskAdImageUri(Banner banner, List<TaskAdBean> adItemEntities, BindingCommand<Integer> OnBannerClickCommand) {
         try {
             //设置banner样式
             banner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR);
@@ -65,7 +65,7 @@ public class BannetDataAdapter {
     }
 
     @BindingAdapter(value = {"BannerAdData", "onBannerClickCommand"}, requireAll = false)
-    public static void setAdImageUri(Banner banner, List<AdItemEntity> adItemEntities, BindingCommand<Integer> OnBannerClickCommand) {
+    public static void setAdImageUri(Banner banner, List<AdItemBean> adItemEntities, BindingCommand<Integer> OnBannerClickCommand) {
         if(adItemEntities==null || adItemEntities.isEmpty()){
             return;
         }
@@ -102,7 +102,7 @@ public class BannetDataAdapter {
 
         @Override
         public void displayImage(Context context, Object path, ImageView imageView) {
-            TaskAdEntity taskAdEntity = (TaskAdEntity) path;
+            TaskAdBean taskAdEntity = (TaskAdBean) path;
             Glide.with(context)
                     .load(StringUtil.getFullImageUrl(taskAdEntity.getImg()))
                     .apply(new RequestOptions()
@@ -116,7 +116,7 @@ public class BannetDataAdapter {
 
         @Override
         public void displayImage(Context context, Object path, ImageView imageView) {
-            AdItemEntity adItemEntity = (AdItemEntity) path;
+            AdItemBean adItemEntity = (AdItemBean) path;
             Glide.with(context)
                     .load(StringUtil.getFullImageUrl(adItemEntity.getImg()))
                     .apply(new RequestOptions()
@@ -127,7 +127,7 @@ public class BannetDataAdapter {
     }
 
     @BindingAdapter(value = {"BannerTaskAdData", "onBannerClickCommand"}, requireAll = false)
-    public static void setVIPSubscribeImageUri(Banner banner, List<TaskAdEntity> adItemEntities, BindingCommand<Integer> OnBannerClickCommand) {
+    public static void setVIPSubscribeImageUri(Banner banner, List<TaskAdBean> adItemEntities, BindingCommand<Integer> OnBannerClickCommand) {
         try {
             //设置banner样式
             banner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR);
@@ -163,7 +163,7 @@ public class BannetDataAdapter {
 
         @Override
         public void displayImage(Context context, Object path, ImageView imageView) {
-            TaskAdEntity taskAdEntity = (TaskAdEntity) path;
+            TaskAdBean taskAdEntity = (TaskAdBean) path;
             Glide.with(context)
                     .load(StringUtil.getFullImageUrl(taskAdEntity.getImg()))
                     .apply(new RequestOptions()

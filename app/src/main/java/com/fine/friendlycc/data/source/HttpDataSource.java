@@ -3,102 +3,102 @@ package com.fine.friendlycc.data.source;
 import com.fine.friendlycc.data.source.http.response.BaseDataResponse;
 import com.fine.friendlycc.data.source.http.response.BaseListDataResponse;
 import com.fine.friendlycc.data.source.http.response.BaseResponse;
-import com.fine.friendlycc.entity.AccostEntity;
-import com.fine.friendlycc.entity.AdBannerEntity;
-import com.fine.friendlycc.entity.AdUserBannerEntity;
-import com.fine.friendlycc.entity.AddressEntity;
-import com.fine.friendlycc.entity.AlbumPhotoEntity;
-import com.fine.friendlycc.entity.AllConfigEntity;
-import com.fine.friendlycc.entity.ApiConfigManagerEntity;
-import com.fine.friendlycc.entity.ApplyMessageEntity;
-import com.fine.friendlycc.entity.BaseUserBeanEntity;
-import com.fine.friendlycc.entity.BlackEntity;
-import com.fine.friendlycc.entity.BonusGoodsEntity;
-import com.fine.friendlycc.entity.BoradCastMessageEntity;
-import com.fine.friendlycc.entity.BroadcastEntity;
-import com.fine.friendlycc.entity.BroadcastListEntity;
-import com.fine.friendlycc.entity.BrowseNumberEntity;
-import com.fine.friendlycc.entity.BubbleEntity;
-import com.fine.friendlycc.entity.CallingInfoEntity;
-import com.fine.friendlycc.entity.CallingInviteInfo;
-import com.fine.friendlycc.entity.CallingStatusEntity;
-import com.fine.friendlycc.entity.CashWalletEntity;
-import com.fine.friendlycc.entity.ChatDetailCoinEntity;
-import com.fine.friendlycc.entity.ChatRedPackageEntity;
-import com.fine.friendlycc.entity.CheckNicknameEntity;
-import com.fine.friendlycc.entity.ChooseAreaEntity;
-import com.fine.friendlycc.entity.CityAllEntity;
-import com.fine.friendlycc.entity.CoinExchangeBoxInfo;
-import com.fine.friendlycc.entity.CoinPusherBalanceDataEntity;
-import com.fine.friendlycc.entity.CoinPusherConverInfoEntity;
-import com.fine.friendlycc.entity.CoinPusherDataInfoEntity;
-import com.fine.friendlycc.entity.CoinPusherRoomHistoryEntity;
-import com.fine.friendlycc.entity.CoinPusherRoomInfoEntity;
-import com.fine.friendlycc.entity.CoinPusherRoomTagInfoEntity;
-import com.fine.friendlycc.entity.CoinWalletEntity;
-import com.fine.friendlycc.entity.CommentMessageEntity;
-import com.fine.friendlycc.entity.ConfigItemEntity;
-import com.fine.friendlycc.entity.CreateOrderEntity;
-import com.fine.friendlycc.entity.DayRewardInfoEntity;
-import com.fine.friendlycc.entity.DiamondInfoEntity;
-import com.fine.friendlycc.entity.EjectEntity;
-import com.fine.friendlycc.entity.EjectSignInEntity;
-import com.fine.friendlycc.entity.EvaluateEntity;
-import com.fine.friendlycc.entity.EvaluateMessageEntity;
-import com.fine.friendlycc.entity.ExchangeEntity;
-import com.fine.friendlycc.entity.ExchangeIntegraOuterEntity;
-import com.fine.friendlycc.entity.ExclusiveAccostInfoEntity;
-import com.fine.friendlycc.entity.FaceVerifyResultEntity;
-import com.fine.friendlycc.entity.GameCoinBuy;
-import com.fine.friendlycc.entity.GameCoinWalletEntity;
-import com.fine.friendlycc.entity.GamePhotoAlbumEntity;
-import com.fine.friendlycc.entity.GiftBagEntity;
-import com.fine.friendlycc.entity.GiveMessageEntity;
-import com.fine.friendlycc.entity.GoldDetailEntity;
-import com.fine.friendlycc.entity.GoodsEntity;
-import com.fine.friendlycc.entity.GoogleNearPoiBean;
-import com.fine.friendlycc.entity.GooglePoiBean;
-import com.fine.friendlycc.entity.IMTransUserEntity;
-import com.fine.friendlycc.entity.ImUserSigEntity;
-import com.fine.friendlycc.entity.IsChatEntity;
-import com.fine.friendlycc.entity.LevelApiEntity;
-import com.fine.friendlycc.entity.LevelPageInfoEntity;
-import com.fine.friendlycc.entity.MallWithdrawTipsInfoEntity;
-import com.fine.friendlycc.entity.MessageGroupEntity;
-import com.fine.friendlycc.entity.MessageRuleEntity;
-import com.fine.friendlycc.entity.NewsEntity;
-import com.fine.friendlycc.entity.NoteInfoEntity;
-import com.fine.friendlycc.entity.OccupationConfigItemEntity;
-import com.fine.friendlycc.entity.ParkItemEntity;
-import com.fine.friendlycc.entity.PhotoAlbumEntity;
-import com.fine.friendlycc.entity.PriceConfigEntity;
-import com.fine.friendlycc.entity.PrivacyEntity;
-import com.fine.friendlycc.entity.ProfitMessageEntity;
-import com.fine.friendlycc.entity.PushSettingEntity;
-import com.fine.friendlycc.entity.RadioTwoFilterItemEntity;
-import com.fine.friendlycc.entity.SignMessageEntity;
-import com.fine.friendlycc.entity.SoundEntity;
-import com.fine.friendlycc.entity.StatusEntity;
-import com.fine.friendlycc.entity.SwiftMessageEntity;
-import com.fine.friendlycc.entity.SystemMessageEntity;
-import com.fine.friendlycc.entity.TagEntity;
-import com.fine.friendlycc.entity.TaskAdEntity;
-import com.fine.friendlycc.entity.TaskConfigEntity;
-import com.fine.friendlycc.entity.TaskConfigItemEntity;
-import com.fine.friendlycc.entity.TaskRewardReceiveEntity;
-import com.fine.friendlycc.entity.TokenEntity;
-import com.fine.friendlycc.entity.TopicalListEntity;
-import com.fine.friendlycc.entity.TraceEntity;
-import com.fine.friendlycc.entity.UnReadMessageNumEntity;
-import com.fine.friendlycc.entity.UserCoinItemEntity;
-import com.fine.friendlycc.entity.UserConnMicStatusEntity;
-import com.fine.friendlycc.entity.UserDataEntity;
-import com.fine.friendlycc.entity.UserDetailEntity;
-import com.fine.friendlycc.entity.UserInfoEntity;
-import com.fine.friendlycc.entity.UserProfitPageEntity;
-import com.fine.friendlycc.entity.UserRemarkEntity;
-import com.fine.friendlycc.entity.VersionEntity;
-import com.fine.friendlycc.entity.VipInfoEntity;
+import com.fine.friendlycc.bean.AccostBean;
+import com.fine.friendlycc.bean.AdBannerBean;
+import com.fine.friendlycc.bean.AdUserBannerBean;
+import com.fine.friendlycc.bean.AddressBean;
+import com.fine.friendlycc.bean.AlbumPhotoBean;
+import com.fine.friendlycc.bean.AllConfigBean;
+import com.fine.friendlycc.bean.ApiConfigManagerBean;
+import com.fine.friendlycc.bean.ApplyMessageBean;
+import com.fine.friendlycc.bean.BaseUserBeanBean;
+import com.fine.friendlycc.bean.BlackBean;
+import com.fine.friendlycc.bean.BonusGoodsBean;
+import com.fine.friendlycc.bean.BoradCastMessageBean;
+import com.fine.friendlycc.bean.BroadcastBean;
+import com.fine.friendlycc.bean.BroadcastListBean;
+import com.fine.friendlycc.bean.BrowseNumberBean;
+import com.fine.friendlycc.bean.BubbleBean;
+import com.fine.friendlycc.bean.CallingInfoBean;
+import com.fine.friendlycc.bean.CallingInviteInfo;
+import com.fine.friendlycc.bean.CallingStatusBean;
+import com.fine.friendlycc.bean.CashWalletBean;
+import com.fine.friendlycc.bean.ChatDetailCoinBean;
+import com.fine.friendlycc.bean.ChatRedPackageBean;
+import com.fine.friendlycc.bean.CheckNicknameBean;
+import com.fine.friendlycc.bean.ChooseAreaBean;
+import com.fine.friendlycc.bean.CityAllBean;
+import com.fine.friendlycc.bean.CoinExchangeBoxInfo;
+import com.fine.friendlycc.bean.CoinPusherBalanceDataBean;
+import com.fine.friendlycc.bean.CoinPusherConverInfoBean;
+import com.fine.friendlycc.bean.CoinPusherDataInfoBean;
+import com.fine.friendlycc.bean.CoinPusherRoomHistoryBean;
+import com.fine.friendlycc.bean.CoinPusherRoomInfoBean;
+import com.fine.friendlycc.bean.CoinPusherRoomTagInfoBean;
+import com.fine.friendlycc.bean.CoinWalletBean;
+import com.fine.friendlycc.bean.CommentMessageBean;
+import com.fine.friendlycc.bean.ConfigItemBean;
+import com.fine.friendlycc.bean.CreateOrderBean;
+import com.fine.friendlycc.bean.DayRewardInfoBean;
+import com.fine.friendlycc.bean.DiamondInfoBean;
+import com.fine.friendlycc.bean.EjectBean;
+import com.fine.friendlycc.bean.EjectSignInBean;
+import com.fine.friendlycc.bean.EvaluateBean;
+import com.fine.friendlycc.bean.EvaluateMessageBean;
+import com.fine.friendlycc.bean.ExchangeBean;
+import com.fine.friendlycc.bean.ExchangeIntegraOuterBean;
+import com.fine.friendlycc.bean.ExclusiveAccostInfoBean;
+import com.fine.friendlycc.bean.FaceVerifyResultBean;
+import com.fine.friendlycc.bean.GameCoinBuy;
+import com.fine.friendlycc.bean.GameCoinWalletBean;
+import com.fine.friendlycc.bean.GamePhotoAlbumBean;
+import com.fine.friendlycc.bean.GiftBagBean;
+import com.fine.friendlycc.bean.GiveMessageBean;
+import com.fine.friendlycc.bean.GoldDetailBean;
+import com.fine.friendlycc.bean.GoodsBean;
+import com.fine.friendlycc.bean.GoogleNearPoiBean;
+import com.fine.friendlycc.bean.GooglePoiBean;
+import com.fine.friendlycc.bean.IMTransUserBean;
+import com.fine.friendlycc.bean.ImUserSigBean;
+import com.fine.friendlycc.bean.IsChatBean;
+import com.fine.friendlycc.bean.LevelApiBean;
+import com.fine.friendlycc.bean.LevelPageInfoBean;
+import com.fine.friendlycc.bean.MallWithdrawTipsInfoBean;
+import com.fine.friendlycc.bean.MessageGroupBean;
+import com.fine.friendlycc.bean.MessageRuleBean;
+import com.fine.friendlycc.bean.NewsBean;
+import com.fine.friendlycc.bean.NoteInfoBean;
+import com.fine.friendlycc.bean.OccupationConfigItemBean;
+import com.fine.friendlycc.bean.ParkItemBean;
+import com.fine.friendlycc.bean.PhotoAlbumBean;
+import com.fine.friendlycc.bean.PriceConfigBean;
+import com.fine.friendlycc.bean.PrivacyBean;
+import com.fine.friendlycc.bean.ProfitMessageBean;
+import com.fine.friendlycc.bean.PushSettingBean;
+import com.fine.friendlycc.bean.RadioTwoFilterItemBean;
+import com.fine.friendlycc.bean.SignMessageBean;
+import com.fine.friendlycc.bean.SoundBean;
+import com.fine.friendlycc.bean.StatusBean;
+import com.fine.friendlycc.bean.SwiftMessageBean;
+import com.fine.friendlycc.bean.SystemMessageBean;
+import com.fine.friendlycc.bean.TagBean;
+import com.fine.friendlycc.bean.TaskAdBean;
+import com.fine.friendlycc.bean.TaskConfigBean;
+import com.fine.friendlycc.bean.TaskConfigItemBean;
+import com.fine.friendlycc.bean.TaskRewardReceiveBean;
+import com.fine.friendlycc.bean.TokenBean;
+import com.fine.friendlycc.bean.TopicalListBean;
+import com.fine.friendlycc.bean.TraceBean;
+import com.fine.friendlycc.bean.UnReadMessageNumBean;
+import com.fine.friendlycc.bean.UserCoinItemBean;
+import com.fine.friendlycc.bean.UserConnMicStatusBean;
+import com.fine.friendlycc.bean.UserDataBean;
+import com.fine.friendlycc.bean.UserDetailBean;
+import com.fine.friendlycc.bean.UserInfoBean;
+import com.fine.friendlycc.bean.UserProfitPageBean;
+import com.fine.friendlycc.bean.UserRemarkBean;
+import com.fine.friendlycc.bean.VersionBean;
+import com.fine.friendlycc.bean.VipInfoBean;
 
 import java.util.List;
 import java.util.Map;
@@ -168,7 +168,7 @@ public interface HttpDataSource {
      * @Date 2022/9/6
      */
     @GET("api/iscan/balance")
-    Observable<BaseDataResponse<CoinPusherBalanceDataEntity>> qryUserGameBalance();
+    Observable<BaseDataResponse<CoinPusherBalanceDataBean>> qryUserGameBalance();
 
     /**
      * @Desc TODO(推币机-查询历史中奖记录)
@@ -177,7 +177,7 @@ public interface HttpDataSource {
      * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseDataResponse<java.util.List<com.dl.playcc.entity.CoinPusherRoomHistoryEntity>>>
      * @Date 2022/8/26
      */
-    Observable<BaseDataResponse<List<CoinPusherRoomHistoryEntity>>> qryCoinPusherRoomHistory(Integer roomId);
+    Observable<BaseDataResponse<List<CoinPusherRoomHistoryBean>>> qryCoinPusherRoomHistory(Integer roomId);
     /**
      * @Desc TODO(推币机-开始游戏)
      * @author 彭石林
@@ -185,7 +185,7 @@ public interface HttpDataSource {
      * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseDataResponse<com.dl.playcc.entity.CoinPusherDataInfoEntity>>
      * @Date 2022/9/1
      */
-    Observable<BaseDataResponse<CoinPusherDataInfoEntity>> playingCoinPusherStart(Integer roomId);
+    Observable<BaseDataResponse<CoinPusherDataInfoBean>> playingCoinPusherStart(Integer roomId);
     /**
      * @Desc TODO(推币机-结束游戏)
      * @author 彭石林
@@ -209,7 +209,7 @@ public interface HttpDataSource {
      * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseResponse>
      * @Date 2022/8/24
      */
-    Observable<BaseDataResponse<CoinPusherBalanceDataEntity>> playingCoinPusherThrowCoin(Integer roomId);
+    Observable<BaseDataResponse<CoinPusherBalanceDataBean>> playingCoinPusherThrowCoin(Integer roomId);
     /**
      * @Desc TODO(推币机-钻石兑金币)
      * @author 彭石林
@@ -220,7 +220,7 @@ public interface HttpDataSource {
      * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseResponse>
      * @Date 2022/8/24
      */
-    Observable<BaseDataResponse<CoinPusherBalanceDataEntity>> convertCoinPusherGoldsCoin(Integer id, Integer type);
+    Observable<BaseDataResponse<CoinPusherBalanceDataBean>> convertCoinPusherGoldsCoin(Integer id, Integer type);
     /**
      * @Desc TODO(推币机-兑换钻石)
      * @author 彭石林
@@ -228,7 +228,7 @@ public interface HttpDataSource {
      * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseResponse>
      * @Date 2022/8/24
      */
-    Observable<BaseDataResponse<CoinPusherBalanceDataEntity>> convertCoinPusherDiamonds(Integer id);
+    Observable<BaseDataResponse<CoinPusherBalanceDataBean>> convertCoinPusherDiamonds(Integer id);
     /**
      * @Desc TODO(推币机-等级列表)
      * @author 彭石林
@@ -236,7 +236,7 @@ public interface HttpDataSource {
      * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseDataResponse<com.dl.playcc.entity.CoinPusherRoomTagInfoEntity>>
      * @Date 2022/8/24
      */
-    Observable<BaseDataResponse<CoinPusherRoomTagInfoEntity>> qryCoinPusherRoomTagList();
+    Observable<BaseDataResponse<CoinPusherRoomTagInfoBean>> qryCoinPusherRoomTagList();
     /**
      * @Desc TODO(推币机-设备列表)
      * @author 彭石林
@@ -244,7 +244,7 @@ public interface HttpDataSource {
      * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseDataResponse<com.dl.playcc.entity.CoinPusherRoomInfoEntity>>
      * @Date 2022/8/24
      */
-    Observable<BaseDataResponse<CoinPusherRoomInfoEntity>> qryCoinPusherRoomList(Integer tagId);
+    Observable<BaseDataResponse<CoinPusherRoomInfoBean>> qryCoinPusherRoomList(Integer tagId);
 
     /**
      * @Desc TODO(推币机-兑换列表)
@@ -253,7 +253,7 @@ public interface HttpDataSource {
      * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseDataResponse<com.dl.playcc.entity.CoinPusherConverInfoEntity>>
      * @Date 2022/8/23
      */
-    Observable<BaseDataResponse<CoinPusherConverInfoEntity>> qryCoinPusherConverList();
+    Observable<BaseDataResponse<CoinPusherConverInfoBean>> qryCoinPusherConverList();
     /**
      * @Desc TODO(添加常联系人)
      * @author 彭石林
@@ -274,7 +274,7 @@ public interface HttpDataSource {
      * 获取专属搭讪
      * @return
      */
-    Observable<BaseDataResponse<List<ExclusiveAccostInfoEntity>>> getExclusiveAccost();
+    Observable<BaseDataResponse<List<ExclusiveAccostInfoBean>>> getExclusiveAccost();
 
     /**
      * 删除专属搭讪
@@ -294,7 +294,7 @@ public interface HttpDataSource {
      * 每日奖励
      * @return
      */
-    Observable<BaseDataResponse<DayRewardInfoEntity>> getDayReward();
+    Observable<BaseDataResponse<DayRewardInfoBean>> getDayReward();
 
     /**
      * 获取昵称
@@ -307,7 +307,7 @@ public interface HttpDataSource {
      * 注册奖励
      * @return
      */
-    Observable<BaseDataResponse<DayRewardInfoEntity>> getRegisterReward();
+    Observable<BaseDataResponse<DayRewardInfoBean>> getRegisterReward();
 
 
     /**
@@ -324,7 +324,7 @@ public interface HttpDataSource {
      * @Desc TODO(获取所有城市内容)
      * @author 彭石林
      */
-    Observable<BaseDataResponse<CityAllEntity>> getCityConfigAll();
+    Observable<BaseDataResponse<CityAllBean>> getCityConfigAll();
 
     /**
      * 检查昵称是否被占用
@@ -332,7 +332,7 @@ public interface HttpDataSource {
      * @param nickname
      * @return
      */
-    Observable<BaseDataResponse<CheckNicknameEntity>> checkNickname(
+    Observable<BaseDataResponse<CheckNicknameBean>> checkNickname(
             String nickname
     );
 
@@ -343,7 +343,7 @@ public interface HttpDataSource {
      * @return io.reactivex.Observable<com.dl.play.chat.data.source.http.response.BaseDataResponse<com.dl.play.chat.entity.ChooseAreaEntity>>
      * @Date 2022/7/7
      */
-    Observable<BaseDataResponse<ChooseAreaEntity>> getChooseAreaList();
+    Observable<BaseDataResponse<ChooseAreaBean>> getChooseAreaList();
 
     /**
      * @Desc TODO(广告列表获取  1：首页 2：广场页)
@@ -352,7 +352,7 @@ public interface HttpDataSource {
      * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseListDataResponse<com.dl.playcc.entity.AdItemEntity>>
      * @Date 2022/7/25
      */
-    Observable<BaseDataResponse<AdBannerEntity>> getRadioAdBannerList(int position);
+    Observable<BaseDataResponse<AdBannerBean>> getRadioAdBannerList(int position);
 
     /**
      * @Desc TODO(用户广告位)
@@ -362,7 +362,7 @@ public interface HttpDataSource {
      * @Date 2022/7/26
      */
     @GET("api/userAd")
-    Observable<BaseDataResponse<AdUserBannerEntity>> getUserAdList(Integer position);
+    Observable<BaseDataResponse<AdUserBannerBean>> getUserAdList(Integer position);
 
     /**
      * 保存个人笔记内容
@@ -377,7 +377,7 @@ public interface HttpDataSource {
      * @param user_id
      * @return
      */
-    Observable<BaseDataResponse<NoteInfoEntity>> getNoteText(int user_id);
+    Observable<BaseDataResponse<NoteInfoBean>> getNoteText(int user_id);
 
     /**
      * @Desc TODO(广告列表获取  1：首页 2：广场页)
@@ -386,14 +386,14 @@ public interface HttpDataSource {
      * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseListDataResponse<com.dl.playcc.entity.AdItemEntity>>
      * @Date 2022/7/25
      */
-    Observable<BaseDataResponse<AdBannerEntity>> getMainAdBannerList(int position);
+    Observable<BaseDataResponse<AdBannerBean>> getMainAdBannerList(int position);
 
     /***
      * 水晶兑换弹窗提示
      * @param channel 渠道类型 ：1安卓  2ios
      * @return
      */
-    Observable<BaseDataResponse<MallWithdrawTipsInfoEntity>> getMallWithdrawTipsInfo(Integer channel);
+    Observable<BaseDataResponse<MallWithdrawTipsInfoBean>> getMallWithdrawTipsInfo(Integer channel);
 
     /**
      * @Desc TODO(初始化api接口)
@@ -402,7 +402,7 @@ public interface HttpDataSource {
      * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseDataResponse<com.dl.playcc.entity.ApiConfigManagerEntity>>
      * @Date 2022/7/2
      */
-    Observable<BaseDataResponse<ApiConfigManagerEntity>> initApiConfig();
+    Observable<BaseDataResponse<ApiConfigManagerBean>> initApiConfig();
 
     /**
      * 注销账号
@@ -428,7 +428,7 @@ public interface HttpDataSource {
      * @parame []
      * @Date 2021/9/23
      */
-    Observable<BaseDataResponse<ExchangeIntegraOuterEntity>> getExchangeIntegraListData();
+    Observable<BaseDataResponse<ExchangeIntegraOuterBean>> getExchangeIntegraListData();
     /**
      * @return io.reactivex.Observable<com.dl.play.chat.data.source.http.response.BaseListDataResponse>
      * @Desc TODO(任务中心广告位)
@@ -436,7 +436,7 @@ public interface HttpDataSource {
      * @parame []
      * @Date 2021/9/4
      */
-    Observable<BaseListDataResponse<TaskAdEntity>> taskAdList();
+    Observable<BaseListDataResponse<TaskAdBean>> taskAdList();
 
     /**
      * @return io.reactivex.Observable<com.dl.play.chat.data.source.http.response.BaseResponse>
@@ -467,7 +467,7 @@ public interface HttpDataSource {
      * @Date 2021/8/13
      */
     @GET("api/v2/address/view")
-    Observable<BaseDataResponse<AddressEntity>> getAddress(Integer id);
+    Observable<BaseDataResponse<AddressBean>> getAddress(Integer id);
 
     /**
      * @return io.reactivex.Observable<com.dl.play.chat.data.source.http.response.BaseListDataResponse < com.dl.play.chat.entity.AddressEntity>>
@@ -477,7 +477,7 @@ public interface HttpDataSource {
      * @Date 2021/8/13
      */
     @GET("api/v2/address")
-    Observable<BaseListDataResponse<AddressEntity>> getAddressList(Integer page);
+    Observable<BaseListDataResponse<AddressBean>> getAddressList(Integer page);
 
     /**
      * @return io.reactivex.Observable<com.dl.play.chat.data.source.http.response.BaseResponse>
@@ -518,7 +518,7 @@ public interface HttpDataSource {
      * @parame [page]
      * @Date 2021/8/10
      */
-    Observable<BaseListDataResponse<ExchangeEntity>> qryExchange(Integer page, Integer status);
+    Observable<BaseListDataResponse<ExchangeBean>> qryExchange(Integer page, Integer status);
 
     /**
      * @return io.reactivex.Observable<com.dl.play.chat.data.source.http.response.BaseResponse>
@@ -536,7 +536,7 @@ public interface HttpDataSource {
      * @parame [page]
      * @Date 2021/8/10
      */
-    Observable<BaseListDataResponse<BonusGoodsEntity>> getBonusGoods(@Query("page") Integer page);
+    Observable<BaseListDataResponse<BonusGoodsBean>> getBonusGoods(@Query("page") Integer page);
 
     /**
      * @return io.reactivex.Observable<com.dl.play.chat.data.source.http.response.BaseResponse>
@@ -545,7 +545,7 @@ public interface HttpDataSource {
      * @parame []
      * @Date 2021/8/9
      */
-    Observable<BaseListDataResponse<GoldDetailEntity>> getGoldList(@Query("page") Integer page);
+    Observable<BaseListDataResponse<GoldDetailBean>> getGoldList(@Query("page") Integer page);
 
     /**
      * @return io.reactivex.Observable<com.dl.play.chat.data.source.http.response.BaseResponse>
@@ -561,7 +561,7 @@ public interface HttpDataSource {
      * @Desc TODO(领取任务)
      * @author liaosf
      */
-    Observable<BaseDataResponse<TaskRewardReceiveEntity>> TaskRewardReceive(@Query("slug") String key);
+    Observable<BaseDataResponse<TaskRewardReceiveBean>> TaskRewardReceive(@Query("slug") String key);
 
     /**
      * @return io.reactivex.Observable<com.dl.play.chat.data.source.http.response.BaseDataResponse < com.dl.play.chat.entity.TaskConfigListEntity>>
@@ -570,16 +570,16 @@ public interface HttpDataSource {
      * @parame []
      * @Date 2021/8/10
      */
-    Observable<BaseDataResponse<List<TaskConfigItemEntity>>> getTaskListConfig();
+    Observable<BaseDataResponse<List<TaskConfigItemBean>>> getTaskListConfig();
 
     /**
-     * @return io.reactivex.Observable<com.dl.play.chat.data.source.http.response.BaseDataResponse < TaskConfigEntity>>
+     * @return io.reactivex.Observable<com.dl.play.chat.data.source.http.response.BaseDataResponse < TaskConfigBean>>
      * @Desc TODO(获取任务中心配置)
      * @author 彭石林
      * @parame []
      * @Date 2021/8/7
      */
-    Observable<BaseDataResponse<TaskConfigEntity>> getTaskConfig();
+    Observable<BaseDataResponse<TaskConfigBean>> getTaskConfig();
 
     /**
      * @return io.reactivex.Observable<com.dl.play.chat.data.source.http.response.BaseDataResponse < com.dl.play.chat.entity.EjectSignInEntity>>
@@ -588,7 +588,7 @@ public interface HttpDataSource {
      * @parame []
      * @Date 2021/8/6
      */
-    Observable<BaseDataResponse<EjectSignInEntity>> reportEjectSignIn();
+    Observable<BaseDataResponse<EjectSignInBean>> reportEjectSignIn();
 
     /**
      * @return io.reactivex.Observable<com.dl.play.chat.data.source.http.response.BaseDataResponse < com.dl.play.chat.entity.EjectEntity>>
@@ -597,7 +597,7 @@ public interface HttpDataSource {
      * @parame []
      * @Date 2021/8/6
      */
-    Observable<BaseDataResponse<EjectEntity>> getEjectconfig();
+    Observable<BaseDataResponse<EjectBean>> getEjectconfig();
 
     /*=====================================================任务中心相关接口=================================================*/
 
@@ -629,7 +629,7 @@ public interface HttpDataSource {
      * @parame [requestBody]
      * @Date 2022/6/22
      */
-    Observable<BaseDataResponse<LevelApiEntity>> adjustLevelPrice(RequestBody requestBody);
+    Observable<BaseDataResponse<LevelApiBean>> adjustLevelPrice(RequestBody requestBody);
 
     /**
      * @return io.reactivex.Observable<com.dl.play.chat.data.source.http.response.BaseDataResponse < com.dl.play.chat.entity.UserLevelPageInfoEntity>>
@@ -638,7 +638,7 @@ public interface HttpDataSource {
      * @parame []
      * @Date 2022/6/21
      */
-    Observable<BaseDataResponse<LevelPageInfoEntity>> getUserLevelPageInfo();
+    Observable<BaseDataResponse<LevelPageInfoBean>> getUserLevelPageInfo();
 
     /**
      * @Desc TODO(根据邮箱发送验证码)
@@ -670,7 +670,7 @@ public interface HttpDataSource {
      * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseResponse>
      * @Date 2022/5/17
      */
-    Observable<BaseDataResponse<UserDataEntity>> loginEmail(
+    Observable<BaseDataResponse<UserDataBean>> loginEmail(
             String email, //邮箱账号
             String code, //验证码/密码
             Integer type //1验证码登陆 2密码登陆
@@ -681,7 +681,7 @@ public interface HttpDataSource {
      * @param roomId
      * @return
      */
-    Observable<BaseDataResponse<CallingStatusEntity>> getCallingStatus(
+    Observable<BaseDataResponse<CallingStatusBean>> getCallingStatus(
             Integer roomId //房间号
     );
 
@@ -690,7 +690,7 @@ public interface HttpDataSource {
      * @param roomId
      * @return
      */
-    Observable<BaseDataResponse<CallingStatusEntity>> getRoomStatus(
+    Observable<BaseDataResponse<CallingStatusBean>> getRoomStatus(
             Integer roomId //房间号
     );
 
@@ -701,7 +701,7 @@ public interface HttpDataSource {
      * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseDataResponse<com.dl.playcc.entity.IMTransUserEntity>>
      * @Date 2022/4/2
      */
-    Observable<BaseDataResponse<IMTransUserEntity>> transUserIM(String IMUserId);
+    Observable<BaseDataResponse<IMTransUserBean>> transUserIM(String IMUserId);
 
     /**
      * @return io.reactivex.Observable<com.dl.play.chat.data.source.http.response.BaseResponse>
@@ -719,7 +719,7 @@ public interface HttpDataSource {
      * @parame [dismissRoom]
      * @Date 2022/3/21
      */
-    Observable<BaseDataResponse<ChatDetailCoinEntity>> getTotalCoins(Integer dismissRoom);
+    Observable<BaseDataResponse<ChatDetailCoinBean>> getTotalCoins(Integer dismissRoom);
 
     /**
      * @Desc TODO(游戏支付成功验签)
@@ -745,7 +745,7 @@ public interface HttpDataSource {
      * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseDataResponse<com.dl.playcc.entity.GamePhotoAlbumEntity>>
      * @Date 2022/1/21
      */
-    Observable<BaseDataResponse<GamePhotoAlbumEntity>> getGamePhotoAlbumList(String serverId, String roleId);
+    Observable<BaseDataResponse<GamePhotoAlbumBean>> getGamePhotoAlbumList(String serverId, String roleId);
     /**
      * @Desc TODO(游戏在线状态 1在线 -1离线)
      * @author 彭石林
@@ -783,7 +783,7 @@ public interface HttpDataSource {
      * @param payType 1/余额支付 2/google支付 3/my_card支付 4/苹果支付
      * @return
      */
-    Observable<BaseDataResponse<CreateOrderEntity>> createChatDetailOrder(
+    Observable<BaseDataResponse<CreateOrderBean>> createChatDetailOrder(
             Integer id,
             Integer type,
             Integer payType,
@@ -798,7 +798,7 @@ public interface HttpDataSource {
      * @parame [toUserId, type]
      * @Date 2021/12/29
      */
-    Observable<BaseDataResponse<PriceConfigEntity.Current>> getMaleRefundMsg(Integer toUserId, Integer type);
+    Observable<BaseDataResponse<PriceConfigBean.Current>> getMaleRefundMsg(Integer toUserId, Integer type);
 
     /**
      * 余额不足提示
@@ -834,7 +834,7 @@ public interface HttpDataSource {
      * @parame [to_user_id]
      * @Date 2021/12/20
      */
-    Observable<BaseDataResponse<PriceConfigEntity>> getPriceConfig(Integer to_user_id);
+    Observable<BaseDataResponse<PriceConfigBean>> getPriceConfig(Integer to_user_id);
 
     /**
      * @Desc TODO(破冰文案列表)
@@ -844,7 +844,7 @@ public interface HttpDataSource {
      * @Date 2021/12/18
      */
     @GET("/calling/listSayHis")
-    Observable<BaseDataResponse<CallingInfoEntity.SayHiList>> getSayHiList(Integer page,Integer perPage);
+    Observable<BaseDataResponse<CallingInfoBean.SayHiList>> getSayHiList(Integer page,Integer perPage);
 
     /**
      * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseDataResponse < com.dl.playcc.entity.CallingInfoEntity>>
@@ -853,7 +853,7 @@ public interface HttpDataSource {
      * @parame [roomId, callingType, fromUserId, toUserId, currentUserId]
      * @Date 2021/12/13
      */
-    Observable<BaseDataResponse<CallingInfoEntity>> getCallingInfo(
+    Observable<BaseDataResponse<CallingInfoBean>> getCallingInfo(
             Integer roomId, //房间号
             Integer callingType, //通话类型：1=语音，2=视频
             String fromUserId, //拔打人用户ID
@@ -904,13 +904,13 @@ public interface HttpDataSource {
      * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseDataResponse<com.dl.playcc.entity.GiftBagEntity>>
      * @Date 2021/12/7
      */
-    Observable<BaseDataResponse<GiftBagEntity>> getBagGiftInfo();
+    Observable<BaseDataResponse<GiftBagBean>> getBagGiftInfo();
 
     /**
      * 刷新im凭证
      * @return
      */
-    Observable<BaseDataResponse<ImUserSigEntity>> flushSign();
+    Observable<BaseDataResponse<ImUserSigBean>> flushSign();
 
     /**
      * @Desc TODO(用户收益页面)
@@ -919,7 +919,7 @@ public interface HttpDataSource {
      * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseDataResponse>
      * @Date 2021/12/6
      */
-    Observable<BaseDataResponse<UserProfitPageEntity>> getUserProfitPageInfo(Long currentUserId, Integer page, Integer perPage);
+    Observable<BaseDataResponse<UserProfitPageBean>> getUserProfitPageInfo(Long currentUserId, Integer page, Integer perPage);
 
     /**
      * @Desc TODO(用户账户余额)
@@ -928,7 +928,7 @@ public interface HttpDataSource {
      * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseDataResponse<com.dl.playcc.entity.CoinWalletEntity>>
      * @Date 2021/12/6
      */
-    Observable<BaseDataResponse<CoinWalletEntity>> getUserAccount();
+    Observable<BaseDataResponse<CoinWalletBean>> getUserAccount();
 
     /**
      * @Desc TODO(用户账户余额)
@@ -936,7 +936,7 @@ public interface HttpDataSource {
      * @parame []
      * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseDataResponse<com.dl.playcc.entity.GameCoinWalletEntity>>
      */
-    Observable<BaseDataResponse<GameCoinWalletEntity>> getUserAccountPageInfo();
+    Observable<BaseDataResponse<GameCoinWalletBean>> getUserAccountPageInfo();
 
     /**
      * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseDataResponse < com.dl.playcc.entity.BubbleEntity>>
@@ -945,7 +945,7 @@ public interface HttpDataSource {
      * @parame []
      * @Date 2021/12/2
      */
-    Observable<BaseDataResponse<BubbleEntity>> getBubbleEntity();
+    Observable<BaseDataResponse<BubbleBean>> getBubbleEntity();
 
     /**
      * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseDataResponse < com.dl.playcc.entity.AccostEntity>>
@@ -954,7 +954,7 @@ public interface HttpDataSource {
      * @parame []
      * @Date 2021/11/30
      */
-    Observable<BaseDataResponse<AccostEntity>> getAccostList(Integer page);
+    Observable<BaseDataResponse<AccostBean>> getAccostList(Integer page);
 
     /**
      * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseResponse>
@@ -987,7 +987,7 @@ public interface HttpDataSource {
      * type 类别 1按发布时间 2按活动时间]
      * @Date 2021/10/26
      */
-    Observable<BaseDataResponse<BroadcastListEntity>> getBroadcastHome(
+    Observable<BaseDataResponse<BroadcastListBean>> getBroadcastHome(
             Integer sex,
             Integer city_id,
             Integer game_id,
@@ -1004,7 +1004,7 @@ public interface HttpDataSource {
      * @parame []
      * @Date 2021/10/22
      */
-    Observable<BaseDataResponse<List<MessageRuleEntity>>> getMessageRule();
+    Observable<BaseDataResponse<List<MessageRuleBean>>> getMessageRule();
 
     /**
      * 屏蔽關鍵字
@@ -1019,7 +1019,7 @@ public interface HttpDataSource {
      * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseDataResponse>
      * @Date 2021/10/22
      */
-    Observable<BaseDataResponse<PhotoAlbumEntity>> getPhotoAlbum(Integer user_id);
+    Observable<BaseDataResponse<PhotoAlbumBean>> getPhotoAlbum(Integer user_id);
     /**
      * @Desc TODO(删除用户录音)
      * @author 彭石林
@@ -1044,7 +1044,7 @@ public interface HttpDataSource {
      * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseDataResponse>
      * @Date 2021/10/21
      */
-    Observable<BaseListDataResponse<SoundEntity>> getUserSound(Integer page);
+    Observable<BaseListDataResponse<SoundBean>> getUserSound(Integer page);
 
     /**
      * 发布心情
@@ -1077,7 +1077,7 @@ public interface HttpDataSource {
      * @param page 页码
      * @return
      */
-    Observable<BaseListDataResponse<BroadcastEntity>> broadcastAll(Integer page);
+    Observable<BaseListDataResponse<BroadcastBean>> broadcastAll(Integer page);
 
     /**
      * 商品列表
@@ -1085,7 +1085,7 @@ public interface HttpDataSource {
      * @param type 类型 vip:升级会员 recharge:充值 points积分商品
      * @return
      */
-    Observable<BaseDataResponse<List<GoodsEntity>>> pointsGoodList();
+    Observable<BaseDataResponse<List<GoodsBean>>> pointsGoodList();
 
     /**
      * 一键搭讪推送状态提交
@@ -1109,7 +1109,7 @@ public interface HttpDataSource {
      * @parame []
      * @Date 2021/9/14
      */
-    Observable<BaseListDataResponse<TaskAdEntity>> rechargeVipList();
+    Observable<BaseListDataResponse<TaskAdBean>> rechargeVipList();
 
     /**
      * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseDataResponse < java.util.Map < java.lang.String, java.lang.String>>>
@@ -1121,13 +1121,13 @@ public interface HttpDataSource {
     Observable<BaseDataResponse<Map<String, String>>> isOnlineUser(String userId);
 
     /**
-     * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseDataResponse < BrowseNumberEntity>>
+     * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseDataResponse < BrowseNumberBean>>
      * @Desc TODO(新增谁看我及粉丝数)
      * @author 彭石林
      * @parame []
      * @Date 2021/8/4
      */
-    Observable<BaseDataResponse<BrowseNumberEntity>> newsBrowseNumber();
+    Observable<BaseDataResponse<BrowseNumberBean>> newsBrowseNumber();
 
     /**
      * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseListDataResponse < com.dl.playcc.entity.TraceEntity>>
@@ -1136,7 +1136,7 @@ public interface HttpDataSource {
      * @parame [page]
      * @Date 2021/8/4
      */
-    Observable<BaseListDataResponse<TraceEntity>> toBrowse(Integer page);
+    Observable<BaseListDataResponse<TraceBean>> toBrowse(Integer page);
 
     /**
      * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseListDataResponse < com.dl.playcc.entity.TraceEntity>>
@@ -1145,16 +1145,16 @@ public interface HttpDataSource {
      * @parame [page]
      * @Date 2021/8/3
      */
-    Observable<BaseListDataResponse<TraceEntity>> collectFans(Integer page);
+    Observable<BaseListDataResponse<TraceBean>> collectFans(Integer page);
 
     /**
-     * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseListDataResponse < TraceEntity>>
+     * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseListDataResponse < TraceBean>>
      * @Desc TODO(查询追踪列表)
      * @author 彭石林
      * @parame [page]
      * @Date 2021/8/3
      */
-    Observable<BaseListDataResponse<TraceEntity>> collect(Integer page);
+    Observable<BaseListDataResponse<TraceBean>> collect(Integer page);
 
     /**
      * 主动上报用户当前定位信息。用于完善用户资料
@@ -1181,7 +1181,7 @@ public interface HttpDataSource {
      * @param payType 1/余额支付 2/google支付 3/my_card支付 4/苹果支付
      * @return
      */
-    Observable<BaseDataResponse<CreateOrderEntity>> createOrderUserDetail(Integer id, Integer type, Integer payType, Integer number);
+    Observable<BaseDataResponse<CreateOrderBean>> createOrderUserDetail(Integer id, Integer type, Integer payType, Integer number);
 
     /**
      * 免费订阅7天会员
@@ -1198,7 +1198,7 @@ public interface HttpDataSource {
      * @param to_user_id
      * @return
      */
-    Observable<BaseDataResponse<TagEntity>> tag(String to_user_id);
+    Observable<BaseDataResponse<TagBean>> tag(String to_user_id);
 
     /**
      * 绑定用户关系
@@ -1226,7 +1226,7 @@ public interface HttpDataSource {
      * @param sex
      * @return
      */
-    Observable<BaseDataResponse<UserDataEntity>> regUser(String nickname, String avatar, String birthday, Integer sex, String channel);
+    Observable<BaseDataResponse<UserDataBean>> regUser(String nickname, String avatar, String birthday, Integer sex, String channel);
 
     /**
      * 上报用户当前坐标
@@ -1246,7 +1246,7 @@ public interface HttpDataSource {
      * @email 15616314565@163.com
      * Param []
      **/
-    Observable<BaseDataResponse<SwiftMessageEntity>> getSwiftMessage(Integer page);
+    Observable<BaseDataResponse<SwiftMessageBean>> getSwiftMessage(Integer page);
 
     /**
      * @return io.reactivex.Observable<com.dl.playcc.data.source.http.response.BaseResponse>
@@ -1268,7 +1268,7 @@ public interface HttpDataSource {
      * @email 15616314565@163.com
      * Param [phone, code]
      **/
-    Observable<BaseDataResponse<UserDataEntity>> v2Login(String phone, String code, String device_code, String region_code);
+    Observable<BaseDataResponse<UserDataBean>> v2Login(String phone, String code, String device_code, String region_code);
 
     /**
      * 真人人脸图片
@@ -1289,7 +1289,7 @@ public interface HttpDataSource {
      * @email 15616314565@163.com
      * Param [client]
      **/
-    Observable<BaseDataResponse<VersionEntity>> detectionVersion(@Query("client") String client);
+    Observable<BaseDataResponse<VersionBean>> detectionVersion(@Query("client") String client);
 
     /**
      * GoogleMaps附近搜索
@@ -1320,7 +1320,7 @@ public interface HttpDataSource {
      * @param code
      * @return
      */
-    Observable<BaseDataResponse<TokenEntity>> register(String email, String password, String code);
+    Observable<BaseDataResponse<TokenBean>> register(String email, String password, String code);
 
     /**
      * 同意用户协议
@@ -1336,7 +1336,7 @@ public interface HttpDataSource {
      * @param password
      * @return
      */
-    Observable<BaseDataResponse<TokenEntity>> login(String phone, String password);
+    Observable<BaseDataResponse<TokenBean>> login(String phone, String password);
 
     /**
      * 第三方登录
@@ -1345,7 +1345,7 @@ public interface HttpDataSource {
      * @param type     登录类型 facebook/line
      * @return
      */
-    Observable<BaseDataResponse<UserDataEntity>> authLoginPost(
+    Observable<BaseDataResponse<UserDataBean>> authLoginPost(
             String id,
             String type
     );
@@ -1362,7 +1362,7 @@ public interface HttpDataSource {
      * @param latitude
      * @return
      */
-    Observable<BaseListDataResponse<ParkItemEntity>> homeList(
+    Observable<BaseListDataResponse<ParkItemBean>> homeList(
             Integer cityId,
             Integer type,
             Integer isOnline,
@@ -1378,21 +1378,21 @@ public interface HttpDataSource {
      *
      * @return
      */
-    Observable<BaseDataResponse<UserInfoEntity>> getUserInfo();
+    Observable<BaseDataResponse<UserInfoBean>> getUserInfo();
 
     /**
      * 游戏地区
      *
      * @return
      */
-    Observable<BaseDataResponse<List<RadioTwoFilterItemEntity>>> getGameCity();
+    Observable<BaseDataResponse<List<RadioTwoFilterItemBean>>> getGameCity();
 
 
 
     /**
      * 个人资料
      */
-    Observable<BaseDataResponse<UserDataEntity>> getUserData();
+    Observable<BaseDataResponse<UserDataBean>> getUserData();
 
     /**
      * 给用户加备注
@@ -1410,7 +1410,7 @@ public interface HttpDataSource {
      * @param userId
      * @return
      */
-    Observable<BaseDataResponse<UserRemarkEntity>> getUserRemark(Integer userId);
+    Observable<BaseDataResponse<UserRemarkBean>> getUserRemark(Integer userId);
 
     /**
      * 修改头像
@@ -1461,7 +1461,7 @@ public interface HttpDataSource {
      * @param id 用户id
      * @return
      */
-    Observable<BaseDataResponse<UserDetailEntity>> userMain(Integer id, Double longitude, Double latitude);
+    Observable<BaseDataResponse<UserDetailBean>> userMain(Integer id, Double longitude, Double latitude);
 
     /**
      * 修改个人资料
@@ -1510,7 +1510,7 @@ public interface HttpDataSource {
      *
      * @return
      */
-    Observable<BaseListDataResponse<BlackEntity>> getBlackList(Integer page);
+    Observable<BaseListDataResponse<BlackBean>> getBlackList(Integer page);
 
     /**
      * 加入黑名单
@@ -1548,7 +1548,7 @@ public interface HttpDataSource {
      *
      * @return
      */
-    Observable<BaseListDataResponse<ParkItemEntity>> getCollectList(
+    Observable<BaseListDataResponse<ParkItemBean>> getCollectList(
             int page,
             Double latitude,
             Double longitude
@@ -1594,7 +1594,7 @@ public interface HttpDataSource {
      * @param id
      * @return
      */
-    Observable<BaseDataResponse<NewsEntity>> newsDetail(
+    Observable<BaseDataResponse<NewsBean>> newsDetail(
             Integer id);
 
     /**
@@ -1617,7 +1617,7 @@ public interface HttpDataSource {
      * @param sex       性别 1男 0女
      * @return
      */
-    Observable<BaseListDataResponse<BroadcastEntity>> broadcast(
+    Observable<BaseListDataResponse<BroadcastBean>> broadcast(
             Integer type,
             Integer theme_id,
             Integer is_online,
@@ -1632,7 +1632,7 @@ public interface HttpDataSource {
      * @param user_id 不传为当前登陆用户信息
      * @return
      */
-    Observable<BaseListDataResponse<NewsEntity>> getNewsList(
+    Observable<BaseListDataResponse<NewsBean>> getNewsList(
             Integer user_id, Integer page);
 
     /**
@@ -1641,7 +1641,7 @@ public interface HttpDataSource {
      * @param userId 不传为当前登陆用户信息
      * @return
      */
-    Observable<BaseListDataResponse<TopicalListEntity>> getTopicalList(
+    Observable<BaseListDataResponse<TopicalListBean>> getTopicalList(
             Integer userId, Integer page);
 
     /**
@@ -1697,7 +1697,7 @@ public interface HttpDataSource {
      * @param userId
      * @return
      */
-    Observable<BaseDataResponse<StatusEntity>> evaluateStatus(
+    Observable<BaseDataResponse<StatusBean>> evaluateStatus(
             Integer userId
     );
 
@@ -1720,7 +1720,7 @@ public interface HttpDataSource {
      *
      * @return
      */
-    Observable<BaseDataResponse<List<EvaluateEntity>>> evaluate(Integer userId);
+    Observable<BaseDataResponse<List<EvaluateBean>>> evaluate(Integer userId);
 
     /**
      * 动态点赞
@@ -1738,7 +1738,7 @@ public interface HttpDataSource {
      * @param userId 跟谁私聊的用户ID
      * @return
      */
-    Observable<BaseDataResponse<IsChatEntity>> isChat(
+    Observable<BaseDataResponse<IsChatBean>> isChat(
             Integer userId
     );
 
@@ -1778,70 +1778,70 @@ public interface HttpDataSource {
      *
      * @return
      */
-    Observable<BaseDataResponse<AllConfigEntity>> getAllConfig();
+    Observable<BaseDataResponse<AllConfigBean>> getAllConfig();
 
     /**
      * 获取节目时间配置
      *
      * @return
      */
-    Observable<BaseDataResponse<List<ConfigItemEntity>>> getProgramTimeConfig();
+    Observable<BaseDataResponse<List<ConfigItemBean>>> getProgramTimeConfig();
 
     /**
      * 获取身高配置
      *
      * @return
      */
-    Observable<BaseDataResponse<List<ConfigItemEntity>>> getHeightConfig();
+    Observable<BaseDataResponse<List<ConfigItemBean>>> getHeightConfig();
 
     /**
      * 获取体重配置
      *
      * @return
      */
-    Observable<BaseDataResponse<List<ConfigItemEntity>>> getWeightConfig();
+    Observable<BaseDataResponse<List<ConfigItemBean>>> getWeightConfig();
 
     /**
      * 获取举报原因配置
      *
      * @return
      */
-    Observable<BaseDataResponse<List<ConfigItemEntity>>> getReportReasonConfig();
+    Observable<BaseDataResponse<List<ConfigItemBean>>> getReportReasonConfig();
 
     /**
      * 获取评价标签配置
      *
      * @return
      */
-    Observable<BaseDataResponse<List<ConfigItemEntity>>> getEvaluateConfig();
+    Observable<BaseDataResponse<List<ConfigItemBean>>> getEvaluateConfig();
 
     /**
      * 获取期望对象配置
      *
      * @return
      */
-    Observable<BaseDataResponse<List<ConfigItemEntity>>> getHopeObjectConfig();
+    Observable<BaseDataResponse<List<ConfigItemBean>>> getHopeObjectConfig();
 
     /**
      * 获取职业配置
      *
      * @return
      */
-    Observable<BaseDataResponse<List<OccupationConfigItemEntity>>> getOccupationConfig();
+    Observable<BaseDataResponse<List<OccupationConfigItemBean>>> getOccupationConfig();
 
     /**
      * 获取主题配置
      *
      * @return
      */
-    Observable<BaseDataResponse<List<ConfigItemEntity>>> getThemeConfig();
+    Observable<BaseDataResponse<List<ConfigItemBean>>> getThemeConfig();
 
     /**
      * 获取城市配置
      *
      * @return
      */
-    Observable<BaseDataResponse<List<ConfigItemEntity>>> getCityConfig();
+    Observable<BaseDataResponse<List<ConfigItemBean>>> getCityConfig();
 
 
     /**
@@ -1861,14 +1861,14 @@ public interface HttpDataSource {
      *
      * @return
      */
-    Observable<BaseDataResponse<DiamondInfoEntity>> goods();
+    Observable<BaseDataResponse<DiamondInfoBean>> goods();
 
     /**
      * 会员套餐
      *
      * @return
      */
-    Observable<BaseDataResponse<VipInfoEntity>> vipPackages();
+    Observable<BaseDataResponse<VipInfoBean>> vipPackages();
 
     /**
      * 上传验证图上
@@ -1906,7 +1906,7 @@ public interface HttpDataSource {
      * @param type   1圖片 2視頻
      * @return
      */
-    Observable<BaseListDataResponse<AlbumPhotoEntity>> albumImage(
+    Observable<BaseListDataResponse<AlbumPhotoBean>> albumImage(
             Integer userId,
             Integer type
     );
@@ -1933,7 +1933,7 @@ public interface HttpDataSource {
      * @param id
      * @return
      */
-    Observable<BaseDataResponse<List<AlbumPhotoEntity>>> delAlbumImage(
+    Observable<BaseDataResponse<List<AlbumPhotoBean>>> delAlbumImage(
             Integer id
     );
 
@@ -1977,21 +1977,21 @@ public interface HttpDataSource {
      * @param bizId
      * @return
      */
-    Observable<BaseDataResponse<FaceVerifyResultEntity>> faceVerifyResult(String bizId);
+    Observable<BaseDataResponse<FaceVerifyResultBean>> faceVerifyResult(String bizId);
 
     /**
      * 获取用户认证状态
      *
      * @return
      */
-    Observable<BaseDataResponse<StatusEntity>> faceIsCertification();
+    Observable<BaseDataResponse<StatusBean>> faceIsCertification();
 
     /**
      * 获取用户隐私设置
      *
      * @return
      */
-    Observable<BaseDataResponse<PrivacyEntity>> getPrivacy(
+    Observable<BaseDataResponse<PrivacyBean>> getPrivacy(
     );
 
     /**
@@ -2002,7 +2002,7 @@ public interface HttpDataSource {
      */
 
     Observable<BaseResponse> setPrivacy(
-            PrivacyEntity privacyEntity
+            PrivacyBean privacyEntity
     );
 
     /**
@@ -2035,7 +2035,7 @@ public interface HttpDataSource {
      *
      * @return
      */
-    Observable<BaseDataResponse<StatusEntity>> applyGoddessResult();
+    Observable<BaseDataResponse<StatusBean>> applyGoddessResult();
 
     /**
      * 重置密码
@@ -2066,14 +2066,14 @@ public interface HttpDataSource {
      *
      * @return
      */
-    Observable<BaseDataResponse<CashWalletEntity>> cashWallet();
+    Observable<BaseDataResponse<CashWalletBean>> cashWallet();
 
     /**
      * 币账户
      *
      * @return
      */
-    Observable<BaseDataResponse<CoinWalletEntity>> coinWallet();
+    Observable<BaseDataResponse<CoinWalletBean>> coinWallet();
 
     /**
      * 设置提现账号
@@ -2117,56 +2117,56 @@ public interface HttpDataSource {
      *
      * @return
      */
-    Observable<BaseListDataResponse<ApplyMessageEntity>> getMessageApply(Integer page);
+    Observable<BaseListDataResponse<ApplyMessageBean>> getMessageApply(Integer page);
 
     /**
      * 电台消息列表
      *
      * @return
      */
-    Observable<BaseListDataResponse<BoradCastMessageEntity>> getMessageBoradcast(Integer page);
+    Observable<BaseListDataResponse<BoradCastMessageBean>> getMessageBoradcast(Integer page);
 
     /**
      * 评论消息列表
      *
      * @return
      */
-    Observable<BaseListDataResponse<CommentMessageEntity>> getMessageComment(Integer page);
+    Observable<BaseListDataResponse<CommentMessageBean>> getMessageComment(Integer page);
 
     /**
      * 评价消息列表
      *
      * @return
      */
-    Observable<BaseListDataResponse<EvaluateMessageEntity>> getMessageEvaluate(Integer page);
+    Observable<BaseListDataResponse<EvaluateMessageBean>> getMessageEvaluate(Integer page);
 
     /**
      * 点赞消息列表
      *
      * @return
      */
-    Observable<BaseListDataResponse<GiveMessageEntity>> getMessageGive(Integer page);
+    Observable<BaseListDataResponse<GiveMessageBean>> getMessageGive(Integer page);
 
     /**
      * 报名消息列表
      *
      * @return
      */
-    Observable<BaseListDataResponse<SignMessageEntity>> getMessageSign(Integer page);
+    Observable<BaseListDataResponse<SignMessageBean>> getMessageSign(Integer page);
 
     /**
      * 系统消息列表
      *
      * @return
      */
-    Observable<BaseListDataResponse<SystemMessageEntity>> getMessageSystem(Integer page);
+    Observable<BaseListDataResponse<SystemMessageBean>> getMessageSystem(Integer page);
 
     /**
      * 收益消息列表
      *
      * @return
      */
-    Observable<BaseListDataResponse<ProfitMessageEntity>> getMessageProfit(Integer page);
+    Observable<BaseListDataResponse<ProfitMessageBean>> getMessageProfit(Integer page);
 
     /**
      * 评价上诉
@@ -2198,14 +2198,14 @@ public interface HttpDataSource {
      *
      * @return
      */
-    Observable<BaseDataResponse<List<MessageGroupEntity>>> getMessageList();
+    Observable<BaseDataResponse<List<MessageGroupBean>>> getMessageList();
 
     /**
      * 获取推送设置
      *
      * @return
      */
-    Observable<BaseDataResponse<PushSettingEntity>> getPushSetting();
+    Observable<BaseDataResponse<PushSettingBean>> getPushSetting();
 
     /**
      * 保存推送设置
@@ -2213,7 +2213,7 @@ public interface HttpDataSource {
      * @return
      */
     Observable<BaseResponse> savePushSetting(
-            PushSettingEntity pushSettingEntity
+            PushSettingBean pushSettingEntity
     );
 
     /**
@@ -2251,7 +2251,7 @@ public interface HttpDataSource {
      * @param payType 1/余额支付 2/google支付 3/my_card支付 4/苹果支付
      * @return
      */
-    Observable<BaseDataResponse<CreateOrderEntity>> createOrder(
+    Observable<BaseDataResponse<CreateOrderBean>> createOrder(
             Integer id,
             Integer type,
             Integer payType,
@@ -2274,7 +2274,7 @@ public interface HttpDataSource {
      * @param id 动态ID
      * @return
      */
-    Observable<BaseListDataResponse<BaseUserBeanEntity>> getNewsGiveList(
+    Observable<BaseListDataResponse<BaseUserBeanBean>> getNewsGiveList(
             Integer id, Integer page
     );
 
@@ -2285,7 +2285,7 @@ public interface HttpDataSource {
      * @return
      */
 
-    Observable<BaseListDataResponse<BaseUserBeanEntity>> getTopicalGiveList(
+    Observable<BaseListDataResponse<BaseUserBeanBean>> getTopicalGiveList(
             Integer id, Integer page
     );
 
@@ -2295,7 +2295,7 @@ public interface HttpDataSource {
      * @param id 节目ID
      * @return
      */
-    Observable<BaseDataResponse<TopicalListEntity>> topicalDetail(Integer id);
+    Observable<BaseDataResponse<TopicalListBean>> topicalDetail(Integer id);
 
     /**
      * 是否可以发布节目
@@ -2320,7 +2320,7 @@ public interface HttpDataSource {
      * @param money
      * @return
      */
-    Observable<BaseDataResponse<ChatRedPackageEntity>> sendCoinRedPackage(
+    Observable<BaseDataResponse<ChatRedPackageBean>> sendCoinRedPackage(
             Integer userId,
             Integer money,
             String desc
@@ -2332,7 +2332,7 @@ public interface HttpDataSource {
      * @param id
      * @return
      */
-    Observable<BaseDataResponse<ChatRedPackageEntity>> getCoinRedPackage(
+    Observable<BaseDataResponse<ChatRedPackageBean>> getCoinRedPackage(
             int id
     );
 
@@ -2352,7 +2352,7 @@ public interface HttpDataSource {
      * @param page
      * @return
      */
-    Observable<BaseListDataResponse<UserCoinItemEntity>> userCoinEarnings(
+    Observable<BaseListDataResponse<UserCoinItemBean>> userCoinEarnings(
             int page
     );
 
@@ -2362,7 +2362,7 @@ public interface HttpDataSource {
      * @param userId
      * @return
      */
-    Observable<BaseDataResponse<UserConnMicStatusEntity>> userIsConnMic(
+    Observable<BaseDataResponse<UserConnMicStatusBean>> userIsConnMic(
             int userId
     );
 
@@ -2423,7 +2423,7 @@ public interface HttpDataSource {
      * @param type 1动态 2节目
      * @return
      */
-    Observable<BaseDataResponse<StatusEntity>> publishCheck(
+    Observable<BaseDataResponse<StatusBean>> publishCheck(
             int type
     );
 
@@ -2433,7 +2433,7 @@ public interface HttpDataSource {
      *
      * @return
      */
-    Observable<BaseDataResponse<UnReadMessageNumEntity>> getUnreadMessageNum();
+    Observable<BaseDataResponse<UnReadMessageNumBean>> getUnreadMessageNum();
 
     /**
      * 获取 游戏币兑换jm币兑换框信息

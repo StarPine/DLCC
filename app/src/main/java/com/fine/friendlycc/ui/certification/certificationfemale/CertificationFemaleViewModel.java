@@ -8,12 +8,12 @@ import androidx.databinding.ObservableField;
 import com.blankj.utilcode.util.StringUtils;
 import com.fine.friendlycc.ui.certification.goddesscertification.GoddessCertificationFragment;
 import com.fine.friendlycc.R;
-import com.fine.friendlycc.app.AppContext;
+import com.fine.friendlycc.app.CCApplication;
 import com.fine.friendlycc.app.AppsFlyerEvent;
 import com.fine.friendlycc.data.AppRepository;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseDataResponse;
-import com.fine.friendlycc.entity.StatusEntity;
+import com.fine.friendlycc.bean.StatusBean;
 import com.fine.friendlycc.event.FaceCertificationEvent;
 import com.fine.friendlycc.event.GoddessCertificationEvent;
 import com.fine.friendlycc.manager.ConfigManager;
@@ -43,7 +43,7 @@ public class CertificationFemaleViewModel extends BaseRefreshViewModel<AppReposi
         if (faceCertification.get()) {
             start(UpdateFaceFragment.class.getCanonicalName());
         } else {
-            AppContext.instance().logEvent(AppsFlyerEvent.Identity_Verification);
+            CCApplication.instance().logEvent(AppsFlyerEvent.Identity_Verification);
             start(UploadPhotoFragment.class.getCanonicalName());
         }
     });
@@ -108,9 +108,9 @@ public class CertificationFemaleViewModel extends BaseRefreshViewModel<AppReposi
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(this)
-                .subscribe(new BaseObserver<BaseDataResponse<StatusEntity>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<StatusBean>>() {
                     @Override
-                    public void onSuccess(BaseDataResponse<StatusEntity> response) {
+                    public void onSuccess(BaseDataResponse<StatusBean> response) {
                         faceCertification.set(response.getData().getStatus() == 1);
                     }
                 });
@@ -121,9 +121,9 @@ public class CertificationFemaleViewModel extends BaseRefreshViewModel<AppReposi
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(this)
-                .subscribe(new BaseObserver<BaseDataResponse<StatusEntity>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<StatusBean>>() {
                     @Override
-                    public void onSuccess(BaseDataResponse<StatusEntity> response) {
+                    public void onSuccess(BaseDataResponse<StatusBean> response) {
                         stopRefreshOrLoadMore();
                         //状态 -1未申请 0等待审核 1审核通过 2未通过
                         int status = response.getData().getStatus();

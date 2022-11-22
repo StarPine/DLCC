@@ -1,6 +1,6 @@
 package com.fine.friendlycc.event;
 
-import com.fine.friendlycc.entity.MessageTagEntity;
+import com.fine.friendlycc.bean.MessageTagBean;
 
 /**
  * @ClassName MessageTagEvent
@@ -12,19 +12,19 @@ import com.fine.friendlycc.entity.MessageTagEntity;
  * @Version 1.0
  **/
 public class MessageTagEvent {
-    private MessageTagEntity messageTagEntity;
+    private MessageTagBean messageTagEntity;
     private boolean isShow = false;
 
-    public MessageTagEvent(MessageTagEntity messageTagEntity, boolean isShow) {
+    public MessageTagEvent(MessageTagBean messageTagEntity, boolean isShow) {
         this.messageTagEntity = messageTagEntity;
         this.isShow = isShow;
     }
 
-    public MessageTagEntity getMessageTagEntity() {
+    public MessageTagBean getMessageTagEntity() {
         return messageTagEntity;
     }
 
-    public void setMessageTagEntity(MessageTagEntity messageTagEntity) {
+    public void setMessageTagEntity(MessageTagBean messageTagEntity) {
         this.messageTagEntity = messageTagEntity;
     }
 

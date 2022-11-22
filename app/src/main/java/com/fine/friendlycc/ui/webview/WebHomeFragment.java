@@ -29,19 +29,18 @@ import com.blankj.utilcode.util.ToastUtils;
 import com.fine.friendlycc.BR;
 import com.fine.friendlycc.R;
 import com.fine.friendlycc.app.AppConfig;
-import com.fine.friendlycc.app.AppContext;
+import com.fine.friendlycc.app.CCApplication;
 import com.fine.friendlycc.app.AppViewModelFactory;
 import com.fine.friendlycc.app.AppsFlyerEvent;
 import com.fine.friendlycc.databinding.ActivityWebHomePlayccBinding;
-import com.fine.friendlycc.entity.CallingInviteInfo;
-import com.fine.friendlycc.kl.Utils;
+import com.fine.friendlycc.bean.CallingInviteInfo;
+import com.fine.friendlycc.calling.Utils;
 import com.fine.friendlycc.ui.base.BaseFragment;
 import com.fine.friendlycc.ui.mine.wallet.diamond.recharge.DialogDiamondRechargeActivity;
 import com.fine.friendlycc.ui.userdetail.detail.UserDetailFragment;
 import com.fine.friendlycc.utils.ChatUtils;
 import com.fine.friendlycc.widget.action.StatusAction;
 import com.fine.friendlycc.widget.action.StatusLayout;
-import com.fine.friendlycc.widget.coinrechargesheet.CoinRechargeSheetView;
 import com.fine.friendlycc.widget.dialog.TraceDialog;
 import com.google.gson.Gson;
 import com.luck.picture.lib.permissions.PermissionChecker;
@@ -124,7 +123,7 @@ public class WebHomeFragment extends BaseFragment<ActivityWebHomePlayccBinding,W
         // 设置 AppCache 最大缓存值(现在官方已经不提倡使用，已废弃)
         settings.setAppCacheMaxSize(8 * 1024 * 1024);
         // Android 私有缓存存储，如果你不调用setAppCachePath方法，WebView将不会产生这个目录
-        settings.setAppCachePath(AppContext.instance().getCacheDir().getAbsolutePath());
+        settings.setAppCachePath(CCApplication.instance().getCacheDir().getAbsolutePath());
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             // 解决 Android 5.0 上 WebView 默认不允许加载 Http 与 Https 混合内容
@@ -168,7 +167,7 @@ public class WebHomeFragment extends BaseFragment<ActivityWebHomePlayccBinding,W
                     }).TraceVipDialog().show();
         });
         viewModel.webUC.sendDialogViewEvent.observe(this, event -> {
-            AppContext.instance().logEvent(AppsFlyerEvent.Top_up);
+            CCApplication.instance().logEvent(AppsFlyerEvent.Top_up);
             toRecharge();
         });
     }

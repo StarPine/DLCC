@@ -11,7 +11,7 @@
 
         <variable
             name="viewModel"
-            type="com.fine.friendlycc.kl.viewmodel.AudioCallChatingItemViewModel" />
+            type="com.fine.friendlycc.calling.viewmodel.AudioCallChatingItemViewModel" />
     </data>
 
     <LinearLayout

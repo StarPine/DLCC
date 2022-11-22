@@ -10,8 +10,8 @@ import com.fine.friendlycc.R;
 import com.fine.friendlycc.data.AppRepository;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseDataResponse;
-import com.fine.friendlycc.entity.DiamondPaySuccessEntity;
-import com.fine.friendlycc.entity.GameCoinWalletEntity;
+import com.fine.friendlycc.bean.DiamondPaySuccessBean;
+import com.fine.friendlycc.bean.GameCoinWalletBean;
 import com.fine.friendlycc.manager.ConfigManager;
 import com.fine.friendlycc.ui.mine.wallet.coin.CoinFragment;
 import com.fine.friendlycc.ui.mine.wallet.girl.TwDollarMoneyFragment;
@@ -87,11 +87,11 @@ public class WalletViewModel extends BaseViewModel<AppRepository> {
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(disposable -> showHUD())
-                .subscribe(new BaseObserver<BaseDataResponse<GameCoinWalletEntity>>(){
+                .subscribe(new BaseObserver<BaseDataResponse<GameCoinWalletBean>>(){
 
                     @Override
-                    public void onSuccess(BaseDataResponse<GameCoinWalletEntity> coinWalletEntityBaseDataResponse) {
-                        GameCoinWalletEntity gameCoinWalletEntity = coinWalletEntityBaseDataResponse.getData();
+                    public void onSuccess(BaseDataResponse<GameCoinWalletBean> coinWalletEntityBaseDataResponse) {
+                        GameCoinWalletBean gameCoinWalletEntity = coinWalletEntityBaseDataResponse.getData();
                         if(gameCoinWalletEntity!=null){
                             int totalCoins = gameCoinWalletEntity.getTotalCoins();
                             if (totalCoins > 9999999){
@@ -115,7 +115,7 @@ public class WalletViewModel extends BaseViewModel<AppRepository> {
     @Override
     public void registerRxBus() {
         super.registerRxBus();
-        paySuccessSubscriber = RxBus.getDefault().toObservable(DiamondPaySuccessEntity.class).subscribe(event -> {
+        paySuccessSubscriber = RxBus.getDefault().toObservable(DiamondPaySuccessBean.class).subscribe(event -> {
             getUserAccount();
         });
         //将订阅者加入管理站

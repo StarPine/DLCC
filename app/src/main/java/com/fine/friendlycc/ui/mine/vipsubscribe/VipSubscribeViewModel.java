@@ -10,7 +10,7 @@ import androidx.databinding.ObservableList;
 import com.blankj.utilcode.util.StringUtils;
 import com.fine.friendlycc.BR;
 import com.fine.friendlycc.R;
-import com.fine.friendlycc.app.AppContext;
+import com.fine.friendlycc.app.CCApplication;
 import com.fine.friendlycc.app.AppsFlyerEvent;
 import com.fine.friendlycc.data.AppRepository;
 import com.fine.friendlycc.data.source.http.exception.RequestException;
@@ -18,14 +18,14 @@ import com.fine.friendlycc.data.source.http.observer.BaseEmptyObserver;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseDataResponse;
 import com.fine.friendlycc.data.source.http.response.BaseResponse;
-import com.fine.friendlycc.entity.CreateOrderEntity;
-import com.fine.friendlycc.entity.LocalGooglePayCache;
-import com.fine.friendlycc.entity.SystemConfigEntity;
-import com.fine.friendlycc.entity.SystemRoleMoneyConfigEntity;
-import com.fine.friendlycc.entity.TaskAdEntity;
-import com.fine.friendlycc.entity.UserDataEntity;
-import com.fine.friendlycc.entity.VipInfoEntity;
-import com.fine.friendlycc.entity.VipPackageItemEntity;
+import com.fine.friendlycc.bean.CreateOrderBean;
+import com.fine.friendlycc.bean.LocalGooglePayCache;
+import com.fine.friendlycc.bean.SystemConfigBean;
+import com.fine.friendlycc.bean.SystemRoleMoneyConfigBean;
+import com.fine.friendlycc.bean.TaskAdBean;
+import com.fine.friendlycc.bean.UserDataBean;
+import com.fine.friendlycc.bean.VipInfoBean;
+import com.fine.friendlycc.bean.VipPackageItemBean;
 import com.fine.friendlycc.event.UserUpdateVipEvent;
 import com.fine.friendlycc.utils.Utils;
 import com.fine.friendlycc.viewmodel.BaseViewModel;
@@ -49,12 +49,12 @@ public class VipSubscribeViewModel extends BaseViewModel<AppRepository> {
     public static final String TAG = "VipSubscribeViewModel";
 
     //福袋
-    public ObservableField<List<TaskAdEntity>> adItemVipEntityList = new ObservableField<>(new ArrayList<>());
+    public ObservableField<List<TaskAdBean>> adItemVipEntityList = new ObservableField<>(new ArrayList<>());
 
     private final int consumeImmediately = 0;
     private final int consumeDelay = 1;
 
-    public List<VipPackageItemEntity> vipPackageItemEntityList = new ArrayList<>();
+    public List<VipPackageItemBean> vipPackageItemEntityList = new ArrayList<>();
 
     //订阅相关配置
     public BindingRecyclerViewAdapter<VipSubscribeItemViewModel> vipSubscribeAdapter = new BindingRecyclerViewAdapter<>();
@@ -68,8 +68,8 @@ public class VipSubscribeViewModel extends BaseViewModel<AppRepository> {
 
     public ObservableField<Integer> selectedPosition = new ObservableField<>(-1);
 
-    public ObservableField<VipPackageItemEntity> checkedVipPackageItemEntity = new ObservableField<>();
-    public ObservableField<VipInfoEntity> vipInfoEntity = new ObservableField<>();
+    public ObservableField<VipPackageItemBean> checkedVipPackageItemEntity = new ObservableField<>();
+    public ObservableField<VipInfoBean> vipInfoEntity = new ObservableField<>();
 
     public String orderNumber;
     public Integer pay_good_day = 0;
@@ -77,20 +77,20 @@ public class VipSubscribeViewModel extends BaseViewModel<AppRepository> {
     private Integer ActualValue;
     public BindingCommand confirmOnClickCommand = new BindingCommand(() -> rechargeCreateOrder());
 
-    public VipPackageItemEntity $vipPackageItemEntity;
+    public VipPackageItemBean $vipPackageItemEntity;
 
     public VipSubscribeViewModel(@NonNull Application application, AppRepository repository) {
         super(application, repository);
-        UserDataEntity userDataEntity = model.readUserData();
+        UserDataBean userDataEntity = model.readUserData();
     }
 
-    public void itemClick(int position, VipPackageItemEntity vipPackageItemEntity) {
+    public void itemClick(int position, VipPackageItemBean vipPackageItemEntity) {
         for (VipSubscribeItemViewModel vipSubscribeItemViewModel : vipSubscribeList) {
             vipSubscribeItemViewModel.itemEntity.get().setSelected(false);
         }
         $vipPackageItemEntity = vipPackageItemEntity;
         checkedVipPackageItemEntity.set(vipPackageItemEntity);
-        AppContext.instance().logEvent("VIP_" + (position + 1));
+        CCApplication.instance().logEvent("VIP_" + (position + 1));
         pay_good_day = vipSubscribeList.get(position).itemEntity.get().getActualValue();
         vipSubscribeList.get(position).itemEntity.get().setSelected(true);
         selectedPosition.set(position);
@@ -102,20 +102,20 @@ public class VipSubscribeViewModel extends BaseViewModel<AppRepository> {
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(this)
-                .subscribe(new BaseEmptyObserver<BaseDataResponse<VipInfoEntity>>(this) {
+                .subscribe(new BaseEmptyObserver<BaseDataResponse<VipInfoBean>>(this) {
 
                     @Override
-                    public void onSuccess(BaseDataResponse<VipInfoEntity> response) {
+                    public void onSuccess(BaseDataResponse<VipInfoBean> response) {
                         super.onSuccess(response);
                         vipSubscribeList.clear();
-                        VipInfoEntity data = response.getData();
+                        VipInfoBean data = response.getData();
                         vipInfoEntity.set(data);
-                        List<VipPackageItemEntity> list = data.getList();
+                        List<VipPackageItemBean> list = data.getList();
                         vipPackageItemEntityList = list;
                         if (vipPackageItemEntityList != null && vipPackageItemEntityList.size() > 0) {
                             int size = vipPackageItemEntityList.size();
                             for (int i = 0; i < size; i++) {
-                                VipPackageItemEntity vipPackage = vipPackageItemEntityList.get(i);
+                                VipPackageItemBean vipPackage = vipPackageItemEntityList.get(i);
                                 VipSubscribeItemViewModel item = new VipSubscribeItemViewModel(VipSubscribeViewModel.this, vipPackage, null);
                                 vipSubscribeList.add(item);
 
@@ -134,10 +134,10 @@ public class VipSubscribeViewModel extends BaseViewModel<AppRepository> {
                 });
     }
 
-    private void forePrivilegesInfo(VipPackageItemEntity vipPackage) {
+    private void forePrivilegesInfo(VipPackageItemBean vipPackage) {
         vipPrivilegeList.clear();
         if (vipPackage.getPrivileges() != null && vipPackage.getPrivileges().size() > 0) {
-            for (VipPackageItemEntity.PrivilegesBean privilege : vipPackage.getPrivileges()) {
+            for (VipPackageItemBean.PrivilegesBean privilege : vipPackage.getPrivileges()) {
                 VipPrivilegeItemViewModel privilegeItemViewModel = new VipPrivilegeItemViewModel(VipSubscribeViewModel.this, privilege);
                 vipPrivilegeList.add(privilegeItemViewModel);
             }
@@ -152,9 +152,9 @@ public class VipSubscribeViewModel extends BaseViewModel<AppRepository> {
                 .doOnSubscribe(disposable -> {
                     showHUD();
                 })
-                .subscribe(new BaseObserver<BaseDataResponse<CreateOrderEntity>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<CreateOrderBean>>() {
                     @Override
-                    public void onSuccess(BaseDataResponse<CreateOrderEntity> response) {
+                    public void onSuccess(BaseDataResponse<CreateOrderBean> response) {
                         dismissHUD();
                         pay_good_day = response.getData().getActual_value();
                         ActualValue = response.getData().getActual_value();
@@ -182,14 +182,14 @@ public class VipSubscribeViewModel extends BaseViewModel<AppRepository> {
             return;
         }
         try {
-            AppContext.instance().logEvent(AppsFlyerEvent.Get_vip);
+            CCApplication.instance().logEvent(AppsFlyerEvent.Get_vip);
             //调整取google的商品id为后天返回类
             String payCode = vipSubscribeList.get(selectedPosition.get()).itemEntity.get().getGoogleGoodsId();
             // Log.e("当前vip订阅代码",payCode+"====================");
             createOrder(vipSubscribeList.get(selectedPosition.get()).itemEntity.get().getId(), payCode);
             //uc.clickPay.postValue(payCode);
         } catch (Exception e) {
-            AppContext.instance().logEvent(AppsFlyerEvent.vip_google_arouse_error);
+            CCApplication.instance().logEvent(AppsFlyerEvent.vip_google_arouse_error);
             ToastUtils.showShort(e.getMessage());
         }
 
@@ -197,18 +197,18 @@ public class VipSubscribeViewModel extends BaseViewModel<AppRepository> {
 
     public void paySuccessNotify(String packageName, List<String> productId, String token, Integer event) {
         if (event == 0) {
-            UserDataEntity userDataEntity = model.readUserData();
+            UserDataBean userDataEntity = model.readUserData();
             userDataEntity.setIsVip(1);
             userDataEntity.setEndTime(Utils.formatday.format(Utils.addDate(new Date(), pay_good_day == null ? 0 : pay_good_day)));
             model.saveUserData(userDataEntity);
-            SystemConfigEntity systemConfigEntity = model.readSystemConfig();
-            SystemRoleMoneyConfigEntity sysManUserConfigEntity = systemConfigEntity.getManUser();
+            SystemConfigBean systemConfigEntity = model.readSystemConfig();
+            SystemRoleMoneyConfigBean sysManUserConfigEntity = systemConfigEntity.getManUser();
             sysManUserConfigEntity.setSendMessagesNumber(-1);
             systemConfigEntity.setManUser(sysManUserConfigEntity);
-            SystemRoleMoneyConfigEntity sysManRealConfigEntity = systemConfigEntity.getManReal();
+            SystemRoleMoneyConfigBean sysManRealConfigEntity = systemConfigEntity.getManReal();
             sysManRealConfigEntity.setSendMessagesNumber(-1);
             systemConfigEntity.setManReal(sysManRealConfigEntity);
-            SystemRoleMoneyConfigEntity sysManVipConfigEntity = systemConfigEntity.getManVip();
+            SystemRoleMoneyConfigBean sysManVipConfigEntity = systemConfigEntity.getManVip();
             sysManVipConfigEntity.setSendMessagesNumber(-1);
             systemConfigEntity.setManVip(sysManVipConfigEntity);
             model.saveSystemConfig(systemConfigEntity);

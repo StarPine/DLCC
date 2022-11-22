@@ -4,7 +4,7 @@ package com.fine.friendlycc.manager;
 import com.alibaba.sdk.android.oss.ClientConfiguration;
 import com.alibaba.sdk.android.oss.OSSClient;
 import com.fine.friendlycc.app.AppConfig;
-import com.fine.friendlycc.app.AppContext;
+import com.fine.friendlycc.app.CCApplication;
 import com.fine.friendlycc.data.AppRepository;
 
 public class OSSWrapper {
@@ -26,7 +26,7 @@ public class OSSWrapper {
         // SDCard_path\OSSLog\logs.csv，高版本系统无权限
         // OSSLog.enableLog();
 
-        mClient = new OSSClient(AppContext.instance(), AppConfig.OSS_ENDPOINT, authCredentialsProvider, conf);
+        mClient = new OSSClient(CCApplication.instance(), AppConfig.OSS_ENDPOINT, authCredentialsProvider, conf);
     }
 
     public static OSSWrapper sharedWrapper() {

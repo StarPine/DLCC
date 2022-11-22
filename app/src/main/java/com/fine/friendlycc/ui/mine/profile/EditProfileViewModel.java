@@ -11,10 +11,10 @@ import com.fine.friendlycc.data.AppRepository;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseDataResponse;
 import com.fine.friendlycc.data.source.http.response.BaseResponse;
-import com.fine.friendlycc.entity.CheckNicknameEntity;
-import com.fine.friendlycc.entity.ConfigItemEntity;
-import com.fine.friendlycc.entity.OccupationConfigItemEntity;
-import com.fine.friendlycc.entity.UserDataEntity;
+import com.fine.friendlycc.bean.CheckNicknameBean;
+import com.fine.friendlycc.bean.ConfigItemBean;
+import com.fine.friendlycc.bean.OccupationConfigItemBean;
+import com.fine.friendlycc.bean.UserDataBean;
 import com.fine.friendlycc.event.AvatarChangeEvent;
 import com.fine.friendlycc.event.ProfileChangeEvent;
 import com.fine.friendlycc.manager.ConfigManager;
@@ -40,14 +40,14 @@ import me.goldze.mvvmhabit.utils.ToastUtils;
  * @author wulei
  */
 public class EditProfileViewModel extends BaseViewModel<AppRepository> {
-    public ObservableField<UserDataEntity> userDataEntity = new ObservableField<>();
+    public ObservableField<UserDataBean> userDataEntity = new ObservableField<>();
     public ObservableField<String> gender = new ObservableField<>("");
     //    身高
-    public List<ConfigItemEntity> height = new ArrayList<>();
+    public List<ConfigItemBean> height = new ArrayList<>();
     //    体重
-    public List<ConfigItemEntity> weight = new ArrayList<>();
+    public List<ConfigItemBean> weight = new ArrayList<>();
     //    职业
-    public List<OccupationConfigItemEntity> occupation = new ArrayList<>();
+    public List<OccupationConfigItemBean> occupation = new ArrayList<>();
 
     UIChangeObservable uc = new UIChangeObservable();
     public BindingCommand uploadAvatarOnClickCommand = new BindingCommand(() -> {
@@ -111,10 +111,10 @@ public class EditProfileViewModel extends BaseViewModel<AppRepository> {
                 .doOnSubscribe(this)
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
-                .subscribe(new BaseObserver<BaseDataResponse<UserDataEntity>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<UserDataBean>>() {
                     @Override
-                    public void onSuccess(BaseDataResponse<UserDataEntity> response) {
-                        UserDataEntity data = response.getData();
+                    public void onSuccess(BaseDataResponse<UserDataBean> response) {
+                        UserDataBean data = response.getData();
                         showFlag = data.isPerfect();
                         model.saveUserData(data);
                         userDataEntity.set(data);
@@ -177,7 +177,7 @@ public class EditProfileViewModel extends BaseViewModel<AppRepository> {
     }
 
     public void checkNickname() {
-        UserDataEntity userEntity = userDataEntity.get();
+        UserDataBean userEntity = userDataEntity.get();
         if (StringUtils.isEmpty(userEntity.getNickname())) {
             ToastUtils.showShort(R.string.playcc_name_nust);
             return;
@@ -187,10 +187,10 @@ public class EditProfileViewModel extends BaseViewModel<AppRepository> {
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(disposable -> showHUD())
-                .subscribe(new BaseObserver<BaseDataResponse<CheckNicknameEntity>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<CheckNicknameBean>>() {
                     @Override
-                    public void onSuccess(BaseDataResponse<CheckNicknameEntity> checkNicknameEntityBaseDataResponse) {
-                        CheckNicknameEntity checkNicknameEntity = checkNicknameEntityBaseDataResponse.getData();
+                    public void onSuccess(BaseDataResponse<CheckNicknameBean> checkNicknameEntityBaseDataResponse) {
+                        CheckNicknameBean checkNicknameEntity = checkNicknameEntityBaseDataResponse.getData();
                         if (checkNicknameEntity != null && checkNicknameEntity.getStatus() == 1) {
                             ToastUtils.showShort(R.string.playcc_check_name_tips);
                         } else {
@@ -208,7 +208,7 @@ public class EditProfileViewModel extends BaseViewModel<AppRepository> {
 
     //保存修复
     public void saveProfile() {
-        UserDataEntity userEntity = userDataEntity.get();
+        UserDataBean userEntity = userDataEntity.get();
         if(userEntity==null){
             return;
         }

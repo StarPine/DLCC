@@ -1,6 +1,6 @@
 package com.fine.friendlycc.event;
 
-import com.fine.friendlycc.entity.ConfigItemEntity;
+import com.fine.friendlycc.bean.ConfigItemBean;
 
 /**
  * 城市切换
@@ -8,13 +8,13 @@ import com.fine.friendlycc.entity.ConfigItemEntity;
  * @author wulei
  */
 public class CityChangeEvent {
-    private ConfigItemEntity cityEntity;
+    private ConfigItemBean cityEntity;
     private int index;
 
     public CityChangeEvent() {
     }
 
-    public CityChangeEvent(ConfigItemEntity cityEntity, int index) {
+    public CityChangeEvent(ConfigItemBean cityEntity, int index) {
         this.cityEntity = cityEntity;
         this.index = index;
     }
@@ -27,11 +27,11 @@ public class CityChangeEvent {
         this.index = index;
     }
 
-    public ConfigItemEntity getCityEntity() {
+    public ConfigItemBean getCityEntity() {
         return cityEntity;
     }
 
-    public void setCityEntity(ConfigItemEntity cityEntity) {
+    public void setCityEntity(ConfigItemBean cityEntity) {
         this.cityEntity = cityEntity;
     }
 }

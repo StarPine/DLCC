@@ -12,21 +12,21 @@ import com.blankj.utilcode.util.ObjectUtils;
 import com.blankj.utilcode.util.StringUtils;
 import com.fine.friendlycc.BR;
 import com.fine.friendlycc.R;
-import com.fine.friendlycc.app.AppContext;
+import com.fine.friendlycc.app.CCApplication;
 import com.fine.friendlycc.app.AppsFlyerEvent;
 import com.fine.friendlycc.data.AppRepository;
 import com.fine.friendlycc.data.source.http.exception.RequestException;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseDataResponse;
 import com.fine.friendlycc.data.source.http.response.BaseResponse;
-import com.fine.friendlycc.entity.ApiConfigManagerEntity;
-import com.fine.friendlycc.entity.BonusGoodsEntity;
-import com.fine.friendlycc.entity.EjectEntity;
-import com.fine.friendlycc.entity.EjectSignInEntity;
-import com.fine.friendlycc.entity.SystemConfigTaskEntity;
-import com.fine.friendlycc.entity.TaskAdEntity;
-import com.fine.friendlycc.entity.TaskConfigEntity;
-import com.fine.friendlycc.entity.TaskConfigItemEntity;
+import com.fine.friendlycc.bean.ApiConfigManagerBean;
+import com.fine.friendlycc.bean.BonusGoodsBean;
+import com.fine.friendlycc.bean.EjectBean;
+import com.fine.friendlycc.bean.EjectSignInBean;
+import com.fine.friendlycc.bean.SystemConfigTaskBean;
+import com.fine.friendlycc.bean.TaskAdBean;
+import com.fine.friendlycc.bean.TaskConfigBean;
+import com.fine.friendlycc.bean.TaskConfigItemBean;
 import com.fine.friendlycc.event.ReceiveNewUserRewardEvent;
 import com.fine.friendlycc.event.RewardRedDotEvent;
 import com.fine.friendlycc.event.TaskListEvent;
@@ -87,12 +87,12 @@ public class TaskCenterViewModel extends BaseViewModel<AppRepository> {
     public ObservableField<Integer> goldMoney = new ObservableField<>(0);
     public UIChangeObservable uc = new UIChangeObservable();
     //福袋
-    public ObservableField<List<TaskAdEntity>> adItemEntityObservableField = new ObservableField<>(new ArrayList<>());
+    public ObservableField<List<TaskAdBean>> adItemEntityObservableField = new ObservableField<>(new ArrayList<>());
     //奖励状态-红点
     private final Map<String, Integer> rewardStausMap = new HashMap<>();
     //用户邀请码
     public ObservableField<String> userInvite = new ObservableField<>();
-    public EjectEntity $ejectEntity;
+    public EjectBean $ejectEntity;
     //连续已经签到N天
     public ObservableField<String> SignDayNumEd = new ObservableField<>("0天");
     //重新刷新页面
@@ -107,7 +107,7 @@ public class TaskCenterViewModel extends BaseViewModel<AppRepository> {
         @Override
         public void call() {
             //Bundle bundle = WebDetailFragment.getStartBundle(AppConfig.TASK_TITLE_HELP);
-            ApiConfigManagerEntity apiConfigManager = model.readApiConfigManagerEntity();
+            ApiConfigManagerBean apiConfigManager = model.readApiConfigManagerEntity();
             if(apiConfigManager!=null){
                 if(!StringUtils.isEmpty(apiConfigManager.getPlayChatWebUrl())){
                     Bundle bundle = new Bundle();
@@ -161,7 +161,7 @@ public class TaskCenterViewModel extends BaseViewModel<AppRepository> {
     @Override
     public void onViewCreated() {
         super.onViewCreated();
-//        SystemConfigTaskEntity systemConfigTaskEntity = ConfigManager.getInstance().getTaskConfig();
+//        SystemConfigTaskBean systemConfigTaskEntity = ConfigManager.getInstance().getTaskConfig();
 //        if (!ObjectUtils.isEmpty(systemConfigTaskEntity) && !StringUtils.isTrimEmpty(systemConfigTaskEntity.getEntryLabel())) {
 //            uc.loadSysConfigTask.setValue(systemConfigTaskEntity);
 //        }
@@ -221,9 +221,9 @@ public class TaskCenterViewModel extends BaseViewModel<AppRepository> {
                     @Override
                     public void onSuccess(BaseResponse baseResponse) {
                         if (key.equals("register")) {
-                            AppContext.instance().logEvent(AppsFlyerEvent.task_register);
+                            CCApplication.instance().logEvent(AppsFlyerEvent.task_register);
                         } else if (key.equals("firstIm")) {
-                            AppContext.instance().logEvent(AppsFlyerEvent.task_first_profit);
+                            CCApplication.instance().logEvent(AppsFlyerEvent.task_first_profit);
                         }
                         if (daily_task_observableList != null && daily_task_observableList.size() > 0) {
                             TaskCenterItemViewModel taskModel = daily_task_observableList.get(idx);
@@ -261,17 +261,17 @@ public class TaskCenterViewModel extends BaseViewModel<AppRepository> {
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(disposable -> showHUD())
-                .subscribe(new BaseObserver<BaseDataResponse<List<TaskConfigItemEntity>>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<List<TaskConfigItemBean>>>() {
                     @Override
-                    public void onSuccess(BaseDataResponse<List<TaskConfigItemEntity>> response) {
-                        List<TaskConfigItemEntity> taskConfigListEntity = response.getData();
+                    public void onSuccess(BaseDataResponse<List<TaskConfigItemBean>> response) {
+                        List<TaskConfigItemBean> taskConfigListEntity = response.getData();
                         daily_task_observableList.clear();
                         if (rewardStausMap.containsKey(IS_SINGIN)) {
                             isSinginNum = rewardStausMap.get(IS_SINGIN);
                         }
                         rewardStausMap.clear();
                         TaskTypeStatusEvent taskTypeStatusEvent = new TaskTypeStatusEvent();
-                        for (TaskConfigItemEntity newbieTask : taskConfigListEntity) {
+                        for (TaskConfigItemBean newbieTask : taskConfigListEntity) {
                             if (newbieTask.getSulg().equals("dayAccost")) {
                                 taskTypeStatusEvent.setDayAccost(newbieTask.getStatus());
                             } else if (newbieTask.getSulg().equals("accostThree")) {
@@ -311,19 +311,19 @@ public class TaskCenterViewModel extends BaseViewModel<AppRepository> {
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(disposable -> showHUD())
-                .subscribe(new BaseObserver<BaseDataResponse<TaskConfigEntity>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<TaskConfigBean>>() {
                     @Override
-                    public void onSuccess(BaseDataResponse<TaskConfigEntity> taskConfigEntityBaseDataResponse) {
+                    public void onSuccess(BaseDataResponse<TaskConfigBean> taskConfigEntityBaseDataResponse) {
                         isShowEmpty.set(false);
-                        TaskConfigEntity taskConfigEntity = taskConfigEntityBaseDataResponse.getData();
-                        EjectEntity ejectEntity = new EjectEntity(taskConfigEntity.getIsSignIn(), taskConfigEntity.getDayNumber(), taskConfigEntity.getMaleConfig(), taskConfigEntity.getFemaleConfig());
+                        TaskConfigBean taskConfigEntity = taskConfigEntityBaseDataResponse.getData();
+                        EjectBean ejectEntity = new EjectBean(taskConfigEntity.getIsSignIn(), taskConfigEntity.getDayNumber(), taskConfigEntity.getMaleConfig(), taskConfigEntity.getFemaleConfig());
                         rewardStausMap.put(IS_SINGIN, taskConfigEntity.getIsSignIn() == 1 ? 0 : 1);
                         if (rewardStausMap.containsValue(1)) {//因为请求是异步的，所以要在这里调下小红点
                             //显示小红点
                             RxBus.getDefault().post(new RewardRedDotEvent(true));
                         }
                         //加载任务中心背景图
-                        SystemConfigTaskEntity systemConfigTaskEntity = new SystemConfigTaskEntity();
+                        SystemConfigTaskBean systemConfigTaskEntity = new SystemConfigTaskBean();
                         systemConfigTaskEntity.setBackgroundImg(taskConfigEntity.getBackgroundImg());
                         systemConfigTaskEntity.setHeadImg(systemConfigTaskEntity.getHeadImg());
                         uc.loadSysConfigTask.setValue(systemConfigTaskEntity);
@@ -336,8 +336,8 @@ public class TaskCenterViewModel extends BaseViewModel<AppRepository> {
                         goldMoney.set(taskConfigEntity.getTotalMoney() == null ? 0 : taskConfigEntity.getTotalMoney());
                         daily_task_observableList.clear();
                         userInvite.set(taskConfigEntity.getCode());
-                        List<TaskConfigItemEntity> taskConfigListEntity = taskConfigEntity.getTask();
-                        for (TaskConfigItemEntity newbieTask : taskConfigListEntity) {
+                        List<TaskConfigItemBean> taskConfigListEntity = taskConfigEntity.getTask();
+                        for (TaskConfigItemBean newbieTask : taskConfigListEntity) {
                             TaskCenterItemViewModel item = new TaskCenterItemViewModel(TaskCenterViewModel.this, newbieTask, 0);
                             daily_task_observableList.add(item);
                         }
@@ -370,9 +370,9 @@ public class TaskCenterViewModel extends BaseViewModel<AppRepository> {
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(disposable -> showHUD())
-                .subscribe(new BaseObserver<BaseDataResponse<EjectSignInEntity>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<EjectSignInBean>>() {
                     @Override
-                    public void onSuccess(BaseDataResponse<EjectSignInEntity> ejectSignInEntity) {
+                    public void onSuccess(BaseDataResponse<EjectSignInBean> ejectSignInEntity) {
                         isShowSign.set(true);
                         if (isSinginNum != -1) {
                             rewardStausMap.put(IS_SINGIN, 0);
@@ -385,12 +385,12 @@ public class TaskCenterViewModel extends BaseViewModel<AppRepository> {
                             Integer dayNumer = ejectSignInEntity.getData().getDayNumber();
                             //签到成功埋点
                             if (ConfigManager.getInstance().isMale()) {
-                                AppContext.instance().logEvent(maleSigninDayNumber[dayNumer - 1]);
+                                CCApplication.instance().logEvent(maleSigninDayNumber[dayNumer - 1]);
                             } else {
-                                AppContext.instance().logEvent(femaleSigninDayNumber[dayNumer - 1]);
+                                CCApplication.instance().logEvent(femaleSigninDayNumber[dayNumer - 1]);
                             }
                             SignDayNumEd.set(String.format(StringUtils.getString(R.string.task_sign_day), dayNumer));
-                            EjectSignInEntity signInEntity = ejectSignInEntity.getData();
+                            EjectSignInBean signInEntity = ejectSignInEntity.getData();
                             uc.reporSignInSuccess.setValue(signInEntity);
                         }
                     }
@@ -420,7 +420,7 @@ public class TaskCenterViewModel extends BaseViewModel<AppRepository> {
      * @parame []
      * @Date 2021/8/11
      */
-    public void exchange(String key, BonusGoodsEntity bonusGoodsEntity) {
+    public void exchange(String key, BonusGoodsBean bonusGoodsEntity) {
         model.exchange(key)
                 .doOnSubscribe(this)
                 .compose(RxUtils.schedulersTransformer())
@@ -442,7 +442,7 @@ public class TaskCenterViewModel extends BaseViewModel<AppRepository> {
 
     public class UIChangeObservable {
         //加载任务中心系统配置
-        public SingleLiveEvent<SystemConfigTaskEntity> loadSysConfigTask = new SingleLiveEvent<>();
+        public SingleLiveEvent<SystemConfigTaskBean> loadSysConfigTask = new SingleLiveEvent<>();
         //下拉刷新开始
         public SingleLiveEvent<Void> startRefreshing = new SingleLiveEvent<>();
         //下拉刷新完成
@@ -450,13 +450,13 @@ public class TaskCenterViewModel extends BaseViewModel<AppRepository> {
         //上拉加载完成
         public SingleLiveEvent<Void> finishLoadmore = new SingleLiveEvent<>();
         //兑换弹窗显示
-        public SingleLiveEvent<BonusGoodsEntity> AlertBonuClick = new SingleLiveEvent<>();
+        public SingleLiveEvent<BonusGoodsBean> AlertBonuClick = new SingleLiveEvent<>();
         //兑换成功
-        public SingleLiveEvent<BonusGoodsEntity> exchangeSuccess = new SingleLiveEvent<>();
+        public SingleLiveEvent<BonusGoodsBean> exchangeSuccess = new SingleLiveEvent<>();
         //加载全部-收起
         public SingleLiveEvent<Boolean> UnfoldEvent = new SingleLiveEvent<>();
-        SingleLiveEvent<EjectSignInEntity> reporSignInSuccess = new SingleLiveEvent<>();
-        SingleLiveEvent<EjectEntity> EjectDay = new SingleLiveEvent<>();
+        SingleLiveEvent<EjectSignInBean> reporSignInSuccess = new SingleLiveEvent<>();
+        SingleLiveEvent<EjectBean> EjectDay = new SingleLiveEvent<>();
         //弹出充值钻石弹窗
         public SingleLiveEvent<Void> DialogCoinExchangeIntegral = new SingleLiveEvent<>();
     }

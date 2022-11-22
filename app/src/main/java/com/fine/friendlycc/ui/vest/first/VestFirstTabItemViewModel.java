@@ -7,8 +7,8 @@ import androidx.databinding.ObservableField;
 
 import com.blankj.utilcode.util.StringUtils;
 import com.fine.friendlycc.R;
-import com.fine.friendlycc.app.AppContext;
-import com.fine.friendlycc.entity.ParkItemEntity;
+import com.fine.friendlycc.app.CCApplication;
+import com.fine.friendlycc.bean.ParkItemBean;
 import com.fine.friendlycc.ui.userdetail.detail.UserDetailFragment;
 import com.fine.friendlycc.utils.ExceptionReportUtils;
 
@@ -22,9 +22,9 @@ import me.goldze.mvvmhabit.binding.command.BindingCommand;
  */
 public class VestFirstTabItemViewModel extends MultiItemViewModel<VestFirstViewModel> {
 
-    public ObservableField<ParkItemEntity> itemData = new ObservableField<>();
+    public ObservableField<ParkItemBean> itemData = new ObservableField<>();
 
-    public VestFirstTabItemViewModel(@NonNull VestFirstViewModel viewModel, ParkItemEntity parkItemEntity) {
+    public VestFirstTabItemViewModel(@NonNull VestFirstViewModel viewModel, ParkItemBean parkItemEntity) {
         super(viewModel);
         itemData .set(parkItemEntity);
     }
@@ -59,15 +59,15 @@ public class VestFirstTabItemViewModel extends MultiItemViewModel<VestFirstViewM
         return onlineStatus;
     }
 
-    public int onLineColor(ParkItemEntity itemEntity){
+    public int onLineColor(ParkItemBean itemEntity){
         if (itemEntity == null)return -1;
         if (itemEntity.getCallingStatus() == 0){
             if (itemEntity.getIsOnline() == 1) {
-                return AppContext.instance().getResources().getColor(R.color.green2);
+                return CCApplication.instance().getResources().getColor(R.color.green2);
             }
         }else {
-            return AppContext.instance().getResources().getColor(R.color.red_9);
+            return CCApplication.instance().getResources().getColor(R.color.red_9);
         }
-        return AppContext.instance().getResources().getColor(R.color.text_9EA1B0);
+        return CCApplication.instance().getResources().getColor(R.color.text_9EA1B0);
     }
 }

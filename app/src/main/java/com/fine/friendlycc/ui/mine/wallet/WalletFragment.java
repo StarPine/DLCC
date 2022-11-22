@@ -12,16 +12,12 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProviders;
 
-import com.blankj.utilcode.util.StringUtils;
 import com.fine.friendlycc.BR;
 import com.fine.friendlycc.R;
 import com.fine.friendlycc.app.AppConfig;
-import com.fine.friendlycc.app.AppContext;
 import com.fine.friendlycc.app.AppViewModelFactory;
-import com.fine.friendlycc.app.AppsFlyerEvent;
 import com.fine.friendlycc.databinding.FragmentWalletBinding;
-import com.fine.friendlycc.entity.GameCoinBuy;
-import com.fine.friendlycc.entity.GoodsEntity;
+import com.fine.friendlycc.bean.GoodsBean;
 import com.fine.friendlycc.manager.ConfigManager;
 import com.fine.friendlycc.ui.base.BaseToolbarFragment;
 import com.fine.friendlycc.ui.certification.certificationfemale.CertificationFemaleFragment;
@@ -98,7 +94,7 @@ public class WalletFragment extends BaseToolbarFragment<FragmentWalletBinding, W
         Log.e("进入支付页面回调","=========");
         if (result.getData() != null) {
             Intent intentData = result.getData();
-            GoodsEntity goodsEntity = (GoodsEntity) intentData.getSerializableExtra("goodsEntity");
+            GoodsBean goodsEntity = (GoodsBean) intentData.getSerializableExtra("goodsEntity");
             if(goodsEntity!=null){
                 Log.e("支付成功","===============");
             }

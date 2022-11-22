@@ -3,7 +3,7 @@ package com.fine.friendlycc.ui.message.broadcastmessage;
 import androidx.annotation.NonNull;
 import androidx.databinding.ObservableField;
 
-import com.fine.friendlycc.entity.BoradCastMessageEntity;
+import com.fine.friendlycc.bean.BoradCastMessageBean;
 import com.fine.friendlycc.utils.ExceptionReportUtils;
 
 import me.goldze.mvvmhabit.base.ItemViewModel;
@@ -14,7 +14,7 @@ import me.goldze.mvvmhabit.binding.command.BindingCommand;
  */
 public class BroadcastMessageItemViewModel extends ItemViewModel<BroadcastMessageViewModel> {
 
-    public ObservableField<BoradCastMessageEntity> itemEntity = new ObservableField<>();
+    public ObservableField<BoradCastMessageBean> itemEntity = new ObservableField<>();
     public BindingCommand itemClick = new BindingCommand(() -> {
         try {
             int position = viewModel.observableList.indexOf(BroadcastMessageItemViewModel.this);
@@ -31,7 +31,7 @@ public class BroadcastMessageItemViewModel extends ItemViewModel<BroadcastMessag
         }
     });
 
-    public BroadcastMessageItemViewModel(@NonNull BroadcastMessageViewModel viewModel, BoradCastMessageEntity messageEntity) {
+    public BroadcastMessageItemViewModel(@NonNull BroadcastMessageViewModel viewModel, BoradCastMessageBean messageEntity) {
         super(viewModel);
         this.itemEntity.set(messageEntity);
     }

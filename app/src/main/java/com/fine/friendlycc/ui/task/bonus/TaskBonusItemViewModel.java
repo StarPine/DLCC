@@ -4,7 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.databinding.ObservableField;
 
 import com.fine.friendlycc.R;
-import com.fine.friendlycc.entity.BonusGoodsEntity;
+import com.fine.friendlycc.bean.BonusGoodsBean;
 import com.fine.friendlycc.ui.task.TaskCenterViewModel;
 
 import org.jetbrains.annotations.NotNull;
@@ -21,7 +21,7 @@ import me.goldze.mvvmhabit.utils.StringUtils;
  */
 public class TaskBonusItemViewModel extends MultiItemViewModel<TaskCenterViewModel> {
 
-    public ObservableField<BonusGoodsEntity> itemEntity = new ObservableField<>();
+    public ObservableField<BonusGoodsBean> itemEntity = new ObservableField<>();
     public BindingCommand subGoodsCommand = new BindingCommand(new BindingAction() {
         @Override
         public void call() {
@@ -29,7 +29,7 @@ public class TaskBonusItemViewModel extends MultiItemViewModel<TaskCenterViewMod
         }
     });
 
-    public TaskBonusItemViewModel(@NonNull @NotNull TaskCenterViewModel viewModel, BonusGoodsEntity entity) {
+    public TaskBonusItemViewModel(@NonNull @NotNull TaskCenterViewModel viewModel, BonusGoodsBean entity) {
         super(viewModel);
         itemEntity.set(entity);
     }

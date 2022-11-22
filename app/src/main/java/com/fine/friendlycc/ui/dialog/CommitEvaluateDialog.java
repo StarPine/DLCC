@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.blankj.utilcode.util.ConvertUtils;
-import com.fine.friendlycc.entity.EvaluateItemEntity;
+import com.fine.friendlycc.bean.EvaluateItemBean;
 import com.fine.friendlycc.ui.dialog.adapter.CommitEvaluateAdapter;
 import com.fine.friendlycc.R;
 
@@ -29,7 +29,7 @@ import java.util.List;
  */
 public class CommitEvaluateDialog extends BaseDialogFragment implements View.OnClickListener {
 
-    private final List<EvaluateItemEntity> evaluateList;
+    private final List<EvaluateItemBean> evaluateList;
     private TextView tvTitle;
     private RecyclerView recyclerView;
     private Button btnCommit;
@@ -37,9 +37,9 @@ public class CommitEvaluateDialog extends BaseDialogFragment implements View.OnC
     private CommitEvaluateDialogListener commitEvaluateDialogListener;
     private CommitEvaluateAdapter commitEvaluateAdapter;
     private int type;
-    private EvaluateItemEntity selectedEvaluateItemEntity;
+    private EvaluateItemBean selectedEvaluateItemEntity;
 
-    public CommitEvaluateDialog(List<EvaluateItemEntity> evaluateList) {
+    public CommitEvaluateDialog(List<EvaluateItemBean> evaluateList) {
         this.type = type;
         this.evaluateList = evaluateList;
     }
@@ -75,7 +75,7 @@ public class CommitEvaluateDialog extends BaseDialogFragment implements View.OnC
         commitEvaluateAdapter = new CommitEvaluateAdapter(recyclerView);
         commitEvaluateAdapter.setOnItemClickListener((v, position) -> {
             selectedEvaluateItemEntity = evaluateList.get(position);
-            for (EvaluateItemEntity evaluateItemEntity : evaluateList) {
+            for (EvaluateItemBean evaluateItemEntity : evaluateList) {
                 evaluateItemEntity.setSelected(false);
             }
             evaluateList.get(position).setSelected(true);
@@ -123,6 +123,6 @@ public class CommitEvaluateDialog extends BaseDialogFragment implements View.OnC
     }
 
     public interface CommitEvaluateDialogListener {
-        void onCommitClick(CommitEvaluateDialog dialog, EvaluateItemEntity entity);
+        void onCommitClick(CommitEvaluateDialog dialog, EvaluateItemBean entity);
     }
 }

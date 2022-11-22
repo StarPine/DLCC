@@ -10,22 +10,22 @@ import androidx.databinding.ObservableField;
 import com.blankj.utilcode.util.ObjectUtils;
 import com.blankj.utilcode.util.StringUtils;
 import com.fine.friendlycc.app.AppConfig;
-import com.fine.friendlycc.app.AppContext;
+import com.fine.friendlycc.app.CCApplication;
 import com.fine.friendlycc.app.AppsFlyerEvent;
 import com.fine.friendlycc.app.EaringlSwitchUtil;
 import com.fine.friendlycc.data.AppRepository;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseDataResponse;
 import com.fine.friendlycc.data.source.http.response.BaseResponse;
-import com.fine.friendlycc.entity.AlbumPhotoEntity;
-import com.fine.friendlycc.entity.ApiConfigManagerEntity;
-import com.fine.friendlycc.entity.BannerItemEntity;
-import com.fine.friendlycc.entity.BrowseNumberEntity;
-import com.fine.friendlycc.entity.EvaluateEntity;
-import com.fine.friendlycc.entity.PrivacyEntity;
-import com.fine.friendlycc.entity.SystemConfigTaskEntity;
-import com.fine.friendlycc.entity.UserDataEntity;
-import com.fine.friendlycc.entity.UserInfoEntity;
+import com.fine.friendlycc.bean.AlbumPhotoBean;
+import com.fine.friendlycc.bean.ApiConfigManagerBean;
+import com.fine.friendlycc.bean.BannerItemBean;
+import com.fine.friendlycc.bean.BrowseNumberBean;
+import com.fine.friendlycc.bean.EvaluateBean;
+import com.fine.friendlycc.bean.PrivacyBean;
+import com.fine.friendlycc.bean.SystemConfigTaskBean;
+import com.fine.friendlycc.bean.UserDataBean;
+import com.fine.friendlycc.bean.UserInfoBean;
 import com.fine.friendlycc.event.AvatarChangeEvent;
 import com.fine.friendlycc.event.FaceCertificationEvent;
 import com.fine.friendlycc.event.MyPhotoAlbumChangeEvent;
@@ -85,14 +85,14 @@ public class MineViewModel extends BaseMyPhotoAlbumViewModel<AppRepository> {
     //积分夺宝右侧提示
     public ObservableField<String> entryLabelLable = new ObservableField<>();
     //本地UserData
-    public ObservableField<UserDataEntity> localUserDataEntity = new ObservableField<>();
-    public ObservableField<BannerItemEntity> banner = new ObservableField<>();
+    public ObservableField<UserDataBean> localUserDataEntity = new ObservableField<>();
+    public ObservableField<BannerItemBean> banner = new ObservableField<>();
     //推荐用户弹窗
     public ObservableField<Integer> sex = new ObservableField<>();
     //是否显示邀请入口
     public ObservableField<Boolean> isShowInvite = new ObservableField<>(false);
     public ObservableField<String> albumPrivacyText = new ObservableField<>();
-    public ObservableField<UserInfoEntity> userInfoEntity = new ObservableField<>(new UserInfoEntity());
+    public ObservableField<UserInfoBean> userInfoEntity = new ObservableField<>(new UserInfoBean());
     //点击顶部广告
     public BindingCommand bannerOnClickCommand = new BindingCommand(() -> {
         if (!StringUtils.isEmpty(banner.get().getLandingPage())) {
@@ -125,7 +125,7 @@ public class MineViewModel extends BaseMyPhotoAlbumViewModel<AppRepository> {
 
     //我喜欢的按钮的点击事件
     public BindingCommand fondOnClickCommand = new BindingCommand(() -> {
-        AppContext.instance().logEvent(AppsFlyerEvent.Following);
+        CCApplication.instance().logEvent(AppsFlyerEvent.Following);
         if (ObjectUtils.isEmpty(userInfoEntity.get())) {
             return;
         }
@@ -159,7 +159,7 @@ public class MineViewModel extends BaseMyPhotoAlbumViewModel<AppRepository> {
     //认证中心按钮的点击事件
     public BindingCommand certificationOnClickCommand = new BindingCommand(() -> {
         if (model.readUserData().getSex() != null) {
-            AppContext.instance().logEvent(AppsFlyerEvent.Verify_Your_Profile);
+            CCApplication.instance().logEvent(AppsFlyerEvent.Verify_Your_Profile);
             if (model.readUserData().getSex() == AppConfig.MALE) {
                 start(CertificationMaleFragment.class.getCanonicalName());
                 return;
@@ -176,7 +176,7 @@ public class MineViewModel extends BaseMyPhotoAlbumViewModel<AppRepository> {
             return;
         }
         try {
-            ApiConfigManagerEntity apiConfigManagerEntity = ConfigManager.getInstance().getAppRepository().readApiConfigManagerEntity();
+            ApiConfigManagerBean apiConfigManagerEntity = ConfigManager.getInstance().getAppRepository().readApiConfigManagerEntity();
             if(apiConfigManagerEntity!=null && apiConfigManagerEntity.getPlayChatApiUrl()!=null){
                 Bundle bundle = InviteWebDetailFragment.getStartBundle(apiConfigManagerEntity.getPlayChatApiUrl() + userInfoEntity.get().getInviteUrl(), userInfoEntity.get().getCode());
                 start(InviteWebDetailFragment.class.getCanonicalName(), bundle);
@@ -198,7 +198,7 @@ public class MineViewModel extends BaseMyPhotoAlbumViewModel<AppRepository> {
 
     //会员按钮的点击事件
     public BindingCommand memberOnClickCommand = new BindingCommand(() -> {
-        AppContext.instance().logEvent(AppsFlyerEvent.VIP_Center);
+        CCApplication.instance().logEvent(AppsFlyerEvent.VIP_Center);
         start(VipSubscribeFragment.class.getCanonicalName());
     });
     //我的声音按钮的点击事件
@@ -211,19 +211,19 @@ public class MineViewModel extends BaseMyPhotoAlbumViewModel<AppRepository> {
             }
         }
 
-        AppContext.instance().logEvent(AppsFlyerEvent.Add_voice);
+        CCApplication.instance().logEvent(AppsFlyerEvent.Add_voice);
         start(TapeAudioFragment.class.getCanonicalName());
     });
     //我的广播按钮的点击事件
     public BindingCommand broadcastOnClickCommand = new BindingCommand(() -> {
-        AppContext.instance().logEvent(AppsFlyerEvent.My_Post);
+        CCApplication.instance().logEvent(AppsFlyerEvent.My_Post);
         start(BroadcastFragment.class.getCanonicalName());
     });
     //我的相册按钮的点击事件
     public BindingCommand albumOnClickCommand = new BindingCommand(new BindingAction() {
         @Override
         public void call() {
-            AppContext.instance().logEvent(AppsFlyerEvent.Add_photos_Video);
+            CCApplication.instance().logEvent(AppsFlyerEvent.Add_photos_Video);
             start(MyPhotoAlbumFragment.class.getCanonicalName());
         }
     });
@@ -235,7 +235,7 @@ public class MineViewModel extends BaseMyPhotoAlbumViewModel<AppRepository> {
     //联系客服按钮的点击事件
     public BindingCommand serviceOnClickCommand = new BindingCommand(() -> {
         try {
-            AppContext.instance().logEvent(AppsFlyerEvent.Contact_Us);
+            CCApplication.instance().logEvent(AppsFlyerEvent.Contact_Us);
             ChatUtils.chatUser(AppConfig.CHAT_SERVICE_USER_ID_SEND, 0,StringUtils.getString(R.string.playcc_chat_service_name), MineViewModel.this);
         } catch (Exception e) {
             ExceptionReportUtils.report(e);
@@ -271,7 +271,7 @@ public class MineViewModel extends BaseMyPhotoAlbumViewModel<AppRepository> {
             if (userInfoEntity.get() == null) {
                 return;
             }
-            AppContext.instance().logEvent(AppsFlyerEvent.Photos_settings);
+            CCApplication.instance().logEvent(AppsFlyerEvent.Photos_settings);
             uc.clickPrivacy.call();
         }
     });
@@ -315,7 +315,7 @@ public class MineViewModel extends BaseMyPhotoAlbumViewModel<AppRepository> {
         return StringUtils.getString(R.string.playcc_unknown);
     }
 
-    public String getVipTimeText(UserInfoEntity userInfoEntity) {
+    public String getVipTimeText(UserInfoBean userInfoEntity) {
         if(userInfoEntity != null){
             String validTime =  StringUtils.getString(R.string.playfun_valid_time);
             validTime += "\n"+userInfoEntity.getEndTime();
@@ -325,7 +325,7 @@ public class MineViewModel extends BaseMyPhotoAlbumViewModel<AppRepository> {
     }
 
     public void setAllowPrivacy(String type, boolean isOpen) {
-        PrivacyEntity entity = new PrivacyEntity();
+        PrivacyBean entity = new PrivacyBean();
         if (type.equals(ALLOW_TYPE_AUDIO)){
             entity.setAllowAudio(isOpen);
         }else if (type.equals(ALLOW_TYPE_VIDEO)){
@@ -362,7 +362,7 @@ public class MineViewModel extends BaseMyPhotoAlbumViewModel<AppRepository> {
                     userInfoEntity.get().setSound(event.getSound());
                     userInfoEntity.get().setSoundTime(event.getSoundTime());
                     userInfoEntity.get().setSoundStatus(0);
-                    UserInfoEntity user = userInfoEntity.get();
+                    UserInfoBean user = userInfoEntity.get();
                     userInfoEntity.set(null);
                     userInfoEntity.set(user);
                 });
@@ -377,7 +377,7 @@ public class MineViewModel extends BaseMyPhotoAlbumViewModel<AppRepository> {
                     } else if (event.getType() == MyPhotoAlbumChangeEvent.TYPE_SET_DATA) {
                         observableList.clear();
                         photoEntityList.clear();
-                        for (AlbumPhotoEntity datum : event.getPhotos()) {
+                        for (AlbumPhotoBean datum : event.getPhotos()) {
                             photoEntityList.add(datum);
                             MyPhotoAlbumItemViewModel itemViewModel = new MyPhotoAlbumItemViewModel(MineViewModel.this, datum);
                             observableList.add(itemViewModel);
@@ -432,7 +432,7 @@ public class MineViewModel extends BaseMyPhotoAlbumViewModel<AppRepository> {
                 .subscribe(userUpdateVipEvent -> {
                     userInfoEntity.get().setIsVip(1);
                     userInfoEntity.get().setEndTime(userUpdateVipEvent.getEndTime());
-                    UserInfoEntity user = userInfoEntity.get();
+                    UserInfoBean user = userInfoEntity.get();
                     userInfoEntity.set(null);
                     userInfoEntity.set(user);
                 });
@@ -475,19 +475,19 @@ public class MineViewModel extends BaseMyPhotoAlbumViewModel<AppRepository> {
                 .doOnSubscribe(this)
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
-                .subscribe(new BaseObserver<BaseDataResponse<UserInfoEntity>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<UserInfoBean>>() {
                     @Override
-                    public void onSuccess(BaseDataResponse<UserInfoEntity> response) {
+                    public void onSuccess(BaseDataResponse<UserInfoBean> response) {
                         userInfoEntity.set(response.getData());
                         albumPrivacyText.set(getAlbumPrivacy());
                         banner.set(response.getData().getMessage());
-                        UserDataEntity userDataEntity = model.readUserData();
+                        UserDataBean userDataEntity = model.readUserData();
                         userDataEntity.setIsVip(response.getData().getIsVip());
                         userDataEntity.setCertification(response.getData().getCertification());
                         userDataEntity.setEndTime(response.getData().getEndTime());
                         localUserDataEntity.set(userDataEntity);
                         model.saveUserData(userDataEntity);
-                        SystemConfigTaskEntity systemConfigTaskEntity = ConfigManager.getInstance().getTaskConfig();
+                        SystemConfigTaskBean systemConfigTaskEntity = ConfigManager.getInstance().getTaskConfig();
                         if (!ObjectUtils.isEmpty(systemConfigTaskEntity) && !StringUtils.isTrimEmpty(systemConfigTaskEntity.getEntryLabel())) {
                             entryLabelLable.set(systemConfigTaskEntity.getEntryLabel());
                         }
@@ -524,7 +524,7 @@ public class MineViewModel extends BaseMyPhotoAlbumViewModel<AppRepository> {
                 .subscribe(new BaseObserver<BaseResponse>() {
                     @Override
                     public void onSuccess(BaseResponse baseResponse) {
-                        UserInfoEntity userEntity = userInfoEntity.get();
+                        UserInfoBean userEntity = userInfoEntity.get();
                         userEntity.setSound(null);
                         userInfoEntity.set(null);
                         userInfoEntity.set(userEntity);
@@ -540,15 +540,15 @@ public class MineViewModel extends BaseMyPhotoAlbumViewModel<AppRepository> {
      * 获取我的评价
      */
     private void getMyEvaluate() {
-        AppContext.instance().logEvent(AppsFlyerEvent.Impression);
+        CCApplication.instance().logEvent(AppsFlyerEvent.Impression);
         model.evaluate(null)
                 .doOnSubscribe(this)
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(disposable -> showHUD())
-                .subscribe(new BaseObserver<BaseDataResponse<List<EvaluateEntity>>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<List<EvaluateBean>>>() {
                     @Override
-                    public void onSuccess(BaseDataResponse<List<EvaluateEntity>> response) {
+                    public void onSuccess(BaseDataResponse<List<EvaluateBean>> response) {
                         uc.clickMyEvaluate.postValue(response.getData());
                     }
 
@@ -661,9 +661,9 @@ public class MineViewModel extends BaseMyPhotoAlbumViewModel<AppRepository> {
                 .doOnSubscribe(this)
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
-                .subscribe(new BaseObserver<BaseDataResponse<BrowseNumberEntity>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<BrowseNumberBean>>() {
                     @Override
-                    public void onSuccess(BaseDataResponse<BrowseNumberEntity> browseNumberEntity) {
+                    public void onSuccess(BaseDataResponse<BrowseNumberBean> browseNumberEntity) {
                         uc.loadBrowseNumber.setValue(browseNumberEntity.getData());
                     }
                 });
@@ -731,12 +731,12 @@ public class MineViewModel extends BaseMyPhotoAlbumViewModel<AppRepository> {
     }
 
     public class UIChangeObservable {
-        public SingleLiveEvent<List<EvaluateEntity>> clickMyEvaluate = new SingleLiveEvent<>();
+        public SingleLiveEvent<List<EvaluateBean>> clickMyEvaluate = new SingleLiveEvent<>();
         public SingleLiveEvent<Void> clickPrivacy = new SingleLiveEvent<>();
         public SingleLiveEvent<Void> clickAvatar = new SingleLiveEvent<>();
         public SingleLiveEvent<Void> clickSetRedPackagePhoto = new SingleLiveEvent<>();
         public SingleLiveEvent<Void> clickRecoverBurn = new SingleLiveEvent<>();
-        public SingleLiveEvent<BrowseNumberEntity> loadBrowseNumber = new SingleLiveEvent<>();
+        public SingleLiveEvent<BrowseNumberBean> loadBrowseNumber = new SingleLiveEvent<>();
         //动画效果
         public SingleLiveEvent<Void> entryLabelLableEvent = new SingleLiveEvent<>();
         //删除录音提示

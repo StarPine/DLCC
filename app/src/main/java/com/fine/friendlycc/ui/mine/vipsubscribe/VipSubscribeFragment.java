@@ -23,7 +23,7 @@ import com.android.billingclient.api.SkuDetailsParams;
 import com.fine.friendlycc.BR;
 import com.fine.friendlycc.R;
 import com.fine.friendlycc.app.AppConfig;
-import com.fine.friendlycc.app.AppContext;
+import com.fine.friendlycc.app.CCApplication;
 import com.fine.friendlycc.app.AppViewModelFactory;
 import com.fine.friendlycc.app.AppsFlyerEvent;
 import com.fine.friendlycc.app.BillingClientLifecycle;
@@ -87,7 +87,7 @@ public class VipSubscribeFragment extends BaseToolbarFragment<FragmentVipSubscri
     public void initData() {
         super.initData();
         binding.rcvPrivileges.setNestedScrollingEnabled(false);
-        billingClientLifecycle = ((AppContext) mActivity.getApplication()).getBillingClientLifecycle();
+        billingClientLifecycle = ((CCApplication) mActivity.getApplication()).getBillingClientLifecycle();
         //查询商品价格
         viewModel.loadPackage();
         if (billingClientLifecycle != null) {
@@ -120,7 +120,7 @@ public class VipSubscribeFragment extends BaseToolbarFragment<FragmentVipSubscri
                     Purchase purchase = billingPurchasesState.getPurchase();
                     if (purchase != null) {
                         try {
-                            AppContext.instance().logEvent(AppsFlyerEvent.Subscribe_Successfully, viewModel.$vipPackageItemEntity.getPrice(), purchase);
+                            CCApplication.instance().logEvent(AppsFlyerEvent.Subscribe_Successfully, viewModel.$vipPackageItemEntity.getPrice(), purchase);
                         } catch (Exception e) {
 
                         }
@@ -228,7 +228,7 @@ public class VipSubscribeFragment extends BaseToolbarFragment<FragmentVipSubscri
 
     //进行支付
     private void pay(String payCode) {
-        AppContext.instance().logEvent(AppsFlyerEvent.Subscribe);
+        CCApplication.instance().logEvent(AppsFlyerEvent.Subscribe);
         List<String> skuList = new ArrayList<>();
         skuList.add(payCode);
         SkuDetailsParams.Builder params = SkuDetailsParams.newBuilder();

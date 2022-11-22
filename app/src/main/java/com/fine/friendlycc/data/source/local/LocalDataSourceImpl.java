@@ -3,20 +3,19 @@ package com.fine.friendlycc.data.source.local;
 import com.blankj.utilcode.util.GsonUtils;
 import com.blankj.utilcode.util.ObjectUtils;
 import com.blankj.utilcode.util.StringUtils;
-import com.fine.friendlycc.app.AppConfig;
 import com.fine.friendlycc.data.source.LocalDataSource;
-import com.fine.friendlycc.entity.ApiConfigManagerEntity;
-import com.fine.friendlycc.entity.ConfigItemEntity;
-import com.fine.friendlycc.entity.CrystalDetailsConfigEntity;
-import com.fine.friendlycc.entity.EvaluateObjEntity;
-import com.fine.friendlycc.entity.GameConfigEntity;
-import com.fine.friendlycc.entity.LocalGooglePayCache;
-import com.fine.friendlycc.entity.LocalMessageIMEntity;
-import com.fine.friendlycc.entity.OccupationConfigItemEntity;
-import com.fine.friendlycc.entity.SystemConfigEntity;
-import com.fine.friendlycc.entity.SystemConfigTaskEntity;
-import com.fine.friendlycc.entity.TokenEntity;
-import com.fine.friendlycc.entity.UserDataEntity;
+import com.fine.friendlycc.bean.ApiConfigManagerBean;
+import com.fine.friendlycc.bean.ConfigItemBean;
+import com.fine.friendlycc.bean.CrystalDetailsConfigBean;
+import com.fine.friendlycc.bean.EvaluateObjBean;
+import com.fine.friendlycc.bean.GameConfigBean;
+import com.fine.friendlycc.bean.LocalGooglePayCache;
+import com.fine.friendlycc.bean.LocalMessageIMBean;
+import com.fine.friendlycc.bean.OccupationConfigItemBean;
+import com.fine.friendlycc.bean.SystemConfigBean;
+import com.fine.friendlycc.bean.SystemConfigTaskBean;
+import com.fine.friendlycc.bean.TokenBean;
+import com.fine.friendlycc.bean.UserDataBean;
 import com.fine.friendlycc.utils.StringUtil;
 import com.google.gson.reflect.TypeToken;
 import com.tencent.mmkv.MMKV;
@@ -89,21 +88,21 @@ public class LocalDataSourceImpl implements LocalDataSource {
     }
 
     @Override
-    public void saveCityConfigAll(List<ConfigItemEntity> configs) {
+    public void saveCityConfigAll(List<ConfigItemBean> configs) {
         String json = GsonUtils.toJson(configs);
         kv.encode(KEY_CITY_CONFIG_ALL, json);
 
     }
 
     @Override
-    public List<ConfigItemEntity> readCityConfigAll() {
+    public List<ConfigItemBean> readCityConfigAll() {
         String json = kv.decodeString(KEY_CITY_CONFIG_ALL);
         if (json == null) {
             return new ArrayList<>();
         } else if (json.isEmpty()) {
             return new ArrayList<>();
         }
-        List<ConfigItemEntity> list = GsonUtils.fromJson(json, new TypeToken<List<ConfigItemEntity>>() {
+        List<ConfigItemBean> list = GsonUtils.fromJson(json, new TypeToken<List<ConfigItemBean>>() {
         }.getType());
         return list;
     }
@@ -116,7 +115,7 @@ public class LocalDataSourceImpl implements LocalDataSource {
     * @Date 2021/10/25
     */
     public void putLocalMessageIM(String eventId,String MsgId,long sendTime){
-        LocalMessageIMEntity localMessageIMEntity = new LocalMessageIMEntity(MsgId,sendTime);
+        LocalMessageIMBean localMessageIMEntity = new LocalMessageIMBean(MsgId,sendTime);
         if (ObjectUtils.isEmpty(localMessageIMEntity)) {
             return;
         }
@@ -130,12 +129,12 @@ public class LocalDataSourceImpl implements LocalDataSource {
     * @return com.dl.playcc.entity.LocalMessageIMEntity
     * @Date 2021/10/25
     */
-    public LocalMessageIMEntity readLocalMessageIM(String eventId) {
+    public LocalMessageIMBean readLocalMessageIM(String eventId) {
         String json = kv.decodeString(eventId);
         if (StringUtil.isEmpty(json)) {
             return null;
         }
-        return GsonUtils.fromJson(json, LocalMessageIMEntity.class);
+        return GsonUtils.fromJson(json, LocalMessageIMBean.class);
     }
     /**
     * @Desc TODO(删除本地消息记录IM)
@@ -153,7 +152,7 @@ public class LocalDataSourceImpl implements LocalDataSource {
     }
 
     @Override
-    public void saveApiConfigManager(ApiConfigManagerEntity apiConfigManager) {
+    public void saveApiConfigManager(ApiConfigManagerBean apiConfigManager) {
         if(ObjectUtils.isEmpty(apiConfigManager)){
             return;
         }
@@ -162,12 +161,12 @@ public class LocalDataSourceImpl implements LocalDataSource {
     }
 
     @Override
-    public ApiConfigManagerEntity readApiConfigManagerEntity() {
+    public ApiConfigManagerBean readApiConfigManagerEntity() {
         String json = kv.decodeString(KEY_API_CONFIG_MANAGER);
         if (StringUtil.isEmpty(json)) {
             return null;
         }
-        return GsonUtils.fromJson(json, ApiConfigManagerEntity.class);
+        return GsonUtils.fromJson(json, ApiConfigManagerBean.class);
     }
 
     @Override
@@ -226,16 +225,16 @@ public class LocalDataSourceImpl implements LocalDataSource {
     }
 
     @Override
-    public SystemConfigTaskEntity readSystemConfigTask() {
+    public SystemConfigTaskBean readSystemConfigTask() {
         String json = kv.decodeString(KEY_SYSTEM_CONFIG_TASK);
         if (StringUtil.isEmpty(json)) {
             return null;
         }
-        return GsonUtils.fromJson(json, SystemConfigTaskEntity.class);
+        return GsonUtils.fromJson(json, SystemConfigTaskBean.class);
     }
 
     @Override
-    public void saveSystemConfigTask(SystemConfigTaskEntity entity) {
+    public void saveSystemConfigTask(SystemConfigTaskBean entity) {
         if (ObjectUtils.isEmpty(entity)) {
             return;
         }
@@ -319,7 +318,7 @@ public class LocalDataSourceImpl implements LocalDataSource {
     }
 
     @Override
-    public void saveLoginInfo(TokenEntity tokenEntity) {
+    public void saveLoginInfo(TokenBean tokenEntity) {
         if (tokenEntity == null) {
             return;
         }
@@ -328,12 +327,12 @@ public class LocalDataSourceImpl implements LocalDataSource {
     }
 
     @Override
-    public TokenEntity readLoginInfo() {
+    public TokenBean readLoginInfo() {
         String json = kv.decodeString(KEY_LOGIN_INFO);
         if (StringUtils.isEmpty(json)) {
             return null;
         }
-        return GsonUtils.fromJson(json, TokenEntity.class);
+        return GsonUtils.fromJson(json, TokenBean.class);
     }
 
     @Override
@@ -344,20 +343,20 @@ public class LocalDataSourceImpl implements LocalDataSource {
     }
 
     @Override
-    public void saveUserData(UserDataEntity userDataEntity) {
+    public void saveUserData(UserDataBean userDataEntity) {
         String json = GsonUtils.toJson(userDataEntity);
         kv.encode(KEY_USER_DATA, json);
     }
 
     @Override
-    public UserDataEntity readUserData() {
+    public UserDataBean readUserData() {
         String json = kv.decodeString(KEY_USER_DATA);
         if (json == null) {
             return null;
         } else if (json.isEmpty()) {
             return null;
         }
-        UserDataEntity userDataEntity = GsonUtils.fromJson(json, UserDataEntity.class);
+        UserDataBean userDataEntity = GsonUtils.fromJson(json, UserDataBean.class);
         return userDataEntity;
     }
 
@@ -394,16 +393,16 @@ public class LocalDataSourceImpl implements LocalDataSource {
     }
 
     @Override
-    public void saveSystemConfig(SystemConfigEntity config) {
+    public void saveSystemConfig(SystemConfigBean config) {
         String json = GsonUtils.toJson(config);
         kv.encode(KEY_SYSTEM_CONFIG, json);
     }
 
     @Override
-    public SystemConfigEntity readSystemConfig() {
+    public SystemConfigBean readSystemConfig() {
         String json = kv.decodeString(KEY_SYSTEM_CONFIG);
         if (json != null) {
-            SystemConfigEntity systemConfigEntity = GsonUtils.fromJson(json, SystemConfigEntity.class);
+            SystemConfigBean systemConfigEntity = GsonUtils.fromJson(json, SystemConfigBean.class);
             return systemConfigEntity;
         }
         return null;
@@ -421,41 +420,41 @@ public class LocalDataSourceImpl implements LocalDataSource {
     }
 
     @Override
-    public void saveHeightConfig(List<ConfigItemEntity> configs) {
+    public void saveHeightConfig(List<ConfigItemBean> configs) {
         String json = GsonUtils.toJson(configs);
         boolean b = kv.encode(KEY_HEIGHT_CONFIG, json);
         System.out.println(b);
     }
 
     @Override
-    public List<ConfigItemEntity> readHeightConfig() {
+    public List<ConfigItemBean> readHeightConfig() {
         String json = kv.decodeString(KEY_HEIGHT_CONFIG);
         if (json == null) {
             return new ArrayList<>();
         } else if (json.isEmpty()) {
             return new ArrayList<>();
         }
-        List<ConfigItemEntity> list = GsonUtils.fromJson(json, new TypeToken<List<ConfigItemEntity>>() {
+        List<ConfigItemBean> list = GsonUtils.fromJson(json, new TypeToken<List<ConfigItemBean>>() {
         }.getType());
         return list;
     }
 
     @Override
-    public void saveWeightConfig(List<ConfigItemEntity> configs) {
+    public void saveWeightConfig(List<ConfigItemBean> configs) {
         String json = GsonUtils.toJson(configs);
         boolean b = kv.encode(KEY_WEIGHT_CONFIG, json);
         System.out.println(b);
     }
 
     @Override
-    public List<ConfigItemEntity> readWeightConfig() {
+    public List<ConfigItemBean> readWeightConfig() {
         String json = kv.decodeString(KEY_WEIGHT_CONFIG);
         if (json == null) {
             return new ArrayList<>();
         } else if (json.isEmpty()) {
             return new ArrayList<>();
         }
-        List<ConfigItemEntity> list = GsonUtils.fromJson(json, new TypeToken<List<ConfigItemEntity>>() {
+        List<ConfigItemBean> list = GsonUtils.fromJson(json, new TypeToken<List<ConfigItemBean>>() {
         }.getType());
         return list;
     }
@@ -481,105 +480,105 @@ public class LocalDataSourceImpl implements LocalDataSource {
     }
 
     @Override
-    public void saveGameConfig(List<GameConfigEntity> configs) {
+    public void saveGameConfig(List<GameConfigBean> configs) {
         String json = GsonUtils.toJson(configs);
         boolean b = kv.encode(KEY_GAME_CONFIG, json);
         System.out.println(b);
     }
 
     @Override
-    public List<GameConfigEntity> readGameConfig() {
+    public List<GameConfigBean> readGameConfig() {
         String json = kv.decodeString(KEY_GAME_CONFIG);
         if (json == null) {
             return new ArrayList<>();
         } else if (json.isEmpty()) {
             return new ArrayList<>();
         }
-        List<GameConfigEntity> list = GsonUtils.fromJson(json, new TypeToken<List<GameConfigEntity>>() {
+        List<GameConfigBean> list = GsonUtils.fromJson(json, new TypeToken<List<GameConfigBean>>() {
         }.getType());
         return list;
     }
 
     @Override
-    public void saveCrystalDetailsConfig (CrystalDetailsConfigEntity configs) {
+    public void saveCrystalDetailsConfig (CrystalDetailsConfigBean configs) {
         String json = GsonUtils.toJson(configs);
         boolean b = kv.encode(KEY_CRYSTAL_CONFIG, json);
         System.out.println(b);
     }
 
     @Override
-    public CrystalDetailsConfigEntity readCrystalDetailsConfig() {
+    public CrystalDetailsConfigBean readCrystalDetailsConfig() {
         String json = kv.decodeString(KEY_CRYSTAL_CONFIG);
         if (json != null) {
-            CrystalDetailsConfigEntity crystalDetailsConfigEntity = GsonUtils.fromJson(json, CrystalDetailsConfigEntity.class);
+            CrystalDetailsConfigBean crystalDetailsConfigEntity = GsonUtils.fromJson(json, CrystalDetailsConfigBean.class);
             return crystalDetailsConfigEntity;
         }
         return null;
     }
 
     @Override
-    public void saveReportReasonConfig(List<ConfigItemEntity> configs) {
+    public void saveReportReasonConfig(List<ConfigItemBean> configs) {
         String json = GsonUtils.toJson(configs);
         boolean b = kv.encode(KEY_REPORT_REASON_CONFIG, json);
         System.out.println(b);
     }
 
     @Override
-    public List<ConfigItemEntity> readReportReasonConfig() {
+    public List<ConfigItemBean> readReportReasonConfig() {
         String json = kv.decodeString(KEY_REPORT_REASON_CONFIG);
         if (json == null) {
             return new ArrayList<>();
         } else if (json.isEmpty()) {
             return new ArrayList<>();
         }
-        List<ConfigItemEntity> list = GsonUtils.fromJson(json, new TypeToken<List<ConfigItemEntity>>() {
+        List<ConfigItemBean> list = GsonUtils.fromJson(json, new TypeToken<List<ConfigItemBean>>() {
         }.getType());
         return list;
     }
 
 
     @Override
-    public void saveFemaleEvaluateConfig(List<EvaluateObjEntity> configs) {
+    public void saveFemaleEvaluateConfig(List<EvaluateObjBean> configs) {
         String json = GsonUtils.toJson(configs);
         boolean b = kv.encode(KEY_FAMALE_EVALUATE_CONFIG, json);
         System.out.println(b);
     }
 
     @Override
-    public List<EvaluateObjEntity> readFemaleEvaluateConfig() {
+    public List<EvaluateObjBean> readFemaleEvaluateConfig() {
         String json = kv.decodeString(KEY_FAMALE_EVALUATE_CONFIG);
         if (json == null) {
             return new ArrayList<>();
         } else if (json.isEmpty()) {
             return new ArrayList<>();
         }
-        List<EvaluateObjEntity> list = GsonUtils.fromJson(json, new TypeToken<List<EvaluateObjEntity>>() {
+        List<EvaluateObjBean> list = GsonUtils.fromJson(json, new TypeToken<List<EvaluateObjBean>>() {
         }.getType());
         return list;
     }
 
     @Override
-    public void saveMaleEvaluateConfig(List<EvaluateObjEntity> configs) {
+    public void saveMaleEvaluateConfig(List<EvaluateObjBean> configs) {
         String json = GsonUtils.toJson(configs);
         boolean b = kv.encode(KEY_MALE_EVALUATE_CONFIG, json);
         System.out.println(b);
     }
 
     @Override
-    public List<EvaluateObjEntity> readMaleEvaluateConfig() {
+    public List<EvaluateObjBean> readMaleEvaluateConfig() {
         String json = kv.decodeString(KEY_MALE_EVALUATE_CONFIG);
         if (json == null) {
             return new ArrayList<>();
         } else if (json.isEmpty()) {
             return new ArrayList<>();
         }
-        List<EvaluateObjEntity> list = GsonUtils.fromJson(json, new TypeToken<List<EvaluateObjEntity>>() {
+        List<EvaluateObjBean> list = GsonUtils.fromJson(json, new TypeToken<List<EvaluateObjBean>>() {
         }.getType());
         return list;
     }
 
     @Override
-    public List<EvaluateObjEntity> readEvaluateConfig() {
+    public List<EvaluateObjBean> readEvaluateConfig() {
         if (readUserData() != null && readUserData().getSex() != null && readUserData().getSex() == 1) {
             return readMaleEvaluateConfig();
         }
@@ -587,61 +586,61 @@ public class LocalDataSourceImpl implements LocalDataSource {
     }
 
     @Override
-    public void saveHopeObjectConfig(List<ConfigItemEntity> configs) {
+    public void saveHopeObjectConfig(List<ConfigItemBean> configs) {
         String json = GsonUtils.toJson(configs);
         boolean b = kv.encode(KEY_HOPE_OBJECT_CONFIG, json);
         System.out.println(b);
     }
 
     @Override
-    public List<ConfigItemEntity> readHopeObjectConfig() {
+    public List<ConfigItemBean> readHopeObjectConfig() {
         String json = kv.decodeString(KEY_HOPE_OBJECT_CONFIG);
         if (json == null) {
             return new ArrayList<>();
         } else if (json.isEmpty()) {
             return new ArrayList<>();
         }
-        List<ConfigItemEntity> list = GsonUtils.fromJson(json, new TypeToken<List<ConfigItemEntity>>() {
+        List<ConfigItemBean> list = GsonUtils.fromJson(json, new TypeToken<List<ConfigItemBean>>() {
         }.getType());
         return list;
     }
 
     @Override
-    public void saveOccupationConfig(List<OccupationConfigItemEntity> configs) {
+    public void saveOccupationConfig(List<OccupationConfigItemBean> configs) {
         String json = GsonUtils.toJson(configs);
         boolean b = kv.encode(KEY_OCCUPATION_CONFIG, json);
         System.out.println(b);
     }
 
     @Override
-    public List<OccupationConfigItemEntity> readOccupationConfig() {
+    public List<OccupationConfigItemBean> readOccupationConfig() {
         String json = kv.decodeString(KEY_OCCUPATION_CONFIG);
         if (json == null) {
             return new ArrayList<>();
         } else if (json.isEmpty()) {
             return new ArrayList<>();
         }
-        List<OccupationConfigItemEntity> list = GsonUtils.fromJson(json, new TypeToken<List<OccupationConfigItemEntity>>() {
+        List<OccupationConfigItemBean> list = GsonUtils.fromJson(json, new TypeToken<List<OccupationConfigItemBean>>() {
         }.getType());
         return list;
     }
 
     @Override
-    public void saveCityConfig(List<ConfigItemEntity> configs) {
+    public void saveCityConfig(List<ConfigItemBean> configs) {
         String json = GsonUtils.toJson(configs);
         boolean b = kv.encode(KEY_CITY_CONFIG, json);
         System.out.println(b);
     }
 
     @Override
-    public List<ConfigItemEntity> readCityConfig() {
+    public List<ConfigItemBean> readCityConfig() {
         String json = kv.decodeString(KEY_CITY_CONFIG);
         if (json == null) {
             return new ArrayList<>();
         } else if (json.isEmpty()) {
             return new ArrayList<>();
         }
-        List<ConfigItemEntity> list = GsonUtils.fromJson(json, new TypeToken<List<ConfigItemEntity>>() {
+        List<ConfigItemBean> list = GsonUtils.fromJson(json, new TypeToken<List<ConfigItemBean>>() {
         }.getType());
         return list;
     }

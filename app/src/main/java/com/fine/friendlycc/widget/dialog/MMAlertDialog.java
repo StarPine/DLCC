@@ -23,7 +23,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.blankj.utilcode.util.ConvertUtils;
 import com.blankj.utilcode.util.StringUtils;
 import com.fine.friendlycc.R;
-import com.fine.friendlycc.entity.EvaluateItemEntity;
+import com.fine.friendlycc.bean.EvaluateItemBean;
 import com.fine.friendlycc.ui.message.chatdetail.ChatDetailEvaluateAdapter;
 import com.fine.friendlycc.utils.StringUtil;
 
@@ -345,7 +345,7 @@ public class MMAlertDialog {
         return dialog;
     }
 
-    public static Dialog DialogChatDetail(Context context, boolean touchOutside, int DefaultSel, List<EvaluateItemEntity> listData, DilodAlertInterface dilodAlertInterface) {
+    public static Dialog DialogChatDetail(Context context, boolean touchOutside, int DefaultSel, List<EvaluateItemBean> listData, DilodAlertInterface dilodAlertInterface) {
         Dialog dialog = new Dialog(context);
         dialog.setCanceledOnTouchOutside(touchOutside);
         dialog.setCancelable(false);
@@ -359,7 +359,7 @@ public class MMAlertDialog {
         adapter.setDefSelect(DefaultSel);
         adapter.setOnItemClickListener(new ChatDetailEvaluateAdapter.OnItemClickListener() {
             @Override
-            public void onClick(View v, int pos, EvaluateItemEntity itemEntity) {
+            public void onClick(View v, int pos, EvaluateItemBean itemEntity) {
                 selectedPosition = pos;
                 adapter.setDefSelect(pos);
             }

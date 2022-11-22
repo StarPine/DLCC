@@ -23,16 +23,16 @@ import com.android.billingclient.api.Purchase;
 import com.android.billingclient.api.SkuDetailsParams;
 import com.blankj.utilcode.util.StringUtils;
 import com.fine.friendlycc.R;
-import com.fine.friendlycc.app.AppContext;
+import com.fine.friendlycc.app.CCApplication;
 import com.fine.friendlycc.app.BillingClientLifecycle;
 import com.fine.friendlycc.app.Injection;
 import com.fine.friendlycc.data.source.http.exception.RequestException;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseDataResponse;
 import com.fine.friendlycc.data.source.http.response.BaseResponse;
-import com.fine.friendlycc.entity.CreateOrderEntity;
-import com.fine.friendlycc.entity.DiamondInfoEntity;
-import com.fine.friendlycc.entity.GoodsEntity;
+import com.fine.friendlycc.bean.CreateOrderBean;
+import com.fine.friendlycc.bean.DiamondInfoBean;
+import com.fine.friendlycc.bean.GoodsBean;
 import com.fine.friendlycc.ui.base.BasePopupWindow;
 import com.fine.friendlycc.ui.dialog.adapter.CoinRechargeAdapter;
 import com.fine.friendlycc.widget.dialog.TraceDialog;
@@ -58,8 +58,8 @@ public class CoinRechargeSheetView extends BasePopupWindow implements View.OnCli
     private ImageView iv_close;
     private ViewGroup loadingView;
     private CoinRechargeAdapter adapter;
-    private List<GoodsEntity> mGoodsList;
-    private GoodsEntity currGoodsInfo;
+    private List<GoodsBean> mGoodsList;
+    private GoodsBean currGoodsInfo;
     private ClickListener clickListener;
     private boolean isFinsh = false;
     public String orderNumber = null;
@@ -102,7 +102,7 @@ public class CoinRechargeSheetView extends BasePopupWindow implements View.OnCli
     }
 
     private void initData() {
-        this.billingClientLifecycle = ((AppContext)mActivity.getApplication()).getBillingClientLifecycle();
+        this.billingClientLifecycle = ((CCApplication)mActivity.getApplication()).getBillingClientLifecycle();
         if(billingClientLifecycle!=null){
             //查询并消耗本地历史订单类型： INAPP 支付购买  SUBS订阅
             billingClientLifecycle.queryAndConsumePurchase(BillingClient.SkuType.INAPP);
@@ -219,9 +219,9 @@ public class CoinRechargeSheetView extends BasePopupWindow implements View.OnCli
                 .doOnSubscribe(disposable -> {
                     showLoading();
                 })
-                .subscribe(new BaseObserver<BaseDataResponse<DiamondInfoEntity>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<DiamondInfoBean>>() {
                     @Override
-                    public void onSuccess(BaseDataResponse<DiamondInfoEntity> response) {
+                    public void onSuccess(BaseDataResponse<DiamondInfoBean> response) {
                         mGoodsList = response.getData().getList();
                         if (mGoodsList == null || mGoodsList.size() <= 0){
                             return;
@@ -293,7 +293,7 @@ public class CoinRechargeSheetView extends BasePopupWindow implements View.OnCli
 
     @Override
     public void itemViewOnClick(View view, int position) {
-        for (GoodsEntity entity : mGoodsList) {
+        for (GoodsBean entity : mGoodsList) {
             entity.setSelected(false);
         }
         mGoodsList.get(position).setSelected(true);
@@ -315,9 +315,9 @@ public class CoinRechargeSheetView extends BasePopupWindow implements View.OnCli
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(disposable -> {showLoading();})
-                .subscribe(new BaseObserver<BaseDataResponse<CreateOrderEntity>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<CreateOrderBean>>() {
                     @Override
-                    public void onSuccess(BaseDataResponse<CreateOrderEntity> response) {
+                    public void onSuccess(BaseDataResponse<CreateOrderBean> response) {
                         orderNumber = response.getData().getOrderNumber();
                         pay(currGoodsInfo.getGoogleGoodsId());
                     }
@@ -403,7 +403,7 @@ public class CoinRechargeSheetView extends BasePopupWindow implements View.OnCli
 
     public interface ClickListener {
         //跳转去谷歌支付页面
-        default void paySuccess(GoodsEntity goodsEntity) {
+        default void paySuccess(GoodsBean goodsEntity) {
 
         }
     }

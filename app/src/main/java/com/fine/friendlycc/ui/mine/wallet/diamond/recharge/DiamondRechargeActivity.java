@@ -12,12 +12,12 @@ import com.android.billingclient.api.SkuDetailsParams;
 import com.blankj.utilcode.util.StringUtils;
 import com.fine.friendlycc.BR;
 import com.fine.friendlycc.R;
-import com.fine.friendlycc.app.AppContext;
+import com.fine.friendlycc.app.CCApplication;
 import com.fine.friendlycc.app.AppViewModelFactory;
 import com.fine.friendlycc.app.BillingClientLifecycle;
 import com.fine.friendlycc.databinding.ActivityDiamondRechargeBinding;
-import com.fine.friendlycc.entity.DiamondPaySuccessEntity;
-import com.fine.friendlycc.entity.GoodsEntity;
+import com.fine.friendlycc.bean.DiamondPaySuccessBean;
+import com.fine.friendlycc.bean.GoodsBean;
 import com.fine.friendlycc.ui.base.BaseActivity;
 import com.fine.friendlycc.utils.ImmersionBarUtils;
 import com.fine.friendlycc.widget.BasicToolbar;
@@ -69,7 +69,7 @@ public class DiamondRechargeActivity extends BaseActivity<ActivityDiamondRecharg
     public void initData() {
         super.initData();
         binding.smRefreshLayout.setEnableLoadMore(false);
-        this.billingClientLifecycle = ((AppContext)getApplication()).getBillingClientLifecycle();
+        this.billingClientLifecycle = ((CCApplication)getApplication()).getBillingClientLifecycle();
         if(billingClientLifecycle!=null){
             //查询并消耗本地历史订单类型： INAPP 支付购买  SUBS订阅
             //billingClientLifecycle.queryAndConsumePurchase(BillingClient.SkuType.INAPP);
@@ -178,7 +178,7 @@ public class DiamondRechargeActivity extends BaseActivity<ActivityDiamondRecharg
      * 显示奖励dialog
      */
     private void showRewardDialog() {
-        GoodsEntity goodsEntity = viewModel.selectedGoodsEntity.get();
+        GoodsBean goodsEntity = viewModel.selectedGoodsEntity.get();
         if (goodsEntity == null) {
             isFinsh = true;
             viewModel.getRechargeList();
@@ -196,7 +196,7 @@ public class DiamondRechargeActivity extends BaseActivity<ActivityDiamondRecharg
                     dialog.dismiss();
                     isFinsh = true;
                     viewModel.getRechargeList();
-                    RxBus.getDefault().post(new DiamondPaySuccessEntity());
+                    RxBus.getDefault().post(new DiamondPaySuccessBean());
                 })
                 .dayRewardDialog(true,
                         viewModel.selectedGoodsEntity.get().getDayGiveCoin(),
@@ -246,4 +246,3 @@ public class DiamondRechargeActivity extends BaseActivity<ActivityDiamondRecharg
         onBackPressed();
     }
 }
-

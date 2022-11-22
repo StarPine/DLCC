@@ -9,7 +9,7 @@ import com.fine.friendlycc.data.AppRepository;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseDataResponse;
 import com.fine.friendlycc.data.source.http.response.BaseResponse;
-import com.fine.friendlycc.entity.CashWalletEntity;
+import com.fine.friendlycc.bean.CashWalletBean;
 import com.fine.friendlycc.viewmodel.BaseRefreshViewModel;
 
 import me.goldze.mvvmhabit.utils.RxUtils;
@@ -19,7 +19,7 @@ import me.goldze.mvvmhabit.utils.RxUtils;
  */
 public class CashViewModel extends BaseRefreshViewModel<AppRepository> {
 
-    public ObservableField<CashWalletEntity> cashWalletEntity = new ObservableField<>();
+    public ObservableField<CashWalletBean> cashWalletEntity = new ObservableField<>();
 
     public CashViewModel(@NonNull Application application, AppRepository repository) {
         super(application, repository);
@@ -41,9 +41,9 @@ public class CashViewModel extends BaseRefreshViewModel<AppRepository> {
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(this)
-                .subscribe(new BaseObserver<BaseDataResponse<CashWalletEntity>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<CashWalletBean>>() {
                     @Override
-                    public void onSuccess(BaseDataResponse<CashWalletEntity> response) {
+                    public void onSuccess(BaseDataResponse<CashWalletBean> response) {
                         cashWalletEntity.set(response.getData());
                     }
 

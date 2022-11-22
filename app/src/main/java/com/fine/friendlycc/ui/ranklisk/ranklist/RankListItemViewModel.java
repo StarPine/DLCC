@@ -5,7 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.databinding.ObservableField;
 
-import com.fine.friendlycc.entity.RankListItemEntity;
+import com.fine.friendlycc.bean.RankListItemBean;
 import com.fine.friendlycc.ui.userdetail.detail.UserDetailFragment;
 import com.fine.friendlycc.utils.ExceptionReportUtils;
 
@@ -17,7 +17,7 @@ import me.goldze.mvvmhabit.binding.command.BindingCommand;
  */
 public class RankListItemViewModel extends MultiItemViewModel<RankListViewModel> {
 
-    public ObservableField<RankListItemEntity> itemEntity = new ObservableField<>();
+    public ObservableField<RankListItemBean> itemEntity = new ObservableField<>();
     //条目的点击事件
     public BindingCommand itemClick = new BindingCommand(() -> {
         try {
@@ -28,7 +28,7 @@ public class RankListItemViewModel extends MultiItemViewModel<RankListViewModel>
         }
     });
 
-    public RankListItemViewModel(@NonNull RankListViewModel viewModel, RankListItemEntity entity) {
+    public RankListItemViewModel(@NonNull RankListViewModel viewModel, RankListItemBean entity) {
         super(viewModel);
         itemEntity.set(entity);
     }

@@ -13,38 +13,26 @@ import com.blankj.utilcode.util.StringUtils;
 import com.fine.friendlycc.BR;
 import com.fine.friendlycc.R;
 import com.fine.friendlycc.app.AppConfig;
-import com.fine.friendlycc.app.AppContext;
+import com.fine.friendlycc.app.CCApplication;
 import com.fine.friendlycc.app.AppsFlyerEvent;
 import com.fine.friendlycc.data.AppRepository;
-import com.fine.friendlycc.data.source.http.observer.BaseListEmptyObserver;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseDataResponse;
-import com.fine.friendlycc.data.source.http.response.BaseListDataResponse;
 import com.fine.friendlycc.data.source.http.response.BaseResponse;
-import com.fine.friendlycc.entity.AdBannerEntity;
-import com.fine.friendlycc.entity.AdItemEntity;
-import com.fine.friendlycc.entity.ConfigItemEntity;
-import com.fine.friendlycc.entity.ParkItemEntity;
-import com.fine.friendlycc.entity.SystemConfigEntity;
-import com.fine.friendlycc.entity.UserDataEntity;
-import com.fine.friendlycc.event.AddBlackListEvent;
-import com.fine.friendlycc.event.CityChangeEvent;
+import com.fine.friendlycc.bean.AdBannerBean;
+import com.fine.friendlycc.bean.AdItemBean;
+import com.fine.friendlycc.bean.ConfigItemBean;
+import com.fine.friendlycc.bean.SystemConfigBean;
 import com.fine.friendlycc.event.DailyAccostEvent;
 import com.fine.friendlycc.event.GenderToggleEvent;
 import com.fine.friendlycc.event.LoadEvent;
-import com.fine.friendlycc.event.LocationChangeEvent;
 import com.fine.friendlycc.manager.ConfigManager;
-import com.fine.friendlycc.ui.base.BaseFragment;
 import com.fine.friendlycc.ui.home.search.SearchFragment;
-import com.fine.friendlycc.ui.viewmodel.BaseParkItemViewModel;
-import com.fine.friendlycc.ui.viewmodel.BaseParkViewModel;
 import com.fine.friendlycc.utils.StringUtil;
 import com.fine.friendlycc.viewmodel.BaseViewModel;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import io.reactivex.disposables.Disposable;
 import me.goldze.mvvmhabit.binding.command.BindingCommand;
@@ -78,7 +66,7 @@ public class HomeMainViewModel extends BaseViewModel<AppRepository> {
     public ObservableField<Boolean> locationService = new ObservableField<>(true);
     public ObservableField<Double> lat = new ObservableField<>();//纬度
     public ObservableField<Double> lng = new ObservableField<>();//经度
-    public List<ConfigItemEntity> list_chooseCityItem = new ArrayList<>();
+    public List<ConfigItemBean> list_chooseCityItem = new ArrayList<>();
     //男女-选项卡内容
     public ObservableField<Integer> type = new ObservableField<>(1);
 
@@ -95,7 +83,7 @@ public class HomeMainViewModel extends BaseViewModel<AppRepository> {
 
     //搜索按钮的点击事件
     public BindingCommand searchOnClickCommand = new BindingCommand(() -> {
-        AppContext.instance().logEvent(AppsFlyerEvent.Nearby_Search);
+        CCApplication.instance().logEvent(AppsFlyerEvent.Nearby_Search);
         start(SearchFragment.class.getCanonicalName());
     });
 
@@ -104,7 +92,7 @@ public class HomeMainViewModel extends BaseViewModel<AppRepository> {
      * 点击性别
      */
     public BindingCommand genderOnClickCommand = new BindingCommand(() -> {
-        AppContext.instance().logEvent(AppsFlyerEvent.Nearby_Change_gender);
+        CCApplication.instance().logEvent(AppsFlyerEvent.Nearby_Change_gender);
         gender.set(!gender.get());
         RxBus.getDefault().post(new GenderToggleEvent(gender.get(), currIndex));
         setTabList();
@@ -124,7 +112,7 @@ public class HomeMainViewModel extends BaseViewModel<AppRepository> {
 
     public BindingCommand toTaskClickCommand = new BindingCommand(() -> {
         uc.clickAccountDialog.setValue("0");
-        AppContext.instance().logEvent(AppsFlyerEvent.homepage_batch_accost);
+        CCApplication.instance().logEvent(AppsFlyerEvent.homepage_batch_accost);
     });
 
     public BindingCommand regionOnClickCommand = new BindingCommand(() -> uc.clickRegion.call());
@@ -156,7 +144,7 @@ public class HomeMainViewModel extends BaseViewModel<AppRepository> {
         dailyAccostSubscription = RxBus.getDefault().toObservable(DailyAccostEvent.class)
                 .subscribe(cityChangeEvent -> {
                     boolean isMale = ConfigManager.getInstance().isMale();
-                    SystemConfigEntity systemConfig = model.readSystemConfig();
+                    SystemConfigBean systemConfig = model.readSystemConfig();
                     if (AppConfig.isRegisterAccost) {
                         AppConfig.isRegisterAccost = false;
                         if (isMale){
@@ -237,14 +225,14 @@ public class HomeMainViewModel extends BaseViewModel<AppRepository> {
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(disposable -> showHUD())
-                .subscribe(new BaseObserver<BaseDataResponse<AdBannerEntity>>(){
+                .subscribe(new BaseObserver<BaseDataResponse<AdBannerBean>>(){
 
                     @Override
-                    public void onSuccess(BaseDataResponse<AdBannerEntity> listBaseDataResponse) {
+                    public void onSuccess(BaseDataResponse<AdBannerBean> listBaseDataResponse) {
                         if( listBaseDataResponse.getData()!=null){
-                            List<AdItemEntity> listData = listBaseDataResponse.getData().getDataList();
+                            List<AdItemBean> listData = listBaseDataResponse.getData().getDataList();
                             if(!ObjectUtils.isEmpty(listData)){
-                                for (AdItemEntity adItemEntity : listData){
+                                for (AdItemBean adItemEntity : listData){
                                     HomeMainBannerItemViewModel homeItemBanner = new HomeMainBannerItemViewModel(HomeMainViewModel.this,adItemEntity);
                                     observableBanner.add(homeItemBanner);
                                 }

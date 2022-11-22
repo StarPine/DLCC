@@ -12,7 +12,7 @@ import com.blankj.utilcode.util.ObjectUtils;
 import com.blankj.utilcode.util.StringUtils;
 import com.fine.friendlycc.BuildConfig;
 import com.fine.friendlycc.app.AppConfig;
-import com.fine.friendlycc.app.AppContext;
+import com.fine.friendlycc.app.CCApplication;
 import com.fine.friendlycc.app.AppsFlyerEvent;
 import com.fine.friendlycc.app.EaringlSwitchUtil;
 import com.fine.friendlycc.data.AppRepository;
@@ -20,11 +20,11 @@ import com.fine.friendlycc.data.source.http.exception.RequestException;
 import com.fine.friendlycc.data.source.http.observer.BaseDisposableObserver;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseDataResponse;
-import com.fine.friendlycc.entity.AllConfigEntity;
-import com.fine.friendlycc.entity.ApiConfigManagerEntity;
-import com.fine.friendlycc.entity.CityAllEntity;
-import com.fine.friendlycc.entity.TokenEntity;
-import com.fine.friendlycc.entity.UserDataEntity;
+import com.fine.friendlycc.bean.AllConfigBean;
+import com.fine.friendlycc.bean.ApiConfigManagerBean;
+import com.fine.friendlycc.bean.CityAllBean;
+import com.fine.friendlycc.bean.TokenBean;
+import com.fine.friendlycc.bean.UserDataBean;
 import com.fine.friendlycc.event.LoginExpiredEvent;
 import com.fine.friendlycc.ui.login.LoginFragment;
 import com.fine.friendlycc.ui.main.MainFragment;
@@ -101,11 +101,11 @@ public class SplashViewModel extends BaseViewModel<AppRepository> {
                 .doOnSubscribe(this)
                 .compose(RxUtils.schedulersTransformer())
                 .doOnSubscribe(disposable -> showHUD())
-                .subscribe(new BaseObserver<BaseDataResponse<ApiConfigManagerEntity>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<ApiConfigManagerBean>>() {
                     @Override
-                    public void onSuccess(BaseDataResponse<ApiConfigManagerEntity> response) {
+                    public void onSuccess(BaseDataResponse<ApiConfigManagerBean> response) {
                         if (!response.isDataEmpty()) {
-                            ApiConfigManagerEntity apiConfigManager = response.getData();
+                            ApiConfigManagerBean apiConfigManager = response.getData();
                             if (apiConfigManager != null) {
                                 model.saveApiConfigManager(apiConfigManager);
                                 initSettingConfig();
@@ -131,9 +131,9 @@ public class SplashViewModel extends BaseViewModel<AppRepository> {
     }
 
     private void initIM(){
-        AppContext appContext = ((AppContext)getApplication());
-        appContext.initIM();
-        appContext.initActivityLifecycleCallbacks();
+        CCApplication CCApplication = ((CCApplication)getApplication());
+        CCApplication.initIM();
+        CCApplication.initActivityLifecycleCallbacks();
     }
 
     /**
@@ -145,14 +145,14 @@ public class SplashViewModel extends BaseViewModel<AppRepository> {
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(this)
-                .subscribe(new BaseObserver<BaseDataResponse<UserDataEntity>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<UserDataBean>>() {
                     @Override
-                    public void onSuccess(BaseDataResponse<UserDataEntity> response) {
-                        UserDataEntity userDataEntity = response.getData();
+                    public void onSuccess(BaseDataResponse<UserDataBean> response) {
+                        UserDataBean userDataEntity = response.getData();
                         model.saveUserData(userDataEntity);
                         //更新IM userSig
                         if (!TextUtils.isEmpty(userDataEntity.getUserSig())) {
-                            TokenEntity tokenEntity = model.readLoginInfo();
+                            TokenBean tokenEntity = model.readLoginInfo();
                             if (tokenEntity == null){
                                 RxBus.getDefault().post(new LoginExpiredEvent());
                                 return;
@@ -161,7 +161,7 @@ public class SplashViewModel extends BaseViewModel<AppRepository> {
                             model.saveLoginInfo(tokenEntity);
                         }
                         AppsFlyerLib.getInstance().setCustomerUserId(String.valueOf(userDataEntity.getId()));
-                        AppContext.instance().mFirebaseAnalytics.setUserId(String.valueOf(userDataEntity.getId()));
+                        CCApplication.instance().mFirebaseAnalytics.setUserId(String.valueOf(userDataEntity.getId()));
                         try {
                             //添加崩溃人员id
                             FirebaseCrashlytics.getInstance().setUserId(String.valueOf(userDataEntity.getId()));
@@ -169,7 +169,7 @@ public class SplashViewModel extends BaseViewModel<AppRepository> {
                             Log.e("Crashlytics setUserid ",crashErr.getMessage());
                         }
                         initIM();
-                        AppContext.instance().logEvent(AppsFlyerEvent.Silent_login);
+                        CCApplication.instance().logEvent(AppsFlyerEvent.Silent_login);
                         startWithPop(MainFragment.class.getCanonicalName());
                     }
 
@@ -198,7 +198,7 @@ public class SplashViewModel extends BaseViewModel<AppRepository> {
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(disposable -> showHUD())
-                .subscribe(new BaseDisposableObserver<BaseDataResponse<AllConfigEntity>>() {
+                .subscribe(new BaseDisposableObserver<BaseDataResponse<AllConfigBean>>() {
 
                     @Override
                     public void onComplete() {
@@ -206,7 +206,7 @@ public class SplashViewModel extends BaseViewModel<AppRepository> {
                     }
 
                     @Override
-                    public void onSuccess(BaseDataResponse<AllConfigEntity> response) {
+                    public void onSuccess(BaseDataResponse<AllConfigBean> response) {
                         try {
                             model.saveHeightConfig(response.getData().getHeight());
                             model.saveWeightConfig(response.getData().getWeight());
@@ -245,15 +245,15 @@ public class SplashViewModel extends BaseViewModel<AppRepository> {
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(disposable -> showHUD())
-                .subscribe(new BaseObserver<BaseDataResponse<CityAllEntity>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<CityAllBean>>() {
                     @Override
                     public void onComplete() {
                         dismissHUD();
                     }
 
                     @Override
-                    public void onSuccess(BaseDataResponse<CityAllEntity> response) {
-                        CityAllEntity cityData = response.getData();
+                    public void onSuccess(BaseDataResponse<CityAllBean> response) {
+                        CityAllBean cityData = response.getData();
                         if (ObjectUtils.isNotEmpty(cityData.getCityAll())) {
                             model.saveCityConfigAll(cityData.getCityAll());
                             initData();

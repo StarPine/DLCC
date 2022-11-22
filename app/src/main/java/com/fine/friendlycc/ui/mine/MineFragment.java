@@ -26,16 +26,16 @@ import com.blankj.utilcode.util.StringUtils;
 import com.bumptech.glide.Glide;
 import com.fine.friendlycc.BR;
 import com.fine.friendlycc.R;
-import com.fine.friendlycc.app.AppContext;
+import com.fine.friendlycc.app.CCApplication;
 import com.fine.friendlycc.app.AppViewModelFactory;
 import com.fine.friendlycc.app.AppsFlyerEvent;
 import com.fine.friendlycc.app.Injection;
 import com.fine.friendlycc.databinding.FragmentMineBinding;
-import com.fine.friendlycc.entity.BrowseNumberEntity;
-import com.fine.friendlycc.entity.EvaluateEntity;
-import com.fine.friendlycc.entity.EvaluateItemEntity;
-import com.fine.friendlycc.entity.EvaluateObjEntity;
-import com.fine.friendlycc.entity.UserInfoEntity;
+import com.fine.friendlycc.bean.BrowseNumberBean;
+import com.fine.friendlycc.bean.EvaluateBean;
+import com.fine.friendlycc.bean.EvaluateItemBean;
+import com.fine.friendlycc.bean.EvaluateObjBean;
+import com.fine.friendlycc.bean.UserInfoBean;
 import com.fine.friendlycc.ui.base.BaseRefreshFragment;
 import com.fine.friendlycc.ui.certification.certificationfemale.CertificationFemaleFragment;
 import com.fine.friendlycc.ui.dialog.MyEvaluateDialog;
@@ -169,7 +169,7 @@ public class MineFragment extends BaseRefreshFragment<FragmentMineBinding, MineV
                     ToastUtils.showShort(R.string.audio_in_call);
                     return;
                 }
-                UserInfoEntity userInfoEntity = viewModel.userInfoEntity.get();
+                UserInfoBean userInfoEntity = viewModel.userInfoEntity.get();
                 if(userInfoEntity!=null && !StringUtils.isEmpty(userInfoEntity.getSound()) ){
                     binding.audioStop.setImageResource(R.drawable.mine_audio_stop_img);
                     if (AudioPlayer.getInstance().isPlaying()) {
@@ -199,7 +199,7 @@ public class MineFragment extends BaseRefreshFragment<FragmentMineBinding, MineV
     @Override
     public void initViewObservable() {
         super.initViewObservable();
-        AppContext.instance().logEvent(AppsFlyerEvent.Me);
+        CCApplication.instance().logEvent(AppsFlyerEvent.Me);
         inputMethodManager = (InputMethodManager) this.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
         viewModel.uc.allowAudio.observe(this,aBoolean -> {
             binding.shAudio.setChecked(aBoolean);
@@ -224,9 +224,9 @@ public class MineFragment extends BaseRefreshFragment<FragmentMineBinding, MineV
                 }).show();
             }
         });
-        viewModel.uc.loadBrowseNumber.observe(this, new Observer<BrowseNumberEntity>() {
+        viewModel.uc.loadBrowseNumber.observe(this, new Observer<BrowseNumberBean>() {
             @Override
-            public void onChanged(BrowseNumberEntity browseNumberEntity) {
+            public void onChanged(BrowseNumberBean browseNumberEntity) {
                 if (!ObjectUtils.isEmpty(viewModel.userInfoEntity.get()) && !ObjectUtils.isEmpty(browseNumberEntity)) {
                     if (viewModel.userInfoEntity.get().getSex() == 0) {
                         if (ObjectUtils.isEmpty(browseNumberEntity.getFansNumber()) || browseNumberEntity.getFansNumber().intValue() < 1) {
@@ -292,7 +292,7 @@ public class MineFragment extends BaseRefreshFragment<FragmentMineBinding, MineV
             }
         });
         viewModel.uc.clickMyEvaluate.observe(this, evaluateEntities -> {
-            List<EvaluateObjEntity> list = null;
+            List<EvaluateObjBean> list = null;
             if (Injection.provideDemoRepository().readUserData().getSex() == 1) {
                 list = Injection.provideDemoRepository().readMaleEvaluateConfig();
             } else {
@@ -301,11 +301,11 @@ public class MineFragment extends BaseRefreshFragment<FragmentMineBinding, MineV
             if (list == null) {
                 list = new ArrayList<>();
             }
-            List<EvaluateItemEntity> items = new ArrayList<>();
-            for (EvaluateObjEntity configEntity : list) {
-                EvaluateItemEntity evaluateItemEntity = new EvaluateItemEntity(configEntity.getId(), configEntity.getName());
+            List<EvaluateItemBean> items = new ArrayList<>();
+            for (EvaluateObjBean configEntity : list) {
+                EvaluateItemBean evaluateItemEntity = new EvaluateItemBean(configEntity.getId(), configEntity.getName());
                 items.add(evaluateItemEntity);
-                for (EvaluateEntity evaluateEntity : evaluateEntities) {
+                for (EvaluateBean evaluateEntity : evaluateEntities) {
                     if (configEntity.getId() == evaluateEntity.getTagId()) {
                         evaluateItemEntity.setNumber(evaluateEntity.getNumber());
                     }
@@ -328,7 +328,7 @@ public class MineFragment extends BaseRefreshFragment<FragmentMineBinding, MineV
                     .setOnItemSelectedListener((bottomSheet, position) -> {
                         bottomSheet.dismiss();
                         if (position == 0) {
-                            AppContext.instance().logEvent(AppsFlyerEvent.All_Recommended);
+                            CCApplication.instance().logEvent(AppsFlyerEvent.All_Recommended);
                             viewModel.setAlbumPrivacy(1, null);
                         } else if (position == 1) {
                             if (viewModel.userInfoEntity.get().getSex() == 0 && viewModel.userInfoEntity.get().getIsVip() != 1) {
@@ -364,7 +364,7 @@ public class MineFragment extends BaseRefreshFragment<FragmentMineBinding, MineV
                                                         public void confirm(MVDialog dialog, String money) {
                                                             if (!StringUtils.isEmpty(money)) {
                                                                 dialog.dismiss();
-                                                                AppContext.instance().logEvent(AppsFlyerEvent.Paid_me);
+                                                                CCApplication.instance().logEvent(AppsFlyerEvent.Paid_me);
                                                                 viewModel.setAlbumPrivacy(2, Integer.parseInt(money));
                                                             } else {
                                                                 ToastUtils.showShort(R.string.playcc_please_enter_amount);
@@ -391,7 +391,7 @@ public class MineFragment extends BaseRefreshFragment<FragmentMineBinding, MineV
                                         @Override
                                         public void confirm(MVDialog dialog) {
                                             dialog.dismiss();
-                                            AppContext.instance().logEvent(AppsFlyerEvent.Ask_me);
+                                            CCApplication.instance().logEvent(AppsFlyerEvent.Ask_me);
                                             viewModel.setAlbumPrivacy(3, null);
                                         }
                                     })
@@ -402,7 +402,7 @@ public class MineFragment extends BaseRefreshFragment<FragmentMineBinding, MineV
                 @Override
                 public void onCancelClick(BottomSheet bottomSheet) {
                     bottomSheet.dismiss();
-                    AppContext.instance().logEvent(AppsFlyerEvent.cancel_me);
+                    CCApplication.instance().logEvent(AppsFlyerEvent.cancel_me);
                     hideSoftInput();
                 }
             }).build().show();

@@ -6,12 +6,12 @@ import androidx.annotation.NonNull;
 import androidx.databinding.ObservableField;
 
 import com.blankj.utilcode.util.AppUtils;
-import com.fine.friendlycc.app.AppContext;
+import com.fine.friendlycc.app.CCApplication;
 import com.fine.friendlycc.app.AppsFlyerEvent;
 import com.fine.friendlycc.data.AppRepository;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseDataResponse;
-import com.fine.friendlycc.entity.VersionEntity;
+import com.fine.friendlycc.bean.VersionBean;
 import com.fine.friendlycc.ui.mine.blacklist.BlacklistFragment;
 import com.fine.friendlycc.ui.mine.privacysetting.PrivacySettingFragment;
 import com.fine.friendlycc.viewmodel.BaseViewModel;
@@ -38,18 +38,18 @@ public class MeSettingViewModel extends BaseViewModel<AppRepository> {
     });
     //黑名单按钮的点击事件
     public BindingCommand blacklistOnClickCommand = new BindingCommand(() -> {
-        AppContext.instance().logEvent(AppsFlyerEvent.Blocked_List);
+        CCApplication.instance().logEvent(AppsFlyerEvent.Blocked_List);
         start(BlacklistFragment.class.getCanonicalName());
     });
     //隐私设置按钮的点击事件
     public BindingCommand privacySettingOnClickCommand = new BindingCommand(() -> {
-        AppContext.instance().logEvent(AppsFlyerEvent.Privacy_Settings);
+        CCApplication.instance().logEvent(AppsFlyerEvent.Privacy_Settings);
         start(PrivacySettingFragment.class.getCanonicalName());
     }
     );
     //设置按钮的点击事件
     public BindingCommand settingOnClickCommand = new BindingCommand(() -> {
-        AppContext.instance().logEvent(AppsFlyerEvent.System_Settings);
+        CCApplication.instance().logEvent(AppsFlyerEvent.System_Settings);
         start(SettingFragment.class.getCanonicalName());
     });
     //当前版本按钮的点击事件
@@ -59,11 +59,11 @@ public class MeSettingViewModel extends BaseViewModel<AppRepository> {
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(this)
                 .doOnSubscribe(disposable -> showHUD())
-                .subscribe(new BaseObserver<BaseDataResponse<VersionEntity>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<VersionBean>>() {
                     @Override
-                    public void onSuccess(BaseDataResponse<VersionEntity> versionEntityBaseDataResponse) {
+                    public void onSuccess(BaseDataResponse<VersionBean> versionEntityBaseDataResponse) {
                         dismissHUD();
-                        VersionEntity versionEntity = versionEntityBaseDataResponse.getData();
+                        VersionBean versionEntity = versionEntityBaseDataResponse.getData();
                         if (versionEntity != null) {
                             uc.versionEntitySingl.postValue(versionEntity);
                         }
@@ -88,7 +88,7 @@ public class MeSettingViewModel extends BaseViewModel<AppRepository> {
     }
 
     public class UIChangeObservable {
-        public SingleLiveEvent<VersionEntity> versionEntitySingl = new SingleLiveEvent<>();
+        public SingleLiveEvent<VersionBean> versionEntitySingl = new SingleLiveEvent<>();
         public SingleLiveEvent<Void> starFacebeautyActivity = new SingleLiveEvent<>();
     }
 }

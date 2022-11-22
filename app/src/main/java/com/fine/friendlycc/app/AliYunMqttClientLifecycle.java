@@ -8,7 +8,7 @@ import androidx.lifecycle.LifecycleObserver;
 import androidx.lifecycle.OnLifecycleEvent;
 
 import com.blankj.utilcode.util.GsonUtils;
-import com.fine.friendlycc.entity.MqBroadcastGiftEntity;
+import com.fine.friendlycc.bean.MqBroadcastGiftBean;
 
 import org.eclipse.paho.android.service.MqttAndroidClient;
 import org.eclipse.paho.client.mqttv3.IMqttActionListener;
@@ -45,7 +45,7 @@ public class AliYunMqttClientLifecycle implements LifecycleObserver {
      *   getLifecycle().addObserver(aliYunMqttClientLifecycle);
     */
     //礼物广播回传
-    public SingleLiveEvent<MqBroadcastGiftEntity> broadcastGiftEvent = new SingleLiveEvent<>();
+    public SingleLiveEvent<MqBroadcastGiftBean> broadcastGiftEvent = new SingleLiveEvent<>();
 
     /* 自动Topic, 用于上报消息 */
     final private String PUB_TOPIC = "test/broadcast";
@@ -176,7 +176,7 @@ public class AliYunMqttClientLifecycle implements LifecycleObserver {
                             String messageType = (String) mqttMessageEntity.get("messageType");
                             MqttEventEnum eventEnum = MqttEventEnum.valueOf(messageType);
                             if (eventEnum == MqttEventEnum.sendGift) {//送礼广播
-                                MqBroadcastGiftEntity mqBroadcastGiftEntity = GsonUtils.fromJson(GsonUtils.toJson(mqttMessageEntity.get("content")), MqBroadcastGiftEntity.class);
+                                MqBroadcastGiftBean mqBroadcastGiftEntity = GsonUtils.fromJson(GsonUtils.toJson(mqttMessageEntity.get("content")), MqBroadcastGiftBean.class);
                                 if (mqBroadcastGiftEntity != null) {
                                     broadcastGiftEvent.setValue(mqBroadcastGiftEntity);
                                 }

@@ -10,8 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.fine.friendlycc.entity.GiftBagAdapterEntity;
-import com.fine.friendlycc.entity.GiftBagEntity;
+import com.fine.friendlycc.bean.GiftBagAdapterBean;
+import com.fine.friendlycc.bean.GiftBagBean;
 import com.fine.friendlycc.R;
 
 import java.util.List;
@@ -24,13 +24,13 @@ import java.util.List;
 public class GiftBagRcvAdapter extends RecyclerView.Adapter<GiftBagRcvAdapter.GiftBagRcvHolder> {
 
     private final Context mContext;
-    private List<GiftBagAdapterEntity> itemData = null;
+    private List<GiftBagAdapterBean> itemData = null;
 
     private OnClickRcvDetailListener onClickDetailListener = null;
 
     private boolean isDarkShow = false;
 
-    public GiftBagRcvAdapter(RecyclerView recyclerView, List<GiftBagAdapterEntity> dataList, boolean isDarkShow) {
+    public GiftBagRcvAdapter(RecyclerView recyclerView, List<GiftBagAdapterBean> dataList, boolean isDarkShow) {
         this.mContext = recyclerView.getContext();
         this.itemData = dataList;
         this.isDarkShow = isDarkShow;
@@ -53,7 +53,7 @@ public class GiftBagRcvAdapter extends RecyclerView.Adapter<GiftBagRcvAdapter.Gi
             GiftBagDetailAdapter giftBagDetailAdapter = new GiftBagDetailAdapter(itemViewHolder.rcvDetail, itemData.get(index).getGiftBagEntity(), isDarkShow);
             giftBagDetailAdapter.setOnClickListener(new GiftBagDetailAdapter.OnClickDetailListener() {
                 @Override
-                public void clickDetailCheck(int position, GiftBagEntity.giftEntity itemEntity, LinearLayout detail_layout) {
+                public void clickDetailCheck(int position, GiftBagBean.giftEntity itemEntity, LinearLayout detail_layout) {
                     if(onClickDetailListener!=null){
                         onClickDetailListener.clickRcvDetailCheck(position,itemEntity,detail_layout,index);
                     }
@@ -84,6 +84,6 @@ public class GiftBagRcvAdapter extends RecyclerView.Adapter<GiftBagRcvAdapter.Gi
         this.onClickDetailListener = onClickListener;
     }
     public interface  OnClickRcvDetailListener{
-        void clickRcvDetailCheck(int position,GiftBagEntity.giftEntity itemEntity,LinearLayout detail_layout,int rcvPosition);
+        void clickRcvDetailCheck(int position,GiftBagBean.giftEntity itemEntity,LinearLayout detail_layout,int rcvPosition);
     }
 }

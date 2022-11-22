@@ -11,19 +11,19 @@ import com.blankj.utilcode.util.ObjectUtils;
 import com.blankj.utilcode.util.StringUtils;
 import com.fine.friendlycc.R;
 import com.fine.friendlycc.app.AppConfig;
-import com.fine.friendlycc.app.AppContext;
+import com.fine.friendlycc.app.CCApplication;
 import com.fine.friendlycc.data.AppRepository;
 import com.fine.friendlycc.data.source.http.exception.RequestException;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseDataResponse;
 import com.fine.friendlycc.data.source.http.response.BaseResponse;
-import com.fine.friendlycc.entity.BubbleEntity;
-import com.fine.friendlycc.entity.CallingInviteInfo;
-import com.fine.friendlycc.entity.DayRewardInfoEntity;
-import com.fine.friendlycc.entity.MqBroadcastGiftEntity;
-import com.fine.friendlycc.entity.MqGiftDataEntity;
-import com.fine.friendlycc.entity.RestartActivityEntity;
-import com.fine.friendlycc.entity.VersionEntity;
+import com.fine.friendlycc.bean.BubbleBean;
+import com.fine.friendlycc.bean.CallingInviteInfo;
+import com.fine.friendlycc.bean.DayRewardInfoBean;
+import com.fine.friendlycc.bean.MqBroadcastGiftBean;
+import com.fine.friendlycc.bean.MqGiftDataBean;
+import com.fine.friendlycc.bean.RestartActivityBean;
+import com.fine.friendlycc.bean.VersionBean;
 import com.fine.friendlycc.event.BubbleTopShowEvent;
 import com.fine.friendlycc.event.DailyAccostEvent;
 import com.fine.friendlycc.event.MainTabEvent;
@@ -31,7 +31,7 @@ import com.fine.friendlycc.event.MessageCountChangeEvent;
 import com.fine.friendlycc.event.MessageGiftNewEvent;
 import com.fine.friendlycc.event.RewardRedDotEvent;
 import com.fine.friendlycc.event.TaskMainTabEvent;
-import com.fine.friendlycc.kl.Utils;
+import com.fine.friendlycc.calling.Utils;
 import com.fine.friendlycc.manager.ConfigManager;
 import com.fine.friendlycc.manager.LocationManager;
 import com.fine.friendlycc.manager.V2TIMCustomManagerUtil;
@@ -72,7 +72,7 @@ public class MainViewModel extends BaseViewModel<AppRepository> {
 
     public ObservableField<String> lockPassword = new ObservableField<>("");
     public ObservableField<Boolean> isHaveRewards = new ObservableField<>(false);
-    public List<MqBroadcastGiftEntity> publicScreenBannerGiftEntity = new ArrayList<>();
+    public List<MqBroadcastGiftBean> publicScreenBannerGiftEntity = new ArrayList<>();
     public boolean playing = false;
     public boolean isShowedReward = true;//今日是否显示过奖励
     public int giveCoin = 0;
@@ -144,7 +144,7 @@ public class MainViewModel extends BaseViewModel<AppRepository> {
         BubbleTopShowEventSubscription = RxBus.getDefault().toObservable(BubbleTopShowEvent.class).subscribe(event -> {
             uc.bubbleTopShow.postValue(false);
         });
-        ResatrtActSubscription2 = RxBus.getDefault().toObservable(RestartActivityEntity.class).subscribe(event -> {
+        ResatrtActSubscription2 = RxBus.getDefault().toObservable(RestartActivityBean.class).subscribe(event -> {
             uc.restartActivity.postValue(event.getIntent());
         });
         taskMainTabEventReceive = RxBus.getDefault().toObservable(TaskMainTabEvent.class)
@@ -185,11 +185,11 @@ public class MainViewModel extends BaseViewModel<AppRepository> {
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(this)
                 .doOnSubscribe(disposable -> showHUD())
-                .subscribe(new BaseObserver<BaseDataResponse<VersionEntity>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<VersionBean>>() {
                     @Override
-                    public void onSuccess(BaseDataResponse<VersionEntity> versionEntityBaseDataResponse) {
+                    public void onSuccess(BaseDataResponse<VersionBean> versionEntityBaseDataResponse) {
                         dismissHUD();
-                        VersionEntity versionEntity = versionEntityBaseDataResponse.getData();
+                        VersionBean versionEntity = versionEntityBaseDataResponse.getData();
                         if (versionEntity != null) {
                             uc.versionEntitySingl.postValue(versionEntity);
                         }
@@ -300,10 +300,10 @@ public class MainViewModel extends BaseViewModel<AppRepository> {
                 .doOnSubscribe(this)
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
-                .subscribe(new BaseObserver<BaseDataResponse<BubbleEntity>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<BubbleBean>>() {
                     @Override
-                    public void onSuccess(BaseDataResponse<BubbleEntity> bubbleEntityBaseDataResponse) {
-                        BubbleEntity bubble = bubbleEntityBaseDataResponse.getData();
+                    public void onSuccess(BaseDataResponse<BubbleBean> bubbleEntityBaseDataResponse) {
+                        BubbleBean bubble = bubbleEntityBaseDataResponse.getData();
                         if (bubble != null) {
                             if (bubble.getStatus() == 1) {
                                 uc.bubbleTopShow.postValue(true);
@@ -347,7 +347,7 @@ public class MainViewModel extends BaseViewModel<AppRepository> {
                                     if (StringUtil.isJSON2(data)) {
                                         switch (type) {
                                             case "message_pushPay"://未支付儲值鑽石
-                                                if (AppContext.isShowNotPaid){
+                                                if (CCApplication.isShowNotPaid){
                                                     if(!FastCallFunUtil.getInstance().isFastCallFun("message_pushPay",5000)){
                                                         Map<String, Object> dataMapPushPay = new Gson().fromJson(data, Map.class);
                                                         String dataType = Objects.requireNonNull(dataMapPushPay.get("type")).toString();
@@ -361,7 +361,7 @@ public class MainViewModel extends BaseViewModel<AppRepository> {
                                                 break;
                                             case "message_gift"://接收礼物
                                                 if (map_data.get("is_accost") == null) {//不是搭讪礼物
-                                                    if (!AppContext.isCalling){
+                                                    if (!CCApplication.isCalling){
                                                         GiftEntity giftEntity = IMGsonUtils.fromJson(data, GiftEntity.class);
                                                         //是特效礼物才发送订阅通知事件
                                                         if (!StringUtils.isEmpty(giftEntity.getSvgaPath())) {
@@ -376,7 +376,7 @@ public class MainViewModel extends BaseViewModel<AppRepository> {
                             }
                             //公屏礼物数据
                             if (text.contains("giftBroadcast") && text.contains("messageType")) {
-                                if (AppContext.isHomePage){
+                                if (CCApplication.isHomePage){
                                     setPublicScreenGiftData(text);
                                 }
                             }
@@ -414,8 +414,8 @@ public class MainViewModel extends BaseViewModel<AppRepository> {
      */
     private void setPublicScreenGiftData(String text) {
         try {
-            MqGiftDataEntity giftDataEntity = new Gson().fromJson(text, MqGiftDataEntity.class);
-            MqBroadcastGiftEntity content = giftDataEntity.getContent();
+            MqGiftDataBean giftDataEntity = new Gson().fromJson(text, MqGiftDataBean.class);
+            MqBroadcastGiftBean content = giftDataEntity.getContent();
             if (content != null){
                 publicScreenBannerGiftEntity.add(content);
                 playBannerGift();
@@ -517,23 +517,23 @@ public class MainViewModel extends BaseViewModel<AppRepository> {
         model.getDayReward()
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
-                .subscribe(new BaseObserver<BaseDataResponse<DayRewardInfoEntity>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<DayRewardInfoBean>>() {
 
                     @Override
-                    public void onSuccess(BaseDataResponse<DayRewardInfoEntity> baseDataResponse) {
+                    public void onSuccess(BaseDataResponse<DayRewardInfoBean> baseDataResponse) {
                         model.putKeyValue(dayRewardKey,"true");
-                        DayRewardInfoEntity dayRewardInfoEntity = baseDataResponse.getData();
+                        DayRewardInfoBean dayRewardInfoEntity = baseDataResponse.getData();
                         if (dayRewardInfoEntity == null){
                             RxBus.getDefault().post(new DailyAccostEvent());
                             return;
                         }
                         nextGiveCoin = dayRewardInfoEntity.getNext();
                         nextVideoCard = dayRewardInfoEntity.getNextCard();
-                        List<DayRewardInfoEntity.NowBean> now = dayRewardInfoEntity.getNow();
+                        List<DayRewardInfoBean.NowBean> now = dayRewardInfoEntity.getNow();
                         if (now == null) {
                             return;
                         }
-                        for (DayRewardInfoEntity.NowBean nowBean : now) {
+                        for (DayRewardInfoBean.NowBean nowBean : now) {
                             String type = nowBean.getType();
                             if (type.equals("video_card")){
                                 videoCard = nowBean.getNum();
@@ -559,20 +559,20 @@ public class MainViewModel extends BaseViewModel<AppRepository> {
         model.getRegisterReward()
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
-                .subscribe(new BaseObserver<BaseDataResponse<DayRewardInfoEntity>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<DayRewardInfoBean>>() {
 
                     @Override
-                    public void onSuccess(BaseDataResponse<DayRewardInfoEntity> baseDataResponse) {
-                        DayRewardInfoEntity dayRewardInfoEntity = baseDataResponse.getData();
+                    public void onSuccess(BaseDataResponse<DayRewardInfoBean> baseDataResponse) {
+                        DayRewardInfoBean dayRewardInfoEntity = baseDataResponse.getData();
                         if (dayRewardInfoEntity == null){
                             RxBus.getDefault().post(new DailyAccostEvent());
                             return;
                         }
-                        List<DayRewardInfoEntity.NowBean> now = dayRewardInfoEntity.getNow();
+                        List<DayRewardInfoBean.NowBean> now = dayRewardInfoEntity.getNow();
                         if (now == null) {
                             return;
                         }
-                        for (DayRewardInfoEntity.NowBean nowBean : now) {
+                        for (DayRewardInfoBean.NowBean nowBean : now) {
                             String type = nowBean.getType();
                             if (type.equals("accost_card")){
                                 assostCardNum = nowBean.getNum();
@@ -607,10 +607,10 @@ public class MainViewModel extends BaseViewModel<AppRepository> {
         public ObservableField<Boolean> gender = new ObservableField<>(false);
         public SingleLiveEvent<MainTabEvent> mainTab = new SingleLiveEvent<>();
         //更新版本
-        public SingleLiveEvent<VersionEntity> versionEntitySingl = new SingleLiveEvent<>();
+        public SingleLiveEvent<VersionBean> versionEntitySingl = new SingleLiveEvent<>();
         //未付费弹窗
         public SingleLiveEvent<String> notPaidDialog = new SingleLiveEvent<>();
-        public SingleLiveEvent<MqBroadcastGiftEntity> giftBanner = new SingleLiveEvent<>();
+        public SingleLiveEvent<MqBroadcastGiftBean> giftBanner = new SingleLiveEvent<>();
         //任务中心跳转
         public SingleLiveEvent<TaskMainTabEvent> taskCenterclickTab = new SingleLiveEvent<>();
         public SingleLiveEvent<VideoEvaluationEntity> videoEvaluation = new SingleLiveEvent<>();

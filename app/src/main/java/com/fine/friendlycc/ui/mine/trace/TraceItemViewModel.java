@@ -8,7 +8,7 @@ import androidx.databinding.ObservableField;
 import com.blankj.utilcode.util.ObjectUtils;
 import com.blankj.utilcode.util.StringUtils;
 import com.fine.friendlycc.R;
-import com.fine.friendlycc.entity.TraceEntity;
+import com.fine.friendlycc.bean.TraceBean;
 import com.fine.friendlycc.manager.ConfigManager;
 import com.fine.friendlycc.ui.mine.trace.list.TraceListViewModel;
 import com.fine.friendlycc.utils.ExceptionReportUtils;
@@ -25,7 +25,7 @@ import me.goldze.mvvmhabit.binding.command.BindingCommand;
  */
 public class TraceItemViewModel extends MultiItemViewModel<TraceListViewModel> {
 
-    public ObservableField<TraceEntity> itemEntity = new ObservableField<>();
+    public ObservableField<TraceBean> itemEntity = new ObservableField<>();
     public ObservableField<Integer> grend = new ObservableField<>();
     public BindingCommand traceOnClickCommand = new BindingCommand(() -> {
         if (!ObjectUtils.isEmpty(grend.get())) {
@@ -64,7 +64,7 @@ public class TraceItemViewModel extends MultiItemViewModel<TraceListViewModel> {
 
     });
 
-    public TraceItemViewModel(@NonNull @NotNull TraceListViewModel viewModel, TraceEntity traceEntity, Integer grend) {
+    public TraceItemViewModel(@NonNull @NotNull TraceListViewModel viewModel, TraceBean traceEntity, Integer grend) {
         super(viewModel);
         traceListViewModel = viewModel;
         this.itemEntity.set(traceEntity);

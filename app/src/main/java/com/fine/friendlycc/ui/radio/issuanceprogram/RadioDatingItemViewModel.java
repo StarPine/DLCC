@@ -3,7 +3,7 @@ package com.fine.friendlycc.ui.radio.issuanceprogram;
 import androidx.annotation.NonNull;
 import androidx.databinding.ObservableField;
 
-import com.fine.friendlycc.entity.DatingObjItemEntity;
+import com.fine.friendlycc.bean.DatingObjItemBean;
 import com.fine.friendlycc.utils.ExceptionReportUtils;
 
 import me.goldze.mvvmhabit.base.ItemViewModel;
@@ -19,7 +19,7 @@ import me.goldze.mvvmhabit.binding.command.BindingCommand;
  * @Version 1.0
  **/
 public class RadioDatingItemViewModel extends ItemViewModel<IssuanceProgramViewModel> {
-    public ObservableField<DatingObjItemEntity> itemEntity = new ObservableField<>();
+    public ObservableField<DatingObjItemBean> itemEntity = new ObservableField<>();
     //条目的点击事件
     public BindingCommand itemDatingClick = new BindingCommand(() -> {
         try {
@@ -43,7 +43,7 @@ public class RadioDatingItemViewModel extends ItemViewModel<IssuanceProgramViewM
         }
     });
 
-    public RadioDatingItemViewModel(@NonNull IssuanceProgramViewModel viewModel, DatingObjItemEntity itemEntity) {
+    public RadioDatingItemViewModel(@NonNull IssuanceProgramViewModel viewModel, DatingObjItemBean itemEntity) {
         super(viewModel);
         this.itemEntity.set(itemEntity);
     }

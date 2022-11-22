@@ -11,7 +11,7 @@ import com.fine.friendlycc.data.source.http.observer.BaseListEmptyObserver;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseListDataResponse;
 import com.fine.friendlycc.data.source.http.response.BaseResponse;
-import com.fine.friendlycc.entity.ProfitMessageEntity;
+import com.fine.friendlycc.bean.ProfitMessageBean;
 import com.fine.friendlycc.manager.ConfigManager;
 import com.fine.friendlycc.ui.mine.wallet.WalletFragment;
 import com.fine.friendlycc.ui.mine.wallet.coin.CoinFragment;
@@ -61,15 +61,15 @@ public class ProfitMessageViewModel extends BaseRefreshViewModel<AppRepository> 
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(this)
-                .subscribe(new BaseListEmptyObserver<BaseListDataResponse<ProfitMessageEntity>>(this) {
+                .subscribe(new BaseListEmptyObserver<BaseListDataResponse<ProfitMessageBean>>(this) {
                     @Override
-                    public void onSuccess(BaseListDataResponse<ProfitMessageEntity> response) {
+                    public void onSuccess(BaseListDataResponse<ProfitMessageBean> response) {
                         super.onSuccess(response);
                         if (page == 1) {
                             observableList.clear();
                         }
-                        List<ProfitMessageEntity> list = response.getData().getData();
-                        for (ProfitMessageEntity entity : list) {
+                        List<ProfitMessageBean> list = response.getData().getData();
+                        for (ProfitMessageBean entity : list) {
                             ProfitMessageItemViewModel item = new ProfitMessageItemViewModel(ProfitMessageViewModel.this, entity);
                             observableList.add(item);
                         }

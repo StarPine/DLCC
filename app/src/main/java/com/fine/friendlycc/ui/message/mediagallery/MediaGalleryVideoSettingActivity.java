@@ -13,7 +13,7 @@ import com.fine.friendlycc.BR;
 import com.fine.friendlycc.R;
 import com.fine.friendlycc.app.AppViewModelFactory;
 import com.fine.friendlycc.databinding.ActivitySnapshotVideoSettingBinding;
-import com.fine.friendlycc.entity.MediaPayPerConfigEntity;
+import com.fine.friendlycc.bean.MediaPayPerConfigBean;
 import com.fine.friendlycc.manager.ConfigManager;
 import com.fine.friendlycc.ui.base.BaseActivity;
 import com.fine.friendlycc.utils.AutoSizeUtils;
@@ -39,17 +39,17 @@ public class MediaGalleryVideoSettingActivity extends BaseActivity<ActivitySnaps
     //本地缓存上次选择快照模板id
     private final String localSnapshotConfigIdSettingKey = "MediaGalleryVideoConfigIdSettingKey";
 
-    private MediaPayPerConfigEntity.ItemEntity localCheckItemEntity = null;
+    private MediaPayPerConfigBean.ItemEntity localCheckItemEntity = null;
 
     private final String TAG = MediaGalleryVideoSettingActivity.class.getCanonicalName();
 
     private String srcLocalPath = null;
     private boolean isPayState = false;
-    private MediaPayPerConfigEntity.itemTagEntity mediaPriceTmpConfig;
+    private MediaPayPerConfigBean.itemTagEntity mediaPriceTmpConfig;
 
     private SnapshotPhotoDialog snapshotPhotoDialog;
 
-    private MediaPayPerConfigEntity.ItemEntity checkItemEntity;
+    private MediaPayPerConfigBean.ItemEntity checkItemEntity;
     private Integer configId;
 
 
@@ -80,7 +80,7 @@ public class MediaGalleryVideoSettingActivity extends BaseActivity<ActivitySnaps
      * @return android.content.Intent
      * @Date 2022/9/14
      */
-    public static Intent createIntent(Context mContext, boolean isPayState, String srcPath, MediaPayPerConfigEntity.itemTagEntity mediaPriceTmpConfig){
+    public static Intent createIntent(Context mContext, boolean isPayState, String srcPath, MediaPayPerConfigBean.itemTagEntity mediaPriceTmpConfig){
         Intent snapshotIntent = new Intent(mContext,MediaGalleryVideoSettingActivity.class);
         snapshotIntent.putExtra("isPayState",isPayState);
         snapshotIntent.putExtra("srcPath",srcPath);
@@ -106,7 +106,7 @@ public class MediaGalleryVideoSettingActivity extends BaseActivity<ActivitySnaps
         if(intent != null){
             srcLocalPath = intent.getStringExtra("srcPath");
             isPayState = intent.getBooleanExtra("isPayState",false);
-            mediaPriceTmpConfig = (MediaPayPerConfigEntity.itemTagEntity) intent.getSerializableExtra("mediaPriceTmpConfig");
+            mediaPriceTmpConfig = (MediaPayPerConfigBean.itemTagEntity) intent.getSerializableExtra("mediaPriceTmpConfig");
         }
     }
 
@@ -126,7 +126,7 @@ public class MediaGalleryVideoSettingActivity extends BaseActivity<ActivitySnaps
 
         configId = StringUtils.isEmpty(localConfigId) ? null : Integer.parseInt(localConfigId);
         if(!StringUtils.isEmpty(localPriceValue)){
-            localCheckItemEntity = GsonUtils.fromJson(localPriceValue, MediaPayPerConfigEntity.ItemEntity.class);
+            localCheckItemEntity = GsonUtils.fromJson(localPriceValue, MediaPayPerConfigBean.ItemEntity.class);
         }
         if(ObjectUtils.isNotEmpty(localCheckItemEntity)){
             checkItemEntity = localCheckItemEntity;

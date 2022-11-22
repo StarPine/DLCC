@@ -10,8 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.fine.friendlycc.app.AppContext;
-import com.fine.friendlycc.entity.GoodsEntity;
+import com.fine.friendlycc.app.CCApplication;
+import com.fine.friendlycc.bean.GoodsBean;
 import com.fine.friendlycc.R;
 
 import java.util.ArrayList;
@@ -25,7 +25,7 @@ import java.util.List;
 public class CoinExchargeIntegralAdapter extends RecyclerView.Adapter<CoinExchargeIntegralAdapter.RecyclerHolder> {
 
     private final Context mContext;
-    private List<GoodsEntity> dataList = new ArrayList<>();
+    private List<GoodsBean> dataList = new ArrayList<>();
 
     private CoinExchargeIntegralAdapterListener coinExchargeIntegralAdapterListener = null;
 
@@ -41,7 +41,7 @@ public class CoinExchargeIntegralAdapter extends RecyclerView.Adapter<CoinExchar
         this.coinExchargeIntegralAdapterListener = coinRechargeAdapterListener;
     }
 
-    public void setData(List<GoodsEntity> goodsList) {
+    public void setData(List<GoodsBean> goodsList) {
         this.dataList = goodsList;
         notifyDataSetChanged();
     }
@@ -55,7 +55,7 @@ public class CoinExchargeIntegralAdapter extends RecyclerView.Adapter<CoinExchar
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerHolder holder, int position) {
-        GoodsEntity goodsEntity = dataList.get(position);
+        GoodsBean goodsEntity = dataList.get(position);
         holder.tvName.setText(goodsEntity.getGoodsName());
         holder.tvPrice.setText(goodsEntity.getSymbol() + goodsEntity.getSalePrice());
         holder.itemView.setTag(position);
@@ -87,7 +87,7 @@ public class CoinExchargeIntegralAdapter extends RecyclerView.Adapter<CoinExchar
             super(itemView);
             tvName = itemView.findViewById(R.id.tv_name);
             tvPrice = itemView.findViewById(R.id.tv_price);
-            Typeface typeface = Typeface.createFromAsset(AppContext.instance().getAssets(), "DIN-Bold.TTF");
+            Typeface typeface = Typeface.createFromAsset(CCApplication.instance().getAssets(), "DIN-Bold.TTF");
             tvName.setTypeface(typeface);
         }
     }

@@ -11,7 +11,7 @@ import com.blankj.utilcode.util.ColorUtils;
 import com.blankj.utilcode.util.ResourceUtils;
 import com.blankj.utilcode.util.SizeUtils;
 import com.blankj.utilcode.util.StringUtils;
-import com.fine.friendlycc.entity.AlbumPhotoEntity;
+import com.fine.friendlycc.bean.AlbumPhotoBean;
 import com.fine.friendlycc.ui.viewmodel.BaseTheirPhotoAlbumViewModel;
 import com.fine.friendlycc.utils.ExceptionReportUtils;
 import com.fine.friendlycc.R;
@@ -25,7 +25,7 @@ import me.goldze.mvvmhabit.binding.command.BindingCommand;
 @SuppressLint("SupportAnnotationUsage")
 public class TheirPhotoAlbumItemViewModel extends ItemViewModel<BaseTheirPhotoAlbumViewModel> {
 
-    public ObservableField<AlbumPhotoEntity> itemEntity = new ObservableField<>();
+    public ObservableField<AlbumPhotoBean> itemEntity = new ObservableField<>();
 
     public ObservableField<Integer> moreCount = new ObservableField<>(0);
     //条目的点击事件
@@ -47,7 +47,7 @@ public class TheirPhotoAlbumItemViewModel extends ItemViewModel<BaseTheirPhotoAl
         }
     });
 
-    public TheirPhotoAlbumItemViewModel(@NonNull BaseTheirPhotoAlbumViewModel viewModel, AlbumPhotoEntity itemEntity) {
+    public TheirPhotoAlbumItemViewModel(@NonNull BaseTheirPhotoAlbumViewModel viewModel, AlbumPhotoBean itemEntity) {
         super(viewModel);
         this.itemEntity.set(itemEntity);
     }

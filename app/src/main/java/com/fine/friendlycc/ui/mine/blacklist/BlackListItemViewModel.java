@@ -6,7 +6,7 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.databinding.ObservableField;
 
-import com.fine.friendlycc.entity.BlackEntity;
+import com.fine.friendlycc.bean.BlackBean;
 import com.fine.friendlycc.ui.userdetail.detail.UserDetailFragment;
 import com.fine.friendlycc.utils.ExceptionReportUtils;
 
@@ -18,7 +18,7 @@ import me.goldze.mvvmhabit.binding.command.BindingCommand;
  */
 public class BlackListItemViewModel extends MultiItemViewModel<BlacklistViewModel> {
 
-    public ObservableField<BlackEntity> itemEntity = new ObservableField<>();
+    public ObservableField<BlackBean> itemEntity = new ObservableField<>();
 
     public ObservableField<Boolean> isCancel = new ObservableField<>(false);
     //条目的点击事件
@@ -43,7 +43,7 @@ public class BlackListItemViewModel extends MultiItemViewModel<BlacklistViewMode
         }
     });
 
-    public BlackListItemViewModel(@NonNull BlacklistViewModel viewModel, BlackEntity itemEntity) {
+    public BlackListItemViewModel(@NonNull BlacklistViewModel viewModel, BlackBean itemEntity) {
         super(viewModel);
         this.itemEntity.set(itemEntity);
     }

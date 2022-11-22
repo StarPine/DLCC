@@ -7,8 +7,8 @@ import androidx.databinding.ObservableField;
 import com.blankj.utilcode.util.ObjectUtils;
 import com.blankj.utilcode.util.StringUtils;
 import com.fine.friendlycc.R;
-import com.fine.friendlycc.entity.LevelPageInfoEntity;
-import com.fine.friendlycc.entity.LevelSelectInfoEntity;
+import com.fine.friendlycc.bean.LevelPageInfoBean;
+import com.fine.friendlycc.bean.LevelSelectInfoBean;
 
 import me.goldze.mvvmhabit.base.MultiItemViewModel;
 import me.goldze.mvvmhabit.binding.command.BindingCommand;
@@ -21,14 +21,14 @@ import me.goldze.mvvmhabit.binding.command.BindingCommand;
 public class LevelEquityItemViewModel extends MultiItemViewModel<LevelEquityViewModel> {
 
     public ObservableBoolean checkCurrent = new ObservableBoolean(false);
-    public ObservableField<LevelSelectInfoEntity.LevelInfo> levelInfoData = new ObservableField<>();
+    public ObservableField<LevelSelectInfoBean.LevelInfo> levelInfoData = new ObservableField<>();
 
     public BindingCommand itemClick = new BindingCommand(() -> {
         int idx = viewModel.observableListTitle.indexOf(LevelEquityItemViewModel.this);
         viewModel.titleRcvItemClick(idx, true);
     });
 
-    public LevelEquityItemViewModel(@NonNull LevelEquityViewModel viewModel, boolean check, LevelSelectInfoEntity.LevelInfo levelInfo) {
+    public LevelEquityItemViewModel(@NonNull LevelEquityViewModel viewModel, boolean check, LevelSelectInfoBean.LevelInfo levelInfo) {
         super(viewModel);
         checkCurrent.set(check);
         levelInfoData.set(levelInfo);
@@ -42,9 +42,9 @@ public class LevelEquityItemViewModel extends MultiItemViewModel<LevelEquityView
      * @Date 2022/6/21
      */
     public String getChatMessage() {
-        LevelSelectInfoEntity.LevelInfo levelInfo = levelInfoData.get();
+        LevelSelectInfoBean.LevelInfo levelInfo = levelInfoData.get();
         if (!ObjectUtils.isEmpty(levelInfo)) {
-            LevelPageInfoEntity.CoinsRangeInfo chatCoinsRange = levelInfo.getChatCoinsRange();
+            LevelPageInfoBean.CoinsRangeInfo chatCoinsRange = levelInfo.getChatCoinsRange();
             if (chatCoinsRange != null) {
                 String chatMessage = StringUtils.getString(R.string.fragment_level_text_chat);
                 return String.format(chatMessage, chatCoinsRange.getFrom(), chatCoinsRange.getTo());
@@ -61,9 +61,9 @@ public class LevelEquityItemViewModel extends MultiItemViewModel<LevelEquityView
      * @Date 2022/6/21
      */
     public String getAudioMessage() {
-        LevelSelectInfoEntity.LevelInfo levelInfo = levelInfoData.get();
+        LevelSelectInfoBean.LevelInfo levelInfo = levelInfoData.get();
         if (!ObjectUtils.isEmpty(levelInfo)) {
-            LevelPageInfoEntity.CoinsRangeInfo voiceCoinsRange = levelInfo.getVoiceCoinsRange();
+            LevelPageInfoBean.CoinsRangeInfo voiceCoinsRange = levelInfo.getVoiceCoinsRange();
             if (voiceCoinsRange != null) {
                 String chatMessage = StringUtils.getString(R.string.fragment_level_text_audio);
                 return String.format(chatMessage, voiceCoinsRange.getFrom(), voiceCoinsRange.getTo());
@@ -80,9 +80,9 @@ public class LevelEquityItemViewModel extends MultiItemViewModel<LevelEquityView
      * @Date 2022/6/21
      */
     public String getVideoMessage() {
-        LevelSelectInfoEntity.LevelInfo levelInfo = levelInfoData.get();
+        LevelSelectInfoBean.LevelInfo levelInfo = levelInfoData.get();
         if (!ObjectUtils.isEmpty(levelInfo)) {
-            LevelPageInfoEntity.CoinsRangeInfo videoCoinsRange = levelInfo.getVideoCoinsRange();
+            LevelPageInfoBean.CoinsRangeInfo videoCoinsRange = levelInfo.getVideoCoinsRange();
             if (videoCoinsRange != null) {
                 String chatMessage = StringUtils.getString(R.string.fragment_level_text_video);
                 return String.format(chatMessage, videoCoinsRange.getFrom(), videoCoinsRange.getTo());

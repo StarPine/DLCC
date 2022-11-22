@@ -11,8 +11,8 @@ import com.fine.friendlycc.data.source.http.exception.RequestException;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseDataResponse;
 import com.fine.friendlycc.data.source.http.response.BaseResponse;
-import com.fine.friendlycc.entity.CoinPusherBalanceDataEntity;
-import com.fine.friendlycc.entity.CoinPusherDataInfoEntity;
+import com.fine.friendlycc.bean.CoinPusherBalanceDataBean;
+import com.fine.friendlycc.bean.CoinPusherDataInfoBean;
 import com.fine.friendlycc.event.CoinPusherGamePlayingEvent;
 import com.fine.friendlycc.manager.V2TIMCustomManagerUtil;
 import com.fine.friendlycc.viewmodel.BaseViewModel;
@@ -49,7 +49,7 @@ public class CoinPusherGameViewModel extends BaseViewModel <AppRepository> {
     //livedata页面交互
     public UIChangeObservable gameUI = new UIChangeObservable();
     public ObservableInt totalMoney = new ObservableInt(0);
-    public CoinPusherDataInfoEntity coinPusherDataInfoEntity;
+    public CoinPusherDataInfoBean coinPusherDataInfoEntity;
 
     //消费者
     private Disposable coinPusherGamePlayingSubscription;
@@ -94,10 +94,10 @@ public class CoinPusherGameViewModel extends BaseViewModel <AppRepository> {
                     //禁用投币按钮
                     gameUI.playingBtnEnable.postValue(false);
                 })
-                .subscribe(new BaseObserver<BaseDataResponse<CoinPusherBalanceDataEntity>>() {
+                .subscribe(new BaseObserver<BaseDataResponse<CoinPusherBalanceDataBean>>() {
                     @Override
-                    public void onSuccess(BaseDataResponse<CoinPusherBalanceDataEntity> coinPusherDataEntityResponse) {
-                        CoinPusherBalanceDataEntity coinPusherBalanceDataEntity = coinPusherDataEntityResponse.getData();
+                    public void onSuccess(BaseDataResponse<CoinPusherBalanceDataBean> coinPusherDataEntityResponse) {
+                        CoinPusherBalanceDataBean coinPusherBalanceDataEntity = coinPusherDataEntityResponse.getData();
                         if(ObjectUtils.isNotEmpty(coinPusherBalanceDataEntity)){
                             totalMoney.set(coinPusherBalanceDataEntity.getTotalGold());
                         }
@@ -172,10 +172,10 @@ public class CoinPusherGameViewModel extends BaseViewModel <AppRepository> {
                 .compose(RxUtils.exceptionTransformer())
                 .doOnSubscribe(this)
                 .doOnSubscribe(disposable -> showHUD())
-                .subscribe(new BaseObserver<BaseDataResponse<CoinPusherBalanceDataEntity>>(){
+                .subscribe(new BaseObserver<BaseDataResponse<CoinPusherBalanceDataBean>>(){
                     @Override
-                    public void onSuccess(BaseDataResponse<CoinPusherBalanceDataEntity> coinPusherBalanceDataEntityResponse) {
-                        CoinPusherBalanceDataEntity coinPusherBalanceDataEntity = coinPusherBalanceDataEntityResponse.getData();
+                    public void onSuccess(BaseDataResponse<CoinPusherBalanceDataBean> coinPusherBalanceDataEntityResponse) {
+                        CoinPusherBalanceDataBean coinPusherBalanceDataEntity = coinPusherBalanceDataEntityResponse.getData();
                         if(ObjectUtils.isNotEmpty(coinPusherBalanceDataEntity)){
                             totalMoney.set(coinPusherBalanceDataEntity.getTotalGold());
                             gameUI.resetDownTimeEvent.postValue(null);
