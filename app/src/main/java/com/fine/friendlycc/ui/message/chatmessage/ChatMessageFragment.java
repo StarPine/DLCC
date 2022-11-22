@@ -132,21 +132,21 @@ public class ChatMessageFragment extends BaseFragment<FragmentChatMessageBinding
             @Override
             public void isConversationEmpty(boolean empty) {
                 //好友会话列表为空  这里切换成主线程进行改变页面状态
-//                if(empty) {
-//                    if(binding.conversationLayout.getVisibility()!=View.GONE){
-//                        binding.conversationLayout.post(()->{
-//                            binding.conversationLayout.setVisibility(View.GONE);
-//                            binding.rlEmptyLayout.setVisibility(View.VISIBLE);
-//                        });
-//                    }
-//                }else{
-//                    if(binding.conversationLayout.getVisibility()!=View.VISIBLE){
-//                        binding.conversationLayout.post(()->{
-//                            binding.conversationLayout.setVisibility(View.VISIBLE);
-//                            binding.rlEmptyLayout.setVisibility(View.GONE);
-//                        });
-//                    }
-//                }
+                if(empty) {
+                    if(binding.conversationLayout.getVisibility()!=View.GONE){
+                        binding.conversationLayout.post(()->{
+                            binding.conversationLayout.setVisibility(View.GONE);
+                            binding.rlEmptyLayout.setVisibility(View.VISIBLE);
+                        });
+                    }
+                }else{
+                    if(binding.conversationLayout.getVisibility()!=View.VISIBLE){
+                        binding.conversationLayout.post(()->{
+                            binding.conversationLayout.setVisibility(View.VISIBLE);
+                            binding.rlEmptyLayout.setVisibility(View.GONE);
+                        });
+                    }
+                }
             }
         });
         presenter.initIMListener();

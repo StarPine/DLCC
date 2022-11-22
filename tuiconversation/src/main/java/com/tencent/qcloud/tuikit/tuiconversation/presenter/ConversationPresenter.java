@@ -380,12 +380,12 @@ public class ConversationPresenter {
             }
         }
 
-        //TODO 非好友列表，判断数据是否为空（逻辑判断还有问题）
-//        if (conversationList.size() <= 0 && !isFriendConversation){
-//            if(loadConversationCallback!=null){
-//                loadConversationCallback.isConversationEmpty(true);
-//            }
-//        }
+        //非好友列表，判断数据是否为空（逻辑判断还有问题）
+        if (loadedConversationInfoList.size() <= 0 && !isFriendConversation){
+            if(loadConversationCallback!=null){
+                loadConversationCallback.isConversationEmpty(true);
+            }
+        }
     }
 
     public void setAdapter(IConversationListAdapter adapter) {
