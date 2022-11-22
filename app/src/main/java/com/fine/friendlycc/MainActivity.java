@@ -1,7 +1,10 @@
 package com.fine.friendlycc;
 
+import android.app.Activity;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -66,20 +69,47 @@ public class MainActivity extends MySupportActivity {
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         if(newConfig!=null){
+//            restartApp(this);
             LocaleManager.setLocal(this);
         }
         super.onConfigurationChanged(newConfig);
         LocaleManager.setLocal(this);
     }
+
     @Override
     protected void onRestart() {
         super.onRestart();
         LocaleManager.setLocal(this);
     }
 
+    private BroadcastReceiver mReceiver = new BroadcastReceiver(){
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if(intent.getAction().equals(Intent.ACTION_LOCALE_CHANGED)) {
+                //something to do
+                restartApp(MainActivity.this);
+            }
+        }
+    };
+
+    //重启应用
+    public void restartApp(Context context) {
+        Intent intent = context.getPackageManager().getLaunchIntentForPackage(context.getPackageName());
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        android.os.Process.killProcess(android.os.Process.myPid());
+        System.exit(0);
+
+    }
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //添加切换语言广播
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(Intent.ACTION_LOCALE_CHANGED);
+        registerReceiver(mReceiver, filter);
+
         onCreateTime = System.currentTimeMillis() / 1000;
         isLaunchMain();
         AutoSizeUtils.applyAdapt(this.getResources());
