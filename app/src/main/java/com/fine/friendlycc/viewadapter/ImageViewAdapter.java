@@ -163,11 +163,13 @@ public class ImageViewAdapter {
         Context context = getContext(imageView);
         if(!isLocalFile){
             Glide.with(context).load(StringUtil.getFullImageUrl(imageItemPhotoPath))
+                    .fitCenter()//防止图片被拉伸
                     .error(imageItemPhotoErrorPlaceholderRes)
                     .placeholder(imageItemPhotoPlaceholderRes)
                     .into(imageView);
         }else{
             Glide.with(context).load(imageItemPhotoPath)
+                    .fitCenter()//防止图片被拉伸
                     .error(imageItemPhotoErrorPlaceholderRes)
                     .placeholder(imageItemPhotoPlaceholderRes)
                     .into(imageView);
