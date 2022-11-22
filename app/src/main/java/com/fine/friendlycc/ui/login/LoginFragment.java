@@ -118,6 +118,7 @@ public class LoginFragment extends BaseFragment<FragmentLoginBinding, LoginViewM
                 }
                 Collection<String> collection = new ArrayList<String>();
                 collection.add("email");
+                collection.add("public_profile");
                 loginManager.logIn(LoginFragment.this, collection);
 
             }

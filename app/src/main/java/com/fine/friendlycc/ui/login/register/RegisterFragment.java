@@ -161,6 +161,7 @@ public class RegisterFragment extends BaseToolbarFragment<FragmentRegisterBindin
             public void onClick(View view) {
                 Collection<String> collection = new ArrayList<String>();
                 collection.add("email");
+                collection.add("public_profile");
                 loginManager.logIn(RegisterFragment.this, collection);
             }
         });
