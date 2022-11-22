@@ -20,9 +20,9 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 #混淆字典配置
--obfuscationdictionary fl-proguard.txt
--classobfuscationdictionary fl-proguard.txt
--packageobfuscationdictionary fl-proguard.txt
+-obfuscationdictionary pc-guard.txt
+-classobfuscationdictionary pc-guard.txt
+-packageobfuscationdictionary pc-guard.txt
 #------------------------------------------主项目混淆规则----------------------------------------------
 #实体类不参与混淆
 -keep class com.fine.friendlycc.entity.** { *; }
