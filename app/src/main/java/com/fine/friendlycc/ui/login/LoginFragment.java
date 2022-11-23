@@ -262,7 +262,6 @@ public class LoginFragment extends BaseFragment<FragmentLoginBinding, LoginViewM
                 overseasUserEntity.setEmail(signInAccount.getEmail());
                 overseasUserEntity.setName(signInAccount.getDisplayName());
                 overseasUserEntity.setPhoto(signInAccount.getPhotoUrl() == null ? null : String.valueOf(signInAccount.getPhotoUrl()));
-                toLocalPhoto(overseasUserEntity);
 
                 AppConfig.overseasUserEntity = overseasUserEntity;
                 viewModel.authLogin(signInAccount.getId(), "google", overseasUserEntity.getEmail(), null, null, null);
@@ -329,21 +328,6 @@ public class LoginFragment extends BaseFragment<FragmentLoginBinding, LoginViewM
             //ToastUtils.showShort(R.string.error_google);
         }
 
-    }
-
-    private void toLocalPhoto(OverseasUserBean overseasUserEntity) {
-        FutureTarget<File> future = Glide.with(mActivity)
-                .load(overseasUserEntity.getPhoto())
-                .downloadOnly(500, 500);
-        try {
-            File cacheFile = future.get();
-            //图片缓存路径
-            overseasUserEntity.setPhoto(cacheFile.getAbsolutePath());
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }
     }
 
     ActivityResultLauncher<Intent> toGoogleLoginIntent = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
