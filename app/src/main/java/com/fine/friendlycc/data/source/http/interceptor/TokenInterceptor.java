@@ -68,7 +68,7 @@ public class TokenInterceptor implements Interceptor {
                 }
 
                 //设置环境切换
-                setDebugToggle(builder, request);
+                setDebugToggle(builder, request, headers);
             }
         }
         if(apiServerUrl!=null){
@@ -121,12 +121,12 @@ public class TokenInterceptor implements Interceptor {
         return chain.proceed(builder.build());
     }
 
-    private void setDebugToggle(Request.Builder builder, Request request){
+    private void setDebugToggle(Request.Builder builder, Request request, Headers headers){
         try {
             if (BuildConfig.DEBUG){
                 URI openUrl = null;
-                if (AppConfig.isInit){
-                    LogUtils.i("setDebugToggle: 调试");
+                if (!ObjectUtils.isEmpty(headers.get(RetrofitHeadersConfig.DEFAULT_API_INIT_URL_KEY))){
+                    LogUtils.i("setDebugToggle: 调试"+headers.get(RetrofitHeadersConfig.DEFAULT_API_INIT_URL_KEY));
                     if (!AppConfig.isTest){
                         openUrl = new URI("http://api.playcc.net/");
                     }else {
@@ -138,7 +138,6 @@ public class TokenInterceptor implements Interceptor {
                             .scheme(openUrl.getScheme())
                             .build();
                     builder.url(newUrl);
-                    AppConfig.isInit = false;
                 }
             }
         }catch (Exception e){

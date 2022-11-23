@@ -124,5 +124,4 @@ public class AppConfig {
     //登录方式
     public static String LOGIN_TYPE = "0";
     public static boolean isTest = false;
-    public static boolean isInit = true;
 }
