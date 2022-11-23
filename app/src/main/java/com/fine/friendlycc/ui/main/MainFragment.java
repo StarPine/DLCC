@@ -270,7 +270,7 @@ public class MainFragment extends BaseFragment<FragmentMainBinding, MainViewMode
                 BackgroundTasks.getInstance().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        if (versionEntity.getVersion_code().intValue() <= AppConfig.VERSION_CODE.intValue()) {
+                        if (versionEntity == null || versionEntity.getVersion_code().intValue() <= AppConfig.VERSION_CODE.intValue()) {
                             dialogCallback();
 
                         } else {

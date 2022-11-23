@@ -192,7 +192,14 @@ public class MainViewModel extends BaseViewModel<AppRepository> {
                         VersionBean versionEntity = versionEntityBaseDataResponse.getData();
                         if (versionEntity != null) {
                             uc.versionEntitySingl.postValue(versionEntity);
+                        }else {
+                            uc.versionEntitySingl.call();
                         }
+                    }
+
+                    @Override
+                    public void onError(RequestException e) {
+                        uc.versionEntitySingl.call();
                     }
 
                     @Override
