@@ -20,9 +20,9 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 #混淆字典配置
--obfuscationdictionary pc-guard.txt
--classobfuscationdictionary pc-guard.txt
--packageobfuscationdictionary pc-guard.txt
+-obfuscationdictionary cc-guard.txt
+-classobfuscationdictionary cc-guard.txt
+-packageobfuscationdictionary cc-guard.txt
 #------------------------------------------主项目混淆规则----------------------------------------------
 #实体类不参与混淆
 -keep class com.fine.friendlycc.bean.** { *; }
