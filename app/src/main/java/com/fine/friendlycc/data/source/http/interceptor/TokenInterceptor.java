@@ -128,9 +128,9 @@ public class TokenInterceptor implements Interceptor {
                 if (!ObjectUtils.isEmpty(headers.get(RetrofitHeadersConfig.DEFAULT_API_INIT_URL_KEY))){
                     LogUtils.i("setDebugToggle: 调试"+headers.get(RetrofitHeadersConfig.DEFAULT_API_INIT_URL_KEY));
                     if (!AppConfig.isTest){
-                        openUrl = new URI("http://api.playcc.net/");
+                        openUrl = new URI("https://api.playcc.net/");
                     }else {
-                        openUrl = new URI("http://t-api.playcc.net/");
+                        openUrl = new URI("https://t-api.playcc.net/");
                     }
 
                     HttpUrl newUrl = request.url().newBuilder()

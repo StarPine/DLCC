@@ -78,13 +78,14 @@ android {
 
     dataBinding { enabled = true }
 
-    flavorDimensions "friendly"
+    flavorDimensions "playcc"
     productFlavors {
         // 对外
         open {
-            dimension "friendly"
+            dimension "playcc"
+            resConfigs "zh","en","zh-rCN","zh-rHK","zh-rMO","zh-rSG","zh-rTW"
             // 服务端接口HOST
-            buildConfigField "String", "DEFAULT_API_URL", "\"http://api.playcc.net/\""
+            buildConfigField "String", "DEFAULT_API_URL", "\"https://api.playcc.net/\""
             applicationId "com.fine.friendlycc"
             // 腾讯IM FCM离线推送ID
             buildConfigField "int", "GOOGLE_FCM_PUSH_BUZID", "17321"
@@ -113,10 +114,10 @@ android {
         }
         // 内部调试
         internal {
-            dimension "friendly"
+            dimension "playcc"
             resConfigs "zh","en","zh-rCN","zh-rHK","zh-rMO","zh-rSG","zh-rTW"
             // 服务端接口HOST
-            buildConfigField "String", "DEFAULT_API_URL", "\"http://t-api.playcc.net/\""
+            buildConfigField "String", "DEFAULT_API_URL", "\"https://t-api.playcc.net/\""
             applicationId "com.friendly.test"
             buildConfigField "int", "GOOGLE_FCM_PUSH_BUZID", "18414"
             //客服id聊天
