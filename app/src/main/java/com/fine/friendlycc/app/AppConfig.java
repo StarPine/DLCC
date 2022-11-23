@@ -40,17 +40,9 @@ public class AppConfig {
      */
     public static final int GOOGLE_FCM_PUSH_BUZID = BuildConfig.GOOGLE_FCM_PUSH_BUZID;
     /**
-     * 客服名称
-     */
-    public static final String CHAT_SERVICE_USER_NAME = "administrator";
-    /**
      * 客服id
      */
-    public static final String CHAT_SERVICE_USER_ID = "administrator";
-    /**
-     * 联系客服id
-     */
-    public static final String CHAT_SERVICE_USER_ID_SEND = BuildConfig.CHAT_SERVICE_USER_ID_SEND;
+    public static String CHAT_SERVICE_USER_ID = "administrator";
 
     /**
      * 服务端默认接口HOST

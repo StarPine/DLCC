@@ -236,7 +236,7 @@ public class MineViewModel extends BaseMyPhotoAlbumViewModel<AppRepository> {
     public BindingCommand serviceOnClickCommand = new BindingCommand(() -> {
         try {
             CCApplication.instance().logEvent(AppsFlyerEvent.Contact_Us);
-            ChatUtils.chatUser(AppConfig.CHAT_SERVICE_USER_ID_SEND, 0,StringUtils.getString(R.string.playcc_chat_service_name), MineViewModel.this);
+            ChatUtils.chatUser(AppConfig.CHAT_SERVICE_USER_ID, 0,StringUtils.getString(R.string.playcc_chat_service_name), MineViewModel.this);
         } catch (Exception e) {
             ExceptionReportUtils.report(e);
         }

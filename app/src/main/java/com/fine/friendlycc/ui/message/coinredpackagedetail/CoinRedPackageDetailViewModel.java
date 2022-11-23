@@ -41,7 +41,7 @@ public class CoinRedPackageDetailViewModel extends BaseViewModel<AppRepository> 
     public BindingCommand linkServiceOnClickCommand = new BindingCommand(new BindingAction() {
         @Override
         public void call() {
-            ChatUtils.chatUser(AppConfig.CHAT_SERVICE_USER_ID_SEND,0, StringUtils.getString(R.string.playcc_chat_service_name), CoinRedPackageDetailViewModel.this);
+            ChatUtils.chatUser(AppConfig.CHAT_SERVICE_USER_ID,0, StringUtils.getString(R.string.playcc_chat_service_name), CoinRedPackageDetailViewModel.this);
         }
     });
 

@@ -107,6 +107,7 @@ public class SplashViewModel extends BaseViewModel<AppRepository> {
                         if (!response.isDataEmpty()) {
                             ApiConfigManagerBean apiConfigManager = response.getData();
                             if (apiConfigManager != null) {
+                                AppConfig.CHAT_SERVICE_USER_ID = apiConfigManager.getCustomerId();
                                 model.saveApiConfigManager(apiConfigManager);
                                 initSettingConfig();
                             } else {
