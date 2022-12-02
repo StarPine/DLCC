@@ -14,11 +14,13 @@ import com.fine.friendlycc.BR;
 import com.fine.friendlycc.R;
 import com.fine.friendlycc.app.AppViewModelFactory;
 import com.fine.friendlycc.databinding.FragmentSettingAccountCancellBinding;
+import com.fine.friendlycc.tim.TUIUtils;
 import com.fine.friendlycc.ui.base.BaseToolbarFragment;
 import com.fine.friendlycc.ui.login.LoginFragment;
 import com.fine.friendlycc.ui.mine.wallet.diamond.recharge.DialogDiamondRechargeActivity;
 import com.fine.friendlycc.widget.coinrechargesheet.CoinRechargeSheetView;
 import com.fine.friendlycc.widget.dialog.MMAlertDialog;
+import com.tencent.imsdk.v2.V2TIMCallback;
 
 public class CommunityAccountCancellFragment extends BaseToolbarFragment<FragmentSettingAccountCancellBinding, CommunityAccountCancellViewModel> {
     @Override
@@ -52,8 +54,17 @@ public class CommunityAccountCancellFragment extends BaseToolbarFragment<Fragmen
             public void onChanged(Boolean type) {
                 if (type) {
                     MMAlertDialog.AlertAccountCancell(mActivity, (dialog, which) -> {
-                        //跳转到登录界面
-                        startWithPopTo(new LoginFragment(), CommunityAccountCancellFragment.class, true);
+                        TUIUtils.logout(new V2TIMCallback() {
+                            @Override
+                            public void onSuccess() {
+                                viewModel.logout();
+                            }
+
+                            @Override
+                            public void onError(int i, String s) {
+                                viewModel.logout();
+                            }
+                        });
                     }).show();
                 } else {
                     //调用充值钻石弹窗

@@ -4,10 +4,13 @@ import android.app.Application;
 
 import androidx.annotation.NonNull;
 
+import com.fine.friendlycc.app.AppConfig;
 import com.fine.friendlycc.data.AppRepository;
 import com.fine.friendlycc.data.source.http.exception.RequestException;
 import com.fine.friendlycc.data.source.http.observer.BaseObserver;
 import com.fine.friendlycc.data.source.http.response.BaseResponse;
+import com.fine.friendlycc.ui.login.LoginFragment;
+import com.fine.friendlycc.ui.main.MainFragment;
 import com.fine.friendlycc.viewmodel.BaseViewModel;
 
 import me.goldze.mvvmhabit.bus.event.SingleLiveEvent;
@@ -18,6 +21,14 @@ public class CommunityAccountCancellViewModel extends BaseViewModel<AppRepositor
 
     public CommunityAccountCancellViewModel(@NonNull Application application, AppRepository model) {
         super(application, model);
+    }
+
+    public void logout() {
+        AppConfig.userClickOut = true;
+        showHUD();
+        model.logout();
+        startWithPopTo(LoginFragment.class.getCanonicalName(), MainFragment.class.getCanonicalName(), true);
+        dismissHUD();
     }
 
     /**
