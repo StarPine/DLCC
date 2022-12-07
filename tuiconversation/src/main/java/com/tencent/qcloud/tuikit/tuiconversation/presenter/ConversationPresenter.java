@@ -379,13 +379,6 @@ public class ConversationPresenter {
                 }
             }
         }
-
-        //非好友列表，判断数据是否为空（逻辑判断还有问题）
-        if (loadedConversationInfoList.size() <= 0 && !isFriendConversation){
-            if(loadConversationCallback!=null){
-                loadConversationCallback.isConversationEmpty(true);
-            }
-        }
     }
 
     public void setAdapter(IConversationListAdapter adapter) {
@@ -484,6 +477,15 @@ public class ConversationPresenter {
     private void onLoadConversationCompleted(List<ConversationInfo> conversationInfoList) {
         onNewConversation(conversationInfoList);
         if(!isFriendConversation){
+            if (loadedConversationInfoList.size() <= 0){
+                if(loadConversationCallback!=null){
+                    loadConversationCallback.isConversationEmpty(true);
+                }
+            }else{
+                if(loadConversationCallback!=null){
+                    loadConversationCallback.isConversationEmpty(false);
+                }
+            }
             adapterLoadingStateChanged(adapter);
         }
         provider.getTotalUnreadMessageCount(new IUIKitCallback<Long>() {
